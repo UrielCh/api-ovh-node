@@ -10,8 +10,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "List available services",
           "httpMethod": "GET",
@@ -23,12 +23,12 @@ export const schema: Schema = {
       "path": "/saas/csp2"
     },
     {
-      "description": "Office tenant",
+      "description": "Operations about the CSP2 service",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -47,8 +47,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
@@ -56,14 +56,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "saas.csp2.OfficeTenant",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "saas.csp2.OfficeTenant",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -80,16 +80,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Get the curren billing period's usage peak for each subscription",
+          "description": "Get the current billing period's usage peak for each subscription",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -106,24 +106,23 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Changes the tenant administrator's password",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "password",
-              "description": "New password for the tenant administrator",
-              "fullType": "password",
-              "name": "newPassword",
+              "dataType": "saas.csp2.ChangeAdministratorPasswordCreation",
+              "description": "Request Body",
+              "fullType": "saas.csp2.ChangeAdministratorPasswordCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -140,32 +139,23 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Automatically sets up an OVH-hosted domain of yours for your office365 services. Note, this requires the domain to not have any interfering MX/SRV/TXT records",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Your OVH-hosted domain to configure",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "saas.csp2.SupportedServiceEnum[]",
-              "description": "Services that your domain needs to be configured with",
-              "fullType": "saas.csp2.SupportedServiceEnum[]",
-              "name": "supportedServices",
+              "dataType": "saas.csp2.ConfigureDomainCreation",
+              "description": "Request Body",
+              "fullType": "saas.csp2.ConfigureDomainCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -182,8 +172,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Licenses available for order",
           "httpMethod": "GET",
@@ -191,7 +181,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -204,12 +194,12 @@ export const schema: Schema = {
       "path": "/saas/csp2/{serviceName}/orderableLicenses"
     },
     {
-      "description": "Office licence",
+      "description": "List the saas.csp2.OfficeLicence objects",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -217,7 +207,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "License unique identifier",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -225,7 +215,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -295,8 +285,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Subscriptions associated to this office tenant",
           "httpMethod": "GET",
@@ -304,7 +294,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -315,32 +305,23 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Add a subscription to this tenant",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "License's type unique identifier",
-              "fullType": "long",
-              "name": "licenseId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of licenses to order",
-              "fullType": "long",
-              "name": "quantity",
+              "dataType": "saas.csp2.SubscriptionCreation",
+              "description": "Request Body",
+              "fullType": "saas.csp2.SubscriptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -353,12 +334,12 @@ export const schema: Schema = {
       "path": "/saas/csp2/{serviceName}/subscription"
     },
     {
-      "description": "Office subscription",
+      "description": "List the saas.csp2.OfficeSubscription objects",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Delete a subscription from this tenant",
           "httpMethod": "DELETE",
@@ -366,7 +347,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Subscription's unique identifier",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -374,7 +355,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -385,8 +366,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -394,7 +375,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Subscription's unique identifier",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -402,7 +383,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -419,8 +400,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Addon subscriptions associated to this office subscription",
           "httpMethod": "GET",
@@ -428,7 +409,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Subscription's unique identifier",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -436,7 +417,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -453,8 +434,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Gives a list of licenses ids that can be ordered as an addon for this subscription",
           "httpMethod": "GET",
@@ -462,7 +443,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Subscription's unique identifier",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -470,7 +451,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -487,24 +468,23 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Change the quantity of seats in the subscription",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "New seat quantity",
-              "fullType": "long",
-              "name": "quantity",
+              "dataType": "saas.csp2.SubscriptionChangeQuantityCreation",
+              "description": "Request Body",
+              "fullType": "saas.csp2.SubscriptionChangeQuantityCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Subscription's unique identifier",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -512,7 +492,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -529,32 +509,23 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Creates a new subscription as an addon for this subscription",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "License id associated to this addon subscription (see subscription/<id>/availableAddonLicenses)",
-              "fullType": "long",
-              "name": "licenseId",
+              "dataType": "saas.csp2.SubscriptionOrderAddonCreation",
+              "description": "Request Body",
+              "fullType": "saas.csp2.SubscriptionOrderAddonCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Seat quantity of the new subscription",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Subscription's unique identifier",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -562,7 +533,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -579,8 +550,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Pending tasks of this tenant",
           "httpMethod": "GET",
@@ -588,7 +559,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -601,12 +572,12 @@ export const schema: Schema = {
       "path": "/saas/csp2/{serviceName}/task"
     },
     {
-      "description": "Office task",
+      "description": "List the saas.csp2.OfficeTask objects",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -614,7 +585,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Unique identifier of the task",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -622,7 +593,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -639,16 +610,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Get the usage statistics over the chose period",
+          "description": "Get the usage statistics over the chosen period",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -691,21 +662,24 @@ export const schema: Schema = {
         "endDate": {
           "canBeNull": false,
           "description": "End of the billing period",
-          "readOnly": false,
+          "fullType": "date",
+          "readOnly": true,
           "required": false,
           "type": "date"
         },
         "lines": {
           "canBeNull": false,
           "description": "List of lines associated to this statistics entity.",
-          "readOnly": false,
+          "fullType": "saas.csp2.BillingStatisticsLine[]",
+          "readOnly": true,
           "required": false,
           "type": "saas.csp2.BillingStatisticsLine[]"
         },
         "startDate": {
           "canBeNull": false,
           "description": "Start of the billing period",
-          "readOnly": false,
+          "fullType": "date",
+          "readOnly": true,
           "required": false,
           "type": "date"
         }
@@ -719,23 +693,64 @@ export const schema: Schema = {
         "licenceId": {
           "canBeNull": false,
           "description": "Id of the Office license.",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "licenceName": {
           "canBeNull": false,
           "description": "Name of the Office license.",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "peakCount": {
           "canBeNull": false,
           "description": "Maximum count of simultaneous activated licences.",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
+        }
+      }
+    },
+    "saas.csp2.ChangeAdministratorPasswordCreation": {
+      "description": "Change administrator password",
+      "id": "ChangeAdministratorPasswordCreation",
+      "namespace": "saas.csp2",
+      "properties": {
+        "newPassword": {
+          "canBeNull": false,
+          "description": "New password for the tenant administrator",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        }
+      }
+    },
+    "saas.csp2.ConfigureDomainCreation": {
+      "description": "Configure domain",
+      "id": "ConfigureDomainCreation",
+      "namespace": "saas.csp2",
+      "properties": {
+        "domain": {
+          "canBeNull": false,
+          "description": "Your OVH-hosted domain to configure",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "supportedServices": {
+          "canBeNull": false,
+          "description": "Services that your domain needs to be configured with",
+          "fullType": "saas.csp2.SupportedServiceEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "saas.csp2.SupportedServiceEnum[]"
         }
       }
     },
@@ -1030,14 +1045,16 @@ export const schema: Schema = {
         "date": {
           "canBeNull": false,
           "description": "Date of the statistics.",
-          "readOnly": false,
+          "fullType": "date",
+          "readOnly": true,
           "required": false,
           "type": "date"
         },
         "lines": {
           "canBeNull": false,
           "description": "List of lines associated to this statistics entity.",
-          "readOnly": false,
+          "fullType": "saas.csp2.StatisticsLine[]",
+          "readOnly": true,
           "required": false,
           "type": "saas.csp2.StatisticsLine[]"
         }
@@ -1051,29 +1068,94 @@ export const schema: Schema = {
         "endOfDayCount": {
           "canBeNull": false,
           "description": "Count of activated licenses at the end of the day.",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "licenceId": {
           "canBeNull": false,
           "description": "Id of the Office license.",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "licenceName": {
           "canBeNull": false,
           "description": "Name of the Office license.",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "peakCount": {
           "canBeNull": false,
           "description": "Maximum count of simultaneous activated licences.",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "saas.csp2.SubscriptionChangeQuantityCreation": {
+      "description": "Change subscription quantity",
+      "id": "SubscriptionChangeQuantityCreation",
+      "namespace": "saas.csp2",
+      "properties": {
+        "quantity": {
+          "canBeNull": false,
+          "description": "New seat quantity",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        }
+      }
+    },
+    "saas.csp2.SubscriptionCreation": {
+      "description": "Create subscription",
+      "id": "SubscriptionCreation",
+      "namespace": "saas.csp2",
+      "properties": {
+        "licenseId": {
+          "canBeNull": false,
+          "description": "License's type unique identifier",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Quantity of licenses to order",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        }
+      }
+    },
+    "saas.csp2.SubscriptionOrderAddonCreation": {
+      "description": "Create subscription order addon",
+      "id": "SubscriptionOrderAddonCreation",
+      "namespace": "saas.csp2",
+      "properties": {
+        "licenseId": {
+          "canBeNull": false,
+          "description": "License id associated to this addon subscription (see subscription/<id>/availableAddonLicenses)",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Seat quantity of the new subscription",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
           "type": "long"
         }
       }

@@ -268,10 +268,19 @@ export namespace connectivity {
         export interface WorkPlanned {
             dateBegin: string;
             dateEnd: string;
+            departments?: string[];
+            description?: string;
+            duration?: string;
+            fallback?: boolean;
+            fallbackDateBegin?: string;
+            fallbackDateEnd?: string;
             id: number;
+            impact?: string;
             interventionType: connectivity.maintenance.InterventionTypeEnum;
+            nras?: string[];
             operator: connectivity.OperatorEnum;
             technology: string;
+            zone?: string;
         }
     }
     export namespace monitoring {
@@ -511,6 +520,17 @@ export interface Connectivity {
                  * GET /connectivity/maintenance/workPlanned/partners
                  */
                 $get(): Promise<connectivity.maintenance.WorkPlanned[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            public: {
+                /**
+                 * List work planned by operators
+                 * GET /connectivity/maintenance/workPlanned/public
+                 */
+                $get(params?: { beginDate?: string, endDate?: string }): Promise<connectivity.maintenance.WorkPlanned[]>;
                 /**
                  * Controle cache
                  */

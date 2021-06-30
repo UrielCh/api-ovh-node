@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/license-cloud-linux",
     "description": "Add typing to to ovh api license-cloud-linux",
-    "version": "3.1.17",
+    "version": "3.1.18",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",

@@ -96,6 +96,40 @@ export const schema: Schema = {
       "path": "/overTheBox/{serviceName}"
     },
     {
+      "description": "autoMTU operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change the value of autoMTU",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "overTheBox.AvailableStatusEnum",
+              "description": "Enable or disable autoMTU",
+              "fullType": "overTheBox.AvailableStatusEnum",
+              "name": "mtuAuto",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/autoMTU"
+    },
+    {
       "description": "availableReleaseChannels operations",
       "operations": [
         {
@@ -1047,6 +1081,16 @@ export const schema: Schema = {
         }
       }
     },
+    "overTheBox.AvailableStatusEnum": {
+      "description": "Status of the service",
+      "enum": [
+        "disabled",
+        "enabled"
+      ],
+      "enumType": "string",
+      "id": "AvailableStatusEnum",
+      "namespace": "overTheBox"
+    },
     "overTheBox.Backup": {
       "description": "Backup",
       "id": "Backup",
@@ -1489,6 +1533,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
+        },
+        "autoMTU": {
+          "canBeNull": false,
+          "description": "The status of the autoMTU",
+          "fullType": "overTheBox.AvailableStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "overTheBox.AvailableStatusEnum"
         },
         "customerDescription": {
           "canBeNull": true,

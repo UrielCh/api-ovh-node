@@ -15,7 +15,6 @@ export namespace dbaas {
             createdAt: string;
             description?: string;
             isEditable: boolean;
-            isShareable: boolean;
             name: string;
             updatedAt?: string;
         }
@@ -99,7 +98,6 @@ export namespace dbaas {
             dashboardId: string;
             description: string;
             isEditable: boolean;
-            isShareable: boolean;
             title: string;
             updatedAt?: string;
         }
@@ -175,7 +173,6 @@ export namespace dbaas {
             description?: string;
             indexId: string;
             isEditable: boolean;
-            isShareable: boolean;
             maxSize: number;
             name: string;
             nbShard?: number;
@@ -636,7 +633,6 @@ export namespace dbaas {
             indexingMaxSize?: number;
             indexingNotifyEnabled?: boolean;
             isEditable: boolean;
-            isShareable: boolean;
             nbAlertCondition: number;
             nbArchive: number;
             parentStreamId?: string;
@@ -1779,7 +1775,7 @@ export interface Dbaas {
             }
             url: {
                 /**
-                 * Returns platform useful urls.
+                 * Returns platform useful urls
                  * GET /dbaas/logs/{serviceName}/url
                  */
                 $get(): Promise<dbaas.logs.Url[]>;

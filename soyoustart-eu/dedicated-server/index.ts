@@ -79,7 +79,7 @@ export namespace dedicated {
      * ovh datacenter
      * type fullname: dedicated.DatacenterEnum
      */
-    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "dc1" | "eri1" | "gra1" | "gra2" | "gsw" | "hil1" | "lim1" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sgp1" | "syd1" | "vin1" | "waw1"
+    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1"
     /**
      * Type of your image
      * type fullname: dedicated.ImageTypesEnum
@@ -90,6 +90,14 @@ export namespace dedicated {
      * type fullname: dedicated.OperationFunctionEnum
      */
     export type OperationFunctionEnum = "bmc/javaKvm" | "bmc/restart" | "bmc/revokeSessions" | "bmc/sshSol" | "bmc/testPassword" | "bmc/testPing" | "bmc/testWeb" | "bmc/webKvm" | "bmc/webSol"
+    /**
+     * A time slot for a planned intervention
+     * interface fullName: dedicated.PlannedInterventionTimeSlot.PlannedInterventionTimeSlot
+     */
+    export interface PlannedInterventionTimeSlot {
+        endDate: string;
+        startDate: string;
+    }
     /**
      * profile firewall asa
      * type fullname: dedicated.ProfileFirewallEnum
@@ -104,7 +112,7 @@ export namespace dedicated {
      * different task operation
      * type fullname: dedicated.TaskFunctionEnum
      */
-    export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "INFRA_002_VirtualNetworkInterface_group" | "INFRA_002_VirtualNetworkInterface_ungroup" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "ipmi/configureSGX" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
+    export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "INFRA_002_VirtualNetworkInterface_group" | "INFRA_002_VirtualNetworkInterface_ungroup" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_group" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "hardware_update" | "ipmi/configureSGX" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
     /**
      * different task status
      * type fullname: dedicated.TaskStatusEnum
@@ -234,7 +242,7 @@ export namespace dedicated {
          *  Different Bandwidth type
          * type fullname: dedicated.server.BandwidthTypeEnum
          */
-        export type BandwidthTypeEnum = "included" | "platinum" | "premium" | "standard" | "ultimate"
+        export type BandwidthTypeEnum = "improved" | "included" | "platinum" | "premium" | "standard" | "ultimate"
         /**
          * A structure describing vRack bandwidth informations about this dedicated server
          * interface fullName: dedicated.server.BandwidthvRackDetails.BandwidthvRackDetails
@@ -404,6 +412,8 @@ export namespace dedicated {
             linkSpeed?: number;
             monitoring: boolean;
             name: string;
+            newUpgradeSystem: boolean;
+            noIntervention: boolean;
             os: string;
             professionalUse: boolean;
             rack: string;
@@ -1334,7 +1344,7 @@ export namespace zone {
      * Resource record fieldType
      * type fullname: zone.NamedResolutionFieldTypeEnum
      */
-    export type NamedResolutionFieldTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
+    export type NamedResolutionFieldTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "DNAME" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
 }
 
 /**
@@ -1368,7 +1378,7 @@ export interface Dedicated {
              * Alter this object properties
              * PUT /dedicated/server/{serviceName}
              */
-            $put(params?: { bootId?: number, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, os?: string, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum }): Promise<void>;
+            $put(params?: { bootId?: number, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, newUpgradeSystem?: boolean, noIntervention?: boolean, os?: string, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -1487,7 +1497,7 @@ export interface Dedicated {
                  * Start an install with your own image
                  * POST /dedicated/server/{serviceName}/bringYourOwnImage
                  */
-                $post(params: { checkSum: string, checkSumType: dedicated.CheckSumTypesEnum, configdrive?: dedicated.server.ConfigDrive, description?: string, diskGroupId?: number, httpHeader?: complexType.SafeKeyValueCanBeNull<string>[], type: dedicated.ImageTypesEnum, URL: string }): Promise<void>;
+                $post(params: { checkSum?: string, checkSumType?: dedicated.CheckSumTypesEnum, configdrive?: dedicated.server.ConfigDrive, description?: string, diskGroupId?: number, httpHeader?: complexType.SafeKeyValueCanBeNull<string>[], type: dedicated.ImageTypesEnum, URL: string }): Promise<void>;
                 /**
                  * Controle cache
                  */

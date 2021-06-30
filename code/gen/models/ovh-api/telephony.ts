@@ -912,6 +912,22 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of dateBegin property (>=)",
+              "fullType": "datetime",
+              "name": "dateBegin.from",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of dateBegin property (<=)",
+              "fullType": "datetime",
+              "name": "dateBegin.to",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -1555,6 +1571,22 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of dateBegin property (>=)",
+              "fullType": "datetime",
+              "name": "dateBegin.from",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of dateBegin property (<=)",
+              "fullType": "datetime",
+              "name": "dateBegin.to",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -8737,7 +8769,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "The current calls of your line",
+          "description": "The active calls of your line as a call center agent",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -31482,6 +31514,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "maxSimultaneousCalls": {
+          "canBeNull": false,
+          "description": "Maximum simultaneous calls managed by the phone",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "maxline": {
           "canBeNull": false,
           "description": "Maximum number of lines managed by a phone",
@@ -33412,6 +33452,14 @@ export const schema: Schema = {
       "id": "TelephonyService",
       "namespace": "telephony",
       "properties": {
+        "associatedDeviceMac": {
+          "canBeNull": true,
+          "description": "MAC address of the associated device if there is one.",
+          "fullType": "macAddress",
+          "readOnly": true,
+          "required": false,
+          "type": "macAddress"
+        },
         "country": {
           "canBeNull": false,
           "description": "The country of the number",

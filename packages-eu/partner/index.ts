@@ -34,7 +34,7 @@ export namespace partner2 {
      * Area of expertise
      * type fullname: partner2.AreaOfExpertiseEnum
      */
-    export type AreaOfExpertiseEnum = "HPC" | "DC" | "PC" | "Orchestration" | "BigData" | "VPS" | "SecurityCertif" | "DomainName" | "EmailMsSolution" | "WH" | "Connectivity" | "VoIP"
+    export type AreaOfExpertiseEnum = "HPC" | "DC" | "PC" | "Orchestration" | "BigData" | "VPS" | "SecurityCertif" | "DomainName" | "EmailMsSolution" | "WH" | "Connectivity" | "VoIP" | "PCIDSS"
     /**
      * Contact Entity
      * interface fullName: partner2.Contact.Contact
@@ -76,7 +76,7 @@ export namespace partner2 {
      * Job positions
      * type fullname: partner2.PositionEnum
      */
-    export type PositionEnum = "ITSysAdmin" | "ITDevops" | "ITOther" | "Marketing" | "Sales" | "Purchasing" | "RD" | "AF" | "HR" | "Production" | "LC" | "Other"
+    export type PositionEnum = "ITSysAdmin" | "ITDevops" | "ITOther" | "Marketing" | "Sales" | "Purchasing" | "RD" | "AF" | "HR" | "Production" | "LC" | "Other" | "BusinessOwner" | "PreSales"
     /**
      * employeesNumber
      * type fullname: partner2.employeesNumberEnum

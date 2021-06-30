@@ -464,6 +464,285 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/activateMonthlyBilling"
     },
     {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get authorization status",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.AuthorizationStatus"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Authorization of AI Solutions service by allowing access to your object storage containers",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/authorization"
+    },
+    {
+      "description": "List AI Solutions available features",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List AI Solutions available features",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.capabilities.Features"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/feature"
+    },
+    {
+      "description": "List AI Solutions available regions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List Region",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.capabilities.Region[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/region"
+    },
+    {
+      "description": "List AI Solutions available regions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get Region Information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.capabilities.Region"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}"
+    },
+    {
+      "description": "List AI Solutions available data regions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get Available data regions Information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}/data/region"
+    },
+    {
+      "description": "List AI Solutions available flavors",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List Flavors",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.capabilities.Flavor[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}/flavor"
+    },
+    {
+      "description": "List AI Solutions available flavors",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get Flavor Information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Flavor ID",
+              "fullType": "string",
+              "name": "flavorId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.capabilities.Flavor"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}/flavor/{flavorId}"
+    },
+    {
+      "description": "List available resources",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2021-06-30T00:00:00+00:00",
+            "deprecatedDate": "2021-06-06T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/capabilities/region/{region}/flavor",
+            "value": "DEPRECATED"
+          },
+          "description": "List available resources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.capabilities.CapabilityResources"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}/resource"
+    },
+    {
       "description": "List Serving Engine available backends",
       "operations": [
         {
@@ -620,14 +899,16 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/region"
     },
     {
-      "description": "List Training Platform available features",
+      "description": "List AI Solutions available features",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/capabilities/job/presetImage",
+            "value": "DEPRECATED"
           },
-          "description": "List Training Platform available features",
+          "description": "List AI Solutions available features",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -640,20 +921,22 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.training.Features"
+          "responseType": "cloud.project.ai.capabilities.Features"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/training/feature"
     },
     {
-      "description": "List Training Platform Preset Model Images",
+      "description": "List AI Solutions Preset Model Images",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/job/capabilities/presetImage",
+            "value": "DEPRECATED"
           },
-          "description": "List Training Platform Preset Model Images",
+          "description": "List AI Solutions Preset Model Images",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -666,18 +949,21 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.training.PresetImage[]"
+          "responseType": "cloud.project.ai.job.PresetImage[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/training/presetImage"
     },
     {
-      "description": "List Training Platform available regions",
+      "description": "List AI Solutions available regions",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-06-01T00:00:00+00:00",
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/capabilities/region",
+            "value": "DEPRECATED"
           },
           "description": "List Region",
           "httpMethod": "GET",
@@ -692,18 +978,21 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.training.Region[]"
+          "responseType": "cloud.project.ai.capabilities.Region[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/training/region"
     },
     {
-      "description": "List Training Platform available regions",
+      "description": "List AI Solutions available regions",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-06-01T00:00:00+00:00",
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/capabilities/region/{region}",
+            "value": "DEPRECATED"
           },
           "description": "Get Region Information",
           "httpMethod": "GET",
@@ -726,28 +1015,81 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.training.Region"
+          "responseType": "cloud.project.ai.capabilities.Region"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/training/region/{region}"
     },
     {
-      "description": "List Available GPU Topology and the max available gpu",
+      "description": "Manage AI Solutions Jobs",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "description": "List Available GPU Topology and the max available gpu",
+          "description": "List jobs",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Region",
+              "description": "Service name",
               "fullType": "string",
-              "name": "region",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.job.Job[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a new job",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.ai.job.JobSpecInput",
+              "description": "Request Body",
+              "fullType": "cloud.project.ai.job.JobSpecInput",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.job.Job"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/job"
+    },
+    {
+      "description": "Manage AI Solutions Jobs",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get job information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Job ID",
+              "fullType": "uuid",
+              "name": "jobId",
               "paramType": "path",
               "required": true
             },
@@ -760,10 +1102,219 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.training.Gpu[]"
+          "responseType": "cloud.project.ai.job.Job"
         }
       ],
-      "path": "/cloud/project/{serviceName}/ai/capabilities/training/region/{region}/gpu"
+      "path": "/cloud/project/{serviceName}/ai/job/{jobId}"
+    },
+    {
+      "description": "Kill a AI Solutions job",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Kill a AI Solutions job",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Job ID",
+              "fullType": "uuid",
+              "name": "jobId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/job/{jobId}/kill"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the logs of a job",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Job ID",
+              "fullType": "uuid",
+              "name": "jobId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.Logs"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/job/{jobId}/log"
+    },
+    {
+      "description": "List AI Solutions Preset Model Images",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List AI Solutions Preset Model Images",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.job.PresetImage[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/job/capabilities/presetImage"
+    },
+    {
+      "description": "Manage AI Solutions Registries",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List registry",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.registry.Registry[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a new docker registry",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.ai.registry.Registry",
+              "description": "Request Body",
+              "fullType": "cloud.project.ai.registry.Registry",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.registry.Registry"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/registry"
+    },
+    {
+      "description": "Manage AI Solutions Registries",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Detach the current registry",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Registry ID",
+              "fullType": "string",
+              "name": "registryId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get registry information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Registry ID",
+              "fullType": "string",
+              "name": "registryId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.registry.Registry"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/registry/{registryId}"
     },
     {
       "description": "Manage serving engine namespaces",
@@ -1382,8 +1933,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-06-06T00:00:00+02:00",
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/authorization",
+            "value": "DEPRECATED"
           },
           "description": "Get authorization status",
           "httpMethod": "GET",
@@ -1398,12 +1952,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.training.AuthorizationStatus"
+          "responseType": "cloud.project.ai.AuthorizationStatus"
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-06-06T00:00:00+02:00",
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/authorization",
+            "value": "DEPRECATED"
           },
           "description": "Authorization of Training Platform service by allowing access to your object storage containers",
           "httpMethod": "POST",
@@ -1428,8 +1985,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-06-06T00:00:00+02:00",
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/job",
+            "value": "DEPRECATED"
           },
           "description": "List jobs",
           "httpMethod": "GET",
@@ -1444,21 +2004,24 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.training.Job[]"
+          "responseType": "cloud.project.ai.job.Job[]"
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-06-06T00:00:00+02:00",
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/job",
+            "value": "DEPRECATED"
           },
           "description": "Create a new job",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "cloud.project.ai.training.JobSpec",
+              "dataType": "cloud.project.ai.job.JobSpecInput",
               "description": "Request Body",
-              "fullType": "cloud.project.ai.training.JobSpec",
+              "fullType": "cloud.project.ai.job.JobSpecInput",
               "paramType": "body",
               "required": true
             },
@@ -1471,7 +2034,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.training.Job"
+          "responseType": "cloud.project.ai.job.Job"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/training/job"
@@ -1481,17 +2044,20 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-06-06T00:00:00+02:00",
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/job/{jobId}",
+            "value": "DEPRECATED"
           },
           "description": "Get job information",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
+              "dataType": "uuid",
               "description": "Job ID",
-              "fullType": "string",
+              "fullType": "uuid",
               "name": "jobId",
               "paramType": "path",
               "required": true
@@ -1505,7 +2071,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.training.Job"
+          "responseType": "cloud.project.ai.job.Job"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/training/job/{jobId}"
@@ -1515,17 +2081,51 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-06-06T00:00:00+02:00",
+            "deprecatedDate": "2021-05-06T00:00:00+02:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/job/{jobId}/kill",
+            "value": "DEPRECATED"
           },
           "description": "Kill a Training Platform job",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
+              "dataType": "uuid",
               "description": "Job ID",
+              "fullType": "uuid",
+              "name": "jobId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "deletionDate": "2021-06-06T00:00:00+02:00",
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/job/{jobId}/kill",
+            "value": "DEPRECATED"
+          },
+          "description": "Kill a Training Platform job",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Job ID",
+              "fullType": "uuid",
               "name": "jobId",
               "paramType": "path",
               "required": true
@@ -1549,17 +2149,20 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-06-06T00:00:00+02:00",
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/job/{jobId}/log",
+            "value": "DEPRECATED"
           },
           "description": "Get the logs of a job",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
+              "dataType": "uuid",
               "description": "Job ID",
-              "fullType": "string",
+              "fullType": "uuid",
               "name": "jobId",
               "paramType": "path",
               "required": true
@@ -1573,7 +2176,44 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.training.JobLogs"
+          "responseType": "cloud.project.ai.Logs"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/training/job/{jobId}/log"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2021-06-06T00:00:00+02:00",
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/job/{jobId}/log",
+            "value": "DEPRECATED"
+          },
+          "description": "Get the logs of a job",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Job ID",
+              "fullType": "uuid",
+              "name": "jobId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.Logs"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/training/job/{jobId}/logs"
@@ -1583,8 +2223,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-06-06T00:00:00+02:00",
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/registry",
+            "value": "DEPRECATED"
           },
           "description": "List registry",
           "httpMethod": "GET",
@@ -1599,21 +2242,24 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.training.Registry[]"
+          "responseType": "cloud.project.ai.registry.Registry[]"
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-06-06T00:00:00+02:00",
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/registry/{registryId}",
+            "value": "DEPRECATED"
           },
-          "description": "Create a new docker registry",
+          "description": "Attach a new docker registry",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "cloud.project.ai.training.Registry",
+              "dataType": "cloud.project.ai.registry.Registry",
               "description": "Request Body",
-              "fullType": "cloud.project.ai.training.Registry",
+              "fullType": "cloud.project.ai.registry.Registry",
               "paramType": "body",
               "required": true
             },
@@ -1626,7 +2272,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.training.Registry"
+          "responseType": "cloud.project.ai.registry.Registry"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/training/registry"
@@ -1636,8 +2282,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-06-06T00:00:00+02:00",
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/registry/{registryId}",
+            "value": "DEPRECATED"
           },
           "description": "Detach the current registry",
           "httpMethod": "DELETE",
@@ -1664,8 +2313,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-06-06T00:00:00+02:00",
+            "deprecatedDate": "2021-05-20T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/ai/registry",
+            "value": "DEPRECATED"
           },
           "description": "Get registry information",
           "httpMethod": "GET",
@@ -1688,7 +2340,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.training.Registry"
+          "responseType": "cloud.project.ai.registry.Registry"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/training/registry/{registryId}"
@@ -2149,6 +2801,124 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/region/{regionName}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List all available sizes",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.loadbalancer.SizeEnum[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/size"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get specific information of load balancer size",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "cloud.project.loadbalancer.SizeEnum",
+              "description": "Size",
+              "fullType": "cloud.project.loadbalancer.SizeEnum",
+              "name": "size",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.loadbalancer.LoadBalancerSizeCapability"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/size/{size}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List product availability",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "OVH subsidiary",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code filter",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Plan family filter",
+              "fullType": "string",
+              "name": "planFamily",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Product filter",
+              "fullType": "string",
+              "name": "product",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cloud.capabilities.Availability"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/capabilities/productAvailability"
     },
     {
       "description": "",
@@ -2914,6 +3684,1000 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/credit/{id}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get database engines availability",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.Availability[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/availability"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get database engines capabilities",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.Capabilities"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/capabilities"
+    },
+    {
+      "description": "Operations about the cloud project mongodb engines",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List mongodbs of the project",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a new mongodb cluster",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.database.MongodbCreation",
+              "description": "Request Body",
+              "fullType": "cloud.project.database.MongodbCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.MongodbCreationResponse"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb"
+    },
+    {
+      "description": "Operations about the cloud project mongodb engines",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a mongodb cluster",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get mongodb cluster properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.Mongodb"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a new mongodb cluster",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.database.Mongodb",
+              "description": "Request Body",
+              "fullType": "cloud.project.database.Mongodb",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.Mongodb"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}"
+    },
+    {
+      "description": "Operations about the cloud project mongodb backups",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List backups of the mongodb",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a backup of the cluster",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.database.mongodb.Backup",
+              "description": "Request Body",
+              "fullType": "cloud.project.database.mongodb.Backup",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.mongodb.Backup"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/backup"
+    },
+    {
+      "description": "Operations about the cloud project mongodb backups",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a mongodb backup",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Backup ID",
+              "fullType": "uuid",
+              "name": "backupId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get mongodb backups",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Backup ID",
+              "fullType": "uuid",
+              "name": "backupId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.mongodb.Backup"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/backup/{backupId}"
+    },
+    {
+      "description": "Operations about the cloud project mongodb backups restore",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Restore the backup",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Backup ID",
+              "fullType": "uuid",
+              "name": "backupId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.mongodb.Backup"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/backup/{backupId}/restore"
+    },
+    {
+      "description": "Operations about the cloud project mongodb ip restrictions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List mongodb ip restrictions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipBlock[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Add ip restrictions to the mongodb",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.database.IpRestrictionCreation",
+              "description": "Request Body",
+              "fullType": "cloud.project.database.IpRestrictionCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.IpRestriction"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/ipRestriction"
+    },
+    {
+      "description": "Operations about the cloud project mongodb ip restrictions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Deletes the given IP from the restricted IPs of the mongodb",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipBlock",
+              "description": "Ip block",
+              "fullType": "ipBlock",
+              "name": "ipBlock",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get mongodb ip restrictions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipBlock",
+              "description": "Ip block",
+              "fullType": "ipBlock",
+              "name": "ipBlock",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.IpRestriction"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Changes the list of ip restrictions to the mongodb",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.database.IpRestriction",
+              "description": "Request Body",
+              "fullType": "cloud.project.database.IpRestriction",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipBlock",
+              "description": "Ip block",
+              "fullType": "ipBlock",
+              "name": "ipBlock",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.IpRestriction"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/ipRestriction/{ipBlock}"
+    },
+    {
+      "description": "Operations about the cloud project mongodb nodes",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List nodes of the mongodb",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a new node on the mongodb cluster",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.database.mongodb.Node",
+              "description": "Request Body",
+              "fullType": "cloud.project.database.mongodb.Node",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.mongodb.Node"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/node"
+    },
+    {
+      "description": "Operations about the cloud project mongodb nodes",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a mongodb cluster's node",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Node ID",
+              "fullType": "uuid",
+              "name": "nodeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get mongodb nodes",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Node ID",
+              "fullType": "uuid",
+              "name": "nodeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.mongodb.Node"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/node/{nodeId}"
+    },
+    {
+      "description": "Operations about the cloud project mongodb roles",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List roles of the mongodb",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/role"
+    },
+    {
+      "description": "Operations about the cloud project mongodb roles",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get mongodb roles",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Role ID",
+              "fullType": "uuid",
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.mongodb.Role"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/role/{roleId}"
+    },
+    {
+      "description": "Operations about the cloud project mongodb users",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List users of the mongodb",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a new user on the mongodb cluster",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.database.mongodb.UserCreation",
+              "description": "Request Body",
+              "fullType": "cloud.project.database.mongodb.UserCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.mongodb.User"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/user"
+    },
+    {
+      "description": "Operations about the cloud project mongodb users",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a mongodb user",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "User ID",
+              "fullType": "uuid",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get mongodb users",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "User ID",
+              "fullType": "uuid",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.mongodb.User"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Updates the user on the mongodb cluster",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.database.mongodb.UserUpdate",
+              "description": "Request Body",
+              "fullType": "cloud.project.database.mongodb.UserUpdate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "User ID",
+              "fullType": "uuid",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.mongodb.User"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/user/{userId}"
     },
     {
       "description": "",
@@ -5309,6 +7073,40 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/kube/{kubeId}"
     },
     {
+      "description": "Generate a temporary url to retrieve auditlogs",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Generate a temporary url to retrieve auditlogs",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.AuditLogs"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/auditLogs"
+    },
+    {
       "description": "List all flavors available",
       "operations": [
         {
@@ -7567,6 +9365,103 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/region/{regionName}/quota/allowed"
     },
     {
+      "description": "Get storage quotas",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete storage quota on region",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get storage quotas on region",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.quota.storage.Quota"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Update storage quota on region",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.quota.storage.QuotaUpdate",
+              "description": "Request Body",
+              "fullType": "cloud.quota.storage.QuotaUpdate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/quota/storage"
+    },
+    {
       "description": "Manage your automated backups",
       "operations": [
         {
@@ -8245,6 +10140,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Recursively delete objects and container",
+              "fullType": "boolean",
+              "name": "recursive",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "void"
@@ -9197,7 +11100,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.S3Credentials[]"
+          "responseType": "cloud.user.S3CredentialsWithSecret[]"
         },
         {
           "apiStatus": {
@@ -9303,7 +11206,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.S3Credentials"
+          "responseType": "cloud.user.S3CredentialsWithSecret"
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/s3Credentials/{access}"
@@ -11192,11 +13095,11 @@ export const schema: Schema = {
         },
         "region": {
           "canBeNull": false,
-          "description": "Kubernetes region",
-          "fullType": "cloud.kube.ClusterCreationRegionEnum",
+          "description": "Kubernetes OpenStack region",
+          "fullType": "string",
           "readOnly": false,
           "required": true,
-          "type": "cloud.kube.ClusterCreationRegionEnum"
+          "type": "string"
         },
         "version": {
           "canBeNull": true,
@@ -11216,6 +13119,14 @@ export const schema: Schema = {
         "antiAffinity": {
           "canBeNull": true,
           "description": "Enable anti affinity groups for nodes in the pool",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "autoscale": {
+          "canBeNull": true,
+          "description": "Enable the auto-scaling on the pool",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,
@@ -11322,6 +13233,14 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
+        "autoscale": {
+          "canBeNull": true,
+          "description": "Enable the auto-scaling on the pool",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "desiredNodes": {
           "canBeNull": true,
           "description": "Number of nodes to instantiate (1 by default)",
@@ -11377,6 +13296,14 @@ export const schema: Schema = {
       "id": "ProjectKubeNodePoolUpdate",
       "namespace": "cloud",
       "properties": {
+        "autoscale": {
+          "canBeNull": true,
+          "description": "Enable the auto-scaling on the pool",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "desiredNodes": {
           "canBeNull": true,
           "description": "New number of nodes wanted in the nodepool",
@@ -11408,6 +13335,52 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "uuid[]"
+        }
+      }
+    },
+    "cloud.ProjectKubeOpenIdConnectCreation": {
+      "description": "Creation model for OIDC",
+      "id": "ProjectKubeOpenIdConnectCreation",
+      "namespace": "cloud",
+      "properties": {
+        "clientId": {
+          "canBeNull": false,
+          "description": "Client ID",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "issuerUrl": {
+          "canBeNull": false,
+          "description": "Issuer URL",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.ProjectKubeOpenIdConnectUpdate": {
+      "description": "Update model for OIDC",
+      "id": "ProjectKubeOpenIdConnectUpdate",
+      "namespace": "cloud",
+      "properties": {
+        "clientId": {
+          "canBeNull": false,
+          "description": "Client ID",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "issuerUrl": {
+          "canBeNull": false,
+          "description": "Issuer URL",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -12240,6 +14213,99 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "cloud.StorageContainer": {
+      "description": "Container",
+      "id": "StorageContainer",
+      "namespace": "cloud",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Container name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "objects": {
+          "canBeNull": false,
+          "description": "Container objects",
+          "fullType": "cloud.StorageObject[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.StorageObject[]"
+        },
+        "objectsCount": {
+          "canBeNull": false,
+          "description": "Container total objects count",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "objectsSize": {
+          "canBeNull": false,
+          "description": "Container total objects size (bytes)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.StorageContainerCreation": {
+      "description": "Create a container",
+      "id": "StorageContainerCreation",
+      "namespace": "cloud",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Container name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.StorageObject": {
+      "description": "Object",
+      "id": "StorageObject",
+      "namespace": "cloud",
+      "properties": {
+        "etag": {
+          "canBeNull": false,
+          "description": "ETag",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "key": {
+          "canBeNull": false,
+          "description": "Key",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lastModified": {
+          "canBeNull": false,
+          "description": "Last modification date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size (bytes)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
@@ -13533,6 +15599,114 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.capabilities.Availability": {
+      "description": "Public Cloud products availability",
+      "id": "Availability",
+      "namespace": "cloud.capabilities",
+      "properties": {
+        "plans": {
+          "canBeNull": false,
+          "description": "Plan availability",
+          "fullType": "cloud.capabilities.AvailabilityPlan[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.capabilities.AvailabilityPlan[]"
+        },
+        "products": {
+          "canBeNull": false,
+          "description": "Product availability",
+          "fullType": "cloud.capabilities.AvailabilityProduct[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.capabilities.AvailabilityProduct[]"
+        }
+      }
+    },
+    "cloud.capabilities.AvailabilityPlan": {
+      "description": "Public Cloud plan availability",
+      "id": "AvailabilityPlan",
+      "namespace": "cloud.capabilities",
+      "properties": {
+        "code": {
+          "canBeNull": false,
+          "description": "Plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "regions": {
+          "canBeNull": false,
+          "description": "Plan is available on those regions",
+          "fullType": "cloud.capabilities.AvailabilityRegion[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.capabilities.AvailabilityRegion[]"
+        }
+      }
+    },
+    "cloud.capabilities.AvailabilityProduct": {
+      "description": "Public Cloud product availability",
+      "id": "AvailabilityProduct",
+      "namespace": "cloud.capabilities",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Product name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "regions": {
+          "canBeNull": false,
+          "description": "Product is available on those regions",
+          "fullType": "cloud.capabilities.AvailabilityRegion[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.capabilities.AvailabilityRegion[]"
+        }
+      }
+    },
+    "cloud.capabilities.AvailabilityRegion": {
+      "description": "Details about a region",
+      "id": "AvailabilityRegion",
+      "namespace": "cloud.capabilities",
+      "properties": {
+        "continentCode": {
+          "canBeNull": false,
+          "description": "Region continent code",
+          "fullType": "cloud.RegionContinentEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.RegionContinentEnum"
+        },
+        "datacenter": {
+          "canBeNull": false,
+          "description": "Location of the datacenter where the region is",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "enabled": {
+          "canBeNull": false,
+          "description": "Region is enabled",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Region name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "cloud.capabilities.Capability": {
       "description": "Capability",
       "id": "Capability",
@@ -14327,7 +16501,8 @@ export const schema: Schema = {
       "enum": [
         "linux",
         "bsd",
-        "windows"
+        "windows",
+        "baremetal-linux"
       ],
       "enumType": "string",
       "id": "OSTypeEnum",
@@ -15373,21 +17548,6 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.kube.ClusterCreationRegionEnum": {
-      "description": "Enum values for available regions when creating a cluster",
-      "enum": [
-        "GRA5",
-        "GRA7",
-        "BHS5",
-        "SBG5",
-        "WAW1",
-        "SGP1",
-        "SYD1"
-      ],
-      "enumType": "string",
-      "id": "ClusterCreationRegionEnum",
-      "namespace": "cloud.kube"
-    },
     "cloud.kube.ClusterStatus": {
       "description": "Enum values for Status",
       "enum": [
@@ -15410,19 +17570,23 @@ export const schema: Schema = {
     "cloud.kube.ClusterStatusEnum": {
       "description": "Enum values for Status",
       "enum": [
-        "INSTALLING",
-        "UPDATING",
-        "REDEPLOYING",
-        "RESETTING",
-        "SUSPENDING",
-        "REOPENING",
+        "DELETED",
         "DELETING",
-        "SUSPENDED",
-        "MAINTENANCE",
         "ERROR",
+        "INSTALLING",
+        "MAINTENANCE",
+        "READY",
+        "REDEPLOYING",
+        "REOPENING",
+        "RESETTING",
+        "RESIZING",
+        "SUSPENDED",
+        "SUSPENDING",
+        "UPDATING",
         "USER_ERROR",
-        "USER_QUOTA_ERROR",
-        "READY"
+        "USER_NODE_NOT_FOUND_ERROR",
+        "USER_NODE_SUSPENDED_SERVICE",
+        "USER_QUOTA_ERROR"
       ],
       "enumType": "string",
       "id": "ClusterStatusEnum",
@@ -15781,14 +17945,23 @@ export const schema: Schema = {
     "cloud.kube.NodePoolStatusEnum": {
       "description": "Enum values for NodePool Status",
       "enum": [
-        "INSTALLING",
-        "UPDATING",
-        "REDEPLOYING",
-        "RESIZING",
-        "RESETTING",
+        "DELETED",
         "DELETING",
         "ERROR",
-        "READY"
+        "INSTALLING",
+        "MAINTENANCE",
+        "READY",
+        "REDEPLOYING",
+        "REOPENING",
+        "RESETTING",
+        "RESIZING",
+        "SUSPENDED",
+        "SUSPENDING",
+        "UPDATING",
+        "USER_ERROR",
+        "USER_NODE_NOT_FOUND_ERROR",
+        "USER_NODE_SUSPENDED_SERVICE",
+        "USER_QUOTA_ERROR"
       ],
       "enumType": "string",
       "id": "NodePoolStatusEnum",
@@ -15818,24 +17991,50 @@ export const schema: Schema = {
     "cloud.kube.NodeStatusEnum": {
       "description": "Enum values for Status",
       "enum": [
-        "INSTALLING",
-        "REDEPLOYING",
-        "UPDATING",
-        "RESETTING",
-        "SUSPENDING",
-        "REOPENING",
+        "DELETED",
         "DELETING",
-        "SUSPENDED",
         "ERROR",
+        "INSTALLING",
+        "MAINTENANCE",
+        "READY",
+        "REDEPLOYING",
+        "REOPENING",
+        "RESETTING",
+        "RESIZING",
+        "SUSPENDED",
+        "SUSPENDING",
+        "UPDATING",
         "USER_ERROR",
-        "USER_QUOTA_ERROR",
         "USER_NODE_NOT_FOUND_ERROR",
         "USER_NODE_SUSPENDED_SERVICE",
-        "READY"
+        "USER_QUOTA_ERROR"
       ],
       "enumType": "string",
       "id": "NodeStatusEnum",
       "namespace": "cloud.kube"
+    },
+    "cloud.kube.OpenIdConnect": {
+      "description": "Managed Kubernetes oidc integration",
+      "id": "OpenIdConnect",
+      "namespace": "cloud.kube",
+      "properties": {
+        "clientId": {
+          "canBeNull": false,
+          "description": "Client ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "issuerUrl": {
+          "canBeNull": false,
+          "description": "Issuer URL",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "cloud.kube.Region": {
       "description": "Enum values for available regions",
@@ -15857,7 +18056,9 @@ export const schema: Schema = {
         "SBG5",
         "WAW1",
         "SGP1",
-        "SYD1"
+        "SYD1",
+        "US-EAST-VA-1",
+        "US-WEST-OR-1"
       ],
       "enumType": "string",
       "id": "RegionEnum",
@@ -15941,11 +18142,11 @@ export const schema: Schema = {
     "cloud.kube.UpgradeVersionEnum": {
       "description": "List of available versions for upgrade",
       "enum": [
-        "1.15",
         "1.16",
         "1.17",
         "1.18",
-        "1.19"
+        "1.19",
+        "1.20"
       ],
       "enumType": "string",
       "id": "UpgradeVersionEnum",
@@ -15965,10 +18166,10 @@ export const schema: Schema = {
     "cloud.kube.VersionEnum": {
       "description": "List of available versions for installation",
       "enum": [
-        "1.16",
         "1.17",
         "1.18",
-        "1.19"
+        "1.19",
+        "1.20"
       ],
       "enumType": "string",
       "id": "VersionEnum",
@@ -16403,6 +18604,164 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.ApplicationLoadBalancer": {
+      "description": "A load balancer to handle application workload",
+      "id": "ApplicationLoadBalancer",
+      "namespace": "cloud.project",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": "Address to reach the load balancer",
+          "fullType": "cloud.project.loadbalancer.Address",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Address"
+        },
+        "configuration": {
+          "canBeNull": false,
+          "description": "Information about version of the configuration",
+          "fullType": "cloud.project.loadbalancer.ConfigurationVersion",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.ConfigurationVersion"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation date and time of the load balancer",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "egressAddress": {
+          "canBeNull": false,
+          "description": "IPs used by the load balancer to contact backend's servers",
+          "fullType": "cloud.project.loadbalancer.Addresses",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Addresses"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the load balancer",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "openstackRegion": {
+          "canBeNull": false,
+          "description": "Openstack region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the load balancer",
+          "fullType": "cloud.project.loadbalancer.SizeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.SizeEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of a load balancer",
+          "fullType": "cloud.project.loadbalancer.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.StatusEnum"
+        }
+      }
+    },
+    "cloud.project.ApplicationLoadBalancerCreation": {
+      "description": "A load balancer to handle application workload",
+      "id": "ApplicationLoadBalancerCreation",
+      "namespace": "cloud.project",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "Description of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the load balancer",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "networking": {
+          "canBeNull": true,
+          "description": "Networking definition",
+          "fullType": "cloud.project.loadbalancer.networking.NetworkingCreation",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.NetworkingCreation"
+        },
+        "openstackRegion": {
+          "canBeNull": false,
+          "description": "Openstack Region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": true,
+          "description": "Size of the load balancer",
+          "fullType": "cloud.project.loadbalancer.SizeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.SizeEnum"
         }
       }
     },
@@ -16854,13 +19213,37 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
-        "region": {
+        "networking": {
           "canBeNull": false,
-          "description": "Regions where the load balancer is hosted",
+          "description": "Networking definition",
+          "fullType": "cloud.project.loadbalancer.networking.Networking",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.Networking"
+        },
+        "openstackRegion": {
+          "canBeNull": false,
+          "description": "Openstack region where the load balancer is hosted",
           "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the load balancer",
+          "fullType": "cloud.project.loadbalancer.SizeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.SizeEnum"
         },
         "status": {
           "canBeNull": false,
@@ -16901,13 +19284,37 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "networking": {
+          "canBeNull": true,
+          "description": "Networking definition",
+          "fullType": "cloud.project.loadbalancer.networking.NetworkingCreation",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.NetworkingCreation"
+        },
+        "openstackRegion": {
+          "canBeNull": false,
+          "description": "Openstack Region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "region": {
           "canBeNull": false,
-          "description": "Regions where the load balancer is hosted",
+          "description": "Region where the load balancer is hosted",
           "fullType": "string",
           "readOnly": false,
           "required": true,
           "type": "string"
+        },
+        "size": {
+          "canBeNull": true,
+          "description": "Size of the load balancer",
+          "fullType": "cloud.project.loadbalancer.SizeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.SizeEnum"
         }
       }
     },
@@ -17355,6 +19762,1676 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "order.Price"
+        }
+      }
+    },
+    "cloud.project.ai.AuthorizationStatus": {
+      "description": "Authorization status",
+      "id": "AuthorizationStatus",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "authorized": {
+          "canBeNull": false,
+          "description": "True if project is authorized to use AI Solutions Platform",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cloud.project.ai.Command": {
+      "description": "AI Solutions CLI command",
+      "id": "Command",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "command": {
+          "canBeNull": false,
+          "description": "AI Solutions CLI command",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.LogLine": {
+      "description": "Log line",
+      "id": "LogLine",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "content": {
+          "canBeNull": true,
+          "description": "Content of the log",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "timestamp": {
+          "canBeNull": true,
+          "description": "Datetime of the log",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "cloud.project.ai.Logs": {
+      "description": "Instance Logs",
+      "id": "Logs",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "lastActivity": {
+          "canBeNull": true,
+          "description": "Last activity date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "logs": {
+          "canBeNull": false,
+          "description": "Logs lines",
+          "fullType": "cloud.project.ai.LogLine[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.LogLine[]"
+        }
+      }
+    },
+    "cloud.project.ai.Resources": {
+      "description": "AI Solutions Resource Object",
+      "id": "Resources",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "cpu": {
+          "canBeNull": false,
+          "description": "Number of vCPU resources requested",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "ephemeralStorage": {
+          "canBeNull": false,
+          "description": "The amount of ephemeral storage in bytes",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "flavor": {
+          "canBeNull": false,
+          "description": "Current instance flavor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "gpu": {
+          "canBeNull": false,
+          "description": "Number of GPU resources requested",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "gpuBrand": {
+          "canBeNull": true,
+          "description": "The GPU Brand",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "gpuMemory": {
+          "canBeNull": true,
+          "description": "The GPU Memory in bits",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "gpuModel": {
+          "canBeNull": true,
+          "description": "The GPU Model",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "memory": {
+          "canBeNull": false,
+          "description": "The amount of memory in bytes",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "privateNetwork": {
+          "canBeNull": false,
+          "description": "The guarantee private bandwidth in bytes per seconds",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "publicNetwork": {
+          "canBeNull": false,
+          "description": "The guarantee public bandwidth in bytes per seconds",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.ai.ResourcesInput": {
+      "description": "AI Solutions Resource Object",
+      "id": "ResourcesInput",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "cpu": {
+          "canBeNull": true,
+          "description": "Number of vCPU resources requested",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "ephemeralStorage": {
+          "canBeNull": true,
+          "description": "The amount of ephemeral storage in bytes",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "flavor": {
+          "canBeNull": true,
+          "description": "Instance flavor",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "gpu": {
+          "canBeNull": true,
+          "description": "Number of GPU resources requested",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "gpuBrand": {
+          "canBeNull": true,
+          "description": "The GPU Brand",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "gpuMemory": {
+          "canBeNull": true,
+          "description": "The GPU Memory in bits",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "gpuModel": {
+          "canBeNull": true,
+          "description": "The GPU Model",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "memory": {
+          "canBeNull": true,
+          "description": "The amount of memory in bytes",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "privateNetwork": {
+          "canBeNull": true,
+          "description": "The guarantee private bandwidth in bytes per seconds",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "publicNetwork": {
+          "canBeNull": true,
+          "description": "The guarantee public bandwidth in bytes per seconds",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.ai.ShutdownStrategyEnum": {
+      "description": "Shutdown strategy of an instance",
+      "enum": [
+        "Stop"
+      ],
+      "enumType": "string",
+      "id": "ShutdownStrategyEnum",
+      "namespace": "cloud.project.ai"
+    },
+    "cloud.project.ai.VolumePermissionEnum": {
+      "description": "Permissions to apply on a volume",
+      "enum": [
+        "RW",
+        "RO"
+      ],
+      "enumType": "string",
+      "id": "VolumePermissionEnum",
+      "namespace": "cloud.project.ai"
+    },
+    "cloud.project.ai.capabilities.CapabilityResources": {
+      "description": "AI Solutions Platform Resource Object",
+      "id": "CapabilityResources",
+      "namespace": "cloud.project.ai.capabilities",
+      "properties": {
+        "dataRegions": {
+          "canBeNull": false,
+          "description": "Available regions",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "gpus": {
+          "canBeNull": false,
+          "description": "List of available GPU Topology and max available gpu",
+          "fullType": "cloud.project.ai.capabilities.Gpu[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.capabilities.Gpu[]"
+        },
+        "maxCpus": {
+          "canBeNull": false,
+          "description": "Maximum cpu available in the region",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.ai.capabilities.Features": {
+      "description": "AI Solutions Features",
+      "id": "Features",
+      "namespace": "cloud.project.ai.capabilities",
+      "properties": {
+        "lab": {
+          "canBeNull": false,
+          "description": "Inform if the AI Solutions is in Lab mode or not",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "registry": {
+          "canBeNull": false,
+          "description": "Capability to add registry",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cloud.project.ai.capabilities.Flavor": {
+      "description": "AI Solutions Flavor",
+      "id": "Flavor",
+      "namespace": "cloud.project.ai.capabilities",
+      "properties": {
+        "default": {
+          "canBeNull": false,
+          "description": "Is the flavor the default one for a flavor type",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Flavor description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "gpuInformation": {
+          "canBeNull": true,
+          "description": "Describe gpu informations",
+          "fullType": "cloud.project.ai.capabilities.flavor.GpuInformation",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.capabilities.flavor.GpuInformation"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Flavor id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "max": {
+          "canBeNull": false,
+          "description": "Maximum amount available for a job / notebook",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "resourcesPerUnit": {
+          "canBeNull": false,
+          "description": "Describe the amount of resources given per unit of the flavor",
+          "fullType": "cloud.project.ai.capabilities.flavor.ResourcesPerUnit",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.capabilities.flavor.ResourcesPerUnit"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Flavor type",
+          "fullType": "cloud.project.ai.capabilities.FlavorTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.capabilities.FlavorTypeEnum"
+        }
+      }
+    },
+    "cloud.project.ai.capabilities.FlavorTypeEnum": {
+      "description": "Flavor Type",
+      "enum": [
+        "gpu",
+        "cpu"
+      ],
+      "enumType": "string",
+      "id": "FlavorTypeEnum",
+      "namespace": "cloud.project.ai.capabilities"
+    },
+    "cloud.project.ai.capabilities.Gpu": {
+      "description": "AI Solutions Gpu Object",
+      "id": "Gpu",
+      "namespace": "cloud.project.ai.capabilities",
+      "properties": {
+        "default": {
+          "canBeNull": false,
+          "description": "Is the default GPU model if not specified",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "maxGpus": {
+          "canBeNull": false,
+          "description": "Maximum gpu available in the region",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "model": {
+          "canBeNull": false,
+          "description": "The GPU model",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.capabilities.Region": {
+      "description": "AI Solutions Region",
+      "id": "Region",
+      "namespace": "cloud.project.ai.capabilities",
+      "properties": {
+        "cliInstallUrl": {
+          "canBeNull": false,
+          "description": "Client Install Url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "documentationUrl": {
+          "canBeNull": false,
+          "description": "Documentation Url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Region id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "registryUrl": {
+          "canBeNull": false,
+          "description": "Region Registry Url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Region version",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.capabilities.flavor.GpuInformation": {
+      "description": "AI Solutions Global GPU information",
+      "id": "GpuInformation",
+      "namespace": "cloud.project.ai.capabilities.flavor",
+      "properties": {
+        "gpuBrand": {
+          "canBeNull": false,
+          "description": "The GPU Brand",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "gpuMemory": {
+          "canBeNull": false,
+          "description": "The GPU Memory in bits",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "gpuModel": {
+          "canBeNull": false,
+          "description": "The GPU Model",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.capabilities.flavor.ResourcesPerUnit": {
+      "description": "AI Solutions Global Resource per flavor unit",
+      "id": "ResourcesPerUnit",
+      "namespace": "cloud.project.ai.capabilities.flavor",
+      "properties": {
+        "cpu": {
+          "canBeNull": false,
+          "description": "The amount of cpu for one unit of the flavor",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "ephemeralStorage": {
+          "canBeNull": false,
+          "description": "The amount of ephemeral storage in bytes",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "memory": {
+          "canBeNull": false,
+          "description": "The amount of memory in bytes",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "privateNetwork": {
+          "canBeNull": false,
+          "description": "The guarantee private bandwidth in bytes per seconds",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "publicNetwork": {
+          "canBeNull": false,
+          "description": "The guarantee public bandwidth in bytes per seconds",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.ai.job.Job": {
+      "description": "AI Solutions Job Object",
+      "id": "Job",
+      "namespace": "cloud.project.ai.job",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Job creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Job Id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "partner": {
+          "canBeNull": true,
+          "description": "Job Partner information",
+          "fullType": "cloud.project.ai.job.Partner",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.job.Partner"
+        },
+        "spec": {
+          "canBeNull": false,
+          "description": "Job specifications",
+          "fullType": "cloud.project.ai.job.JobSpec",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.job.JobSpec"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Job status",
+          "fullType": "cloud.project.ai.job.JobStatus",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.job.JobStatus"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Job update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "user": {
+          "canBeNull": false,
+          "description": "Job user owner",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.job.JobEnv": {
+      "description": "AI Solutions Job Env Object",
+      "id": "JobEnv",
+      "namespace": "cloud.project.ai.job",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the environment variable to set inside the job",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value of the environment variable to set inside the job",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.job.JobSpec": {
+      "description": "AI Solutions Job Spec Object to create a job",
+      "id": "JobSpec",
+      "namespace": "cloud.project.ai.job",
+      "properties": {
+        "command": {
+          "canBeNull": true,
+          "description": "Job command",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "defaultHttpPort": {
+          "canBeNull": true,
+          "description": "Port use as the default one to access http service inside job",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "env": {
+          "canBeNull": true,
+          "description": "List of environment variable to be set inside job",
+          "fullType": "cloud.project.ai.job.JobEnv[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.job.JobEnv[]"
+        },
+        "image": {
+          "canBeNull": false,
+          "description": "Job image",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "labels": {
+          "canBeNull": true,
+          "description": "Labels for the job",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Job name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "readUser": {
+          "canBeNull": true,
+          "description": "User ID to use to access the job",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Host region of the job",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "resources": {
+          "canBeNull": false,
+          "description": "Job resources",
+          "fullType": "cloud.project.ai.Resources",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.Resources"
+        },
+        "shutdown": {
+          "canBeNull": true,
+          "description": "Shutdown strategy (if any)",
+          "fullType": "cloud.project.ai.ShutdownStrategyEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.ShutdownStrategyEnum"
+        },
+        "sshPublicKeys": {
+          "canBeNull": true,
+          "description": "SSH keys authorized to access to the job container",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "timeout": {
+          "canBeNull": true,
+          "description": "Maximum time to spend before killing the job",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "unsecureHttp": {
+          "canBeNull": true,
+          "description": "true if job api port can be accessed without any authentication token, false otherwise",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "volumes": {
+          "canBeNull": true,
+          "description": "Job Data linked",
+          "fullType": "cloud.project.ai.volume.Volume[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.volume.Volume[]"
+        }
+      }
+    },
+    "cloud.project.ai.job.JobSpecInput": {
+      "description": "AI Solutions Job Spec Object to create a job",
+      "id": "JobSpecInput",
+      "namespace": "cloud.project.ai.job",
+      "properties": {
+        "command": {
+          "canBeNull": true,
+          "description": "Job command",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "defaultHttpPort": {
+          "canBeNull": true,
+          "description": "Port use as the default one to access http service inside job",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "env": {
+          "canBeNull": true,
+          "description": "List of environment variable to be set inside job",
+          "fullType": "cloud.project.ai.job.JobEnv[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.job.JobEnv[]"
+        },
+        "image": {
+          "canBeNull": false,
+          "description": "Job image",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "labels": {
+          "canBeNull": true,
+          "description": "Labels for the job",
+          "fullType": "map[string]string",
+          "readOnly": false,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Job name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "readUser": {
+          "canBeNull": true,
+          "description": "User ID to use to access the job",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Host region of the job",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "resources": {
+          "canBeNull": false,
+          "description": "Job resources",
+          "fullType": "cloud.project.ai.ResourcesInput",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.ai.ResourcesInput"
+        },
+        "shutdown": {
+          "canBeNull": true,
+          "description": "Shutdown strategy (if any)",
+          "fullType": "cloud.project.ai.ShutdownStrategyEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.ShutdownStrategyEnum"
+        },
+        "sshPublicKeys": {
+          "canBeNull": true,
+          "description": "SSH keys authorized to access to the job container",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "timeout": {
+          "canBeNull": true,
+          "description": "Maximum time to spend before killing the job",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "unsecureHttp": {
+          "canBeNull": true,
+          "description": "true if job api port can be accessed without any authentication token, false otherwise",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "volumes": {
+          "canBeNull": true,
+          "description": "Job Data linked",
+          "fullType": "cloud.project.ai.volume.Volume[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.volume.Volume[]"
+        }
+      }
+    },
+    "cloud.project.ai.job.JobStateEnum": {
+      "description": "State of the job",
+      "enum": [
+        "QUEUED",
+        "PENDING",
+        "INITIALIZING",
+        "FINALIZING",
+        "RUNNING",
+        "TIMEOUT",
+        "FAILED",
+        "ERROR",
+        "DONE",
+        "INTERRUPTED",
+        "INTERRUPTING"
+      ],
+      "enumType": "string",
+      "id": "JobStateEnum",
+      "namespace": "cloud.project.ai.job"
+    },
+    "cloud.project.ai.job.JobStatus": {
+      "description": "AI Solutions Job Status Object",
+      "id": "JobStatus",
+      "namespace": "cloud.project.ai.job",
+      "properties": {
+        "dataSync": {
+          "canBeNull": false,
+          "description": "Status about the datasync linked to the job",
+          "fullType": "cloud.project.ai.volume.DataSync[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.volume.DataSync[]"
+        },
+        "duration": {
+          "canBeNull": true,
+          "description": "Duration of the job",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "exitCode": {
+          "canBeNull": true,
+          "description": "Exit code of the job",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "finalizedAt": {
+          "canBeNull": true,
+          "description": "Date when the job was finalized",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "history": {
+          "canBeNull": false,
+          "description": "Job state history",
+          "fullType": "cloud.project.ai.job.JobStatusHistory[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.job.JobStatusHistory[]"
+        },
+        "infos": {
+          "canBeNull": true,
+          "description": "Infos about the job",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "initializingAt": {
+          "canBeNull": true,
+          "description": "Date when the job was initialized",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "ip": {
+          "canBeNull": true,
+          "description": "IP of the job",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "jobUrl": {
+          "canBeNull": true,
+          "description": "Job access url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lastTransitionDate": {
+          "canBeNull": true,
+          "description": "Date of the last transition",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "monitoringUrl": {
+          "canBeNull": true,
+          "description": "Job resource usage url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "queuedAt": {
+          "canBeNull": true,
+          "description": "Date when the job was queued",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "sshUrl": {
+          "canBeNull": true,
+          "description": "SSH Url fot the job",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "startedAt": {
+          "canBeNull": true,
+          "description": "Date when the job was started",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "state": {
+          "canBeNull": true,
+          "description": "State of the job",
+          "fullType": "cloud.project.ai.job.JobStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.job.JobStateEnum"
+        },
+        "stoppedAt": {
+          "canBeNull": true,
+          "description": "Date when the job was stop",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Job access url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.job.JobStatusHistory": {
+      "description": "AI Solutions Job Status History Object",
+      "id": "JobStatusHistory",
+      "namespace": "cloud.project.ai.job",
+      "properties": {
+        "date": {
+          "canBeNull": false,
+          "description": "Date when the status occurred",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "State of the job",
+          "fullType": "cloud.project.ai.job.JobStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.job.JobStateEnum"
+        }
+      }
+    },
+    "cloud.project.ai.job.Partner": {
+      "description": "AI Solutions Job Partner Object",
+      "id": "Partner",
+      "namespace": "cloud.project.ai.job",
+      "properties": {
+        "flavor": {
+          "canBeNull": false,
+          "description": "Partner flavor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Partner name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.job.PresetImage": {
+      "description": "A Image of a preset data science image",
+      "id": "PresetImage",
+      "namespace": "cloud.project.ai.job",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Model Image Description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Image id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "link": {
+          "canBeNull": true,
+          "description": "Link to the Opensource Model",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "logo": {
+          "canBeNull": true,
+          "description": "Framework logo",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Model Image Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.notebook.Editor": {
+      "description": "AI Solutions Data Object",
+      "id": "Editor",
+      "namespace": "cloud.project.ai.notebook",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Short description of the code editor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "docUrl": {
+          "canBeNull": false,
+          "description": "URL toward the code editor documentation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the code editor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "logoUrl": {
+          "canBeNull": false,
+          "description": "URL toward the logo to illustrate the editor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the code editor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version of the code editor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.notebook.Framework": {
+      "description": "AI Solutions Data Object",
+      "id": "Framework",
+      "namespace": "cloud.project.ai.notebook",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Short description of the framework",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "docUrl": {
+          "canBeNull": false,
+          "description": "URL toward the framework documentation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the framework",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "logoUrl": {
+          "canBeNull": false,
+          "description": "URL toward the logo to illustrate the framework",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the framework",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "versions": {
+          "canBeNull": false,
+          "description": "Available versions for the framework (default is the first one)",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.ai.notebook.Notebook": {
+      "description": "AI Solutions Platform Notebook Object",
+      "id": "Notebook",
+      "namespace": "cloud.project.ai.notebook",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Notebook creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Notebook Id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "spec": {
+          "canBeNull": false,
+          "description": "Notebook spec",
+          "fullType": "cloud.project.ai.notebook.NotebookSpec",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.notebook.NotebookSpec"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Notebook Container Status",
+          "fullType": "cloud.project.ai.notebook.NotebookStatus",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.notebook.NotebookStatus"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Notebook last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "user": {
+          "canBeNull": false,
+          "description": "Notebook user owner",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.notebook.NotebookEnv": {
+      "description": "AI Solutions Framework Object to create a notebook",
+      "id": "NotebookEnv",
+      "namespace": "cloud.project.ai.notebook",
+      "properties": {
+        "editorId": {
+          "canBeNull": false,
+          "description": "Code editor to use",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "frameworkId": {
+          "canBeNull": false,
+          "description": "Framework name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "frameworkVersion": {
+          "canBeNull": true,
+          "description": "Framework version to use",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.notebook.NotebookSpec": {
+      "description": "AI Solutions Notebook Spec Object to create a notebook",
+      "id": "NotebookSpec",
+      "namespace": "cloud.project.ai.notebook",
+      "properties": {
+        "env": {
+          "canBeNull": false,
+          "description": "Environment to deploy in this notebook",
+          "fullType": "cloud.project.ai.notebook.NotebookEnv",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.notebook.NotebookEnv"
+        },
+        "flavor": {
+          "canBeNull": true,
+          "description": "Current notebook flavor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "labels": {
+          "canBeNull": true,
+          "description": "Labels for the notebook",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Notebook name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Host region of the notebook",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "resources": {
+          "canBeNull": false,
+          "description": "Notebook resources",
+          "fullType": "cloud.project.ai.Resources",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.Resources"
+        },
+        "shutdown": {
+          "canBeNull": true,
+          "description": "Shutdown strategy (if any)",
+          "fullType": "cloud.project.ai.ShutdownStrategyEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.ShutdownStrategyEnum"
+        },
+        "unsecureHttp": {
+          "canBeNull": true,
+          "description": "true if notebook api port can be accessed without any authentication token, false otherwise",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "volumes": {
+          "canBeNull": true,
+          "description": "Notebook Data linked",
+          "fullType": "cloud.project.ai.volume.Volume[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.volume.Volume[]"
+        }
+      }
+    },
+    "cloud.project.ai.notebook.NotebookSpecInput": {
+      "description": "AI Solutions Notebook Spec Object to create a notebook",
+      "id": "NotebookSpecInput",
+      "namespace": "cloud.project.ai.notebook",
+      "properties": {
+        "env": {
+          "canBeNull": false,
+          "description": "Environment to deploy in this notebook",
+          "fullType": "cloud.project.ai.notebook.NotebookEnv",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.ai.notebook.NotebookEnv"
+        },
+        "labels": {
+          "canBeNull": true,
+          "description": "Labels for the notebook",
+          "fullType": "map[string]string",
+          "readOnly": false,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Notebook name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Host region of the notebook",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "resources": {
+          "canBeNull": false,
+          "description": "Notebook resources",
+          "fullType": "cloud.project.ai.ResourcesInput",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.ai.ResourcesInput"
+        },
+        "shutdown": {
+          "canBeNull": true,
+          "description": "Shutdown strategy (if any)",
+          "fullType": "cloud.project.ai.ShutdownStrategyEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.ShutdownStrategyEnum"
+        },
+        "unsecureHttp": {
+          "canBeNull": true,
+          "description": "true if notebook api port can be accessed without any authentication token, false otherwise",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "volumes": {
+          "canBeNull": true,
+          "description": "Notebook Data linked",
+          "fullType": "cloud.project.ai.volume.Volume[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.volume.Volume[]"
+        }
+      }
+    },
+    "cloud.project.ai.notebook.NotebookStateEnum": {
+      "description": "State of the notebook",
+      "enum": [
+        "STARTING",
+        "RUNNING",
+        "STOPPING",
+        "STOPPED"
+      ],
+      "enumType": "string",
+      "id": "NotebookStateEnum",
+      "namespace": "cloud.project.ai.notebook"
+    },
+    "cloud.project.ai.notebook.NotebookStatus": {
+      "description": "AI Solutions Notebook Status Object",
+      "id": "NotebookStatus",
+      "namespace": "cloud.project.ai.notebook",
+      "properties": {
+        "dataSync": {
+          "canBeNull": false,
+          "description": "Status about the datasync linked to the job",
+          "fullType": "cloud.project.ai.volume.DataSync[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.volume.DataSync[]"
+        },
+        "duration": {
+          "canBeNull": true,
+          "description": "Duration of the notebook in seconds",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "infos": {
+          "canBeNull": true,
+          "description": "Infos about the notebook",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lastStartedAt": {
+          "canBeNull": true,
+          "description": "Date when the notebook was last started",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lastStoppedAt": {
+          "canBeNull": true,
+          "description": "Date when the notebook was last stopped",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "monitoringUrl": {
+          "canBeNull": true,
+          "description": "Notebook resource usage url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "state": {
+          "canBeNull": true,
+          "description": "State of the notebook",
+          "fullType": "cloud.project.ai.notebook.NotebookStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.notebook.NotebookStateEnum"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Notebook access url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.notebook.NotebookUpdate": {
+      "description": "AI Solutions Notebook Spec Object to create a notebook",
+      "id": "NotebookUpdate",
+      "namespace": "cloud.project.ai.notebook",
+      "properties": {
+        "labels": {
+          "canBeNull": true,
+          "description": "Labels for the notebook",
+          "fullType": "map[string]string",
+          "readOnly": false,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "resources": {
+          "canBeNull": true,
+          "description": "Notebook resources",
+          "fullType": "cloud.project.ai.ResourcesInput",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.ResourcesInput"
+        },
+        "unsecureHttp": {
+          "canBeNull": true,
+          "description": "true if notebook api port can be accessed without any authentication token, false otherwise",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "volumes": {
+          "canBeNull": true,
+          "description": "Notebook Data linked",
+          "fullType": "cloud.project.ai.volume.Volume[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.volume.Volume[]"
+        }
+      }
+    },
+    "cloud.project.ai.registry.Registry": {
+      "description": "Representation of a registry",
+      "id": "Registry",
+      "namespace": "cloud.project.ai.registry",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Registry creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Registry Id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "password": {
+          "canBeNull": true,
+          "description": "Docker registry password",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region where the registry is available",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Registry update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Docker registry URL",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "user": {
+          "canBeNull": false,
+          "description": "Registry user creator",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "username": {
+          "canBeNull": true,
+          "description": "Docker registry username",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
@@ -18136,75 +22213,14 @@ export const schema: Schema = {
       "id": "WorkflowTemplateEnum",
       "namespace": "cloud.project.ai.serving"
     },
-    "cloud.project.ai.training.AuthorizationStatus": {
-      "description": "Authorization status",
-      "id": "AuthorizationStatus",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "authorized": {
-          "canBeNull": false,
-          "description": "True if project is authorized to use Training Platform service",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        }
-      }
-    },
-    "cloud.project.ai.training.Features": {
-      "description": "Training Platform Data Object",
-      "id": "Features",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "lab": {
-          "canBeNull": false,
-          "description": "Inform if the Training Platform is in Lab mode or not",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "registry": {
-          "canBeNull": false,
-          "description": "Capability to add registry",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        }
-      }
-    },
-    "cloud.project.ai.training.Gpu": {
-      "description": "Training Platform Gpu Object",
-      "id": "Gpu",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "maxGpus": {
-          "canBeNull": false,
-          "description": "Maximum gpu available in the region",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "type": {
-          "canBeNull": false,
-          "description": "The GPU Type",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "cloud.project.ai.training.Job": {
-      "description": "Training Platform Job Object",
-      "id": "Job",
-      "namespace": "cloud.project.ai.training",
+    "cloud.project.ai.volume.DataSync": {
+      "description": "AI Solutions Data Sync",
+      "id": "DataSync",
+      "namespace": "cloud.project.ai.volume",
       "properties": {
         "createdAt": {
           "canBeNull": false,
-          "description": "Job creation date",
+          "description": "Data Sync creation date",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
@@ -18212,264 +22228,96 @@ export const schema: Schema = {
         },
         "id": {
           "canBeNull": false,
-          "description": "Job Id",
-          "fullType": "string",
+          "description": "Data Sync Id",
+          "fullType": "uuid",
           "readOnly": true,
           "required": false,
-          "type": "string"
-        },
-        "partner": {
-          "canBeNull": true,
-          "description": "Job Partner information",
-          "fullType": "cloud.project.ai.training.JobPartner",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.ai.training.JobPartner"
+          "type": "uuid"
         },
         "spec": {
           "canBeNull": false,
-          "description": "Job specifications",
-          "fullType": "cloud.project.ai.training.JobSpec",
+          "description": "Data Sync specifications",
+          "fullType": "cloud.project.ai.volume.DataSyncSpec",
           "readOnly": true,
           "required": false,
-          "type": "cloud.project.ai.training.JobSpec"
+          "type": "cloud.project.ai.volume.DataSyncSpec"
         },
         "status": {
           "canBeNull": false,
-          "description": "Job status",
-          "fullType": "cloud.project.ai.training.JobStatus",
+          "description": "Data Sync status",
+          "fullType": "cloud.project.ai.volume.DataSyncStatus",
           "readOnly": true,
           "required": false,
-          "type": "cloud.project.ai.training.JobStatus"
+          "type": "cloud.project.ai.volume.DataSyncStatus"
         },
         "updatedAt": {
           "canBeNull": false,
-          "description": "Job update date",
+          "description": "Data Sync update date",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
           "type": "datetime"
-        },
-        "user": {
-          "canBeNull": false,
-          "description": "Job user owner",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
         }
       }
     },
-    "cloud.project.ai.training.JobEnv": {
-      "description": "Training Platform Job Env Object",
-      "id": "JobEnv",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "name": {
-          "canBeNull": false,
-          "description": "Name of the environment variable to set inside the job",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "value": {
-          "canBeNull": false,
-          "description": "Value of the environment variable to set inside the job",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        }
-      }
-    },
-    "cloud.project.ai.training.JobLogs": {
-      "description": "Job Logs",
-      "id": "JobLogs",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "lastActivity": {
-          "canBeNull": true,
-          "description": "Last activity date",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "logs": {
-          "canBeNull": false,
-          "description": "Logs lines",
-          "fullType": "cloud.project.ai.training.LogLine[]",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.ai.training.LogLine[]"
-        }
-      }
-    },
-    "cloud.project.ai.training.JobPartner": {
-      "description": "Training Platform Job Partner Object",
-      "id": "JobPartner",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "flavor": {
-          "canBeNull": false,
-          "description": "Partner flavor",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Partner name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "cloud.project.ai.training.JobResource": {
-      "description": "Training Platform Job Resource Object",
-      "id": "JobResource",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "gpu": {
-          "canBeNull": true,
-          "description": "GPU resources of the Job",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        }
-      }
-    },
-    "cloud.project.ai.training.JobSpec": {
-      "description": "Training Platform Job Spec Object to create a job",
-      "id": "JobSpec",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "command": {
-          "canBeNull": true,
-          "description": "Job command",
-          "fullType": "string[]",
-          "readOnly": false,
-          "required": false,
-          "type": "string[]"
-        },
-        "defaultHttpPort": {
-          "canBeNull": true,
-          "description": "Port use as the default one to access http service inside job",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "env": {
-          "canBeNull": true,
-          "description": "List of environment variable to be set inside job",
-          "fullType": "cloud.project.ai.training.JobEnv[]",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.project.ai.training.JobEnv[]"
-        },
-        "image": {
-          "canBeNull": false,
-          "description": "Job image",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Job name",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "region": {
-          "canBeNull": false,
-          "description": "Host region of the job",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "resources": {
-          "canBeNull": false,
-          "description": "Job resources",
-          "fullType": "cloud.project.ai.training.JobResource",
-          "readOnly": false,
-          "required": true,
-          "type": "cloud.project.ai.training.JobResource"
-        },
-        "shutdown": {
-          "canBeNull": true,
-          "description": "Shutdown strategy (if any)",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "timeout": {
-          "canBeNull": true,
-          "description": "Maximum time to spend before killing the job",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "volumes": {
-          "canBeNull": true,
-          "description": "Job Data linked",
-          "fullType": "cloud.project.ai.training.JobVolume[]",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.project.ai.training.JobVolume[]"
-        }
-      }
-    },
-    "cloud.project.ai.training.JobStateEnum": {
-      "description": "State of the job",
+    "cloud.project.ai.volume.DataSyncEnum": {
+      "description": "Data Sync Direction",
       "enum": [
-        "QUEUED",
-        "PENDING",
-        "INITIALIZING",
-        "FINALIZING",
-        "RUNNING",
-        "TIMEOUT",
-        "FAILED",
-        "ERROR",
-        "DONE",
-        "INTERRUPTED",
-        "INTERRUPTING"
+        "pull",
+        "push"
       ],
       "enumType": "string",
-      "id": "JobStateEnum",
-      "namespace": "cloud.project.ai.training"
+      "id": "DataSyncEnum",
+      "namespace": "cloud.project.ai.volume"
     },
-    "cloud.project.ai.training.JobStatus": {
-      "description": "Training Platform Job Status Object",
-      "id": "JobStatus",
-      "namespace": "cloud.project.ai.training",
+    "cloud.project.ai.volume.DataSyncSpec": {
+      "description": "AI Solutions Data Sync Spec",
+      "id": "DataSyncSpec",
+      "namespace": "cloud.project.ai.volume",
       "properties": {
-        "duration": {
-          "canBeNull": true,
-          "description": "Duration of the job",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "history": {
+        "direction": {
           "canBeNull": false,
-          "description": "Job state history",
-          "fullType": "cloud.project.ai.training.JobStatusHistory[]",
+          "description": "Direction of the sync",
+          "fullType": "cloud.project.ai.volume.DataSyncEnum",
           "readOnly": true,
           "required": false,
-          "type": "cloud.project.ai.training.JobStatusHistory[]"
+          "type": "cloud.project.ai.volume.DataSyncEnum"
+        },
+        "manual": {
+          "canBeNull": false,
+          "description": "True if the user has created the object",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cloud.project.ai.volume.DataSyncStateEnum": {
+      "description": "State of the data sync",
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "DONE",
+        "FAILED",
+        "ERROR"
+      ],
+      "enumType": "string",
+      "id": "DataSyncStateEnum",
+      "namespace": "cloud.project.ai.volume"
+    },
+    "cloud.project.ai.volume.DataSyncStatus": {
+      "description": "AI Solutions Data Sync Status",
+      "id": "DataSyncStatus",
+      "namespace": "cloud.project.ai.volume",
+      "properties": {
+        "endedAt": {
+          "canBeNull": true,
+          "description": "Date when the data sync ended",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "infos": {
           "canBeNull": true,
@@ -18479,33 +22327,17 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
-        "ip": {
-          "canBeNull": true,
-          "description": "IP of the job",
-          "fullType": "ip",
+        "progress": {
+          "canBeNull": false,
+          "description": "Progress status of the data sync",
+          "fullType": "cloud.project.ai.volume.Progress[]",
           "readOnly": true,
           "required": false,
-          "type": "ip"
-        },
-        "jobUrl": {
-          "canBeNull": true,
-          "description": "Job access url",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "monitoringUrl": {
-          "canBeNull": true,
-          "description": "Job resource usage url",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
+          "type": "cloud.project.ai.volume.Progress[]"
         },
         "queuedAt": {
-          "canBeNull": true,
-          "description": "Date when the job was queued",
+          "canBeNull": false,
+          "description": "Date when the data sync was queued",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
@@ -18513,38 +22345,7 @@ export const schema: Schema = {
         },
         "startedAt": {
           "canBeNull": true,
-          "description": "Date when the job was started",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "state": {
-          "canBeNull": true,
-          "description": "State of the job",
-          "fullType": "cloud.project.ai.training.JobStateEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.ai.training.JobStateEnum"
-        },
-        "stoppedAt": {
-          "canBeNull": true,
-          "description": "Date when the job was stop",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        }
-      }
-    },
-    "cloud.project.ai.training.JobStatusHistory": {
-      "description": "Training Platform Job Status History Object",
-      "id": "JobStatusHistory",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "date": {
-          "canBeNull": false,
-          "description": "Date when the status occurred",
+          "description": "Date when the data sync was started",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
@@ -18552,19 +22353,130 @@ export const schema: Schema = {
         },
         "state": {
           "canBeNull": false,
-          "description": "State of the job",
-          "fullType": "cloud.project.ai.training.JobStateEnum",
+          "description": "State of the data sync",
+          "fullType": "cloud.project.ai.volume.DataSyncStateEnum",
           "readOnly": true,
           "required": false,
-          "type": "cloud.project.ai.training.JobStateEnum"
+          "type": "cloud.project.ai.volume.DataSyncStateEnum"
         }
       }
     },
-    "cloud.project.ai.training.JobVolume": {
-      "description": "Training Platform Job Volume Object",
-      "id": "JobVolume",
-      "namespace": "cloud.project.ai.training",
+    "cloud.project.ai.volume.Progress": {
+      "description": "AI Solutions Progress Object",
+      "id": "Progress",
+      "namespace": "cloud.project.ai.volume",
       "properties": {
+        "completed": {
+          "canBeNull": false,
+          "description": "Number of completed files",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "container": {
+          "canBeNull": false,
+          "description": "Public Cloud Storage container",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Progress creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "direction": {
+          "canBeNull": false,
+          "description": "Direction of the progress sync",
+          "fullType": "cloud.project.ai.volume.DataSyncEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.volume.DataSyncEnum"
+        },
+        "eta": {
+          "canBeNull": false,
+          "description": "ETA to finish in seconds",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "failed": {
+          "canBeNull": false,
+          "description": "Number of failed files",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Progress Id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "processed": {
+          "canBeNull": false,
+          "description": "Number of processed files",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "skipped": {
+          "canBeNull": false,
+          "description": "Number of skipped files",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "total": {
+          "canBeNull": false,
+          "description": "Total number of files",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "transferredBytes": {
+          "canBeNull": false,
+          "description": "Transferred size in bytes",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Progress update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "cloud.project.ai.volume.Volume": {
+      "description": "AI Solutions Volume Object",
+      "id": "Volume",
+      "namespace": "cloud.project.ai.volume",
+      "properties": {
+        "cache": {
+          "canBeNull": false,
+          "description": "Enable/disable volume caching",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "container": {
           "canBeNull": false,
           "description": "Public Cloud Storage container to attach",
@@ -18575,7 +22487,7 @@ export const schema: Schema = {
         },
         "mountPath": {
           "canBeNull": false,
-          "description": "Path where to mount the data inside the job",
+          "description": "Path where to mount the data inside the container",
           "fullType": "string",
           "readOnly": false,
           "required": true,
@@ -18584,212 +22496,22 @@ export const schema: Schema = {
         "permission": {
           "canBeNull": false,
           "description": "Permissions to use on the mounted volume",
-          "fullType": "cloud.project.ai.training.JobVolumePermissionEnum",
+          "fullType": "cloud.project.ai.VolumePermissionEnum",
           "readOnly": false,
           "required": true,
-          "type": "cloud.project.ai.training.JobVolumePermissionEnum"
+          "type": "cloud.project.ai.VolumePermissionEnum"
+        },
+        "prefix": {
+          "canBeNull": false,
+          "description": "Prefix to fetch only part of the volume",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "region": {
           "canBeNull": false,
           "description": "Public Cloud Storage Region",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        }
-      }
-    },
-    "cloud.project.ai.training.JobVolumePermissionEnum": {
-      "description": "Permissions to apply on the job volume",
-      "enum": [
-        "RW",
-        "RO"
-      ],
-      "enumType": "string",
-      "id": "JobVolumePermissionEnum",
-      "namespace": "cloud.project.ai.training"
-    },
-    "cloud.project.ai.training.LogLine": {
-      "description": "Log line",
-      "id": "LogLine",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "content": {
-          "canBeNull": true,
-          "description": "Content of the log",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "timestamp": {
-          "canBeNull": true,
-          "description": "Datetime of the log",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        }
-      }
-    },
-    "cloud.project.ai.training.PresetImage": {
-      "description": "A Image of a preset data science image",
-      "id": "PresetImage",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "description": {
-          "canBeNull": false,
-          "description": "Model Image Description",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Image id",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "link": {
-          "canBeNull": true,
-          "description": "Link to the Opensource Model",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "logo": {
-          "canBeNull": true,
-          "description": "Framework logo",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Model Image Name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "cloud.project.ai.training.Region": {
-      "description": "AI Training Region",
-      "id": "Region",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "cliInstallUrl": {
-          "canBeNull": false,
-          "description": "Client Install Url",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "documentationUrl": {
-          "canBeNull": false,
-          "description": "Documentation Url",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Region id",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "registryUrl": {
-          "canBeNull": false,
-          "description": "Region Registry Url",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "version": {
-          "canBeNull": false,
-          "description": "Region version",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "cloud.project.ai.training.Registry": {
-      "description": "Representation of a registry",
-      "id": "Registry",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "createdAt": {
-          "canBeNull": false,
-          "description": "Registry creation date",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Registry Id",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "password": {
-          "canBeNull": true,
-          "description": "Docker registry password",
-          "fullType": "password",
-          "readOnly": false,
-          "required": true,
-          "type": "password"
-        },
-        "region": {
-          "canBeNull": false,
-          "description": "Region where the registry is available",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "updatedAt": {
-          "canBeNull": false,
-          "description": "Registry update date",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "url": {
-          "canBeNull": true,
-          "description": "Docker registry URL",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "user": {
-          "canBeNull": false,
-          "description": "Registry user creator",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "username": {
-          "canBeNull": true,
-          "description": "Docker registry username",
           "fullType": "string",
           "readOnly": false,
           "required": true,
@@ -19307,6 +23029,954 @@ export const schema: Schema = {
       "id": "StatusEnum",
       "namespace": "cloud.project.dataProcessing"
     },
+    "cloud.project.database.Availability": {
+      "description": "Availability of databases engines on cloud projects",
+      "id": "Availability",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "backup": {
+          "canBeNull": false,
+          "description": "Defines the type of backup",
+          "fullType": "cloud.project.database.BackupTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.BackupTypeEnum"
+        },
+        "default": {
+          "canBeNull": false,
+          "description": "Whether this availability can be used by default",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "endOfLife": {
+          "canBeNull": true,
+          "description": "End of life of the product",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "engine": {
+          "canBeNull": false,
+          "description": "Database engine name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "flavor": {
+          "canBeNull": false,
+          "description": "Flavor name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "maxNodeNumber": {
+          "canBeNull": false,
+          "description": "Maximum nodes of the cluster",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minNodeNumber": {
+          "canBeNull": false,
+          "description": "Minimum nodes of the cluster",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "network": {
+          "canBeNull": false,
+          "description": "Type of network",
+          "fullType": "cloud.project.database.NetworkTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.NetworkTypeEnum"
+        },
+        "plan": {
+          "canBeNull": false,
+          "description": "Plan name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Date of the release of the product",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "upstreamEndOfLife": {
+          "canBeNull": true,
+          "description": "End of life of the upstream product",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.BackupTypeEnum": {
+      "description": "Type of backup for the cluster",
+      "enum": [
+        "automatic",
+        "manual"
+      ],
+      "enumType": "string",
+      "id": "BackupTypeEnum",
+      "namespace": "cloud.project.database"
+    },
+    "cloud.project.database.Capabilities": {
+      "description": "Capabilities available for the databases engines on cloud projects",
+      "id": "Capabilities",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "engines": {
+          "canBeNull": false,
+          "description": "Database engines available",
+          "fullType": "cloud.project.database.capabilities.Engine[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.capabilities.Engine[]"
+        },
+        "flavors": {
+          "canBeNull": false,
+          "description": "Flavors available",
+          "fullType": "cloud.project.database.capabilities.Flavor[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.capabilities.Flavor[]"
+        },
+        "options": {
+          "canBeNull": false,
+          "description": "Options available",
+          "fullType": "cloud.project.database.capabilities.Option[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.capabilities.Option[]"
+        },
+        "plans": {
+          "canBeNull": false,
+          "description": "Plans available",
+          "fullType": "cloud.project.database.capabilities.Plan[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.capabilities.Plan[]"
+        }
+      }
+    },
+    "cloud.project.database.IpRestriction": {
+      "description": "Ip Restriction definition for cloud project databases",
+      "id": "IpRestriction",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the ip restriction",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "Whitelisted IP",
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock"
+        }
+      }
+    },
+    "cloud.project.database.IpRestrictionCreation": {
+      "description": "Ip Restriction creation definition for cloud project databases",
+      "id": "IpRestrictionCreation",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the ip restriction",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "Whitelisted IP",
+          "fullType": "ipBlock",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock"
+        }
+      }
+    },
+    "cloud.project.database.Mongodb": {
+      "description": "Mongodb cluster definition",
+      "id": "Mongodb",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the cluster",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Domain of the cluster",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Mongodb ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "maintenanceWindow": {
+          "canBeNull": false,
+          "description": "Window during which the maintenance can occur",
+          "fullType": "cloud.project.database.mongodb.MaintenanceWindow",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.mongodb.MaintenanceWindow"
+        },
+        "networkId": {
+          "canBeNull": true,
+          "description": "Private network ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "networkType": {
+          "canBeNull": false,
+          "description": "Type of network of the cluster",
+          "fullType": "cloud.project.database.NetworkTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.NetworkTypeEnum"
+        },
+        "nodeNumber": {
+          "canBeNull": false,
+          "description": "Number of nodes in the cluster",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "plan": {
+          "canBeNull": false,
+          "description": "Plan of the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the cluster",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "subnetId": {
+          "canBeNull": true,
+          "description": "Private subnet ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version of the engine deployed on the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.MongodbCreation": {
+      "description": "Mongodb cluster definition",
+      "id": "MongodbCreation",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "networkId": {
+          "canBeNull": true,
+          "description": "Private network ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "nodesList": {
+          "canBeNull": true,
+          "description": "List of nodes in the cluster, not compatible with nodesPattern",
+          "fullType": "cloud.project.database.mongodb.Node[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.mongodb.Node[]"
+        },
+        "nodesPattern": {
+          "canBeNull": true,
+          "description": "Pattern definition of the nodes in the cluster, not compatible with nodesList",
+          "fullType": "cloud.project.database.mongodb.NodePattern",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.mongodb.NodePattern"
+        },
+        "plan": {
+          "canBeNull": false,
+          "description": "Plan of the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "subnetId": {
+          "canBeNull": true,
+          "description": "Private subnet ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version of the engine deployed on the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.MongodbCreationResponse": {
+      "description": "Mongodb cluster definition",
+      "id": "MongodbCreationResponse",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the cluster",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the cluster",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Domain of the cluster",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Mongodb ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "networkId": {
+          "canBeNull": true,
+          "description": "Private network ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "networkType": {
+          "canBeNull": false,
+          "description": "Type of network of the cluster",
+          "fullType": "cloud.project.database.NetworkTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.NetworkTypeEnum"
+        },
+        "nodeNumber": {
+          "canBeNull": false,
+          "description": "Number of nodes in the cluster",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "plan": {
+          "canBeNull": false,
+          "description": "Plan of the cluster",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "primaryUser": {
+          "canBeNull": false,
+          "description": "Primary user definition to connect to the cluster",
+          "fullType": "cloud.project.database.mongodb.PrimaryUser",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.mongodb.PrimaryUser"
+        },
+        "status": {
+          "canBeNull": true,
+          "description": "Current status of the cluster",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "subnetId": {
+          "canBeNull": true,
+          "description": "Private subnet ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version of the engine deployed on the cluster",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.NetworkTypeEnum": {
+      "description": "Type of network in which the databases cluster are",
+      "enum": [
+        "public",
+        "private"
+      ],
+      "enumType": "string",
+      "id": "NetworkTypeEnum",
+      "namespace": "cloud.project.database"
+    },
+    "cloud.project.database.StatusEnum": {
+      "description": "Possible state of the job",
+      "enum": [
+        "PENDING",
+        "CREATING",
+        "READY",
+        "UPDATING",
+        "DELETING",
+        "ERROR_INCONSISTENT_SPEC",
+        "ERROR"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloud.project.database"
+    },
+    "cloud.project.database.TypeEnum": {
+      "description": "Type of data returned in the capabilities options",
+      "enum": [
+        "boolean",
+        "double",
+        "duration",
+        "long",
+        "string"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "cloud.project.database"
+    },
+    "cloud.project.database.capabilities.Engine": {
+      "description": "Specific database engine capability",
+      "id": "Engine",
+      "namespace": "cloud.project.database.capabilities",
+      "properties": {
+        "defaultVersion": {
+          "canBeNull": false,
+          "description": "Default version used for the engine",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the engine",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Engine name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "versions": {
+          "canBeNull": false,
+          "description": "Versions available for this engine",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.database.capabilities.Flavor": {
+      "description": "Cloud Database flavor definition",
+      "id": "Flavor",
+      "namespace": "cloud.project.database.capabilities",
+      "properties": {
+        "core": {
+          "canBeNull": false,
+          "description": "Flavor core number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "memory": {
+          "canBeNull": false,
+          "description": "Flavor ram size in GB",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the flavor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "storage": {
+          "canBeNull": false,
+          "description": "Flavor disk size in GB",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.database.capabilities.Option": {
+      "description": "Cloud Database option definition",
+      "id": "Option",
+      "namespace": "cloud.project.database.capabilities",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the option",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of the option",
+          "fullType": "cloud.project.database.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.TypeEnum"
+        }
+      }
+    },
+    "cloud.project.database.capabilities.Plan": {
+      "description": "Cloud Database plan definition",
+      "id": "Plan",
+      "namespace": "cloud.project.database.capabilities",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the plan",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the plan",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.mongodb.Backup": {
+      "description": "Mongodb backup definition",
+      "id": "Backup",
+      "namespace": "cloud.project.database.mongodb",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the backup",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the backup",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Mongodb backup ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the backup",
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the backup",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        }
+      }
+    },
+    "cloud.project.database.mongodb.MaintenanceWindow": {
+      "description": "Mongodb cluster definition",
+      "id": "MaintenanceWindow",
+      "namespace": "cloud.project.database.mongodb",
+      "properties": {
+        "end": {
+          "canBeNull": false,
+          "description": "End time of the maintenance",
+          "fullType": "time",
+          "readOnly": true,
+          "required": false,
+          "type": "time"
+        },
+        "start": {
+          "canBeNull": false,
+          "description": "Start time of the maintenance",
+          "fullType": "time",
+          "readOnly": true,
+          "required": false,
+          "type": "time"
+        }
+      }
+    },
+    "cloud.project.database.mongodb.Node": {
+      "description": "Mongodb node definition",
+      "id": "Node",
+      "namespace": "cloud.project.database.mongodb",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the node",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "flavor": {
+          "canBeNull": false,
+          "description": "Flavor of the node",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Mongodb node ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the node",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "port": {
+          "canBeNull": false,
+          "description": "Connection port for the node",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region of the node",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the node",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        }
+      }
+    },
+    "cloud.project.database.mongodb.NodePattern": {
+      "description": "Mongodb node pattern definition",
+      "id": "NodePattern",
+      "namespace": "cloud.project.database.mongodb",
+      "properties": {
+        "flavor": {
+          "canBeNull": false,
+          "description": "Flavor of the nodes",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "number": {
+          "canBeNull": false,
+          "description": "Number of nodes to create",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region of the nodes",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.mongodb.PrimaryUser": {
+      "description": "Mongodb primary user definition",
+      "id": "PrimaryUser",
+      "namespace": "cloud.project.database.mongodb",
+      "properties": {
+        "password": {
+          "canBeNull": false,
+          "description": "Password to authenticate the user",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "roles": {
+          "canBeNull": false,
+          "description": "IDs of the roles the user belongs to",
+          "fullType": "uuid[]",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid[]"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.mongodb.Role": {
+      "description": "Mongodb role definition",
+      "id": "Role",
+      "namespace": "cloud.project.database.mongodb",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Mongodb role ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the role",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.mongodb.User": {
+      "description": "Mongodb user definition",
+      "id": "User",
+      "namespace": "cloud.project.database.mongodb",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Mongodb user ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "roles": {
+          "canBeNull": false,
+          "description": "IDs of the roles the user belongs to",
+          "fullType": "uuid[]",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the user",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.mongodb.UserCreation": {
+      "description": "Mongodb user definition",
+      "id": "UserCreation",
+      "namespace": "cloud.project.database.mongodb",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "password": {
+          "canBeNull": false,
+          "description": "Password of the user",
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
+        },
+        "roles": {
+          "canBeNull": false,
+          "description": "IDs of the roles the user belongs to",
+          "fullType": "uuid[]",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid[]"
+        }
+      }
+    },
+    "cloud.project.database.mongodb.UserUpdate": {
+      "description": "Mongodb user update request body",
+      "id": "UserUpdate",
+      "namespace": "cloud.project.database.mongodb",
+      "properties": {
+        "password": {
+          "canBeNull": false,
+          "description": "Password of the user",
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
+        }
+      }
+    },
     "cloud.project.io.Stream": {
       "description": "A stream to send data",
       "id": "Stream",
@@ -19629,6 +24299,145 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.loadbalancer.ActionDispatch": {
+      "description": "HTTP load balancer dispatch action",
+      "id": "ActionDispatch",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "The backend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "target": {
+          "canBeNull": false,
+          "description": "Target name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.ActionRedirect": {
+      "description": "HTTP load balancer redirect action",
+      "id": "ActionRedirect",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "location": {
+          "canBeNull": false,
+          "description": "Location url",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The backend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "statusCode": {
+          "canBeNull": false,
+          "description": "StatusCode for redirect action",
+          "fullType": "cloud.project.loadbalancer.action.RedirectStatusCodeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.action.RedirectStatusCodeEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.ActionReject": {
+      "description": "HTTP load balancer reject action",
+      "id": "ActionReject",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "The backend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "statusCode": {
+          "canBeNull": false,
+          "description": "StatusCode for reject action",
+          "fullType": "cloud.project.loadbalancer.action.RejectStatusCodeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.action.RejectStatusCodeEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.ActionRewrite": {
+      "description": "HTTP load balancer rewrite action",
+      "id": "ActionRewrite",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "location": {
+          "canBeNull": false,
+          "description": "Location url",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The backend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.Actions": {
+      "description": "HTTP load balancer actions",
+      "id": "Actions",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "dispatch": {
+          "canBeNull": true,
+          "description": "List of dispatch actions",
+          "fullType": "cloud.project.loadbalancer.ActionDispatch[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.ActionDispatch[]"
+        },
+        "redirect": {
+          "canBeNull": true,
+          "description": "List of redirect actions",
+          "fullType": "cloud.project.loadbalancer.ActionRedirect[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.ActionRedirect[]"
+        },
+        "reject": {
+          "canBeNull": true,
+          "description": "List of reject actions",
+          "fullType": "cloud.project.loadbalancer.ActionReject[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.ActionReject[]"
+        },
+        "rewrite": {
+          "canBeNull": true,
+          "description": "List of rewrite actions",
+          "fullType": "cloud.project.loadbalancer.ActionRewrite[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.ActionRewrite[]"
+        }
+      }
+    },
     "cloud.project.loadbalancer.Address": {
       "description": "Address to reach the load balancer",
       "id": "Address",
@@ -19675,6 +24484,171 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.loadbalancer.ApplicationConfiguration": {
+      "description": "An application load balancer configuration",
+      "id": "ApplicationConfiguration",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "actions": {
+          "canBeNull": true,
+          "description": "All actions",
+          "fullType": "cloud.project.loadbalancer.Actions",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Actions"
+        },
+        "certificates": {
+          "canBeNull": false,
+          "description": "List of certificate ID",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "conditions": {
+          "canBeNull": true,
+          "description": "List of conditions",
+          "fullType": "cloud.project.loadbalancer.Condition[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Condition[]"
+        },
+        "entryPoints": {
+          "canBeNull": false,
+          "description": "List of entryPoints",
+          "fullType": "cloud.project.loadbalancer.EntryPoint[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.EntryPoint[]"
+        },
+        "networking": {
+          "canBeNull": false,
+          "description": "networking configuration",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Networking",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Networking"
+        },
+        "targets": {
+          "canBeNull": true,
+          "description": "List of targets",
+          "fullType": "cloud.project.loadbalancer.Target[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Target[]"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Identifier and version of the configuration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.ApplicationConfigurationCreation": {
+      "description": "An application load balancer configuration",
+      "id": "ApplicationConfigurationCreation",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "actions": {
+          "canBeNull": true,
+          "description": "All actions",
+          "fullType": "cloud.project.loadbalancer.Actions",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Actions"
+        },
+        "certificates": {
+          "canBeNull": false,
+          "description": "List of certificate ID",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "conditions": {
+          "canBeNull": true,
+          "description": "List of conditions",
+          "fullType": "cloud.project.loadbalancer.Condition[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Condition[]"
+        },
+        "entryPoints": {
+          "canBeNull": false,
+          "description": "List of entryPoints",
+          "fullType": "cloud.project.loadbalancer.EntryPoint[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.EntryPoint[]"
+        },
+        "networking": {
+          "canBeNull": true,
+          "description": "networking configuration",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Networking",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Networking"
+        },
+        "targets": {
+          "canBeNull": true,
+          "description": "List of targets",
+          "fullType": "cloud.project.loadbalancer.Target[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Target[]"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Identifier and version of the configuration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.ApplicationLoadBalancerSizeCapability": {
+      "description": "Application load balancer size capability",
+      "id": "ApplicationLoadBalancerSizeCapability",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "bandwidthMbPerSecond": {
+          "canBeNull": false,
+          "description": "Bandwidth allowed in Mb/s",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maximumConnection": {
+          "canBeNull": false,
+          "description": "Maximum connection allowed on the load balancer",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "requestsPerSecond": {
+          "canBeNull": false,
+          "description": "Number of requests allowed per second",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the load balancer",
+          "fullType": "cloud.project.loadbalancer.SizeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.SizeEnum"
+        }
+      }
+    },
     "cloud.project.loadbalancer.Backend": {
       "description": "A load balancer backend",
       "id": "Backend",
@@ -19711,6 +24685,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "cloud.project.loadbalancer.Server[]"
+        },
+        "sticky": {
+          "canBeNull": true,
+          "description": "Enable sticky session, only usable with http-mode frontends",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         }
       }
     },
@@ -19729,6 +24711,61 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.loadbalancer.Condition": {
+      "description": "A condition",
+      "id": "Condition",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "key": {
+          "canBeNull": true,
+          "description": "The condition name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "match": {
+          "canBeNull": false,
+          "description": "Criterion matching operation",
+          "fullType": "cloud.project.loadbalancer.condition.MatchEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.condition.MatchEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The condition name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "negate": {
+          "canBeNull": true,
+          "description": "Negate the condition",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Criterion used to chose the appropriate action",
+          "fullType": "cloud.project.loadbalancer.condition.TypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.condition.TypeEnum"
+        },
+        "values": {
+          "canBeNull": false,
+          "description": "The list of values to match",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
+        }
+      }
+    },
     "cloud.project.loadbalancer.Configuration": {
       "description": "A load balancer configuration",
       "id": "Configuration",
@@ -19742,6 +24779,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.project.loadbalancer.Backend[]"
         },
+        "certificates": {
+          "canBeNull": false,
+          "description": "List of certificate ID",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
         "frontends": {
           "canBeNull": false,
           "description": "List of frontends",
@@ -19749,6 +24794,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "cloud.project.loadbalancer.Frontend[]"
+        },
+        "networking": {
+          "canBeNull": false,
+          "description": "networking configuration",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Networking",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Networking"
         },
         "version": {
           "canBeNull": false,
@@ -19773,6 +24826,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.project.loadbalancer.Backend[]"
         },
+        "certificates": {
+          "canBeNull": false,
+          "description": "List of certificate ID",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
         "frontends": {
           "canBeNull": false,
           "description": "List of frontends",
@@ -19780,6 +24841,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "cloud.project.loadbalancer.Frontend[]"
+        },
+        "networking": {
+          "canBeNull": true,
+          "description": "networking configuration",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Networking",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Networking"
         },
         "version": {
           "canBeNull": false,
@@ -19811,6 +24880,68 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.EntryPoint": {
+      "description": "A load balancer entryPoint",
+      "id": "EntryPoint",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "defaultTarget": {
+          "canBeNull": true,
+          "description": "The default target name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "disableH2": {
+          "canBeNull": false,
+          "description": "Disable HTTP2",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The frontend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "portRanges": {
+          "canBeNull": true,
+          "description": "Port ranges to listen",
+          "fullType": "cloud.project.loadbalancer.PortRange[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.PortRange[]"
+        },
+        "ports": {
+          "canBeNull": true,
+          "description": "Ports to listen",
+          "fullType": "long[]",
+          "readOnly": false,
+          "required": false,
+          "type": "long[]"
+        },
+        "rules": {
+          "canBeNull": false,
+          "description": "List of rules",
+          "fullType": "cloud.project.loadbalancer.Rule[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Rule[]"
+        },
+        "tls": {
+          "canBeNull": false,
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         }
       }
     },
@@ -19867,6 +24998,13 @@ export const schema: Schema = {
           "required": false,
           "type": "long[]"
         },
+        "tls": {
+          "canBeNull": false,
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "whitelist": {
           "canBeNull": false,
           "description": "IP range to whitelist",
@@ -19874,6 +25012,45 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "ipBlock[]"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.LoadBalancerSizeCapability": {
+      "description": "Network load balancer size capability",
+      "id": "LoadBalancerSizeCapability",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "bandwidthMbPerSecond": {
+          "canBeNull": false,
+          "description": "Bandwidth allowed in Mb/s",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maximumConnection": {
+          "canBeNull": false,
+          "description": "Maximum connection allowed on the load balancer",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "newConnectionPerSecond": {
+          "canBeNull": false,
+          "description": "Number of new connection allowed per second",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the load balancer",
+          "fullType": "cloud.project.loadbalancer.SizeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.SizeEnum"
         }
       }
     },
@@ -19912,6 +25089,29 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.Rule": {
+      "description": "A entrypoint rule",
+      "id": "Rule",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "action": {
+          "canBeNull": false,
+          "description": "The action name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "conditions": {
+          "canBeNull": true,
+          "description": "The list of condition to match",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
@@ -19962,6 +25162,17 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.loadbalancer.SizeEnum": {
+      "description": "Size of the load balancer",
+      "enum": [
+        "S",
+        "M",
+        "L"
+      ],
+      "enumType": "string",
+      "id": "SizeEnum",
+      "namespace": "cloud.project.loadbalancer"
+    },
     "cloud.project.loadbalancer.StatusEnum": {
       "description": "Status of a load balancer",
       "enum": [
@@ -19975,6 +25186,84 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "StatusEnum",
       "namespace": "cloud.project.loadbalancer"
+    },
+    "cloud.project.loadbalancer.Target": {
+      "description": "A load balancer target",
+      "id": "Target",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "balancer": {
+          "canBeNull": true,
+          "description": "Use a specific balancer algorithm",
+          "fullType": "cloud.project.loadbalancer.target.BalancerAlgorithmEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.target.BalancerAlgorithmEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The backend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "proxyProtocol": {
+          "canBeNull": true,
+          "description": "Use proxy protocol on target",
+          "fullType": "cloud.project.loadbalancer.target.ProxyProtocolEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.target.ProxyProtocolEnum"
+        },
+        "servers": {
+          "canBeNull": false,
+          "description": "List of server in target",
+          "fullType": "cloud.project.loadbalancer.Server[]",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.Server[]"
+        },
+        "sticky": {
+          "canBeNull": true,
+          "description": "Enable sticky session, only usable with http-mode frontends",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.action.RedirectStatusCodeEnum": {
+      "description": "Available status code for Redirect action",
+      "enum": [
+        "301",
+        "302",
+        "303",
+        "307",
+        "308"
+      ],
+      "enumType": "string",
+      "id": "RedirectStatusCodeEnum",
+      "namespace": "cloud.project.loadbalancer.action"
+    },
+    "cloud.project.loadbalancer.action.RejectStatusCodeEnum": {
+      "description": "Available status code for Reject action",
+      "enum": [
+        "200",
+        "400",
+        "403",
+        "405",
+        "408",
+        "429",
+        "500",
+        "502",
+        "503",
+        "504"
+      ],
+      "enumType": "string",
+      "id": "RejectStatusCodeEnum",
+      "namespace": "cloud.project.loadbalancer.action"
     },
     "cloud.project.loadbalancer.backend.BalancerAlgorithmEnum": {
       "description": "Available load balancer backend balancer algorithm",
@@ -20001,15 +25290,261 @@ export const schema: Schema = {
       "id": "ProxyProtocolEnum",
       "namespace": "cloud.project.loadbalancer.backend"
     },
+    "cloud.project.loadbalancer.condition.MatchEnum": {
+      "description": "Matching operator",
+      "enum": [
+        "is",
+        "start-with",
+        "end-with",
+        "regex",
+        "exists"
+      ],
+      "enumType": "string",
+      "id": "MatchEnum",
+      "namespace": "cloud.project.loadbalancer.condition"
+    },
+    "cloud.project.loadbalancer.condition.TypeEnum": {
+      "description": "Matching field",
+      "enum": [
+        "method",
+        "cookie",
+        "path",
+        "host",
+        "header",
+        "source",
+        "query-param"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "cloud.project.loadbalancer.condition"
+    },
+    "cloud.project.loadbalancer.configuration.networking.Egress": {
+      "description": "Networking configuration egress definition",
+      "id": "Egress",
+      "namespace": "cloud.project.loadbalancer.configuration.networking",
+      "properties": {
+        "id": {
+          "canBeNull": true,
+          "description": "vrack networking id",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "kind": {
+          "canBeNull": false,
+          "description": "networking egress kind definition",
+          "fullType": "cloud.project.loadbalancer.networking.egress.KindEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.networking.egress.KindEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.configuration.networking.Ingress": {
+      "description": "Networking configuration ingress definition",
+      "id": "Ingress",
+      "namespace": "cloud.project.loadbalancer.configuration.networking",
+      "properties": {
+        "kind": {
+          "canBeNull": false,
+          "description": "networking configuration ingress kind definition",
+          "fullType": "cloud.project.loadbalancer.networking.ingress.KindEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.networking.ingress.KindEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.configuration.networking.Networking": {
+      "description": "Networking configuration object",
+      "id": "Networking",
+      "namespace": "cloud.project.loadbalancer.configuration.networking",
+      "properties": {
+        "egress": {
+          "canBeNull": true,
+          "description": "Networking configuration definition for egress",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Egress",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Egress"
+        },
+        "ingress": {
+          "canBeNull": true,
+          "description": "Networking configuration definition for ingress",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Ingress",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Ingress"
+        }
+      }
+    },
     "cloud.project.loadbalancer.frontend.ModeEnum": {
       "description": "Available load balancer frontend mode",
       "enum": [
-        "HTTP",
         "TCP"
       ],
       "enumType": "string",
       "id": "ModeEnum",
       "namespace": "cloud.project.loadbalancer.frontend"
+    },
+    "cloud.project.loadbalancer.networking.Egress": {
+      "description": "Networking Egress definition",
+      "id": "Egress",
+      "namespace": "cloud.project.loadbalancer.networking",
+      "properties": {
+        "id": {
+          "canBeNull": true,
+          "description": "vrack networking id",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "kind": {
+          "canBeNull": false,
+          "description": "networking egress kind definition",
+          "fullType": "cloud.project.loadbalancer.networking.egress.KindEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.networking.egress.KindEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.networking.EgressCreation": {
+      "description": "Networking Egress definition",
+      "id": "EgressCreation",
+      "namespace": "cloud.project.loadbalancer.networking",
+      "properties": {
+        "kind": {
+          "canBeNull": false,
+          "description": "networking egress kind definition",
+          "fullType": "cloud.project.loadbalancer.networking.egress.KindEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.networking.egress.KindEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.networking.Ingress": {
+      "description": "Networking Ingress definition",
+      "id": "Ingress",
+      "namespace": "cloud.project.loadbalancer.networking",
+      "properties": {
+        "kind": {
+          "canBeNull": false,
+          "description": "networking ingress kind definition",
+          "fullType": "cloud.project.loadbalancer.networking.ingress.KindEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.ingress.KindEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.networking.IngressCreation": {
+      "description": "Networking Ingress definition",
+      "id": "IngressCreation",
+      "namespace": "cloud.project.loadbalancer.networking",
+      "properties": {
+        "kind": {
+          "canBeNull": false,
+          "description": "networking ingress kind definition",
+          "fullType": "cloud.project.loadbalancer.networking.ingress.KindEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.networking.ingress.KindEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.networking.Networking": {
+      "description": "Networking object",
+      "id": "Networking",
+      "namespace": "cloud.project.loadbalancer.networking",
+      "properties": {
+        "egress": {
+          "canBeNull": false,
+          "description": "Networking definition for egress",
+          "fullType": "cloud.project.loadbalancer.networking.Egress",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.Egress"
+        },
+        "ingress": {
+          "canBeNull": false,
+          "description": "Networking definition for ingress",
+          "fullType": "cloud.project.loadbalancer.networking.Ingress",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.Ingress"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.networking.NetworkingCreation": {
+      "description": "Networking creation object",
+      "id": "NetworkingCreation",
+      "namespace": "cloud.project.loadbalancer.networking",
+      "properties": {
+        "egress": {
+          "canBeNull": true,
+          "description": "Networking definition for egress",
+          "fullType": "cloud.project.loadbalancer.networking.EgressCreation",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.EgressCreation"
+        },
+        "ingress": {
+          "canBeNull": true,
+          "description": "Networking definition for ingress",
+          "fullType": "cloud.project.loadbalancer.networking.IngressCreation",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.IngressCreation"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.networking.egress.KindEnum": {
+      "description": "Networking kind",
+      "enum": [
+        "public",
+        "vrack"
+      ],
+      "enumType": "string",
+      "id": "KindEnum",
+      "namespace": "cloud.project.loadbalancer.networking.egress"
+    },
+    "cloud.project.loadbalancer.networking.ingress.KindEnum": {
+      "description": "Networking kind",
+      "enum": [
+        "public"
+      ],
+      "enumType": "string",
+      "id": "KindEnum",
+      "namespace": "cloud.project.loadbalancer.networking.ingress"
+    },
+    "cloud.project.loadbalancer.target.BalancerAlgorithmEnum": {
+      "description": "Available load balancer target balancer algorithm",
+      "enum": [
+        "roundrobin",
+        "static-rr",
+        "leastconn",
+        "first",
+        "source"
+      ],
+      "enumType": "string",
+      "id": "BalancerAlgorithmEnum",
+      "namespace": "cloud.project.loadbalancer.target"
+    },
+    "cloud.project.loadbalancer.target.ProxyProtocolEnum": {
+      "description": "Available load balancer target proxy-protocol",
+      "enum": [
+        "v1",
+        "v2",
+        "v2-ssl",
+        "v2-cn"
+      ],
+      "enumType": "string",
+      "id": "ProxyProtocolEnum",
+      "namespace": "cloud.project.loadbalancer.target"
     },
     "cloud.quota.AllowedQuota": {
       "description": "Quotas",
@@ -20278,6 +25813,60 @@ export const schema: Schema = {
           "fullType": "long",
           "readOnly": true,
           "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.quota.storage.Quota": {
+      "description": "Cloud Storage Quota",
+      "id": "Quota",
+      "namespace": "cloud.quota.storage",
+      "properties": {
+        "bytesUsed": {
+          "canBeNull": false,
+          "description": "Quota used in bytes",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "containerCount": {
+          "canBeNull": false,
+          "description": "Number of containers on account",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "objectCount": {
+          "canBeNull": false,
+          "description": "Number of objects on account",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "quotaBytes": {
+          "canBeNull": true,
+          "description": "Quota in bytes",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.quota.storage.QuotaUpdate": {
+      "description": "Update storage quota",
+      "id": "QuotaUpdate",
+      "namespace": "cloud.quota.storage",
+      "properties": {
+        "quotaBytes": {
+          "canBeNull": false,
+          "description": "New quota in bytes",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
           "type": "long"
         }
       }
@@ -20655,6 +26244,29 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.storage.AddContainerPolicy": {
+      "description": "Add storage policy for container",
+      "id": "AddContainerPolicy",
+      "namespace": "cloud.storage",
+      "properties": {
+        "objectKey": {
+          "canBeNull": false,
+          "description": "Container object key",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "roleName": {
+          "canBeNull": false,
+          "description": "Policy role",
+          "fullType": "cloud.storage.PolicyRoleEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.storage.PolicyRoleEnum"
+        }
+      }
+    },
     "cloud.storage.Container": {
       "description": "Container",
       "id": "Container",
@@ -20911,6 +26523,33 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "cloud.storage.PolicyRaw": {
+      "description": "Raw storage policy",
+      "id": "PolicyRaw",
+      "namespace": "cloud.storage",
+      "properties": {
+        "policy": {
+          "canBeNull": false,
+          "description": "Raw storage policy",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.storage.PolicyRoleEnum": {
+      "description": "Storage policy role",
+      "enum": [
+        "admin",
+        "deny",
+        "readOnly",
+        "readWrite"
+      ],
+      "enumType": "string",
+      "id": "PolicyRoleEnum",
+      "namespace": "cloud.storage"
     },
     "cloud.storage.RetrievalStateEnum": {
       "description": "RetrievalStateEnum",
@@ -21304,37 +26943,6 @@ export const schema: Schema = {
       "id": "RoleEnum",
       "namespace": "cloud.user"
     },
-    "cloud.user.S3Credentials": {
-      "description": "S3Credentials",
-      "id": "S3Credentials",
-      "namespace": "cloud.user",
-      "properties": {
-        "access": {
-          "canBeNull": false,
-          "description": "S3 Access key",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "tenantId": {
-          "canBeNull": false,
-          "description": "Tenant id",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "userId": {
-          "canBeNull": false,
-          "description": "User id",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
     "cloud.user.S3CredentialsWithSecret": {
       "description": "S3CredentialsWithSecret",
       "id": "S3CredentialsWithSecret",
@@ -21727,13 +27335,17 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Unit of the value",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Value",
+          "fullType": "T",
+          "readOnly": true,
           "required": false,
           "type": "T"
         }

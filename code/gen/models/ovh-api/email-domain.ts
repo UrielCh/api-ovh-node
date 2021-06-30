@@ -5483,6 +5483,7 @@ export const schema: Schema = {
         "CNAME",
         "DKIM",
         "DMARC",
+        "DNAME",
         "LOC",
         "MX",
         "NAPTR",

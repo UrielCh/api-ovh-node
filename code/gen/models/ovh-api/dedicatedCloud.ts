@@ -600,7 +600,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "dedicatedCloud.compliantRanges[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/commercialRange/compliance"
@@ -883,6 +883,56 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup"
     },
     {
+      "description": "batchRestore operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Restores the last restore points for each backup located in the given backup repository to the given Datacenter",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The backup job name pcc-XXX-XXX-XXX-XXX_vm-XXX if you want to restore one single virtual machine. It can be retrieved in the report sent by generateReport",
+              "fullType": "string",
+              "name": "backupJobName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The backup files location name bkp-XXXXX, it can be retrieved in the report sent by generateReport",
+              "fullType": "string",
+              "name": "backupRepositoryName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/batchRestore"
+    },
+    {
       "description": "canOptimizeProxies operations",
       "operations": [
         {
@@ -1094,6 +1144,40 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable"
     },
     {
+      "description": "generateReport operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Generates an email report with all the backups, their last restore point, their size and their location",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/generateReport"
+    },
+    {
       "description": "offerCapabilities operations",
       "operations": [
         {
@@ -1194,6 +1278,90 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/checkBackupJobs"
+    },
+    {
+      "description": "copyFiler operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Copy an SBG Filer and mount it in a given Datacenter",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "By triggering this API call(s), you accept to replicate data from one of yours private cloud instance to another instance allocated to you, and you understand that a temporary copy will be performed to a intermerdiary server. This server is a mutualized infrastructure used by several customers during the migration operation. Your data will be protected by technical fully automated segregation (Access right, network ACL, etc...). Data will be accessible only through vSphere interface with no direct access from any customer to the intermediary server.\n",
+              "fullType": "boolean",
+              "name": "accept",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Filer id",
+              "fullType": "long",
+              "name": "filerId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/copyFiler"
+    },
+    {
+      "description": "copyFilerStatus operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List SBG Filer data migration status",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.FilerDataMigrationTask[]"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/copyFilerStatus"
     },
     {
       "description": "disable operations",
@@ -1699,6 +1867,90 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}"
+    },
+    {
+      "description": "checkGlobalCompatible operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Check if filer on your Dedicated Cloud is capable of converting to global",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Filer Id",
+              "fullType": "long",
+              "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "boolean"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/checkGlobalCompatible"
+    },
+    {
+      "description": "convertToGlobal operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change the filer type to global on your Dedicated Cloud.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Filer Id",
+              "fullType": "long",
+              "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/convertToGlobal"
     },
     {
       "description": "hourlyConsumption operations",
@@ -4178,6 +4430,74 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/filer/{filerId}"
     },
     {
+      "description": "checkGlobalCompatible operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Check if filer on your Dedicated Cloud is capable of converting to global",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Filer Id",
+              "fullType": "long",
+              "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "boolean"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/filer/{filerId}/checkGlobalCompatible"
+    },
+    {
+      "description": "convertToGlobal operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change the filer type to global on your Dedicated Cloud.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Filer Id",
+              "fullType": "long",
+              "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/filer/{filerId}/convertToGlobal"
+    },
+    {
       "description": "hourlyConsumption operations",
       "operations": [
         {
@@ -6193,9 +6513,9 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "ipv4",
-              "description": "IP address of the remote service, e.g. 123.100.200.0",
-              "fullType": "ipv4",
+              "dataType": "ipBlock",
+              "description": "IP address or network of the remote service, e.g. 123.100.200.0",
+              "fullType": "ipBlock",
               "name": "ip",
               "paramType": "body",
               "required": true
@@ -8633,9 +8953,11 @@ export const schema: Schema = {
         "eri1",
         "gra1",
         "gra2",
+        "gra3",
         "gsw",
         "hil1",
         "lim1",
+        "lim3",
         "p19",
         "rbx-hz",
         "rbx1",
@@ -8652,6 +8974,7 @@ export const schema: Schema = {
         "sbg4",
         "sgp1",
         "syd1",
+        "syd2",
         "vin1",
         "waw1"
       ],
@@ -9596,6 +9919,76 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        }
+      }
+    },
+    "dedicatedCloud.FilerDataMigrationTask": {
+      "description": "Display filer data migration status",
+      "id": "FilerDataMigrationTask",
+      "namespace": "dedicatedCloud",
+      "properties": {
+        "creationDate": {
+          "canBeNull": true,
+          "description": "Task creation date",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Target domain",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "doneDate": {
+          "canBeNull": true,
+          "description": "Task completion date",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "filerId": {
+          "canBeNull": false,
+          "description": "SBG filer id",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "filerName": {
+          "canBeNull": false,
+          "description": "SBG filer name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Task identifier",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "progress": {
+          "canBeNull": false,
+          "description": "Data migration progress (percentage)",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Task status",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicatedCloud.TaskStateEnum"
+        },
+        "transfered": {
+          "canBeNull": false,
+          "description": "Data migration progress (transfered bytes)",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -11875,6 +12268,31 @@ export const schema: Schema = {
       "id": "ClusterDrsModeEnum",
       "namespace": "dedicatedCloud.cluster"
     },
+    "dedicatedCloud.compliantRanges": {
+      "description": "compliant range information",
+      "id": "compliantRanges",
+      "namespace": "dedicatedCloud",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "upgradeCode": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "upgradeRequired": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
     "dedicatedCloud.dedicatedCloud": {
       "description": "Dedicated Cloud",
       "id": "dedicatedCloud",
@@ -12858,6 +13276,14 @@ export const schema: Schema = {
       "id": "twoFAWhitelist",
       "namespace": "dedicatedCloud",
       "properties": {
+        "cidrNetmask": {
+          "canBeNull": false,
+          "description": "IP netmask (CIDR notation) of the remote service",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "description": {
           "canBeNull": false,
           "description": "Description of the trusted IP",

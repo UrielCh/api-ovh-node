@@ -42,6 +42,49 @@ export const schema: Schema = {
       "path": "/me"
     },
     {
+      "description": "Get abuse related to your account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve abuse cases list",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/abuse"
+    },
+    {
+      "description": "Get abuse related to your account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Check specific abuse case",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Id",
+              "fullType": "string",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "me.abuse.Abuse"
+        }
+      ],
+      "path": "/me/abuse/{id}"
+    },
+    {
       "description": "SOTP Two-Factor Authentication",
       "operations": [
         {
@@ -4389,6 +4432,42 @@ export const schema: Schema = {
       "path": "/me/identity/user/{user}/enable"
     },
     {
+      "description": "Migrate your impacted services",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get all services you can migrate",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "me.incident.ServiceMigration[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Ask for impacted services migration",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "me.incident.MigrateServices",
+              "description": "Request Body",
+              "fullType": "me.incident.MigrateServices",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "me.incident.Order"
+        }
+      ],
+      "path": "/me/incident/sbg/migrateServices"
+    },
+    {
       "description": "Retrieve your insight access token. This token give you access to all your products metrics (cloud instances, dedicated servers, load balancers, ...)",
       "operations": [
         {
@@ -5829,6 +5908,122 @@ export const schema: Schema = {
       "path": "/me/order/{orderId}/availableRegisteredPaymentMean"
     },
     {
+      "description": "List the billing.CreditBalance objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List credit balances applied on this Order",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Use a credit balance on this Order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Balance name to use on this Order",
+              "fullType": "string",
+              "name": "balanceName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "billing.CreditBalance"
+        }
+      ],
+      "path": "/me/order/{orderId}/balance"
+    },
+    {
+      "description": "Credit balance applied on an Order",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Remove a credit balance from this Order",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Credit balance name",
+              "fullType": "string",
+              "name": "balanceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Credit balance name",
+              "fullType": "string",
+              "name": "balanceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "billing.CreditBalance"
+        }
+      ],
+      "path": "/me/order/{orderId}/balance/{balanceName}"
+    },
+    {
       "description": "Details about a Bill",
       "operations": [
         {
@@ -6591,6 +6786,48 @@ export const schema: Schema = {
       "path": "/me/ovhAccount/{ovhAccountId}/movements/{movementId}"
     },
     {
+      "description": "requestRefund operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "request a refund of this credit note to your original payment method",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The amount in cents you want to retrieve",
+              "fullType": "long",
+              "name": "amount",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "movementId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "ovhAccountId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/ovhAccount/{ovhAccountId}/movements/{movementId}/requestRefund"
+    },
+    {
       "description": "retrieveMoney operations",
       "operations": [
         {
@@ -6868,6 +7105,39 @@ export const schema: Schema = {
       "path": "/me/payment/method/{paymentMethodId}/challenge"
     },
     {
+      "description": "Add details to your payment method challenge",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Add details to your payment method challenge",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "me.payment.method.Details",
+              "description": "Request Body",
+              "fullType": "me.payment.method.Details",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Payment method ID",
+              "fullType": "long",
+              "name": "paymentMethodId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "me.payment.method.Validation"
+        }
+      ],
+      "path": "/me/payment/method/{paymentMethodId}/details"
+    },
+    {
       "description": "Finalize operation",
       "operations": [
         {
@@ -6961,7 +7231,7 @@ export const schema: Schema = {
       "path": "/me/payment/transaction/{transactionId}"
     },
     {
-      "description": "List the billing.BankAccount objects",
+      "description": "List the payment mean credit cards",
       "operations": [
         {
           "apiStatus": {
@@ -6973,9 +7243,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "billing.BankAccountStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "billing.BankAccountStateEnum",
+              "dataType": "me.paymentMean.BankAccountStateEnum",
+              "description": "Filter on 'status' property",
+              "fullType": "me.paymentMean.BankAccountStateEnum",
               "name": "state",
               "paramType": "query",
               "required": false
@@ -6988,66 +7258,25 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Enable payment through a new account",
+          "description": "Add a new payment mean bank account",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Account's BIC",
-              "fullType": "string",
-              "name": "bic",
+              "dataType": "me.paymentMean.BankAccountCreation",
+              "description": "Request Body",
+              "fullType": "me.paymentMean.BankAccountCreation",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Custom description of this account",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Account's IBAN",
-              "fullType": "string",
-              "name": "iban",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Account owner's address",
-              "fullType": "string",
-              "name": "ownerAddress",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Account owner's name",
-              "fullType": "string",
-              "name": "ownerName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Set as default payment mean once validated",
-              "fullType": "boolean",
-              "name": "setDefault",
-              "paramType": "body",
-              "required": false
             }
           ],
-          "responseType": "billing.PaymentMeanValidation"
+          "responseType": "me.paymentMean.BankAccountValidation"
         }
       ],
       "path": "/me/paymentMean/bankAccount"
     },
     {
-      "description": "SEPA bank account info",
+      "description": "List the payment mean credit cards",
       "operations": [
         {
           "apiStatus": {
@@ -7060,7 +7289,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7074,20 +7303,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get bank account properties",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "billing.BankAccount"
+          "responseType": "me.paymentMean.BankAccount"
         },
         {
           "apiStatus": {
@@ -7099,15 +7328,15 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "billing.BankAccount",
-              "description": "New object properties",
-              "fullType": "billing.BankAccount",
+              "dataType": "me.paymentMean.BankAccount",
+              "description": "Request Body",
+              "fullType": "me.paymentMean.BankAccount",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7120,7 +7349,7 @@ export const schema: Schema = {
       "path": "/me/paymentMean/bankAccount/{id}"
     },
     {
-      "description": "challenge operations",
+      "description": "Challenge your bank account",
       "operations": [
         {
           "apiStatus": {
@@ -7132,16 +7361,15 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Payload to answer the challenge",
-              "fullType": "string",
-              "name": "challenge",
+              "dataType": "me.paymentMean.BankAccountChallengeCreation",
+              "description": "Request Body",
+              "fullType": "me.paymentMean.BankAccountChallengeCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7154,7 +7382,7 @@ export const schema: Schema = {
       "path": "/me/paymentMean/bankAccount/{id}/challenge"
     },
     {
-      "description": "chooseAsDefaultPaymentMean operations",
+      "description": "Choose this bank account as your default payment mean. Will cancel the previous choice.",
       "operations": [
         {
           "apiStatus": {
@@ -7167,7 +7395,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7348,14 +7576,14 @@ export const schema: Schema = {
       "path": "/me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean"
     },
     {
-      "description": "List the billing.DeferredPaymentAccount objects",
+      "description": "List of authorized deferred payment account for this customer",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List of authorized deferred payment account for this customer",
+          "description": "List of payment mean deferred accounts",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
@@ -7365,7 +7593,7 @@ export const schema: Schema = {
       "path": "/me/paymentMean/deferredPaymentAccount"
     },
     {
-      "description": "Deferred payment account info",
+      "description": "List of authorized deferred payment account for this customer",
       "operations": [
         {
           "apiStatus": {
@@ -7378,14 +7606,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "billing.DeferredPaymentAccount"
+          "responseType": "me.paymentMean.Deferred"
         },
         {
           "apiStatus": {
@@ -7397,15 +7625,15 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "billing.DeferredPaymentAccount",
-              "description": "New object properties",
-              "fullType": "billing.DeferredPaymentAccount",
+              "dataType": "me.paymentMean.Deferred",
+              "description": "Request Body",
+              "fullType": "me.paymentMean.Deferred",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7418,20 +7646,20 @@ export const schema: Schema = {
       "path": "/me/paymentMean/deferredPaymentAccount/{id}"
     },
     {
-      "description": "chooseAsDefaultPaymentMean operations",
+      "description": "Choose this deferred account as default",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Allow you to use deferred payment. Will cancel the previous choice.",
+          "description": "Choose this deferred account as your default payment mean. Will cancel the previous choice.",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7444,14 +7672,14 @@ export const schema: Schema = {
       "path": "/me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean"
     },
     {
-      "description": "List the billing.Paypal objects",
+      "description": "List the payment mean paypals",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List of Paypal accounts usable for payments on this account",
+          "description": "List of payment mean paypals",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
@@ -7462,55 +7690,38 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Enable payment through a new PayPal account",
+          "description": "Add a new payment mean paypal",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Custom description of this account",
-              "fullType": "string",
-              "name": "description",
+              "dataType": "me.paymentMean.PaypalCreation",
+              "description": "Request Body",
+              "fullType": "me.paymentMean.PaypalCreation",
               "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Callback URL where the customer will be redirected to after validation",
-              "fullType": "string",
-              "name": "returnUrl",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Set as default payment mean once validated",
-              "fullType": "boolean",
-              "name": "setDefault",
-              "paramType": "body",
-              "required": false
+              "required": true
             }
           ],
-          "responseType": "billing.PaymentMeanValidation"
+          "responseType": "me.paymentMean.PaypalValidation"
         }
       ],
       "path": "/me/paymentMean/paypal"
     },
     {
-      "description": "Paypal account info",
+      "description": "List the payment mean paypals",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Disable payment through this PayPal account",
+          "description": "Disable payment through this paypal",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7524,20 +7735,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get paypal properties",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "billing.Paypal"
+          "responseType": "me.paymentMean.Paypal"
         },
         {
           "apiStatus": {
@@ -7549,15 +7760,15 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "billing.Paypal",
-              "description": "New object properties",
-              "fullType": "billing.Paypal",
+              "dataType": "me.paymentMean.Paypal",
+              "description": "Request Body",
+              "fullType": "me.paymentMean.Paypal",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7570,28 +7781,27 @@ export const schema: Schema = {
       "path": "/me/paymentMean/paypal/{id}"
     },
     {
-      "description": "challenge operations",
+      "description": "Challenge operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Challenge your bank account",
+          "description": "Challenge your paypal",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Payload to answer the challenge",
-              "fullType": "string",
-              "name": "challenge",
+              "dataType": "me.paymentMean.PaypalChallengeCreation",
+              "description": "Request Body",
+              "fullType": "me.paymentMean.PaypalChallengeCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7604,20 +7814,20 @@ export const schema: Schema = {
       "path": "/me/paymentMean/paypal/{id}/challenge"
     },
     {
-      "description": "chooseAsDefaultPaymentMean operations",
+      "description": "Choose this paypal as default",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Choose this Paypal agreement as your default payment mean. Will cancel the previous choice.",
+          "description": "Choose this paypal as your default payment mean. Will cancel the previous choice.",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -10396,6 +10606,13 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "billing.ItemDetail.OrderPlan"
+        },
+        "type": {
+          "canBeNull": true,
+          "description": "Type of the detail to match with values inside the catalog",
+          "readOnly": false,
+          "required": false,
+          "type": "billing.ItemDetail.OrderDetailTypeEnum"
         }
       }
     },
@@ -10403,8 +10620,10 @@ export const schema: Schema = {
       "description": "List of order actions",
       "enum": [
         "consumption",
+        "detach",
         "installation",
         "renew",
+        "revert",
         "upgrade"
       ],
       "enumType": "string",
@@ -10431,6 +10650,16 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "billing.ItemDetail.OrderDetailTypeEnum": {
+      "description": "List of order detail types",
+      "enum": [
+        "plan",
+        "product"
+      ],
+      "enumType": "string",
+      "id": "OrderDetailTypeEnum",
+      "namespace": "billing.ItemDetail"
     },
     "billing.ItemDetail.OrderPlan": {
       "description": "Plan data from order",
@@ -10570,6 +10799,13 @@ export const schema: Schema = {
           "type": "long"
         },
         "previousBalance": {
+          "canBeNull": false,
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "retrievableAmount": {
           "canBeNull": false,
           "fullType": "order.Price",
           "readOnly": true,
@@ -11165,11 +11401,14 @@ export const schema: Schema = {
       "description": "Reusable payment mean type",
       "enum": [
         "CREDIT_CARD",
+        "CURRENT_ACCOUNT",
+        "DEFERRED_PAYMENT_ACCOUNT",
         "ENTERPRISE",
         "INTERNAL_TRUSTED_ACCOUNT",
         "PAYPAL",
         "bankAccount",
         "creditCard",
+        "deferredPaymentAccount",
         "fidelityAccount",
         "ovhAccount",
         "paypal"
@@ -11678,6 +11917,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "datetime"
+        },
+        "destinationObject": {
+          "canBeNull": true,
+          "description": "Object destination of this credit movement",
+          "fullType": "billing.credit.balance.movement.SubObject",
+          "readOnly": true,
+          "required": false,
+          "type": "billing.credit.balance.movement.SubObject"
         },
         "expirationDate": {
           "canBeNull": true,
@@ -12318,6 +12565,7 @@ export const schema: Schema = {
       "enum": [
         "BANK_ACCOUNT",
         "CREDIT_CARD",
+        "CURRENT_ACCOUNT",
         "DEFERRED_PAYMENT_ACCOUNT",
         "ENTERPRISE",
         "INTERNAL_TRUSTED_ACCOUNT",
@@ -12371,13 +12619,15 @@ export const schema: Schema = {
       "properties": {
         "key": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "T",
+          "readOnly": true,
           "required": false,
           "type": "T"
         }
@@ -13265,18 +13515,23 @@ export const schema: Schema = {
         "CREDITCARD_MANUAL",
         "CREDIT_ACCOUNT_AUTOMATIC",
         "EDINAR_MANUAL",
+        "IDEAL_AUTOMATIC",
         "IDEAL_MANUAL",
+        "MULTIBANCO_AUTOMATIC",
         "MULTIBANCO_MANUAL",
         "ORDER",
         "PAYPAL_AUTOMATIC",
         "PAYPAL_MANUAL",
+        "PAYU_AUTOMATIC",
         "PAYU_MANUAL",
         "RECOVERY_TRANSFER_AUTOMATIC",
         "REFUND",
         "REFUND_CHECK",
         "REFUND_CREDITCARD",
         "REFUND_CREDIT_ACCOUNT",
+        "REFUND_IDEAL",
         "REFUND_LOSS",
+        "REFUND_MULTIBANCO",
         "REFUND_PAYPAL",
         "REFUND_PAYU",
         "REFUND_SEPA",
@@ -13287,7 +13542,10 @@ export const schema: Schema = {
         "UNPAID_CHECK",
         "UNPAID_CREDITCARD",
         "UNPAID_CREDIT_ACCOUNT",
+        "UNPAID_IDEAL",
+        "UNPAID_MULTIBANCO",
         "UNPAID_PAYPAL",
+        "UNPAID_PAYU",
         "UNPAID_SEPA",
         "UNPAID_WITHDRAW",
         "WARRANT_MANUAL",
@@ -13356,6 +13614,529 @@ export const schema: Schema = {
       "id": "TemplateOsHardwareRaidEnum",
       "namespace": "dedicated"
     },
+    "dedicated.TemplateOsInfoLicense": {
+      "description": "A structure describing some interesting facts about an OS template licensing",
+      "id": "TemplateOsInfoLicense",
+      "namespace": "dedicated",
+      "properties": {
+        "os": {
+          "canBeNull": true,
+          "description": "OS template license OS details",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.TemplateOsInfoLicenseItem"
+        },
+        "usage": {
+          "canBeNull": true,
+          "description": "OS template license usage details",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.TemplateOsInfoLicenseItem"
+        }
+      }
+    },
+    "dedicated.TemplateOsInfoLicenseItem": {
+      "description": "A structure describing some interesting facts about an OS template license item",
+      "id": "TemplateOsInfoLicenseItem",
+      "namespace": "dedicated",
+      "properties": {
+        "name": {
+          "canBeNull": true,
+          "description": "OS template license item names",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.TemplateOsInfoLicenseItemEnum[]"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "OS template license item url",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "dedicated.TemplateOsInfoLicenseItemEnum": {
+      "description": "Standard license name according to SPDX",
+      "enum": [
+        "0BSD",
+        "AAL",
+        "ADSL",
+        "AFL-1.1",
+        "AFL-1.2",
+        "AFL-2.0",
+        "AFL-2.1",
+        "AFL-3.0",
+        "AGPL-1.0-only",
+        "AGPL-1.0-or-later",
+        "AGPL-3.0-only",
+        "AGPL-3.0-or-later",
+        "AMDPLPA",
+        "AML",
+        "AMPAS",
+        "ANTLR-PD",
+        "ANTLR-PD-fallback",
+        "APAFML",
+        "APL-1.0",
+        "APSL-1.0",
+        "APSL-1.1",
+        "APSL-1.2",
+        "APSL-2.0",
+        "Abstyles",
+        "Adobe-2006",
+        "Adobe-Glyph",
+        "Afmparse",
+        "Aladdin",
+        "Apache-1.0",
+        "Apache-1.1",
+        "Apache-2.0",
+        "Artistic-1.0",
+        "Artistic-1.0-Perl",
+        "Artistic-1.0-cl8",
+        "Artistic-2.0",
+        "BSD-1-Clause",
+        "BSD-2-Clause",
+        "BSD-2-Clause-Patent",
+        "BSD-2-Clause-Views",
+        "BSD-3-Clause",
+        "BSD-3-Clause-Attribution",
+        "BSD-3-Clause-Clear",
+        "BSD-3-Clause-LBNL",
+        "BSD-3-Clause-Modification",
+        "BSD-3-Clause-No-Nuclear-License",
+        "BSD-3-Clause-No-Nuclear-License-2014",
+        "BSD-3-Clause-No-Nuclear-Warranty",
+        "BSD-3-Clause-Open-MPI",
+        "BSD-4-Clause",
+        "BSD-4-Clause-Shortened",
+        "BSD-4-Clause-UC",
+        "BSD-Protection",
+        "BSD-Source-Code",
+        "BSL-1.0",
+        "BUSL-1.1",
+        "Bahyph",
+        "Barr",
+        "Beerware",
+        "BitTorrent-1.0",
+        "BitTorrent-1.1",
+        "BlueOak-1.0.0",
+        "Borceux",
+        "C-UDA-1.0",
+        "CAL-1.0",
+        "CAL-1.0-Combined-Work-Exception",
+        "CATOSL-1.1",
+        "CC-BY-1.0",
+        "CC-BY-2.0",
+        "CC-BY-2.5",
+        "CC-BY-3.0",
+        "CC-BY-4.0",
+        "CC-BY-NC-1.0",
+        "CC-BY-NC-2.0",
+        "CC-BY-NC-2.5",
+        "CC-BY-NC-3.0",
+        "CC-BY-NC-4.0",
+        "CC-BY-NC-ND-1.0",
+        "CC-BY-NC-ND-2.0",
+        "CC-BY-NC-ND-2.5",
+        "CC-BY-NC-ND-3.0",
+        "CC-BY-NC-ND-4.0",
+        "CC-BY-NC-SA-1.0",
+        "CC-BY-NC-SA-2.0",
+        "CC-BY-NC-SA-2.5",
+        "CC-BY-NC-SA-3.0",
+        "CC-BY-NC-SA-4.0",
+        "CC-BY-ND-1.0",
+        "CC-BY-ND-2.0",
+        "CC-BY-ND-2.5",
+        "CC-BY-ND-3.0",
+        "CC-BY-ND-4.0",
+        "CC-BY-SA-1.0",
+        "CC-BY-SA-2.0",
+        "CC-BY-SA-2.5",
+        "CC-BY-SA-3.0",
+        "CC-BY-SA-4.0",
+        "CC-PDDC",
+        "CC0-1.0",
+        "CDDL-1.0",
+        "CDDL-1.1",
+        "CDLA-Permissive-1.0",
+        "CDLA-Sharing-1.0",
+        "CECILL-1.0",
+        "CECILL-1.1",
+        "CECILL-2.0",
+        "CECILL-2.1",
+        "CECILL-B",
+        "CECILL-C",
+        "CERN-OHL-1.1",
+        "CERN-OHL-1.2",
+        "CERN-OHL-P-2.0",
+        "CERN-OHL-S-2.0",
+        "CERN-OHL-W-2.0",
+        "CNRI-Jython",
+        "CNRI-Python",
+        "CNRI-Python-GPL-Compatible",
+        "CPAL-1.0",
+        "CPL-1.0",
+        "CPOL-1.02",
+        "CUA-OPL-1.0",
+        "Caldera",
+        "ClArtistic",
+        "Condor-1.1",
+        "Crossword",
+        "CrystalStacker",
+        "Cube",
+        "D-FSL-1.0",
+        "DFSG",
+        "DOC",
+        "DRL-1.0",
+        "DSDP",
+        "Dotseqn",
+        "ECL-1.0",
+        "ECL-2.0",
+        "EFL-1.0",
+        "EFL-2.0",
+        "EPICS",
+        "EPL-1.0",
+        "EPL-2.0",
+        "EUDatagrid",
+        "EUPL-1.0",
+        "EUPL-1.1",
+        "EUPL-1.2",
+        "Entessa",
+        "ErlPL-1.1",
+        "Eurosym",
+        "FSFAP",
+        "FSFUL",
+        "FSFULLR",
+        "FTL",
+        "Fair",
+        "Frameworx-1.0",
+        "FreeBSD-DOC",
+        "FreeImage",
+        "GD",
+        "GFDL-1.1-invariants-only",
+        "GFDL-1.1-invariants-or-later",
+        "GFDL-1.1-no-invariants-only",
+        "GFDL-1.1-no-invariants-or-later",
+        "GFDL-1.1-only",
+        "GFDL-1.1-or-later",
+        "GFDL-1.2-invariants-only",
+        "GFDL-1.2-invariants-or-later",
+        "GFDL-1.2-no-invariants-only",
+        "GFDL-1.2-no-invariants-or-later",
+        "GFDL-1.2-only",
+        "GFDL-1.2-or-later",
+        "GFDL-1.3-invariants-only",
+        "GFDL-1.3-invariants-or-later",
+        "GFDL-1.3-no-invariants-only",
+        "GFDL-1.3-no-invariants-or-later",
+        "GFDL-1.3-only",
+        "GFDL-1.3-or-later",
+        "GL2PS",
+        "GLWTPL",
+        "GPL-1.0-only",
+        "GPL-1.0-or-later",
+        "GPL-2.0-only",
+        "GPL-2.0-or-later",
+        "GPL-3.0-only",
+        "GPL-3.0-or-later",
+        "Giftware",
+        "Glide",
+        "Glulxe",
+        "HPND",
+        "HPND-sell-variant",
+        "HTMLTIDY",
+        "HaskellReport",
+        "Hippocratic-2.1",
+        "IBM-pibs",
+        "ICU",
+        "IJG",
+        "IPA",
+        "IPL-1.0",
+        "ISC",
+        "ImageMagick",
+        "Imlib2",
+        "Info-ZIP",
+        "Intel",
+        "Intel-ACPI",
+        "Interbase-1.0",
+        "JPNIC",
+        "JSON",
+        "JasPer-2.0",
+        "LAL-1.2",
+        "LAL-1.3",
+        "LGPL-2.0-only",
+        "LGPL-2.0-or-later",
+        "LGPL-2.1-only",
+        "LGPL-2.1-or-later",
+        "LGPL-3.0-only",
+        "LGPL-3.0-or-later",
+        "LGPLLR",
+        "LPL-1.0",
+        "LPL-1.02",
+        "LPPL-1.0",
+        "LPPL-1.1",
+        "LPPL-1.2",
+        "LPPL-1.3a",
+        "LPPL-1.3c",
+        "Latex2e",
+        "Leptonica",
+        "LiLiQ-P-1.1",
+        "LiLiQ-R-1.1",
+        "LiLiQ-Rplus-1.1",
+        "Libpng",
+        "Linux-OpenIB",
+        "MIT",
+        "MIT-0",
+        "MIT-CMU",
+        "MIT-Modern-Variant",
+        "MIT-advertising",
+        "MIT-enna",
+        "MIT-feh",
+        "MIT-open-group",
+        "MITNFA",
+        "MPL-1.0",
+        "MPL-1.1",
+        "MPL-2.0",
+        "MPL-2.0-no-copyleft-exception",
+        "MS-PL",
+        "MS-RL",
+        "MTLL",
+        "MakeIndex",
+        "MirOS",
+        "Motosoto",
+        "MulanPSL-1.0",
+        "MulanPSL-2.0",
+        "Multics",
+        "Mup",
+        "NAIST-2003",
+        "NASA-1.3",
+        "NBPL-1.0",
+        "NCGL-UK-2.0",
+        "NCSA",
+        "NGPL",
+        "NIST-PD",
+        "NIST-PD-fallback",
+        "NLOD-1.0",
+        "NLPL",
+        "NOSL",
+        "NPL-1.0",
+        "NPL-1.1",
+        "NPOSL-3.0",
+        "NRL",
+        "NTP",
+        "NTP-0",
+        "Naumen",
+        "Net-SNMP",
+        "NetCDF",
+        "Newsletr",
+        "Nokia",
+        "Noweb",
+        "O-UDA-1.0",
+        "OCCT-PL",
+        "OCLC-2.0",
+        "ODC-By-1.0",
+        "ODbL-1.0",
+        "OFL-1.0",
+        "OFL-1.0-RFN",
+        "OFL-1.0-no-RFN",
+        "OFL-1.1",
+        "OFL-1.1-RFN",
+        "OFL-1.1-no-RFN",
+        "OGC-1.0",
+        "OGDL-Taiwan-1.0",
+        "OGL-Canada-2.0",
+        "OGL-UK-1.0",
+        "OGL-UK-2.0",
+        "OGL-UK-3.0",
+        "OGTSL",
+        "OLDAP-1.1",
+        "OLDAP-1.2",
+        "OLDAP-1.3",
+        "OLDAP-1.4",
+        "OLDAP-2.0",
+        "OLDAP-2.0.1",
+        "OLDAP-2.1",
+        "OLDAP-2.2",
+        "OLDAP-2.2.1",
+        "OLDAP-2.2.2",
+        "OLDAP-2.3",
+        "OLDAP-2.4",
+        "OLDAP-2.5",
+        "OLDAP-2.6",
+        "OLDAP-2.7",
+        "OLDAP-2.8",
+        "OML",
+        "OPL-1.0",
+        "OSET-PL-2.1",
+        "OSL-1.0",
+        "OSL-1.1",
+        "OSL-2.0",
+        "OSL-2.1",
+        "OSL-3.0",
+        "OpenSSL",
+        "PDDL-1.0",
+        "PHP-3.0",
+        "PHP-3.01",
+        "PSF-2.0",
+        "Parity-6.0.0",
+        "Parity-7.0.0",
+        "Plexus",
+        "PolyForm-Noncommercial-1.0.0",
+        "PolyForm-Small-Business-1.0.0",
+        "PostgreSQL",
+        "Python-2.0",
+        "QPL-1.0",
+        "Qhull",
+        "RHeCos-1.1",
+        "RPL-1.1",
+        "RPL-1.5",
+        "RPSL-1.0",
+        "RSA-MD",
+        "RSCPL",
+        "Rdisc",
+        "Ruby",
+        "SAX-PD",
+        "SCEA",
+        "SGI-B-1.0",
+        "SGI-B-1.1",
+        "SGI-B-2.0",
+        "SHL-0.5",
+        "SHL-0.51",
+        "SISSL",
+        "SISSL-1.2",
+        "SMLNJ",
+        "SMPPL",
+        "SNIA",
+        "SPL-1.0",
+        "SSH-OpenSSH",
+        "SSH-short",
+        "SSPL-1.0",
+        "SWL",
+        "Saxpath",
+        "Sendmail",
+        "Sendmail-8.23",
+        "SimPL-2.0",
+        "Sleepycat",
+        "Spencer-86",
+        "Spencer-94",
+        "Spencer-99",
+        "SugarCRM-1.1.3",
+        "TAPR-OHL-1.0",
+        "TCL",
+        "TCP-wrappers",
+        "TMate",
+        "TORQUE-1.1",
+        "TOSL",
+        "TU-Berlin-1.0",
+        "TU-Berlin-2.0",
+        "UCL-1.0",
+        "UPL-1.0",
+        "Unicode-DFS-2015",
+        "Unicode-DFS-2016",
+        "Unicode-TOU",
+        "Unlicense",
+        "VOSTROM",
+        "VSL-1.0",
+        "Vim",
+        "W3C",
+        "W3C-19980720",
+        "W3C-20150513",
+        "WTFPL",
+        "Watcom-1.0",
+        "Wsuipa",
+        "X11",
+        "XFree86-1.1",
+        "XSkat",
+        "Xerox",
+        "Xnet",
+        "ZPL-1.1",
+        "ZPL-2.0",
+        "ZPL-2.1",
+        "Zed",
+        "Zend-2.0",
+        "Zimbra-1.3",
+        "Zimbra-1.4",
+        "Zlib",
+        "blessing",
+        "bzip2-1.0.5",
+        "bzip2-1.0.6",
+        "copyleft-next-0.3.0",
+        "copyleft-next-0.3.1",
+        "curl",
+        "diffmark",
+        "dvipdfm",
+        "eGenix",
+        "etalab-2.0",
+        "freeware",
+        "gSOAP-1.3b",
+        "gnuplot",
+        "iMatix",
+        "libpng-2.0",
+        "libselinux-1.0",
+        "libtiff",
+        "mpich2",
+        "proprietary",
+        "psfrag",
+        "psutils",
+        "unknown",
+        "xinetd",
+        "xpp",
+        "zlib-acknowledgement"
+      ],
+      "enumType": "string",
+      "id": "TemplateOsInfoLicenseItemEnum",
+      "namespace": "dedicated"
+    },
+    "dedicated.TemplateOsInfoProject": {
+      "description": "A structure describing some interesting facts about an OS template project",
+      "id": "TemplateOsInfoProject",
+      "namespace": "dedicated",
+      "properties": {
+        "os": {
+          "canBeNull": true,
+          "description": "OS template project OS details",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.TemplateOsInfoProjectItem"
+        },
+        "usage": {
+          "canBeNull": true,
+          "description": "OS template project usage details",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.TemplateOsInfoProjectItem"
+        }
+      }
+    },
+    "dedicated.TemplateOsInfoProjectItem": {
+      "description": "A structure describing some interesting facts about an OS template project item",
+      "id": "TemplateOsInfoProjectItem",
+      "namespace": "dedicated",
+      "properties": {
+        "governance": {
+          "canBeNull": true,
+          "description": "OS template project item governance",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "releaseNotes": {
+          "canBeNull": true,
+          "description": "OS template project item release notes",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "OS template project item url",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "dedicated.TemplateOsLanguageEnum": {
       "description": "all language available",
       "enum": [
@@ -13405,13 +14186,6 @@ export const schema: Schema = {
       "id": "TemplateOsProperties",
       "namespace": "dedicated",
       "properties": {
-        "changeLog": {
-          "canBeNull": true,
-          "description": "Template change log details",
-          "readOnly": false,
-          "required": false,
-          "type": "text"
-        },
         "customHostname": {
           "canBeNull": true,
           "description": "Set up the server using the provided hostname instead of the default hostname",
@@ -13433,12 +14207,6 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
-        "rating": {
-          "canBeNull": true,
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
         "sshKeyName": {
           "canBeNull": true,
           "description": "Name of the ssh key that should be installed. Password login will be disabled",
@@ -13455,12 +14223,52 @@ export const schema: Schema = {
         }
       }
     },
+    "dedicated.TemplateOsSubfamilyEnum": {
+      "description": "Os subfamily definition",
+      "enum": [
+        "aos",
+        "arch",
+        "centos",
+        "cloudlinux",
+        "coreos",
+        "debian",
+        "dgx",
+        "esxi",
+        "fedora",
+        "freebsd",
+        "gentoo",
+        "hyperv",
+        "omnios",
+        "openio",
+        "openmediavault",
+        "opensuse",
+        "ovh",
+        "pcs",
+        "power",
+        "proxmox",
+        "rhel",
+        "slackware",
+        "smartos",
+        "solusvm",
+        "suse",
+        "ubuntu",
+        "windows-server-core",
+        "windows-server-desktop-exp",
+        "xcp",
+        "xen"
+      ],
+      "enumType": "string",
+      "id": "TemplateOsSubfamilyEnum",
+      "namespace": "dedicated"
+    },
     "dedicated.TemplateOsTypeEnum": {
       "description": "Os type",
       "enum": [
         "bsd",
+        "ibm",
         "linux",
         "solaris",
+        "unix",
         "windows"
       ],
       "enumType": "string",
@@ -13472,10 +14280,13 @@ export const schema: Schema = {
       "enum": [
         "basic",
         "customer",
+        "database",
         "hosting",
+        "management",
         "other",
         "readyToUse",
-        "virtualisation"
+        "virtualisation",
+        "virtualization"
       ],
       "enumType": "string",
       "id": "TemplateOsUsageEnum",
@@ -13505,17 +14316,9 @@ export const schema: Schema = {
           "required": false,
           "type": "dedicated.TemplateOsLanguageEnum[]"
         },
-        "beta": {
-          "canBeNull": true,
-          "description": "This distribution is new, and although tested and functional, may still display odd behaviour",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
         "bitFormat": {
           "canBeNull": false,
-          "description": "this template  bit format",
+          "description": "this template bit format",
           "fullType": "dedicated.server.BitFormatEnum",
           "readOnly": true,
           "required": false,
@@ -13545,14 +14348,6 @@ export const schema: Schema = {
           "required": false,
           "type": "dedicated.TemplateOsLanguageEnum"
         },
-        "deprecated": {
-          "canBeNull": true,
-          "description": "is this distribution deprecated",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
         "description": {
           "canBeNull": false,
           "description": "information about this template",
@@ -13579,7 +14374,7 @@ export const schema: Schema = {
         },
         "filesystems": {
           "canBeNull": false,
-          "description": "list of all filesystems  available for this template",
+          "description": "list of all filesystems available for this template",
           "fullType": "dedicated.TemplateOsFileSystemEnum[]",
           "readOnly": true,
           "required": false,
@@ -13601,6 +14396,14 @@ export const schema: Schema = {
           "required": false,
           "type": "datetime"
         },
+        "license": {
+          "canBeNull": true,
+          "description": "This distribution licensing details",
+          "fullType": "dedicated.TemplateOsInfoLicense",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.TemplateOsInfoLicense"
+        },
         "lvmReady": {
           "canBeNull": true,
           "description": "This distribution supports Logical Volumes (Linux LVM)",
@@ -13608,6 +14411,30 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
+        },
+        "noPartitioning": {
+          "canBeNull": false,
+          "description": "Partitioning customization is not available for this OS template",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "project": {
+          "canBeNull": true,
+          "description": "This distribution project details",
+          "fullType": "dedicated.TemplateOsInfoProject",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.TemplateOsInfoProject"
+        },
+        "subfamily": {
+          "canBeNull": false,
+          "description": "this template subfamily type",
+          "fullType": "dedicated.TemplateOsSubfamilyEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.TemplateOsSubfamilyEnum"
         },
         "supportsDistributionKernel": {
           "canBeNull": true,
@@ -13841,6 +14668,7 @@ export const schema: Schema = {
         "DnssecResigning",
         "DnssecRollKsk",
         "DnssecRollZsk",
+        "DomainAfterMarket",
         "DomainContactControl",
         "DomainContactUpdate",
         "DomainControl",
@@ -13848,6 +14676,8 @@ export const schema: Schema = {
         "DomainDelete",
         "DomainDnsUpdate",
         "DomainDsUpdate",
+        "DomainEmailRedirectionsCreate",
+        "DomainEmailRedirectionsDelete",
         "DomainHold",
         "DomainHostCreate",
         "DomainHostDelete",
@@ -13855,9 +14685,13 @@ export const schema: Schema = {
         "DomainIncomingTransfer",
         "DomainLock",
         "DomainOutgoingTransfer",
+        "DomainRegistryDelete",
         "DomainRenew",
+        "DomainResourceDelete",
         "DomainRestore",
         "DomainTrade",
+        "DomainUnhold",
+        "DomainUnlock",
         "ZoneImport"
       ],
       "enumType": "string",
@@ -14066,6 +14900,87 @@ export const schema: Schema = {
       "id": "LevelTypeEnum",
       "namespace": "me.SupportLevel"
     },
+    "me.abuse.Abuse": {
+      "description": "Get report API response",
+      "id": "Abuse",
+      "namespace": "me.abuse",
+      "properties": {
+        "category": {
+          "canBeNull": false,
+          "description": "Abuse category",
+          "fullType": "me.abuse.AbuseCategoryEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.abuse.AbuseCategoryEnum"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of the abuse",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "publicId": {
+          "canBeNull": false,
+          "description": "Public ID of the abuse case",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "service": {
+          "canBeNull": false,
+          "description": "Service where is hosted the abuse",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Abuse case status",
+          "fullType": "me.abuse.AbuseStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.abuse.AbuseStatusEnum"
+        }
+      }
+    },
+    "me.abuse.AbuseCategoryEnum": {
+      "description": "The abuse categories",
+      "enum": [
+        "Compromised",
+        "Copyright",
+        "Illegal",
+        "Intrusion",
+        "Malware",
+        "Network Attack",
+        "Other",
+        "Phishing",
+        "Spam"
+      ],
+      "enumType": "string",
+      "id": "AbuseCategoryEnum",
+      "namespace": "me.abuse"
+    },
+    "me.abuse.AbuseStatusEnum": {
+      "description": "The abuse status",
+      "enum": [
+        "Answered",
+        "Claimed",
+        "Closed",
+        "Escalated",
+        "Open",
+        "Paused",
+        "Reopened",
+        "Updated",
+        "WaitingAnswer"
+      ],
+      "enumType": "string",
+      "id": "AbuseStatusEnum",
+      "namespace": "me.abuse"
+    },
     "me.agreements.AgreementStatusEnum": {
       "description": "State of the agreement",
       "enum": [
@@ -14207,6 +15122,189 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "long"
+        }
+      }
+    },
+    "me.billing.purchaseOrder.Creation": {
+      "description": "Purchase order creation payload",
+      "id": "Creation",
+      "namespace": "me.billing.purchaseOrder",
+      "properties": {
+        "billingGroupId": {
+          "canBeNull": true,
+          "description": "Billing Group identifier",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "End date",
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
+        },
+        "reference": {
+          "canBeNull": false,
+          "description": "Reference",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Start date",
+          "fullType": "date",
+          "readOnly": false,
+          "required": true,
+          "type": "date"
+        }
+      }
+    },
+    "me.billing.purchaseOrder.PurchaseOrder": {
+      "description": "Purchase Order",
+      "id": "PurchaseOrder",
+      "namespace": "me.billing.purchaseOrder",
+      "properties": {
+        "billingGroupId": {
+          "canBeNull": true,
+          "description": "Billing Group identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "End date",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Purchase Order identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "reference": {
+          "canBeNull": false,
+          "description": "Reference",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Start date",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status",
+          "fullType": "me.billing.purchaseOrder.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.billing.purchaseOrder.StatusEnum"
+        }
+      }
+    },
+    "me.billing.purchaseOrder.StatusEnum": {
+      "description": "Status of the Purchase Order",
+      "enum": [
+        "CREATED",
+        "DELETED"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "me.billing.purchaseOrder"
+    },
+    "me.billing.purchaseOrder.Update": {
+      "description": "Purchase order update payload",
+      "id": "Update",
+      "namespace": "me.billing.purchaseOrder",
+      "properties": {
+        "billingGroupId": {
+          "canBeNull": true,
+          "description": "Billing group identifier",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "End date",
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
+        },
+        "reference": {
+          "canBeNull": true,
+          "description": "Reference",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "startDate": {
+          "canBeNull": true,
+          "description": "Start date",
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
         }
       }
     },
@@ -14808,6 +15906,14 @@ export const schema: Schema = {
           "required": false,
           "type": "datetime"
         },
+        "destinationObject": {
+          "canBeNull": true,
+          "description": "Object destination of this credit movement",
+          "fullType": "me.credit.balance.movement.SubObject",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.movement.SubObject"
+        },
         "expirationDate": {
           "canBeNull": true,
           "description": "Movement expiration date",
@@ -14898,6 +16004,7 @@ export const schema: Schema = {
       "enum": [
         "BONUS",
         "CANCEL",
+        "CREDIT_NOTE",
         "EXPIRE",
         "GIFT",
         "MANUAL",
@@ -14931,6 +16038,215 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
+        }
+      }
+    },
+    "me.incident.MigrateServices": {
+      "description": "Original service that can be migrated",
+      "id": "MigrateServices",
+      "namespace": "me.incident",
+      "properties": {
+        "dryRun": {
+          "canBeNull": false,
+          "description": "If false, the order will be registered; if true, the order will be returned but not registered. Useful to compute prices",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "serviceIds": {
+          "canBeNull": false,
+          "description": "IDs of the services to migrate",
+          "fullType": "long[]",
+          "readOnly": false,
+          "required": false,
+          "type": "long[]"
+        }
+      }
+    },
+    "me.incident.Order": {
+      "description": "Order created in order to migrate a service",
+      "id": "Order",
+      "namespace": "me.incident",
+      "properties": {
+        "order": {
+          "canBeNull": false,
+          "description": "Order created in order to migrate a service",
+          "fullType": "order.Order",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Order"
+        }
+      }
+    },
+    "me.incident.PercentagePromotion": {
+      "description": "Commercial gesture applied for the service migration",
+      "id": "PercentagePromotion",
+      "namespace": "me.incident",
+      "properties": {
+        "duration": {
+          "canBeNull": false,
+          "description": "Duration applied for the commercial gesture",
+          "fullType": "duration",
+          "readOnly": true,
+          "required": false,
+          "type": "duration"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Percentage of the discount",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "me.incident.ProposedOffer": {
+      "description": "Commercial offer a customer can migrate his service to",
+      "id": "ProposedOffer",
+      "namespace": "me.incident",
+      "properties": {
+        "configurations": {
+          "canBeNull": false,
+          "description": "List of configurations used for the migration",
+          "fullType": "me.incident.ProposedOfferConfiguration[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.incident.ProposedOfferConfiguration[]"
+        },
+        "plan": {
+          "canBeNull": false,
+          "description": "Proposed commercial offer",
+          "fullType": "order.cart.GenericProductDefinition",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductDefinition"
+        },
+        "pricingMode": {
+          "canBeNull": false,
+          "description": "Pricing mode used to bill the offer",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "promotion": {
+          "canBeNull": false,
+          "description": "Promotion applied to the commercial offer",
+          "fullType": "me.incident.PercentagePromotion",
+          "readOnly": true,
+          "required": false,
+          "type": "me.incident.PercentagePromotion"
+        }
+      }
+    },
+    "me.incident.ProposedOfferConfiguration": {
+      "description": "Config",
+      "id": "ProposedOfferConfiguration",
+      "namespace": "me.incident",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "me.incident.ServiceMigration": {
+      "description": "Service you may migrate to a given offer",
+      "id": "ServiceMigration",
+      "namespace": "me.incident",
+      "properties": {
+        "addons": {
+          "canBeNull": false,
+          "description": "Options to migrate linked to the original service",
+          "fullType": "me.incident.ServiceMigration[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.incident.ServiceMigration[]"
+        },
+        "orderId": {
+          "canBeNull": true,
+          "description": "ID of an ongoing migration order",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "proposedOffer": {
+          "canBeNull": false,
+          "description": "Proposed commercial offer to replace the service",
+          "fullType": "me.incident.ProposedOffer",
+          "readOnly": true,
+          "required": false,
+          "type": "me.incident.ProposedOffer"
+        },
+        "serviceToMigrate": {
+          "canBeNull": true,
+          "description": "Description of the service to migrate",
+          "fullType": "me.incident.ServiceToMigrate",
+          "readOnly": true,
+          "required": false,
+          "type": "me.incident.ServiceToMigrate"
+        }
+      }
+    },
+    "me.incident.ServiceToMigrate": {
+      "description": "Original service that can be migrated",
+      "id": "ServiceToMigrate",
+      "namespace": "me.incident",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the offer of the service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "metadata": {
+          "canBeNull": false,
+          "description": "Additional information on the service",
+          "fullType": "complexType.SafeKeyValue<string>[]",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.SafeKeyValue<string>[]"
+        },
+        "route": {
+          "canBeNull": true,
+          "description": "Route",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": "ID of the migratable service",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Name of the migratable service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -15318,8 +16634,10 @@ export const schema: Schema = {
       "description": "Register integration type enum",
       "enum": [
         "NONE",
+        "COMPONENT",
         "IFRAME_VANTIV",
         "IN_CONTEXT",
+        "POST_FORM",
         "REDIRECT"
       ],
       "enumType": "string",
@@ -15521,6 +16839,14 @@ export const schema: Schema = {
           "required": false,
           "type": "payment.method.IntegrationType"
         },
+        "merchantId": {
+          "canBeNull": true,
+          "description": "Payment method merchant ID",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "oneshot": {
           "canBeNull": false,
           "description": "Payment method type is possible to pay in oneshot mode ?",
@@ -15528,6 +16854,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "boolean"
+        },
+        "paymentSubType": {
+          "canBeNull": true,
+          "description": "Payment method sub-type",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "paymentType": {
           "canBeNull": false,
@@ -15646,6 +16980,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "formData": {
+          "canBeNull": true,
+          "description": "Additional payment information",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "orderId": {
           "canBeNull": true,
           "description": "Order ID to pay it if it's possible (in oneshot transaction or while registration)",
@@ -15677,6 +17019,29 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "boolean"
+        }
+      }
+    },
+    "me.payment.method.Details": {
+      "description": "Add details to one payment method challenge",
+      "id": "Details",
+      "namespace": "me.payment.method",
+      "properties": {
+        "details": {
+          "canBeNull": false,
+          "description": "Details data",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "transactionId": {
+          "canBeNull": false,
+          "description": "Transaction ID",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
@@ -15907,6 +17272,14 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "transactionId": {
+          "canBeNull": false,
+          "description": "Linked transaction ID",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
         "url": {
           "canBeNull": true,
           "description": "Register validation URL",
@@ -16053,6 +17426,14 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "transactionId": {
+          "canBeNull": true,
+          "description": "Registered new transaction ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "url": {
           "canBeNull": true,
           "description": "Registration validation URL to redirect",
@@ -16096,6 +17477,228 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "TypeEnum",
       "namespace": "me.payment.transaction"
+    },
+    "me.paymentMean.BankAccount": {
+      "description": "Credit card informations",
+      "id": "BankAccount",
+      "namespace": "me.paymentMean",
+      "properties": {
+        "bic": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "defaultPaymentMean": {
+          "canBeNull": false,
+          "description": "This credit card is the default payment mean?",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Custom description of this bank account",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "iban": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "icon": {
+          "canBeNull": true,
+          "description": "Payment method type icon",
+          "fullType": "me.paymentMean.IconData",
+          "readOnly": true,
+          "required": false,
+          "type": "me.paymentMean.IconData"
+        },
+        "id": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "mandateSignatureDate": {
+          "canBeNull": true,
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "ownerAddress": {
+          "canBeNull": false,
+          "description": "Bank account owner's address",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "ownerName": {
+          "canBeNull": false,
+          "description": "Bank account owner's name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Bank account state",
+          "fullType": "me.paymentMean.BankAccountStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.paymentMean.BankAccountStateEnum"
+        },
+        "uniqueReference": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "validationDocumentLink": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "me.paymentMean.BankAccountChallengeCreation": {
+      "description": "Missing description",
+      "id": "BankAccountChallengeCreation",
+      "namespace": "me.paymentMean",
+      "properties": {
+        "challenge": {
+          "canBeNull": false,
+          "description": "Payload to answer the challenge",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "me.paymentMean.BankAccountCreation": {
+      "description": "Missing description",
+      "id": "BankAccountCreation",
+      "namespace": "me.paymentMean",
+      "properties": {
+        "bic": {
+          "canBeNull": false,
+          "description": "Bank account BIC",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Custom description of this account",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "iban": {
+          "canBeNull": false,
+          "description": "Bank account IBAN",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "ownerAddress": {
+          "canBeNull": false,
+          "description": "Bank account owner's address",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "ownerName": {
+          "canBeNull": false,
+          "description": "Bank account owner's name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "setDefault": {
+          "canBeNull": true,
+          "description": "Set as default payment mean once validated",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "me.paymentMean.BankAccountStateEnum": {
+      "description": "State of your bank account",
+      "enum": [
+        "blockedForIncidents",
+        "pendingValidation",
+        "valid"
+      ],
+      "enumType": "string",
+      "id": "BankAccountStateEnum",
+      "namespace": "me.paymentMean"
+    },
+    "me.paymentMean.BankAccountValidation": {
+      "description": "A validation required to add a payment mean bank account",
+      "id": "BankAccountValidation",
+      "namespace": "me.paymentMean",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "submitUrl": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "URL where redirect for registration process",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "validationType": {
+          "canBeNull": false,
+          "description": "Kind of registration validation",
+          "fullType": "me.paymentMean.ValidationTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.paymentMean.ValidationTypeEnum"
+        }
+      }
     },
     "me.paymentMean.CreditCard": {
       "description": "Credit card informations",
@@ -16221,7 +17824,7 @@ export const schema: Schema = {
       }
     },
     "me.paymentMean.CreditCardStateEnum": {
-      "description": "State of you credit card",
+      "description": "State of your credit card",
       "enum": [
         "expired",
         "tooManyFailures",
@@ -16268,6 +17871,78 @@ export const schema: Schema = {
         }
       }
     },
+    "me.paymentMean.Deferred": {
+      "description": "Deferred account informations",
+      "id": "Deferred",
+      "namespace": "me.paymentMean",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of this deferred account",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "defaultPaymentMean": {
+          "canBeNull": false,
+          "description": "This deferred account is the default payment mean?",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Custom description of this deferred account",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "icon": {
+          "canBeNull": true,
+          "description": "Payment method type icon",
+          "fullType": "me.paymentMean.IconData",
+          "readOnly": true,
+          "required": false,
+          "type": "me.paymentMean.IconData"
+        },
+        "id": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "label": {
+          "canBeNull": true,
+          "description": "Deferred account type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Deferred account state",
+          "fullType": "me.paymentMean.DeferredStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.paymentMean.DeferredStateEnum"
+        }
+      }
+    },
+    "me.paymentMean.DeferredStateEnum": {
+      "description": "State of you deferred account",
+      "enum": [
+        "failed",
+        "valid"
+      ],
+      "enumType": "string",
+      "id": "DeferredStateEnum",
+      "namespace": "me.paymentMean"
+    },
     "me.paymentMean.IconData": {
       "description": "Payment mean type icon",
       "id": "IconData",
@@ -16296,6 +17971,170 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "me.paymentMean.Paypal": {
+      "description": "Paypal informations",
+      "id": "Paypal",
+      "namespace": "me.paymentMean",
+      "properties": {
+        "agreementId": {
+          "canBeNull": false,
+          "description": "Paypal agreement",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Paypal creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "defaultPaymentMean": {
+          "canBeNull": false,
+          "description": "This paypal is the default payment mean?",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Custom description of this paypal",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "email": {
+          "canBeNull": false,
+          "description": "Paypal associated email",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "icon": {
+          "canBeNull": true,
+          "description": "Payment method type icon",
+          "fullType": "me.paymentMean.IconData",
+          "readOnly": true,
+          "required": false,
+          "type": "me.paymentMean.IconData"
+        },
+        "id": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Paypal state",
+          "fullType": "me.paymentMean.PaypalStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.paymentMean.PaypalStateEnum"
+        }
+      }
+    },
+    "me.paymentMean.PaypalChallengeCreation": {
+      "description": "Missing description",
+      "id": "PaypalChallengeCreation",
+      "namespace": "me.paymentMean",
+      "properties": {
+        "challenge": {
+          "canBeNull": false,
+          "description": "Payload to answer the challenge",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "me.paymentMean.PaypalCreation": {
+      "description": "Missing description",
+      "id": "PaypalCreation",
+      "namespace": "me.paymentMean",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "Custom description of this account",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "returnUrl": {
+          "canBeNull": true,
+          "description": "Callback URL where the customer will be redirected to after validation",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "setDefault": {
+          "canBeNull": true,
+          "description": "Set as default payment mean once validated",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "me.paymentMean.PaypalStateEnum": {
+      "description": "State of you paypal",
+      "enum": [
+        "failing",
+        "tooManyFailures",
+        "valid"
+      ],
+      "enumType": "string",
+      "id": "PaypalStateEnum",
+      "namespace": "me.paymentMean"
+    },
+    "me.paymentMean.PaypalValidation": {
+      "description": "A validation required to add a payment mean paypal",
+      "id": "PaypalValidation",
+      "namespace": "me.paymentMean",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "submitUrl": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "URL where redirect for registration process",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "validationType": {
+          "canBeNull": false,
+          "description": "Kind of registration validation",
+          "fullType": "me.paymentMean.ValidationTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.paymentMean.ValidationTypeEnum"
         }
       }
     },
@@ -16363,6 +18202,7 @@ export const schema: Schema = {
         "CREATING",
         "DELETED",
         "DELETING",
+        "ERROR",
         "MODERATING",
         "REFUSED",
         "REFUSING",
@@ -18817,6 +20657,37 @@ export const schema: Schema = {
         }
       }
     },
+    "order.Contract": {
+      "description": "A contract",
+      "id": "Contract",
+      "namespace": "order",
+      "properties": {
+        "content": {
+          "canBeNull": false,
+          "description": "Terms of the contract",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the contract",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "URL to download the contract",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "order.CurrencyCodeEnum": {
       "description": "Currency code",
       "enum": [
@@ -18838,6 +20709,140 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "CurrencyCodeEnum",
       "namespace": "order"
+    },
+    "order.Order": {
+      "description": "An order",
+      "id": "Order",
+      "namespace": "order",
+      "properties": {
+        "contracts": {
+          "canBeNull": false,
+          "description": "List of contracts related to the order",
+          "fullType": "order.Contract[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Contract[]"
+        },
+        "details": {
+          "canBeNull": false,
+          "description": "Details of the order",
+          "fullType": "order.OrderDetail[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.OrderDetail[]"
+        },
+        "orderId": {
+          "canBeNull": true,
+          "description": "Identifier of the order",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "prices": {
+          "canBeNull": false,
+          "description": "Prices of the order including with and without taxes",
+          "fullType": "order.OrderPrices",
+          "readOnly": true,
+          "required": false,
+          "type": "order.OrderPrices"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "URL to download the order",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.OrderDetail": {
+      "description": "Detail of an order",
+      "id": "OrderDetail",
+      "namespace": "order",
+      "properties": {
+        "cartItemID": {
+          "canBeNull": true,
+          "description": "Cart Item ID the details is related to",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the detail",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "detailType": {
+          "canBeNull": true,
+          "description": "Type of detail",
+          "fullType": "order.OrderDetailTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.OrderDetailTypeEnum"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "originalTotalPrice": {
+          "canBeNull": false,
+          "description": "Original price of the detail before reduction application",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Quantity of the service",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "reductionTotalPrice": {
+          "canBeNull": false,
+          "description": "Total price of the reduction",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "reductions": {
+          "canBeNull": false,
+          "description": "List of reductions applied to the detail",
+          "fullType": "order.Reduction[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Reduction[]"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Price total of the services",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "unitPrice": {
+          "canBeNull": false,
+          "description": "Unitary price of the service",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
     },
     "order.OrderDetailTypeEnum": {
       "description": "Product type of item in order",
@@ -18866,6 +20871,53 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "OrderDetailTypeEnum",
       "namespace": "order"
+    },
+    "order.OrderPrices": {
+      "description": "Prices of an order",
+      "id": "OrderPrices",
+      "namespace": "order",
+      "properties": {
+        "originalWithoutTax": {
+          "canBeNull": true,
+          "description": "Price before reduction application",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "reduction": {
+          "canBeNull": true,
+          "description": "Price concerning the reduced amount",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "tax": {
+          "canBeNull": false,
+          "description": "Tax amount",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "withTax": {
+          "canBeNull": false,
+          "description": "Price with tax",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "withoutTax": {
+          "canBeNull": false,
+          "description": "Price without tax",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
     },
     "order.Price": {
       "description": "Price with its currency and textual representation",
@@ -18897,6 +20949,248 @@ export const schema: Schema = {
           "type": "double"
         }
       }
+    },
+    "order.Reduction": {
+      "description": "Order detail reduction",
+      "id": "Reduction",
+      "namespace": "order",
+      "properties": {
+        "context": {
+          "canBeNull": false,
+          "description": "In which context the reduction is applied",
+          "fullType": "order.ReductionContextEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.ReductionContextEnum"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Reduction price applied with this promotion",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Reduction effect, price modification",
+          "fullType": "order.ReductionTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.ReductionTypeEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "The reduction value",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
+    },
+    "order.ReductionContextEnum": {
+      "description": "Context of the reduction",
+      "enum": [
+        "promotion",
+        "voucher"
+      ],
+      "enumType": "string",
+      "id": "ReductionContextEnum",
+      "namespace": "order"
+    },
+    "order.ReductionTypeEnum": {
+      "description": "Type of reduction",
+      "enum": [
+        "percentage",
+        "forced_amount",
+        "fixed_amount"
+      ],
+      "enumType": "string",
+      "id": "ReductionTypeEnum",
+      "namespace": "order"
+    },
+    "order.cart.GenericProductDefinition": {
+      "description": "Representation of a generic product",
+      "id": "GenericProductDefinition",
+      "namespace": "order.cart",
+      "properties": {
+        "planCode": {
+          "canBeNull": false,
+          "description": "Product offer identifier",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "prices": {
+          "canBeNull": false,
+          "description": "Prices of the product offer",
+          "fullType": "order.cart.GenericProductPricing[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductPricing[]"
+        },
+        "productName": {
+          "canBeNull": false,
+          "description": "Name of the product",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "productType": {
+          "canBeNull": false,
+          "description": "Product type",
+          "fullType": "order.cart.GenericProductTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductTypeEnum"
+        }
+      }
+    },
+    "order.cart.GenericProductPricing": {
+      "description": "Representation of a product pricing",
+      "id": "GenericProductPricing",
+      "namespace": "order.cart",
+      "properties": {
+        "capacities": {
+          "canBeNull": false,
+          "description": "Capacities of the pricing (type of pricing)",
+          "fullType": "order.cart.GenericProductPricingCapacitiesEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductPricingCapacitiesEnum[]"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the pricing",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "duration": {
+          "canBeNull": false,
+          "description": "Duration for ordering the product",
+          "fullType": "duration",
+          "readOnly": true,
+          "required": false,
+          "type": "duration"
+        },
+        "interval": {
+          "canBeNull": false,
+          "description": "Interval of renewal",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maximumQuantity": {
+          "canBeNull": true,
+          "description": "Maximum quantity that can be ordered",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maximumRepeat": {
+          "canBeNull": true,
+          "description": "Maximum repeat for renewal",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minimumQuantity": {
+          "canBeNull": false,
+          "description": "Minimum quantity that can be ordered",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minimumRepeat": {
+          "canBeNull": false,
+          "description": "Minimum repeat for renewal",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Price of the product",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "priceInUcents": {
+          "canBeNull": false,
+          "description": "Price of the product in micro-centims",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "pricingMode": {
+          "canBeNull": false,
+          "description": "Pricing model identifier",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "pricingType": {
+          "canBeNull": false,
+          "description": "Pricing type",
+          "fullType": "order.cart.GenericProductPricingTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductPricingTypeEnum"
+        }
+      }
+    },
+    "order.cart.GenericProductPricingCapacitiesEnum": {
+      "description": "Capacity of a pricing (type)",
+      "enum": [
+        "installation",
+        "renew",
+        "upgrade",
+        "downgrade",
+        "detach",
+        "dynamic"
+      ],
+      "enumType": "string",
+      "id": "GenericProductPricingCapacitiesEnum",
+      "namespace": "order.cart"
+    },
+    "order.cart.GenericProductPricingTypeEnum": {
+      "description": "Type of a pricing",
+      "enum": [
+        "rental",
+        "consumption",
+        "purchase"
+      ],
+      "enumType": "string",
+      "id": "GenericProductPricingTypeEnum",
+      "namespace": "order.cart"
+    },
+    "order.cart.GenericProductTypeEnum": {
+      "description": "Type of a product",
+      "enum": [
+        "delivery",
+        "deposit",
+        "shipping",
+        "cloud_service",
+        "saas_license",
+        "storage",
+        "domain"
+      ],
+      "enumType": "string",
+      "id": "GenericProductTypeEnum",
+      "namespace": "order.cart"
     },
     "payment.method.AvailablePaymentMethod": {
       "description": "Available payment methods",
@@ -18971,9 +21265,11 @@ export const schema: Schema = {
     "payment.method.IntegrationType": {
       "description": "Payment method integration type",
       "enum": [
+        "COMPONENT",
         "DONE",
         "IFRAME_VANTIV",
         "IN_CONTEXT",
+        "POST_FORM",
         "REDIRECT"
       ],
       "enumType": "string",

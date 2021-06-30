@@ -2240,6 +2240,34 @@ export namespace price {
                     }
                 }
             }
+            export namespace Rbx2d {
+                export namespace Infrastructure {
+                    export namespace Filer {
+                        /**
+                         * Enum of Hourlys
+                         * type fullname: price.DedicatedCloud._2018v1.Rbx2d.Infrastructure.Filer.HourlyEnum
+                         */
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
+                        /**
+                         * Enum of Monthlys
+                         * type fullname: price.DedicatedCloud._2018v1.Rbx2d.Infrastructure.Filer.MonthlyEnum
+                         */
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
+                    }
+                    export namespace Host {
+                        /**
+                         * Enum of Hourlys
+                         * type fullname: price.DedicatedCloud._2018v1.Rbx2d.Infrastructure.Host.HourlyEnum
+                         */
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        /**
+                         * Enum of Monthlys
+                         * type fullname: price.DedicatedCloud._2018v1.Rbx2d.Infrastructure.Host.MonthlyEnum
+                         */
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
             export namespace Sbg1a {
                 export namespace Infrastructure {
                     export namespace Filer {
@@ -2433,6 +2461,34 @@ export namespace price {
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Host.MonthlyEnum
+                         */
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2d {
+                export namespace Infrastructure {
+                    export namespace Filer {
+                        /**
+                         * Enum of Hourlys
+                         * type fullname: price.DedicatedCloud._2018v2.Rbx2d.Infrastructure.Filer.HourlyEnum
+                         */
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
+                        /**
+                         * Enum of Monthlys
+                         * type fullname: price.DedicatedCloud._2018v2.Rbx2d.Infrastructure.Filer.MonthlyEnum
+                         */
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
+                    }
+                    export namespace Host {
+                        /**
+                         * Enum of Hourlys
+                         * type fullname: price.DedicatedCloud._2018v2.Rbx2d.Infrastructure.Host.HourlyEnum
+                         */
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        /**
+                         * Enum of Monthlys
+                         * type fullname: price.DedicatedCloud._2018v2.Rbx2d.Infrastructure.Host.MonthlyEnum
                          */
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
@@ -2636,6 +2692,34 @@ export namespace price {
                     }
                 }
             }
+            export namespace Rbx2d {
+                export namespace Infrastructure {
+                    export namespace Filer {
+                        /**
+                         * Enum of Hourlys
+                         * type fullname: price.DedicatedCloud._2018v3.Rbx2d.Infrastructure.Filer.HourlyEnum
+                         */
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
+                        /**
+                         * Enum of Monthlys
+                         * type fullname: price.DedicatedCloud._2018v3.Rbx2d.Infrastructure.Filer.MonthlyEnum
+                         */
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
+                    }
+                    export namespace Host {
+                        /**
+                         * Enum of Hourlys
+                         * type fullname: price.DedicatedCloud._2018v3.Rbx2d.Infrastructure.Host.HourlyEnum
+                         */
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        /**
+                         * Enum of Monthlys
+                         * type fullname: price.DedicatedCloud._2018v3.Rbx2d.Infrastructure.Host.MonthlyEnum
+                         */
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
             export namespace Sbg1a {
                 export namespace Infrastructure {
                     export namespace Filer {
@@ -2829,6 +2913,34 @@ export namespace price {
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Host.MonthlyEnum
+                         */
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2d {
+                export namespace Infrastructure {
+                    export namespace Filer {
+                        /**
+                         * Enum of Hourlys
+                         * type fullname: price.DedicatedCloud._2018v4.Rbx2d.Infrastructure.Filer.HourlyEnum
+                         */
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
+                        /**
+                         * Enum of Monthlys
+                         * type fullname: price.DedicatedCloud._2018v4.Rbx2d.Infrastructure.Filer.MonthlyEnum
+                         */
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
+                    }
+                    export namespace Host {
+                        /**
+                         * Enum of Hourlys
+                         * type fullname: price.DedicatedCloud._2018v4.Rbx2d.Infrastructure.Host.HourlyEnum
+                         */
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        /**
+                         * Enum of Monthlys
+                         * type fullname: price.DedicatedCloud._2018v4.Rbx2d.Infrastructure.Host.MonthlyEnum
                          */
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
@@ -3032,6 +3144,34 @@ export namespace price {
                     }
                 }
             }
+            export namespace Rbx2d {
+                export namespace Infrastructure {
+                    export namespace Filer {
+                        /**
+                         * Enum of Hourlys
+                         * type fullname: price.DedicatedCloud._2018v5.Rbx2d.Infrastructure.Filer.HourlyEnum
+                         */
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
+                        /**
+                         * Enum of Monthlys
+                         * type fullname: price.DedicatedCloud._2018v5.Rbx2d.Infrastructure.Filer.MonthlyEnum
+                         */
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
+                    }
+                    export namespace Host {
+                        /**
+                         * Enum of Hourlys
+                         * type fullname: price.DedicatedCloud._2018v5.Rbx2d.Infrastructure.Host.HourlyEnum
+                         */
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        /**
+                         * Enum of Monthlys
+                         * type fullname: price.DedicatedCloud._2018v5.Rbx2d.Infrastructure.Host.MonthlyEnum
+                         */
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
             export namespace Sbg1a {
                 export namespace Infrastructure {
                     export namespace Filer {
@@ -3230,6 +3370,34 @@ export namespace price {
                     }
                 }
             }
+            export namespace Rbx2d {
+                export namespace Infrastructure {
+                    export namespace Filer {
+                        /**
+                         * Enum of Hourlys
+                         * type fullname: price.DedicatedCloud._2018v6.Rbx2d.Infrastructure.Filer.HourlyEnum
+                         */
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
+                        /**
+                         * Enum of Monthlys
+                         * type fullname: price.DedicatedCloud._2018v6.Rbx2d.Infrastructure.Filer.MonthlyEnum
+                         */
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
+                    }
+                    export namespace Host {
+                        /**
+                         * Enum of Hourlys
+                         * type fullname: price.DedicatedCloud._2018v6.Rbx2d.Infrastructure.Host.HourlyEnum
+                         */
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        /**
+                         * Enum of Monthlys
+                         * type fullname: price.DedicatedCloud._2018v6.Rbx2d.Infrastructure.Host.MonthlyEnum
+                         */
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
             export namespace Sbg1a {
                 export namespace Infrastructure {
                     export namespace Filer {
@@ -3423,6 +3591,34 @@ export namespace price {
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Host.MonthlyEnum
+                         */
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2d {
+                export namespace Infrastructure {
+                    export namespace Filer {
+                        /**
+                         * Enum of Hourlys
+                         * type fullname: price.DedicatedCloud._2018v7.Rbx2d.Infrastructure.Filer.HourlyEnum
+                         */
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
+                        /**
+                         * Enum of Monthlys
+                         * type fullname: price.DedicatedCloud._2018v7.Rbx2d.Infrastructure.Filer.MonthlyEnum
+                         */
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
+                    }
+                    export namespace Host {
+                        /**
+                         * Enum of Hourlys
+                         * type fullname: price.DedicatedCloud._2018v7.Rbx2d.Infrastructure.Host.HourlyEnum
+                         */
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        /**
+                         * Enum of Monthlys
+                         * type fullname: price.DedicatedCloud._2018v7.Rbx2d.Infrastructure.Host.MonthlyEnum
                          */
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
@@ -8620,6 +8816,66 @@ export interface Price {
                     }
                 }
             }
+            rbx2d: {
+                infrastructure: {
+                    filer: {
+                        hourly: {
+                            $(filerProfile: price.DedicatedCloud._2018v1.Rbx2d.Infrastructure.Filer.HourlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud hourly filer ressources
+                                 * GET /price/dedicatedCloud/2018v1/rbx2d/infrastructure/filer/hourly/{filerProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        monthly: {
+                            $(filerProfile: price.DedicatedCloud._2018v1.Rbx2d.Infrastructure.Filer.MonthlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud monthly filer ressources
+                                 * GET /price/dedicatedCloud/2018v1/rbx2d/infrastructure/filer/monthly/{filerProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
+                    host: {
+                        hourly: {
+                            $(hostProfile: price.DedicatedCloud._2018v1.Rbx2d.Infrastructure.Host.HourlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud hourly host ressources
+                                 * GET /price/dedicatedCloud/2018v1/rbx2d/infrastructure/host/hourly/{hostProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        monthly: {
+                            $(hostProfile: price.DedicatedCloud._2018v1.Rbx2d.Infrastructure.Host.MonthlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud monthly host ressources
+                                 * GET /price/dedicatedCloud/2018v1/rbx2d/infrastructure/host/monthly/{hostProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
+                }
+            }
             sbg1a: {
                 infrastructure: {
                     filer: {
@@ -9031,6 +9287,66 @@ export interface Price {
                                 /**
                                  * Get price of dedicated Cloud monthly host ressources
                                  * GET /price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
+                }
+            }
+            rbx2d: {
+                infrastructure: {
+                    filer: {
+                        hourly: {
+                            $(filerProfile: price.DedicatedCloud._2018v2.Rbx2d.Infrastructure.Filer.HourlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud hourly filer ressources
+                                 * GET /price/dedicatedCloud/2018v2/rbx2d/infrastructure/filer/hourly/{filerProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        monthly: {
+                            $(filerProfile: price.DedicatedCloud._2018v2.Rbx2d.Infrastructure.Filer.MonthlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud monthly filer ressources
+                                 * GET /price/dedicatedCloud/2018v2/rbx2d/infrastructure/filer/monthly/{filerProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
+                    host: {
+                        hourly: {
+                            $(hostProfile: price.DedicatedCloud._2018v2.Rbx2d.Infrastructure.Host.HourlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud hourly host ressources
+                                 * GET /price/dedicatedCloud/2018v2/rbx2d/infrastructure/host/hourly/{hostProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        monthly: {
+                            $(hostProfile: price.DedicatedCloud._2018v2.Rbx2d.Infrastructure.Host.MonthlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud monthly host ressources
+                                 * GET /price/dedicatedCloud/2018v2/rbx2d/infrastructure/host/monthly/{hostProfile}
                                  */
                                 $get(): Promise<order.Price>;
                                 /**
@@ -9464,6 +9780,66 @@ export interface Price {
                     }
                 }
             }
+            rbx2d: {
+                infrastructure: {
+                    filer: {
+                        hourly: {
+                            $(filerProfile: price.DedicatedCloud._2018v3.Rbx2d.Infrastructure.Filer.HourlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud hourly filer ressources
+                                 * GET /price/dedicatedCloud/2018v3/rbx2d/infrastructure/filer/hourly/{filerProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        monthly: {
+                            $(filerProfile: price.DedicatedCloud._2018v3.Rbx2d.Infrastructure.Filer.MonthlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud monthly filer ressources
+                                 * GET /price/dedicatedCloud/2018v3/rbx2d/infrastructure/filer/monthly/{filerProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
+                    host: {
+                        hourly: {
+                            $(hostProfile: price.DedicatedCloud._2018v3.Rbx2d.Infrastructure.Host.HourlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud hourly host ressources
+                                 * GET /price/dedicatedCloud/2018v3/rbx2d/infrastructure/host/hourly/{hostProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        monthly: {
+                            $(hostProfile: price.DedicatedCloud._2018v3.Rbx2d.Infrastructure.Host.MonthlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud monthly host ressources
+                                 * GET /price/dedicatedCloud/2018v3/rbx2d/infrastructure/host/monthly/{hostProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
+                }
+            }
             sbg1a: {
                 infrastructure: {
                     filer: {
@@ -9875,6 +10251,66 @@ export interface Price {
                                 /**
                                  * Get price of dedicated Cloud monthly host ressources
                                  * GET /price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
+                }
+            }
+            rbx2d: {
+                infrastructure: {
+                    filer: {
+                        hourly: {
+                            $(filerProfile: price.DedicatedCloud._2018v4.Rbx2d.Infrastructure.Filer.HourlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud hourly filer ressources
+                                 * GET /price/dedicatedCloud/2018v4/rbx2d/infrastructure/filer/hourly/{filerProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        monthly: {
+                            $(filerProfile: price.DedicatedCloud._2018v4.Rbx2d.Infrastructure.Filer.MonthlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud monthly filer ressources
+                                 * GET /price/dedicatedCloud/2018v4/rbx2d/infrastructure/filer/monthly/{filerProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
+                    host: {
+                        hourly: {
+                            $(hostProfile: price.DedicatedCloud._2018v4.Rbx2d.Infrastructure.Host.HourlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud hourly host ressources
+                                 * GET /price/dedicatedCloud/2018v4/rbx2d/infrastructure/host/hourly/{hostProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        monthly: {
+                            $(hostProfile: price.DedicatedCloud._2018v4.Rbx2d.Infrastructure.Host.MonthlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud monthly host ressources
+                                 * GET /price/dedicatedCloud/2018v4/rbx2d/infrastructure/host/monthly/{hostProfile}
                                  */
                                 $get(): Promise<order.Price>;
                                 /**
@@ -10308,6 +10744,66 @@ export interface Price {
                     }
                 }
             }
+            rbx2d: {
+                infrastructure: {
+                    filer: {
+                        hourly: {
+                            $(filerProfile: price.DedicatedCloud._2018v5.Rbx2d.Infrastructure.Filer.HourlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud hourly filer ressources
+                                 * GET /price/dedicatedCloud/2018v5/rbx2d/infrastructure/filer/hourly/{filerProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        monthly: {
+                            $(filerProfile: price.DedicatedCloud._2018v5.Rbx2d.Infrastructure.Filer.MonthlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud monthly filer ressources
+                                 * GET /price/dedicatedCloud/2018v5/rbx2d/infrastructure/filer/monthly/{filerProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
+                    host: {
+                        hourly: {
+                            $(hostProfile: price.DedicatedCloud._2018v5.Rbx2d.Infrastructure.Host.HourlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud hourly host ressources
+                                 * GET /price/dedicatedCloud/2018v5/rbx2d/infrastructure/host/hourly/{hostProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        monthly: {
+                            $(hostProfile: price.DedicatedCloud._2018v5.Rbx2d.Infrastructure.Host.MonthlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud monthly host ressources
+                                 * GET /price/dedicatedCloud/2018v5/rbx2d/infrastructure/host/monthly/{hostProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
+                }
+            }
             sbg1a: {
                 infrastructure: {
                     filer: {
@@ -10730,6 +11226,66 @@ export interface Price {
                     }
                 }
             }
+            rbx2d: {
+                infrastructure: {
+                    filer: {
+                        hourly: {
+                            $(filerProfile: price.DedicatedCloud._2018v6.Rbx2d.Infrastructure.Filer.HourlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud hourly filer ressources
+                                 * GET /price/dedicatedCloud/2018v6/rbx2d/infrastructure/filer/hourly/{filerProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        monthly: {
+                            $(filerProfile: price.DedicatedCloud._2018v6.Rbx2d.Infrastructure.Filer.MonthlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud monthly filer ressources
+                                 * GET /price/dedicatedCloud/2018v6/rbx2d/infrastructure/filer/monthly/{filerProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
+                    host: {
+                        hourly: {
+                            $(hostProfile: price.DedicatedCloud._2018v6.Rbx2d.Infrastructure.Host.HourlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud hourly host ressources
+                                 * GET /price/dedicatedCloud/2018v6/rbx2d/infrastructure/host/hourly/{hostProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        monthly: {
+                            $(hostProfile: price.DedicatedCloud._2018v6.Rbx2d.Infrastructure.Host.MonthlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud monthly host ressources
+                                 * GET /price/dedicatedCloud/2018v6/rbx2d/infrastructure/host/monthly/{hostProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
+                }
+            }
             sbg1a: {
                 infrastructure: {
                     filer: {
@@ -11141,6 +11697,66 @@ export interface Price {
                                 /**
                                  * Get price of dedicated Cloud monthly host ressources
                                  * GET /price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
+                }
+            }
+            rbx2d: {
+                infrastructure: {
+                    filer: {
+                        hourly: {
+                            $(filerProfile: price.DedicatedCloud._2018v7.Rbx2d.Infrastructure.Filer.HourlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud hourly filer ressources
+                                 * GET /price/dedicatedCloud/2018v7/rbx2d/infrastructure/filer/hourly/{filerProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        monthly: {
+                            $(filerProfile: price.DedicatedCloud._2018v7.Rbx2d.Infrastructure.Filer.MonthlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud monthly filer ressources
+                                 * GET /price/dedicatedCloud/2018v7/rbx2d/infrastructure/filer/monthly/{filerProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
+                    host: {
+                        hourly: {
+                            $(hostProfile: price.DedicatedCloud._2018v7.Rbx2d.Infrastructure.Host.HourlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud hourly host ressources
+                                 * GET /price/dedicatedCloud/2018v7/rbx2d/infrastructure/host/hourly/{hostProfile}
+                                 */
+                                $get(): Promise<order.Price>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        monthly: {
+                            $(hostProfile: price.DedicatedCloud._2018v7.Rbx2d.Infrastructure.Host.MonthlyEnum): {
+                                /**
+                                 * Get price of dedicated Cloud monthly host ressources
+                                 * GET /price/dedicatedCloud/2018v7/rbx2d/infrastructure/host/monthly/{hostProfile}
                                  */
                                 $get(): Promise<order.Price>;
                                 /**

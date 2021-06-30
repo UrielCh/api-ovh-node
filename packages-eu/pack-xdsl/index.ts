@@ -212,6 +212,7 @@ export namespace pack {
         export interface PackCapabilities {
             canMoveAddress: boolean;
             isLegacyOffer: boolean;
+            isResellerOffer: boolean;
         }
         /**
          * Information about pack xdsl

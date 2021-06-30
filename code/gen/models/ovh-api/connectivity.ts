@@ -492,6 +492,40 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List work planned by operators",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "datetime",
+              "description": "List only work planned started after this date",
+              "fullType": "datetime",
+              "name": "beginDate",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "List only work planned ending prior to this date",
+              "fullType": "datetime",
+              "name": "endDate",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "connectivity.maintenance.WorkPlanned[]"
+        }
+      ],
+      "path": "/connectivity/maintenance/workPlanned/public"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
           "description": "List detected, validated and recently closed generic incidents. For partners only",
           "httpMethod": "GET",
           "noAuthentication": false,
@@ -1503,6 +1537,54 @@ export const schema: Schema = {
           "required": false,
           "type": "datetime"
         },
+        "departments": {
+          "canBeNull": true,
+          "description": "List of impacted department codes",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description of the work planned operation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "duration": {
+          "canBeNull": true,
+          "description": "Duration of the work planned operation",
+          "fullType": "duration",
+          "readOnly": true,
+          "required": false,
+          "type": "duration"
+        },
+        "fallback": {
+          "canBeNull": true,
+          "description": "Fallback planned for the operation",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "fallbackDateBegin": {
+          "canBeNull": true,
+          "description": "Fallback operation starts at this time",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "fallbackDateEnd": {
+          "canBeNull": true,
+          "description": "Fallback operation ends at this time",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
         "id": {
           "canBeNull": false,
           "description": "Work Planned operation id",
@@ -1511,6 +1593,14 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "impact": {
+          "canBeNull": true,
+          "description": "Impact of the work planned operation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "interventionType": {
           "canBeNull": false,
           "description": "Full description of the work planned operation",
@@ -1518,6 +1608,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "connectivity.maintenance.InterventionTypeEnum"
+        },
+        "nras": {
+          "canBeNull": true,
+          "description": "List of impacted NRA/NRO",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "operator": {
           "canBeNull": false,
@@ -1530,6 +1628,14 @@ export const schema: Schema = {
         "technology": {
           "canBeNull": false,
           "description": "Technology impacted by the work planned operation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "zone": {
+          "canBeNull": true,
+          "description": "Zone of the work planned operation",
           "fullType": "string",
           "readOnly": true,
           "required": false,

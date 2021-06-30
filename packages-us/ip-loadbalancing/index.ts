@@ -72,6 +72,28 @@ export namespace ipLoadbalancing {
         type: string;
         url: boolean;
     }
+    export namespace Frontend {
+        /**
+         * Frontend
+         * interface fullName: ipLoadbalancing.Frontend.Frontend.Frontend
+         */
+        export interface Frontend {
+            allowedSource?: string[];
+            dedicatedIpfo?: string[];
+            defaultBackendId?: number;
+            defaultSslId?: number;
+            deniedSource?: string[];
+            disabled: boolean;
+            hsts: boolean;
+            httpHeader?: string[];
+            id: number;
+            port: string;
+            redirectLocation?: string;
+            ssl: boolean;
+            type: ipLoadbalancing.ProxyTypeEnum;
+            zone: string;
+        }
+    }
     /**
      * A structure describing the current state of an IPLB instances
      * interface fullName: ipLoadbalancing.InstancesState.InstancesState
@@ -150,6 +172,11 @@ export namespace ipLoadbalancing {
      * type fullname: ipLoadbalancing.ProxyProtocolVersionEnum
      */
     export type ProxyProtocolVersionEnum = "v1" | "v2" | "v2-ssl" | "v2-ssl-cn"
+    /**
+     * Possible values for proxy type
+     * type fullname: ipLoadbalancing.ProxyTypeEnum
+     */
+    export type ProxyTypeEnum = "http" | "tcp"
     export namespace Quota {
         /**
          * Quota informations for current billing period for this zone
@@ -530,6 +557,8 @@ export namespace ipLoadbalancing {
             port: string;
             redirectLocation?: string;
             ssl: boolean;
+            vrackNetworkId?: number;
+            vrackVrouterId?: number;
             zone: string;
         }
     }
@@ -549,6 +578,8 @@ export namespace ipLoadbalancing {
             frontendId: number;
             port: string;
             ssl: boolean;
+            vrackNetworkId?: number;
+            vrackVrouterId?: number;
             zone: string;
         }
     }
@@ -911,7 +942,7 @@ export interface IpLoadbalancing {
                      * Alter this object properties
                      * PUT /ipLoadbalancing/{serviceName}/http/frontend/{frontendId}
                      */
-                    $put(params?: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, deniedSource?: string[], disabled?: boolean, displayName?: string, frontendId?: number, hsts?: boolean, httpHeader?: string[], port?: string, redirectLocation?: string, ssl?: boolean, zone?: string }): Promise<void>;
+                    $put(params?: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, deniedSource?: string[], disabled?: boolean, displayName?: string, frontendId?: number, hsts?: boolean, httpHeader?: string[], port?: string, redirectLocation?: string, ssl?: boolean, vrackNetworkId?: number, vrackVrouterId?: number, zone?: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -1277,7 +1308,7 @@ export interface IpLoadbalancing {
                      * Alter this object properties
                      * PUT /ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}
                      */
-                    $put(params?: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, deniedSource?: string[], disabled?: boolean, displayName?: string, frontendId?: number, port?: string, ssl?: boolean, zone?: string }): Promise<void>;
+                    $put(params?: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, deniedSource?: string[], disabled?: boolean, displayName?: string, frontendId?: number, port?: string, ssl?: boolean, vrackNetworkId?: number, vrackVrouterId?: number, zone?: string }): Promise<void>;
                     /**
                      * Controle cache
                      */

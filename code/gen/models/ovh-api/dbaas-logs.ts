@@ -31,6 +31,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the service object of connected identity.",
+          "errors": [
+            "Client::NotFound::ServiceNotFound"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -51,6 +54,13 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update the service properties",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::NotFound::ServiceNotFound"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -134,6 +144,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of allowed cluster",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -160,6 +173,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of an allowed cluster",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ClusterDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -188,6 +206,19 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update details of an allowed cluster",
+          "errors": [
+            "Client::ValidationError::InvalidIPAddress",
+            "Client::ValidationError::InvalidIPAddressKernel",
+            "Client::ValidationError::InvalidIPAddressLocalhost",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotOwner",
+            "Client::ValidationError::NothingToDo",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::PCIDSSClusterUpdateDeny",
+            "Client::Forbidden::ServiceNotMigrated",
+            "Client::NotFound::ClusterDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -229,6 +260,12 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "List all the retention ID available for a given cluster",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::AccessDenied",
+            "Client::NotFound::ClusterDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -263,6 +300,13 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of a retention",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::AccessDenied",
+            "Client::NotFound::ClusterDoesNotExists",
+            "Client::NotFound::ClusterRetentionNotFound",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -305,6 +349,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of registered input attached to the logged user",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -325,6 +372,26 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new input object",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::EngineIsDeprecated",
+            "Client::ValidationError::InvalidFormat",
+            "Client::ValidationError::InvalidIPAddress",
+            "Client::ValidationError::InvalidIPAddressKernel",
+            "Client::ValidationError::InvalidIPAddressLocalhost",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotStreamOwner",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::NotOnSameCluster",
+            "Client::Forbidden::PCIDSSInputDeny",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputEngineDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::TitleAlreadyUsed"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -358,6 +425,14 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove the specified input object",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -386,6 +461,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified input",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -414,6 +494,26 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update information of specified input object",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::EngineIsDeprecated",
+            "Client::ValidationError::InvalidFormat",
+            "Client::ValidationError::InvalidIPAddress",
+            "Client::ValidationError::InvalidIPAddressKernel",
+            "Client::ValidationError::InvalidIPAddressLocalhost",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotStreamOwner",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::NotOnSameCluster",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::TitleAlreadyUsed"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -455,6 +555,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns actions of specified input",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -489,6 +594,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Validate configuration of specified input",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::LogstashOnly",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -523,6 +637,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the config test operation result",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -557,6 +676,12 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the flowgger configuration",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::InvalidInputEngine",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -585,6 +710,16 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update the flowgger configuration",
+          "errors": [
+            "Client::ValidationError::FlowggerInvalidFraming",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::InvalidInputEngine",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -626,6 +761,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the logstash configuration",
+          "errors": [
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::InvalidInputEngine",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -654,6 +794,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update the logstash configuration",
+          "errors": [
+            "Client::ValidationError::InvalidInputConfiguration",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::InputNotAvailable",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::InvalidInputEngine",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -695,6 +846,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Schedule the end of specified input",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::IncompatibleStatusForInput",
+            "Client::Forbidden::InputNotAvailable",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -729,6 +889,13 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Generate a temporary url to retrieve input logs",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -763,6 +930,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Schedule the restart of specified input",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::IncompatibleStatusForInput",
+            "Client::Forbidden::InputNotAvailable",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -797,6 +973,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Schedule the start of specified input",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::IncompatibleStatusForInput",
+            "Client::Forbidden::InputNotAvailable",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -831,6 +1016,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of urls of specified input",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -865,6 +1055,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns Metrics credentials",
+          "errors": [
+            "Client::NotFound::ServiceNotFound"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -891,6 +1084,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Latest operations",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -917,6 +1113,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified operation",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::OperationDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -951,6 +1152,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of alias for connected user",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -971,6 +1175,20 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new elasticsearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidNameContain",
+            "Client::ValidationError::InvalidNameLenght",
+            "Client::ValidationError::InvalidNameLowercase",
+            "Client::ValidationError::InvalidNameMatch",
+            "Client::ValidationError::InvalidNameStart",
+            "Client::ValidationError::InvalidNameWhitespace",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::NotFound::ClusterDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::AlreadyExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -1004,6 +1222,13 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified elasticsearch alias",
+          "errors": [
+            "Client::ValidationError::AliasHasLinkedStreams",
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -1032,6 +1257,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns specified elasticsearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1060,6 +1290,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update specified elasticsearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::PaymentRequired::QuotaReached",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -1101,6 +1340,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of elasticsearch indexes attached to specified\n        elasticsearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1129,6 +1373,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Attach a elasticsearch index to specified elasticsearch alias",
+          "errors": [
+            "Client::ValidationError::CannotMixStreamAndIndex",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::IndexAlreadyLinked",
+            "Client::Forbidden::NotOnSameCluster",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -1170,6 +1425,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Detach a elasticsearch index from specified elasticsearch alias",
+          "errors": [
+            "Client::ValidationError::IndexNotLinked",
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -1212,6 +1476,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of graylog streams attached to specified\n        elasticsearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1240,6 +1509,18 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Attach a graylog stream to specified elasticsearch alias",
+          "errors": [
+            "Client::ValidationError::CannotMixStreamAndIndex",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotStreamOwner",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::NotOnSameCluster",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::StreamAlreadyLinked",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -1281,6 +1562,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Detach a graylog stream from specified elasticsearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::StreamNotLinked",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -1323,6 +1613,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of urls of specified alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1357,6 +1652,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of elasticsearch indexes",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1377,6 +1675,21 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new elasticsearch index",
+          "errors": [
+            "Client::ValidationError::InvalidNameContain",
+            "Client::ValidationError::InvalidNameLenght",
+            "Client::ValidationError::InvalidNameLowercase",
+            "Client::ValidationError::InvalidNameMatch",
+            "Client::ValidationError::InvalidNameStart",
+            "Client::ValidationError::InvalidNameWhitespace",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::AlreadyExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -1410,6 +1723,14 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified elasticsearch index",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotOwner",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -1438,6 +1759,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns specified elasticsearch index",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1466,6 +1792,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update specified elasticsearch index",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -1507,6 +1842,12 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of urls of specified index",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotOwner",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1541,6 +1882,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of Kibana instances",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1561,6 +1905,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new Kibana instance",
+          "errors": [
+            "Client::ValidationError::ClusterWithoutFrontend",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::Forbidden::KibanaStillInDelivery",
+            "Client::Forbidden::PCIDSSInputDeny",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -1594,6 +1947,14 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified Kibana instance",
+          "errors": [
+            "Client::ValidationError::InvalidDeliveryStatus",
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::KibanaDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -1622,6 +1983,12 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns specified Kibana instance",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::NotFound::KibanaDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1650,6 +2017,14 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update specified Kibana instance",
+          "errors": [
+            "Client::ValidationError::InvalidDeliveryStatus",
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::KibanaDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -1691,6 +2066,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of urls of specified Kibana",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::KibanaDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1725,6 +2105,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of graylog dashboards",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1745,6 +2128,14 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new graylog dashboard",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -1778,6 +2169,13 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified graylog dashboard",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::DashboardDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -1806,6 +2204,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified graylog dashboard",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::DashboardDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1834,6 +2237,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update information of specified graylog dashboard",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::DashboardDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -1875,6 +2289,21 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Copy all widgets from specified dashboard to a new one",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotStreamOwner",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::DashboardDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::TitleAlreadyUsed"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -1916,6 +2345,10 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of urls of specified graylog dashboard",
+          "errors": [
+            "Client::NotFound::DashboardDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1950,6 +2383,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of graylog streams",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1970,6 +2406,22 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidSubStreamParent",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::Forbidden::PCIDSSColdStorageDeny",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::Forbidden::SubStreamColdstorageAddRules",
+            "Client::Forbidden::SubStreamColdstorageIndexingMaxSize",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::TitleAlreadyUsed",
+            "Server::NotImplemented::SubStreamColdstorage",
+            "Server::NotImplemented::SubStreamColdstorageOnAccount"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -2003,6 +2455,18 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::StreamLinked",
+            "Client::ValidationError::StreamLinkedToAliases",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::Forbidden::StreamDeleteDenied",
+            "Client::Forbidden::StreamIsParent",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -2031,6 +2495,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2059,6 +2528,22 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update information of specified graylog stream",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidColdStorageRetention",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInList",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::Forbidden::NoRuleSet",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::PCIDSSColdStorageDeny",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::TitleAlreadyUsed"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -2100,6 +2585,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of configured alerts of specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2128,6 +2618,20 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new alert on specified graylog stream",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidConditionType",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInList",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::AlertAlreadyExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -2169,6 +2673,14 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove alert from specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::AlertDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -2205,6 +2717,12 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified graylog stream alert",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::AlertDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2241,6 +2759,20 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update alert information of specified graylog stream",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidConditionType",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInList",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::AlertAlreadyExists"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -2290,6 +2822,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of archives",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2324,6 +2861,12 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified archive",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ArchiveDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2366,6 +2909,13 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Get a public temporary URL to access the archive",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ArchiveDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::NotFound::URLDoesNotExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -2408,6 +2958,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of rules of specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2436,6 +2991,20 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new rule on specified graylog stream",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidFieldValue",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotASubStream",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInList",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::RuleAlreadyExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -2477,6 +3046,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified graylog stream rule",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotASubStream",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::NotFound::StreamRuleDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -2513,6 +3091,12 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified graylog stream rule",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::NotFound::StreamRuleDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2555,6 +3139,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of urls of specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2589,6 +3178,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of roles",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2609,6 +3201,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new role",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::PaymentRequired::QuotaReached",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::AlreadyExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -2642,6 +3243,13 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -2670,6 +3278,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2698,6 +3311,16 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update information of specified role",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -2739,6 +3362,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the member list of specified role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2767,6 +3395,16 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Append user into the member list of specified role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::UserAlreadyInRole",
+            "Client::Forbidden::ActionDisabledOnMySelf",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -2808,6 +3446,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove user from the member list of specified role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::NotAMemberOfRole",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -2844,6 +3491,12 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the member metadata",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::NotAMemberOfRole",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2880,6 +3533,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update the member metadata",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::NotAMemberOfRole",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -2929,6 +3593,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of permissions of specified role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2963,6 +3632,14 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified permission",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::PermissionDoesNotExists",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -2999,6 +3676,12 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified permission",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::PermissionDoesNotExists",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3041,6 +3724,16 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Append a elasticsearch alias permission to role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::PermissionAlreadySet"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -3082,6 +3775,16 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Append a graylog dashboard permission to role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::DashboardDoesNotExists",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::PermissionAlreadySet"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -3123,6 +3826,16 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Append a elasticsearch index permission to role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::PermissionAlreadySet"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -3164,6 +3877,16 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Append a kibana permission to role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::KibanaDoesNotExists",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::PermissionAlreadySet"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -3205,6 +3928,16 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Append a graylog stream permission to role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::PermissionAlreadySet"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -3299,6 +4032,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of service tokens",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3319,6 +4055,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Add a new token",
+          "errors": [
+            "Client::ValidationError::InvalidTokenName",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::AccessDenied",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ClusterDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::TokenNameAlreadyUsed"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -3352,6 +4099,14 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Delete the specified token",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::TokenDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -3380,6 +4135,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the specified token",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::TokenDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3413,7 +4173,10 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Returns platform useful urls.",
+          "description": "Returns platform useful urls",
+          "errors": [
+            "Client::NotFound::ServiceNotFound"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3440,6 +4203,12 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Initiate a password change procedure.",
+          "errors": [
+            "Client::ValidationError::InvalidPassword",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::Busy",
+            "Client::NotFound::ServiceNotFound"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -3490,6 +4259,10 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified input engine",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::InputEngineDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3516,6 +4289,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Return the list of available helpers for the given input engine",
+          "errors": [
+            "Client::ValidationError::InvalidUUID"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3542,6 +4318,10 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified input engine helper",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::HelperDoesNotExists"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3602,14 +4382,6 @@ export const schema: Schema = {
         "isEditable": {
           "canBeNull": false,
           "description": "Indicates if you are allowed to edit entry",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "isShareable": {
-          "canBeNull": false,
-          "description": "Indicates if you are allowed to share entry",
           "fullType": "boolean",
           "readOnly": true,
           "required": false,
@@ -3948,14 +4720,6 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
-        "isShareable": {
-          "canBeNull": false,
-          "description": "Indicates if you are allowed to share entry",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
         "title": {
           "canBeNull": false,
           "description": "Dashboard description",
@@ -4203,14 +4967,6 @@ export const schema: Schema = {
         "isEditable": {
           "canBeNull": false,
           "description": "Indicates if you are allowed to edit entry",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "isShareable": {
-          "canBeNull": false,
-          "description": "Indicates if you are allowed to share entry",
           "fullType": "boolean",
           "readOnly": true,
           "required": false,
@@ -6085,14 +6841,6 @@ export const schema: Schema = {
         "isEditable": {
           "canBeNull": false,
           "description": "Indicates if you are allowed to edit entry",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "isShareable": {
-          "canBeNull": false,
-          "description": "Indicates if you are allowed to share entry",
           "fullType": "boolean",
           "readOnly": true,
           "required": false,

@@ -268,12 +268,13 @@ export namespace billing {
             action?: billing.ItemDetail.OrderActionEnum;
             configurations: billing.ItemDetail.OrderConfiguration[];
             plan: billing.ItemDetail.OrderPlan;
+            type?: billing.ItemDetail.OrderDetailTypeEnum;
         }
         /**
          * List of order actions
          * type fullname: billing.ItemDetail.OrderActionEnum
          */
-        export type OrderActionEnum = "consumption" | "installation" | "renew" | "upgrade"
+        export type OrderActionEnum = "consumption" | "detach" | "installation" | "renew" | "revert" | "upgrade"
         /**
          * Configuration of order
          * interface fullName: billing.ItemDetail.OrderConfiguration.OrderConfiguration
@@ -282,6 +283,11 @@ export namespace billing {
             label: string;
             value: string;
         }
+        /**
+         * List of order detail types
+         * type fullname: billing.ItemDetail.OrderDetailTypeEnum
+         */
+        export type OrderDetailTypeEnum = "plan" | "product"
         /**
          * Plan data from order
          * interface fullName: billing.ItemDetail.OrderPlan.OrderPlan
@@ -314,6 +320,7 @@ export namespace billing {
         operation: billing.ovhAccount.OperationEnum;
         order: number;
         previousBalance: orderPrice;
+        retrievableAmount: orderPrice;
     }
     /**
      * Details about an Order
@@ -455,7 +462,7 @@ export namespace billing {
      * Reusable payment mean type
      * type fullname: billing.ReusablePaymentMeanEnum
      */
-    export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "bankAccount" | "creditCard" | "fidelityAccount" | "ovhAccount" | "paypal"
+    export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "bankAccount" | "creditCard" | "deferredPaymentAccount" | "fidelityAccount" | "ovhAccount" | "paypal"
     /**
      * SLA properties
      * interface fullName: billing.SlaOperation.SlaOperation
@@ -580,6 +587,7 @@ export namespace billing {
                 amount: orderPrice;
                 balanceName: string;
                 creationDate: string;
+                destinationObject?: billing.credit.balance.movement.SubObject;
                 expirationDate?: string;
                 lastUpdate: string;
                 movementId: number;
@@ -807,7 +815,7 @@ export namespace billing {
          * List of payment type enum
          * type fullname: billing.paymentMethod.PaymentTypeEnum
          */
-        export type PaymentTypeEnum = "BANK_ACCOUNT" | "CREDIT_CARD" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL"
+        export type PaymentTypeEnum = "BANK_ACCOUNT" | "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL"
         /**
          * List of payment method status enum
          * type fullname: billing.paymentMethod.StatusEnum
@@ -988,7 +996,7 @@ export namespace debt {
          * All operations a debt entry can represent
          * type fullname: debt.entry.OperationEnum
          */
-        export type OperationEnum = "CANCEL" | "CASH_MANUAL" | "CHECK_MANUAL" | "CREDITCARD" | "CREDITCARD_AUTOMATIC" | "CREDITCARD_MANUAL" | "CREDIT_ACCOUNT_AUTOMATIC" | "EDINAR_MANUAL" | "IDEAL_MANUAL" | "MULTIBANCO_MANUAL" | "ORDER" | "PAYPAL_AUTOMATIC" | "PAYPAL_MANUAL" | "PAYU_MANUAL" | "RECOVERY_TRANSFER_AUTOMATIC" | "REFUND" | "REFUND_CHECK" | "REFUND_CREDITCARD" | "REFUND_CREDIT_ACCOUNT" | "REFUND_LOSS" | "REFUND_PAYPAL" | "REFUND_PAYU" | "REFUND_SEPA" | "REFUND_TRANSFER" | "REFUND_UNKNOWN" | "SEPA_AUTOMATIC" | "TRANSFER_MANUAL" | "UNPAID_CHECK" | "UNPAID_CREDITCARD" | "UNPAID_CREDIT_ACCOUNT" | "UNPAID_PAYPAL" | "UNPAID_SEPA" | "UNPAID_WITHDRAW" | "WARRANT_MANUAL" | "WITHDRAW_AUTOMATIC"
+        export type OperationEnum = "CANCEL" | "CASH_MANUAL" | "CHECK_MANUAL" | "CREDITCARD" | "CREDITCARD_AUTOMATIC" | "CREDITCARD_MANUAL" | "CREDIT_ACCOUNT_AUTOMATIC" | "EDINAR_MANUAL" | "IDEAL_AUTOMATIC" | "IDEAL_MANUAL" | "MULTIBANCO_AUTOMATIC" | "MULTIBANCO_MANUAL" | "ORDER" | "PAYPAL_AUTOMATIC" | "PAYPAL_MANUAL" | "PAYU_AUTOMATIC" | "PAYU_MANUAL" | "RECOVERY_TRANSFER_AUTOMATIC" | "REFUND" | "REFUND_CHECK" | "REFUND_CREDITCARD" | "REFUND_CREDIT_ACCOUNT" | "REFUND_IDEAL" | "REFUND_LOSS" | "REFUND_MULTIBANCO" | "REFUND_PAYPAL" | "REFUND_PAYU" | "REFUND_SEPA" | "REFUND_TRANSFER" | "REFUND_UNKNOWN" | "SEPA_AUTOMATIC" | "TRANSFER_MANUAL" | "UNPAID_CHECK" | "UNPAID_CREDITCARD" | "UNPAID_CREDIT_ACCOUNT" | "UNPAID_IDEAL" | "UNPAID_MULTIBANCO" | "UNPAID_PAYPAL" | "UNPAID_PAYU" | "UNPAID_SEPA" | "UNPAID_WITHDRAW" | "WARRANT_MANUAL" | "WITHDRAW_AUTOMATIC"
         /**
          * All status a debt HistoryOrder entry can be in
          * type fullname: debt.entry.StatusDebtOrderEnum
@@ -1013,6 +1021,44 @@ export namespace dedicated {
      */
     export type TemplateOsHardwareRaidEnum = "raid0" | "raid1" | "raid10" | "raid5" | "raid50" | "raid6" | "raid60"
     /**
+     * A structure describing some interesting facts about an OS template licensing
+     * interface fullName: dedicated.TemplateOsInfoLicense.TemplateOsInfoLicense
+     */
+    export interface TemplateOsInfoLicense {
+        os?: dedicated.TemplateOsInfoLicenseItem;
+        usage?: dedicated.TemplateOsInfoLicenseItem;
+    }
+    /**
+     * A structure describing some interesting facts about an OS template license item
+     * interface fullName: dedicated.TemplateOsInfoLicenseItem.TemplateOsInfoLicenseItem
+     */
+    export interface TemplateOsInfoLicenseItem {
+        name?: dedicated.TemplateOsInfoLicenseItemEnum[];
+        url?: string;
+    }
+    /**
+     * Standard license name according to SPDX
+     * type fullname: dedicated.TemplateOsInfoLicenseItemEnum
+     */
+    export type TemplateOsInfoLicenseItemEnum = "0BSD" | "AAL" | "ADSL" | "AFL-1.1" | "AFL-1.2" | "AFL-2.0" | "AFL-2.1" | "AFL-3.0" | "AGPL-1.0-only" | "AGPL-1.0-or-later" | "AGPL-3.0-only" | "AGPL-3.0-or-later" | "AMDPLPA" | "AML" | "AMPAS" | "ANTLR-PD" | "ANTLR-PD-fallback" | "APAFML" | "APL-1.0" | "APSL-1.0" | "APSL-1.1" | "APSL-1.2" | "APSL-2.0" | "Abstyles" | "Adobe-2006" | "Adobe-Glyph" | "Afmparse" | "Aladdin" | "Apache-1.0" | "Apache-1.1" | "Apache-2.0" | "Artistic-1.0" | "Artistic-1.0-Perl" | "Artistic-1.0-cl8" | "Artistic-2.0" | "BSD-1-Clause" | "BSD-2-Clause" | "BSD-2-Clause-Patent" | "BSD-2-Clause-Views" | "BSD-3-Clause" | "BSD-3-Clause-Attribution" | "BSD-3-Clause-Clear" | "BSD-3-Clause-LBNL" | "BSD-3-Clause-Modification" | "BSD-3-Clause-No-Nuclear-License" | "BSD-3-Clause-No-Nuclear-License-2014" | "BSD-3-Clause-No-Nuclear-Warranty" | "BSD-3-Clause-Open-MPI" | "BSD-4-Clause" | "BSD-4-Clause-Shortened" | "BSD-4-Clause-UC" | "BSD-Protection" | "BSD-Source-Code" | "BSL-1.0" | "BUSL-1.1" | "Bahyph" | "Barr" | "Beerware" | "BitTorrent-1.0" | "BitTorrent-1.1" | "BlueOak-1.0.0" | "Borceux" | "C-UDA-1.0" | "CAL-1.0" | "CAL-1.0-Combined-Work-Exception" | "CATOSL-1.1" | "CC-BY-1.0" | "CC-BY-2.0" | "CC-BY-2.5" | "CC-BY-3.0" | "CC-BY-4.0" | "CC-BY-NC-1.0" | "CC-BY-NC-2.0" | "CC-BY-NC-2.5" | "CC-BY-NC-3.0" | "CC-BY-NC-4.0" | "CC-BY-NC-ND-1.0" | "CC-BY-NC-ND-2.0" | "CC-BY-NC-ND-2.5" | "CC-BY-NC-ND-3.0" | "CC-BY-NC-ND-4.0" | "CC-BY-NC-SA-1.0" | "CC-BY-NC-SA-2.0" | "CC-BY-NC-SA-2.5" | "CC-BY-NC-SA-3.0" | "CC-BY-NC-SA-4.0" | "CC-BY-ND-1.0" | "CC-BY-ND-2.0" | "CC-BY-ND-2.5" | "CC-BY-ND-3.0" | "CC-BY-ND-4.0" | "CC-BY-SA-1.0" | "CC-BY-SA-2.0" | "CC-BY-SA-2.5" | "CC-BY-SA-3.0" | "CC-BY-SA-4.0" | "CC-PDDC" | "CC0-1.0" | "CDDL-1.0" | "CDDL-1.1" | "CDLA-Permissive-1.0" | "CDLA-Sharing-1.0" | "CECILL-1.0" | "CECILL-1.1" | "CECILL-2.0" | "CECILL-2.1" | "CECILL-B" | "CECILL-C" | "CERN-OHL-1.1" | "CERN-OHL-1.2" | "CERN-OHL-P-2.0" | "CERN-OHL-S-2.0" | "CERN-OHL-W-2.0" | "CNRI-Jython" | "CNRI-Python" | "CNRI-Python-GPL-Compatible" | "CPAL-1.0" | "CPL-1.0" | "CPOL-1.02" | "CUA-OPL-1.0" | "Caldera" | "ClArtistic" | "Condor-1.1" | "Crossword" | "CrystalStacker" | "Cube" | "D-FSL-1.0" | "DFSG" | "DOC" | "DRL-1.0" | "DSDP" | "Dotseqn" | "ECL-1.0" | "ECL-2.0" | "EFL-1.0" | "EFL-2.0" | "EPICS" | "EPL-1.0" | "EPL-2.0" | "EUDatagrid" | "EUPL-1.0" | "EUPL-1.1" | "EUPL-1.2" | "Entessa" | "ErlPL-1.1" | "Eurosym" | "FSFAP" | "FSFUL" | "FSFULLR" | "FTL" | "Fair" | "Frameworx-1.0" | "FreeBSD-DOC" | "FreeImage" | "GD" | "GFDL-1.1-invariants-only" | "GFDL-1.1-invariants-or-later" | "GFDL-1.1-no-invariants-only" | "GFDL-1.1-no-invariants-or-later" | "GFDL-1.1-only" | "GFDL-1.1-or-later" | "GFDL-1.2-invariants-only" | "GFDL-1.2-invariants-or-later" | "GFDL-1.2-no-invariants-only" | "GFDL-1.2-no-invariants-or-later" | "GFDL-1.2-only" | "GFDL-1.2-or-later" | "GFDL-1.3-invariants-only" | "GFDL-1.3-invariants-or-later" | "GFDL-1.3-no-invariants-only" | "GFDL-1.3-no-invariants-or-later" | "GFDL-1.3-only" | "GFDL-1.3-or-later" | "GL2PS" | "GLWTPL" | "GPL-1.0-only" | "GPL-1.0-or-later" | "GPL-2.0-only" | "GPL-2.0-or-later" | "GPL-3.0-only" | "GPL-3.0-or-later" | "Giftware" | "Glide" | "Glulxe" | "HPND" | "HPND-sell-variant" | "HTMLTIDY" | "HaskellReport" | "Hippocratic-2.1" | "IBM-pibs" | "ICU" | "IJG" | "IPA" | "IPL-1.0" | "ISC" | "ImageMagick" | "Imlib2" | "Info-ZIP" | "Intel" | "Intel-ACPI" | "Interbase-1.0" | "JPNIC" | "JSON" | "JasPer-2.0" | "LAL-1.2" | "LAL-1.3" | "LGPL-2.0-only" | "LGPL-2.0-or-later" | "LGPL-2.1-only" | "LGPL-2.1-or-later" | "LGPL-3.0-only" | "LGPL-3.0-or-later" | "LGPLLR" | "LPL-1.0" | "LPL-1.02" | "LPPL-1.0" | "LPPL-1.1" | "LPPL-1.2" | "LPPL-1.3a" | "LPPL-1.3c" | "Latex2e" | "Leptonica" | "LiLiQ-P-1.1" | "LiLiQ-R-1.1" | "LiLiQ-Rplus-1.1" | "Libpng" | "Linux-OpenIB" | "MIT" | "MIT-0" | "MIT-CMU" | "MIT-Modern-Variant" | "MIT-advertising" | "MIT-enna" | "MIT-feh" | "MIT-open-group" | "MITNFA" | "MPL-1.0" | "MPL-1.1" | "MPL-2.0" | "MPL-2.0-no-copyleft-exception" | "MS-PL" | "MS-RL" | "MTLL" | "MakeIndex" | "MirOS" | "Motosoto" | "MulanPSL-1.0" | "MulanPSL-2.0" | "Multics" | "Mup" | "NAIST-2003" | "NASA-1.3" | "NBPL-1.0" | "NCGL-UK-2.0" | "NCSA" | "NGPL" | "NIST-PD" | "NIST-PD-fallback" | "NLOD-1.0" | "NLPL" | "NOSL" | "NPL-1.0" | "NPL-1.1" | "NPOSL-3.0" | "NRL" | "NTP" | "NTP-0" | "Naumen" | "Net-SNMP" | "NetCDF" | "Newsletr" | "Nokia" | "Noweb" | "O-UDA-1.0" | "OCCT-PL" | "OCLC-2.0" | "ODC-By-1.0" | "ODbL-1.0" | "OFL-1.0" | "OFL-1.0-RFN" | "OFL-1.0-no-RFN" | "OFL-1.1" | "OFL-1.1-RFN" | "OFL-1.1-no-RFN" | "OGC-1.0" | "OGDL-Taiwan-1.0" | "OGL-Canada-2.0" | "OGL-UK-1.0" | "OGL-UK-2.0" | "OGL-UK-3.0" | "OGTSL" | "OLDAP-1.1" | "OLDAP-1.2" | "OLDAP-1.3" | "OLDAP-1.4" | "OLDAP-2.0" | "OLDAP-2.0.1" | "OLDAP-2.1" | "OLDAP-2.2" | "OLDAP-2.2.1" | "OLDAP-2.2.2" | "OLDAP-2.3" | "OLDAP-2.4" | "OLDAP-2.5" | "OLDAP-2.6" | "OLDAP-2.7" | "OLDAP-2.8" | "OML" | "OPL-1.0" | "OSET-PL-2.1" | "OSL-1.0" | "OSL-1.1" | "OSL-2.0" | "OSL-2.1" | "OSL-3.0" | "OpenSSL" | "PDDL-1.0" | "PHP-3.0" | "PHP-3.01" | "PSF-2.0" | "Parity-6.0.0" | "Parity-7.0.0" | "Plexus" | "PolyForm-Noncommercial-1.0.0" | "PolyForm-Small-Business-1.0.0" | "PostgreSQL" | "Python-2.0" | "QPL-1.0" | "Qhull" | "RHeCos-1.1" | "RPL-1.1" | "RPL-1.5" | "RPSL-1.0" | "RSA-MD" | "RSCPL" | "Rdisc" | "Ruby" | "SAX-PD" | "SCEA" | "SGI-B-1.0" | "SGI-B-1.1" | "SGI-B-2.0" | "SHL-0.5" | "SHL-0.51" | "SISSL" | "SISSL-1.2" | "SMLNJ" | "SMPPL" | "SNIA" | "SPL-1.0" | "SSH-OpenSSH" | "SSH-short" | "SSPL-1.0" | "SWL" | "Saxpath" | "Sendmail" | "Sendmail-8.23" | "SimPL-2.0" | "Sleepycat" | "Spencer-86" | "Spencer-94" | "Spencer-99" | "SugarCRM-1.1.3" | "TAPR-OHL-1.0" | "TCL" | "TCP-wrappers" | "TMate" | "TORQUE-1.1" | "TOSL" | "TU-Berlin-1.0" | "TU-Berlin-2.0" | "UCL-1.0" | "UPL-1.0" | "Unicode-DFS-2015" | "Unicode-DFS-2016" | "Unicode-TOU" | "Unlicense" | "VOSTROM" | "VSL-1.0" | "Vim" | "W3C" | "W3C-19980720" | "W3C-20150513" | "WTFPL" | "Watcom-1.0" | "Wsuipa" | "X11" | "XFree86-1.1" | "XSkat" | "Xerox" | "Xnet" | "ZPL-1.1" | "ZPL-2.0" | "ZPL-2.1" | "Zed" | "Zend-2.0" | "Zimbra-1.3" | "Zimbra-1.4" | "Zlib" | "blessing" | "bzip2-1.0.5" | "bzip2-1.0.6" | "copyleft-next-0.3.0" | "copyleft-next-0.3.1" | "curl" | "diffmark" | "dvipdfm" | "eGenix" | "etalab-2.0" | "freeware" | "gSOAP-1.3b" | "gnuplot" | "iMatix" | "libpng-2.0" | "libselinux-1.0" | "libtiff" | "mpich2" | "proprietary" | "psfrag" | "psutils" | "unknown" | "xinetd" | "xpp" | "zlib-acknowledgement"
+    /**
+     * A structure describing some interesting facts about an OS template project
+     * interface fullName: dedicated.TemplateOsInfoProject.TemplateOsInfoProject
+     */
+    export interface TemplateOsInfoProject {
+        os?: dedicated.TemplateOsInfoProjectItem;
+        usage?: dedicated.TemplateOsInfoProjectItem;
+    }
+    /**
+     * A structure describing some interesting facts about an OS template project item
+     * interface fullName: dedicated.TemplateOsInfoProjectItem.TemplateOsInfoProjectItem
+     */
+    export interface TemplateOsInfoProjectItem {
+        governance?: string[];
+        releaseNotes?: string;
+        url?: string;
+    }
+    /**
      * all language available
      * type fullname: dedicated.TemplateOsLanguageEnum
      */
@@ -1022,24 +1068,27 @@ export namespace dedicated {
      * interface fullName: dedicated.TemplateOsProperties.TemplateOsProperties
      */
     export interface TemplateOsProperties {
-        changeLog?: string;
         customHostname?: string;
         postInstallationScriptLink?: string;
         postInstallationScriptReturn?: string;
-        rating?: number;
         sshKeyName?: string;
         useDistributionKernel?: boolean;
     }
     /**
+     * Os subfamily definition
+     * type fullname: dedicated.TemplateOsSubfamilyEnum
+     */
+    export type TemplateOsSubfamilyEnum = "aos" | "arch" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "slackware" | "smartos" | "solusvm" | "suse" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
+    /**
      * Os type
      * type fullname: dedicated.TemplateOsTypeEnum
      */
-    export type TemplateOsTypeEnum = "bsd" | "linux" | "solaris" | "windows"
+    export type TemplateOsTypeEnum = "bsd" | "ibm" | "linux" | "solaris" | "unix" | "windows"
     /**
      * Os usage definition
      * type fullname: dedicated.TemplateOsUsageEnum
      */
-    export type TemplateOsUsageEnum = "basic" | "customer" | "hosting" | "other" | "readyToUse" | "virtualisation"
+    export type TemplateOsUsageEnum = "basic" | "customer" | "database" | "hosting" | "management" | "other" | "readyToUse" | "virtualisation" | "virtualization"
     /**
      * partition type
      * type fullname: dedicated.TemplatePartitionTypeEnum
@@ -1052,19 +1101,21 @@ export namespace dedicated {
          */
         export interface Templates {
             availableLanguages: dedicated.TemplateOsLanguageEnum[];
-            beta?: boolean;
             bitFormat: dedicated.server.BitFormatEnum;
             category: dedicated.TemplateOsUsageEnum;
             customization?: dedicated.TemplateOsProperties;
             defaultLanguage: dedicated.TemplateOsLanguageEnum;
-            deprecated?: boolean;
             description: string;
             distribution: string;
             family: dedicated.TemplateOsTypeEnum;
             filesystems: dedicated.TemplateOsFileSystemEnum[];
             hardRaidConfiguration?: boolean;
             lastModification?: string;
+            license?: dedicated.TemplateOsInfoLicense;
             lvmReady?: boolean;
+            noPartitioning: boolean;
+            project?: dedicated.TemplateOsInfoProject;
+            subfamily: dedicated.TemplateOsSubfamilyEnum;
             supportsDistributionKernel?: boolean;
             supportsGptLabel?: boolean;
             supportsRTM: boolean;
@@ -1132,7 +1183,7 @@ export namespace domain {
      * Operation functions
      * type fullname: domain.NicOperationFunctionEnum
      */
-    export type NicOperationFunctionEnum = "ContactControl" | "DnsAnycastActivate" | "DnsAnycastDeactivate" | "DnssecDisable" | "DnssecEnable" | "DnssecResigning" | "DnssecRollKsk" | "DnssecRollZsk" | "DomainContactControl" | "DomainContactUpdate" | "DomainControl" | "DomainCreate" | "DomainDelete" | "DomainDnsUpdate" | "DomainDsUpdate" | "DomainHold" | "DomainHostCreate" | "DomainHostDelete" | "DomainHostUpdate" | "DomainIncomingTransfer" | "DomainLock" | "DomainOutgoingTransfer" | "DomainRenew" | "DomainRestore" | "DomainTrade" | "ZoneImport"
+    export type NicOperationFunctionEnum = "ContactControl" | "DnsAnycastActivate" | "DnsAnycastDeactivate" | "DnssecDisable" | "DnssecEnable" | "DnssecResigning" | "DnssecRollKsk" | "DnssecRollZsk" | "DomainAfterMarket" | "DomainContactControl" | "DomainContactUpdate" | "DomainControl" | "DomainCreate" | "DomainDelete" | "DomainDnsUpdate" | "DomainDsUpdate" | "DomainEmailRedirectionsCreate" | "DomainEmailRedirectionsDelete" | "DomainHold" | "DomainHostCreate" | "DomainHostDelete" | "DomainHostUpdate" | "DomainIncomingTransfer" | "DomainLock" | "DomainOutgoingTransfer" | "DomainRegistryDelete" | "DomainRenew" | "DomainResourceDelete" | "DomainRestore" | "DomainTrade" | "DomainUnhold" | "DomainUnlock" | "ZoneImport"
     /**
      * operation Action
      * type fullname: domain.OperationActionEnum
@@ -1186,6 +1237,29 @@ export namespace me {
          */
         export type LevelTypeEnum = "standard" | "premium" | "premium-accredited" | "business" | "enterprise"
     }
+    export namespace abuse {
+        /**
+         * Get report API response
+         * interface fullName: me.abuse.Abuse.Abuse
+         */
+        export interface Abuse {
+            category: me.abuse.AbuseCategoryEnum;
+            creationDate: string;
+            publicId: string;
+            service: string;
+            status: me.abuse.AbuseStatusEnum;
+        }
+        /**
+         * The abuse categories
+         * type fullname: me.abuse.AbuseCategoryEnum
+         */
+        export type AbuseCategoryEnum = "Compromised" | "Copyright" | "Illegal" | "Intrusion" | "Malware" | "Network Attack" | "Other" | "Phishing" | "Spam"
+        /**
+         * The abuse status
+         * type fullname: me.abuse.AbuseStatusEnum
+         */
+        export type AbuseStatusEnum = "Answered" | "Claimed" | "Closed" | "Escalated" | "Open" | "Paused" | "Reopened" | "Updated" | "WaitingAnswer"
+    }
     export namespace billing {
         export namespace group {
             /**
@@ -1216,6 +1290,50 @@ export namespace me {
                 export interface Create {
                     serviceId: number;
                 }
+            }
+        }
+        export namespace purchaseOrder {
+            /**
+             * Purchase order creation payload
+             * interface fullName: me.billing.purchaseOrder.Creation.Creation
+             */
+            export interface Creation {
+                billingGroupId?: number;
+                description?: string;
+                endDate?: string;
+                reference: string;
+                startDate: string;
+            }
+            /**
+             * Purchase Order
+             * interface fullName: me.billing.purchaseOrder.PurchaseOrder.PurchaseOrder
+             */
+            export interface PurchaseOrder {
+                billingGroupId?: number;
+                creationDate: string;
+                description?: string;
+                endDate?: string;
+                id: number;
+                lastUpdate: string;
+                reference: string;
+                startDate: string;
+                status: me.billing.purchaseOrder.StatusEnum;
+            }
+            /**
+             * Status of the Purchase Order
+             * type fullname: me.billing.purchaseOrder.StatusEnum
+             */
+            export type StatusEnum = "CREATED" | "DELETED"
+            /**
+             * Purchase order update payload
+             * interface fullName: me.billing.purchaseOrder.Update.Update
+             */
+            export interface Update {
+                billingGroupId?: number;
+                description?: string;
+                endDate?: string;
+                reference?: string;
+                startDate?: string;
             }
         }
     }
@@ -1357,6 +1475,7 @@ export namespace me {
                 amount: orderPrice;
                 balanceName: string;
                 creationDate: string;
+                destinationObject?: me.credit.balance.movement.SubObject;
                 expirationDate?: string;
                 lastUpdate: string;
                 movementId: number;
@@ -1382,7 +1501,7 @@ export namespace me {
                  * Balance movement type
                  * type fullname: me.credit.balance.movement.TypeEnum
                  */
-                export type TypeEnum = "BONUS" | "CANCEL" | "EXPIRE" | "GIFT" | "MANUAL" | "ORDER" | "REFUND" | "UNPAID" | "USE" | "VOUCHER"
+                export type TypeEnum = "BONUS" | "CANCEL" | "CREDIT_NOTE" | "EXPIRE" | "GIFT" | "MANUAL" | "ORDER" | "REFUND" | "UNPAID" | "USE" | "VOUCHER"
             }
         }
         export namespace code {
@@ -1394,6 +1513,70 @@ export namespace me {
                 inputCode: string;
                 serviceId: number;
             }
+        }
+    }
+    export namespace incident {
+        /**
+         * Original service that can be migrated
+         * interface fullName: me.incident.MigrateServices.MigrateServices
+         */
+        export interface MigrateServices {
+            dryRun: boolean;
+            serviceIds: number[];
+        }
+        /**
+         * Order created in order to migrate a service
+         * interface fullName: me.incident.Order.Order
+         */
+        export interface Order {
+            order: order.Order;
+        }
+        /**
+         * Commercial gesture applied for the service migration
+         * interface fullName: me.incident.PercentagePromotion.PercentagePromotion
+         */
+        export interface PercentagePromotion {
+            duration: string;
+            value: number;
+        }
+        /**
+         * Commercial offer a customer can migrate his service to
+         * interface fullName: me.incident.ProposedOffer.ProposedOffer
+         */
+        export interface ProposedOffer {
+            configurations: me.incident.ProposedOfferConfiguration[];
+            plan: order.cart.GenericProductDefinition;
+            pricingMode: string;
+            promotion: me.incident.PercentagePromotion;
+        }
+        /**
+         * Config
+         * interface fullName: me.incident.ProposedOfferConfiguration.ProposedOfferConfiguration
+         */
+        export interface ProposedOfferConfiguration {
+            name: string;
+            value: string;
+        }
+        /**
+         * Service you may migrate to a given offer
+         * interface fullName: me.incident.ServiceMigration.ServiceMigration
+         */
+        export interface ServiceMigration {
+            addons: me.incident.ServiceMigration[];
+            orderId?: number;
+            proposedOffer: me.incident.ProposedOffer;
+            serviceToMigrate?: me.incident.ServiceToMigrate;
+        }
+        /**
+         * Original service that can be migrated
+         * interface fullName: me.incident.ServiceToMigrate.ServiceToMigrate
+         */
+        export interface ServiceToMigrate {
+            description: string;
+            metadata: complexType.SafeKeyValue<string>[];
+            route?: string;
+            serviceId: number;
+            serviceName: string;
         }
     }
     export namespace partnerLevel {
@@ -1451,7 +1634,7 @@ export namespace me {
          * Register integration type enum
          * type fullname: me.payment.IntegrationEnum
          */
-        export type IntegrationEnum = "NONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "REDIRECT"
+        export type IntegrationEnum = "NONE" | "COMPONENT" | "IFRAME_VANTIV" | "IN_CONTEXT" | "POST_FORM" | "REDIRECT"
         /**
          * Payment method object
          * interface fullName: me.payment.PaymentMethod.PaymentMethod
@@ -1492,7 +1675,9 @@ export namespace me {
             export interface AvailablePaymentMethod {
                 icon: me.payment.method.Icon;
                 integration: paymentmethodIntegrationType;
+                merchantId?: string;
                 oneshot: boolean;
+                paymentSubType?: string;
                 paymentType: string;
                 registerable: boolean;
                 registerableWithTransaction: boolean;
@@ -1523,10 +1708,19 @@ export namespace me {
                 callbackUrl: me.payment.method.CallbackUrl;
                 default: boolean;
                 description?: string;
+                formData?: string;
                 orderId?: number;
                 paymentSubType?: me.payment.AvailableSubTypeEnum;
                 paymentType: string;
                 register: boolean;
+            }
+            /**
+             * Add details to one payment method challenge
+             * interface fullName: me.payment.method.Details.Details
+             */
+            export interface Details {
+                details: string;
+                transactionId: number;
             }
             /**
              * Payload to finalize payment method registration
@@ -1582,6 +1776,7 @@ export namespace me {
                     merchantId?: string;
                     organizationId?: string;
                     paymentMethodId: number;
+                    transactionId: number;
                     url?: string;
                     validationType: paymentmethodIntegrationType;
                 }
@@ -1623,6 +1818,7 @@ export namespace me {
                 merchandId?: string;
                 organizationId?: string;
                 paymentMethodId: number;
+                transactionId?: number;
                 url?: string;
                 validationType: me.payment.IntegrationEnum;
             }
@@ -1641,6 +1837,59 @@ export namespace me {
         }
     }
     export namespace paymentMean {
+        /**
+         * Credit card informations
+         * interface fullName: me.paymentMean.BankAccount.BankAccount
+         */
+        export interface BankAccount {
+            bic: string;
+            creationDate: string;
+            defaultPaymentMean: boolean;
+            description?: string;
+            iban: string;
+            icon?: me.paymentMean.IconData;
+            id: number;
+            mandateSignatureDate?: string;
+            ownerAddress: string;
+            ownerName: string;
+            state: me.paymentMean.BankAccountStateEnum;
+            uniqueReference: string;
+            validationDocumentLink?: string;
+        }
+        /**
+         * Missing description
+         * interface fullName: me.paymentMean.BankAccountChallengeCreation.BankAccountChallengeCreation
+         */
+        export interface BankAccountChallengeCreation {
+            challenge: string;
+        }
+        /**
+         * Missing description
+         * interface fullName: me.paymentMean.BankAccountCreation.BankAccountCreation
+         */
+        export interface BankAccountCreation {
+            bic: string;
+            description?: string;
+            iban: string;
+            ownerAddress: string;
+            ownerName: string;
+            setDefault?: boolean;
+        }
+        /**
+         * State of your bank account
+         * type fullname: me.paymentMean.BankAccountStateEnum
+         */
+        export type BankAccountStateEnum = "blockedForIncidents" | "pendingValidation" | "valid"
+        /**
+         * A validation required to add a payment mean bank account
+         * interface fullName: me.paymentMean.BankAccountValidation.BankAccountValidation
+         */
+        export interface BankAccountValidation {
+            id: number;
+            submitUrl?: string;
+            url: string;
+            validationType: me.paymentMean.ValidationTypeEnum;
+        }
         /**
          * Credit card informations
          * interface fullName: me.paymentMean.CreditCard.CreditCard
@@ -1673,7 +1922,7 @@ export namespace me {
             setDefault?: boolean;
         }
         /**
-         * State of you credit card
+         * State of your credit card
          * type fullname: me.paymentMean.CreditCardStateEnum
          */
         export type CreditCardStateEnum = "expired" | "tooManyFailures" | "valid"
@@ -1688,6 +1937,24 @@ export namespace me {
             validationType: me.paymentMean.ValidationTypeEnum;
         }
         /**
+         * Deferred account informations
+         * interface fullName: me.paymentMean.Deferred.Deferred
+         */
+        export interface Deferred {
+            creationDate: string;
+            defaultPaymentMean: boolean;
+            description?: string;
+            icon?: me.paymentMean.IconData;
+            id: number;
+            label?: string;
+            state: me.paymentMean.DeferredStateEnum;
+        }
+        /**
+         * State of you deferred account
+         * type fullname: me.paymentMean.DeferredStateEnum
+         */
+        export type DeferredStateEnum = "failed" | "valid"
+        /**
          * Payment mean type icon
          * interface fullName: me.paymentMean.IconData.IconData
          */
@@ -1695,6 +1962,51 @@ export namespace me {
             data?: string;
             name?: string;
             url?: string;
+        }
+        /**
+         * Paypal informations
+         * interface fullName: me.paymentMean.Paypal.Paypal
+         */
+        export interface Paypal {
+            agreementId: string;
+            creationDate: string;
+            defaultPaymentMean: boolean;
+            description?: string;
+            email: string;
+            icon?: me.paymentMean.IconData;
+            id: number;
+            state: me.paymentMean.PaypalStateEnum;
+        }
+        /**
+         * Missing description
+         * interface fullName: me.paymentMean.PaypalChallengeCreation.PaypalChallengeCreation
+         */
+        export interface PaypalChallengeCreation {
+            challenge: string;
+        }
+        /**
+         * Missing description
+         * interface fullName: me.paymentMean.PaypalCreation.PaypalCreation
+         */
+        export interface PaypalCreation {
+            description?: string;
+            returnUrl?: string;
+            setDefault?: boolean;
+        }
+        /**
+         * State of you paypal
+         * type fullname: me.paymentMean.PaypalStateEnum
+         */
+        export type PaypalStateEnum = "failing" | "tooManyFailures" | "valid"
+        /**
+         * A validation required to add a payment mean paypal
+         * interface fullName: me.paymentMean.PaypalValidation.PaypalValidation
+         */
+        export interface PaypalValidation {
+            id: number;
+            submitUrl?: string;
+            url: string;
+            validationType: me.paymentMean.ValidationTypeEnum;
         }
         /**
          * All the validation you may have to do
@@ -1723,7 +2035,7 @@ export namespace me {
          * Tag status
          * type fullname: me.tag.StatusEnum
          */
-        export type StatusEnum = "CREATED" | "CREATING" | "DELETED" | "DELETING" | "MODERATING" | "REFUSED" | "REFUSING" | "REVOCATING" | "WAIT_MODERATION" | "WAIT_REVOCATION"
+        export type StatusEnum = "CREATED" | "CREATING" | "DELETED" | "DELETING" | "ERROR" | "MODERATING" | "REFUSED" | "REFUSING" | "REVOCATING" | "WAIT_MODERATION" | "WAIT_REVOCATION"
         /**
          * Tag
          * interface fullName: me.tag.Tag.Tag
@@ -2324,15 +2636,62 @@ export namespace nichandle {
 }
 export namespace order {
     /**
+     * A contract
+     * interface fullName: order.Contract.Contract
+     */
+    export interface Contract {
+        content: string;
+        name: string;
+        url: string;
+    }
+    /**
      * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
+     * An order
+     * interface fullName: order.Order.Order
+     */
+    export interface Order {
+        contracts: order.Contract[];
+        details: order.OrderDetail[];
+        orderId?: number;
+        prices: order.OrderPrices;
+        url?: string;
+    }
+    /**
+     * Detail of an order
+     * interface fullName: order.OrderDetail.OrderDetail
+     */
+    export interface OrderDetail {
+        cartItemID?: number;
+        description: string;
+        detailType?: orderOrderDetailTypeEnum;
+        domain: string;
+        originalTotalPrice: orderPrice;
+        quantity: number;
+        reductionTotalPrice: orderPrice;
+        reductions: order.Reduction[];
+        totalPrice: orderPrice;
+        unitPrice: orderPrice;
+    }
+    /**
      * Product type of item in order
      * type fullname: order.OrderDetailTypeEnum
      */
     export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
+    /**
+     * Prices of an order
+     * interface fullName: order.OrderPrices.OrderPrices
+     */
+    export interface OrderPrices {
+        originalWithoutTax?: orderPrice;
+        reduction?: orderPrice;
+        tax: orderPrice;
+        withTax: orderPrice;
+        withoutTax: orderPrice;
+    }
     /**
      * Price with its currency and textual representation
      * interface fullName: order.Price.Price
@@ -2341,6 +2700,71 @@ export namespace order {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
+    }
+    /**
+     * Order detail reduction
+     * interface fullName: order.Reduction.Reduction
+     */
+    export interface Reduction {
+        context: order.ReductionContextEnum;
+        price: orderPrice;
+        type: order.ReductionTypeEnum;
+        value: orderPrice;
+    }
+    /**
+     * Context of the reduction
+     * type fullname: order.ReductionContextEnum
+     */
+    export type ReductionContextEnum = "promotion" | "voucher"
+    /**
+     * Type of reduction
+     * type fullname: order.ReductionTypeEnum
+     */
+    export type ReductionTypeEnum = "percentage" | "forced_amount" | "fixed_amount"
+    export namespace cart {
+        /**
+         * Representation of a generic product
+         * interface fullName: order.cart.GenericProductDefinition.GenericProductDefinition
+         */
+        export interface GenericProductDefinition {
+            planCode: string;
+            prices: order.cart.GenericProductPricing[];
+            productName: string;
+            productType: order.cart.GenericProductTypeEnum;
+        }
+        /**
+         * Representation of a product pricing
+         * interface fullName: order.cart.GenericProductPricing.GenericProductPricing
+         */
+        export interface GenericProductPricing {
+            capacities: order.cart.GenericProductPricingCapacitiesEnum[];
+            description: string;
+            duration: string;
+            interval: number;
+            maximumQuantity?: number;
+            maximumRepeat?: number;
+            minimumQuantity: number;
+            minimumRepeat: number;
+            price: orderPrice;
+            priceInUcents: number;
+            pricingMode: string;
+            pricingType: order.cart.GenericProductPricingTypeEnum;
+        }
+        /**
+         * Capacity of a pricing (type)
+         * type fullname: order.cart.GenericProductPricingCapacitiesEnum
+         */
+        export type GenericProductPricingCapacitiesEnum = "installation" | "renew" | "upgrade" | "downgrade" | "detach" | "dynamic"
+        /**
+         * Type of a pricing
+         * type fullname: order.cart.GenericProductPricingTypeEnum
+         */
+        export type GenericProductPricingTypeEnum = "rental" | "consumption" | "purchase"
+        /**
+         * Type of a product
+         * type fullname: order.cart.GenericProductTypeEnum
+         */
+        export type GenericProductTypeEnum = "delivery" | "deposit" | "shipping" | "cloud_service" | "saas_license" | "storage" | "domain"
     }
 }
 export namespace payment {
@@ -2369,7 +2793,7 @@ export namespace payment {
          * Payment method integration type
          * type fullname: payment.method.IntegrationType
          */
-        export type IntegrationType = "DONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "REDIRECT"
+        export type IntegrationType = "COMPONENT" | "DONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "POST_FORM" | "REDIRECT"
     }
 }
 export namespace xander {
@@ -2405,6 +2829,28 @@ export interface Me {
      * Controle cache
      */
     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    abuse: {
+        /**
+         * Retrieve abuse cases list
+         * GET /me/abuse
+         */
+        $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $(id: string): {
+            /**
+             * Check specific abuse case
+             * GET /me/abuse/{id}
+             */
+            $get(): Promise<me.abuse.Abuse>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        };
+    }
     accessRestriction: {
         backupCode: {
             /**
@@ -3769,6 +4215,26 @@ export interface Me {
             };
         }
     }
+    incident: {
+        sbg: {
+            migrateServices: {
+                /**
+                 * Get all services you can migrate
+                 * GET /me/incident/sbg/migrateServices
+                 */
+                $get(): Promise<me.incident.ServiceMigration[]>;
+                /**
+                 * Ask for impacted services migration
+                 * POST /me/incident/sbg/migrateServices
+                 */
+                $post(params?: { dryRun?: boolean, serviceIds?: number[] }): Promise<me.incident.Order>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+        }
+    }
     installationTemplate: {
         /**
          * Your customized operating system installation templates
@@ -3799,7 +4265,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/installationTemplate/{templateName}
              */
-            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], beta?: boolean, bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, deprecated?: boolean, description?: string, distribution?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, lvmReady?: boolean, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
+            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -4089,6 +4555,38 @@ export interface Me {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            balance: {
+                /**
+                 * List credit balances applied on this Order
+                 * GET /me/order/{orderId}/balance
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Use a credit balance on this Order
+                 * POST /me/order/{orderId}/balance
+                 */
+                $post(params: { balanceName: string }): Promise<billing.CreditBalance>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(balanceName: string): {
+                    /**
+                     * Remove a credit balance from this Order
+                     * DELETE /me/order/{orderId}/balance/{balanceName}
+                     */
+                    $delete(): Promise<void>;
+                    /**
+                     * Get this object properties
+                     * GET /me/order/{orderId}/balance/{balanceName}
+                     */
+                    $get(): Promise<billing.CreditBalance>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
             bill: {
                 /**
                  * Get this object properties
@@ -4358,6 +4856,17 @@ export interface Me {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    requestRefund: {
+                        /**
+                         * request a refund of this credit note to your original payment method
+                         * POST /me/ovhAccount/{ovhAccountId}/movements/{movementId}/requestRefund
+                         */
+                        $post(params: { amount: number }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                 };
             }
             retrieveMoney: {
@@ -4417,7 +4926,7 @@ export interface Me {
              * Register a new payment method
              * POST /me/payment/method
              */
-            $post(params: { callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentSubType?: me.payment.AvailableSubTypeEnum, paymentType: string, register?: boolean }): Promise<me.payment.method.Validation>;
+            $post(params: { callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, formData?: string, orderId?: number, paymentSubType?: me.payment.AvailableSubTypeEnum, paymentType: string, register?: boolean }): Promise<me.payment.method.Validation>;
             /**
              * Controle cache
              */
@@ -4448,6 +4957,17 @@ export interface Me {
                      * POST /me/payment/method/{paymentMethodId}/challenge
                      */
                     $post(params: { challenge: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                details: {
+                    /**
+                     * Add details to your payment method challenge
+                     * POST /me/payment/method/{paymentMethodId}/details
+                     */
+                    $post(params?: { details?: string, transactionId?: number }): Promise<me.payment.method.Validation>;
                     /**
                      * Controle cache
                      */
@@ -4495,12 +5015,12 @@ export interface Me {
              * List of bank accounts
              * GET /me/paymentMean/bankAccount
              */
-            $get(params?: { state?: billing.BankAccountStateEnum }): Promise<number[]>;
+            $get(params?: { state?: me.paymentMean.BankAccountStateEnum }): Promise<number[]>;
             /**
-             * Enable payment through a new account
+             * Add a new payment mean bank account
              * POST /me/paymentMean/bankAccount
              */
-            $post(params: { bic: string, description?: string, iban: string, ownerAddress: string, ownerName: string, setDefault?: boolean }): Promise<billing.PaymentMeanValidation>;
+            $post(params: { bic: string, description?: string, iban: string, ownerAddress: string, ownerName: string, setDefault?: boolean }): Promise<me.paymentMean.BankAccountValidation>;
             /**
              * Controle cache
              */
@@ -4512,15 +5032,15 @@ export interface Me {
                  */
                 $delete(): Promise<void>;
                 /**
-                 * Get this object properties
+                 * Get bank account properties
                  * GET /me/paymentMean/bankAccount/{id}
                  */
-                $get(): Promise<billing.BankAccount>;
+                $get(): Promise<me.paymentMean.BankAccount>;
                 /**
                  * Alter this object properties
                  * PUT /me/paymentMean/bankAccount/{id}
                  */
-                $put(params?: { bic?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, iban?: string, icon?: billing.paymentMethod.IconData, id?: number, mandateSignatureDate?: string, ownerAddress?: string, ownerName?: string, state?: billing.BankAccountStateEnum, uniqueReference?: string, validationDocumentLink?: string }): Promise<void>;
+                $put(params?: { bic?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, iban?: string, icon?: me.paymentMean.IconData, id?: number, mandateSignatureDate?: string, ownerAddress?: string, ownerName?: string, state?: me.paymentMean.BankAccountStateEnum, uniqueReference?: string, validationDocumentLink?: string }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -4610,7 +5130,7 @@ export interface Me {
         }
         deferredPaymentAccount: {
             /**
-             * List of authorized deferred payment account for this customer
+             * List of payment mean deferred accounts
              * GET /me/paymentMean/deferredPaymentAccount
              */
             $get(): Promise<number[]>;
@@ -4623,19 +5143,19 @@ export interface Me {
                  * Get this object properties
                  * GET /me/paymentMean/deferredPaymentAccount/{id}
                  */
-                $get(): Promise<billing.DeferredPaymentAccount>;
+                $get(): Promise<me.paymentMean.Deferred>;
                 /**
                  * Alter this object properties
                  * PUT /me/paymentMean/deferredPaymentAccount/{id}
                  */
-                $put(params?: { creationDate?: string, defaultPaymentMean?: boolean, description?: string, icon?: billing.paymentMethod.IconData, id?: number, label?: string, state?: billing.DeferredPaymentAccountStatusEnum }): Promise<void>;
+                $put(params?: { creationDate?: string, defaultPaymentMean?: boolean, description?: string, icon?: me.paymentMean.IconData, id?: number, label?: string, state?: me.paymentMean.DeferredStateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 chooseAsDefaultPaymentMean: {
                     /**
-                     * Allow you to use deferred payment. Will cancel the previous choice.
+                     * Choose this deferred account as your default payment mean. Will cancel the previous choice.
                      * POST /me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean
                      */
                     $post(): Promise<void>;
@@ -4648,42 +5168,42 @@ export interface Me {
         }
         paypal: {
             /**
-             * List of Paypal accounts usable for payments on this account
+             * List of payment mean paypals
              * GET /me/paymentMean/paypal
              */
             $get(): Promise<number[]>;
             /**
-             * Enable payment through a new PayPal account
+             * Add a new payment mean paypal
              * POST /me/paymentMean/paypal
              */
-            $post(params?: { description?: string, returnUrl?: string, setDefault?: boolean }): Promise<billing.PaymentMeanValidation>;
+            $post(params?: { description?: string, returnUrl?: string, setDefault?: boolean }): Promise<me.paymentMean.PaypalValidation>;
             /**
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
-                 * Disable payment through this PayPal account
+                 * Disable payment through this paypal
                  * DELETE /me/paymentMean/paypal/{id}
                  */
                 $delete(): Promise<void>;
                 /**
-                 * Get this object properties
+                 * Get paypal properties
                  * GET /me/paymentMean/paypal/{id}
                  */
-                $get(): Promise<billing.Paypal>;
+                $get(): Promise<me.paymentMean.Paypal>;
                 /**
                  * Alter this object properties
                  * PUT /me/paymentMean/paypal/{id}
                  */
-                $put(params?: { agreementId?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, email?: string, icon?: billing.paymentMethod.IconData, id?: number, state?: billing.PaypalStateEnum }): Promise<void>;
+                $put(params?: { agreementId?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, email?: string, icon?: me.paymentMean.IconData, id?: number, state?: me.paymentMean.PaypalStateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 challenge: {
                     /**
-                     * Challenge your bank account
+                     * Challenge your paypal
                      * POST /me/paymentMean/paypal/{id}/challenge
                      */
                     $post(params: { challenge: string }): Promise<void>;
@@ -4694,7 +5214,7 @@ export interface Me {
                 }
                 chooseAsDefaultPaymentMean: {
                     /**
-                     * Choose this Paypal agreement as your default payment mean. Will cancel the previous choice.
+                     * Choose this paypal as your default payment mean. Will cancel the previous choice.
                      * POST /me/paymentMean/paypal/{id}/chooseAsDefaultPaymentMean
                      */
                     $post(): Promise<void>;

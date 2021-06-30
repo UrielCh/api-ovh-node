@@ -204,10 +204,14 @@ export namespace order {
      * interface fullName: order.OrderDetail.OrderDetail
      */
     export interface OrderDetail {
+        cartItemID?: number;
         description: string;
         detailType?: order.OrderDetailTypeEnum;
         domain: string;
+        originalTotalPrice: order.Price;
         quantity: number;
+        reductionTotalPrice: order.Price;
+        reductions: order.Reduction[];
         totalPrice: order.Price;
         unitPrice: order.Price;
     }
@@ -221,6 +225,8 @@ export namespace order {
      * interface fullName: order.OrderPrices.OrderPrices
      */
     export interface OrderPrices {
+        originalWithoutTax?: order.Price;
+        reduction?: order.Price;
         tax: order.Price;
         withTax: order.Price;
         withoutTax: order.Price;
@@ -233,6 +239,71 @@ export namespace order {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
+    }
+    /**
+     * Order detail reduction
+     * interface fullName: order.Reduction.Reduction
+     */
+    export interface Reduction {
+        context: order.ReductionContextEnum;
+        price: order.Price;
+        type: order.ReductionTypeEnum;
+        value: order.Price;
+    }
+    /**
+     * Context of the reduction
+     * type fullname: order.ReductionContextEnum
+     */
+    export type ReductionContextEnum = "promotion" | "voucher"
+    /**
+     * Type of reduction
+     * type fullname: order.ReductionTypeEnum
+     */
+    export type ReductionTypeEnum = "percentage" | "forced_amount" | "fixed_amount"
+    export namespace cart {
+        /**
+         * Representation of a generic product
+         * interface fullName: order.cart.GenericProductDefinition.GenericProductDefinition
+         */
+        export interface GenericProductDefinition {
+            planCode: string;
+            prices: order.cart.GenericProductPricing[];
+            productName: string;
+            productType: order.cart.GenericProductTypeEnum;
+        }
+        /**
+         * Representation of a product pricing
+         * interface fullName: order.cart.GenericProductPricing.GenericProductPricing
+         */
+        export interface GenericProductPricing {
+            capacities: order.cart.GenericProductPricingCapacitiesEnum[];
+            description: string;
+            duration: string;
+            interval: number;
+            maximumQuantity?: number;
+            maximumRepeat?: number;
+            minimumQuantity: number;
+            minimumRepeat: number;
+            price: order.Price;
+            priceInUcents: number;
+            pricingMode: string;
+            pricingType: order.cart.GenericProductPricingTypeEnum;
+        }
+        /**
+         * Capacity of a pricing (type)
+         * type fullname: order.cart.GenericProductPricingCapacitiesEnum
+         */
+        export type GenericProductPricingCapacitiesEnum = "installation" | "renew" | "upgrade" | "downgrade" | "detach" | "dynamic"
+        /**
+         * Type of a pricing
+         * type fullname: order.cart.GenericProductPricingTypeEnum
+         */
+        export type GenericProductPricingTypeEnum = "rental" | "consumption" | "purchase"
+        /**
+         * Type of a product
+         * type fullname: order.cart.GenericProductTypeEnum
+         */
+        export type GenericProductTypeEnum = "delivery" | "deposit" | "shipping" | "cloud_service" | "saas_license" | "storage" | "domain"
     }
 }
 export namespace veeamCloudConnect {

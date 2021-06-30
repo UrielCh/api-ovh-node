@@ -244,6 +244,117 @@ export namespace cloud {
     }
     /**
      * Missing description
+     * interface fullName: cloud.ProjectKubeCreation.ProjectKubeCreation
+     */
+    export interface ProjectKubeCreation {
+        name?: string;
+        nodepool?: cloud.ProjectKubeCreationNodePool;
+        privateNetworkId?: string;
+        region: string;
+        version?: cloud.kube.VersionEnum;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeCreationNodePool.ProjectKubeCreationNodePool
+     */
+    export interface ProjectKubeCreationNodePool {
+        antiAffinity?: boolean;
+        autoscale?: boolean;
+        desiredNodes?: number;
+        flavorName?: string;
+        maxNodes?: number;
+        minNodes?: number;
+        monthlyBilled?: boolean;
+        name?: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeIpRestrictionUpsert.ProjectKubeIpRestrictionUpsert
+     */
+    export interface ProjectKubeIpRestrictionUpsert {
+        ips?: string[];
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeNodeCreation.ProjectKubeNodeCreation
+     */
+    export interface ProjectKubeNodeCreation {
+        flavorName: string;
+        name?: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeNodePoolCreation.ProjectKubeNodePoolCreation
+     */
+    export interface ProjectKubeNodePoolCreation {
+        antiAffinity?: boolean;
+        autoscale?: boolean;
+        desiredNodes?: number;
+        flavorName: string;
+        maxNodes?: number;
+        minNodes?: number;
+        monthlyBilled?: boolean;
+        name?: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeNodePoolUpdate.ProjectKubeNodePoolUpdate
+     */
+    export interface ProjectKubeNodePoolUpdate {
+        autoscale?: boolean;
+        desiredNodes?: number;
+        maxNodes?: number;
+        minNodes?: number;
+        nodesToRemove?: string[];
+    }
+    /**
+     * Creation model for OIDC
+     * interface fullName: cloud.ProjectKubeOpenIdConnectCreation.ProjectKubeOpenIdConnectCreation
+     */
+    export interface ProjectKubeOpenIdConnectCreation {
+        clientId: string;
+        issuerUrl: string;
+    }
+    /**
+     * Update model for OIDC
+     * interface fullName: cloud.ProjectKubeOpenIdConnectUpdate.ProjectKubeOpenIdConnectUpdate
+     */
+    export interface ProjectKubeOpenIdConnectUpdate {
+        clientId: string;
+        issuerUrl: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeResetCreation.ProjectKubeResetCreation
+     */
+    export interface ProjectKubeResetCreation {
+        privateNetworkId?: string;
+        version?: cloud.kube.VersionEnum;
+        workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeUpdate.ProjectKubeUpdate
+     */
+    export interface ProjectKubeUpdate {
+        name: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeUpdateCreation.ProjectKubeUpdateCreation
+     */
+    export interface ProjectKubeUpdateCreation {
+        strategy?: cloud.kube.UpdateStrategyEnum;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeUpdatePolicyUpdate.ProjectKubeUpdatePolicyUpdate
+     */
+    export interface ProjectKubeUpdatePolicyUpdate {
+        updatePolicy: cloud.kube.UpdatePolicyEnum;
+    }
+    /**
+     * Missing description
      * interface fullName: cloud.ProjectNetworkPrivateCreation.ProjectNetworkPrivateCreation
      */
     export interface ProjectNetworkPrivateCreation {
@@ -482,6 +593,33 @@ export namespace cloud {
      */
     export type ServiceStatusEnum = "UP" | "DOWN"
     /**
+     * Container
+     * interface fullName: cloud.StorageContainer.StorageContainer
+     */
+    export interface StorageContainer {
+        name: string;
+        objects: cloud.StorageObject[];
+        objectsCount: number;
+        objectsSize: number;
+    }
+    /**
+     * Create a container
+     * interface fullName: cloud.StorageContainerCreation.StorageContainerCreation
+     */
+    export interface StorageContainerCreation {
+        name: string;
+    }
+    /**
+     * Object
+     * interface fullName: cloud.StorageObject.StorageObject
+     */
+    export interface StorageObject {
+        etag: string;
+        key: string;
+        lastModified: string;
+        size: number;
+    }
+    /**
      * A vRack allows to connect your OVH infrastructures accross products and datacenters
      * interface fullName: cloud.Vrack.Vrack
      */
@@ -569,6 +707,40 @@ export namespace cloud {
     }
     export namespace capabilities {
         /**
+         * Public Cloud products availability
+         * interface fullName: cloud.capabilities.Availability.Availability
+         */
+        export interface Availability {
+            plans: cloud.capabilities.AvailabilityPlan[];
+            products: cloud.capabilities.AvailabilityProduct[];
+        }
+        /**
+         * Public Cloud plan availability
+         * interface fullName: cloud.capabilities.AvailabilityPlan.AvailabilityPlan
+         */
+        export interface AvailabilityPlan {
+            code: string;
+            regions: cloud.capabilities.AvailabilityRegion[];
+        }
+        /**
+         * Public Cloud product availability
+         * interface fullName: cloud.capabilities.AvailabilityProduct.AvailabilityProduct
+         */
+        export interface AvailabilityProduct {
+            name: string;
+            regions: cloud.capabilities.AvailabilityRegion[];
+        }
+        /**
+         * Details about a region
+         * interface fullName: cloud.capabilities.AvailabilityRegion.AvailabilityRegion
+         */
+        export interface AvailabilityRegion {
+            continentCode: cloud.RegionContinentEnum;
+            datacenter: string;
+            enabled: boolean;
+            name: string;
+        }
+        /**
          * Capability
          * interface fullName: cloud.capabilities.Capability.Capability
          */
@@ -645,7 +817,7 @@ export namespace cloud {
          * OSTypeEnum
          * type fullname: cloud.image.OSTypeEnum
          */
-        export type OSTypeEnum = "linux" | "bsd" | "windows"
+        export type OSTypeEnum = "linux" | "bsd" | "windows" | "baremetal-linux"
     }
     export namespace instance {
         /**
@@ -901,6 +1073,161 @@ export namespace cloud {
          */
         export type IpSubTypeEnum = "cloud" | "ovh"
     }
+    export namespace kube {
+        /**
+         * Managed Kubernetes Audit Logs
+         * interface fullName: cloud.kube.AuditLogs.AuditLogs
+         */
+        export interface AuditLogs {
+            expirationDate: string;
+            url: string;
+        }
+        /**
+         * Managed Kubernetes cluster description
+         * interface fullName: cloud.kube.Cluster.Cluster
+         */
+        export interface Cluster {
+            controlPlaneIsUpToDate: boolean;
+            createdAt: string;
+            id: string;
+            isUpToDate: boolean;
+            name: string;
+            nextUpgradeVersions?: cloud.kube.UpgradeVersionEnum[];
+            nodesUrl: string;
+            privateNetworkId?: string;
+            region: cloud.kube.RegionEnum;
+            status: cloud.kube.ClusterStatusEnum;
+            updatePolicy: string;
+            updatedAt: string;
+            url: string;
+            version: string;
+        }
+        /**
+         * Enum values for Status
+         * type fullname: cloud.kube.ClusterStatusEnum
+         */
+        export type ClusterStatusEnum = "DELETED" | "DELETING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "RESIZING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR"
+        /**
+         * a flavor kind
+         * interface fullName: cloud.kube.Flavor.Flavor
+         */
+        export interface Flavor {
+            category: cloud.kube.FlavorCategoryEnum;
+            name: string;
+            state: cloud.kube.FlavorStateEnum;
+        }
+        /**
+         * Enum values for category
+         * type fullname: cloud.kube.FlavorCategoryEnum
+         */
+        export type FlavorCategoryEnum = "c" | "g" | "t" | "b" | "r" | "i"
+        /**
+         * Enum values for State
+         * type fullname: cloud.kube.FlavorStateEnum
+         */
+        export type FlavorStateEnum = "available" | "unavailable"
+        /**
+         * Kubeconfig description
+         * interface fullName: cloud.kube.Kubeconfig.Kubeconfig
+         */
+        export interface Kubeconfig {
+            content: string;
+        }
+        /**
+         * Node installed on your cluster
+         * interface fullName: cloud.kube.Node.Node
+         */
+        export interface Node {
+            createdAt: string;
+            deployedAt?: string;
+            flavor: string;
+            id: string;
+            instanceId?: string;
+            isUpToDate: boolean;
+            name?: string;
+            nodePoolId: string;
+            projectId: string;
+            status: cloud.kube.NodeStatusEnum;
+            updatedAt: string;
+            version: string;
+        }
+        /**
+         * NodePool created on your cluster to manage your nodes
+         * interface fullName: cloud.kube.NodePool.NodePool
+         */
+        export interface NodePool {
+            antiAffinity: boolean;
+            autoscale: boolean;
+            availableNodes: number;
+            createdAt: string;
+            currentNodes: number;
+            desiredNodes: number;
+            flavor: string;
+            id: string;
+            maxNodes: number;
+            minNodes: number;
+            monthlyBilled: boolean;
+            name: string;
+            projectId: string;
+            sizeStatus: cloud.kube.NodePoolSizeStatusEnum;
+            status: cloud.kube.NodePoolStatusEnum;
+            upToDateNodes: number;
+            updatedAt: string;
+        }
+        /**
+         * Enum values for NodePool size Status
+         * type fullname: cloud.kube.NodePoolSizeStatusEnum
+         */
+        export type NodePoolSizeStatusEnum = "UNDER_CAPACITY" | "CAPACITY_OK" | "OVER_CAPACITY"
+        /**
+         * Enum values for NodePool Status
+         * type fullname: cloud.kube.NodePoolStatusEnum
+         */
+        export type NodePoolStatusEnum = "DELETED" | "DELETING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "RESIZING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR"
+        /**
+         * Enum values for Status
+         * type fullname: cloud.kube.NodeStatusEnum
+         */
+        export type NodeStatusEnum = "DELETED" | "DELETING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "RESIZING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR"
+        /**
+         * Managed Kubernetes oidc integration
+         * interface fullName: cloud.kube.OpenIdConnect.OpenIdConnect
+         */
+        export interface OpenIdConnect {
+            clientId: string;
+            issuerUrl: string;
+        }
+        /**
+         * Enum values for available regions
+         * type fullname: cloud.kube.RegionEnum
+         */
+        export type RegionEnum = "GRA5" | "GRA7" | "BHS5" | "SBG5" | "WAW1" | "SGP1" | "SYD1" | "US-EAST-VA-1" | "US-WEST-OR-1"
+        /**
+         * Enum values for worker nodes reset policy
+         * type fullname: cloud.kube.ResetWorkerNodesPolicyEnum
+         */
+        export type ResetWorkerNodesPolicyEnum = "reinstall" | "delete"
+        /**
+         * Enum values for UpdatePolicy
+         * type fullname: cloud.kube.UpdatePolicyEnum
+         */
+        export type UpdatePolicyEnum = "ALWAYS_UPDATE" | "MINIMAL_DOWNTIME" | "NEVER_UPDATE"
+        /**
+         * Enum values for UpdateStrategy
+         * type fullname: cloud.kube.UpdateStrategyEnum
+         */
+        export type UpdateStrategyEnum = "LATEST_PATCH" | "NEXT_MINOR"
+        /**
+         * List of available versions for upgrade
+         * type fullname: cloud.kube.UpgradeVersionEnum
+         */
+        export type UpgradeVersionEnum = "1.16" | "1.17" | "1.18" | "1.19" | "1.20"
+        /**
+         * List of available versions for installation
+         * type fullname: cloud.kube.VersionEnum
+         */
+        export type VersionEnum = "1.17" | "1.18" | "1.19" | "1.20"
+    }
     export namespace migration {
         /**
          * Migration
@@ -1042,6 +1369,103 @@ export namespace cloud {
     }
     export namespace project {
         /**
+         * A load balancer to handle application workload
+         * interface fullName: cloud.project.ApplicationLoadBalancer.ApplicationLoadBalancer
+         */
+        export interface ApplicationLoadBalancer {
+            address: cloud.project.loadbalancer.Address;
+            configuration: cloud.project.loadbalancer.ConfigurationVersion;
+            createdAt: string;
+            description?: string;
+            egressAddress: cloud.project.loadbalancer.Addresses;
+            id: string;
+            name?: string;
+            openstackRegion: string;
+            region: string;
+            size: cloud.project.loadbalancer.SizeEnum;
+            status: cloud.project.loadbalancer.StatusEnum;
+        }
+        /**
+         * A load balancer to handle application workload
+         * interface fullName: cloud.project.ApplicationLoadBalancerCreation.ApplicationLoadBalancerCreation
+         */
+        export interface ApplicationLoadBalancerCreation {
+            description?: string;
+            id: string;
+            name?: string;
+            networking?: cloud.project.loadbalancer.networking.NetworkingCreation;
+            openstackRegion: string;
+            region: string;
+            size?: cloud.project.loadbalancer.SizeEnum;
+        }
+        /**
+         * A Certificate to use in your NFVs
+         * interface fullName: cloud.project.Certificate.Certificate
+         */
+        export interface Certificate {
+            expireAt: string;
+            fingerprint: string;
+            id: string;
+            issuer: string;
+            kind: cloud.project.CertificateKindEnum;
+            name: string;
+            serialNumber: string;
+            serverAlternativeNames: cloud.project.certificate.ServerAlternativeName[];
+            status: cloud.project.CertificateStatusEnum;
+            subject: string;
+            validAt: string;
+            version: number;
+        }
+        /**
+         * Add a new certificate
+         * interface fullName: cloud.project.CertificateAdd.CertificateAdd
+         */
+        export interface CertificateAdd {
+            import?: cloud.project.certificate.Import;
+            name: string;
+        }
+        /**
+         * Certificate kind
+         * type fullname: cloud.project.CertificateKindEnum
+         */
+        export type CertificateKindEnum = "IMPORTED"
+        /**
+         * Certificate status
+         * type fullname: cloud.project.CertificateStatusEnum
+         */
+        export type CertificateStatusEnum = "OK" | "EXPIRED" | "NOT_YET_VALID" | "REVOKED"
+        /**
+         * A load balancer to handle workload
+         * interface fullName: cloud.project.LoadBalancer.LoadBalancer
+         */
+        export interface LoadBalancer {
+            address: cloud.project.loadbalancer.Address;
+            configuration: cloud.project.loadbalancer.ConfigurationVersion;
+            createdAt: string;
+            description?: string;
+            egressAddress: cloud.project.loadbalancer.Addresses;
+            id: string;
+            name?: string;
+            networking: cloud.project.loadbalancer.networking.Networking;
+            openstackRegion: string;
+            region: string;
+            size: cloud.project.loadbalancer.SizeEnum;
+            status: cloud.project.loadbalancer.StatusEnum;
+        }
+        /**
+         * A load balancer to handle workload
+         * interface fullName: cloud.project.LoadBalancerCreation.LoadBalancerCreation
+         */
+        export interface LoadBalancerCreation {
+            description?: string;
+            id: string;
+            name?: string;
+            networking?: cloud.project.loadbalancer.networking.NetworkingCreation;
+            openstackRegion: string;
+            region: string;
+            size?: cloud.project.loadbalancer.SizeEnum;
+        }
+        /**
          * Possible values for project status
          * type fullname: cloud.project.ProjectStatus
          */
@@ -1051,6 +1475,412 @@ export namespace cloud {
          * type fullname: cloud.project.ProjectStatusEnum
          */
         export type ProjectStatusEnum = "creating" | "deleted" | "deleting" | "ok" | "suspended"
+        export namespace certificate {
+            /**
+             * Import external certificate
+             * interface fullName: cloud.project.certificate.Import.Import
+             */
+            export interface Import {
+                cert: string;
+                chain?: string;
+                key: string;
+            }
+            /**
+             * Certificate SAN
+             * interface fullName: cloud.project.certificate.ServerAlternativeName.ServerAlternativeName
+             */
+            export interface ServerAlternativeName {
+                kind: cloud.project.certificate.ServerAlternativeNameKindEnum;
+                name: string;
+            }
+            /**
+             * SAN kind
+             * type fullname: cloud.project.certificate.ServerAlternativeNameKindEnum
+             */
+            export type ServerAlternativeNameKindEnum = "EMAIL" | "DNS" | "URI" | "IP"
+        }
+        export namespace loadbalancer {
+            /**
+             * HTTP load balancer dispatch action
+             * interface fullName: cloud.project.loadbalancer.ActionDispatch.ActionDispatch
+             */
+            export interface ActionDispatch {
+                name: string;
+                target: string;
+            }
+            /**
+             * HTTP load balancer redirect action
+             * interface fullName: cloud.project.loadbalancer.ActionRedirect.ActionRedirect
+             */
+            export interface ActionRedirect {
+                location: string;
+                name: string;
+                statusCode: cloud.project.loadbalancer.action.RedirectStatusCodeEnum;
+            }
+            /**
+             * HTTP load balancer reject action
+             * interface fullName: cloud.project.loadbalancer.ActionReject.ActionReject
+             */
+            export interface ActionReject {
+                name: string;
+                statusCode: cloud.project.loadbalancer.action.RejectStatusCodeEnum;
+            }
+            /**
+             * HTTP load balancer rewrite action
+             * interface fullName: cloud.project.loadbalancer.ActionRewrite.ActionRewrite
+             */
+            export interface ActionRewrite {
+                location: string;
+                name: string;
+            }
+            /**
+             * HTTP load balancer actions
+             * interface fullName: cloud.project.loadbalancer.Actions.Actions
+             */
+            export interface Actions {
+                dispatch?: cloud.project.loadbalancer.ActionDispatch[];
+                redirect?: cloud.project.loadbalancer.ActionRedirect[];
+                reject?: cloud.project.loadbalancer.ActionReject[];
+                rewrite?: cloud.project.loadbalancer.ActionRewrite[];
+            }
+            /**
+             * Address to reach the load balancer
+             * interface fullName: cloud.project.loadbalancer.Address.Address
+             */
+            export interface Address {
+                ipv4: string;
+                ipv6?: string;
+            }
+            /**
+             * IP list split in version 4 and 6
+             * interface fullName: cloud.project.loadbalancer.Addresses.Addresses
+             */
+            export interface Addresses {
+                ipv4: string[];
+                ipv6?: string[];
+            }
+            /**
+             * An application load balancer configuration
+             * interface fullName: cloud.project.loadbalancer.ApplicationConfiguration.ApplicationConfiguration
+             */
+            export interface ApplicationConfiguration {
+                actions?: cloud.project.loadbalancer.Actions;
+                certificates: string[];
+                conditions?: cloud.project.loadbalancer.Condition[];
+                entryPoints: cloud.project.loadbalancer.EntryPoint[];
+                networking: cloud.project.loadbalancer.configuration.networking.Networking;
+                targets?: cloud.project.loadbalancer.Target[];
+                version: number;
+            }
+            /**
+             * An application load balancer configuration
+             * interface fullName: cloud.project.loadbalancer.ApplicationConfigurationCreation.ApplicationConfigurationCreation
+             */
+            export interface ApplicationConfigurationCreation {
+                actions?: cloud.project.loadbalancer.Actions;
+                certificates: string[];
+                conditions?: cloud.project.loadbalancer.Condition[];
+                entryPoints: cloud.project.loadbalancer.EntryPoint[];
+                networking?: cloud.project.loadbalancer.configuration.networking.Networking;
+                targets?: cloud.project.loadbalancer.Target[];
+                version: number;
+            }
+            /**
+             * A load balancer backend
+             * interface fullName: cloud.project.loadbalancer.Backend.Backend
+             */
+            export interface Backend {
+                balancer?: cloud.project.loadbalancer.backend.BalancerAlgorithmEnum;
+                name: string;
+                proxyProtocol?: cloud.project.loadbalancer.backend.ProxyProtocolEnum;
+                servers: cloud.project.loadbalancer.Server[];
+                sticky?: boolean;
+            }
+            /**
+             * Select a load balancer backend
+             * interface fullName: cloud.project.loadbalancer.BackendSelector.BackendSelector
+             */
+            export interface BackendSelector {
+                name: string;
+            }
+            /**
+             * A condition
+             * interface fullName: cloud.project.loadbalancer.Condition.Condition
+             */
+            export interface Condition {
+                key?: string;
+                match: cloud.project.loadbalancer.condition.MatchEnum;
+                name: string;
+                negate?: boolean;
+                type: cloud.project.loadbalancer.condition.TypeEnum;
+                values: string[];
+            }
+            /**
+             * A load balancer configuration
+             * interface fullName: cloud.project.loadbalancer.Configuration.Configuration
+             */
+            export interface Configuration {
+                backends: cloud.project.loadbalancer.Backend[];
+                certificates: string[];
+                frontends: cloud.project.loadbalancer.Frontend[];
+                networking: cloud.project.loadbalancer.configuration.networking.Networking;
+                version: number;
+            }
+            /**
+             * A load balancer configuration
+             * interface fullName: cloud.project.loadbalancer.ConfigurationCreation.ConfigurationCreation
+             */
+            export interface ConfigurationCreation {
+                backends: cloud.project.loadbalancer.Backend[];
+                certificates: string[];
+                frontends: cloud.project.loadbalancer.Frontend[];
+                networking?: cloud.project.loadbalancer.configuration.networking.Networking;
+                version: number;
+            }
+            /**
+             * Information about version of the configuration
+             * interface fullName: cloud.project.loadbalancer.ConfigurationVersion.ConfigurationVersion
+             */
+            export interface ConfigurationVersion {
+                applied: number;
+                latest: number;
+            }
+            /**
+             * A load balancer entryPoint
+             * interface fullName: cloud.project.loadbalancer.EntryPoint.EntryPoint
+             */
+            export interface EntryPoint {
+                defaultTarget?: string;
+                disableH2: boolean;
+                name: string;
+                portRanges?: cloud.project.loadbalancer.PortRange[];
+                ports?: number[];
+                rules: cloud.project.loadbalancer.Rule[];
+                tls: boolean;
+            }
+            /**
+             * A load balancer frontend
+             * interface fullName: cloud.project.loadbalancer.Frontend.Frontend
+             */
+            export interface Frontend {
+                backends: cloud.project.loadbalancer.BackendSelector[];
+                mode?: cloud.project.loadbalancer.frontend.ModeEnum;
+                name: string;
+                port?: number;
+                portRanges?: cloud.project.loadbalancer.PortRange[];
+                ports?: number[];
+                tls: boolean;
+                whitelist: string[];
+            }
+            /**
+             * Network load balancer size capability
+             * interface fullName: cloud.project.loadbalancer.LoadBalancerSizeCapability.LoadBalancerSizeCapability
+             */
+            export interface LoadBalancerSizeCapability {
+                bandwidthMbPerSecond: number;
+                maximumConnection: number;
+                newConnectionPerSecond: number;
+                size: cloud.project.loadbalancer.SizeEnum;
+            }
+            /**
+             * A port range
+             * interface fullName: cloud.project.loadbalancer.PortRange.PortRange
+             */
+            export interface PortRange {
+                end: number;
+                start: number;
+            }
+            /**
+             * Region information
+             * interface fullName: cloud.project.loadbalancer.Region.Region
+             */
+            export interface Region {
+                region: string;
+            }
+            /**
+             * A entrypoint rule
+             * interface fullName: cloud.project.loadbalancer.Rule.Rule
+             */
+            export interface Rule {
+                action: string;
+                conditions?: string[];
+            }
+            /**
+             * A load balancer backend server
+             * interface fullName: cloud.project.loadbalancer.Server.Server
+             */
+            export interface Server {
+                ip: string;
+                name: string;
+                noCheck?: boolean;
+                port: number;
+                weight?: number;
+            }
+            /**
+             * Size of the load balancer
+             * type fullname: cloud.project.loadbalancer.SizeEnum
+             */
+            export type SizeEnum = "S" | "M" | "L"
+            /**
+             * Status of a load balancer
+             * type fullname: cloud.project.loadbalancer.StatusEnum
+             */
+            export type StatusEnum = "CREATED" | "APPLYING" | "RUNNING" | "DELETING" | "ERROR" | "FROZEN"
+            /**
+             * A load balancer target
+             * interface fullName: cloud.project.loadbalancer.Target.Target
+             */
+            export interface Target {
+                balancer?: cloud.project.loadbalancer.target.BalancerAlgorithmEnum;
+                name: string;
+                proxyProtocol?: cloud.project.loadbalancer.target.ProxyProtocolEnum;
+                servers: cloud.project.loadbalancer.Server[];
+                sticky?: boolean;
+            }
+            export namespace action {
+                /**
+                 * Available status code for Redirect action
+                 * type fullname: cloud.project.loadbalancer.action.RedirectStatusCodeEnum
+                 */
+                export type RedirectStatusCodeEnum = "301" | "302" | "303" | "307" | "308"
+                /**
+                 * Available status code for Reject action
+                 * type fullname: cloud.project.loadbalancer.action.RejectStatusCodeEnum
+                 */
+                export type RejectStatusCodeEnum = "200" | "400" | "403" | "405" | "408" | "429" | "500" | "502" | "503" | "504"
+            }
+            export namespace backend {
+                /**
+                 * Available load balancer backend balancer algorithm
+                 * type fullname: cloud.project.loadbalancer.backend.BalancerAlgorithmEnum
+                 */
+                export type BalancerAlgorithmEnum = "roundrobin" | "static-rr" | "leastconn" | "first" | "source"
+                /**
+                 * Available load balancer backend proxy-protocol
+                 * type fullname: cloud.project.loadbalancer.backend.ProxyProtocolEnum
+                 */
+                export type ProxyProtocolEnum = "v1" | "v2" | "v2-ssl" | "v2-cn"
+            }
+            export namespace condition {
+                /**
+                 * Matching operator
+                 * type fullname: cloud.project.loadbalancer.condition.MatchEnum
+                 */
+                export type MatchEnum = "is" | "start-with" | "end-with" | "regex" | "exists"
+                /**
+                 * Matching field
+                 * type fullname: cloud.project.loadbalancer.condition.TypeEnum
+                 */
+                export type TypeEnum = "method" | "cookie" | "path" | "host" | "header" | "source" | "query-param"
+            }
+            export namespace configuration {
+                export namespace networking {
+                    /**
+                     * Networking configuration egress definition
+                     * interface fullName: cloud.project.loadbalancer.configuration.networking.Egress.Egress
+                     */
+                    export interface Egress {
+                        id?: string;
+                        kind: cloud.project.loadbalancer.networking.egress.KindEnum;
+                    }
+                    /**
+                     * Networking configuration ingress definition
+                     * interface fullName: cloud.project.loadbalancer.configuration.networking.Ingress.Ingress
+                     */
+                    export interface Ingress {
+                        kind: cloud.project.loadbalancer.networking.ingress.KindEnum;
+                    }
+                    /**
+                     * Networking configuration object
+                     * interface fullName: cloud.project.loadbalancer.configuration.networking.Networking.Networking
+                     */
+                    export interface Networking {
+                        egress?: cloud.project.loadbalancer.configuration.networking.Egress;
+                        ingress?: cloud.project.loadbalancer.configuration.networking.Ingress;
+                    }
+                }
+            }
+            export namespace frontend {
+                /**
+                 * Available load balancer frontend mode
+                 * type fullname: cloud.project.loadbalancer.frontend.ModeEnum
+                 */
+                export type ModeEnum = "TCP"
+            }
+            export namespace networking {
+                /**
+                 * Networking Egress definition
+                 * interface fullName: cloud.project.loadbalancer.networking.Egress.Egress
+                 */
+                export interface Egress {
+                    id?: string;
+                    kind: cloud.project.loadbalancer.networking.egress.KindEnum;
+                }
+                /**
+                 * Networking Egress definition
+                 * interface fullName: cloud.project.loadbalancer.networking.EgressCreation.EgressCreation
+                 */
+                export interface EgressCreation {
+                    kind: cloud.project.loadbalancer.networking.egress.KindEnum;
+                }
+                /**
+                 * Networking Ingress definition
+                 * interface fullName: cloud.project.loadbalancer.networking.Ingress.Ingress
+                 */
+                export interface Ingress {
+                    kind: cloud.project.loadbalancer.networking.ingress.KindEnum;
+                }
+                /**
+                 * Networking Ingress definition
+                 * interface fullName: cloud.project.loadbalancer.networking.IngressCreation.IngressCreation
+                 */
+                export interface IngressCreation {
+                    kind: cloud.project.loadbalancer.networking.ingress.KindEnum;
+                }
+                /**
+                 * Networking object
+                 * interface fullName: cloud.project.loadbalancer.networking.Networking.Networking
+                 */
+                export interface Networking {
+                    egress: cloud.project.loadbalancer.networking.Egress;
+                    ingress: cloud.project.loadbalancer.networking.Ingress;
+                }
+                /**
+                 * Networking creation object
+                 * interface fullName: cloud.project.loadbalancer.networking.NetworkingCreation.NetworkingCreation
+                 */
+                export interface NetworkingCreation {
+                    egress?: cloud.project.loadbalancer.networking.EgressCreation;
+                    ingress?: cloud.project.loadbalancer.networking.IngressCreation;
+                }
+                export namespace egress {
+                    /**
+                     * Networking kind
+                     * type fullname: cloud.project.loadbalancer.networking.egress.KindEnum
+                     */
+                    export type KindEnum = "public" | "vrack"
+                }
+                export namespace ingress {
+                    /**
+                     * Networking kind
+                     * type fullname: cloud.project.loadbalancer.networking.ingress.KindEnum
+                     */
+                    export type KindEnum = "public"
+                }
+            }
+            export namespace target {
+                /**
+                 * Available load balancer target balancer algorithm
+                 * type fullname: cloud.project.loadbalancer.target.BalancerAlgorithmEnum
+                 */
+                export type BalancerAlgorithmEnum = "roundrobin" | "static-rr" | "leastconn" | "first" | "source"
+                /**
+                 * Available load balancer target proxy-protocol
+                 * type fullname: cloud.project.loadbalancer.target.ProxyProtocolEnum
+                 */
+                export type ProxyProtocolEnum = "v1" | "v2" | "v2-ssl" | "v2-cn"
+            }
+        }
     }
     export namespace quota {
         /**
@@ -1127,6 +1957,25 @@ export namespace cloud {
             maxGigabytes: number;
             usedGigabytes: number;
             volumeCount: number;
+        }
+        export namespace storage {
+            /**
+             * Cloud Storage Quota
+             * interface fullName: cloud.quota.storage.Quota.Quota
+             */
+            export interface Quota {
+                bytesUsed: number;
+                containerCount: number;
+                objectCount: number;
+                quotaBytes?: number;
+            }
+            /**
+             * Update storage quota
+             * interface fullName: cloud.quota.storage.QuotaUpdate.QuotaUpdate
+             */
+            export interface QuotaUpdate {
+                quotaBytes: number;
+            }
         }
     }
     export namespace role {
@@ -1240,6 +2089,14 @@ export namespace cloud {
     }
     export namespace storage {
         /**
+         * Add storage policy for container
+         * interface fullName: cloud.storage.AddContainerPolicy.AddContainerPolicy
+         */
+        export interface AddContainerPolicy {
+            objectKey: string;
+            roleName: cloud.storage.PolicyRoleEnum;
+        }
+        /**
          * Container
          * interface fullName: cloud.storage.Container.Container
          */
@@ -1303,6 +2160,18 @@ export namespace cloud {
             url: string;
         }
         /**
+         * Raw storage policy
+         * interface fullName: cloud.storage.PolicyRaw.PolicyRaw
+         */
+        export interface PolicyRaw {
+            policy: string;
+        }
+        /**
+         * Storage policy role
+         * type fullname: cloud.storage.PolicyRoleEnum
+         */
+        export type PolicyRoleEnum = "admin" | "deny" | "readOnly" | "readWrite"
+        /**
          * RetrievalStateEnum
          * type fullname: cloud.storage.RetrievalStateEnum
          */
@@ -1343,15 +2212,6 @@ export namespace cloud {
          * type fullname: cloud.user.RoleEnum
          */
         export type RoleEnum = "admin" | "authentication" | "administrator" | "compute_operator" | "infrastructure_supervisor" | "network_security_operator" | "network_operator" | "backup_operator" | "image_operator" | "volume_operator" | "objectstore_operator" | "ai_training_operator" | "ai_training_read"
-        /**
-         * S3Credentials
-         * interface fullName: cloud.user.S3Credentials.S3Credentials
-         */
-        export interface S3Credentials {
-            access: string;
-            tenantId: string;
-            userId: string;
-        }
         /**
          * S3CredentialsWithSecret
          * interface fullName: cloud.user.S3CredentialsWithSecret.S3CredentialsWithSecret
@@ -1571,6 +2431,121 @@ export interface Cloud {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            capabilities: {
+                kube: {
+                    flavors: {
+                        /**
+                         * List Kubernetes available flavors for a region
+                         * GET /cloud/project/{serviceName}/capabilities/kube/flavors
+                         */
+                        $get(params?: { region?: cloud.kube.RegionEnum }): Promise<cloud.kube.Flavor[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    regions: {
+                        /**
+                         * List Kubernetes available regions
+                         * GET /cloud/project/{serviceName}/capabilities/kube/regions
+                         */
+                        $get(): Promise<cloud.kube.RegionEnum[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                }
+                loadbalancer: {
+                    region: {
+                        /**
+                         * List all available regions
+                         * GET /cloud/project/{serviceName}/capabilities/loadbalancer/region
+                         */
+                        $get(): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(regionName: string): {
+                            /**
+                             * Get specific information of a region
+                             * GET /cloud/project/{serviceName}/capabilities/loadbalancer/region/{regionName}
+                             */
+                            $get(): Promise<cloud.project.loadbalancer.Region>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        };
+                    }
+                    size: {
+                        /**
+                         * List all available sizes
+                         * GET /cloud/project/{serviceName}/capabilities/loadbalancer/size
+                         */
+                        $get(): Promise<cloud.project.loadbalancer.SizeEnum[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(size: cloud.project.loadbalancer.SizeEnum): {
+                            /**
+                             * Get specific information of load balancer size
+                             * GET /cloud/project/{serviceName}/capabilities/loadbalancer/size/{size}
+                             */
+                            $get(): Promise<cloud.project.loadbalancer.LoadBalancerSizeCapability>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        };
+                    }
+                }
+                productAvailability: {
+                    /**
+                     * List product availability
+                     * GET /cloud/project/{serviceName}/capabilities/productAvailability
+                     */
+                    $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum, planCode?: string, planFamily?: string, product?: string }): Promise<cloud.capabilities.Availability>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
+            certificate: {
+                /**
+                 * List all Certificates for a tenant
+                 * GET /cloud/project/{serviceName}/certificate
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Add a new certificate
+                 * POST /cloud/project/{serviceName}/certificate
+                 */
+                $post(params: { import?: cloud.project.certificate.Import, name: string }): Promise<cloud.project.Certificate>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(certificateId: string): {
+                    /**
+                     * Delete a certificate
+                     * DELETE /cloud/project/{serviceName}/certificate/{certificateId}
+                     */
+                    $delete(): Promise<void>;
+                    /**
+                     * Get a certificate
+                     * GET /cloud/project/{serviceName}/certificate/{certificateId}
+                     */
+                    $get(): Promise<cloud.project.Certificate>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
             }
             confirmTermination: {
                 /**
@@ -1937,6 +2912,243 @@ export interface Cloud {
                     };
                 }
             }
+            kube: {
+                /**
+                 * List your managed Kubernetes clusters
+                 * GET /cloud/project/{serviceName}/kube
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Create a new managed Kubernetes cluster
+                 * POST /cloud/project/{serviceName}/kube
+                 */
+                $post(params: { name?: string, nodepool?: cloud.ProjectKubeCreationNodePool, privateNetworkId?: string, region: string, version?: cloud.kube.VersionEnum }): Promise<cloud.kube.Cluster>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                regions: {
+                    /**
+                     * List Kubernetes available regions
+                     * GET /cloud/project/{serviceName}/kube/regions
+                     */
+                    $get(): Promise<cloud.kube.RegionEnum[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                $(kubeId: string): {
+                    /**
+                     * Delete your managed Kubernetes cluster
+                     * DELETE /cloud/project/{serviceName}/kube/{kubeId}
+                     */
+                    $delete(): Promise<void>;
+                    /**
+                     * Get information about your managed Kubernetes cluster
+                     * GET /cloud/project/{serviceName}/kube/{kubeId}
+                     */
+                    $get(): Promise<cloud.kube.Cluster>;
+                    /**
+                     * Update information about your managed Kubernetes cluster
+                     * PUT /cloud/project/{serviceName}/kube/{kubeId}
+                     */
+                    $put(params: { name: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    auditLogs: {
+                        /**
+                         * Generate a temporary url to retrieve auditlogs
+                         * POST /cloud/project/{serviceName}/kube/{kubeId}/auditLogs
+                         */
+                        $post(): Promise<cloud.kube.AuditLogs>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    flavors: {
+                        /**
+                         * List all flavors available
+                         * GET /cloud/project/{serviceName}/kube/{kubeId}/flavors
+                         */
+                        $get(): Promise<cloud.kube.Flavor[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    ipRestrictions: {
+                        /**
+                         * List your ip restrictions on your cluster
+                         * GET /cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions
+                         */
+                        $get(): Promise<string[]>;
+                        /**
+                         * Append a list of ip restrictions on your cluster
+                         * POST /cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions
+                         */
+                        $post(params?: { ips?: string[] }): Promise<string[]>;
+                        /**
+                         * Remove the current list and add a list of ip restrictions on your cluster
+                         * PUT /cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions
+                         */
+                        $put(params?: { ips?: string[] }): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(ip: string): {
+                            /**
+                             * Delete an ip restriction from your cluster
+                             * DELETE /cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions/{ip}
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        };
+                    }
+                    kubeconfig: {
+                        /**
+                         * Generate kubeconfig file
+                         * POST /cloud/project/{serviceName}/kube/{kubeId}/kubeconfig
+                         */
+                        $post(): Promise<cloud.kube.Kubeconfig>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        reset: {
+                            /**
+                             * Reset kubeconfig: Certificates will be regenerated, nodes will be reinstalled
+                             * POST /cloud/project/{serviceName}/kube/{kubeId}/kubeconfig/reset
+                             */
+                            $post(): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                    }
+                    node: {
+                        /**
+                         * List your nodes
+                         * GET /cloud/project/{serviceName}/kube/{kubeId}/node
+                         */
+                        $get(): Promise<cloud.kube.Node[]>;
+                        /**
+                         * Deploy a node for your cluster. This call is deprecated. In the meantime it will create a new node pool for each call. We encourage you to now either create a new nodepool or change the size on an existing one
+                         * POST /cloud/project/{serviceName}/kube/{kubeId}/node
+                         */
+                        $post(params: { flavorName: string, name?: string }): Promise<cloud.kube.Node>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(nodeId: string): {
+                            /**
+                             * Delete a specific node on your cluster. This will also decrease by one the desirednodes value of its nodepool
+                             * DELETE /cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Get information on a specific node on your cluster
+                             * GET /cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}
+                             */
+                            $get(): Promise<cloud.kube.Node>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        };
+                    }
+                    nodepool: {
+                        /**
+                         * List your nodepools
+                         * GET /cloud/project/{serviceName}/kube/{kubeId}/nodepool
+                         */
+                        $get(): Promise<cloud.kube.NodePool[]>;
+                        /**
+                         * Create a nodepool on your cluster
+                         * POST /cloud/project/{serviceName}/kube/{kubeId}/nodepool
+                         */
+                        $post(params: { antiAffinity?: boolean, autoscale?: boolean, desiredNodes?: number, flavorName: string, maxNodes?: number, minNodes?: number, monthlyBilled?: boolean, name?: string }): Promise<cloud.kube.NodePool>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(nodePoolId: string): {
+                            /**
+                             * Delete a nodepool from your cluster
+                             * DELETE /cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Get information on a specific nodepool on your cluster
+                             * GET /cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}
+                             */
+                            $get(): Promise<cloud.kube.NodePool>;
+                            /**
+                             * Update your nodepool (quota or size)
+                             * PUT /cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}
+                             */
+                            $put(params?: { autoscale?: boolean, desiredNodes?: number, maxNodes?: number, minNodes?: number, nodesToRemove?: string[] }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            nodes: {
+                                /**
+                                 * List all nodes contained in a nodepool
+                                 * GET /cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}/nodes
+                                 */
+                                $get(): Promise<cloud.kube.Node[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        };
+                    }
+                    reset: {
+                        /**
+                         * Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
+                         * POST /cloud/project/{serviceName}/kube/{kubeId}/reset
+                         */
+                        $post(params?: { privateNetworkId?: string, version?: cloud.kube.VersionEnum, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    update: {
+                        /**
+                         * Force cluster and node update to the latest patch within minor version or next minor version
+                         * POST /cloud/project/{serviceName}/kube/{kubeId}/update
+                         */
+                        $post(params?: { strategy?: cloud.kube.UpdateStrategyEnum }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    updatePolicy: {
+                        /**
+                         * Change the update policy of your cluster
+                         * PUT /cloud/project/{serviceName}/kube/{kubeId}/updatePolicy
+                         */
+                        $put(params: { updatePolicy: cloud.kube.UpdatePolicyEnum }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                };
+            }
             lab: {
                 /**
                  * List available public cloud labs
@@ -1972,6 +3184,86 @@ export interface Cloud {
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                };
+            }
+            loadbalancer: {
+                /**
+                 * List all load balancer for a tenant
+                 * GET /cloud/project/{serviceName}/loadbalancer
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Create a load balancer
+                 * POST /cloud/project/{serviceName}/loadbalancer
+                 */
+                $post(params: { description?: string, id?: string, name?: string, networking?: cloud.project.loadbalancer.networking.NetworkingCreation, openstackRegion?: string, region: string, size?: cloud.project.loadbalancer.SizeEnum }): Promise<cloud.project.LoadBalancer>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(loadBalancerId: string): {
+                    /**
+                     * Delete a load balancer
+                     * DELETE /cloud/project/{serviceName}/loadbalancer/{loadBalancerId}
+                     */
+                    $delete(): Promise<void>;
+                    /**
+                     * Get a load balancer
+                     * GET /cloud/project/{serviceName}/loadbalancer/{loadBalancerId}
+                     */
+                    $get(): Promise<cloud.project.LoadBalancer>;
+                    /**
+                     * Update a load balancer
+                     * PUT /cloud/project/{serviceName}/loadbalancer/{loadBalancerId}
+                     */
+                    $put(params?: { address?: cloud.project.loadbalancer.Address, configuration?: cloud.project.loadbalancer.ConfigurationVersion, createdAt?: string, description?: string, egressAddress?: cloud.project.loadbalancer.Addresses, id?: string, name?: string, networking?: cloud.project.loadbalancer.networking.Networking, openstackRegion?: string, region?: string, size?: cloud.project.loadbalancer.SizeEnum, status?: cloud.project.loadbalancer.StatusEnum }): Promise<cloud.project.LoadBalancer>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    configuration: {
+                        /**
+                         * List all versions of the configuration
+                         * GET /cloud/project/{serviceName}/loadbalancer/{loadBalancerId}/configuration
+                         */
+                        $get(): Promise<number[]>;
+                        /**
+                         * Create a configuration
+                         * POST /cloud/project/{serviceName}/loadbalancer/{loadBalancerId}/configuration
+                         */
+                        $post(params?: { backends?: cloud.project.loadbalancer.Backend[], certificates?: string[], frontends?: cloud.project.loadbalancer.Frontend[], networking?: cloud.project.loadbalancer.configuration.networking.Networking, version?: number }): Promise<cloud.project.loadbalancer.Configuration>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(version: number): {
+                            /**
+                             * Delete a configuration
+                             * DELETE /cloud/project/{serviceName}/loadbalancer/{loadBalancerId}/configuration/{version}
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Get a configuration
+                             * GET /cloud/project/{serviceName}/loadbalancer/{loadBalancerId}/configuration/{version}
+                             */
+                            $get(): Promise<cloud.project.loadbalancer.Configuration>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            apply: {
+                                /**
+                                 * Apply a configuration
+                                 * POST /cloud/project/{serviceName}/loadbalancer/{loadBalancerId}/configuration/{version}/apply
+                                 */
+                                $post(): Promise<cloud.project.loadbalancer.Configuration>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        };
                     }
                 };
             }
@@ -2185,6 +3477,27 @@ export interface Cloud {
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
+                        storage: {
+                            /**
+                             * Delete storage quota on region
+                             * DELETE /cloud/project/{serviceName}/region/{regionName}/quota/storage
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Get storage quotas on region
+                             * GET /cloud/project/{serviceName}/region/{regionName}/quota/storage
+                             */
+                            $get(): Promise<cloud.quota.storage.Quota>;
+                            /**
+                             * Update storage quota on region
+                             * PUT /cloud/project/{serviceName}/region/{regionName}/quota/storage
+                             */
+                            $put(params: { quotaBytes: number }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                     }
                     workflow: {
                         backup: {
@@ -2388,7 +3701,7 @@ export interface Cloud {
                      * Delete container
                      * DELETE /cloud/project/{serviceName}/storage/{containerId}
                      */
-                    $delete(): Promise<void>;
+                    $delete(params?: { recursive?: boolean }): Promise<void>;
                     /**
                      * Get storage container
                      * GET /cloud/project/{serviceName}/storage/{containerId}
@@ -2570,7 +3883,7 @@ export interface Cloud {
                          * List your S3 credentials
                          * GET /cloud/project/{serviceName}/user/{userId}/s3Credentials
                          */
-                        $get(): Promise<cloud.user.S3Credentials[]>;
+                        $get(): Promise<cloud.user.S3CredentialsWithSecret[]>;
                         /**
                          * Create a new S3 credentials for an user
                          * POST /cloud/project/{serviceName}/user/{userId}/s3Credentials
@@ -2590,7 +3903,7 @@ export interface Cloud {
                              * Get details about an S3 credential
                              * GET /cloud/project/{serviceName}/user/{userId}/s3Credentials/{access}
                              */
-                            $get(): Promise<cloud.user.S3Credentials>;
+                            $get(): Promise<cloud.user.S3CredentialsWithSecret>;
                             /**
                              * Controle cache
                              */

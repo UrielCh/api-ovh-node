@@ -10,8 +10,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List available regions and templates",
           "httpMethod": "GET",
@@ -36,8 +36,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List your subscriptions",
           "httpMethod": "GET",
@@ -53,8 +53,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get information about your subscription",
           "httpMethod": "GET",
@@ -79,8 +79,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
@@ -137,8 +137,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List customers added to a project",
           "httpMethod": "GET",
@@ -154,6 +154,33 @@ export const schema: Schema = {
             }
           ],
           "responseType": "webPaaS.subscription.Customer[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add customer to the project",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "webPaaS.subscription.project.AddCustomer",
+              "description": "Request Body",
+              "fullType": "webPaaS.subscription.project.AddCustomer",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "webPaaS.subscription.Customer"
         }
       ],
       "path": "/webPaaS/subscription/{serviceName}/customer"
@@ -163,8 +190,36 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove customer from the project",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Customer ID",
+              "fullType": "uuid",
+              "name": "customerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "webPaaS.subscription.Customer"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get the customer details",
           "httpMethod": "GET",
@@ -197,8 +252,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -217,8 +272,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
@@ -250,8 +305,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
@@ -479,6 +534,39 @@ export const schema: Schema = {
         }
       }
     },
+    "webPaaS.AddonFamilyEnum": {
+      "description": "Valid addon offers faimly",
+      "enum": [
+        "storage",
+        "user_license",
+        "staging_environment"
+      ],
+      "enumType": "string",
+      "id": "AddonFamilyEnum",
+      "namespace": "webPaaS"
+    },
+    "webPaaS.AddonProductNameEnum": {
+      "description": "Valid addon product name",
+      "enum": [
+        "additional-storage",
+        "additional-staging-environment",
+        "additional-user-license"
+      ],
+      "enumType": "string",
+      "id": "AddonProductNameEnum",
+      "namespace": "webPaaS"
+    },
+    "webPaaS.AddonStatusEnum": {
+      "description": "addon status",
+      "enum": [
+        "ACTIVE",
+        "PENDING",
+        "SUSPENDED"
+      ],
+      "enumType": "string",
+      "id": "AddonStatusEnum",
+      "namespace": "webPaaS"
+    },
     "webPaaS.Capabilities": {
       "description": "Capabilties Response",
       "id": "Capabilities",
@@ -515,7 +603,21 @@ export const schema: Schema = {
     "webPaaS.OfferEnum": {
       "description": "Valid offers by Web PaaS",
       "enum": [
-        "start-1"
+        "start-1",
+        "start-2",
+        "start-4",
+        "start-8",
+        "start-16",
+        "develop-1",
+        "develop-2",
+        "develop-4",
+        "develop-8",
+        "develop-16",
+        "expand-1",
+        "expand-2",
+        "expand-4",
+        "expand-8",
+        "expand-16"
       ],
       "enumType": "string",
       "id": "OfferEnum",
@@ -551,11 +653,28 @@ export const schema: Schema = {
       "id": "StatusEnum",
       "namespace": "webPaaS"
     },
+    "webPaaS.StorageUnitEnum": {
+      "description": "Storage Units",
+      "enum": [
+        "GB"
+      ],
+      "enumType": "string",
+      "id": "StorageUnitEnum",
+      "namespace": "webPaaS"
+    },
     "webPaaS.Subscription": {
       "description": "Partner subscription",
       "id": "Subscription",
       "namespace": "webPaaS",
       "properties": {
+        "addons": {
+          "canBeNull": false,
+          "description": "Subscription addons",
+          "fullType": "webPaaS.SubscriptionAddon[]",
+          "readOnly": true,
+          "required": false,
+          "type": "webPaaS.SubscriptionAddon[]"
+        },
         "createdAt": {
           "canBeNull": false,
           "description": "Creation date of subscription",
@@ -627,6 +746,53 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "webPaaS.StatusEnum"
+        }
+      }
+    },
+    "webPaaS.SubscriptionAddon": {
+      "description": "Subscription addon details",
+      "id": "SubscriptionAddon",
+      "namespace": "webPaaS",
+      "properties": {
+        "planFamilyName": {
+          "canBeNull": false,
+          "description": "Addon Plan Family Name",
+          "fullType": "webPaaS.AddonFamilyEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "webPaaS.AddonFamilyEnum"
+        },
+        "productName": {
+          "canBeNull": false,
+          "description": "Addon Plan's Product Name",
+          "fullType": "webPaaS.AddonProductNameEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "webPaaS.AddonProductNameEnum"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Addon Quantity",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Addon Plan Service Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Addon Plan Status",
+          "fullType": "webPaaS.AddonStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "webPaaS.AddonStatusEnum"
         }
       }
     },
@@ -721,6 +887,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation date time of the customer ",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
         "customerId": {
           "canBeNull": false,
           "description": "Customer Id",
@@ -739,11 +913,34 @@ export const schema: Schema = {
         }
       }
     },
+    "webPaaS.subscription.project.AddCustomer": {
+      "description": "Add Customer details",
+      "id": "AddCustomer",
+      "namespace": "webPaaS.subscription.project",
+      "properties": {
+        "accountName": {
+          "canBeNull": false,
+          "description": "Customer account name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
     "webPaaS.subscriptionMetadata.Project": {
       "description": "Project Details",
       "id": "Project",
       "namespace": "webPaaS.subscriptionMetadata",
       "properties": {
+        "availableEnvironments": {
+          "canBeNull": false,
+          "description": "Available environments in the subscription",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "availableUserLicenses": {
           "canBeNull": false,
           "description": "Available user licenses for the subscription",
@@ -778,11 +975,19 @@ export const schema: Schema = {
         },
         "storage": {
           "canBeNull": true,
-          "description": "Total storage in GB allocated for the project",
+          "description": "Total storage allocated for the project",
           "fullType": "long",
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "storageUnit": {
+          "canBeNull": true,
+          "description": "Unit of the storage allocated for the project",
+          "fullType": "webPaaS.StorageUnitEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "webPaaS.StorageUnitEnum"
         },
         "userLicenses": {
           "canBeNull": true,

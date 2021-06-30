@@ -1834,6 +1834,7 @@ export const schema: Schema = {
         "sbg",
         "sgp1",
         "syd1",
+        "syd2",
         "was1",
         "waw"
       ],

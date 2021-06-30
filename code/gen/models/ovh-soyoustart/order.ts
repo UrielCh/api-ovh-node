@@ -6296,19 +6296,25 @@ export const schema: Schema = {
       "properties": {
         "content": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Terms of the contract",
+          "fullType": "text",
+          "readOnly": true,
           "required": false,
           "type": "text"
         },
         "name": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Name of the contract",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "url": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "URL to download the contract",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -6343,31 +6349,41 @@ export const schema: Schema = {
       "properties": {
         "contracts": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "List of contracts related to the order",
+          "fullType": "order.Contract[]",
+          "readOnly": true,
           "required": false,
           "type": "order.Contract[]"
         },
         "details": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Details of the order",
+          "fullType": "order.OrderDetail[]",
+          "readOnly": true,
           "required": false,
           "type": "order.OrderDetail[]"
         },
         "orderId": {
           "canBeNull": true,
-          "readOnly": false,
+          "description": "Identifier of the order",
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "prices": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Prices of the order including with and without taxes",
+          "fullType": "order.OrderPrices",
+          "readOnly": true,
           "required": false,
           "type": "order.OrderPrices"
         },
         "url": {
           "canBeNull": true,
-          "readOnly": false,
+          "description": "URL to download the order",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -6378,39 +6394,83 @@ export const schema: Schema = {
       "id": "OrderDetail",
       "namespace": "order",
       "properties": {
+        "cartItemID": {
+          "canBeNull": true,
+          "description": "Cart Item ID the details is related to",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "description": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Description of the detail",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "detailType": {
           "canBeNull": true,
-          "readOnly": false,
+          "description": "Type of detail",
+          "fullType": "order.OrderDetailTypeEnum",
+          "readOnly": true,
           "required": false,
           "type": "order.OrderDetailTypeEnum"
         },
         "domain": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Service name",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
+        "originalTotalPrice": {
+          "canBeNull": false,
+          "description": "Original price of the detail before reduction application",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
         "quantity": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Quantity of the service",
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
+        "reductionTotalPrice": {
+          "canBeNull": false,
+          "description": "Total price of the reduction",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "reductions": {
+          "canBeNull": false,
+          "description": "List of reductions applied to the detail",
+          "fullType": "order.Reduction[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Reduction[]"
+        },
         "totalPrice": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Price total of the services",
+          "fullType": "order.Price",
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         },
         "unitPrice": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Unitary price of the service",
+          "fullType": "order.Price",
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         }
@@ -6449,21 +6509,43 @@ export const schema: Schema = {
       "id": "OrderPrices",
       "namespace": "order",
       "properties": {
+        "originalWithoutTax": {
+          "canBeNull": true,
+          "description": "Price before reduction application",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "reduction": {
+          "canBeNull": true,
+          "description": "Price concerning the reduced amount",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
         "tax": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Tax amount",
+          "fullType": "order.Price",
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         },
         "withTax": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Price with tax",
+          "fullType": "order.Price",
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         },
         "withoutTax": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Price without tax",
+          "fullType": "order.Price",
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         }
@@ -6499,6 +6581,248 @@ export const schema: Schema = {
           "type": "double"
         }
       }
+    },
+    "order.Reduction": {
+      "description": "Order detail reduction",
+      "id": "Reduction",
+      "namespace": "order",
+      "properties": {
+        "context": {
+          "canBeNull": false,
+          "description": "In which context the reduction is applied",
+          "fullType": "order.ReductionContextEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.ReductionContextEnum"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Reduction price applied with this promotion",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Reduction effect, price modification",
+          "fullType": "order.ReductionTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.ReductionTypeEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "The reduction value",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
+    },
+    "order.ReductionContextEnum": {
+      "description": "Context of the reduction",
+      "enum": [
+        "promotion",
+        "voucher"
+      ],
+      "enumType": "string",
+      "id": "ReductionContextEnum",
+      "namespace": "order"
+    },
+    "order.ReductionTypeEnum": {
+      "description": "Type of reduction",
+      "enum": [
+        "percentage",
+        "forced_amount",
+        "fixed_amount"
+      ],
+      "enumType": "string",
+      "id": "ReductionTypeEnum",
+      "namespace": "order"
+    },
+    "order.cart.GenericProductDefinition": {
+      "description": "Representation of a generic product",
+      "id": "GenericProductDefinition",
+      "namespace": "order.cart",
+      "properties": {
+        "planCode": {
+          "canBeNull": false,
+          "description": "Product offer identifier",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "prices": {
+          "canBeNull": false,
+          "description": "Prices of the product offer",
+          "fullType": "order.cart.GenericProductPricing[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductPricing[]"
+        },
+        "productName": {
+          "canBeNull": false,
+          "description": "Name of the product",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "productType": {
+          "canBeNull": false,
+          "description": "Product type",
+          "fullType": "order.cart.GenericProductTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductTypeEnum"
+        }
+      }
+    },
+    "order.cart.GenericProductPricing": {
+      "description": "Representation of a product pricing",
+      "id": "GenericProductPricing",
+      "namespace": "order.cart",
+      "properties": {
+        "capacities": {
+          "canBeNull": false,
+          "description": "Capacities of the pricing (type of pricing)",
+          "fullType": "order.cart.GenericProductPricingCapacitiesEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductPricingCapacitiesEnum[]"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the pricing",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "duration": {
+          "canBeNull": false,
+          "description": "Duration for ordering the product",
+          "fullType": "duration",
+          "readOnly": true,
+          "required": false,
+          "type": "duration"
+        },
+        "interval": {
+          "canBeNull": false,
+          "description": "Interval of renewal",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maximumQuantity": {
+          "canBeNull": true,
+          "description": "Maximum quantity that can be ordered",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maximumRepeat": {
+          "canBeNull": true,
+          "description": "Maximum repeat for renewal",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minimumQuantity": {
+          "canBeNull": false,
+          "description": "Minimum quantity that can be ordered",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minimumRepeat": {
+          "canBeNull": false,
+          "description": "Minimum repeat for renewal",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Price of the product",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "priceInUcents": {
+          "canBeNull": false,
+          "description": "Price of the product in micro-centims",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "pricingMode": {
+          "canBeNull": false,
+          "description": "Pricing model identifier",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "pricingType": {
+          "canBeNull": false,
+          "description": "Pricing type",
+          "fullType": "order.cart.GenericProductPricingTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductPricingTypeEnum"
+        }
+      }
+    },
+    "order.cart.GenericProductPricingCapacitiesEnum": {
+      "description": "Capacity of a pricing (type)",
+      "enum": [
+        "installation",
+        "renew",
+        "upgrade",
+        "downgrade",
+        "detach",
+        "dynamic"
+      ],
+      "enumType": "string",
+      "id": "GenericProductPricingCapacitiesEnum",
+      "namespace": "order.cart"
+    },
+    "order.cart.GenericProductPricingTypeEnum": {
+      "description": "Type of a pricing",
+      "enum": [
+        "rental",
+        "consumption",
+        "purchase"
+      ],
+      "enumType": "string",
+      "id": "GenericProductPricingTypeEnum",
+      "namespace": "order.cart"
+    },
+    "order.cart.GenericProductTypeEnum": {
+      "description": "Type of a product",
+      "enum": [
+        "delivery",
+        "deposit",
+        "shipping",
+        "cloud_service",
+        "saas_license",
+        "storage",
+        "domain"
+      ],
+      "enumType": "string",
+      "id": "GenericProductTypeEnum",
+      "namespace": "order.cart"
     },
     "veeamCloudConnect.Offer": {
       "description": "All orderable Veeam Cloud Connect offers",

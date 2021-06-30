@@ -876,6 +876,22 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Purge pattern",
+              "fullType": "string",
+              "name": "pattern",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "cdn.PurgeTypeEnum",
+              "description": "Purge Pattern Type (default is regex)",
+              "fullType": "cdn.PurgeTypeEnum",
+              "name": "patternType",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "cdn.operation"
@@ -916,6 +932,48 @@ export const schema: Schema = {
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn/domain/{domainName}/refresh"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get CDN statistics for a domain",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "cdn.DomainStatisticsPeriodEnum",
+              "description": "Period (default is day)",
+              "fullType": "cdn.DomainStatisticsPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cdn.domain.statistics[]"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/cdn/domain/{domainName}/statistics"
     },
     {
       "description": "",
@@ -3922,6 +3980,32 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/ovhConfigCapabilities"
     },
     {
+      "description": "ovhConfigRecommendedValues operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get recommended values on ovhConfig file",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.web.OvhConfigRecommendedValues"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/ovhConfigRecommendedValues"
+    },
+    {
       "description": "ovhConfigRefresh operations",
       "operations": [
         {
@@ -5942,6 +6026,37 @@ export const schema: Schema = {
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
+    "cdn.DomainStatisticsNameEnum": {
+      "description": "Serie Name",
+      "enum": [
+        "hit",
+        "miss"
+      ],
+      "enumType": "string",
+      "id": "DomainStatisticsNameEnum",
+      "namespace": "cdn"
+    },
+    "cdn.DomainStatisticsPeriodEnum": {
+      "description": "Statistics Period",
+      "enum": [
+        "day",
+        "week",
+        "month",
+        "year"
+      ],
+      "enumType": "string",
+      "id": "DomainStatisticsPeriodEnum",
+      "namespace": "cdn"
+    },
+    "cdn.DomainStatisticsUnitEnum": {
+      "description": "Serie Unit",
+      "enum": [
+        "req/min"
+      ],
+      "enumType": "string",
+      "id": "DomainStatisticsUnitEnum",
+      "namespace": "cdn"
+    },
     "cdn.DomainStatusEnum": {
       "description": "Domain status",
       "enum": [
@@ -5997,14 +6112,37 @@ export const schema: Schema = {
       "id": "OperationStatusEnum",
       "namespace": "cdn"
     },
+    "cdn.OptionCategoryEnum": {
+      "description": "Option category",
+      "enum": [
+        "cache",
+        "performance",
+        "security"
+      ],
+      "enumType": "string",
+      "id": "OptionCategoryEnum",
+      "namespace": "cdn"
+    },
     "cdn.OptionPatternTypeEnum": {
       "description": "Option pattern type",
       "enum": [
         "extension",
-        "regex"
+        "folder",
+        "regex",
+        "uri"
       ],
       "enumType": "string",
       "id": "OptionPatternTypeEnum",
+      "namespace": "cdn"
+    },
+    "cdn.OptionQueryParametersEnum": {
+      "description": "Option query parameters",
+      "enum": [
+        "sorted",
+        "ignored"
+      ],
+      "enumType": "string",
+      "id": "OptionQueryParametersEnum",
       "namespace": "cdn"
     },
     "cdn.OptionTypeEnum": {
@@ -6012,7 +6150,16 @@ export const schema: Schema = {
       "enum": [
         "devmode",
         "brotli",
-        "cache_rule"
+        "cache_rule",
+        "https_redirect",
+        "hsts",
+        "mixed_content",
+        "cors",
+        "waf",
+        "prefetch",
+        "querystring",
+        "geo_headers",
+        "mobile_redirect"
       ],
       "enumType": "string",
       "id": "OptionTypeEnum",
@@ -6027,11 +6174,31 @@ export const schema: Schema = {
       "id": "OptionTypePostEnum",
       "namespace": "cdn"
     },
+    "cdn.PurgeTypeEnum": {
+      "description": "Purge type",
+      "enum": [
+        "extension",
+        "folder",
+        "regex",
+        "uri"
+      ],
+      "enumType": "string",
+      "id": "PurgeTypeEnum",
+      "namespace": "cdn"
+    },
     "cdn.availableOptions": {
       "description": "Option type available",
       "id": "availableOptions",
       "namespace": "cdn",
       "properties": {
+        "category": {
+          "canBeNull": true,
+          "description": "Option category",
+          "fullType": "cdn.OptionCategoryEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.OptionCategoryEnum"
+        },
         "maxItems": {
           "canBeNull": false,
           "description": "Max option items",
@@ -6196,6 +6363,30 @@ export const schema: Schema = {
       "id": "config",
       "namespace": "cdn.domain.option",
       "properties": {
+        "destination": {
+          "canBeNull": true,
+          "description": "URL used for Mobile Redirect",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "followUri": {
+          "canBeNull": true,
+          "description": "Follow Uri on Mobile Redirect",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "origins": {
+          "canBeNull": true,
+          "description": "Authorized Origins separated by a comma",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "patternType": {
           "canBeNull": true,
           "description": "Option pattern type",
@@ -6212,6 +6403,22 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "queryParameters": {
+          "canBeNull": true,
+          "description": "Action to apply on query parameters",
+          "fullType": "cdn.OptionQueryParametersEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cdn.OptionQueryParametersEnum"
+        },
+        "statusCode": {
+          "canBeNull": true,
+          "description": "Redirection HTTP Code",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
         "ttl": {
           "canBeNull": true,
           "description": "Cache time in seconds",
@@ -6219,6 +6426,60 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
+        }
+      }
+    },
+    "cdn.domain.statistics": {
+      "description": "Domain Statistics Datapoints",
+      "id": "statistics",
+      "namespace": "cdn.domain",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "name of the serie",
+          "fullType": "cdn.DomainStatisticsNameEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.DomainStatisticsNameEnum"
+        },
+        "points": {
+          "canBeNull": false,
+          "description": "List of DataPoints",
+          "fullType": "cdn.domain.statistics.point[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.domain.statistics.point[]"
+        },
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit of the serie",
+          "fullType": "cdn.DomainStatisticsUnitEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.DomainStatisticsUnitEnum"
+        }
+      }
+    },
+    "cdn.domain.statistics.point": {
+      "description": "Statistics Datapoint",
+      "id": "point",
+      "namespace": "cdn.domain.statistics",
+      "properties": {
+        "timestamp": {
+          "canBeNull": false,
+          "description": "Timestamp",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "value": {
+          "canBeNull": true,
+          "description": "Datapoint value",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
         }
       }
     },
@@ -6993,6 +7254,13 @@ export const schema: Schema = {
         "destartl2012",
         "destartxl2012",
         "domainpack",
+        "hostingAtScaleX128",
+        "hostingAtScaleX16",
+        "hostingAtScaleX20",
+        "hostingAtScaleX24",
+        "hostingAtScaleX32",
+        "hostingAtScaleX64",
+        "hostingAtScaleX8",
         "itbusiness2012",
         "itperso2012",
         "itpremium2012",
@@ -7012,6 +7280,7 @@ export const schema: Schema = {
         "perso2010",
         "perso2014",
         "powerBeta1",
+        "powerbeta1",
         "premium",
         "pro2010",
         "pro2014",
@@ -7069,6 +7338,48 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string[]"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "PHP version",
+          "readOnly": false,
+          "required": false,
+          "type": "hosting.web.ovhConfig.AvailableEngineVersionEnum"
+        }
+      }
+    },
+    "hosting.web.OvhConfigRecommendedValues": {
+      "description": "Struct which recommend default values on ovhConfig file",
+      "id": "OvhConfigRecommendedValues",
+      "namespace": "hosting.web",
+      "properties": {
+        "container": {
+          "canBeNull": false,
+          "description": "Container image",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "engine": {
+          "canBeNull": false,
+          "description": "Engine name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "environment": {
+          "canBeNull": false,
+          "description": "Environment configuration",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "httpFirewall": {
+          "canBeNull": false,
+          "description": "Configuration for http firewall",
+          "readOnly": false,
+          "required": false,
+          "type": "hosting.web.ovhConfig.HttpFirewallEnum"
         },
         "version": {
           "canBeNull": false,
@@ -7162,7 +7473,6 @@ export const schema: Schema = {
     "hosting.web.RubyVersionAvailableEnum": {
       "description": "Different Ruby versions available",
       "enum": [
-        "ruby-2.4",
         "ruby-2.5",
         "ruby-2.6"
       ],
@@ -7487,6 +7797,14 @@ export const schema: Schema = {
       "id": "attachedDomain",
       "namespace": "hosting.web",
       "properties": {
+        "capabilities": {
+          "canBeNull": false,
+          "description": "Provides the capabilities related to your attachedDomain",
+          "fullType": "hosting.web.attachedDomain.Capabilities[]",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.attachedDomain.Capabilities[]"
+        },
         "cdn": {
           "canBeNull": false,
           "description": "Is linked to the hosting cdn",
@@ -7518,6 +7836,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "hosting.web.CountryEnum"
+        },
+        "isFlushable": {
+          "canBeNull": false,
+          "description": "Provides information if your Cdn can be flushed or not",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "ownLog": {
           "canBeNull": true,
@@ -7569,6 +7895,41 @@ export const schema: Schema = {
         }
       }
     },
+    "hosting.web.attachedDomain.Capabilities": {
+      "description": "Provides the capabilities related to the attachedDomain",
+      "id": "Capabilities",
+      "namespace": "hosting.web.attachedDomain",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Provides the description of the current ressource",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "href": {
+          "canBeNull": false,
+          "description": "Path of the route",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "key": {
+          "canBeNull": false,
+          "description": "Key name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "method": {
+          "canBeNull": false,
+          "description": "Method type of the route",
+          "readOnly": false,
+          "required": false,
+          "type": "hosting.web.attachedDomain.MethodEnum"
+        }
+      }
+    },
     "hosting.web.attachedDomain.CdnEnum": {
       "description": "Attached domain cdn enum",
       "enum": [
@@ -7587,6 +7948,18 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "FirewallEnum",
+      "namespace": "hosting.web.attachedDomain"
+    },
+    "hosting.web.attachedDomain.MethodEnum": {
+      "description": "Method type",
+      "enum": [
+        "DELETE",
+        "GET",
+        "POST",
+        "PUT"
+      ],
+      "enumType": "string",
+      "id": "MethodEnum",
       "namespace": "hosting.web.attachedDomain"
     },
     "hosting.web.attachedDomain.StatusEnum": {
@@ -7925,7 +8298,6 @@ export const schema: Schema = {
         "php8.0",
         "python2",
         "python3",
-        "ruby2.4",
         "ruby2.5",
         "ruby2.6"
       ],
@@ -10168,7 +10540,6 @@ export const schema: Schema = {
         "phpfpm-7.4",
         "python-2",
         "python-3",
-        "ruby-2.4",
         "ruby-2.5",
         "ruby-2.6"
       ],

@@ -695,6 +695,7 @@ export namespace xdsl {
         id: number;
         internalClient: string;
         internalPort: number;
+        internalPortEnd?: number;
         name: string;
         protocol: xdsl.xdslModemConfig.ProtocolTypeEnum;
         taskId?: number;
@@ -764,6 +765,8 @@ export namespace xdsl {
         downstreamAttenuation: number;
         downstreamMargin: number;
         downstreamSync: number;
+        fecError: number;
+        hecError: number;
         lastUpdate: string;
         modulation: string;
         quarterHourStart: number;
@@ -2455,7 +2458,7 @@ export interface Xdsl {
                  * Add a port mapping
                  * POST /xdsl/{serviceName}/modem/portMappings
                  */
-                $post(params: { allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart: number, internalClient: string, internalPort: number, name: string, protocol: xdsl.xdslModemConfig.ProtocolTypeEnum }): Promise<xdsl.PortMapping>;
+                $post(params: { allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart: number, internalClient: string, internalPort: number, internalPortEnd?: number, name: string, protocol: xdsl.xdslModemConfig.ProtocolTypeEnum }): Promise<xdsl.PortMapping>;
                 /**
                  * Controle cache
                  */
@@ -2475,7 +2478,7 @@ export interface Xdsl {
                      * Alter this object properties
                      * PUT /xdsl/{serviceName}/modem/portMappings/{name}
                      */
-                    $put(params?: { allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart?: number, id?: number, internalClient?: string, internalPort?: number, name?: string, protocol?: xdsl.xdslModemConfig.ProtocolTypeEnum, taskId?: number }): Promise<void>;
+                    $put(params?: { allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart?: number, id?: number, internalClient?: string, internalPort?: number, internalPortEnd?: number, name?: string, protocol?: xdsl.xdslModemConfig.ProtocolTypeEnum, taskId?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */

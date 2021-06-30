@@ -1214,8 +1214,8 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Customer identifier for shipping address. By default Internet access address will be used.",
-              "fullType": "coreTypes.AccountId:string",
+              "description": "Customer identifier for shipping address. By default Internet access address will be used. Allowed values are nichandle or «/me/contact/xyz»",
+              "fullType": "string",
               "name": "contactShipping",
               "paramType": "body",
               "required": false
@@ -2121,6 +2121,14 @@ export const schema: Schema = {
               "name": "internalPort",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The last port of the interval on the Internal Client that will get the connections",
+              "fullType": "long",
+              "name": "internalPortEnd",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -7393,6 +7401,14 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "internalPortEnd": {
+          "canBeNull": true,
+          "description": "The last port of the interval on the Internal Client that will get the connections",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
         "name": {
           "canBeNull": false,
           "description": "Name of the port mapping entry",
@@ -7633,6 +7649,20 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "double"
+        },
+        "fecError": {
+          "canBeNull": false,
+          "description": "Amount of FEC error detected",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "hecError": {
+          "canBeNull": false,
+          "description": "Amount of HEC error detected",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "lastUpdate": {
           "canBeNull": false,
