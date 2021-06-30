@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         }
       ],
       "path": "/dbaas/timeseries"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "timeseries.Project"
+          "responseType": "timeseries.Project",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         },
         {
           "apiStatus": {
@@ -70,7 +78,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         }
       ],
       "path": "/dbaas/timeseries/{serviceName}"
@@ -96,7 +108,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         },
         {
           "apiStatus": {
@@ -123,7 +139,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         }
       ],
       "path": "/dbaas/timeseries/{serviceName}/serviceInfos"

@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.ActiveDirectoryOrganizationalUnit"
+          "responseType": "msServices.ActiveDirectoryOrganizationalUnit",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         },
         {
           "apiStatus": {
@@ -70,7 +78,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}"
@@ -112,7 +124,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/account"
@@ -146,7 +162,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Account"
+          "responseType": "msServices.Account",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         },
         {
           "apiStatus": {
@@ -181,7 +201,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/account/{userPrincipalName}"
@@ -223,7 +247,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/account/{userPrincipalName}/changePassword"
@@ -257,7 +285,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.ExchangeInformation"
+          "responseType": "msServices.ExchangeInformation",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         },
         {
           "apiStatus": {
@@ -292,7 +324,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/account/{userPrincipalName}/exchange"
@@ -326,7 +362,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.exchangeTask"
+          "responseType": "msServices.exchangeTask",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/account/{userPrincipalName}/exchange/configure"
@@ -360,7 +400,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         },
         {
           "apiStatus": {
@@ -388,7 +432,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.MfaInformation"
+          "responseType": "msServices.MfaInformation",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         },
         {
           "apiStatus": {
@@ -416,7 +464,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/account/{userPrincipalName}/mfa"
@@ -458,7 +510,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/account/{userPrincipalName}/mfa/disable"
@@ -492,7 +548,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/account/{userPrincipalName}/mfa/enable"
@@ -526,7 +586,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/account/{userPrincipalName}/mfa/reset"
@@ -560,7 +624,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.SharepointInformation"
+          "responseType": "msServices.SharepointInformation",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         },
         {
           "apiStatus": {
@@ -595,7 +663,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/account/{userPrincipalName}/sharepoint"
@@ -629,7 +701,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.sharepointTask"
+          "responseType": "msServices.sharepointTask",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/clearSpace"
@@ -663,7 +739,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.sharepointTask"
+          "responseType": "msServices.sharepointTask",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/configure"
@@ -697,7 +777,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         },
         {
           "apiStatus": {
@@ -725,7 +809,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.SyncInformation"
+          "responseType": "msServices.SyncInformation",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         },
         {
           "apiStatus": {
@@ -761,7 +849,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/account/{userPrincipalName}/sync"
@@ -795,10 +887,68 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/account/{userPrincipalName}/sync/configure"
+    },
+    {
+      "description": "Change the contacts of this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Launch a contact change procedure",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "contactAdmin",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "contactBilling",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "contactTech",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your Active Directory organization",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
+        }
+      ],
+      "path": "/msServices/{serviceName}/changeContact"
     },
     {
       "description": "createMfaOnAllUsers operations",
@@ -821,7 +971,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/createMfaOnAllUsers"
@@ -847,7 +1001,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.ExchangeService"
+          "responseType": "msServices.ExchangeService",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         },
         {
           "apiStatus": {
@@ -874,7 +1032,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/exchange"
@@ -900,7 +1062,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean"
+          "responseType": "boolean",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/exchange/billingMigrated"
@@ -926,7 +1092,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/exchange/task"
@@ -960,7 +1130,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.exchangeTask"
+          "responseType": "msServices.exchangeTask",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/exchange/task/{id}"
@@ -986,7 +1160,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/removeMfaOnAllUsers"
@@ -1012,7 +1190,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.SharepointService"
+          "responseType": "msServices.SharepointService",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1039,7 +1221,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/sharepoint"
@@ -1065,7 +1251,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean"
+          "responseType": "boolean",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/sharepoint/billingMigrated"
@@ -1107,7 +1297,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.SharepointDailyLicense[]"
+          "responseType": "msServices.SharepointDailyLicense[]",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/sharepoint/license"
@@ -1133,7 +1327,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.sharepointTask"
+          "responseType": "msServices.sharepointTask",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/sharepoint/restoreAdminRights"
@@ -1175,7 +1373,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/sharepoint/task"
@@ -1209,7 +1411,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.sharepointTask"
+          "responseType": "msServices.sharepointTask",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/sharepoint/task/{id}"
@@ -1235,7 +1441,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1255,7 +1465,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.SyncService"
+          "responseType": "msServices.SyncService",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/sync"
@@ -1289,7 +1503,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/sync/changePassword"
@@ -1315,7 +1533,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.ActiveDirectorySyncClientUrl"
+          "responseType": "msServices.ActiveDirectorySyncClientUrl",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1335,7 +1557,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/sync/clientSoftwareURL"
@@ -1377,7 +1603,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.SyncDailyLicense[]"
+          "responseType": "msServices.SyncDailyLicense[]",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/sync/license"
@@ -1419,7 +1649,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/task"
@@ -1453,7 +1687,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/task/{id}"
@@ -1479,7 +1717,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1507,7 +1749,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/upnSuffix"
@@ -1541,7 +1787,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.Task"
+          "responseType": "msServices.Task",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1569,7 +1819,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.upnSuffix"
+          "responseType": "msServices.upnSuffix",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/{serviceName}/upnSuffix/{suffix}"
@@ -1586,7 +1840,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/sharepoint"
@@ -1612,7 +1870,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "msServices.SharepointServiceInfo"
+          "responseType": "msServices.SharepointServiceInfo",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/sharepoint/{domain}"
@@ -1638,7 +1900,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1665,7 +1931,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/msServices/all"
+          ]
         }
       ],
       "path": "/msServices/sharepoint/{domain}/serviceInfos"

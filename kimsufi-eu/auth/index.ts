@@ -85,10 +85,6 @@ export interface Auth {
          * POST /auth/credential
          */
         $post(params: { accessRules: auth.AccessRule[], redirection?: string }): Promise<auth.Credential>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     currentCredential: {
         /**
@@ -118,10 +114,6 @@ export interface Auth {
          * POST /auth/logout
          */
         $post(): Promise<void>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     time: {
         /**

@@ -271,10 +271,6 @@ export interface Analytics {
                  * POST /analytics/platforms/{serviceName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             confirmTermination: {
                 /**
@@ -282,10 +278,6 @@ export interface Analytics {
                  * POST /analytics/platforms/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             deploy: {
                 /**
@@ -293,10 +285,6 @@ export interface Analytics {
                  * POST /analytics/platforms/{serviceName}/deploy
                  */
                 $post(params: { clusterName: string, clusterType: string, edgeNodeStorage: number, hdfsEffectiveStorage: number, hdfsReplicationFactor: number, masterNodeStorage: number, masterPassword: string, nodes: analytics.node.Deploy[], osProjectId: string, osProjectName: string, osRegion: string, osToken: string, sshPublicKey: string }): Promise<analytics.cluster.Deploy>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             destroy: {
                 /**
@@ -304,10 +292,6 @@ export interface Analytics {
                  * POST /analytics/platforms/{serviceName}/destroy
                  */
                 $post(params: { osToken: string }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             nodes: {
                 /**
@@ -364,10 +348,6 @@ export interface Analytics {
                  * POST /analytics/platforms/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

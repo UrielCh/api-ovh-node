@@ -174,10 +174,6 @@ export interface Kube {
              * POST /kube/{serviceName}/changeContact
              */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         confirmTermination: {
             /**
@@ -185,10 +181,6 @@ export interface Kube {
              * POST /kube/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         kubeconfig: {
             /**
@@ -252,10 +244,6 @@ export interface Kube {
              * POST /kube/{serviceName}/reset
              */
             $post(params?: { version?: kube.Version, workerNodesPolicy?: kube.ResetWorkerNodesPolicy }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         serviceInfos: {
             /**
@@ -279,10 +267,6 @@ export interface Kube {
              * POST /kube/{serviceName}/terminate
              */
             $post(): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         update: {
             /**
@@ -290,10 +274,6 @@ export interface Kube {
              * POST /kube/{serviceName}/update
              */
             $post(): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         updatePolicy: {
             /**
@@ -301,10 +281,6 @@ export interface Kube {
              * PUT /kube/{serviceName}/updatePolicy
              */
             $put(params: { updatePolicy: kube.UpdatePolicy }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     };
 }

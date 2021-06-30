@@ -26,7 +26,7 @@ export namespace dedicated {
      * ovh datacenter
      * type fullname: dedicated.DatacenterEnum
      */
-    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1"
+    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "bhs8" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sbg5" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1"
 }
 export namespace dedicatedCloud {
     /**
@@ -1558,10 +1558,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/changeMaintenanceExecutionDate
                              */
                             $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         resetTaskState: {
                             /**
@@ -1569,10 +1565,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/resetTaskState
                              */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -1595,10 +1587,6 @@ export interface DedicatedCloud {
              * POST /dedicatedCloud/{serviceName}/changeContact
              */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         changeProperties: {
             /**
@@ -1606,10 +1594,6 @@ export interface DedicatedCloud {
              * POST /dedicatedCloud/{serviceName}/changeProperties
              */
             $post(params?: { description?: string, sslV3?: boolean, userAccessPolicy?: dedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number }): Promise<dedicatedCloud.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         commercialRange: {
             compliance: {
@@ -1641,10 +1625,6 @@ export interface DedicatedCloud {
              * POST /dedicatedCloud/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         datacenter: {
             /**
@@ -1697,10 +1677,6 @@ export interface DedicatedCloud {
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/batchRestore
                          */
                         $post(params: { backupJobName?: string, backupRepositoryName: string }): Promise<dedicatedCloud.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     canOptimizeProxies: {
                         /**
@@ -1719,10 +1695,6 @@ export interface DedicatedCloud {
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties
                          */
                         $post(params: { backupDurationInReport: boolean, backupOffer: dedicatedCloudbackupOfferTypeEnum, backupSizeInReport: boolean, diskSizeInReport: boolean, fullDayInReport: boolean, mailAddress?: string, restorePointInReport: boolean, scheduleHour?: string }): Promise<dedicatedCloud.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     disable: {
                         /**
@@ -1730,10 +1702,6 @@ export interface DedicatedCloud {
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/disable
                          */
                         $post(): Promise<dedicatedCloud.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     enable: {
                         /**
@@ -1741,10 +1709,6 @@ export interface DedicatedCloud {
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable
                          */
                         $post(params?: { backupOffer?: dedicatedCloudbackupOfferTypeEnum }): Promise<dedicatedCloud.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     generateReport: {
                         /**
@@ -1752,10 +1716,6 @@ export interface DedicatedCloud {
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/generateReport
                          */
                         $post(): Promise<dedicatedCloud.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     offerCapabilities: {
                         /**
@@ -1774,10 +1734,6 @@ export interface DedicatedCloud {
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/optimizeProxies
                          */
                         $post(): Promise<dedicatedCloud.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
                 checkBackupJobs: {
@@ -1786,21 +1742,6 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/checkBackupJobs
                      */
                     $post(): Promise<dedicatedCloud.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                copyFiler: {
-                    /**
-                     * Copy an SBG Filer and mount it in a given Datacenter
-                     * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/copyFiler
-                     */
-                    $post(params: { accept: boolean, filerId: number }): Promise<dedicatedCloud.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 copyFilerStatus: {
                     /**
@@ -1821,10 +1762,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/disable
                              */
                             $post(params: { secondaryDatacenterId: number, secondaryServiceName: string }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         enable: {
                             /**
@@ -1832,10 +1769,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/enable
                              */
                             $post(params: { primaryEndpointIp: string, secondaryDatacenterId: number, secondaryEndpointIp: string, secondaryServiceName: string }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         generateZsspPassword: {
                             /**
@@ -1843,10 +1776,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/generateZsspPassword
                              */
                             $post(): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         state: {
                             /**
@@ -1854,10 +1783,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/state
                              */
                             $post(): Promise<dedicatedCloud.disasterRecovery.Profile>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         status: {
                             /**
@@ -1878,10 +1803,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/configureVpn
                              */
                             $post(params: { preSharedKey: string, remoteEndpointInternalIp: string, remoteEndpointPublicIp: string, remoteVraNetwork?: string, remoteZvmInternalIp: string }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         defaultLocalVraNetwork: {
                             /**
@@ -1900,10 +1821,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/disable
                              */
                             $post(): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         enable: {
                             /**
@@ -1911,10 +1828,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/enable
                              */
                             $post(params: { localVraNetwork: string, ovhEndpointIp: string, remoteVraNetwork: string }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     }
                 }
@@ -1955,10 +1868,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/convertToGlobal
                              */
                             $post(): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         hourlyConsumption: {
                             /**
@@ -1988,10 +1897,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/remove
                              */
                             $post(): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         task: {
                             /**
@@ -2019,10 +1924,6 @@ export interface DedicatedCloud {
                                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate
                                      */
                                     $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
-                                    /**
-                                     * Controle cache
-                                     */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 }
                                 resetTaskState: {
                                     /**
@@ -2030,10 +1931,6 @@ export interface DedicatedCloud {
                                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/resetTaskState
                                      */
                                     $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
-                                    /**
-                                     * Controle cache
-                                     */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 }
                             };
                         }
@@ -2065,10 +1962,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/addHostSpare
                              */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         hourlyConsumption: {
                             /**
@@ -2098,10 +1991,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/remove
                              */
                             $post(): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         resilience: {
                             /**
@@ -2130,10 +2019,6 @@ export interface DedicatedCloud {
                                  * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience/disable
                                  */
                                 $post(): Promise<dedicatedCloud.Task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             enable: {
                                 /**
@@ -2141,10 +2026,6 @@ export interface DedicatedCloud {
                                  * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience/enable
                                  */
                                 $post(params?: { duration?: number }): Promise<dedicatedCloud.Task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                         }
                         task: {
@@ -2173,10 +2054,6 @@ export interface DedicatedCloud {
                                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/changeMaintenanceExecutionDate
                                      */
                                     $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
-                                    /**
-                                     * Controle cache
-                                     */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 }
                                 resetTaskState: {
                                     /**
@@ -2184,10 +2061,6 @@ export interface DedicatedCloud {
                                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/resetTaskState
                                      */
                                     $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
-                                    /**
-                                     * Controle cache
-                                     */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 }
                             };
                         }
@@ -2199,10 +2072,6 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewFilerHourly
                      */
                     $post(params: { name: string }): Promise<dedicatedCloud.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 orderNewHostHourly: {
                     /**
@@ -2210,10 +2079,6 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly
                      */
                     $post(params: { name: string, vmwareClusterId?: string }): Promise<dedicatedCloud.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 orderableFilerProfiles: {
                     /**
@@ -2253,10 +2118,6 @@ export interface DedicatedCloud {
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/disable
                          */
                         $post(): Promise<dedicatedCloud.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     enable: {
                         /**
@@ -2264,10 +2125,6 @@ export interface DedicatedCloud {
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/enable
                          */
                         $post(params: { ip: string, netmask: string, portgroup: string }): Promise<dedicatedCloud.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
                 task: {
@@ -2296,10 +2153,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/changeMaintenanceExecutionDate
                              */
                             $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         resetTaskState: {
                             /**
@@ -2307,10 +2160,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/resetTaskState
                              */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -2355,10 +2204,6 @@ export interface DedicatedCloud {
                                  * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/disable
                                  */
                                 $post(): Promise<dedicatedCloud.Task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             enable: {
                                 /**
@@ -2366,10 +2211,6 @@ export interface DedicatedCloud {
                                  * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable
                                  */
                                 $post(params: { backupDays: dedicatedCloudbackupBackupDaysEnum[] }): Promise<dedicatedCloud.Task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             restorePoints: {
                                 /**
@@ -2397,10 +2238,6 @@ export interface DedicatedCloud {
                                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}/restore
                                          */
                                         $post(params: { filerId: number }): Promise<dedicatedCloud.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                 };
                             }
@@ -2411,10 +2248,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/disableBackup
                              */
                             $post(): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         editBackup: {
                             /**
@@ -2422,10 +2255,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup
                              */
                             $post(params: { backupDays: dedicatedCloudbackupBackupDaysEnum[] }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         enableBackup: {
                             /**
@@ -2433,10 +2262,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup
                              */
                             $post(params: { backupDays: dedicatedCloudbackupBackupDaysEnum[] }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         restoreBackup: {
                             /**
@@ -2444,10 +2269,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup
                              */
                             $post(params: { filerId: number, restorePointId: number }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -2499,10 +2320,6 @@ export interface DedicatedCloud {
                          * POST /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/changeProperties
                          */
                         $post(params: { description?: string, password: string, username: string }): Promise<dedicatedCloud.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     grantActiveDirectoryUser: {
                         /**
@@ -2510,10 +2327,6 @@ export interface DedicatedCloud {
                          * POST /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/grantActiveDirectoryUser
                          */
                         $post(params: { username: string }): Promise<dedicatedCloud.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -2555,10 +2368,6 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/filer/{filerId}/convertToGlobal
                      */
                     $post(): Promise<dedicatedCloud.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 hourlyConsumption: {
                     /**
@@ -2588,10 +2397,6 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/filer/{filerId}/remove
                      */
                     $post(): Promise<dedicatedCloud.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 task: {
                     /**
@@ -2619,10 +2424,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate
                              */
                             $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         resetTaskState: {
                             /**
@@ -2630,10 +2431,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/resetTaskState
                              */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -2688,10 +2485,6 @@ export interface DedicatedCloud {
                  * POST /dedicatedCloud/{serviceName}/hcx/disable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             enable: {
                 /**
@@ -2699,10 +2492,6 @@ export interface DedicatedCloud {
                  * POST /dedicatedCloud/{serviceName}/hcx/enable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         hds: {
@@ -2743,10 +2532,6 @@ export interface DedicatedCloud {
                  * POST /dedicatedCloud/{serviceName}/hds/disable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             enable: {
                 /**
@@ -2754,10 +2539,6 @@ export interface DedicatedCloud {
                  * POST /dedicatedCloud/{serviceName}/hds/enable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         hipaa: {
@@ -2798,10 +2579,6 @@ export interface DedicatedCloud {
                  * POST /dedicatedCloud/{serviceName}/hipaa/disable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             enable: {
                 /**
@@ -2809,10 +2586,6 @@ export interface DedicatedCloud {
                  * POST /dedicatedCloud/{serviceName}/hipaa/enable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         ip: {
@@ -2872,10 +2645,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/changeMaintenanceExecutionDate
                              */
                             $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         resetTaskState: {
                             /**
@@ -2883,10 +2652,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/resetTaskState
                              */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -2941,10 +2706,6 @@ export interface DedicatedCloud {
                  * POST /dedicatedCloud/{serviceName}/nsx/disable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             enable: {
                 /**
@@ -2952,10 +2713,6 @@ export interface DedicatedCloud {
                  * POST /dedicatedCloud/{serviceName}/nsx/enable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         orderNewFilerHourly: {
@@ -2964,10 +2721,6 @@ export interface DedicatedCloud {
              * POST /dedicatedCloud/{serviceName}/orderNewFilerHourly
              */
             $post(params: { name: string }): Promise<dedicatedCloud.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         orderableIpCountries: {
             /**
@@ -3029,10 +2782,6 @@ export interface DedicatedCloud {
                  * POST /dedicatedCloud/{serviceName}/pcidss/disable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             enable: {
                 /**
@@ -3040,10 +2789,6 @@ export interface DedicatedCloud {
                  * POST /dedicatedCloud/{serviceName}/pcidss/enable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         resetTriggeredAlarm: {
@@ -3052,10 +2797,6 @@ export interface DedicatedCloud {
              * POST /dedicatedCloud/{serviceName}/resetTriggeredAlarm
              */
             $post(): Promise<dedicatedCloud.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         robot: {
             /**
@@ -3154,10 +2895,6 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/task/{taskId}/changeMaintenanceExecutionDate
                      */
                     $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 resetTaskState: {
                     /**
@@ -3165,10 +2902,6 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/task/{taskId}/resetTaskState
                      */
                     $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -3178,10 +2911,6 @@ export interface DedicatedCloud {
              * POST /dedicatedCloud/{serviceName}/terminate
              */
             $post(): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         twoFAWhitelist: {
             /**
@@ -3219,10 +2948,6 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/twoFAWhitelist/{id}/changeProperties
                      */
                     $post(params?: { description?: string }): Promise<dedicatedCloud.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -3232,10 +2957,6 @@ export interface DedicatedCloud {
              * POST /dedicatedCloud/{serviceName}/upgradeHypervisor
              */
             $post(): Promise<dedicatedCloud.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         upgradeVcenter: {
             /**
@@ -3243,10 +2964,6 @@ export interface DedicatedCloud {
              * POST /dedicatedCloud/{serviceName}/upgradeVcenter
              */
             $post(params?: { release?: dedicatedCloud.releaseEnum }): Promise<dedicatedCloud.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         user: {
             /**
@@ -3284,10 +3001,6 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/changePassword
                      */
                     $post(params?: { password?: string }): Promise<dedicatedCloud.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 changeProperties: {
                     /**
@@ -3295,10 +3008,6 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/changeProperties
                      */
                     $post(params?: { canManageIpFailOvers?: boolean, canManageNetwork?: boolean, canManageRights?: boolean, email?: string, firstName?: string, fullAdminRo?: boolean, lastName?: string, nsxRight?: boolean, phoneNumber?: string, receiveAlerts?: boolean, tokenValidator?: boolean }): Promise<dedicatedCloud.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 confirmPhoneNumber: {
                     /**
@@ -3306,10 +3015,6 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/confirmPhoneNumber
                      */
                     $post(params: { token: string }): Promise<dedicatedCloud.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 disable: {
                     /**
@@ -3317,10 +3022,6 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/disable
                      */
                     $post(): Promise<dedicatedCloud.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 enable: {
                     /**
@@ -3328,10 +3029,6 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/enable
                      */
                     $post(): Promise<dedicatedCloud.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 metricsToken: {
                     /**
@@ -3339,10 +3036,6 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/metricsToken
                      */
                     $post(): Promise<dedicatedCloud.metricsToken>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 objectRight: {
                     /**
@@ -3429,10 +3122,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/changeMaintenanceExecutionDate
                              */
                             $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         resetTaskState: {
                             /**
@@ -3440,10 +3129,6 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/resetTaskState
                              */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -3476,10 +3161,6 @@ export interface DedicatedCloud {
                  * POST /dedicatedCloud/{serviceName}/vendor/objectType
                  */
                 $post(): Promise<string[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             ovhId: {
                 /**
@@ -3487,10 +3168,6 @@ export interface DedicatedCloud {
                  * POST /dedicatedCloud/{serviceName}/vendor/ovhId
                  */
                 $post(params: { objectType: dedicatedCloud.VendorObjectTypeEnum, vendorId: string }): Promise<dedicatedCloud.vendor.OvhId>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         vlan: {
@@ -3561,10 +3238,6 @@ export interface DedicatedCloud {
                          * POST /dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}/changeProperties
                          */
                         $post(params: { description?: string, sslThumbprint: string }): Promise<dedicatedCloud.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -3634,10 +3307,6 @@ export interface DedicatedCloud {
                  * POST /dedicatedCloud/{serviceName}/vrops/disable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             enable: {
                 /**
@@ -3645,10 +3314,6 @@ export interface DedicatedCloud {
                  * POST /dedicatedCloud/{serviceName}/vrops/enable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
     };

@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.vrack"
+          "responseType": "vrack.vrack",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -70,7 +78,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}"
@@ -96,7 +108,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.AllowedServices"
+          "responseType": "vrack.AllowedServices",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/allowedServices"
@@ -122,7 +138,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -150,7 +170,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/cloudProject"
@@ -184,7 +208,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -212,7 +240,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.cloudProject"
+          "responseType": "vrack.cloudProject",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/cloudProject/{project}"
@@ -238,7 +270,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -266,7 +302,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/dedicatedCloud"
@@ -300,7 +340,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -328,7 +372,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.dedicatedCloud"
+          "responseType": "vrack.dedicatedCloud",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}"
@@ -354,7 +402,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/dedicatedCloudDatacenter"
@@ -388,7 +440,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.pccDatacenter"
+          "responseType": "vrack.pccDatacenter",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}"
@@ -422,7 +478,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/allowedVrack"
@@ -464,7 +524,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move"
@@ -490,7 +554,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/dedicatedConnect"
@@ -524,7 +592,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.dedicatedConnect"
+          "responseType": "vrack.dedicatedConnect",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -559,7 +631,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/dedicatedConnect/{name}"
@@ -585,7 +661,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -613,7 +693,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/dedicatedServer"
@@ -647,7 +731,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -675,7 +763,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.dedicatedServer"
+          "responseType": "vrack.dedicatedServer",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/dedicatedServer/{dedicatedServer}"
@@ -728,7 +820,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.MrtgTimestampValue[]"
+          "responseType": "dedicated.server.MrtgTimestampValue[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg"
@@ -754,7 +850,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -782,7 +882,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/dedicatedServerInterface"
@@ -816,7 +920,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -844,7 +952,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.dedicatedServerInterface"
+          "responseType": "vrack.dedicatedServerInterface",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}"
@@ -870,7 +982,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.AllowedDedicatedServerInterfaces[]"
+          "responseType": "vrack.AllowedDedicatedServerInterfaces[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/dedicatedServerInterfaceDetails"
@@ -896,7 +1012,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]"
+          "responseType": "ipBlock[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -924,7 +1044,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/ip"
@@ -958,7 +1082,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -986,7 +1114,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.ip"
+          "responseType": "vrack.ip",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/ip/{ip}"
@@ -1028,7 +1160,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/ip/{ip}/announceInZone"
@@ -1062,7 +1198,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.VrackZoneEnum[]"
+          "responseType": "vrack.VrackZoneEnum[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/ip/{ip}/availableZone"
@@ -1088,7 +1228,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1116,7 +1260,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/ipLoadbalancing"
@@ -1150,7 +1298,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1178,7 +1330,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.iplb"
+          "responseType": "vrack.iplb",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}"
@@ -1204,7 +1360,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1232,7 +1392,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/legacyVrack"
@@ -1266,7 +1430,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1294,7 +1462,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.legacyVrack"
+          "responseType": "vrack.legacyVrack",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/legacyVrack/{legacyVrack}"
@@ -1320,7 +1492,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1348,7 +1524,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/ovhCloudConnect"
@@ -1382,7 +1562,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1410,7 +1594,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.ovhCloudConnect"
+          "responseType": "vrack.ovhCloudConnect",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/ovhCloudConnect/{ovhCloudConnect}"
@@ -1436,7 +1624,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.NonExpiringService"
+          "responseType": "services.NonExpiringService",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/serviceInfos"
@@ -1462,7 +1654,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/task"
@@ -1496,7 +1692,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/vrack/all"
+          ]
         }
       ],
       "path": "/vrack/{serviceName}/task/{taskId}"

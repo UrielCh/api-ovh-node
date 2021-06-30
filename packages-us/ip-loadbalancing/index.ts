@@ -777,10 +777,6 @@ export interface IpLoadbalancing {
              * POST /ipLoadbalancing/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         definedFarms: {
             /**
@@ -832,10 +828,6 @@ export interface IpLoadbalancing {
              * POST /ipLoadbalancing/{serviceName}/freeCertificate
              */
             $post(params: { fqdn: string[] }): Promise<ipLoadbalancing.Task.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         http: {
             farm: {
@@ -1112,10 +1104,6 @@ export interface IpLoadbalancing {
              * POST /ipLoadbalancing/{serviceName}/refresh
              */
             $post(params?: { zone?: string }): Promise<ipLoadbalancing.Task.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         serviceInfos: {
             /**
@@ -1396,10 +1384,6 @@ export interface IpLoadbalancing {
              * POST /ipLoadbalancing/{serviceName}/terminate
              */
             $post(): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         vrack: {
             network: {
@@ -1443,10 +1427,6 @@ export interface IpLoadbalancing {
                          * POST /ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}/updateFarmId
                          */
                         $post(params: { farmId: number[] }): Promise<ipLoadbalancing.VrackNetwork.VrackNetwork>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -1499,10 +1479,6 @@ export interface IpLoadbalancing {
                      * POST /ipLoadbalancing/{serviceName}/zone/{name}/cancelTermination
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 terminate: {
                     /**
@@ -1510,10 +1486,6 @@ export interface IpLoadbalancing {
                      * POST /ipLoadbalancing/{serviceName}/zone/{name}/terminate
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }

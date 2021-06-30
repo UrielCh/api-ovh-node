@@ -17,56 +17,26 @@ export interface API {
     operations:  Operation[];
     description: string;
 }
-/**
- * added on 09/22/2020
- */
-export const OvhErrors = [
-    "Server::NoContent::PartnerError",
-    "Client::NotFound::PartnerNotFound",
-    "Server::InternalServerError::PartnerError",
-    "Server::InternalServerError::MissingParameterInRequestContext",
-    "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
-    "Server::InternalServerError::MarshalingError",
-    "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
-    "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
-    "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
-    "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
-    "Client::BadRequest::UnprocessableEntity",
-    "Client::Forbidden::LoadBalancerIsFrozen",
-    "Client::Forbidden::NotWhiteListed",
-    "Client::Forbidden::CouldNotDeleteCertificate",
-    "Client::Forbidden::QuotaReached",
-    "Server::InternalServerError::CouldNotImportCertificate",
-    "Server::InternalServerError::CouldNotListCertificate",
-    "Server::InternalServerError::CouldNotSerializeResponse",
-    "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
-    "Server::InternalServerError::CouldNotCreateLoadBalancer",
-    "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
-    "Server::InternalServerError::CouldNotDeleteLoadBalancer",
-    "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
-    "Server::InternalServerError::CouldNotFindLoadBalancer",
-    "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
-    "Server::InternalServerError::CouldNotFindLoadBalancerIP",
-    "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
-    "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
-    "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
-    "Server::InternalServerError::CouldNotFindRegion",
-    "Server::InternalServerError::CouldNotListLoadBalancers",
-    "Server::InternalServerError::CouldNotListRegions",
-    "Server::InternalServerError::CouldNotParseRequest",
-    "Server::InternalServerError::CouldNotUpdateLoadBalancer",
-] as const;
 
-export type IOvhErrors = typeof OvhErrors[number];
+
+export type OvhErrorsMajor = 'Server' | 'Client';
+export type OvhErrorsMinor = 'NoContent' | 'NotFound' | 'BadRequest' | 'InternalServerError' | 'Forbidden' | 'ValidationError' | 'Conflict' | 'NotImplemented' | 'PaymentRequired';
+/**
+ * added on 30/06/2021
+ */
+export type IOvhErrors = `${OvhErrorsMajor}::${OvhErrorsMinor}::${string}`; 
+export type IOvhScopes = `account/${string}` | `product/${string}` | `services/${string}` | `order/${string}` | 'all' | '/all';
+//typeof AllScopes[number];
 
 export interface Operation {
-    apiStatus:        APIStatus;
-    httpMethod:       "DELETE" | "GET" | "POST" | "PUT";
-    parameters:       Parameter[];
+    apiStatus:         APIStatus;
+    httpMethod:        "DELETE" | "GET" | "POST" | "PUT";
+    parameters:        Parameter[];
     resellerOnly?:     boolean;
-    responseType:     string;
+    responseType:      string;
+    scopes?:           IOvhScopes[];
     responseFullType?: string;
-    noAuthentication: boolean;
+    noAuthentication:  boolean;
     /**
      * operation name
      */
@@ -74,6 +44,7 @@ export interface Operation {
     description:      string;
     /**
      * added on 09/22/2020
+     * May contains duplicated entry
      */
     errors?:          IOvhErrors[];
 }

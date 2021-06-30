@@ -263,10 +263,6 @@ export interface Cdn {
                  * POST /cdn/dedicated/{serviceName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             domains: {
                 /**
@@ -376,10 +372,6 @@ export interface Cdn {
                                  * POST /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush
                                  */
                                 $post(): Promise<cdnanycast.Task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             tasks: {
                                 /**
@@ -411,10 +403,6 @@ export interface Cdn {
                          * POST /cdn/dedicated/{serviceName}/domains/{domain}/flush
                          */
                         $post(): Promise<cdnanycast.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     logs: {
                         /**
@@ -422,10 +410,6 @@ export interface Cdn {
                          * POST /cdn/dedicated/{serviceName}/domains/{domain}/logs
                          */
                         $post(): Promise<cdnanycast.LogsURL>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     statistics: {
                         /**
@@ -468,10 +452,6 @@ export interface Cdn {
                  * POST /cdn/dedicated/{serviceName}/logs
                  */
                 $post(): Promise<cdnanycast.LogsURL>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             quota: {
                 /**
@@ -548,10 +528,6 @@ export interface Cdn {
                      * POST /cdn/dedicated/{serviceName}/ssl/update
                      */
                     $post(params: { certificate: string, chain?: string, key: string }): Promise<cdnanycast.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
         };

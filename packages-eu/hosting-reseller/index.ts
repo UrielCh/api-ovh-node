@@ -188,10 +188,6 @@ export interface Hosting {
                  * POST /hosting/reseller/{serviceName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             email: {
                 /**
@@ -199,10 +195,6 @@ export interface Hosting {
                  * POST /hosting/reseller/{serviceName}/email
                  */
                 $post(params: { email: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             language: {
                 /**
@@ -210,10 +202,6 @@ export interface Hosting {
                  * POST /hosting/reseller/{serviceName}/language
                  */
                 $post(params: { language: reseller.pleskLanguageTypeEnum }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             migration: {
                 /**
@@ -221,10 +209,6 @@ export interface Hosting {
                  * POST /hosting/reseller/{serviceName}/migration
                  */
                 $post(params: { pcProject: string, readAndAgreedContract: boolean }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             reboot: {
                 /**
@@ -232,10 +216,6 @@ export interface Hosting {
                  * POST /hosting/reseller/{serviceName}/reboot
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             reinstall: {
                 /**
@@ -243,10 +223,6 @@ export interface Hosting {
                  * POST /hosting/reseller/{serviceName}/reinstall
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             resetPasswordUrl: {
                 /**
@@ -265,10 +241,6 @@ export interface Hosting {
                  * POST /hosting/reseller/{serviceName}/reverse
                  */
                 $post(params: { reverse: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -317,10 +289,6 @@ export interface Hosting {
                          * POST /hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore
                          */
                         $post(): Promise<string>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }

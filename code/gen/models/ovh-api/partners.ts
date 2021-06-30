@@ -17,7 +17,10 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -261,7 +264,10 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "Partner.Company"
+          "responseType": "Partner.Company",
+          "scopes": [
+            "all"
+          ]
         }
       ],
       "path": "/partners/register/company"
@@ -287,7 +293,10 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -307,7 +316,10 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "Partner.Company"
+          "responseType": "Partner.Company",
+          "scopes": [
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -559,7 +571,10 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "Partner.Company"
+          "responseType": "Partner.Company",
+          "scopes": [
+            "all"
+          ]
         }
       ],
       "path": "/partners/register/company/{companyId}"
@@ -585,7 +600,10 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "Partner.Application"
+          "responseType": "Partner.Application",
+          "scopes": [
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -613,7 +631,10 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "Partner.Application"
+          "responseType": "Partner.Application",
+          "scopes": [
+            "all"
+          ]
         }
       ],
       "path": "/partners/register/company/{companyId}/application"
@@ -639,7 +660,10 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -739,7 +763,10 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "Partner.Contact"
+          "responseType": "Partner.Contact",
+          "scopes": [
+            "all"
+          ]
         }
       ],
       "path": "/partners/register/company/{companyId}/contact"
@@ -773,7 +800,10 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -801,7 +831,10 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "Partner.Contact"
+          "responseType": "Partner.Contact",
+          "scopes": [
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -909,7 +942,10 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "Partner.Contact"
+          "responseType": "Partner.Contact",
+          "scopes": [
+            "all"
+          ]
         }
       ],
       "path": "/partners/register/company/{companyId}/contact/{contactId}"

@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         }
       ],
       "path": "/dbaas/timeseries"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "timeseries.Project"
+          "responseType": "timeseries.Project",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         },
         {
           "apiStatus": {
@@ -70,7 +78,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         }
       ],
       "path": "/dbaas/timeseries/{serviceName}"
@@ -120,7 +132,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         }
       ],
       "path": "/dbaas/timeseries/{serviceName}/changeContact"
@@ -146,7 +162,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "paas.timeseries.Consumption[]"
+          "responseType": "paas.timeseries.Consumption[]",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         }
       ],
       "path": "/dbaas/timeseries/{serviceName}/consumption"
@@ -172,7 +192,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "paas.timeseries.Key[]"
+          "responseType": "paas.timeseries.Key[]",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         },
         {
           "apiStatus": {
@@ -216,7 +240,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "paas.timeseries.Key"
+          "responseType": "paas.timeseries.Key",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         }
       ],
       "path": "/dbaas/timeseries/{serviceName}/key"
@@ -250,7 +278,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean"
+          "responseType": "boolean",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         },
         {
           "apiStatus": {
@@ -278,7 +310,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "paas.timeseries.Key"
+          "responseType": "paas.timeseries.Key",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         },
         {
           "apiStatus": {
@@ -330,7 +366,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "paas.timeseries.Key"
+          "responseType": "paas.timeseries.Key",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         }
       ],
       "path": "/dbaas/timeseries/{serviceName}/key/{keyId}"
@@ -356,7 +396,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "paas.timeseries.Quota[]"
+          "responseType": "paas.timeseries.Quota[]",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         }
       ],
       "path": "/dbaas/timeseries/{serviceName}/quota"
@@ -382,7 +426,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         },
         {
           "apiStatus": {
@@ -409,7 +457,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         }
       ],
       "path": "/dbaas/timeseries/{serviceName}/serviceInfos"
@@ -475,7 +527,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "paas.timeseries.Project"
+          "responseType": "paas.timeseries.Project",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         }
       ],
       "path": "/dbaas/timeseries/{serviceName}/setup"
@@ -501,7 +557,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "paas.timeseries.OpenTSDBToken[]"
+          "responseType": "paas.timeseries.OpenTSDBToken[]",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         },
         {
           "apiStatus": {
@@ -545,7 +605,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "paas.timeseries.OpenTSDBToken"
+          "responseType": "paas.timeseries.OpenTSDBToken",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         }
       ],
       "path": "/dbaas/timeseries/{serviceName}/token/opentsdb"
@@ -579,7 +643,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean"
+          "responseType": "boolean",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         },
         {
           "apiStatus": {
@@ -607,7 +675,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "paas.timeseries.OpenTSDBToken"
+          "responseType": "paas.timeseries.OpenTSDBToken",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         }
       ],
       "path": "/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}"
@@ -624,7 +696,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "paas.timeseries.Region[]"
+          "responseType": "paas.timeseries.Region[]",
+          "scopes": [
+            "all",
+            "product/dbaas-timeseries/all"
+          ]
         }
       ],
       "path": "/dbaas/timeseries/region"

@@ -902,10 +902,6 @@ export interface Services {
                      * PUT /services/{serviceId}/billing/engagement/endRule
                      */
                     $put(params: { strategy: services.billing.engagement.EndStrategyEnum }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 flush: {
                     /**
@@ -913,10 +909,6 @@ export interface Services {
                      * POST /services/{serviceId}/billing/engagement/flush
                      */
                     $post(params?: { autoPayWithPreferredPaymentMethod?: boolean, dryRun?: boolean, terminateSubscription?: boolean }): Promise<services.billing.engagement.EngagementFlushOrder>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 request: {
                     /**
@@ -1044,10 +1036,6 @@ export interface Services {
                      * POST /services/{serviceId}/detach/{planCode}/execute
                      */
                     $post(params: { autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 simulate: {
                     /**
@@ -1055,10 +1043,6 @@ export interface Services {
                      * POST /services/{serviceId}/detach/{planCode}/simulate
                      */
                     $post(params: { autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -1088,10 +1072,6 @@ export interface Services {
                      * POST /services/{serviceId}/form/{formName}/answer
                      */
                     $post(params: { answers: services.form.Answer[] }): Promise<services.form.Response>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -1143,10 +1123,6 @@ export interface Services {
                      * POST /services/{serviceId}/upgrade/{planCode}/execute
                      */
                     $post(params: { autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 simulate: {
                     /**
@@ -1154,10 +1130,6 @@ export interface Services {
                      * POST /services/{serviceId}/upgrade/{planCode}/simulate
                      */
                     $post(params: { autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }

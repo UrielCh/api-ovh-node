@@ -2569,10 +2569,6 @@ export interface Telephony {
                  * POST /telephony/aliases/{serviceName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -2703,10 +2699,6 @@ export interface Telephony {
                  * POST /telephony/lines/{serviceName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -2789,10 +2781,6 @@ export interface Telephony {
          * POST /telephony/setDefaultSipDomain
          */
         $post(params: { country: telephony.NumberCountryEnum, domain: string, type: telephony.SipDomainProductTypeEnum }): Promise<void>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     sounds: {
         /**
@@ -2884,10 +2872,6 @@ export interface Telephony {
                  * POST /telephony/spare/{spare}/replace
                  */
                 $post(params: { domain: string, ip: string }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -2933,10 +2917,6 @@ export interface Telephony {
                  * POST /telephony/trunks/{serviceName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -3057,10 +3037,6 @@ export interface Telephony {
              * POST /telephony/{billingAccount}/canTransferSecurityDeposit
              */
             $post(params: { billingAccountDestination: string }): Promise<boolean>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         cancelTermination: {
             /**
@@ -3068,10 +3044,6 @@ export interface Telephony {
              * POST /telephony/{billingAccount}/cancelTermination
              */
             $post(): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         carrierSip: {
             /**
@@ -3161,10 +3133,6 @@ export interface Telephony {
              * POST /telephony/{billingAccount}/changeContact
              */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         conference: {
             /**
@@ -3192,10 +3160,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/conference/{serviceName}/announceUpload
                      */
                     $post(params: { documentId: string }): Promise<telephony.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 histories: {
                     /**
@@ -3236,10 +3200,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/conference/{serviceName}/lock
                      */
                     $post(): Promise<telephony.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 participants: {
                     /**
@@ -3267,10 +3227,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/deaf
                              */
                             $post(): Promise<telephony.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         energy: {
                             /**
@@ -3278,10 +3234,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/energy
                              */
                             $post(params: { value: number }): Promise<telephony.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         kick: {
                             /**
@@ -3289,10 +3241,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/kick
                              */
                             $post(): Promise<telephony.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         mute: {
                             /**
@@ -3300,10 +3248,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/mute
                              */
                             $post(): Promise<telephony.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         undeaf: {
                             /**
@@ -3311,10 +3255,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/undeaf
                              */
                             $post(): Promise<telephony.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         unmute: {
                             /**
@@ -3322,10 +3262,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/unmute
                              */
                             $post(): Promise<telephony.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -3387,10 +3323,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/lock
                              */
                             $post(): Promise<telephony.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         participants: {
                             /**
@@ -3418,10 +3350,6 @@ export interface Telephony {
                                      * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/deaf
                                      */
                                     $post(): Promise<telephony.Task>;
-                                    /**
-                                     * Controle cache
-                                     */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 }
                                 energy: {
                                     /**
@@ -3429,10 +3357,6 @@ export interface Telephony {
                                      * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/energy
                                      */
                                     $post(params: { value: number }): Promise<telephony.Task>;
-                                    /**
-                                     * Controle cache
-                                     */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 }
                                 kick: {
                                     /**
@@ -3440,10 +3364,6 @@ export interface Telephony {
                                      * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/kick
                                      */
                                     $post(): Promise<telephony.Task>;
-                                    /**
-                                     * Controle cache
-                                     */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 }
                                 mute: {
                                     /**
@@ -3451,10 +3371,6 @@ export interface Telephony {
                                      * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/mute
                                      */
                                     $post(): Promise<telephony.Task>;
-                                    /**
-                                     * Controle cache
-                                     */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 }
                                 undeaf: {
                                     /**
@@ -3462,10 +3378,6 @@ export interface Telephony {
                                      * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/undeaf
                                      */
                                     $post(): Promise<telephony.Task>;
-                                    /**
-                                     * Controle cache
-                                     */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 }
                                 unmute: {
                                     /**
@@ -3473,10 +3385,6 @@ export interface Telephony {
                                      * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/unmute
                                      */
                                     $post(): Promise<telephony.Task>;
-                                    /**
-                                     * Controle cache
-                                     */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 }
                             };
                         }
@@ -3486,10 +3394,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/unlock
                              */
                             $post(): Promise<telephony.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         webAccess: {
                             /**
@@ -3558,10 +3462,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/conference/{serviceName}/unlock
                      */
                     $post(): Promise<telephony.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 webAccess: {
                     /**
@@ -3628,10 +3528,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/ddi/{serviceName}/changeDestination
                      */
                     $post(params: { destination: string }): Promise<telephony.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -3757,10 +3653,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop
                                          */
                                         $post(params: { number: string }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     hangup: {
                                         /**
@@ -3768,10 +3660,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup
                                          */
                                         $post(): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     hold: {
                                         /**
@@ -3779,10 +3667,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold
                                          */
                                         $post(): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     intercept: {
                                         /**
@@ -3790,10 +3674,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept
                                          */
                                         $post(params: { number: string }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     transfer: {
                                         /**
@@ -3801,10 +3681,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer
                                          */
                                         $post(params: { number: string }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     whisper: {
                                         /**
@@ -3812,10 +3688,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper
                                          */
                                         $post(params: { number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                 };
                             }
@@ -4063,10 +3935,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop
                                          */
                                         $post(params: { number: string }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     hangup: {
                                         /**
@@ -4074,10 +3942,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup
                                          */
                                         $post(): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     hold: {
                                         /**
@@ -4085,10 +3949,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold
                                          */
                                         $post(): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     intercept: {
                                         /**
@@ -4096,10 +3956,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept
                                          */
                                         $post(params: { number: string }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     transfer: {
                                         /**
@@ -4107,10 +3963,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer
                                          */
                                         $post(params: { number: string }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     whisper: {
                                         /**
@@ -4118,10 +3970,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper
                                          */
                                         $post(params: { number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                 };
                             }
@@ -4252,10 +4100,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/easyHunting/{serviceName}/soundUpload
                      */
                     $post(params?: { documentId?: string, name?: string, url?: string }): Promise<telephony.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 timeConditions: {
                     /**
@@ -4410,10 +4254,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones/toneUpload
                              */
                             $post(params: { documentId?: string, type: telephony.TonesTypeEnum, url?: string }): Promise<telephony.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     }
                 }
@@ -4512,10 +4352,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/start
                              */
                             $post(): Promise<void>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         stop: {
                             /**
@@ -4523,10 +4359,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/stop
                              */
                             $post(): Promise<void>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -4561,10 +4393,6 @@ export interface Telephony {
                          * POST /telephony/{billingAccount}/fax/{serviceName}/screenLists/reset
                          */
                         $post(params?: { blacklistedNumbers?: boolean, blacklistedTSI?: boolean, whitelistedNumbers?: boolean, whitelistedTSI?: boolean }): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
                 settings: {
@@ -4588,10 +4416,6 @@ export interface Telephony {
                          * POST /telephony/{billingAccount}/fax/{serviceName}/settings/changePassword
                          */
                         $post(params?: { password?: string }): Promise<string>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     sendFax: {
                         /**
@@ -4599,10 +4423,6 @@ export interface Telephony {
                          * POST /telephony/{billingAccount}/fax/{serviceName}/settings/sendFax
                          */
                         $post(params: { dateSchedule?: string, pdfUrl: string, recipients: string[] }): Promise<telephony.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
             };
@@ -4811,10 +4631,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/line/{serviceName}/associateDevice
                      */
                     $post(params: { ipAddress?: string, macAddress: string, slot?: number }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 automaticCall: {
                     /**
@@ -4860,10 +4676,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/line/{serviceName}/block
                      */
                     $post(params?: { mode?: telephony.LineBlockingMode }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 calls: {
                     /**
@@ -4891,10 +4703,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/eavesdrop
                              */
                             $post(params: { number: string }): Promise<telephony.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         hangup: {
                             /**
@@ -4902,10 +4710,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/hangup
                              */
                             $post(): Promise<telephony.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         hold: {
                             /**
@@ -4913,10 +4717,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/hold
                              */
                             $post(): Promise<telephony.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         intercept: {
                             /**
@@ -4924,10 +4724,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/intercept
                              */
                             $post(params: { number: string }): Promise<telephony.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         transfer: {
                             /**
@@ -4935,10 +4731,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/transfer
                              */
                             $post(params: { number: string }): Promise<telephony.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         whisper: {
                             /**
@@ -4946,10 +4738,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper
                              */
                             $post(params: { number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum }): Promise<telephony.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -4970,10 +4758,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/line/{serviceName}/cancelConvertToNumber
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 changePassword: {
                     /**
@@ -4981,10 +4765,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/line/{serviceName}/changePassword
                      */
                     $post(params?: { password?: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 click2Call: {
                     /**
@@ -4992,10 +4772,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/line/{serviceName}/click2Call
                      */
                     $post(params: { calledNumber: string, callingNumber?: string, intercom?: boolean }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 click2CallUser: {
                     /**
@@ -5033,10 +4809,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/changePassword
                              */
                             $post(params: { password: string }): Promise<void>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         click2Call: {
                             /**
@@ -5044,10 +4816,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/click2Call
                              */
                             $post(params: { calledNumber: string, callingNumber?: string }): Promise<void>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -5057,10 +4825,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/line/{serviceName}/convertToNumber
                      */
                     $post(): Promise<telephony.OfferTask>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 dissociateDevice: {
                     /**
@@ -5068,10 +4832,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/line/{serviceName}/dissociateDevice
                      */
                     $post(params: { ipAddress?: string, macAddress: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 ips: {
                     /**
@@ -5198,10 +4958,6 @@ export interface Telephony {
                          * POST /telephony/{billingAccount}/line/{serviceName}/phone/changePhoneConfiguration
                          */
                         $post(params?: { autoReboot?: boolean, newConfigurations?: complexType.SafeKeyValue<string>[] }): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     functionKey: {
                         /**
@@ -5304,10 +5060,6 @@ export interface Telephony {
                                  * POST /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/import
                                  */
                                 $post(params: { documentId: string }): Promise<telephony.Task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             phonebookContact: {
                                 /**
@@ -5354,10 +5106,6 @@ export interface Telephony {
                          * POST /telephony/{billingAccount}/line/{serviceName}/phone/reboot
                          */
                         $post(): Promise<telephony.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     refreshScreen: {
                         /**
@@ -5365,10 +5113,6 @@ export interface Telephony {
                          * POST /telephony/{billingAccount}/line/{serviceName}/phone/refreshScreen
                          */
                         $post(): Promise<telephony.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     resetConfig: {
                         /**
@@ -5376,10 +5120,6 @@ export interface Telephony {
                          * POST /telephony/{billingAccount}/line/{serviceName}/phone/resetConfig
                          */
                         $post(params: { ip: string }): Promise<telephony.ResetPhoneInfo>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     rma: {
                         /**
@@ -5474,10 +5214,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/line/{serviceName}/removeSimultaneousLines
                      */
                     $post(params: { quantityRemove: number }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 simultaneousChannelsDetails: {
                     /**
@@ -5522,10 +5258,6 @@ export interface Telephony {
                          * POST /telephony/{billingAccount}/line/{serviceName}/tones/toneUpload
                          */
                         $post(params: { documentId?: string, type: telephony.TonesTypeEnum, url?: string }): Promise<telephony.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
                 trafficExtracts: {
@@ -5566,10 +5298,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/line/{serviceName}/unblock
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -5672,10 +5400,6 @@ export interface Telephony {
                          * POST /telephony/{billingAccount}/miniPabx/{serviceName}/tones/toneUpload
                          */
                         $post(params: { documentId?: string, type: telephony.TonesTypeEnum, url?: string }): Promise<telephony.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
             };
@@ -5711,10 +5435,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/number/{serviceName}/cancelConvertToLine
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 changeFeatureType: {
                     /**
@@ -5722,10 +5442,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/number/{serviceName}/changeFeatureType
                      */
                     $post(params: { featureType: telephony.TypeEnum }): Promise<telephony.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 convertToLine: {
                     /**
@@ -5733,10 +5449,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/number/{serviceName}/convertToLine
                      */
                     $post(params: { offer: string }): Promise<telephony.OfferTask>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 convertToLineAvailableOffers: {
                     /**
@@ -6123,10 +5835,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop
                                          */
                                         $post(params: { number: string }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     hangup: {
                                         /**
@@ -6134,10 +5842,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup
                                          */
                                         $post(): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     hold: {
                                         /**
@@ -6145,10 +5849,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold
                                          */
                                         $post(): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     intercept: {
                                         /**
@@ -6156,10 +5856,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept
                                          */
                                         $post(params: { number: string }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     transfer: {
                                         /**
@@ -6167,10 +5863,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer
                                          */
                                         $post(params: { number: string }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     whisper: {
                                         /**
@@ -6178,10 +5870,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper
                                          */
                                         $post(params: { number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                 };
                             }
@@ -6429,10 +6117,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop
                                          */
                                         $post(params: { number: string }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     hangup: {
                                         /**
@@ -6440,10 +6124,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup
                                          */
                                         $post(): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     hold: {
                                         /**
@@ -6451,10 +6131,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold
                                          */
                                         $post(): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     intercept: {
                                         /**
@@ -6462,10 +6138,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept
                                          */
                                         $post(params: { number: string }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     transfer: {
                                         /**
@@ -6473,10 +6145,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer
                                          */
                                         $post(params: { number: string }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                     whisper: {
                                         /**
@@ -6484,10 +6152,6 @@ export interface Telephony {
                                          * POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper
                                          */
                                         $post(params: { number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum }): Promise<telephony.Task>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                 };
                             }
@@ -6639,10 +6303,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/ovhPabx/{serviceName}/soundUpload
                      */
                     $post(params?: { documentId?: string, name?: string, url?: string }): Promise<telephony.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 tts: {
                     /**
@@ -6735,10 +6395,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/phonebook/{bookKey}/import
                      */
                     $post(params: { documentId: string }): Promise<telephony.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 phonebookContact: {
                     /**
@@ -6827,10 +6483,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/portability/{id}/cancel
                      */
                     $post(params?: { reason?: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 changeDate: {
                     /**
@@ -6838,10 +6490,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/portability/{id}/changeDate
                      */
                     $post(params: { date: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 dateCanBeChanged: {
                     /**
@@ -6897,10 +6545,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/portability/{id}/execute
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 relaunch: {
                     /**
@@ -6962,10 +6606,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/redirect/{serviceName}/changeDestination
                      */
                     $post(params: { destination: string }): Promise<telephony.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -7011,10 +6651,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/rsva/{serviceName}/cancelScheduledRateCode
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 currentRateCode: {
                     /**
@@ -7033,10 +6669,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/rsva/{serviceName}/scheduleRateCode
                      */
                     $post(params: { rateCode: string }): Promise<telephony.DetailedRateCodeInformation>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 scheduledRateCode: {
                     /**
@@ -7119,10 +6751,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/scheduler/{serviceName}/importIcsCalendar
                      */
                     $post(params: { url: string }): Promise<telephony.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -7221,10 +6849,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/service/{serviceName}/cancelTermination
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 changeOfBillingAccount: {
                     /**
@@ -7232,10 +6856,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/service/{serviceName}/changeOfBillingAccount
                      */
                     $post(params: { billingAccountDestination: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 diagnosticReports: {
                     /**
@@ -7269,10 +6889,6 @@ export interface Telephony {
                          * POST /telephony/{billingAccount}/service/{serviceName}/directory/fetchEntrepriseInformations
                          */
                         $post(params: { entrepriseNumber: string }): Promise<telephony.EntrepriseNumberInformationsTask>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     getDirectoryServiceCode: {
                         /**
@@ -7619,10 +7235,6 @@ export interface Telephony {
              * POST /telephony/{billingAccount}/transferSecurityDeposit
              */
             $post(params: { amount: number, billingAccountDestination: string }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         trunk: {
             /**
@@ -7691,10 +7303,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}/validate
                              */
                             $post(): Promise<telephony.TrunkExternalDisplayedNumberValidation>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -7767,10 +7375,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/move
                              */
                             $post(params: { dir: telephony.VoicemailMessageFolderDirectoryEnum }): Promise<void>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -7821,10 +7425,6 @@ export interface Telephony {
                              * POST /telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/move
                              */
                             $post(params: { dir: telephony.VoicemailMessageFolderGreetingEnum }): Promise<void>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -7834,10 +7434,6 @@ export interface Telephony {
                      * POST /telephony/{billingAccount}/voicemail/{serviceName}/migrateOnNewVersion
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 settings: {
                     /**
@@ -7860,10 +7456,6 @@ export interface Telephony {
                          * POST /telephony/{billingAccount}/voicemail/{serviceName}/settings/changePassword
                          */
                         $post(params: { password: string }): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     changeRouting: {
                         /**
@@ -7871,10 +7463,6 @@ export interface Telephony {
                          * POST /telephony/{billingAccount}/voicemail/{serviceName}/settings/changeRouting
                          */
                         $post(params: { routing: telephony.VoicefaxRoutingEnum }): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     routing: {
                         /**
@@ -7942,10 +7530,6 @@ export interface Telephony {
                          * POST /telephony/{billingAccount}/vxml/{serviceName}/settings/logs
                          */
                         $post(): Promise<telephony.TemporaryLogsLink>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
             };

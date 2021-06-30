@@ -330,10 +330,6 @@ export interface OvhCloudConnect {
              * POST /ovhCloudConnect/{serviceName}/changeContact
              */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         config: {
             pop: {
@@ -439,10 +435,6 @@ export interface OvhCloudConnect {
              * POST /ovhCloudConnect/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         datacenter: {
             /**
@@ -492,10 +484,6 @@ export interface OvhCloudConnect {
                      * POST /ovhCloudConnect/{serviceName}/interface/{id}/lock
                      */
                     $post(): Promise<ovhcloudconnect.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 statistics: {
                     /**
@@ -514,10 +502,6 @@ export interface OvhCloudConnect {
                      * POST /ovhCloudConnect/{serviceName}/interface/{id}/unlock
                      */
                     $post(): Promise<ovhcloudconnect.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -527,10 +511,6 @@ export interface OvhCloudConnect {
              * POST /ovhCloudConnect/{serviceName}/loa
              */
             $post(): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         serviceInfos: {
             /**
@@ -574,10 +554,6 @@ export interface OvhCloudConnect {
                      * POST /ovhCloudConnect/{serviceName}/serviceKey/{serviceKeyId}/regenerate
                      */
                     $post(): Promise<ovhcloudconnect.Key>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 send: {
                     /**
@@ -585,10 +561,6 @@ export interface OvhCloudConnect {
                      * POST /ovhCloudConnect/{serviceName}/serviceKey/{serviceKeyId}/send
                      */
                     $post(params: { email: string }): Promise<ovhcloudconnect.SendKeyAnswer>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -620,10 +592,6 @@ export interface OvhCloudConnect {
              * POST /ovhCloudConnect/{serviceName}/terminate
              */
             $post(): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     };
 }

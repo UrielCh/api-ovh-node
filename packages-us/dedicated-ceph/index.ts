@@ -404,10 +404,6 @@ export interface Dedicated {
                          * POST /dedicated/ceph/{serviceName}/cephfs/{fsName}/disable
                          */
                         $post(): Promise<string>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     enable: {
                         /**
@@ -415,10 +411,6 @@ export interface Dedicated {
                          * POST /dedicated/ceph/{serviceName}/cephfs/{fsName}/enable
                          */
                         $post(): Promise<string>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -428,10 +420,6 @@ export interface Dedicated {
                  * POST /dedicated/ceph/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             health: {
                 /**
@@ -520,10 +508,6 @@ export interface Dedicated {
                  * POST /dedicated/ceph/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             user: {
                 /**
@@ -581,10 +565,6 @@ export interface Dedicated {
                              * DELETE /dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}
                              */
                             $delete(): Promise<string>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                 };

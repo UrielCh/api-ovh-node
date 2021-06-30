@@ -241,10 +241,6 @@ export interface WebPaaS {
                  * POST /webPaaS/subscription/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             customer: {
                 /**
@@ -300,10 +296,6 @@ export interface WebPaaS {
                  * POST /webPaaS/subscription/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

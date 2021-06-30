@@ -2271,10 +2271,6 @@ export interface Me {
                  * POST /me/accessRestriction/backupCode/disable
                  */
                 $post(params: { code: string }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             enable: {
                 /**
@@ -2282,10 +2278,6 @@ export interface Me {
                  * POST /me/accessRestriction/backupCode/enable
                  */
                 $post(params: { code: string }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             validate: {
                 /**
@@ -2293,10 +2285,6 @@ export interface Me {
                  * POST /me/accessRestriction/backupCode/validate
                  */
                 $post(params: { code: string }): Promise<nichandle.accessRestriction.SOTPValidate>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         developerMode: {
@@ -2409,10 +2397,6 @@ export interface Me {
                      * POST /me/accessRestriction/sms/{id}/disable
                      */
                     $post(params: { code: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 enable: {
                     /**
@@ -2420,10 +2404,6 @@ export interface Me {
                      * POST /me/accessRestriction/sms/{id}/enable
                      */
                     $post(params: { code: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 sendCode: {
                     /**
@@ -2431,10 +2411,6 @@ export interface Me {
                      * POST /me/accessRestriction/sms/{id}/sendCode
                      */
                     $post(): Promise<nichandle.accessRestriction.SmsCode>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 validate: {
                     /**
@@ -2442,10 +2418,6 @@ export interface Me {
                      * POST /me/accessRestriction/sms/{id}/validate
                      */
                     $post(params: { code: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -2490,10 +2462,6 @@ export interface Me {
                      * POST /me/accessRestriction/totp/{id}/disable
                      */
                     $post(params: { code: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 enable: {
                     /**
@@ -2501,10 +2469,6 @@ export interface Me {
                      * POST /me/accessRestriction/totp/{id}/enable
                      */
                     $post(params: { code: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 validate: {
                     /**
@@ -2512,10 +2476,6 @@ export interface Me {
                      * POST /me/accessRestriction/totp/{id}/validate
                      */
                     $post(params: { code: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -2560,10 +2520,6 @@ export interface Me {
                      * POST /me/accessRestriction/u2f/{id}/challenge
                      */
                     $post(): Promise<nichandle.accessRestriction.U2FSignChallenge>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 disable: {
                     /**
@@ -2571,10 +2527,6 @@ export interface Me {
                      * POST /me/accessRestriction/u2f/{id}/disable
                      */
                     $post(params: { clientData: string, signatureData: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 enable: {
                     /**
@@ -2582,10 +2534,6 @@ export interface Me {
                      * POST /me/accessRestriction/u2f/{id}/enable
                      */
                     $post(params: { clientData: string, signatureData: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 validate: {
                     /**
@@ -2593,10 +2541,6 @@ export interface Me {
                      * POST /me/accessRestriction/u2f/{id}/validate
                      */
                     $post(params: { clientData: string, registrationData: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -2627,10 +2571,6 @@ export interface Me {
                  * POST /me/agreements/{id}/accept
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             contract: {
                 /**
@@ -2765,10 +2705,6 @@ export interface Me {
              * POST /me/bill/export
              */
             $post(params: { archiveType: billing.ArchiveTypeEnum, endDate?: string, ids?: string[], startDate?: string }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         $(billId: string): {
             /**
@@ -2829,10 +2765,6 @@ export interface Me {
                      * POST /me/bill/{billId}/debt/pay
                      */
                     $post(): Promise<billing.Order>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             details: {
@@ -2887,10 +2819,6 @@ export interface Me {
          * POST /me/changeEmail
          */
         $post(params: { newEmail: string }): Promise<nichandle.emailChange.Task>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     changePassword: {
         /**
@@ -2898,10 +2826,6 @@ export interface Me {
          * POST /me/changePassword
          */
         $post(): Promise<void>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     consent: {
         /**
@@ -3035,10 +2959,6 @@ export interface Me {
              * POST /me/credit/code
              */
             $post(params: { inputCode: string, serviceId?: number }): Promise<me.credit.balance.Movement>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     }
     debtAccount: {
@@ -3110,10 +3030,6 @@ export interface Me {
                      * POST /me/debtAccount/debt/{debtId}/pay
                      */
                     $post(): Promise<billing.Order>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -3123,10 +3039,6 @@ export interface Me {
              * POST /me/debtAccount/pay
              */
             $post(): Promise<billing.Order>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     }
     deposit: {
@@ -3240,10 +3152,6 @@ export interface Me {
                              * POST /me/deposit/{depositId}/paidBills/{billId}/debt/pay
                              */
                             $post(): Promise<billing.Order>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     }
                     details: {
@@ -3315,10 +3223,6 @@ export interface Me {
              * POST /me/document/cors
              */
             $post(params: { origin: string }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         $(id: string): {
             /**
@@ -3363,10 +3267,6 @@ export interface Me {
              * POST /me/fidelityAccount/creditOrder
              */
             $post(params: { amount: number }): Promise<billing.Order>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         movements: {
             /**
@@ -3397,10 +3297,6 @@ export interface Me {
          * POST /me/geolocation
          */
         $post(): Promise<geolocation.ContinentCountryLocation>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     identity: {
         group: {
@@ -3481,10 +3377,6 @@ export interface Me {
                      * POST /me/identity/user/{user}/disable
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 enable: {
                     /**
@@ -3492,10 +3384,6 @@ export interface Me {
                      * POST /me/identity/user/{user}/enable
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -3561,10 +3449,6 @@ export interface Me {
                  * POST /me/installationTemplate/{templateName}/checkIntegrity
                  */
                 $post(): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             partitionScheme: {
                 /**
@@ -3766,10 +3650,6 @@ export interface Me {
              * POST /me/mailingList/subscribe
              */
             $post(params: { email: string, mailingList: string }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     }
     notification: {
@@ -3945,10 +3825,6 @@ export interface Me {
                      * POST /me/order/{orderId}/debt/pay
                      */
                     $post(): Promise<billing.Order>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             details: {
@@ -4001,10 +3877,6 @@ export interface Me {
                  * POST /me/order/{orderId}/pay
                  */
                 $post(params: { paymentMethod: billing.order.PayWithPaymentMethod }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             payWithRegisteredPaymentMean: {
                 /**
@@ -4012,10 +3884,6 @@ export interface Me {
                  * POST /me/order/{orderId}/payWithRegisteredPaymentMean
                  */
                 $post(params: { paymentMean: billing.ReusablePaymentMeanEnum, paymentMeanId?: number }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             payment: {
                 /**
@@ -4067,10 +3935,6 @@ export interface Me {
                  * POST /me/order/{orderId}/retraction
                  */
                 $post(params: { comment?: string, reason: billing.order.RetractionReasonEnum }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             status: {
                 /**
@@ -4116,10 +3980,6 @@ export interface Me {
                  * POST /me/ovhAccount/{ovhAccountId}/creditOrder
                  */
                 $post(params: { amount: number }): Promise<billing.Order>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             movements: {
                 /**
@@ -4147,10 +4007,6 @@ export interface Me {
                          * POST /me/ovhAccount/{ovhAccountId}/movements/{movementId}/requestRefund
                          */
                         $post(params: { amount: number }): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -4160,10 +4016,6 @@ export interface Me {
                  * POST /me/ovhAccount/{ovhAccountId}/retrieveMoney
                  */
                 $post(params: { amount: number, bankAccountId: number }): Promise<billing.Order>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }
@@ -4173,10 +4025,6 @@ export interface Me {
          * POST /me/passwordRecover
          */
         $post(params: { ovhCompany: nichandle.OvhCompanyEnum, ovhId: string }): Promise<void>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     payment: {
         availableMethods: {
@@ -4231,10 +4079,6 @@ export interface Me {
                      * POST /me/payment/method/{paymentMethodId}/challenge
                      */
                     $post(params: { challenge: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 details: {
                     /**
@@ -4242,10 +4086,6 @@ export interface Me {
                      * POST /me/payment/method/{paymentMethodId}/details
                      */
                     $post(params: { details: string, transactionId: number }): Promise<me.payment.method.Register.ValidationResult>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 finalize: {
                     /**
@@ -4253,10 +4093,6 @@ export interface Me {
                      * POST /me/payment/method/{paymentMethodId}/finalize
                      */
                     $post(params?: { expirationMonth?: number, expirationYear?: number, formSessionId?: string, registrationId?: string }): Promise<me.payment.method.PaymentMethod>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -4325,10 +4161,6 @@ export interface Me {
                      * POST /me/paymentMean/bankAccount/{id}/challenge
                      */
                     $post(params: { challenge: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 chooseAsDefaultPaymentMean: {
                     /**
@@ -4336,10 +4168,6 @@ export interface Me {
                      * POST /me/paymentMean/bankAccount/{id}/chooseAsDefaultPaymentMean
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -4384,10 +4212,6 @@ export interface Me {
                      * POST /me/paymentMean/creditCard/{id}/challenge
                      */
                     $post(params: { challenge: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 chooseAsDefaultPaymentMean: {
                     /**
@@ -4395,10 +4219,6 @@ export interface Me {
                      * POST /me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -4433,10 +4253,6 @@ export interface Me {
                      * POST /me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -4481,10 +4297,6 @@ export interface Me {
                      * POST /me/paymentMean/paypal/{id}/challenge
                      */
                     $post(params: { challenge: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 chooseAsDefaultPaymentMean: {
                     /**
@@ -4492,10 +4304,6 @@ export interface Me {
                      * POST /me/paymentMean/paypal/{id}/chooseAsDefaultPaymentMean
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -4516,10 +4324,6 @@ export interface Me {
              * POST /me/refund/export
              */
             $post(params: { archiveType: billing.ArchiveTypeEnum, endDate?: string, ids?: string[], startDate?: string }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         $(refundId: string): {
             /**
@@ -4592,10 +4396,6 @@ export interface Me {
                  * POST /me/sla/{id}/apply
                  */
                 $post(): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             canBeApplied: {
                 /**
@@ -4705,10 +4505,6 @@ export interface Me {
                  * POST /me/subAccount/{id}/createConsumerKey
                  */
                 $post(): Promise<nichandle.SubAccountConsumerKey>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }
@@ -4766,10 +4562,6 @@ export interface Me {
                      * POST /me/task/contactChange/{id}/accept
                      */
                     $post(params: { token: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 refuse: {
                     /**
@@ -4777,10 +4569,6 @@ export interface Me {
                      * POST /me/task/contactChange/{id}/refuse
                      */
                     $post(params: { token: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 resendEmail: {
                     /**
@@ -4788,10 +4576,6 @@ export interface Me {
                      * POST /me/task/contactChange/{id}/resendEmail
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -4821,10 +4605,6 @@ export interface Me {
                      * POST /me/task/domain/{id}/accelerate
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 argument: {
                     /**
@@ -4859,10 +4639,6 @@ export interface Me {
                      * POST /me/task/domain/{id}/cancel
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 progressbar: {
                     /**
@@ -4881,10 +4657,6 @@ export interface Me {
                      * POST /me/task/domain/{id}/relaunch
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -4914,10 +4686,6 @@ export interface Me {
                      * POST /me/task/emailChange/{id}/accept
                      */
                     $post(params: { token: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 refuse: {
                     /**
@@ -4925,10 +4693,6 @@ export interface Me {
                      * POST /me/task/emailChange/{id}/refuse
                      */
                     $post(params: { token: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -4940,10 +4704,6 @@ export interface Me {
              * POST /me/voucher/checkValidity
              */
             $post(params: { voucher: string }): Promise<nichandle.VoucherStatus>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     }
     withdrawal: {

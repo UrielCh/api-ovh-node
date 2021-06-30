@@ -34,7 +34,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/analytics/all"
+          ]
         }
       ],
       "path": "/analytics/platforms"
@@ -60,7 +64,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "analytics.Cluster"
+          "responseType": "analytics.Cluster",
+          "scopes": [
+            "all",
+            "product/analytics/all"
+          ]
         }
       ],
       "path": "/analytics/platforms/{serviceName}"
@@ -86,7 +94,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "analytics.cluster.Activity[]"
+          "responseType": "analytics.cluster.Activity[]",
+          "scopes": [
+            "all",
+            "product/analytics/all"
+          ]
         }
       ],
       "path": "/analytics/platforms/{serviceName}/activity"
@@ -136,7 +148,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/analytics/all"
+          ]
         }
       ],
       "path": "/analytics/platforms/{serviceName}/changeContact"
@@ -194,7 +210,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/analytics/all"
+          ]
         }
       ],
       "path": "/analytics/platforms/{serviceName}/confirmTermination"
@@ -227,7 +247,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "analytics.cluster.Deploy"
+          "responseType": "analytics.cluster.Deploy",
+          "scopes": [
+            "all",
+            "product/analytics/all"
+          ]
         }
       ],
       "path": "/analytics/platforms/{serviceName}/deploy"
@@ -260,7 +284,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/analytics/all"
+          ]
         }
       ],
       "path": "/analytics/platforms/{serviceName}/destroy"
@@ -286,7 +314,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/analytics/all"
+          ]
         }
       ],
       "path": "/analytics/platforms/{serviceName}/nodes"
@@ -320,7 +352,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "analytics.cluster.Node"
+          "responseType": "analytics.cluster.Node",
+          "scopes": [
+            "all",
+            "product/analytics/all"
+          ]
         }
       ],
       "path": "/analytics/platforms/{serviceName}/nodes/{nodeId}"
@@ -346,7 +382,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/analytics/all"
+          ]
         },
         {
           "apiStatus": {
@@ -373,7 +413,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/analytics/all"
+          ]
         }
       ],
       "path": "/analytics/platforms/{serviceName}/serviceInfos"
@@ -399,7 +443,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "analytics.cluster.deploy.Status[]"
+          "responseType": "analytics.cluster.deploy.Status[]",
+          "scopes": [
+            "all",
+            "product/analytics/all"
+          ]
         }
       ],
       "path": "/analytics/platforms/{serviceName}/status"
@@ -425,7 +473,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/analytics/all"
+          ]
         }
       ],
       "path": "/analytics/platforms/{serviceName}/terminate"

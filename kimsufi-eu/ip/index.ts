@@ -285,10 +285,6 @@ export interface Ip {
                  * POST /ip/service/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -307,10 +303,6 @@ export interface Ip {
                  * POST /ip/service/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }
@@ -355,10 +347,6 @@ export interface Ip {
                      * POST /ip/{ip}/antihack/{ipBlocked}/unblock
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -388,10 +376,6 @@ export interface Ip {
                      * POST /ip/{ip}/arp/{ipBlocked}/unblock
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -526,10 +510,6 @@ export interface Ip {
                      * POST /ip/{ip}/spam/{ipSpamming}/unblock
                      */
                     $post(): Promise<ip.SpamIp>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }

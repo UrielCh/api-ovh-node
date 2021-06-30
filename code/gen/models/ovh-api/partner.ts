@@ -22,7 +22,10 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "partner2.Partner"
+          "responseType": "partner2.Partner",
+          "scopes": [
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -41,7 +44,10 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all"
+          ]
         }
       ],
       "path": "/partner"
@@ -635,6 +641,7 @@ export const schema: Schema = {
         "iaasProvider",
         "managedServiceProvider",
         "softwareEditor",
+        "strategicConsulting",
         "consultingCompany",
         "trainingCompany",
         "webAgency",

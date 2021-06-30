@@ -262,10 +262,6 @@ export interface Dbaas {
                  * POST /dbaas/timeseries/{serviceName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             consumption: {
                 /**
@@ -348,10 +344,6 @@ export interface Dbaas {
                  * POST /dbaas/timeseries/{serviceName}/setup
                  */
                 $post(params: { description?: string, displayName: string, raTokenId?: string, raTokenKey?: string, regionId?: string }): Promise<paas.timeseries.Project>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             token: {
                 opentsdb: {

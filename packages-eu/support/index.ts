@@ -105,10 +105,6 @@ export interface Support {
              * POST /support/tickets/create
              */
             $post(params: { body: string, category?: support.TicketCategoryEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: support.TicketTypeEnum }): Promise<support.NewMessageInfo>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         $(ticketId: number): {
             /**
@@ -137,10 +133,6 @@ export interface Support {
                  * POST /support/tickets/{ticketId}/close
                  */
                 $post(): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             messages: {
                 /**
@@ -159,10 +151,6 @@ export interface Support {
                  * POST /support/tickets/{ticketId}/reopen
                  */
                 $post(params: { body: string }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             reply: {
                 /**
@@ -170,10 +158,6 @@ export interface Support {
                  * POST /support/tickets/{ticketId}/reply
                  */
                 $post(params: { body: string }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             score: {
                 /**
@@ -181,10 +165,6 @@ export interface Support {
                  * POST /support/tickets/{ticketId}/score
                  */
                 $post(params: { score: string, scoreComment?: string }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "registry.service"
+          "responseType": "registry.service",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}"
@@ -93,7 +101,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}/changeContact"
@@ -119,7 +131,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         },
         {
           "apiStatus": {
@@ -146,7 +162,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "registry.namespace"
+          "responseType": "registry.namespace",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}/namespaces"
@@ -180,7 +200,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         },
         {
           "apiStatus": {
@@ -208,7 +232,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "registry.namespace"
+          "responseType": "registry.namespace",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}/namespaces/{namespaceId}"
@@ -242,7 +270,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}/namespaces/{namespaceId}/images"
@@ -284,7 +316,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         },
         {
           "apiStatus": {
@@ -320,7 +356,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "registry.image"
+          "responseType": "registry.image",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         },
         {
           "apiStatus": {
@@ -363,7 +403,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "registry.image"
+          "responseType": "registry.image",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}"
@@ -405,7 +449,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         },
         {
           "apiStatus": {
@@ -448,7 +496,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "registry.permissions"
+          "responseType": "registry.permissions",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions"
@@ -498,7 +550,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         },
         {
           "apiStatus": {
@@ -542,7 +598,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "registry.permissions"
+          "responseType": "registry.permissions",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}"
@@ -584,7 +644,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/tags"
@@ -634,7 +698,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "registry.tag"
+          "responseType": "registry.tag",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/tags/{tagId}"
@@ -668,7 +736,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         },
         {
           "apiStatus": {
@@ -703,7 +775,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "registry.permissions"
+          "responseType": "registry.permissions",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions"
@@ -745,7 +821,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         },
         {
           "apiStatus": {
@@ -781,7 +861,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "registry.permissions"
+          "responseType": "registry.permissions",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}"
@@ -807,7 +891,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         },
         {
           "apiStatus": {
@@ -834,7 +922,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}/serviceInfos"
@@ -860,7 +952,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         },
         {
           "apiStatus": {
@@ -887,7 +983,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "registry.user"
+          "responseType": "registry.user",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}/users"
@@ -921,7 +1021,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         },
         {
           "apiStatus": {
@@ -949,7 +1053,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "registry.user"
+          "responseType": "registry.user",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}/users/{userId}"
@@ -983,7 +1091,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "registry.user"
+          "responseType": "registry.user",
+          "scopes": [
+            "all",
+            "product/caas-registry/all"
+          ]
         }
       ],
       "path": "/caas/registry/{serviceName}/users/{userId}/changePassword"

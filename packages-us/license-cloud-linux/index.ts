@@ -175,10 +175,6 @@ export interface License {
                  * POST /license/cloudLinux/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -224,10 +220,6 @@ export interface License {
                  * POST /license/cloudLinux/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

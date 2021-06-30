@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "deskaas.deskaas"
+          "responseType": "deskaas.deskaas",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}"
@@ -77,7 +85,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "deskaas.Task"
+          "responseType": "deskaas.Task",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/changeAlias"
@@ -127,7 +139,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/changeContact"
@@ -185,7 +201,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/confirmTermination"
@@ -211,7 +231,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "deskaas.Task"
+          "responseType": "deskaas.Task",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/console"
@@ -237,7 +261,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "deskaas.passwordPolicy"
+          "responseType": "deskaas.passwordPolicy",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/passwordPolicy"
@@ -263,7 +291,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "deskaas.Task"
+          "responseType": "deskaas.Task",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/reboot"
@@ -289,7 +321,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "deskaas.Task"
+          "responseType": "deskaas.Task",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/refresh"
@@ -315,7 +351,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         },
         {
           "apiStatus": {
@@ -342,7 +382,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/serviceInfos"
@@ -376,7 +420,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/task"
@@ -410,7 +458,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "deskaas.Task"
+          "responseType": "deskaas.Task",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/task/{taskId}"
@@ -436,7 +488,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/terminate"
@@ -478,7 +534,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "deskaas.Task"
+          "responseType": "deskaas.Task",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/upgrade"
@@ -504,7 +564,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "deskaas.User"
+          "responseType": "deskaas.User",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/user"
@@ -538,7 +602,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "deskaas.Task"
+          "responseType": "deskaas.Task",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/user/changePassword"
@@ -572,7 +640,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "deskaas.Task"
+          "responseType": "deskaas.Task",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/user/changeProperties"
@@ -606,7 +678,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/user/task"
@@ -640,7 +716,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "deskaas.Task"
+          "responseType": "deskaas.Task",
+          "scopes": [
+            "all",
+            "product/deskaas/all"
+          ]
         }
       ],
       "path": "/deskaas/{serviceName}/user/task/{taskId}"

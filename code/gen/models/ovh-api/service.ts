@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "services/all"
+          ]
         }
       ],
       "path": "/service"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "serviceList.Service"
+          "responseType": "serviceList.Service",
+          "scopes": [
+            "all",
+            "services/all"
+          ]
         },
         {
           "apiStatus": {
@@ -70,7 +78,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "services/all"
+          ]
         }
       ],
       "path": "/service/{serviceId}"
@@ -104,7 +116,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "service.renew.RenewDescription[]"
+          "responseType": "service.renew.RenewDescription[]",
+          "scopes": [
+            "all",
+            "services/all"
+          ]
         },
         {
           "apiStatus": {
@@ -148,7 +164,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "service.renew.RenewOrder"
+          "responseType": "service.renew.RenewOrder",
+          "scopes": [
+            "all",
+            "services/all"
+          ]
         }
       ],
       "path": "/service/{serviceId}/renew"
@@ -174,7 +194,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "services/all"
+          ]
         }
       ],
       "path": "/service/{serviceId}/reopen"
@@ -200,7 +224,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "services/all"
+          ]
         }
       ],
       "path": "/service/{serviceId}/suspend"
@@ -226,7 +254,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "services/all"
+          ]
         }
       ],
       "path": "/service/{serviceId}/terminate"

@@ -86,7 +86,7 @@ export namespace partner2 {
      * partner type
      * type fullname: partner2.partnerTypeEnum
      */
-    export type partnerTypeEnum = "valueAddedReseller" | "systemsIntegrator" | "iaasProvider" | "managedServiceProvider" | "softwareEditor" | "consultingCompany" | "trainingCompany" | "webAgency" | "telecomOperators" | "other"
+    export type partnerTypeEnum = "valueAddedReseller" | "systemsIntegrator" | "iaasProvider" | "managedServiceProvider" | "softwareEditor" | "strategicConsulting" | "consultingCompany" | "trainingCompany" | "webAgency" | "telecomOperators" | "other"
 }
 
 /**

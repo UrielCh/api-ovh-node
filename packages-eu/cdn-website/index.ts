@@ -300,10 +300,6 @@ export interface Cdn {
                              * POST /cdn/website/{serviceName}/zone/domains/{domain}/flush
                              */
                             $post(): Promise<cdn.website.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         statistics: {
                             /**

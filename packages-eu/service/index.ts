@@ -285,10 +285,6 @@ export interface Service {
              * POST /service/{serviceId}/reopen
              */
             $post(): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         suspend: {
             /**
@@ -296,10 +292,6 @@ export interface Service {
              * POST /service/{serviceId}/suspend
              */
             $post(): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         terminate: {
             /**
@@ -307,10 +299,6 @@ export interface Service {
              * POST /service/{serviceId}/terminate
              */
             $post(): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     };
 }

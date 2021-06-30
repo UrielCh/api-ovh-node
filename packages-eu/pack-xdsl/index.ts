@@ -771,10 +771,6 @@ export interface Pack {
                      * POST /pack/xdsl/{packName}/addressMove/eligibility
                      */
                     $post(params?: { address?: xdsleligibilityAddress, lineNumber?: string }): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 move: {
                     /**
@@ -782,10 +778,6 @@ export interface Pack {
                      * POST /pack/xdsl/{packName}/addressMove/move
                      */
                     $post(params: { creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum }): Promise<pack.xdsl.AsyncTask<number>>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 moveFtth: {
                     /**
@@ -793,10 +785,6 @@ export interface Pack {
                      * POST /pack/xdsl/{packName}/addressMove/moveFtth
                      */
                     $post(params: { buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string }): Promise<pack.xdsl.AsyncTask<number>>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 moveOffer: {
                     /**
@@ -804,10 +792,6 @@ export interface Pack {
                      * POST /pack/xdsl/{packName}/addressMove/moveOffer
                      */
                     $post(params: { acceptContracts: boolean, building?: string, buildingReference?: string, contactPhone?: string, door?: string, eligibilityReference: string, engageMonths?: number, floor?: string, keepCurrentNumber: boolean, meeting?: xdsleligibilityBookMeetingSlot, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, residence?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[] }): Promise<pack.xdsl.AsyncTask<number>>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 offers: {
                     /**
@@ -815,10 +799,6 @@ export interface Pack {
                      * POST /pack/xdsl/{packName}/addressMove/offers
                      */
                     $post(params: { eligibilityReference: string }): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.MoveOfferResponse>>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 servicesToDelete: {
                     /**
@@ -826,10 +806,6 @@ export interface Pack {
                      * POST /pack/xdsl/{packName}/addressMove/servicesToDelete
                      */
                     $post(params: { eligibilityReference: string, offerName: string, options?: pack.xdsl.migration.OfferOption[] }): Promise<pack.xdsl.migration.SubServiceToDelete[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             canCancelResiliation: {
@@ -849,10 +825,6 @@ export interface Pack {
                  * POST /pack/xdsl/{packName}/cancelResiliation
                  */
                 $post(): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             changeContact: {
                 /**
@@ -860,10 +832,6 @@ export interface Pack {
                  * POST /pack/xdsl/{packName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             contactOwner: {
                 /**
@@ -1131,10 +1099,6 @@ export interface Pack {
                              * POST /pack/xdsl/{packName}/hostedEmail/services/{domain}/changePassword
                              */
                             $post(params: { password: string }): Promise<void>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         configuration: {
                             /**
@@ -1192,10 +1156,6 @@ export interface Pack {
                      * POST /pack/xdsl/{packName}/migration/migrate
                      */
                     $post(params: { acceptContracts: boolean, buildingReference?: string, contactPhone?: string, engageMonths?: number, floor?: string, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[] }): Promise<pack.xdsl.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 offers: {
                     /**
@@ -1203,10 +1163,6 @@ export interface Pack {
                      * POST /pack/xdsl/{packName}/migration/offers
                      */
                     $post(params?: { buildingReference?: string }): Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 servicesToDelete: {
                     /**
@@ -1214,10 +1170,6 @@ export interface Pack {
                      * POST /pack/xdsl/{packName}/migration/servicesToDelete
                      */
                     $post(params: { offerName: string, options?: pack.xdsl.migration.OfferOption[] }): Promise<pack.xdsl.migration.SubServiceToDelete[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             promotionCode: {
@@ -1238,10 +1190,6 @@ export interface Pack {
                      * POST /pack/xdsl/{packName}/promotionCode/generate
                      */
                     $post(): Promise<pack.xdsl.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             resiliate: {
@@ -1250,10 +1198,6 @@ export interface Pack {
                  * POST /pack/xdsl/{packName}/resiliate
                  */
                 $post(params: { resiliationDate?: string, resiliationSurvey: pack.xdsl.ResiliationSurvey, servicesToKeep?: number[] }): Promise<pack.xdsl.ResiliationFollowUpDetail>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             resiliationFollowUp: {
                 /**
@@ -1409,10 +1353,6 @@ export interface Pack {
                          * POST /pack/xdsl/{packName}/voipLine/options/customShippingAddress
                          */
                         $post(params: { address: string, cityName: string, firstName: string, lastName: string, zipCode: string }): Promise<number>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     hardwares: {
                         /**

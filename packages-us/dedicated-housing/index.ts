@@ -312,10 +312,6 @@ export interface Dedicated {
                          * POST /dedicated/housing/{serviceName}/features/backupFTP/password
                          */
                         $post(): Promise<dedicated.server.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
             }
@@ -374,10 +370,6 @@ export interface Dedicated {
                          * POST /dedicated/housing/{serviceName}/task/{taskId}/cancel
                          */
                         $post(): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }

@@ -296,10 +296,6 @@ export interface OverTheBox {
          * POST /overTheBox/devices
          */
         $post(): Promise<overTheBox.DeviceForRegistration[]>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     $(serviceName: string): {
         /**
@@ -327,10 +323,6 @@ export interface OverTheBox {
              * PUT /overTheBox/{serviceName}/autoMTU
              */
             $put(params: { mtuAuto: overTheBox.AvailableStatusEnum }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         availableReleaseChannels: {
             /**
@@ -371,10 +363,6 @@ export interface OverTheBox {
              * POST /overTheBox/{serviceName}/cancelResiliation
              */
             $post(): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         changeContact: {
             /**
@@ -382,10 +370,6 @@ export interface OverTheBox {
              * POST /overTheBox/{serviceName}/changeContact
              */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         device: {
             /**
@@ -446,10 +430,6 @@ export interface OverTheBox {
                  * POST /overTheBox/{serviceName}/device/backup
                  */
                 $post(): Promise<overTheBox.DeviceAction>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             logs: {
                 /**
@@ -457,10 +437,6 @@ export interface OverTheBox {
                  * POST /overTheBox/{serviceName}/device/logs
                  */
                 $post(): Promise<overTheBox.TemporaryLogsLink>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             restoreBackup: {
                 /**
@@ -468,10 +444,6 @@ export interface OverTheBox {
                  * POST /overTheBox/{serviceName}/device/restoreBackup
                  */
                 $post(params: { backupId: string }): Promise<overTheBox.DeviceAction[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         linkDevice: {
@@ -480,10 +452,6 @@ export interface OverTheBox {
              * POST /overTheBox/{serviceName}/linkDevice
              */
             $post(params: { deviceId: string }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         migration: {
             offers: {
@@ -534,10 +502,6 @@ export interface OverTheBox {
                      * POST /overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }

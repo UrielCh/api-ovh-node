@@ -79,7 +79,7 @@ export namespace dedicated {
      * ovh datacenter
      * type fullname: dedicated.DatacenterEnum
      */
-    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1"
+    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "bhs8" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sbg5" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1"
     /**
      * Type of your image
      * type fullname: dedicated.ImageTypesEnum
@@ -1389,10 +1389,6 @@ export interface Dedicated {
                  * POST /dedicated/server/{serviceName}/authenticationSecret
                  */
                 $post(): Promise<dedicated.server.Access[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             backupCloudOfferDetails: {
                 /**
@@ -1431,10 +1427,6 @@ export interface Dedicated {
                          * POST /dedicated/server/{serviceName}/biosSettings/sgx/configure
                          */
                         $post(params?: { prmrr?: dedicated.server.BiosSettingsSgxPrmrrEnum, status?: dedicated.server.BiosSettingsSgxStatusEnum }): Promise<dedicated.server.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
             }
@@ -1509,10 +1501,6 @@ export interface Dedicated {
                  * POST /dedicated/server/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             features: {
                 backupFTP: {
@@ -1589,10 +1577,6 @@ export interface Dedicated {
                          * POST /dedicated/server/{serviceName}/features/backupFTP/password
                          */
                         $post(): Promise<dedicated.server.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
                 firewall: {
@@ -1643,10 +1627,6 @@ export interface Dedicated {
                          * POST /dedicated/server/{serviceName}/features/ipmi/resetInterface
                          */
                         $post(): Promise<dedicated.server.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     resetSessions: {
                         /**
@@ -1654,10 +1634,6 @@ export interface Dedicated {
                          * POST /dedicated/server/{serviceName}/features/ipmi/resetSessions
                          */
                         $post(): Promise<dedicated.server.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     test: {
                         /**
@@ -1765,10 +1741,6 @@ export interface Dedicated {
                      * POST /dedicated/server/{serviceName}/install/start
                      */
                     $post(params: { details?: dedicated.server.InstallCustom, partitionSchemeName?: string, templateName: string, userMetadata?: complexType.SafeKeyValue<string>[] }): Promise<dedicated.server.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 status: {
                     /**
@@ -1821,10 +1793,6 @@ export interface Dedicated {
                  * POST /dedicated/server/{serviceName}/ipBlockMerge
                  */
                 $post(params: { block: string }): Promise<dedicated.server.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             ipCanBeMovedTo: {
                 /**
@@ -1854,10 +1822,6 @@ export interface Dedicated {
                  * POST /dedicated/server/{serviceName}/ipMove
                  */
                 $post(params: { ip: string }): Promise<dedicated.server.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             ips: {
                 /**
@@ -1899,10 +1863,6 @@ export interface Dedicated {
                      * POST /dedicated/server/{serviceName}/license/windows
                      */
                     $post(params: { licenseId: string, version: license.WindowsOsVersionEnum }): Promise<dedicated.server.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             mrtg: {
@@ -2039,10 +1999,6 @@ export interface Dedicated {
                  * POST /dedicated/server/{serviceName}/reboot
                  */
                 $post(): Promise<dedicated.server.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             secondaryDnsDomains: {
                 /**
@@ -2314,10 +2270,6 @@ export interface Dedicated {
                          * POST /dedicated/server/{serviceName}/spla/{id}/revoke
                          */
                         $post(): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -2571,10 +2523,6 @@ export interface Dedicated {
                          * POST /dedicated/server/{serviceName}/support/replace/cooling
                          */
                         $post(params: { comment: string, details: string }): Promise<support.NewMessageInfo>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     hardDiskDrive: {
                         /**
@@ -2582,10 +2530,6 @@ export interface Dedicated {
                          * POST /dedicated/server/{serviceName}/support/replace/hardDiskDrive
                          */
                         $post(params: { comment: string, disks: dedicated.server.SupportReplaceHddInfo[], inverse: boolean }): Promise<support.NewMessageInfo>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     memory: {
                         /**
@@ -2593,10 +2537,6 @@ export interface Dedicated {
                          * POST /dedicated/server/{serviceName}/support/replace/memory
                          */
                         $post(params: { comment: string, details: string, slots?: string[] }): Promise<support.NewMessageInfo>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
             }
@@ -2626,10 +2566,6 @@ export interface Dedicated {
                          * POST /dedicated/server/{serviceName}/task/{taskId}/cancel
                          */
                         $post(): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -2639,10 +2575,6 @@ export interface Dedicated {
                  * POST /dedicated/server/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             virtualMac: {
                 /**
@@ -2734,10 +2666,6 @@ export interface Dedicated {
                          * POST /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/disable
                          */
                         $post(): Promise<dedicated.server.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     enable: {
                         /**
@@ -2745,10 +2673,6 @@ export interface Dedicated {
                          * POST /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/enable
                          */
                         $post(): Promise<dedicated.server.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }

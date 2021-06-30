@@ -501,10 +501,6 @@ export interface Email {
                      * POST /email/domain/delegatedAccount/{email}/changePassword
                      */
                     $post(params: { password: string }): Promise<email.domain.TaskPop>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 filter: {
                     /**
@@ -542,10 +538,6 @@ export interface Email {
                              * POST /email/domain/delegatedAccount/{email}/filter/{name}/changeActivity
                              */
                             $post(params: { activity: boolean }): Promise<email.domain.TaskFilter>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         changePriority: {
                             /**
@@ -553,10 +545,6 @@ export interface Email {
                              * POST /email/domain/delegatedAccount/{email}/filter/{name}/changePriority
                              */
                             $post(params: { priority: number }): Promise<email.domain.TaskFilter>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         rule: {
                             /**
@@ -624,10 +612,6 @@ export interface Email {
                      * POST /email/domain/delegatedAccount/{email}/updateUsage
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 usage: {
                     /**
@@ -635,10 +619,6 @@ export interface Email {
                      * POST /email/domain/delegatedAccount/{email}/usage
                      */
                     $post(): Promise<domain.DomainUsageAccountStruct>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -704,10 +684,6 @@ export interface Email {
                          * POST /email/domain/{domain}/account/{accountName}/changePassword
                          */
                         $post(params: { password: string }): Promise<email.domain.TaskPop>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     delegation: {
                         /**
@@ -777,10 +753,6 @@ export interface Email {
                                  * POST /email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity
                                  */
                                 $post(params: { activity: boolean }): Promise<email.domain.TaskFilter>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             changePriority: {
                                 /**
@@ -788,10 +760,6 @@ export interface Email {
                                  * POST /email/domain/{domain}/account/{accountName}/filter/{name}/changePriority
                                  */
                                 $post(params: { priority: number }): Promise<email.domain.TaskFilter>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             rule: {
                                 /**
@@ -884,10 +852,6 @@ export interface Email {
                                          * POST /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate
                                          */
                                         $post(params: { password: string }): Promise<email.domain.TaskPop>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                 };
                             }
@@ -899,10 +863,6 @@ export interface Email {
                          * POST /email/domain/{domain}/account/{accountName}/updateUsage
                          */
                         $post(): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     usage: {
                         /**
@@ -955,10 +915,6 @@ export interface Email {
                  * POST /email/domain/{domain}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             changeDnsMXFilter: {
                 /**
@@ -966,10 +922,6 @@ export interface Email {
                  * POST /email/domain/{domain}/changeDnsMXFilter
                  */
                 $post(params: { customTarget?: string, mxFilter: domain.DomainMXFilterEnum, subDomain?: string }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             confirmTermination: {
                 /**
@@ -977,10 +929,6 @@ export interface Email {
                  * POST /email/domain/{domain}/confirmTermination
                  */
                 $post(params: { commentary?: string, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             dnsMXFilter: {
                 /**
@@ -1045,10 +993,6 @@ export interface Email {
                          * POST /email/domain/{domain}/mailingList/{name}/changeOptions
                          */
                         $post(params: { options: domainDomainMlOptionsStruct }): Promise<email.domain.TaskMl>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     moderator: {
                         /**
@@ -1088,10 +1032,6 @@ export interface Email {
                          * POST /email/domain/{domain}/mailingList/{name}/sendListByEmail
                          */
                         $post(params: { email: string }): Promise<email.domain.TaskMl>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     subscriber: {
                         /**
@@ -1133,10 +1073,6 @@ export interface Email {
                  * POST /email/domain/{domain}/migrateDelegationV3toV6
                  */
                 $post(): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             quota: {
                 /**
@@ -1196,10 +1132,6 @@ export interface Email {
                          * POST /email/domain/{domain}/redirection/{id}/changeRedirection
                          */
                         $post(params: { to: string }): Promise<email.domain.TaskSpecialAccount>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -1385,10 +1317,6 @@ export interface Email {
                  * POST /email/domain/{domain}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

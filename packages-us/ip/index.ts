@@ -664,10 +664,6 @@ export interface Ip {
                          * POST /ip/loadBalancing/{serviceName}/backend/{backend}/backupState
                          */
                         $post(params: { backupStateSet: boolean, mainBackendIp?: string }): Promise<ip.LoadBalancingTask>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     setWeight: {
                         /**
@@ -675,10 +671,6 @@ export interface Ip {
                          * POST /ip/loadBalancing/{serviceName}/backend/{backend}/setWeight
                          */
                         $post(params: { weight: number }): Promise<ip.LoadBalancingTask>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -688,10 +680,6 @@ export interface Ip {
                  * POST /ip/loadBalancing/{serviceName}/importCustomSsl
                  */
                 $post(params: { certificate: string, chain?: string, key: string }): Promise<ip.LoadBalancingTask>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             internalNatIp: {
                 /**
@@ -753,10 +741,6 @@ export interface Ip {
                  * POST /ip/loadBalancing/{serviceName}/restoreSsl
                  */
                 $post(): Promise<ip.LoadBalancingTask>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -780,10 +764,6 @@ export interface Ip {
                  * POST /ip/loadBalancing/{serviceName}/stickiness
                  */
                 $post(params: { stickiness: ip.LoadBalancingStickinessEnum }): Promise<ip.LoadBalancingTask>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             switchToIplbNextGenerationApi: {
                 /**
@@ -791,10 +771,6 @@ export interface Ip {
                  * POST /ip/loadBalancing/{serviceName}/switchToIplbNextGenerationApi
                  */
                 $post(): Promise<ipLoadbalancing.Task.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             task: {
                 /**
@@ -851,10 +827,6 @@ export interface Ip {
                  * POST /ip/service/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -873,10 +845,6 @@ export interface Ip {
                  * POST /ip/service/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }
@@ -921,10 +889,6 @@ export interface Ip {
                      * POST /ip/{ip}/antihack/{ipBlocked}/unblock
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -954,10 +918,6 @@ export interface Ip {
                      * POST /ip/{ip}/arp/{ipBlocked}/unblock
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -967,10 +927,6 @@ export interface Ip {
              * POST /ip/{ip}/changeOrg
              */
             $post(params: { organisation: string }): Promise<ip.IpTask>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         delegation: {
             /**
@@ -1356,10 +1312,6 @@ export interface Ip {
              * POST /ip/{ip}/park
              */
             $post(): Promise<ip.IpTask>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         phishing: {
             /**
@@ -1468,10 +1420,6 @@ export interface Ip {
                      * POST /ip/{ip}/spam/{ipSpamming}/unblock
                      */
                     $post(): Promise<ip.SpamIp>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -1503,10 +1451,6 @@ export interface Ip {
              * POST /ip/{ip}/terminate
              */
             $post(): Promise<ip.IpTask>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     };
 }

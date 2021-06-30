@@ -494,10 +494,6 @@ export interface MsServices {
                      * POST /msServices/{serviceName}/account/{userPrincipalName}/changePassword
                      */
                     $post(params: { password: string }): Promise<msServices.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 exchange: {
                     /**
@@ -520,10 +516,6 @@ export interface MsServices {
                          * POST /msServices/{serviceName}/account/{userPrincipalName}/exchange/configure
                          */
                         $post(): Promise<msServices.exchangeTask>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
                 mfa: {
@@ -552,10 +544,6 @@ export interface MsServices {
                          * POST /msServices/{serviceName}/account/{userPrincipalName}/mfa/disable
                          */
                         $post(params: { period: number }): Promise<msServices.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     enable: {
                         /**
@@ -563,10 +551,6 @@ export interface MsServices {
                          * POST /msServices/{serviceName}/account/{userPrincipalName}/mfa/enable
                          */
                         $post(): Promise<msServices.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     reset: {
                         /**
@@ -574,10 +558,6 @@ export interface MsServices {
                          * POST /msServices/{serviceName}/account/{userPrincipalName}/mfa/reset
                          */
                         $post(): Promise<msServices.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
                 sharepoint: {
@@ -601,10 +581,6 @@ export interface MsServices {
                          * POST /msServices/{serviceName}/account/{userPrincipalName}/sharepoint/clearSpace
                          */
                         $post(): Promise<msServices.sharepointTask>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     configure: {
                         /**
@@ -612,10 +588,6 @@ export interface MsServices {
                          * POST /msServices/{serviceName}/account/{userPrincipalName}/sharepoint/configure
                          */
                         $post(): Promise<msServices.sharepointTask>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
                 sync: {
@@ -644,13 +616,16 @@ export interface MsServices {
                          * POST /msServices/{serviceName}/account/{userPrincipalName}/sync/configure
                          */
                         $post(): Promise<msServices.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
             };
+        }
+        changeContact: {
+            /**
+             * Launch a contact change procedure
+             * POST /msServices/{serviceName}/changeContact
+             */
+            $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
         }
         createMfaOnAllUsers: {
             /**
@@ -658,10 +633,6 @@ export interface MsServices {
              * POST /msServices/{serviceName}/createMfaOnAllUsers
              */
             $post(): Promise<msServices.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         exchange: {
             /**
@@ -718,10 +689,6 @@ export interface MsServices {
              * POST /msServices/{serviceName}/removeMfaOnAllUsers
              */
             $post(): Promise<msServices.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         sharepoint: {
             /**
@@ -766,10 +733,6 @@ export interface MsServices {
                  * POST /msServices/{serviceName}/sharepoint/restoreAdminRights
                  */
                 $post(): Promise<msServices.sharepointTask>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             task: {
                 /**
@@ -815,10 +778,6 @@ export interface MsServices {
                  * POST /msServices/{serviceName}/sync/changePassword
                  */
                 $post(params: { password: string }): Promise<msServices.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             clientSoftwareURL: {
                 /**

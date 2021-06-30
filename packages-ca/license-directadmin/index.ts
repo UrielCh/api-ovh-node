@@ -228,10 +228,6 @@ export interface License {
                  * POST /license/directadmin/{serviceName}/changeIp
                  */
                 $post(params: { destinationIp: string }): Promise<license.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             changeOs: {
                 /**
@@ -239,10 +235,6 @@ export interface License {
                  * POST /license/directadmin/{serviceName}/changeOs
                  */
                 $post(params: { os: license.DirectAdminOsEnum }): Promise<license.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             confirmTermination: {
                 /**
@@ -250,10 +242,6 @@ export interface License {
                  * POST /license/directadmin/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -299,10 +287,6 @@ export interface License {
                  * POST /license/directadmin/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

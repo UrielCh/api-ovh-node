@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "nichandle.Nichandle"
+          "responseType": "nichandle.Nichandle",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -36,7 +40,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me"
@@ -53,7 +61,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         }
       ],
       "path": "/me/abuse"
@@ -79,7 +91,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.abuse.Abuse"
+          "responseType": "me.abuse.Abuse",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         }
       ],
       "path": "/me/abuse/{id}"
@@ -96,7 +112,11 @@ export const schema: Schema = {
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -107,7 +127,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "nichandle.accessRestriction.SOTPAccount"
+          "responseType": "nichandle.accessRestriction.SOTPAccount",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -118,7 +142,11 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "nichandle.accessRestriction.SOTPSecret"
+          "responseType": "nichandle.accessRestriction.SOTPSecret",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/backupCode"
@@ -144,7 +172,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/backupCode/disable"
@@ -170,7 +202,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/backupCode/enable"
@@ -196,7 +232,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.accessRestriction.SOTPValidate"
+          "responseType": "nichandle.accessRestriction.SOTPValidate",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/backupCode/validate"
@@ -213,7 +253,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "nichandle.DeveloperModeRestriction"
+          "responseType": "nichandle.DeveloperModeRestriction",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -232,7 +276,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/developerMode"
@@ -249,7 +297,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -285,7 +337,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/ip"
@@ -311,7 +367,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -331,7 +391,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.IpRestriction"
+          "responseType": "nichandle.IpRestriction",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -358,7 +422,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/ip/{id}"
@@ -375,7 +443,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "nichandle.IpRestrictionDefaultRule"
+          "responseType": "nichandle.IpRestrictionDefaultRule",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -394,7 +466,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/ipDefaultRule"
@@ -411,7 +487,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -431,7 +511,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.accessRestriction.SmsSecret"
+          "responseType": "nichandle.accessRestriction.SmsSecret",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/sms"
@@ -457,7 +541,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -477,7 +565,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.accessRestriction.SmsAccount"
+          "responseType": "nichandle.accessRestriction.SmsAccount",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -504,7 +596,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/sms/{id}"
@@ -538,7 +634,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/sms/{id}/disable"
@@ -572,7 +672,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/sms/{id}/enable"
@@ -598,7 +702,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.accessRestriction.SmsCode"
+          "responseType": "nichandle.accessRestriction.SmsCode",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/sms/{id}/sendCode"
@@ -632,7 +740,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/sms/{id}/validate"
@@ -649,7 +761,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -660,7 +776,11 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "nichandle.accessRestriction.TOTPSecret"
+          "responseType": "nichandle.accessRestriction.TOTPSecret",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/totp"
@@ -686,7 +806,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -706,7 +830,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.accessRestriction.TOTPAccount"
+          "responseType": "nichandle.accessRestriction.TOTPAccount",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -733,7 +861,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/totp/{id}"
@@ -767,7 +899,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/totp/{id}/disable"
@@ -801,7 +937,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/totp/{id}/enable"
@@ -835,7 +975,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/totp/{id}/validate"
@@ -852,7 +996,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -863,7 +1011,11 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "nichandle.accessRestriction.U2FRegisterChallenge"
+          "responseType": "nichandle.accessRestriction.U2FRegisterChallenge",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/u2f"
@@ -889,7 +1041,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -909,7 +1065,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.accessRestriction.U2FAccount"
+          "responseType": "nichandle.accessRestriction.U2FAccount",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -936,7 +1096,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/u2f/{id}"
@@ -962,7 +1126,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.accessRestriction.U2FSignChallenge"
+          "responseType": "nichandle.accessRestriction.U2FSignChallenge",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/u2f/{id}/challenge"
@@ -1004,7 +1172,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/u2f/{id}/disable"
@@ -1046,7 +1218,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/u2f/{id}/enable"
@@ -1088,7 +1264,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/accessRestriction/u2f/{id}/validate"
@@ -1122,7 +1302,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/agreements"
@@ -1148,7 +1332,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "agreements.ContractAgreement"
+          "responseType": "agreements.ContractAgreement",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/agreements/{id}"
@@ -1174,7 +1362,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/agreements/{id}/accept"
@@ -1200,7 +1392,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "agreements.Contract"
+          "responseType": "agreements.Contract",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/agreements/{id}/contract"
@@ -1217,7 +1413,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/api/application"
@@ -1243,7 +1443,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1263,7 +1467,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "api.Application"
+          "responseType": "api.Application",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/api/application/{applicationId}"
@@ -1297,7 +1505,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/api/credential"
@@ -1323,7 +1535,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1343,7 +1559,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "api.Credential"
+          "responseType": "api.Credential",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1370,7 +1590,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/api/credential/{credentialId}"
@@ -1396,7 +1620,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "api.Application"
+          "responseType": "api.Application",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/api/credential/{credentialId}/application"
@@ -1413,7 +1641,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "billing.AutomaticPaymentMean"
+          "responseType": "billing.AutomaticPaymentMean",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/availableAutomaticPaymentMeans"
@@ -1455,7 +1687,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "/all"
+          ]
         }
       ],
       "path": "/me/bill"
@@ -1481,7 +1717,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.Invoice"
+          "responseType": "billing.Invoice",
+          "scopes": [
+            "all",
+            "/all"
+          ]
         }
       ],
       "path": "/me/bill/{billId}"
@@ -1507,7 +1747,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "balance.InvoicingBalance"
+          "responseType": "balance.InvoicingBalance",
+          "scopes": [
+            "all",
+            "/all"
+          ]
         }
       ],
       "path": "/me/bill/{billId}/debt"
@@ -1541,7 +1785,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "/all"
+          ]
         }
       ],
       "path": "/me/bill/{billId}/debt/operation"
@@ -1575,7 +1823,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "balance.OperationBalance"
+          "responseType": "balance.OperationBalance",
+          "scopes": [
+            "all",
+            "/all"
+          ]
         }
       ],
       "path": "/me/bill/{billId}/debt/operation/{operationId}"
@@ -1609,7 +1861,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "debt.entry.AssociatedObject"
+          "responseType": "debt.entry.AssociatedObject",
+          "scopes": [
+            "all",
+            "/all"
+          ]
         }
       ],
       "path": "/me/bill/{billId}/debt/operation/{operationId}/associatedObject"
@@ -1635,7 +1891,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "/all"
+          ]
         }
       ],
       "path": "/me/bill/{billId}/details"
@@ -1669,7 +1929,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.InvoiceDetail"
+          "responseType": "billing.InvoiceDetail",
+          "scopes": [
+            "all",
+            "/all"
+          ]
         }
       ],
       "path": "/me/bill/{billId}/details/{billDetailId}"
@@ -1703,7 +1967,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "/all"
+          ]
         }
       ],
       "path": "/me/bill/{billId}/download"
@@ -1737,7 +2005,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -1756,7 +2028,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.billing.group.BillingGroup"
+          "responseType": "me.billing.group.BillingGroup",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         }
       ],
       "path": "/me/billing/group"
@@ -1782,7 +2058,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -1802,7 +2082,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.billing.group.BillingGroup"
+          "responseType": "me.billing.group.BillingGroup",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -1829,7 +2113,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         }
       ],
       "path": "/me/billing/group/{groupId}"
@@ -1855,7 +2143,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -1882,7 +2174,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.billing.group.Service"
+          "responseType": "me.billing.group.Service",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         }
       ],
       "path": "/me/billing/group/{groupId}/service"
@@ -1916,7 +2212,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -1944,7 +2244,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.billing.group.Service"
+          "responseType": "me.billing.group.Service",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         }
       ],
       "path": "/me/billing/group/{groupId}/service/{serviceId}"
@@ -1970,7 +2274,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/certificates"
@@ -1996,7 +2304,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.emailChange.Task"
+          "responseType": "nichandle.emailChange.Task",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/changeEmail"
@@ -2013,7 +2325,11 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/changePassword"
@@ -2030,7 +2346,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "me.consent.Campaign[]"
+          "responseType": "me.consent.Campaign[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/consent"
@@ -2056,7 +2376,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.consent.Campaign"
+          "responseType": "me.consent.Campaign",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/consent/{campaignName}"
@@ -2082,7 +2406,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.consent.Consent"
+          "responseType": "me.consent.Consent",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2110,7 +2438,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/consent/{campaignName}/decision"
@@ -2127,7 +2459,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "me.consumption.Transaction[]"
+          "responseType": "me.consumption.Transaction[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/consumption/usage/current"
@@ -2144,7 +2480,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "me.consumption.Transaction[]"
+          "responseType": "me.consumption.Transaction[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/consumption/usage/forecast"
@@ -2178,7 +2518,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.consumption.Transaction[]"
+          "responseType": "me.consumption.Transaction[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/consumption/usage/history"
@@ -2195,7 +2539,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2367,7 +2715,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "contact.Contact"
+          "responseType": "contact.Contact",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/contact"
@@ -2393,7 +2745,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "contact.Contact"
+          "responseType": "contact.Contact",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2573,7 +2929,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "contact.Contact"
+          "responseType": "contact.Contact",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/contact/{contactId}"
@@ -2599,7 +2959,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "contact.FieldInformation[]"
+          "responseType": "contact.FieldInformation[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/contact/{contactId}/fields"
@@ -2625,7 +2989,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         }
       ],
       "path": "/me/credit/balance"
@@ -2651,7 +3019,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.credit.Balance"
+          "responseType": "me.credit.Balance",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         }
       ],
       "path": "/me/credit/balance/{balanceName}"
@@ -2677,7 +3049,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         }
       ],
       "path": "/me/credit/balance/{balanceName}/movement"
@@ -2711,7 +3087,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.credit.balance.Movement"
+          "responseType": "me.credit.balance.Movement",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         }
       ],
       "path": "/me/credit/balance/{balanceName}/movement/{movementId}"
@@ -2736,7 +3116,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.credit.balance.Movement"
+          "responseType": "me.credit.balance.Movement",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         }
       ],
       "path": "/me/credit/code"
@@ -2753,7 +3137,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "balance.CustomerBalance"
+          "responseType": "balance.CustomerBalance",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/debtAccount"
@@ -2770,7 +3158,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/debtAccount/debt"
@@ -2796,7 +3188,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "balance.InvoicingBalance"
+          "responseType": "balance.InvoicingBalance",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/debtAccount/debt/{debtId}"
@@ -2830,7 +3226,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/debtAccount/debt/{debtId}/operation"
@@ -2864,7 +3264,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "balance.OperationBalance"
+          "responseType": "balance.OperationBalance",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/debtAccount/debt/{debtId}/operation/{operationId}"
@@ -2898,7 +3302,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "debt.entry.AssociatedObject"
+          "responseType": "debt.entry.AssociatedObject",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/debtAccount/debt/{debtId}/operation/{operationId}/associatedObject"
@@ -2932,7 +3340,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "billing.InvoiceDepositRequest"
+          "responseType": "billing.InvoiceDepositRequest",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/debtAccount/pay"
@@ -2974,7 +3386,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/deposit"
@@ -3000,7 +3416,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.InvoiceDeposit"
+          "responseType": "billing.InvoiceDeposit",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/deposit/{depositId}"
@@ -3026,7 +3446,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/deposit/{depositId}/download"
@@ -3052,7 +3476,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/deposit/{depositId}/paidBills"
@@ -3086,7 +3514,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.Invoice"
+          "responseType": "billing.Invoice",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/deposit/{depositId}/paidBills/{billId}"
@@ -3120,7 +3552,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "balance.InvoicingBalance"
+          "responseType": "balance.InvoicingBalance",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/deposit/{depositId}/paidBills/{billId}/debt"
@@ -3162,7 +3598,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/operation"
@@ -3204,7 +3644,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "balance.OperationBalance"
+          "responseType": "balance.OperationBalance",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}"
@@ -3246,7 +3690,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "debt.entry.AssociatedObject"
+          "responseType": "debt.entry.AssociatedObject",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject"
@@ -3280,7 +3728,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/deposit/{depositId}/paidBills/{billId}/details"
@@ -3322,7 +3774,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.InvoiceDetail"
+          "responseType": "billing.InvoiceDetail",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/deposit/{depositId}/paidBills/{billId}/details/{billDetailId}"
@@ -3364,7 +3820,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/deposit/{depositId}/paidBills/{billId}/download"
@@ -3398,7 +3858,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/depositRequest"
@@ -3424,7 +3888,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.InvoiceDepositRequest"
+          "responseType": "billing.InvoiceDepositRequest",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/depositRequest/{id}"
@@ -3441,7 +3909,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "billing.FidelityAccount"
+          "responseType": "billing.FidelityAccount",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3460,7 +3932,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/fidelityAccount"
@@ -3486,7 +3962,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.Order"
+          "responseType": "billing.Order",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/fidelityAccount/creditOrder"
@@ -3520,7 +4000,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/fidelityAccount/movements"
@@ -3546,7 +4030,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.FidelityMovement"
+          "responseType": "billing.FidelityMovement",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/fidelityAccount/movements/{movementId}"
@@ -3580,7 +4068,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3616,7 +4108,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "nichandle.Authentication.Group"
+          "responseType": "nichandle.Authentication.Group",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/identity/group"
@@ -3642,7 +4138,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3662,7 +4162,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.Authentication.Group"
+          "responseType": "nichandle.Authentication.Group",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3698,7 +4202,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/identity/group/{group}"
@@ -3715,7 +4223,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3767,7 +4279,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/identity/user"
@@ -3793,7 +4309,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3813,7 +4333,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.User"
+          "responseType": "nichandle.User",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3857,7 +4381,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/identity/user/{user}"
@@ -3883,7 +4411,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/identity/user/{user}/disable"
@@ -3909,7 +4441,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/identity/user/{user}/enable"
@@ -3926,7 +4462,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3962,7 +4502,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/installationTemplate"
@@ -3988,7 +4532,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4008,7 +4556,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.installationTemplate.Templates"
+          "responseType": "dedicated.installationTemplate.Templates",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4035,7 +4587,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/installationTemplate/{templateName}"
@@ -4061,7 +4617,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/installationTemplate/{templateName}/checkIntegrity"
@@ -4087,7 +4647,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4123,7 +4687,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/installationTemplate/{templateName}/partitionScheme"
@@ -4157,7 +4725,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4185,7 +4757,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.installationTemplate.templatePartitioningSchemes"
+          "responseType": "dedicated.installationTemplate.templatePartitioningSchemes",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4220,7 +4796,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}"
@@ -4254,7 +4834,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4314,7 +4898,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid"
@@ -4356,7 +4944,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4392,7 +4984,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.installationTemplate.hardwareRaid"
+          "responseType": "dedicated.installationTemplate.hardwareRaid",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4435,7 +5031,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}"
@@ -4469,7 +5069,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4553,7 +5157,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition"
@@ -4595,7 +5203,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4631,7 +5243,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.installationTemplate.templatePartitions"
+          "responseType": "dedicated.installationTemplate.templatePartitions",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4674,7 +5290,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}"
@@ -4691,7 +5311,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4783,7 +5407,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/ipOrganisation"
@@ -4809,7 +5437,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4829,7 +5461,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.Ipv4Org"
+          "responseType": "nichandle.Ipv4Org",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4856,7 +5492,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/ipOrganisation/{organisationId}"
@@ -4873,7 +5513,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4909,7 +5553,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.ipxe"
+          "responseType": "nichandle.ipxe",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/ipxeScript"
@@ -4935,7 +5583,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4955,7 +5607,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.ipxe"
+          "responseType": "nichandle.ipxe",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/ipxeScript/{name}"
@@ -4972,7 +5628,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order"
@@ -4998,7 +5658,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.Order"
+          "responseType": "billing.Order",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}"
@@ -5024,7 +5688,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.order.AssociatedObject"
+          "responseType": "billing.order.AssociatedObject",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/associatedObject"
@@ -5050,7 +5718,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.order.AvailablePaymentMethod[]"
+          "responseType": "billing.order.AvailablePaymentMethod[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/availablePaymentMethod"
@@ -5079,7 +5751,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.order.RegisteredPaymentMean[]"
+          "responseType": "billing.order.RegisteredPaymentMean[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/availableRegisteredPaymentMean"
@@ -5105,7 +5781,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5133,7 +5813,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.order.credit.Balance"
+          "responseType": "billing.order.credit.Balance",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/balance"
@@ -5167,7 +5851,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5195,7 +5883,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.order.credit.Balance"
+          "responseType": "billing.order.credit.Balance",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/balance/{balanceName}"
@@ -5221,7 +5913,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/details"
@@ -5255,7 +5951,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.OrderDetail"
+          "responseType": "billing.OrderDetail",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/details/{detailId}"
@@ -5289,7 +5989,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.ItemDetail"
+          "responseType": "billing.ItemDetail",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/details/{detailId}/extension"
@@ -5323,7 +6027,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/details/{detailId}/operations"
@@ -5365,7 +6073,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "service.Operation"
+          "responseType": "service.Operation",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/details/{detailId}/operations/{operationId}"
@@ -5391,7 +6103,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.order.FollowUp[]"
+          "responseType": "billing.order.FollowUp[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/followUp"
@@ -5425,7 +6141,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/pay"
@@ -5451,7 +6171,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.order.PaymentMethods"
+          "responseType": "billing.order.PaymentMethods",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/paymentMethods"
@@ -5496,7 +6220,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/payWithRegisteredPaymentMean"
@@ -5538,7 +6266,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/retraction"
@@ -5564,7 +6296,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.order.OrderStatusEnum"
+          "responseType": "billing.order.OrderStatusEnum",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/status"
@@ -5590,7 +6326,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5618,7 +6358,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.order.OrderVoucher"
+          "responseType": "billing.order.OrderVoucher",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/voucher"
@@ -5652,7 +6396,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5680,7 +6428,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.order.OrderVoucher"
+          "responseType": "billing.order.OrderVoucher",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/order/{orderId}/voucher/{balanceName}"
@@ -5731,7 +6483,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "me.payment.method.AvailablePaymentMethod[]"
+          "responseType": "me.payment.method.AvailablePaymentMethod[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/payment/availableMethods"
@@ -5765,7 +6521,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5841,7 +6601,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "me.payment.method.Register.ValidationResult"
+          "responseType": "me.payment.method.Register.ValidationResult",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/payment/method"
@@ -5867,7 +6631,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.payment.method.PaymentMethod"
+          "responseType": "me.payment.method.PaymentMethod",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5887,7 +6655,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.payment.method.PaymentMethod"
+          "responseType": "me.payment.method.PaymentMethod",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5923,7 +6695,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.PaymentMethod"
+          "responseType": "billing.PaymentMethod",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/payment/method/{paymentMethodId}"
@@ -5957,7 +6733,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/payment/method/{paymentMethodId}/challenge"
@@ -5999,7 +6779,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.payment.method.Register.ValidationResult"
+          "responseType": "me.payment.method.Register.ValidationResult",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/payment/method/{paymentMethodId}/details"
@@ -6057,7 +6841,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.payment.method.PaymentMethod"
+          "responseType": "me.payment.method.PaymentMethod",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/payment/method/{paymentMethodId}/finalize"
@@ -6091,7 +6879,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/payment/transaction"
@@ -6117,7 +6909,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.payment.method.Transaction"
+          "responseType": "me.payment.method.Transaction",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/payment/transaction/{transactionId}"
@@ -6154,7 +6950,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6209,7 +7009,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "billing.PaymentMeanValidation"
+          "responseType": "billing.PaymentMeanValidation",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/paymentMethod"
@@ -6238,7 +7042,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6261,7 +7069,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.PaymentMethod"
+          "responseType": "billing.PaymentMethod",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6300,7 +7112,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.PaymentMethod"
+          "responseType": "billing.PaymentMethod",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/paymentMethod/{id}"
@@ -6342,7 +7158,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/refund"
@@ -6368,7 +7188,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.InvoiceRefund"
+          "responseType": "billing.InvoiceRefund",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/refund/{refundId}"
@@ -6394,7 +7218,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/refund/{refundId}/details"
@@ -6428,7 +7256,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.InvoiceRefundDetail"
+          "responseType": "billing.InvoiceRefundDetail",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/refund/{refundId}/details/{refundDetailId}"
@@ -6462,7 +7294,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/refund/{refundId}/download"
@@ -6479,7 +7315,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/sla"
@@ -6505,7 +7345,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.SlaOperation"
+          "responseType": "billing.SlaOperation",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/sla/{id}"
@@ -6531,7 +7375,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/sla/{id}/apply"
@@ -6557,7 +7405,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean"
+          "responseType": "boolean",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/sla/{id}/canBeApplied"
@@ -6583,7 +7435,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.SlaOperationService[]"
+          "responseType": "billing.SlaOperationService[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/sla/{id}/services"
@@ -6609,7 +7465,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/sla/{id}/status"
@@ -6626,7 +7486,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6654,7 +7518,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/sshKey"
@@ -6680,7 +7548,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6700,7 +7572,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.sshKey"
+          "responseType": "nichandle.sshKey",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6727,7 +7603,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/sshKey/{keyName}"
@@ -6744,7 +7624,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6764,7 +7648,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long"
+          "responseType": "long",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/subAccount"
@@ -6790,7 +7678,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.SubAccount"
+          "responseType": "nichandle.SubAccount",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6817,7 +7709,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/subAccount/{id}"
@@ -6843,7 +7739,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.SubAccountConsumerKey"
+          "responseType": "nichandle.SubAccountConsumerKey",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/subAccount/{id}/createConsumerKey"
@@ -6860,7 +7760,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -6879,7 +7783,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.tag.Tag"
+          "responseType": "me.tag.Tag",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         }
       ],
       "path": "/me/tag"
@@ -6905,7 +7813,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.tag.Tag"
+          "responseType": "me.tag.Tag",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -6925,7 +7837,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.tag.Tag"
+          "responseType": "me.tag.Tag",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         }
       ],
       "path": "/me/tag/{tag}"
@@ -6942,7 +7858,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "me.tag.AvailableTag[]"
+          "responseType": "me.tag.AvailableTag[]",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
         }
       ],
       "path": "/me/tag/available"
@@ -6968,7 +7888,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/task/emailChange"
@@ -6994,7 +7918,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.emailChange.Task"
+          "responseType": "nichandle.emailChange.Task",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/task/emailChange/{id}"
@@ -7028,7 +7956,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/task/emailChange/{id}/accept"
@@ -7062,7 +7994,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/task/emailChange/{id}/refuse"
@@ -7079,7 +8015,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "nichandle.VipStatus"
+          "responseType": "nichandle.VipStatus",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/vipStatus"
@@ -7105,7 +8045,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "nichandle.VoucherStatus"
+          "responseType": "nichandle.VoucherStatus",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/voucher/checkValidity"
@@ -7147,7 +8091,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/withdrawal"
@@ -7173,7 +8121,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.InvoiceWithdrawal"
+          "responseType": "billing.InvoiceWithdrawal",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/withdrawal/{withdrawalId}"
@@ -7199,7 +8151,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/withdrawal/{withdrawalId}/download"

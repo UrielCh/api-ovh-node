@@ -50,7 +50,10 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "supply.MondialRelayReturn"
+          "responseType": "supply.MondialRelayReturn",
+          "scopes": [
+            "all"
+          ]
         }
       ],
       "path": "/supply/mondialRelay"

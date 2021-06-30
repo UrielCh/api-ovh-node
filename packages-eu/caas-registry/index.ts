@@ -219,10 +219,6 @@ export interface Caas {
                  * POST /caas/registry/{serviceName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             namespaces: {
                 /**
@@ -426,10 +422,6 @@ export interface Caas {
                          * POST /caas/registry/{serviceName}/users/{userId}/changePassword
                          */
                         $post(): Promise<registry.user>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }

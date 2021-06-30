@@ -434,10 +434,6 @@ export interface Hosting {
                  * POST /hosting/privateDatabase/{serviceName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             changeFtpPassword: {
                 /**
@@ -445,10 +441,6 @@ export interface Hosting {
                  * POST /hosting/privateDatabase/{serviceName}/changeFtpPassword
                  */
                 $post(params: { password: string }): Promise<hosting.privateDatabase.task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             changeVersion: {
                 /**
@@ -456,10 +448,6 @@ export interface Hosting {
                  * POST /hosting/privateDatabase/{serviceName}/changeVersion
                  */
                 $post(params: { version: hosting.PrivateDatabase.AvailableVersionEnum }): Promise<hosting.privateDatabase.task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             config: {
                 /**
@@ -477,10 +465,6 @@ export interface Hosting {
                      * POST /hosting/privateDatabase/{serviceName}/config/update
                      */
                     $post(params: { parameters: complexType.SafeKeyValue<string>[] }): Promise<hosting.privateDatabase.Configuration>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             confirmTermination: {
@@ -489,10 +473,6 @@ export interface Hosting {
                  * POST /hosting/privateDatabase/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             database: {
                 /**
@@ -560,10 +540,6 @@ export interface Hosting {
                                  * POST /hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}/restore
                                  */
                                 $post(): Promise<hosting.privateDatabase.task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                         };
                     }
@@ -593,10 +569,6 @@ export interface Hosting {
                                  * POST /hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/disable
                                  */
                                 $post(): Promise<hosting.privateDatabase.task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             enable: {
                                 /**
@@ -604,10 +576,6 @@ export interface Hosting {
                                  * POST /hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/enable
                                  */
                                 $post(): Promise<hosting.privateDatabase.task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                         };
                     }
@@ -617,10 +585,6 @@ export interface Hosting {
                          * POST /hosting/privateDatabase/{serviceName}/database/{databaseName}/import
                          */
                         $post(params: { documentId: string, flushDatabase?: boolean, sendEmail?: boolean }): Promise<hosting.privateDatabase.task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -630,10 +594,6 @@ export interface Hosting {
                  * POST /hosting/privateDatabase/{serviceName}/databaseWizard
                  */
                 $post(params: { databaseName: string, grant: hosting.PrivateDatabase.grant.GrantEnum, password: string, userName: string }): Promise<hosting.privateDatabase.task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             dump: {
                 /**
@@ -666,10 +626,6 @@ export interface Hosting {
                          * POST /hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore
                          */
                         $post(params: { databaseName: string }): Promise<hosting.privateDatabase.task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -679,10 +635,6 @@ export interface Hosting {
                  * POST /hosting/privateDatabase/{serviceName}/generateTemporaryLogsLink
                  */
                 $post(): Promise<hosting.PrivateDatabase.TemporaryLogsLink>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             oom: {
                 /**
@@ -701,10 +653,6 @@ export interface Hosting {
                  * POST /hosting/privateDatabase/{serviceName}/quotaRefresh
                  */
                 $post(): Promise<hosting.privateDatabase.task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             restart: {
                 /**
@@ -712,10 +660,6 @@ export interface Hosting {
                  * POST /hosting/privateDatabase/{serviceName}/restart
                  */
                 $post(): Promise<hosting.privateDatabase.task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -739,10 +683,6 @@ export interface Hosting {
                  * POST /hosting/privateDatabase/{serviceName}/start
                  */
                 $post(): Promise<hosting.privateDatabase.task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             stop: {
                 /**
@@ -750,10 +690,6 @@ export interface Hosting {
                  * POST /hosting/privateDatabase/{serviceName}/stop
                  */
                 $post(): Promise<hosting.privateDatabase.task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             tasks: {
                 /**
@@ -783,10 +719,6 @@ export interface Hosting {
                  * POST /hosting/privateDatabase/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             user: {
                 /**
@@ -824,10 +756,6 @@ export interface Hosting {
                          * POST /hosting/privateDatabase/{serviceName}/user/{userName}/changePassword
                          */
                         $post(params: { password: string }): Promise<hosting.privateDatabase.task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     grant: {
                         /**
@@ -865,10 +793,6 @@ export interface Hosting {
                                  * POST /hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update
                                  */
                                 $post(params: { grant: hosting.PrivateDatabase.grant.GrantEnum }): Promise<hosting.privateDatabase.task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                         };
                     }

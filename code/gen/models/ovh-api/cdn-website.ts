@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.website.Website"
+          "responseType": "cdn.website.Website",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website/{serviceName}"
@@ -69,7 +77,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         },
         {
           "apiStatus": {
@@ -96,7 +108,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website/{serviceName}/serviceInfos"
@@ -122,7 +138,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.website.Task"
+          "responseType": "cdn.website.Task",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         },
         {
           "apiStatus": {
@@ -142,7 +162,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.website.Zone"
+          "responseType": "cdn.website.Zone",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         },
         {
           "apiStatus": {
@@ -170,7 +194,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.website.Zone"
+          "responseType": "cdn.website.Zone",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website/{serviceName}/zone"
@@ -196,7 +224,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipv4[]"
+          "responseType": "ipv4[]",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         },
         {
           "apiStatus": {
@@ -224,7 +256,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.website.Task"
+          "responseType": "cdn.website.Task",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website/{serviceName}/zone/backends"
@@ -258,7 +294,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.website.Task"
+          "responseType": "cdn.website.Task",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         },
         {
           "apiStatus": {
@@ -286,7 +326,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.website.Backend"
+          "responseType": "cdn.website.Backend",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website/{serviceName}/zone/backends/{ipv4}"
@@ -320,7 +364,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks"
@@ -362,7 +410,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.website.Task"
+          "responseType": "cdn.website.Task",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}"
@@ -388,7 +440,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         },
         {
           "apiStatus": {
@@ -416,7 +472,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.website.Domain"
+          "responseType": "cdn.website.Domain",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website/{serviceName}/zone/domains"
@@ -450,7 +510,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.website.Task"
+          "responseType": "cdn.website.Task",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         },
         {
           "apiStatus": {
@@ -478,7 +542,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.website.Domain"
+          "responseType": "cdn.website.Domain",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website/{serviceName}/zone/domains/{domain}"
@@ -512,7 +580,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.website.Task"
+          "responseType": "cdn.website.Task",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website/{serviceName}/zone/domains/{domain}/flush"
@@ -570,7 +642,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.website.StatsDataType[]"
+          "responseType": "cdn.website.StatsDataType[]",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website/{serviceName}/zone/domains/{domain}/statistics"
@@ -604,7 +680,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website/{serviceName}/zone/domains/{domain}/tasks"
@@ -646,7 +726,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.website.Task"
+          "responseType": "cdn.website.Task",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}"
@@ -672,7 +756,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website/{serviceName}/zone/tasks"
@@ -706,7 +794,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.website.Task"
+          "responseType": "cdn.website.Task",
+          "scopes": [
+            "all",
+            "product/cdn-website/all"
+          ]
         }
       ],
       "path": "/cdn/website/{serviceName}/zone/tasks/{taskId}"

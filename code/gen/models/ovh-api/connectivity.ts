@@ -168,14 +168,14 @@ export const schema: Schema = {
       "path": "/connectivity/eligibility/search/lines"
     },
     {
-      "description": "Search for available line creation meeting time slots, for copper only",
+      "description": "Search for available copper line creation or fiber installation meeting time slots",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Search for available line creation meeting time slots, for copper only",
+          "description": "Search for available copper line creation or fiber installation meeting time slots",
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
@@ -342,7 +342,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>"
+          "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>",
+          "scopes": [
+            "all",
+            "product/connectivity/all"
+          ]
         }
       ],
       "path": "/connectivity/eligibility/test/address/partners"
@@ -436,7 +440,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>"
+          "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>",
+          "scopes": [
+            "all",
+            "product/connectivity/all"
+          ]
         }
       ],
       "path": "/connectivity/eligibility/test/line/partners"
@@ -479,7 +487,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "connectivity.maintenance.WorkPlanned[]"
+          "responseType": "connectivity.maintenance.WorkPlanned[]",
+          "scopes": [
+            "all",
+            "product/connectivity"
+          ]
         }
       ],
       "path": "/connectivity/maintenance/workPlanned/partners"
@@ -555,7 +567,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "connectivity.monitoring.GenericIncident[]"
+          "responseType": "connectivity.monitoring.GenericIncident[]",
+          "scopes": [
+            "all",
+            "product/connectivity"
+          ]
         }
       ],
       "path": "/connectivity/monitoring/genericIncident/partners"
@@ -1079,7 +1095,7 @@ export const schema: Schema = {
           "type": "datetime"
         },
         "uiCode": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "An opaque string that represents an intervention unit",
           "readOnly": false,
           "required": false,
@@ -1335,9 +1351,13 @@ export const schema: Schema = {
     "connectivity.eligibility.OfferProductProviderEnum": {
       "description": "Offer product provider",
       "enum": [
+        "AI",
+        "ALTERNATIVE",
         "AXIONE",
+        "FI",
         "KOSC",
         "ORANGE",
+        "REFERENCE",
         "SFR"
       ],
       "enumType": "string",

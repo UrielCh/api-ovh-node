@@ -876,10 +876,6 @@ export interface Email {
                                  * POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/changePassword
                                  */
                                 $post(params: { password: string }): Promise<email.exchange.Task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             diagnostics: {
                                 /**
@@ -1090,10 +1086,6 @@ export interface Email {
                                  * POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/terminate
                                  */
                                 $post(): Promise<string>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                         };
                     }
@@ -1103,10 +1095,6 @@ export interface Email {
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/activateSharepoint
                          */
                         $post(params: { primaryEmailAddress: string, subDomain: string }): Promise<email.exchange.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     changeHostname: {
                         /**
@@ -1114,10 +1102,6 @@ export interface Email {
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/changeHostname
                          */
                         $post(params: { dcvEmail: string, hostname: string, useDnsAssist: boolean }): Promise<email.exchange.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     dcvEmails: {
                         /**
@@ -1161,10 +1145,6 @@ export interface Email {
                                  * POST /email/exchange/{organizationName}/service/{exchangeService}/device/{identity}/clearDevice
                                  */
                                 $post(): Promise<email.exchange.Task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                         };
                     }
@@ -1673,10 +1653,6 @@ export interface Email {
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/renewSSL
                          */
                         $post(params: { dcv: string }): Promise<email.exchange.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     resourceAccount: {
                         /**
@@ -1973,10 +1949,6 @@ export interface Email {
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/updateDeviceList
                          */
                         $post(): Promise<email.exchange.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     updateFlagsOnAllAccounts: {
                         /**
@@ -1984,10 +1956,6 @@ export interface Email {
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/updateFlagsOnAllAccounts
                          */
                         $post(): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }

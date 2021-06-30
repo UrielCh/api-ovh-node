@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/redhat"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.redhat.RedHat"
+          "responseType": "license.redhat.RedHat",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         },
         {
           "apiStatus": {
@@ -70,7 +78,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/redhat/{serviceName}"
@@ -128,7 +140,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/redhat/{serviceName}/confirmTermination"
@@ -154,7 +170,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         },
         {
           "apiStatus": {
@@ -181,7 +201,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/redhat/{serviceName}/serviceInfos"
@@ -223,7 +247,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/redhat/{serviceName}/tasks"
@@ -257,7 +285,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Task"
+          "responseType": "license.Task",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/redhat/{serviceName}/tasks/{taskId}"
@@ -283,7 +315,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/redhat/{serviceName}/terminate"

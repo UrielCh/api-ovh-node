@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Dedicated"
+          "responseType": "dedicated.server.Dedicated",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -70,7 +78,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}"
@@ -96,7 +108,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Access[]"
+          "responseType": "dedicated.server.Access[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/authenticationSecret"
@@ -122,7 +138,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.backup.BackupOffer"
+          "responseType": "dedicated.server.backup.BackupOffer",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/backupCloudOfferDetails"
@@ -148,7 +168,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.biosSettings.BiosSettings"
+          "responseType": "dedicated.biosSettings.BiosSettings",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/biosSettings"
@@ -174,7 +198,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.biosSettingsSgx.BiosSettingsSgx"
+          "responseType": "dedicated.biosSettingsSgx.BiosSettingsSgx",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/biosSettings/sgx"
@@ -216,7 +244,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/biosSettings/sgx/configure"
@@ -250,7 +282,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/boot"
@@ -284,7 +320,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Netboot"
+          "responseType": "dedicated.server.Netboot",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/boot/{bootId}"
@@ -318,7 +358,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.BootOptionEnum[]"
+          "responseType": "dedicated.server.BootOptionEnum[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/boot/{bootId}/option"
@@ -360,7 +404,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.netbootOption"
+          "responseType": "dedicated.server.netbootOption",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/boot/{bootId}/option/{option}"
@@ -386,7 +434,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -406,7 +458,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.ByoiStatus"
+          "responseType": "dedicated.server.ByoiStatus",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -490,7 +546,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/bringYourOwnImage"
@@ -516,7 +576,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.ServerBurst"
+          "responseType": "dedicated.server.ServerBurst",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -543,7 +607,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/burst"
@@ -593,7 +661,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/changeContact"
@@ -651,7 +723,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/confirmTermination"
@@ -677,7 +753,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -697,7 +777,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.BackupCloud"
+          "responseType": "dedicated.server.BackupCloud",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -733,7 +817,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.BackupCloud"
+          "responseType": "dedicated.server.BackupCloud",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/backupCloud"
@@ -759,7 +847,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.backup.BackupPassword"
+          "responseType": "dedicated.server.backup.BackupPassword",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/backupCloud/password"
@@ -785,7 +877,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -805,7 +901,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.BackupFtp"
+          "responseType": "dedicated.server.BackupFtp",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -825,7 +925,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/backupFTP"
@@ -851,7 +955,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]"
+          "responseType": "ipBlock[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -903,7 +1011,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/backupFTP/access"
@@ -937,7 +1049,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -965,7 +1081,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.BackupFtpAcl"
+          "responseType": "dedicated.server.BackupFtpAcl",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1000,7 +1120,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}"
@@ -1026,7 +1150,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]"
+          "responseType": "ipBlock[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks"
@@ -1052,7 +1180,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/backupFTP/password"
@@ -1078,7 +1210,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Firewall"
+          "responseType": "dedicated.server.Firewall",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1105,7 +1241,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/firewall"
@@ -1131,7 +1271,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Ipmi"
+          "responseType": "dedicated.server.Ipmi",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/ipmi"
@@ -1165,7 +1309,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.IpmiAccessValue"
+          "responseType": "dedicated.server.IpmiAccessValue",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1217,7 +1365,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/ipmi/access"
@@ -1243,7 +1395,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/ipmi/resetInterface"
@@ -1269,7 +1425,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/ipmi/resetSessions"
@@ -1303,7 +1463,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.IpmiTestResult"
+          "responseType": "dedicated.server.IpmiTestResult",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1339,7 +1503,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/ipmi/test"
@@ -1365,7 +1533,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.kvm"
+          "responseType": "dedicated.server.kvm",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/kvm"
@@ -1391,7 +1563,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.BinaryFirewall"
+          "responseType": "dedicated.BinaryFirewall",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/firewall/binary/compatible"
@@ -1425,7 +1601,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.BinaryFirewallLink"
+          "responseType": "dedicated.BinaryFirewallLink",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/firewall/binary/link"
@@ -1459,7 +1639,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes"
@@ -1485,7 +1669,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.InstallTemplate"
+          "responseType": "dedicated.server.InstallTemplate",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/install/compatibleTemplates"
@@ -1511,7 +1699,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.HardwareRaidProfile"
+          "responseType": "dedicated.server.HardwareRaidProfile",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/install/hardwareRaidProfile"
@@ -1553,7 +1745,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.HardwareRaidSize"
+          "responseType": "dedicated.server.HardwareRaidSize",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/install/hardwareRaidSize"
@@ -1611,7 +1807,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/install/start"
@@ -1637,7 +1837,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.InstallationProgressStatus"
+          "responseType": "dedicated.server.InstallationProgressStatus",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/install/status"
@@ -1671,7 +1875,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.TemplateCaps"
+          "responseType": "dedicated.server.TemplateCaps",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/install/templateCapabilities"
@@ -1697,7 +1905,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/intervention"
@@ -1731,7 +1943,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Intervention"
+          "responseType": "dedicated.server.Intervention",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/intervention/{interventionId}"
@@ -1765,7 +1981,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/ipBlockMerge"
@@ -1799,7 +2019,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/ipCanBeMovedTo"
@@ -1825,7 +2049,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.IpCountryEnum[]"
+          "responseType": "dedicated.server.IpCountryEnum[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/ipCountryAvailable"
@@ -1859,7 +2087,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/ipMove"
@@ -1885,7 +2117,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]"
+          "responseType": "ipBlock[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/ips"
@@ -1911,7 +2147,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.WindowsOsVersionEnum[]"
+          "responseType": "license.WindowsOsVersionEnum[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/license/compliantWindows"
@@ -1937,7 +2177,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.WindowsSqlVersionEnum[]"
+          "responseType": "license.WindowsSqlVersionEnum[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/license/compliantWindowsSqlServer"
@@ -1979,7 +2223,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/license/windows"
@@ -2024,7 +2272,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.MrtgTimestampValue[]"
+          "responseType": "dedicated.server.MrtgTimestampValue[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/mrtg"
@@ -2058,7 +2310,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "macAddress[]"
+          "responseType": "macAddress[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/networkInterfaceController"
@@ -2092,7 +2348,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.networkInterfaceController.NetworkInterfaceController"
+          "responseType": "dedicated.networkInterfaceController.NetworkInterfaceController",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/networkInterfaceController/{mac}"
@@ -2142,7 +2402,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.MrtgTimestampValue[]"
+          "responseType": "dedicated.server.MrtgTimestampValue[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg"
@@ -2184,7 +2448,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/ola/aggregation"
@@ -2229,7 +2497,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/ola/group"
@@ -2263,7 +2535,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/ola/reset"
@@ -2300,7 +2576,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task[]"
+          "responseType": "dedicated.server.Task[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/ola/ungroup"
@@ -2326,7 +2606,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.OptionEnum[]"
+          "responseType": "dedicated.server.OptionEnum[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/option"
@@ -2360,7 +2644,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2388,7 +2676,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Option"
+          "responseType": "dedicated.server.Option",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/option/{option}"
@@ -2414,7 +2706,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.BackupStorageOrderable"
+          "responseType": "dedicated.server.BackupStorageOrderable",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/orderable/backupStorage"
@@ -2440,7 +2736,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.BandwidthOrderable"
+          "responseType": "dedicated.server.BandwidthOrderable",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/orderable/bandwidth"
@@ -2466,7 +2766,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.BandwidthvRackOrderable"
+          "responseType": "dedicated.server.BandwidthvRackOrderable",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/orderable/bandwidthvRack"
@@ -2500,7 +2804,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean"
+          "responseType": "boolean",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/orderable/feature"
@@ -2526,7 +2834,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.IpOrderable"
+          "responseType": "dedicated.server.IpOrderable",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/orderable/ip"
@@ -2552,7 +2864,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean"
+          "responseType": "boolean",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/orderable/kvm"
@@ -2578,7 +2894,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean"
+          "responseType": "boolean",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/orderable/kvmExpress"
@@ -2604,7 +2924,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean"
+          "responseType": "boolean",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/orderable/professionalUse"
@@ -2630,7 +2954,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.TrafficOrderable"
+          "responseType": "dedicated.server.TrafficOrderable",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/orderable/traffic"
@@ -2656,7 +2984,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.UsbKeyOrderableDetails"
+          "responseType": "dedicated.server.UsbKeyOrderableDetails",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/orderable/usbKey"
@@ -2682,7 +3014,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/reboot"
@@ -2708,7 +3044,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2744,7 +3084,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/secondaryDnsDomains"
@@ -2778,7 +3122,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2806,7 +3154,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "secondaryDns.SecondaryDNS"
+          "responseType": "secondaryDns.SecondaryDNS",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2841,7 +3193,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}"
@@ -2875,7 +3231,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "secondaryDns.SecondaryDNSNameServer"
+          "responseType": "secondaryDns.SecondaryDNSNameServer",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer"
@@ -2909,7 +3269,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "secondaryDns.SecondaryDNSCheckField"
+          "responseType": "secondaryDns.SecondaryDNSCheckField",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/secondaryDnsNameDomainToken"
@@ -2935,7 +3299,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "secondaryDns.SecondaryDNSNameServer"
+          "responseType": "secondaryDns.SecondaryDNSNameServer",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/secondaryDnsNameServerAvailable"
@@ -2961,7 +3329,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2988,7 +3360,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/serviceInfos"
@@ -3014,7 +3390,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3090,7 +3470,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.serviceMonitoring"
+          "responseType": "dedicated.server.serviceMonitoring",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/serviceMonitoring"
@@ -3124,7 +3508,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3152,7 +3540,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.serviceMonitoring"
+          "responseType": "dedicated.server.serviceMonitoring",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3187,7 +3579,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}"
@@ -3221,7 +3617,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3265,7 +3665,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.emailAlert"
+          "responseType": "dedicated.server.emailAlert",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email"
@@ -3307,7 +3711,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3343,7 +3751,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.emailAlert"
+          "responseType": "dedicated.server.emailAlert",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3386,7 +3798,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}"
@@ -3420,7 +3836,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3488,7 +3908,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.smsAlert"
+          "responseType": "dedicated.server.smsAlert",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms"
@@ -3530,7 +3954,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3566,7 +3994,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.smsAlert"
+          "responseType": "dedicated.server.smsAlert",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3609,7 +4041,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}"
@@ -3635,7 +4071,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.HardwareSpecifications"
+          "responseType": "dedicated.server.HardwareSpecifications",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/specifications/hardware"
@@ -3661,7 +4101,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.IpOrderable"
+          "responseType": "dedicated.server.IpOrderable",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/specifications/ip"
@@ -3687,7 +4131,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.NetworkSpecifications"
+          "responseType": "dedicated.server.NetworkSpecifications",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/specifications/network"
@@ -3729,7 +4177,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3765,7 +4217,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long"
+          "responseType": "long",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/spla"
@@ -3799,7 +4255,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.spla"
+          "responseType": "dedicated.server.spla",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3834,7 +4294,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/spla/{id}"
@@ -3868,7 +4332,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/spla/{id}/revoke"
@@ -3894,7 +4362,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Rtm"
+          "responseType": "dedicated.server.Rtm",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics"
@@ -3936,7 +4408,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.ChartReturn"
+          "responseType": "complexType.ChartReturn",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/chart"
@@ -3962,7 +4438,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.RtmConnection[]"
+          "responseType": "dedicated.server.RtmConnection[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/connection"
@@ -3988,7 +4468,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.RtmCpu"
+          "responseType": "dedicated.server.RtmCpu",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/cpu"
@@ -4014,7 +4498,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/disk"
@@ -4048,7 +4536,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.RtmDisk"
+          "responseType": "dedicated.server.RtmDisk",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/disk/{disk}"
@@ -4082,7 +4574,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.RtmDiskSmart"
+          "responseType": "dedicated.server.RtmDiskSmart",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/disk/{disk}/smart"
@@ -4108,7 +4604,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.RtmLoad"
+          "responseType": "dedicated.server.RtmLoad",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/load"
@@ -4134,7 +4634,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.RtmMemory[]"
+          "responseType": "dedicated.server.RtmMemory[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/memory"
@@ -4160,7 +4664,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.RtmMotherboardHw"
+          "responseType": "dedicated.server.RtmMotherboardHw",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/motherboard"
@@ -4186,7 +4694,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.RtmOs"
+          "responseType": "dedicated.server.RtmOs",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/os"
@@ -4212,7 +4724,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/partition"
@@ -4246,7 +4762,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.RtmPartition"
+          "responseType": "dedicated.server.RtmPartition",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/partition/{partition}"
@@ -4288,7 +4808,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.ChartReturn"
+          "responseType": "complexType.ChartReturn",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/partition/{partition}/chart"
@@ -4314,7 +4838,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.RtmPci[]"
+          "responseType": "dedicated.server.RtmPci[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/pci"
@@ -4340,7 +4868,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.RtmCommandSize[]"
+          "responseType": "dedicated.server.RtmCommandSize[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/process"
@@ -4366,7 +4898,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/raid"
@@ -4400,7 +4936,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.RtmRaid"
+          "responseType": "dedicated.server.RtmRaid",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}"
@@ -4434,7 +4974,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume"
@@ -4476,7 +5020,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.RtmRaidVolume"
+          "responseType": "dedicated.server.RtmRaidVolume",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}"
@@ -4518,7 +5066,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port"
@@ -4568,7 +5120,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.RtmRaidVolumePort"
+          "responseType": "dedicated.server.RtmRaidVolumePort",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}"
@@ -4610,7 +5166,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "support.NewMessageInfo"
+          "responseType": "support.NewMessageInfo",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/support/replace/cooling"
@@ -4660,7 +5220,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "support.NewMessageInfo"
+          "responseType": "support.NewMessageInfo",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/support/replace/hardDiskDrive"
@@ -4710,7 +5274,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "support.NewMessageInfo"
+          "responseType": "support.NewMessageInfo",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/support/replace/memory"
@@ -4752,7 +5320,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/task"
@@ -4786,7 +5358,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/task/{taskId}"
@@ -4820,7 +5396,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/task/{taskId}/cancel"
@@ -4846,7 +5426,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/terminate"
@@ -4872,7 +5456,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4916,7 +5504,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/virtualMac"
@@ -4950,7 +5542,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.VirtualMac"
+          "responseType": "dedicated.server.VirtualMac",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/virtualMac/{macAddress}"
@@ -4984,7 +5580,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipv4[]"
+          "responseType": "ipv4[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5028,7 +5628,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress"
@@ -5070,7 +5674,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5106,7 +5714,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.VirtualMacManagement"
+          "responseType": "dedicated.server.VirtualMacManagement",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}"
@@ -5164,7 +5776,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/virtualNetworkInterface"
@@ -5198,7 +5814,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.virtualNetworkInterface.VirtualNetworkInterface"
+          "responseType": "dedicated.virtualNetworkInterface.VirtualNetworkInterface",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5236,7 +5856,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}"
@@ -5273,7 +5897,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/disable"
@@ -5310,7 +5938,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task"
+          "responseType": "dedicated.server.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/enable"
@@ -5336,7 +5968,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/vrack"
@@ -5370,7 +6006,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task"
+          "responseType": "vrack.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5398,7 +6038,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.dedicatedServer"
+          "responseType": "vrack.dedicatedServer",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/vrack/{vrack}"
@@ -5451,7 +6095,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.MrtgTimestampValue[]"
+          "responseType": "dedicated.server.MrtgTimestampValue[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/{serviceName}/vrack/{vrack}/mrtg"
@@ -5718,7 +6366,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.virtualNetworkInterface.VirtualNetworkInterface"
+          "responseType": "dedicated.virtualNetworkInterface.VirtualNetworkInterface",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
         }
       ],
       "path": "/dedicated/server/virtualNetworkInterface/{uuid}"
@@ -6456,6 +7108,7 @@ export const schema: Schema = {
         "bhs5",
         "bhs6",
         "bhs7",
+        "bhs8",
         "dc1",
         "eri1",
         "gra1",
@@ -6479,6 +7132,7 @@ export const schema: Schema = {
         "sbg2",
         "sbg3",
         "sbg4",
+        "sbg5",
         "sgp1",
         "syd1",
         "syd2",

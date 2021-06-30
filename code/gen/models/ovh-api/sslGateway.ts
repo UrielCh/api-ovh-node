@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         }
       ],
       "path": "/sslGateway"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sslGateway.SslGateway"
+          "responseType": "sslGateway.SslGateway",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         },
         {
           "apiStatus": {
@@ -70,7 +78,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         }
       ],
       "path": "/sslGateway/{serviceName}"
@@ -120,7 +132,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         }
       ],
       "path": "/sslGateway/{serviceName}/changeContact"
@@ -178,7 +194,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         }
       ],
       "path": "/sslGateway/{serviceName}/confirmTermination"
@@ -204,7 +224,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         },
         {
           "apiStatus": {
@@ -232,7 +256,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sslGateway.Domain"
+          "responseType": "sslGateway.Domain",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         }
       ],
       "path": "/sslGateway/{serviceName}/domain"
@@ -266,7 +294,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         },
         {
           "apiStatus": {
@@ -294,7 +326,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sslGateway.Domain"
+          "responseType": "sslGateway.Domain",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         }
       ],
       "path": "/sslGateway/{serviceName}/domain/{id}"
@@ -320,7 +356,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sslGateway.NatIps[]"
+          "responseType": "sslGateway.NatIps[]",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         }
       ],
       "path": "/sslGateway/{serviceName}/natIp"
@@ -354,7 +394,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         }
       ],
       "path": "/sslGateway/{serviceName}/renewCertificate"
@@ -380,7 +424,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         },
         {
           "apiStatus": {
@@ -416,7 +464,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sslGateway.Server"
+          "responseType": "sslGateway.Server",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         }
       ],
       "path": "/sslGateway/{serviceName}/server"
@@ -450,7 +502,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         },
         {
           "apiStatus": {
@@ -478,7 +534,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sslGateway.Server"
+          "responseType": "sslGateway.Server",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         },
         {
           "apiStatus": {
@@ -513,7 +573,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         }
       ],
       "path": "/sslGateway/{serviceName}/server/{id}"
@@ -539,7 +603,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         },
         {
           "apiStatus": {
@@ -566,7 +634,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         }
       ],
       "path": "/sslGateway/{serviceName}/serviceInfos"
@@ -592,7 +664,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         }
       ],
       "path": "/sslGateway/{serviceName}/task"
@@ -626,7 +702,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sslGateway.Task"
+          "responseType": "sslGateway.Task",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         }
       ],
       "path": "/sslGateway/{serviceName}/task/{id}"
@@ -652,7 +732,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/sslGateway/all"
+          ]
         }
       ],
       "path": "/sslGateway/{serviceName}/terminate"

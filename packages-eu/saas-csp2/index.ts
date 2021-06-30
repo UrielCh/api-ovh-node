@@ -259,10 +259,6 @@ export interface Saas {
                  * POST /saas/csp2/{serviceName}/changeAdministratorPassword
                  */
                 $post(params: { newPassword: string }): Promise<saas.csp2.OfficeTask>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             configureDomain: {
                 /**
@@ -270,10 +266,6 @@ export interface Saas {
                  * POST /saas/csp2/{serviceName}/configureDomain
                  */
                 $post(params: { domain: string, supportedServices: saas.csp2.SupportedServiceEnum[] }): Promise<saas.csp2.OfficeTask>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             orderableLicenses: {
                 /**
@@ -371,10 +363,6 @@ export interface Saas {
                          * POST /saas/csp2/{serviceName}/subscription/{id}/changeQuantity
                          */
                         $post(params: { quantity: number }): Promise<saas.csp2.OfficeTask>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     orderAddon: {
                         /**
@@ -382,10 +370,6 @@ export interface Saas {
                          * POST /saas/csp2/{serviceName}/subscription/{id}/orderAddon
                          */
                         $post(params: { licenseId: number, quantity: number }): Promise<saas.csp2.OfficeTask>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }

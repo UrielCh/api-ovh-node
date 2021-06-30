@@ -361,10 +361,6 @@ export interface Vrack {
                      * POST /vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move
                      */
                     $post(params: { targetServiceName: string }): Promise<vrack.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -517,10 +513,6 @@ export interface Vrack {
                      * POST /vrack/{serviceName}/ip/{ip}/announceInZone
                      */
                     $post(params: { zone: vrackVrackZoneEnum }): Promise<vrack.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 availableZone: {
                     /**

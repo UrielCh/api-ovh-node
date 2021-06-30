@@ -26,7 +26,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -71,7 +75,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -258,7 +266,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cart/{cartId}/assign"
@@ -626,7 +638,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -653,7 +669,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cart/{cartId}/checkout"
@@ -3526,7 +3546,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3578,7 +3602,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cart/{cartId}/ipReseller"
@@ -8040,7 +8068,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8067,7 +8099,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cart/{cartId}/webPaaS/options"
@@ -8198,7 +8234,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/baremetalServers"
@@ -8224,7 +8264,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8284,7 +8328,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/baremetalServers/{serviceName}"
@@ -8301,7 +8349,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/cloud"
@@ -8327,7 +8379,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8387,7 +8443,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/cloud/{serviceName}"
@@ -8404,7 +8464,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/dedicated"
@@ -8430,7 +8494,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8490,7 +8558,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/dedicated/{serviceName}"
@@ -8507,7 +8579,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/dns"
@@ -8533,7 +8609,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8593,7 +8673,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/dns/{serviceName}"
@@ -8619,7 +8703,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/domain"
@@ -8645,7 +8733,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8705,7 +8797,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/domain/{serviceName}"
@@ -8722,7 +8818,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/emailpro"
@@ -8748,7 +8848,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8808,7 +8912,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/emailpro/{serviceName}"
@@ -8825,7 +8933,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/enterpriseCloudDatabases"
@@ -8851,7 +8963,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8911,7 +9027,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/enterpriseCloudDatabases/{serviceName}"
@@ -8928,7 +9048,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/ipLoadbalancing"
@@ -8954,7 +9078,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9014,7 +9142,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/ipLoadbalancing/{serviceName}"
@@ -9031,7 +9163,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/logs"
@@ -9057,7 +9193,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9117,7 +9257,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/logs/{serviceName}"
@@ -9134,7 +9278,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/microsoft"
@@ -9160,7 +9308,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9220,7 +9372,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/microsoft/{serviceName}"
@@ -9237,7 +9393,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/microsoftExchange"
@@ -9263,7 +9423,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9323,7 +9487,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/microsoftExchange/{serviceName}"
@@ -9340,7 +9508,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/office365Prepaid"
@@ -9366,7 +9538,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9426,7 +9602,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/office365Prepaid/{serviceName}"
@@ -9443,7 +9623,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/privateCloud"
@@ -9469,7 +9653,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9529,7 +9717,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/privateCloud/{serviceName}"
@@ -9546,7 +9738,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/privateCloudEnterprise"
@@ -9572,7 +9768,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9632,7 +9832,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/privateCloudEnterprise/{serviceName}"
@@ -9649,7 +9853,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/privateCloudReseller"
@@ -9675,7 +9883,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9735,7 +9947,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/privateCloudReseller/{serviceName}"
@@ -9752,7 +9968,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/privateCloudResellerEnterprise"
@@ -9778,7 +9998,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9838,7 +10062,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}"
@@ -9855,7 +10083,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/sharepoint"
@@ -9881,7 +10113,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9941,7 +10177,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/sharepoint/{serviceName}"
@@ -9958,7 +10198,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/sslGateway"
@@ -9984,7 +10228,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10044,7 +10292,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/sslGateway/{serviceName}"
@@ -10061,7 +10313,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/vdi"
@@ -10087,7 +10343,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10147,7 +10407,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/vdi/{serviceName}"
@@ -10164,7 +10428,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/vps"
@@ -10190,7 +10458,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10250,7 +10522,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/vps/{serviceName}"
@@ -10267,7 +10543,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/webHosting"
@@ -10293,7 +10573,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10353,7 +10637,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/webHosting/{serviceName}"
@@ -10370,7 +10658,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/webPaaS"
@@ -10396,7 +10688,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10456,7 +10752,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.Item"
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cartServiceOption/webPaaS/{serviceName}"
@@ -10973,7 +11273,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.catalog.pcc.Catalog"
+          "responseType": "order.catalog.pcc.Catalog",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/catalog/formatted/privateCloudReseller"
@@ -10999,7 +11303,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.catalog.pcc.Catalog"
+          "responseType": "order.catalog.pcc.Catalog",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/catalog/formatted/privateCloudResellerEnterprise"
@@ -11494,7 +11802,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cdn-dedicated/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cdn/dedicated"
@@ -11520,7 +11833,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cdn/dedicated/{serviceName}"
@@ -11554,7 +11871,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cdn/dedicated/{serviceName}/backend"
@@ -11596,7 +11917,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -11632,7 +11957,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cdn/dedicated/{serviceName}/backend/{duration}"
@@ -11666,7 +11995,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cdn/dedicated/{serviceName}/cacheRule"
@@ -11708,7 +12041,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -11744,7 +12081,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cdn/dedicated/{serviceName}/cacheRule/{duration}"
@@ -11778,7 +12119,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cdn/dedicated/{serviceName}/quota"
@@ -11820,7 +12165,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -11856,7 +12205,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cdn/dedicated/{serviceName}/quota/{duration}"
@@ -11873,7 +12226,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cdn/dedicated/new"
@@ -11899,7 +12256,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -11919,7 +12280,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cdn/dedicated/new/{duration}"
@@ -11936,7 +12301,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cdn-webstorage/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cdn/webstorage"
@@ -11962,7 +12332,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cdn/webstorage/{serviceName}"
@@ -11996,7 +12370,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cdn/webstorage/{serviceName}/storage"
@@ -12038,7 +12416,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -12074,7 +12456,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cdn/webstorage/{serviceName}/storage/{duration}"
@@ -12108,7 +12494,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -12136,7 +12526,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cdn/webstorage/{serviceName}/traffic"
@@ -12153,7 +12547,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloud/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/cloud/project"
@@ -12179,7 +12578,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cloud/project/{serviceName}"
@@ -12213,7 +12616,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -12241,7 +12648,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cloud/project/{serviceName}/credit"
@@ -12291,7 +12702,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -12335,7 +12750,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/cloud/project/{serviceName}/ip"
@@ -12352,7 +12771,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dedicated-housing/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/dedicated/housing"
@@ -12378,7 +12802,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/housing/{serviceName}"
@@ -12404,7 +12832,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/housing/{serviceName}/APC"
@@ -12438,7 +12870,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -12466,7 +12902,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/housing/{serviceName}/APC/{duration}"
@@ -12500,7 +12940,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/nasha/new"
@@ -12542,7 +12986,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -12578,7 +13026,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/nasha/new/{duration}"
@@ -12595,7 +13047,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/dedicated/server"
@@ -12621,7 +13078,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}"
@@ -12655,7 +13116,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/backupStorage"
@@ -12697,7 +13162,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -12733,7 +13202,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/backupStorage/{duration}"
@@ -12775,7 +13248,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/bandwidth"
@@ -12825,7 +13302,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -12869,7 +13350,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/bandwidth/{duration}"
@@ -12903,7 +13388,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/bandwidthvRack"
@@ -12945,7 +13434,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -12981,7 +13474,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/bandwidthvRack/{duration}"
@@ -13015,7 +13512,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/failoverIP"
@@ -13057,7 +13558,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -13093,7 +13598,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/failoverIP/{duration}"
@@ -13127,7 +13636,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/feature"
@@ -13169,7 +13682,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -13205,7 +13722,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/feature/{duration}"
@@ -13239,7 +13760,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/firewall"
@@ -13281,7 +13806,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -13317,7 +13846,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/firewall/{duration}"
@@ -13375,7 +13908,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/ip"
@@ -13441,7 +13978,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -13501,7 +14042,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/ip/{duration}"
@@ -13543,7 +14088,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/ipMigration"
@@ -13593,7 +14142,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -13637,7 +14190,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/ipMigration/{duration}"
@@ -13663,7 +14220,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/kvm"
@@ -13697,7 +14258,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -13725,7 +14290,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/kvm/{duration}"
@@ -13751,7 +14320,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/kvmExpress"
@@ -13785,7 +14358,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -13813,7 +14390,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/kvmExpress/{duration}"
@@ -13839,7 +14420,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/professionalUse"
@@ -13873,7 +14458,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -13901,7 +14490,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/professionalUse/{duration}"
@@ -13935,7 +14528,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/staticIP"
@@ -13977,7 +14574,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -14013,7 +14614,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/staticIP/{duration}"
@@ -14047,7 +14652,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/traffic"
@@ -14089,7 +14698,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -14125,7 +14738,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/traffic/{duration}"
@@ -14159,7 +14776,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/usbKey"
@@ -14201,7 +14822,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -14237,7 +14862,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/usbKey/{duration}"
@@ -14257,7 +14886,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/dedicatedCloud"
@@ -14286,7 +14920,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicatedCloud/{serviceName}"
@@ -14323,7 +14961,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicatedCloud/{serviceName}/additionalBandwidth"
@@ -14368,7 +15010,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -14407,7 +15053,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicatedCloud/{serviceName}/additionalBandwidth/{duration}"
@@ -14460,7 +15110,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicatedCloud/{serviceName}/filer"
@@ -14521,7 +15175,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -14576,7 +15234,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicatedCloud/{serviceName}/filer/{duration}"
@@ -14629,7 +15291,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicatedCloud/{serviceName}/host"
@@ -14690,7 +15356,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -14745,7 +15415,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicatedCloud/{serviceName}/host/{duration}"
@@ -14822,7 +15496,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicatedCloud/{serviceName}/ip"
@@ -14907,7 +15585,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -14986,7 +15668,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicatedCloud/{serviceName}/ip/{duration}"
@@ -15015,7 +15701,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -15038,7 +15728,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicatedCloud/{serviceName}/spla"
@@ -15091,7 +15785,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicatedCloud/{serviceName}/upgradeRessource"
@@ -15152,7 +15850,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -15207,7 +15909,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicatedCloud/{serviceName}/upgradeRessource/{duration}"
@@ -15260,7 +15966,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -15307,7 +16017,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/dedicatedCloud/{serviceName}/vdi"
@@ -15327,7 +16041,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/domain/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/domain/zone"
@@ -15356,7 +16075,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/domain/zone/{zoneName}"
@@ -15385,7 +16108,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/domain/zone/{zoneName}/dnsAnycast"
@@ -15422,7 +16149,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -15453,7 +16184,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/domain/zone/{zoneName}/dnsAnycast/{duration}"
@@ -15490,7 +16225,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -15521,7 +16260,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/domain/zone/new"
@@ -15541,7 +16284,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-domain/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/email/domain"
@@ -15570,7 +16318,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/domain/{domain}"
@@ -15607,7 +16359,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/domain/{domain}/upgrade"
@@ -15652,7 +16408,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -15691,7 +16451,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/domain/{domain}/upgrade/{duration}"
@@ -15728,7 +16492,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/domain/new"
@@ -15773,7 +16541,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -15812,7 +16584,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/domain/new/{duration}"
@@ -15829,7 +16605,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/order/email/exchange"
@@ -15855,7 +16635,12 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/email/exchange/{organizationName}/service"
@@ -15889,7 +16674,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/exchange/{organizationName}/service/{exchangeService}"
@@ -15947,7 +16736,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/exchange/{organizationName}/service/{exchangeService}/account"
@@ -16013,7 +16806,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -16073,7 +16870,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/exchange/{organizationName}/service/{exchangeService}/account/{duration}"
@@ -16123,7 +16924,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade"
@@ -16181,7 +16986,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -16233,7 +17042,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade/{duration}"
@@ -16267,7 +17080,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -16295,7 +17112,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/exchange/{organizationName}/service/{exchangeService}/diskSpace"
@@ -16345,7 +17166,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/exchange/{organizationName}/service/{exchangeService}/outlook"
@@ -16403,7 +17228,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -16455,7 +17284,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/exchange/{organizationName}/service/{exchangeService}/outlook/{duration}"
@@ -16489,7 +17322,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -16517,7 +17354,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/exchange/{organizationName}/service/{exchangeService}/upgrade"
@@ -16534,7 +17375,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-pro/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/email/pro"
@@ -16560,7 +17406,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/pro/{service}"
@@ -16594,7 +17444,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/pro/{service}/account"
@@ -16636,7 +17490,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -16672,7 +17530,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/email/pro/{service}/account/{duration}"
@@ -16689,7 +17551,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/freefax/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/freefax"
@@ -16715,7 +17582,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/freefax/{serviceName}"
@@ -16749,7 +17620,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -16777,7 +17652,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/freefax/{serviceName}/convertToVoicefax"
@@ -16803,7 +17682,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -16823,7 +17706,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/freefax/new"
@@ -16843,7 +17730,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/hosting-privateDatabase/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/hosting/privateDatabase"
@@ -16872,7 +17764,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/privateDatabase/{serviceName}"
@@ -16909,7 +17805,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/privateDatabase/{serviceName}/ram"
@@ -16954,7 +17854,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -16993,7 +17897,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/privateDatabase/{serviceName}/ram/{duration}"
@@ -17046,7 +17954,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/privateDatabase/new"
@@ -17107,7 +18019,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -17162,7 +18078,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/privateDatabase/new/{duration}"
@@ -17182,7 +18102,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/hosting-web/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/hosting/web"
@@ -17211,7 +18136,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/web/{serviceName}"
@@ -17248,7 +18177,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/web/{serviceName}/bandwidth"
@@ -17293,7 +18226,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -17332,7 +18269,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/web/{serviceName}/bandwidth/{duration}"
@@ -17369,7 +18310,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/web/{serviceName}/cdn"
@@ -17414,7 +18359,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -17453,7 +18402,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/web/{serviceName}/cdn/{duration}"
@@ -17498,7 +18451,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/web/{serviceName}/changeMainDomain"
@@ -17551,7 +18508,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -17598,7 +18559,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/web/{serviceName}/changeMainDomain/{duration}"
@@ -17635,7 +18600,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/web/{serviceName}/extraSqlPerso"
@@ -17680,7 +18649,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -17719,7 +18692,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/web/{serviceName}/extraSqlPerso/{duration}"
@@ -17748,7 +18725,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/web/{serviceName}/ssl"
@@ -17785,7 +18766,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -17816,7 +18801,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/web/{serviceName}/ssl/{duration}"
@@ -17869,7 +18858,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/web/{serviceName}/upgrade"
@@ -17930,7 +18923,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -17985,7 +18982,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/web/{serviceName}/upgrade/{duration}"
@@ -18046,7 +19047,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/web/new"
@@ -18115,7 +19120,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -18178,7 +19187,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hosting/web/new/{duration}"
@@ -18195,7 +19208,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hpcspot/new"
@@ -18221,7 +19238,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -18241,7 +19262,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/hpcspot/new/{duration}"
@@ -18275,7 +19300,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/cloudLinux/new"
@@ -18317,7 +19346,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -18353,7 +19386,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/cloudLinux/new/{duration}"
@@ -18370,7 +19407,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/licenses/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/license/cpanel"
@@ -18396,7 +19438,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/cpanel/{serviceName}"
@@ -18430,7 +19476,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/cpanel/{serviceName}/upgrade"
@@ -18472,7 +19522,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -18508,7 +19562,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/cpanel/{serviceName}/upgrade/{duration}"
@@ -18550,7 +19608,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/cpanel/new"
@@ -18600,7 +19662,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -18644,7 +19710,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/cpanel/new/{duration}"
@@ -18686,7 +19756,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/directadmin/new"
@@ -18736,7 +19810,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -18780,7 +19858,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/directadmin/new/{duration}"
@@ -18822,7 +19904,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/office/new"
@@ -18872,7 +19958,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -18916,7 +20006,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/office/new/{duration}"
@@ -18933,7 +20027,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/licenses/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/license/plesk"
@@ -18959,7 +20058,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/plesk/{serviceName}"
@@ -19057,7 +20160,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/plesk/{serviceName}/upgrade"
@@ -19163,7 +20270,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -19263,7 +20374,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/plesk/{serviceName}/upgrade/{duration}"
@@ -19361,7 +20476,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/plesk/new"
@@ -19467,7 +20586,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -19567,7 +20690,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/plesk/new/{duration}"
@@ -19584,7 +20711,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/licenses/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/license/sqlserver"
@@ -19610,7 +20742,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/sqlserver/{serviceName}"
@@ -19644,7 +20780,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/sqlserver/{serviceName}/upgrade"
@@ -19686,7 +20826,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -19722,7 +20866,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/sqlserver/{serviceName}/upgrade/{duration}"
@@ -19756,7 +20904,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/sqlserver/new"
@@ -19798,7 +20950,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -19834,7 +20990,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/sqlserver/new/{duration}"
@@ -19851,7 +21011,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/licenses/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/license/virtuozzo"
@@ -19877,7 +21042,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/virtuozzo/{serviceName}"
@@ -19911,7 +21080,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/virtuozzo/{serviceName}/upgrade"
@@ -19953,7 +21126,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -19989,7 +21166,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/virtuozzo/{serviceName}/upgrade/{duration}"
@@ -20039,7 +21220,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/virtuozzo/new"
@@ -20097,7 +21282,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -20149,7 +21338,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/virtuozzo/new/{duration}"
@@ -20166,7 +21359,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/licenses/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/license/windows"
@@ -20192,7 +21390,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/windows/{serviceName}"
@@ -20234,7 +21436,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/windows/{serviceName}/upgrade"
@@ -20284,7 +21490,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -20328,7 +21538,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/windows/{serviceName}/upgrade/{duration}"
@@ -20378,7 +21592,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/windows/new"
@@ -20436,7 +21654,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -20488,7 +21710,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/windows/new/{duration}"
@@ -20505,7 +21731,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/licenses/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/license/worklight"
@@ -20531,7 +21762,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/worklight/{serviceName}"
@@ -20565,7 +21800,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/worklight/{serviceName}/upgrade"
@@ -20607,7 +21846,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -20643,7 +21886,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/worklight/{serviceName}/upgrade/{duration}"
@@ -20685,7 +21932,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/worklight/new"
@@ -20735,7 +21986,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -20779,7 +22034,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/license/worklight/new/{duration}"
@@ -20796,7 +22055,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/overTheBox/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/overTheBox"
@@ -20822,7 +22086,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/overTheBox/{serviceName}"
@@ -20888,7 +22156,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -20948,7 +22220,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/overTheBox/{serviceName}/migrate"
@@ -20990,7 +22266,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/overTheBox/new"
@@ -21040,7 +22320,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -21084,7 +22368,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/overTheBox/new/{duration}"
@@ -21126,7 +22414,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/saas/csp2/new"
@@ -21176,7 +22468,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -21220,7 +22516,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/saas/csp2/new/{duration}"
@@ -21237,7 +22537,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/sms/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/sms"
@@ -21263,7 +22568,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/sms/{serviceName}"
@@ -21297,7 +22606,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -21325,7 +22638,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/sms/{serviceName}/credits"
@@ -21351,7 +22668,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -21371,7 +22692,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/sms/new"
@@ -21388,7 +22713,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/telephony/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/telephony"
@@ -21414,7 +22744,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/{billingAccount}"
@@ -21472,7 +22806,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -21524,7 +22862,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/{billingAccount}/accessories"
@@ -21638,7 +22980,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -21746,7 +23092,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/{billingAccount}/line"
@@ -21932,7 +23282,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -22112,7 +23466,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/{billingAccount}/numberGeographic"
@@ -22290,7 +23648,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -22462,7 +23824,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/{billingAccount}/numberNogeographic"
@@ -22648,7 +24014,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -22828,7 +24198,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/{billingAccount}/numberSpecial"
@@ -23086,7 +24460,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -23338,7 +24716,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/{billingAccount}/portability"
@@ -23372,7 +24754,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -23400,7 +24786,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/{billingAccount}/securityDeposit"
@@ -23417,7 +24807,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/telephony/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/telephony/lines"
@@ -23443,7 +24838,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/lines/{serviceName}"
@@ -23488,7 +24887,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -23527,7 +24930,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/lines/{serviceName}/addSimultaneousLines"
@@ -23585,7 +24992,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -23637,7 +25048,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/lines/{serviceName}/hardware"
@@ -23671,7 +25086,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -23699,7 +25118,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/lines/{serviceName}/updateSimultaneousChannels"
@@ -23716,7 +25139,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -23727,7 +25154,11 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/new"
@@ -23777,7 +25208,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -23821,7 +25256,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/spare/new"
@@ -23838,7 +25277,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/telephony/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/telephony/trunks"
@@ -23864,7 +25308,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/trunks/{serviceName}"
@@ -23909,7 +25357,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -23948,7 +25400,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/trunks/{serviceName}/addSimultaneousLines"
@@ -24006,7 +25462,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -24058,7 +25518,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/trunks/{serviceName}/hardware"
@@ -24092,7 +25556,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -24120,7 +25588,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/telephony/trunks/{serviceName}/updateSimultaneousChannels"
@@ -24137,7 +25609,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/baremetalPrivateBandwidth"
@@ -24163,7 +25639,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/baremetalPrivateBandwidth/{serviceName}"
@@ -24205,7 +25685,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -24249,7 +25733,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}"
@@ -24266,7 +25754,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/baremetalPublicBandwidth"
@@ -24292,7 +25784,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/baremetalPublicBandwidth/{serviceName}"
@@ -24334,7 +25830,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -24378,7 +25878,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}"
@@ -24395,7 +25899,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/cephaas"
@@ -24421,7 +25929,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/cephaas/{serviceName}"
@@ -24463,7 +25975,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -24507,7 +26023,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/cephaas/{serviceName}/{planCode}"
@@ -24524,7 +26044,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/cloudDB"
@@ -24550,7 +26074,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/cloudDB/{domain}"
@@ -24592,7 +26120,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -24636,7 +26168,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/cloudDB/{domain}/{planCode}"
@@ -24653,7 +26189,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/emailDomain"
@@ -24679,7 +26219,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/emailDomain/{serviceName}"
@@ -24721,7 +26265,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -24765,7 +26313,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/emailDomain/{serviceName}/{planCode}"
@@ -24782,7 +26334,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/hostingReseller"
@@ -24808,7 +26364,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/hostingReseller/{serviceName}"
@@ -24850,7 +26410,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -24894,7 +26458,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/hostingReseller/{serviceName}/{planCode}"
@@ -24911,7 +26479,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/ipLoadbalancing"
@@ -24937,7 +26509,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/ipLoadbalancing/{serviceName}"
@@ -24979,7 +26555,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -25023,7 +26603,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/ipLoadbalancing/{serviceName}/{planCode}"
@@ -25040,7 +26624,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/licensecPanel"
@@ -25066,7 +26654,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/licensecPanel/{serviceName}"
@@ -25108,7 +26700,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -25152,7 +26748,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/licensecPanel/{serviceName}/{planCode}"
@@ -25169,7 +26769,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/licensePlesk"
@@ -25195,7 +26799,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/licensePlesk/{serviceName}"
@@ -25237,7 +26845,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -25281,7 +26893,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/licensePlesk/{serviceName}/{planCode}"
@@ -25298,7 +26914,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/logs"
@@ -25324,7 +26944,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/logs/{serviceName}"
@@ -25366,7 +26990,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -25410,7 +27038,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/logs/{serviceName}/{planCode}"
@@ -25427,7 +27059,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/metrics"
@@ -25453,7 +27089,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/metrics/{serviceName}"
@@ -25495,7 +27135,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -25539,7 +27183,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/metrics/{serviceName}/{planCode}"
@@ -25556,7 +27204,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/microsoftExchange"
@@ -25582,7 +27234,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/microsoftExchange/{serviceName}"
@@ -25624,7 +27280,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -25668,7 +27328,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/microsoftExchange/{serviceName}/{planCode}"
@@ -25685,7 +27349,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/privateCloud"
@@ -25711,7 +27379,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/privateCloud/{serviceName}"
@@ -25753,7 +27425,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -25797,7 +27473,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/privateCloud/{serviceName}/{planCode}"
@@ -25814,7 +27494,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "/all"
+          ]
         }
       ],
       "path": "/order/upgrade/privateCloudManagementFee"
@@ -25840,7 +27524,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/privateCloudManagementFee/{serviceName}"
@@ -25882,7 +27570,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -25926,7 +27618,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/privateCloudManagementFee/{serviceName}/{planCode}"
@@ -25943,7 +27639,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/privateSQL"
@@ -25969,7 +27669,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/privateSQL/{domain}"
@@ -26011,7 +27715,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -26055,7 +27763,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/privateSQL/{domain}/{planCode}"
@@ -26072,7 +27784,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/sslGateway"
@@ -26098,7 +27814,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/sslGateway/{serviceName}"
@@ -26140,7 +27860,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -26184,7 +27908,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/sslGateway/{serviceName}/{planCode}"
@@ -26201,7 +27929,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/vps"
@@ -26227,7 +27959,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/vps/{serviceName}"
@@ -26269,7 +28005,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -26313,7 +28053,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/vps/{serviceName}/{planCode}"
@@ -26330,7 +28074,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/vpsAdditionalDisk"
@@ -26356,7 +28104,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/vpsAdditionalDisk/{serviceName}"
@@ -26398,7 +28150,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -26442,7 +28198,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}"
@@ -26459,7 +28219,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/webHosting"
@@ -26485,7 +28249,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/webHosting/{serviceName}"
@@ -26527,7 +28295,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -26571,7 +28343,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/webHosting/{serviceName}/{planCode}"
@@ -26588,7 +28364,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/webPaaS"
@@ -26614,7 +28394,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]"
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/webPaaS/{serviceName}"
@@ -26656,7 +28440,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         },
         {
           "apiStatus": {
@@ -26700,7 +28488,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/upgrade/webPaaS/{serviceName}/{planCode}"
@@ -26717,7 +28509,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/veeamCloudConnect/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/veeamCloudConnect"
@@ -26743,7 +28540,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/veeamCloudConnect/{serviceName}"
@@ -26777,7 +28578,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/veeamCloudConnect/{serviceName}/upgrade"
@@ -26819,7 +28624,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -26855,7 +28664,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/veeamCloudConnect/{serviceName}/upgrade/{duration}"
@@ -26872,7 +28685,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/vps/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/vps"
@@ -26898,7 +28716,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}"
@@ -26932,7 +28754,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/additionalDisk"
@@ -26974,7 +28800,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -27010,7 +28840,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/additionalDisk/{duration}"
@@ -27036,7 +28870,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/automatedBackup"
@@ -27070,7 +28908,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -27098,7 +28940,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/automatedBackup/{duration}"
@@ -27127,7 +28973,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/cpanel"
@@ -27164,7 +29014,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -27195,7 +29049,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/cpanel/{duration}"
@@ -27221,7 +29079,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/ftpbackup"
@@ -27255,7 +29117,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -27283,7 +29149,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/ftpbackup/{duration}"
@@ -27325,7 +29195,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/ip"
@@ -27375,7 +29249,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -27419,7 +29297,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/ip/{duration}"
@@ -27456,7 +29338,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/plesk"
@@ -27501,7 +29387,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -27540,7 +29430,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/plesk/{duration}"
@@ -27566,7 +29460,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/snapshot"
@@ -27600,7 +29498,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -27628,7 +29530,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/snapshot/{duration}"
@@ -27662,7 +29568,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/upgrade"
@@ -27704,7 +29614,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -27740,7 +29654,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/upgrade/{duration}"
@@ -27769,7 +29687,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/veeam"
@@ -27806,7 +29728,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -27837,7 +29763,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/veeam/{duration}"
@@ -27863,7 +29793,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/windows"
@@ -27897,7 +29831,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -27925,7 +29863,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vps/{serviceName}/windows/{duration}"
@@ -27945,7 +29887,12 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/vrack/all",
+            "order/all"
+          ]
         }
       ],
       "path": "/order/vrack"
@@ -27974,7 +29921,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vrack/{serviceName}"
@@ -28003,7 +29954,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -28026,7 +29981,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/vrack/new"
@@ -28076,7 +30035,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -28120,7 +30083,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order"
+          "responseType": "order.Order",
+          "scopes": [
+            "order/all",
+            "all"
+          ]
         }
       ],
       "path": "/order/xdsl/spare/new"

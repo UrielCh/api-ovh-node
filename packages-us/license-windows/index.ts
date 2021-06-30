@@ -203,10 +203,6 @@ export interface License {
                  * POST /license/windows/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             option: {
                 /**
@@ -257,10 +253,6 @@ export interface License {
                  * POST /license/windows/{serviceName}/sqlServer
                  */
                 $post(params: { licenseId: string, version: license.WindowsSqlVersionEnum }): Promise<license.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             tasks: {
                 /**
@@ -290,10 +282,6 @@ export interface License {
                  * POST /license/windows/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

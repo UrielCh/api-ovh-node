@@ -128,10 +128,6 @@ export interface Veeam {
                  * POST /veeam/veeamEnterprise/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             register: {
                 /**
@@ -139,10 +135,6 @@ export interface Veeam {
                  * POST /veeam/veeamEnterprise/{serviceName}/register
                  */
                 $post(params: { ip: string, password: string, port: number, username: string }): Promise<veeam.veeamEnterprise.Task[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -188,10 +180,6 @@ export interface Veeam {
                  * POST /veeam/veeamEnterprise/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             update: {
                 /**
@@ -199,10 +187,6 @@ export interface Veeam {
                  * POST /veeam/veeamEnterprise/{serviceName}/update
                  */
                 $post(params: { ip: string, password: string, port: number, username: string }): Promise<veeam.veeamEnterprise.Task[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Datacenter"
+          "responseType": "horizonView.Datacenter",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}"
@@ -69,7 +77,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         },
         {
           "apiStatus": {
@@ -121,7 +133,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task[]"
+          "responseType": "horizonView.Task[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/accessPoint"
@@ -155,7 +171,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task[]"
+          "responseType": "horizonView.Task[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         },
         {
           "apiStatus": {
@@ -183,7 +203,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Pool"
+          "responseType": "horizonView.Pool",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}"
@@ -233,7 +257,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task"
+          "responseType": "horizonView.Task",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout"
@@ -267,7 +295,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         },
         {
           "apiStatus": {
@@ -303,7 +335,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task[]"
+          "responseType": "horizonView.Task[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork"
@@ -345,7 +381,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task[]"
+          "responseType": "horizonView.Task[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         },
         {
           "apiStatus": {
@@ -381,7 +421,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.CustomerNetworkPool"
+          "responseType": "horizonView.CustomerNetworkPool",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}"
@@ -415,7 +459,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task"
+          "responseType": "horizonView.Task",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA"
@@ -457,7 +505,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task"
+          "responseType": "horizonView.Task",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption"
@@ -515,7 +567,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task"
+          "responseType": "horizonView.Task",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA"
@@ -557,7 +613,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task"
+          "responseType": "horizonView.Task",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption"
@@ -615,7 +675,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/confirmTermination"
@@ -641,7 +705,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         },
         {
           "apiStatus": {
@@ -677,7 +745,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task[]"
+          "responseType": "horizonView.Task[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/customerNetwork"
@@ -711,7 +783,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task[]"
+          "responseType": "horizonView.Task[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         },
         {
           "apiStatus": {
@@ -739,7 +815,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.CustomerNetwork"
+          "responseType": "horizonView.CustomerNetwork",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/customerNetwork/{customerNetworkId}"
@@ -765,7 +845,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.DedicatedHorizon"
+          "responseType": "horizonView.DedicatedHorizon",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/dedicatedHorizon"
@@ -791,7 +875,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         },
         {
           "apiStatus": {
@@ -835,7 +923,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task[]"
+          "responseType": "horizonView.Task[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/dedicatedHorizon/customerUser"
@@ -869,7 +961,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task[]"
+          "responseType": "horizonView.Task[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         },
         {
           "apiStatus": {
@@ -897,7 +993,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.CustomerUser"
+          "responseType": "horizonView.CustomerUser",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}"
@@ -939,7 +1039,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task"
+          "responseType": "horizonView.Task",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword"
@@ -965,7 +1069,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task"
+          "responseType": "horizonView.Task",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/dedicatedHorizon/disableStorageAccelerator"
@@ -991,7 +1099,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task"
+          "responseType": "horizonView.Task",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/dedicatedHorizon/enableStorageAccelerator"
@@ -1025,7 +1137,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/dedicatedHorizon/task"
@@ -1059,7 +1175,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task"
+          "responseType": "horizonView.Task",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/dedicatedHorizon/task/{taskId}"
@@ -1085,7 +1205,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.User"
+          "responseType": "horizonView.User",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/dedicatedHorizon/user"
@@ -1119,7 +1243,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task"
+          "responseType": "horizonView.Task",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/dedicatedHorizon/user/changePassword"
@@ -1153,7 +1281,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task"
+          "responseType": "horizonView.Task",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/dedicatedHorizon/user/changeProperties"
@@ -1179,7 +1311,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1231,7 +1367,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task[]"
+          "responseType": "horizonView.Task[]",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/domainTrust"
@@ -1265,7 +1405,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.DomainTrust"
+          "responseType": "horizonView.DomainTrust",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/domainTrust/{domainTrustId}"
@@ -1331,7 +1475,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task"
+          "responseType": "horizonView.Task",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain"
@@ -1381,7 +1529,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task"
+          "responseType": "horizonView.Task",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController"
@@ -1439,7 +1591,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task"
+          "responseType": "horizonView.Task",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer"
@@ -1489,7 +1645,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Task"
+          "responseType": "horizonView.Task",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust"
@@ -1515,7 +1675,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1542,7 +1706,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/serviceInfos"
@@ -1568,7 +1736,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/horizonView/all"
+          ]
         }
       ],
       "path": "/horizonView/{serviceName}/terminate"

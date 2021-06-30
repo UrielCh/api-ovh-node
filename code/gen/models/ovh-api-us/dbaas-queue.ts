@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.queue.App"
+          "responseType": "dbaas.queue.App",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         },
         {
           "apiStatus": {
@@ -71,7 +79,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.queue.App"
+          "responseType": "dbaas.queue.App",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue/{serviceName}"
@@ -97,7 +109,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue/{serviceName}/key"
@@ -131,7 +147,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.queue.Key"
+          "responseType": "dbaas.queue.Key",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue/{serviceName}/key/{keyId}"
@@ -157,7 +177,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.queue.MetricsAccount"
+          "responseType": "dbaas.queue.MetricsAccount",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue/{serviceName}/metrics/account"
@@ -183,7 +207,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue/{serviceName}/region"
@@ -217,7 +245,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.queue.Region"
+          "responseType": "dbaas.queue.Region",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue/{serviceName}/region/{regionId}"
@@ -243,7 +275,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue/{serviceName}/role"
@@ -277,7 +313,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.queue.Role"
+          "responseType": "dbaas.queue.Role",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue/{serviceName}/role/{roleName}"
@@ -303,7 +343,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         },
         {
           "apiStatus": {
@@ -330,7 +374,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue/{serviceName}/serviceInfos"
@@ -356,7 +404,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue/{serviceName}/topic"
@@ -390,7 +442,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         },
         {
           "apiStatus": {
@@ -418,7 +474,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.queue.Topic"
+          "responseType": "dbaas.queue.Topic",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue/{serviceName}/topic/{topicId}"
@@ -444,7 +504,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue/{serviceName}/user"
@@ -478,7 +542,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.queue.User"
+          "responseType": "dbaas.queue.User",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue/{serviceName}/user/{userId}"
@@ -512,7 +580,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.queue.UserWithPassword"
+          "responseType": "dbaas.queue.UserWithPassword",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue/{serviceName}/user/{userId}/changePassword"
@@ -546,7 +618,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dbaas-queue/all"
+          ]
         }
       ],
       "path": "/dbaas/queue/{serviceName}/user/{userId}/roles"

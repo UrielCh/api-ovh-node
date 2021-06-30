@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Service"
+          "responseType": "ovhcloudconnect.Service",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         },
         {
           "apiStatus": {
@@ -70,7 +78,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}"
@@ -120,7 +132,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/changeContact"
@@ -146,7 +162,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         },
         {
           "apiStatus": {
@@ -173,7 +193,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task"
+          "responseType": "ovhcloudconnect.Task",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/config/pop"
@@ -207,7 +231,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task"
+          "responseType": "ovhcloudconnect.Task",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         },
         {
           "apiStatus": {
@@ -235,7 +263,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.PopConfig"
+          "responseType": "ovhcloudconnect.PopConfig",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}"
@@ -269,7 +301,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         },
         {
           "apiStatus": {
@@ -304,7 +340,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task"
+          "responseType": "ovhcloudconnect.Task",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter"
@@ -346,7 +386,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task"
+          "responseType": "ovhcloudconnect.Task",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         },
         {
           "apiStatus": {
@@ -382,7 +426,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.DatacenterConfig"
+          "responseType": "ovhcloudconnect.DatacenterConfig",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}"
@@ -424,7 +472,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         },
         {
           "apiStatus": {
@@ -467,7 +519,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task"
+          "responseType": "ovhcloudconnect.Task",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra"
@@ -517,7 +573,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task"
+          "responseType": "ovhcloudconnect.Task",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         },
         {
           "apiStatus": {
@@ -561,7 +621,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.DatacenterExtraConfig"
+          "responseType": "ovhcloudconnect.DatacenterExtraConfig",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra/{extraId}"
@@ -619,7 +683,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/confirmTermination"
@@ -645,7 +713,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/datacenter"
@@ -679,7 +751,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Datacenter"
+          "responseType": "ovhcloudconnect.Datacenter",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/datacenter/{id}"
@@ -705,7 +781,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/interface"
@@ -739,7 +819,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Interface"
+          "responseType": "ovhcloudconnect.Interface",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/interface/{id}"
@@ -773,7 +857,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task"
+          "responseType": "ovhcloudconnect.Task",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/interface/{id}/lock"
@@ -823,7 +911,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Metrics[]"
+          "responseType": "ovhcloudconnect.Metrics[]",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/interface/{id}/statistics"
@@ -857,7 +949,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task"
+          "responseType": "ovhcloudconnect.Task",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/interface/{id}/unlock"
@@ -883,7 +979,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/loa"
@@ -909,7 +1009,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         },
         {
           "apiStatus": {
@@ -936,7 +1040,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/serviceInfos"
@@ -962,7 +1070,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/serviceKey"
@@ -996,7 +1108,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Key"
+          "responseType": "ovhcloudconnect.Key",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/serviceKey/{serviceKeyId}"
@@ -1030,7 +1146,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Key"
+          "responseType": "ovhcloudconnect.Key",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/serviceKey/{serviceKeyId}/regenerate"
@@ -1071,7 +1191,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.SendKeyAnswer"
+          "responseType": "ovhcloudconnect.SendKeyAnswer",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/serviceKey/{serviceKeyId}/send"
@@ -1097,7 +1221,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/task"
@@ -1131,7 +1259,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task"
+          "responseType": "ovhcloudconnect.Task",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/task/{id}"
@@ -1157,7 +1289,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/ovhcloudconnect/all"
+          ]
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}/terminate"

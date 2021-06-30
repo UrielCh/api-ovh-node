@@ -216,10 +216,6 @@ export interface Metrics {
              * POST /metrics/{serviceName}/changeContact
              */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         confirmTermination: {
             /**
@@ -227,10 +223,6 @@ export interface Metrics {
              * POST /metrics/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         consumption: {
             /**
@@ -250,10 +242,6 @@ export interface Metrics {
                  * POST /metrics/{serviceName}/lookup/token
                  */
                 $post(params: { accessToken: string }): Promise<string[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         quota: {
@@ -262,10 +250,6 @@ export interface Metrics {
              * PUT /metrics/{serviceName}/quota
              */
             $put(params: { quota: number }): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         serviceInfos: {
             /**
@@ -289,10 +273,6 @@ export interface Metrics {
              * POST /metrics/{serviceName}/terminate
              */
             $post(): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         token: {
             /**

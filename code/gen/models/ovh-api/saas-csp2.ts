@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "saas.csp2.OfficeTenant"
+          "responseType": "saas.csp2.OfficeTenant",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         },
         {
           "apiStatus": {
@@ -70,7 +78,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}"
@@ -96,7 +108,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "saas.csp2.BillingStatistics"
+          "responseType": "saas.csp2.BillingStatistics",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}/billingPeriodPeaks"
@@ -129,7 +145,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "saas.csp2.OfficeTask"
+          "responseType": "saas.csp2.OfficeTask",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}/changeAdministratorPassword"
@@ -162,7 +182,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "saas.csp2.OfficeTask"
+          "responseType": "saas.csp2.OfficeTask",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}/configureDomain"
@@ -188,7 +212,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}/orderableLicenses"
@@ -222,7 +250,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "saas.csp2.OfficeLicence"
+          "responseType": "saas.csp2.OfficeLicence",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}/orderableLicenses/{id}"
@@ -248,7 +280,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         },
         {
           "apiStatus": {
@@ -275,7 +311,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}/serviceInfos"
@@ -301,7 +341,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         },
         {
           "apiStatus": {
@@ -328,7 +372,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "saas.csp2.OfficeTask"
+          "responseType": "saas.csp2.OfficeTask",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}/subscription"
@@ -362,7 +410,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "saas.csp2.OfficeTask"
+          "responseType": "saas.csp2.OfficeTask",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         },
         {
           "apiStatus": {
@@ -390,7 +442,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "saas.csp2.OfficeSubscription"
+          "responseType": "saas.csp2.OfficeSubscription",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}/subscription/{id}"
@@ -424,7 +480,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}/subscription/{id}/addonsSubscriptionIds"
@@ -458,7 +518,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}/subscription/{id}/availableAddonLicenses"
@@ -499,7 +563,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "saas.csp2.OfficeTask"
+          "responseType": "saas.csp2.OfficeTask",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}/subscription/{id}/changeQuantity"
@@ -540,7 +608,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "saas.csp2.OfficeTask"
+          "responseType": "saas.csp2.OfficeTask",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}/subscription/{id}/orderAddon"
@@ -566,7 +638,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}/task"
@@ -600,7 +676,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "saas.csp2.OfficeTask"
+          "responseType": "saas.csp2.OfficeTask",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}/task/{id}"
@@ -634,7 +714,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "saas.csp2.Statistics[]"
+          "responseType": "saas.csp2.Statistics[]",
+          "scopes": [
+            "all",
+            "product/saas-csp2/all"
+          ]
         }
       ],
       "path": "/saas/csp2/{serviceName}/usageStatistics"

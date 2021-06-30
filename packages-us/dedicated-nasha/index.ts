@@ -260,10 +260,6 @@ export interface Dedicated {
                  * POST /dedicated/nasha/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             partition: {
                 /**
@@ -523,10 +519,6 @@ export interface Dedicated {
                  * POST /dedicated/nasha/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             use: {
                 /**
@@ -545,10 +537,6 @@ export interface Dedicated {
                  * DELETE /dedicated/nasha/{serviceName}/vrack
                  */
                 $delete(): Promise<dedicated.nasTask.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/windows"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.windows.Windows"
+          "responseType": "license.windows.Windows",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         },
         {
           "apiStatus": {
@@ -70,7 +78,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/windows/{serviceName}"
@@ -128,7 +140,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/windows/{serviceName}/confirmTermination"
@@ -154,7 +170,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.OptionLabel[]"
+          "responseType": "license.OptionLabel[]",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/windows/{serviceName}/option"
@@ -188,7 +208,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Task"
+          "responseType": "license.Task",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         },
         {
           "apiStatus": {
@@ -216,7 +240,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Option"
+          "responseType": "license.Option",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/windows/{serviceName}/option/{label}"
@@ -242,7 +270,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         },
         {
           "apiStatus": {
@@ -269,7 +301,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/windows/{serviceName}/serviceInfos"
@@ -311,7 +347,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Task"
+          "responseType": "license.Task",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/windows/{serviceName}/sqlServer"
@@ -353,7 +393,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/windows/{serviceName}/tasks"
@@ -387,7 +431,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Task"
+          "responseType": "license.Task",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/windows/{serviceName}/tasks/{taskId}"
@@ -413,7 +461,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/windows/{serviceName}/terminate"
@@ -439,7 +491,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.WindowsOrderConfiguration[]"
+          "responseType": "license.WindowsOrderConfiguration[]",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/windows/orderableVersions"

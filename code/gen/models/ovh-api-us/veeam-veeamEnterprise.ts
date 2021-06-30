@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
         }
       ],
       "path": "/veeam/veeamEnterprise"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "veeam.veeamEnterprise.Account"
+          "responseType": "veeam.veeamEnterprise.Account",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
         }
       ],
       "path": "/veeam/veeamEnterprise/{serviceName}"
@@ -101,7 +109,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
         }
       ],
       "path": "/veeam/veeamEnterprise/{serviceName}/confirmTermination"
@@ -159,7 +171,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "veeam.veeamEnterprise.Task[]"
+          "responseType": "veeam.veeamEnterprise.Task[]",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
         }
       ],
       "path": "/veeam/veeamEnterprise/{serviceName}/register"
@@ -185,7 +201,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
         },
         {
           "apiStatus": {
@@ -212,7 +232,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
         }
       ],
       "path": "/veeam/veeamEnterprise/{serviceName}/serviceInfos"
@@ -254,7 +278,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
         }
       ],
       "path": "/veeam/veeamEnterprise/{serviceName}/task"
@@ -288,7 +316,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "veeam.veeamEnterprise.Task"
+          "responseType": "veeam.veeamEnterprise.Task",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
         }
       ],
       "path": "/veeam/veeamEnterprise/{serviceName}/task/{taskId}"
@@ -314,7 +346,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
         }
       ],
       "path": "/veeam/veeamEnterprise/{serviceName}/terminate"
@@ -372,7 +408,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "veeam.veeamEnterprise.Task[]"
+          "responseType": "veeam.veeamEnterprise.Task[]",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
         }
       ],
       "path": "/veeam/veeamEnterprise/{serviceName}/update"

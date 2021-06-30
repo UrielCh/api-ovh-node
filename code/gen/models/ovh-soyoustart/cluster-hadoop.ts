@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.hadoop"
+          "responseType": "cluster.hadoop.hadoop",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}"
@@ -69,7 +77,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.ClusterConsumption"
+          "responseType": "cluster.hadoop.ClusterConsumption",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/consumptions"
@@ -95,7 +107,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]"
+          "responseType": "ipBlock[]",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         },
         {
           "apiStatus": {
@@ -131,7 +147,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/networkAcl"
@@ -165,7 +185,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         },
         {
           "apiStatus": {
@@ -193,7 +217,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.NetworkAcl"
+          "responseType": "cluster.hadoop.NetworkAcl",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         },
         {
           "apiStatus": {
@@ -228,7 +256,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/networkAcl/{block}"
@@ -262,7 +294,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/node"
@@ -296,7 +332,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         },
         {
           "apiStatus": {
@@ -324,7 +364,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Node"
+          "responseType": "cluster.hadoop.Node",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/node/{hostname}"
@@ -358,7 +402,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/node/{hostname}/decommission"
@@ -392,7 +440,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/node/{hostname}/recommission"
@@ -426,7 +478,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.RoleTypeEnum[]"
+          "responseType": "cluster.hadoop.RoleTypeEnum[]",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         },
         {
           "apiStatus": {
@@ -462,7 +518,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/node/{hostname}/role"
@@ -504,7 +564,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         },
         {
           "apiStatus": {
@@ -540,7 +604,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Role"
+          "responseType": "cluster.hadoop.Role",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}"
@@ -582,7 +650,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart"
@@ -624,7 +696,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start"
@@ -666,7 +742,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop"
@@ -692,7 +772,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.NodeBillingProfile[]"
+          "responseType": "cluster.hadoop.NodeBillingProfile[]",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/nodeBillingProfiles"
@@ -718,7 +802,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.NodeConsumption[]"
+          "responseType": "cluster.hadoop.NodeConsumption[]",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/nodeConsumptions"
@@ -744,7 +832,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/orderableNodeProfiles"
@@ -778,7 +870,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/orderNewNodeHourly"
@@ -804,7 +900,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/restart"
@@ -838,7 +938,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/service/restart"
@@ -872,7 +976,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/service/start"
@@ -906,7 +1014,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/service/stop"
@@ -932,7 +1044,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         },
         {
           "apiStatus": {
@@ -959,7 +1075,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/serviceInfos"
@@ -985,7 +1105,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/start"
@@ -1011,7 +1135,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/stop"
@@ -1045,7 +1173,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/task"
@@ -1079,7 +1211,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/task/{taskId}"
@@ -1105,7 +1241,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/terminate"
@@ -1131,7 +1271,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1191,7 +1335,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/user"
@@ -1225,7 +1373,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1253,7 +1405,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.User"
+          "responseType": "cluster.hadoop.User",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1288,7 +1444,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/user/{username}"
@@ -1330,7 +1490,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task"
+          "responseType": "cluster.hadoop.Task",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/user/{username}/resetPassword"
@@ -1347,7 +1511,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "cluster.hadoop.NodeBillingProfile[]"
+          "responseType": "cluster.hadoop.NodeBillingProfile[]",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/orderableNodeProfiles"
@@ -1364,7 +1532,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "cluster.hadoop.OrderInformations"
+          "responseType": "cluster.hadoop.OrderInformations",
+          "scopes": [
+            "all",
+            "product/cluster-hadoop/all"
+          ]
         }
       ],
       "path": "/cluster/hadoop/orderInformations"

@@ -221,10 +221,6 @@ export interface License {
                  * POST /license/cpanel/{serviceName}/changeIp
                  */
                 $post(params: { destinationIp: string }): Promise<license.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             confirmTermination: {
                 /**
@@ -232,10 +228,6 @@ export interface License {
                  * POST /license/cpanel/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -281,10 +273,6 @@ export interface License {
                  * POST /license/cpanel/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/office"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeTenant"
+          "responseType": "license.office.OfficeTenant",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         },
         {
           "apiStatus": {
@@ -70,7 +78,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/office/{serviceName}"
@@ -96,7 +108,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/office/{serviceName}/domain"
@@ -130,7 +146,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeDomain"
+          "responseType": "license.office.OfficeDomain",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/office/{serviceName}/domain/{domainName}"
@@ -156,7 +176,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/office/{serviceName}/pendingTask"
@@ -190,7 +214,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeTask"
+          "responseType": "license.office.OfficeTask",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/office/{serviceName}/pendingTask/{id}"
@@ -216,7 +244,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         },
         {
           "apiStatus": {
@@ -243,7 +275,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/office/{serviceName}/serviceInfos"
@@ -285,7 +321,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.office.Statistics[]"
+          "responseType": "license.office.Statistics[]",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/office/{serviceName}/usageStatistics"
@@ -343,7 +383,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         },
         {
           "apiStatus": {
@@ -411,7 +455,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeTask"
+          "responseType": "license.office.OfficeTask",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/office/{serviceName}/user"
@@ -445,7 +493,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeTask"
+          "responseType": "license.office.OfficeTask",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         },
         {
           "apiStatus": {
@@ -473,7 +525,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeUser"
+          "responseType": "license.office.OfficeUser",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         },
         {
           "apiStatus": {
@@ -508,7 +564,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/office/{serviceName}/user/{activationEmail}"
@@ -566,7 +626,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeTask"
+          "responseType": "license.office.OfficeTask",
+          "scopes": [
+            "all",
+            "product/licenses/all"
+          ]
         }
       ],
       "path": "/license/office/{serviceName}/user/{activationEmail}/changePassword"

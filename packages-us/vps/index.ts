@@ -744,10 +744,6 @@ export interface Vps {
                  * POST /vps/{serviceName}/automatedBackup/detachBackup
                  */
                 $post(params: { restorePoint: string }): Promise<vps.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             reschedule: {
                 /**
@@ -755,10 +751,6 @@ export interface Vps {
                  * POST /vps/{serviceName}/automatedBackup/reschedule
                  */
                 $post(params: { schedule: string }): Promise<vps.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             restore: {
                 /**
@@ -766,10 +758,6 @@ export interface Vps {
                  * POST /vps/{serviceName}/automatedBackup/restore
                  */
                 $post(params: { changePassword?: boolean, restorePoint: string, type: vps.RestoreTypeEnum }): Promise<vps.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             restorePoints: {
                 /**
@@ -789,10 +777,6 @@ export interface Vps {
              * POST /vps/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         createSnapshot: {
             /**
@@ -800,10 +784,6 @@ export interface Vps {
              * POST /vps/{serviceName}/createSnapshot
              */
             $post(params?: { description?: string }): Promise<vps.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         datacenter: {
             /**
@@ -871,10 +851,6 @@ export interface Vps {
              * POST /vps/{serviceName}/getConsoleUrl
              */
             $post(): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         images: {
             available: {
@@ -1014,10 +990,6 @@ export interface Vps {
              * POST /vps/{serviceName}/reboot
              */
             $post(): Promise<vps.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         rebuild: {
             /**
@@ -1025,10 +997,6 @@ export interface Vps {
              * POST /vps/{serviceName}/rebuild
              */
             $post(params: { doNotSendPassword?: boolean, imageId: string, installRTM?: boolean, sshKey?: string }): Promise<vps.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         secondaryDnsDomains: {
             /**
@@ -1131,10 +1099,6 @@ export interface Vps {
                  * POST /vps/{serviceName}/snapshot/revert
                  */
                 $post(): Promise<vps.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         start: {
@@ -1143,10 +1107,6 @@ export interface Vps {
              * POST /vps/{serviceName}/start
              */
             $post(): Promise<vps.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         statistics: {
             /**
@@ -1165,10 +1125,6 @@ export interface Vps {
              * POST /vps/{serviceName}/stop
              */
             $post(): Promise<vps.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         tasks: {
             /**
@@ -1198,10 +1154,6 @@ export interface Vps {
              * POST /vps/{serviceName}/terminate
              */
             $post(): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     };
 }

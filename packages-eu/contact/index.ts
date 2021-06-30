@@ -60,10 +60,6 @@ export interface Contact {
              * POST /contact/form/send
              */
             $post(params: { form: complexType.SafeKeyValue<string>[], type: string }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     }
 }

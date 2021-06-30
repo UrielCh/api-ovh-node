@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs"
@@ -46,7 +50,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Service"
+          "responseType": "dbaas.logs.Service",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -80,7 +88,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}"
@@ -130,7 +142,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/changeContact"
@@ -159,7 +175,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/cluster"
@@ -198,7 +218,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Cluster"
+          "responseType": "dbaas.logs.Cluster",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -246,7 +270,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}"
@@ -286,7 +314,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}/retention"
@@ -335,7 +367,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.ClusterRetention"
+          "responseType": "dbaas.logs.ClusterRetention",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}/retention/{retentionId}"
@@ -364,7 +400,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -411,7 +451,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/input"
@@ -453,7 +497,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -486,7 +534,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Input"
+          "responseType": "dbaas.logs.Input",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -541,7 +593,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/input/{inputId}"
@@ -580,7 +636,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.InputAction[]"
+          "responseType": "dbaas.logs.InputAction[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/input/{inputId}/action"
@@ -623,7 +683,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/input/{inputId}/configtest"
@@ -662,7 +726,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.TestResult"
+          "responseType": "dbaas.logs.TestResult",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/input/{inputId}/configtest/result"
@@ -702,7 +770,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.FlowggerConfiguration"
+          "responseType": "dbaas.logs.FlowggerConfiguration",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -747,7 +819,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger"
@@ -786,7 +862,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.LogstashConfiguration"
+          "responseType": "dbaas.logs.LogstashConfiguration",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -832,7 +912,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash"
@@ -875,7 +959,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/input/{inputId}/end"
@@ -916,7 +1004,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.TemporaryLogsLink"
+          "responseType": "dbaas.logs.TemporaryLogsLink",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/input/{inputId}/logs/url"
@@ -959,7 +1051,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/input/{inputId}/restart"
@@ -1002,7 +1098,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/input/{inputId}/start"
@@ -1041,7 +1141,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Url[]"
+          "responseType": "dbaas.logs.Url[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/input/{inputId}/url"
@@ -1070,7 +1174,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.ServiceMetric"
+          "responseType": "dbaas.logs.ServiceMetric",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/metrics"
@@ -1099,7 +1207,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/operation"
@@ -1138,7 +1250,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/operation/{operationId}"
@@ -1167,7 +1283,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1208,7 +1328,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias"
@@ -1249,7 +1373,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1282,7 +1410,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Alias"
+          "responseType": "dbaas.logs.Alias",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1326,7 +1458,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}"
@@ -1365,7 +1501,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1411,7 +1551,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index"
@@ -1462,7 +1606,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}"
@@ -1501,7 +1649,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1517,7 +1669,7 @@ export const schema: Schema = {
             "Client::Forbidden::Busy",
             "Client::Forbidden::NotOnSameCluster",
             "Client::Forbidden::OnlyOwnerCanPerformAction",
-            "Client::Forbidden::StreamAlreadyLinked",
+            "Client::Forbidden::NotOnSameCluster",
             "Client::NotFound::AliasDoesNotExists",
             "Client::NotFound::ServiceDoesNotExists"
           ],
@@ -1548,7 +1700,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream"
@@ -1599,7 +1755,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}"
@@ -1638,7 +1798,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Url[]"
+          "responseType": "dbaas.logs.Url[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/url"
@@ -1667,7 +1831,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1709,7 +1877,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index"
@@ -1751,7 +1923,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1784,7 +1960,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Index"
+          "responseType": "dbaas.logs.Index",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1828,7 +2008,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}"
@@ -1868,7 +2052,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Url[]"
+          "responseType": "dbaas.logs.Url[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}/url"
@@ -1897,7 +2085,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1933,7 +2125,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/kibana"
@@ -1975,7 +2171,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2009,7 +2209,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Kibana"
+          "responseType": "dbaas.logs.Kibana",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2052,7 +2256,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/kibana/{kibanaId}"
@@ -2091,7 +2299,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Url[]"
+          "responseType": "dbaas.logs.Url[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/kibana/{kibanaId}/url"
@@ -2120,7 +2332,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2155,7 +2371,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/dashboard"
@@ -2196,7 +2416,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2229,7 +2453,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Dashboard"
+          "responseType": "dbaas.logs.Dashboard",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2275,7 +2503,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}"
@@ -2331,7 +2563,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/duplicate"
@@ -2369,7 +2605,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Url[]"
+          "responseType": "dbaas.logs.Url[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/url"
@@ -2398,7 +2638,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2441,7 +2685,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream"
@@ -2487,7 +2735,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2520,7 +2772,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Stream"
+          "responseType": "dbaas.logs.Stream",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2571,7 +2827,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}"
@@ -2610,7 +2870,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2659,7 +2923,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert"
@@ -2709,7 +2977,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2751,7 +3023,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.StreamAlertCondition"
+          "responseType": "dbaas.logs.StreamAlertCondition",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2808,7 +3084,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}"
@@ -2847,7 +3127,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive"
@@ -2895,7 +3179,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Archive"
+          "responseType": "dbaas.logs.Archive",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}"
@@ -2944,7 +3232,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.ArchiveUrl"
+          "responseType": "dbaas.logs.ArchiveUrl",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/url"
@@ -2983,7 +3275,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3032,7 +3328,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule"
@@ -3083,7 +3383,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3125,7 +3429,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.StreamRule"
+          "responseType": "dbaas.logs.StreamRule",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}"
@@ -3164,7 +3472,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Url[]"
+          "responseType": "dbaas.logs.Url[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/url"
@@ -3193,7 +3505,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3229,7 +3545,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/role"
@@ -3270,7 +3590,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3303,7 +3627,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Role"
+          "responseType": "dbaas.logs.Role",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3348,7 +3676,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/role/{roleId}"
@@ -3387,7 +3719,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3432,7 +3768,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/member"
@@ -3483,7 +3823,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3525,7 +3869,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Member"
+          "responseType": "dbaas.logs.Member",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3579,7 +3927,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/member/{username}"
@@ -3618,7 +3970,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission"
@@ -3668,7 +4024,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3710,7 +4070,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Permission"
+          "responseType": "dbaas.logs.Permission",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}"
@@ -3761,7 +4125,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/alias"
@@ -3812,7 +4180,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard"
@@ -3863,7 +4235,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/index"
@@ -3914,7 +4290,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/kibana"
@@ -3965,7 +4345,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/stream"
@@ -3991,7 +4375,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4018,7 +4406,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/serviceInfos"
@@ -4047,7 +4439,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4085,7 +4481,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/token"
@@ -4127,7 +4527,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4160,7 +4564,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Token"
+          "responseType": "dbaas.logs.Token",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/token/{tokenId}"
@@ -4189,7 +4597,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Url[]"
+          "responseType": "dbaas.logs.Url[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/url"
@@ -4228,7 +4640,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation"
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/{serviceName}/user/changePassword"
@@ -4245,7 +4661,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/input/engine"
@@ -4275,7 +4695,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Engine"
+          "responseType": "dbaas.logs.Engine",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/input/engine/{engineId}"
@@ -4304,7 +4728,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/input/engine/{engineId}/helper"
@@ -4342,7 +4770,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Helper"
+          "responseType": "dbaas.logs.Helper",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
         }
       ],
       "path": "/dbaas/logs/input/engine/{engineId}/helper/{helperId}"

@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/ssl/all"
+          ]
         }
       ],
       "path": "/ssl"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ssl.Certificate"
+          "responseType": "ssl.Certificate",
+          "scopes": [
+            "all",
+            "product/ssl/all"
+          ]
         }
       ],
       "path": "/ssl/{serviceName}"
@@ -69,7 +77,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/ssl/all"
+          ]
         },
         {
           "apiStatus": {
@@ -96,7 +108,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ssl/all"
+          ]
         }
       ],
       "path": "/ssl/{serviceName}/serviceInfos"
@@ -122,7 +138,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ssl/all"
+          ]
         }
       ],
       "path": "/ssl/{serviceName}/tasks"
@@ -156,7 +176,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ssl.Operation"
+          "responseType": "ssl.Operation",
+          "scopes": [
+            "all",
+            "product/ssl/all"
+          ]
         }
       ],
       "path": "/ssl/{serviceName}/tasks/{taskId}"

@@ -334,6 +334,13 @@ export namespace cloud {
     }
     /**
      * Missing description
+     * interface fullName: cloud.ProjectKubeRestart.ProjectKubeRestart
+     */
+    export interface ProjectKubeRestart {
+        force?: boolean;
+    }
+    /**
+     * Missing description
      * interface fullName: cloud.ProjectKubeUpdate.ProjectKubeUpdate
      */
     export interface ProjectKubeUpdate {
@@ -1120,7 +1127,7 @@ export namespace cloud {
          * Enum values for category
          * type fullname: cloud.kube.FlavorCategoryEnum
          */
-        export type FlavorCategoryEnum = "c" | "g" | "t" | "b" | "r" | "i"
+        export type FlavorCategoryEnum = "b" | "c" | "d" | "g" | "i" | "r" | "t"
         /**
          * Enum values for State
          * type fullname: cloud.kube.FlavorStateEnum
@@ -1651,7 +1658,7 @@ export namespace cloud {
              */
             export interface EntryPoint {
                 defaultTarget?: string;
-                disableH2: boolean;
+                disableH2?: boolean;
                 name: string;
                 portRanges?: cloud.project.loadbalancer.PortRange[];
                 ports?: number[];
@@ -2427,10 +2434,6 @@ export interface Cloud {
                  * POST /cloud/project/{serviceName}/activateMonthlyBilling
                  */
                 $post(params: { instances: cloud.instance.MonthlyInstanceBulkParams[] }): Promise<cloud.instance.InstanceDetail[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             capabilities: {
                 kube: {
@@ -2553,10 +2556,6 @@ export interface Cloud {
                  * POST /cloud/project/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             flavor: {
                 /**
@@ -2623,10 +2622,6 @@ export interface Cloud {
                      * POST /cloud/project/{serviceName}/instance/bulk
                      */
                     $post(params: { autobackup?: cloud.instance.AutoBackup, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkBulkParams[], number: number, region: string, sshKeyId?: string, userData?: string, volumeId?: string }): Promise<cloud.instance.Instance[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 group: {
                     /**
@@ -2686,10 +2681,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/activeMonthlyBilling
                          */
                         $post(): Promise<cloud.instance.InstanceDetail>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     applicationAccess: {
                         /**
@@ -2697,10 +2688,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/applicationAccess
                          */
                         $post(): Promise<cloud.instance.ApplicationAccess>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     interface: {
                         /**
@@ -2751,10 +2738,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/reboot
                          */
                         $post(params: { type: cloud.instance.RebootTypeEnum }): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     reinstall: {
                         /**
@@ -2762,10 +2745,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/reinstall
                          */
                         $post(params: { imageId: string }): Promise<cloud.instance.InstanceDetail>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     rescueMode: {
                         /**
@@ -2773,10 +2752,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/rescueMode
                          */
                         $post(params: { imageId?: string, rescue: boolean }): Promise<cloud.instance.RescueAdminPassword>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     resize: {
                         /**
@@ -2784,10 +2759,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/resize
                          */
                         $post(params: { flavorId: string }): Promise<cloud.instance.InstanceDetail>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     resume: {
                         /**
@@ -2795,10 +2766,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/resume
                          */
                         $post(): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     shelve: {
                         /**
@@ -2806,10 +2773,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/shelve
                          */
                         $post(): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     snapshot: {
                         /**
@@ -2817,10 +2780,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/snapshot
                          */
                         $post(params: { snapshotName: string }): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     start: {
                         /**
@@ -2828,10 +2787,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/start
                          */
                         $post(): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     stop: {
                         /**
@@ -2839,10 +2794,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/stop
                          */
                         $post(): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     unshelve: {
                         /**
@@ -2850,10 +2801,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/unshelve
                          */
                         $post(): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     vnc: {
                         /**
@@ -2861,10 +2808,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/vnc
                          */
                         $post(): Promise<cloud.instance.InstanceVnc>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -2904,10 +2847,6 @@ export interface Cloud {
                              * POST /cloud/project/{serviceName}/ip/failover/{id}/attach
                              */
                             $post(params: { instanceId: string }): Promise<cloud.ip.FailoverIp>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -2964,10 +2903,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/auditLogs
                          */
                         $post(): Promise<cloud.kube.AuditLogs>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     flavors: {
                         /**
@@ -3006,10 +2941,6 @@ export interface Cloud {
                              * DELETE /cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions/{ip}
                              */
                             $delete(): Promise<void>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                     kubeconfig: {
@@ -3018,20 +2949,12 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/kubeconfig
                          */
                         $post(): Promise<cloud.kube.Kubeconfig>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         reset: {
                             /**
                              * Reset kubeconfig: Certificates will be regenerated, nodes will be reinstalled
                              * POST /cloud/project/{serviceName}/kube/{kubeId}/kubeconfig/reset
                              */
                             $post(): Promise<void>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     }
                     node: {
@@ -3120,10 +3043,13 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/reset
                          */
                         $post(params?: { privateNetworkId?: string, version?: cloud.kube.VersionEnum, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum }): Promise<void>;
+                    }
+                    restart: {
                         /**
-                         * Controle cache
+                         * Restarting your control plane apiserver to invalidate cache without downtime (using force will create a slight downtime)
+                         * POST /cloud/project/{serviceName}/kube/{kubeId}/restart
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $post(params?: { force?: boolean }): Promise<void>;
                     }
                     update: {
                         /**
@@ -3131,10 +3057,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/update
                          */
                         $post(params?: { strategy?: cloud.kube.UpdateStrategyEnum }): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     updatePolicy: {
                         /**
@@ -3142,10 +3064,6 @@ export interface Cloud {
                          * PUT /cloud/project/{serviceName}/kube/{kubeId}/updatePolicy
                          */
                         $put(params: { updatePolicy: cloud.kube.UpdatePolicyEnum }): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -3258,10 +3176,6 @@ export interface Cloud {
                                  * POST /cloud/project/{serviceName}/loadbalancer/{loadBalancerId}/configuration/{version}/apply
                                  */
                                 $post(): Promise<cloud.project.loadbalancer.Configuration>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                         };
                     }
@@ -3336,10 +3250,6 @@ export interface Cloud {
                              * POST /cloud/project/{serviceName}/network/private/{networkId}/region
                              */
                             $post(params: { region: string }): Promise<cloud.network.Network>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         subnet: {
                             /**
@@ -3362,10 +3272,6 @@ export interface Cloud {
                                  * DELETE /cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}
                                  */
                                 $delete(): Promise<void>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
                     };
@@ -3388,10 +3294,6 @@ export interface Cloud {
                  * POST /cloud/project/{serviceName}/openstackClient
                  */
                 $post(): Promise<cloud.openstackClient.Session>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             operation: {
                 /**
@@ -3658,10 +3560,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/stack/{stackId}/client
                          */
                         $post(): Promise<cloud.openstackClient.Session>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -3727,10 +3625,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/storage/{containerId}/cors
                          */
                         $post(params: { origin: string }): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     publicUrl: {
                         /**
@@ -3738,10 +3632,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/storage/{containerId}/publicUrl
                          */
                         $post(params: { expirationDate: string, objectName: string }): Promise<cloud.storage.ContainerObjectTempURL>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     static: {
                         /**
@@ -3749,10 +3639,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/storage/{containerId}/static
                          */
                         $post(): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     user: {
                         /**
@@ -3760,10 +3646,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/storage/{containerId}/user
                          */
                         $post(params: { description?: string, right: cloud.storage.RightEnum }): Promise<cloud.user.UserDetail>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -3773,10 +3655,6 @@ export interface Cloud {
                  * POST /cloud/project/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             user: {
                 /**
@@ -3836,10 +3714,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/user/{userId}/regeneratePassword
                          */
                         $post(): Promise<cloud.user.UserDetail>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     role: {
                         /**
@@ -3916,10 +3790,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/user/{userId}/token
                          */
                         $post(params: { password: string }): Promise<cloud.authentication.Token>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -3991,10 +3861,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/volume/{volumeId}/attach
                          */
                         $post(params: { instanceId: string }): Promise<cloud.volume.Volume>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     detach: {
                         /**
@@ -4002,10 +3868,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/volume/{volumeId}/detach
                          */
                         $post(params: { instanceId: string }): Promise<cloud.volume.Volume>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     snapshot: {
                         /**
@@ -4013,10 +3875,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/volume/{volumeId}/snapshot
                          */
                         $post(params?: { description?: string, name?: string }): Promise<cloud.volume.Snapshot>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     upsize: {
                         /**
@@ -4024,10 +3882,6 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/volume/{volumeId}/upsize
                          */
                         $post(params: { size: number }): Promise<cloud.volume.Volume>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }

@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Ip"
+          "responseType": "ipLoadbalancing.Ip",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -70,7 +78,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}"
@@ -96,7 +108,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.FarmAvailableProbe[]"
+          "responseType": "ipLoadbalancing.FarmAvailableProbe[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/availableFarmProbes"
@@ -122,7 +138,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/availableFarmType"
@@ -148,7 +168,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/availableFrontendType"
@@ -174,7 +198,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteAvailableAction[]"
+          "responseType": "ipLoadbalancing.RouteAvailableAction[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/availableRouteActions"
@@ -200,7 +228,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteAvailableRule[]"
+          "responseType": "ipLoadbalancing.RouteAvailableRule[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/availableRouteRules"
@@ -250,7 +282,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/changeContact"
@@ -308,7 +344,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/confirmTermination"
@@ -342,7 +382,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "ipLoadbalancing.DefinedFarm[]"
+          "responseType": "ipLoadbalancing.DefinedFarm[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/definedFarms"
@@ -368,7 +412,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.DefinedFrontend[]"
+          "responseType": "ipLoadbalancing.DefinedFrontend[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/definedFrontends"
@@ -394,7 +442,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.DefinedRoute[]"
+          "responseType": "ipLoadbalancing.DefinedRoute[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/definedRoutes"
@@ -420,7 +472,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]"
+          "responseType": "ipBlock[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/failover"
@@ -454,7 +510,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Task.Task"
+          "responseType": "ipLoadbalancing.Task.Task",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/freeCertificate"
@@ -496,7 +556,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -572,7 +636,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendHttp.BackendHttp"
+          "responseType": "ipLoadbalancing.backendHttp.BackendHttp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/http/farm"
@@ -606,7 +674,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -634,7 +706,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendHttp.BackendHttp"
+          "responseType": "ipLoadbalancing.backendHttp.BackendHttp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -669,7 +745,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/http/farm/{farmId}"
@@ -727,7 +807,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -843,7 +927,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer"
+          "responseType": "ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server"
@@ -885,7 +973,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -921,7 +1013,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer"
+          "responseType": "ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -964,7 +1060,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}"
@@ -1014,7 +1114,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1138,7 +1242,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.frontendHttp.FrontendHttp"
+          "responseType": "ipLoadbalancing.frontendHttp.FrontendHttp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/http/frontend"
@@ -1172,7 +1280,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1200,7 +1312,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.frontendHttp.FrontendHttp"
+          "responseType": "ipLoadbalancing.frontendHttp.FrontendHttp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1235,7 +1351,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}"
@@ -1269,7 +1389,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1321,7 +1445,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteHttp.RouteHttp"
+          "responseType": "ipLoadbalancing.RouteHttp.RouteHttp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/http/route"
@@ -1355,7 +1483,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1383,7 +1515,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteHttp.RouteHttp"
+          "responseType": "ipLoadbalancing.RouteHttp.RouteHttp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1418,7 +1554,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/http/route/{routeId}"
@@ -1452,7 +1592,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1528,7 +1672,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteRule.RouteRule"
+          "responseType": "ipLoadbalancing.RouteRule.RouteRule",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule"
@@ -1570,7 +1718,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1606,7 +1758,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteRule.RouteRule"
+          "responseType": "ipLoadbalancing.RouteRule.RouteRule",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1649,7 +1805,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}"
@@ -1677,7 +1837,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.InstancesState[]"
+          "responseType": "ipLoadbalancing.InstancesState[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/instancesState"
@@ -1703,7 +1867,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.NatIps[]"
+          "responseType": "ipLoadbalancing.NatIps[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/natIp"
@@ -1729,7 +1897,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.PendingChanges[]"
+          "responseType": "ipLoadbalancing.PendingChanges[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/pendingChanges"
@@ -1755,7 +1927,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/quota"
@@ -1789,7 +1965,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Quota.Quota"
+          "responseType": "ipLoadbalancing.Quota.Quota",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1824,7 +2004,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/quota/{zone}"
@@ -1874,7 +2058,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/quotaHistory"
@@ -1908,7 +2096,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.QuotaHistory.QuotaHistory"
+          "responseType": "ipLoadbalancing.QuotaHistory.QuotaHistory",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/quotaHistory/{id}"
@@ -1942,7 +2134,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Task.Task"
+          "responseType": "ipLoadbalancing.Task.Task",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/refresh"
@@ -1968,7 +2164,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1995,7 +2195,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/serviceInfos"
@@ -2045,7 +2249,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2097,7 +2305,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Ssl.Ssl"
+          "responseType": "ipLoadbalancing.Ssl.Ssl",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/ssl"
@@ -2131,7 +2343,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2159,7 +2375,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Ssl.Ssl"
+          "responseType": "ipLoadbalancing.Ssl.Ssl",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2194,7 +2414,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/ssl/{id}"
@@ -2220,7 +2444,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Status"
+          "responseType": "ipLoadbalancing.Status",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/status"
@@ -2294,7 +2522,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/task"
@@ -2328,7 +2560,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Task.Task"
+          "responseType": "ipLoadbalancing.Task.Task",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/task/{id}"
@@ -2370,7 +2606,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2446,7 +2686,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendTcp.BackendTcp"
+          "responseType": "ipLoadbalancing.backendTcp.BackendTcp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/tcp/farm"
@@ -2480,7 +2724,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2508,7 +2756,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendTcp.BackendTcp"
+          "responseType": "ipLoadbalancing.backendTcp.BackendTcp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2543,7 +2795,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}"
@@ -2593,7 +2849,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2701,7 +2961,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer"
+          "responseType": "ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server"
@@ -2743,7 +3007,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2779,7 +3047,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer"
+          "responseType": "ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2822,7 +3094,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}"
@@ -2872,7 +3148,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2972,7 +3252,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.frontendTcp.FrontendTcp"
+          "responseType": "ipLoadbalancing.frontendTcp.FrontendTcp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/tcp/frontend"
@@ -3006,7 +3290,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3034,7 +3322,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.frontendTcp.FrontendTcp"
+          "responseType": "ipLoadbalancing.frontendTcp.FrontendTcp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3069,7 +3361,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}"
@@ -3103,7 +3399,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3155,7 +3455,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteTcp.RouteTcp"
+          "responseType": "ipLoadbalancing.RouteTcp.RouteTcp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/tcp/route"
@@ -3189,7 +3493,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3217,7 +3525,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteTcp.RouteTcp"
+          "responseType": "ipLoadbalancing.RouteTcp.RouteTcp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3252,7 +3564,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}"
@@ -3286,7 +3602,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3362,7 +3682,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteRule.RouteRule"
+          "responseType": "ipLoadbalancing.RouteRule.RouteRule",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule"
@@ -3404,7 +3728,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3440,7 +3768,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteRule.RouteRule"
+          "responseType": "ipLoadbalancing.RouteRule.RouteRule",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3483,7 +3815,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}"
@@ -3509,7 +3845,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/terminate"
@@ -3551,7 +3891,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3603,7 +3947,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendUdp.BackendUdp"
+          "responseType": "ipLoadbalancing.backendUdp.BackendUdp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/udp/farm"
@@ -3637,7 +3985,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3665,7 +4017,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendUdp.BackendUdp"
+          "responseType": "ipLoadbalancing.backendUdp.BackendUdp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3700,7 +4056,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/udp/farm/{farmId}"
@@ -3750,7 +4110,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3810,7 +4174,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer"
+          "responseType": "ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server"
@@ -3852,7 +4220,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3888,7 +4260,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer"
+          "responseType": "ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3931,7 +4307,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}"
@@ -3981,7 +4361,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4049,7 +4433,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.frontendUdp.FrontendUdp"
+          "responseType": "ipLoadbalancing.frontendUdp.FrontendUdp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/udp/frontend"
@@ -4083,7 +4471,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4111,7 +4503,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.frontendUdp.FrontendUdp"
+          "responseType": "ipLoadbalancing.frontendUdp.FrontendUdp",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4146,7 +4542,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}"
@@ -4188,7 +4588,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4248,7 +4652,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.VrackNetwork.VrackNetwork"
+          "responseType": "ipLoadbalancing.VrackNetwork.VrackNetwork",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/vrack/network"
@@ -4282,7 +4690,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4310,7 +4722,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.VrackNetwork.VrackNetwork"
+          "responseType": "ipLoadbalancing.VrackNetwork.VrackNetwork",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4345,7 +4761,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}"
@@ -4387,7 +4807,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.VrackNetwork.VrackNetwork"
+          "responseType": "ipLoadbalancing.VrackNetwork.VrackNetwork",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}/updateFarmId"
@@ -4413,7 +4837,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.VrackNetworkCreationRules"
+          "responseType": "ipLoadbalancing.VrackNetworkCreationRules",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/vrack/networkCreationRules"
@@ -4439,7 +4867,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.VrackInformation"
+          "responseType": "ipLoadbalancing.VrackInformation",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/vrack/status"
@@ -4465,7 +4897,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/zone"
@@ -4499,7 +4935,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Zone.Zone"
+          "responseType": "ipLoadbalancing.Zone.Zone",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/zone/{name}"
@@ -4533,7 +4973,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/zone/{name}/cancelTermination"
@@ -4567,7 +5011,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/zone/{name}/terminate"
@@ -4586,7 +5034,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/ipLoadbalancing/all"
+          ]
         }
       ],
       "path": "/ipLoadbalancing/availableZones"

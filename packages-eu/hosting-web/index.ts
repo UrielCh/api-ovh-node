@@ -1514,10 +1514,6 @@ export interface Hosting {
                  * POST /hosting/web/localSeo/visibilityCheck
                  */
                 $post(params: { country: hosting.web.localSeo.location.CountryEnum, name: string, street: string, zip: string }): Promise<hosting.web.localSeo.VisibilityCheckResponse>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             visibilityCheckResult: {
                 /**
@@ -1585,10 +1581,6 @@ export interface Hosting {
                  * POST /hosting/web/{serviceName}/activatePrivateDatabase
                  */
                 $post(params: { ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum }): Promise<hosting.web.task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             attachedDomain: {
                 /**
@@ -1631,10 +1623,6 @@ export interface Hosting {
                          * POST /hosting/web/{serviceName}/attachedDomain/{domain}/purgeCache
                          */
                         $post(): Promise<hosting.web.task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     restart: {
                         /**
@@ -1642,10 +1630,6 @@ export interface Hosting {
                          * POST /hosting/web/{serviceName}/attachedDomain/{domain}/restart
                          */
                         $post(): Promise<hosting.web.task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -1777,10 +1761,6 @@ export interface Hosting {
                              * POST /hosting/web/{serviceName}/cdn/domain/{domainName}/purge
                              */
                             $post(): Promise<cdn.operation>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         refresh: {
                             /**
@@ -1788,10 +1768,6 @@ export interface Hosting {
                              * POST /hosting/web/{serviceName}/cdn/domain/{domainName}/refresh
                              */
                             $post(): Promise<cdn.operation>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         statistics: {
                             /**
@@ -1845,10 +1821,6 @@ export interface Hosting {
                      * POST /hosting/web/{serviceName}/cdn/serviceInfosUpdate
                      */
                     $post(params: { renew: service.RenewType }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 terminate: {
                     /**
@@ -1856,10 +1828,6 @@ export interface Hosting {
                      * POST /hosting/web/{serviceName}/cdn/terminate
                      */
                     $post(): Promise<string>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             changeContact: {
@@ -1868,10 +1836,6 @@ export interface Hosting {
                  * POST /hosting/web/{serviceName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             configuration: {
                 /**
@@ -1895,10 +1859,6 @@ export interface Hosting {
                  * POST /hosting/web/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             cron: {
                 /**
@@ -1995,10 +1955,6 @@ export interface Hosting {
                          * POST /hosting/web/{serviceName}/database/{name}/changePassword
                          */
                         $post(params: { password: string }): Promise<hosting.web.task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     dump: {
                         /**
@@ -2036,10 +1992,6 @@ export interface Hosting {
                                  * POST /hosting/web/{serviceName}/database/{name}/dump/{id}/restore
                                  */
                                 $post(): Promise<hosting.web.task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                         };
                     }
@@ -2049,10 +2001,6 @@ export interface Hosting {
                          * POST /hosting/web/{serviceName}/database/{name}/import
                          */
                         $post(params: { documentId: string, flushDatabase?: boolean, sendEmail?: boolean }): Promise<hosting.web.task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     request: {
                         /**
@@ -2060,10 +2008,6 @@ export interface Hosting {
                          * POST /hosting/web/{serviceName}/database/{name}/request
                          */
                         $post(params: { action: hosting.web.database.RequestActionEnum }): Promise<hosting.web.task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     restore: {
                         /**
@@ -2071,10 +2015,6 @@ export interface Hosting {
                          * POST /hosting/web/{serviceName}/database/{name}/restore
                          */
                         $post(params: { date: hosting.web.database.dump.DateEnum, sendEmail?: boolean }): Promise<hosting.web.task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     statistics: {
                         /**
@@ -2181,10 +2121,6 @@ export interface Hosting {
                      * POST /hosting/web/{serviceName}/email/request
                      */
                     $post(params: { action: hosting.web.mail.ActionEnum }): Promise<string>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 volumes: {
                     /**
@@ -2235,10 +2171,6 @@ export interface Hosting {
                          * POST /hosting/web/{serviceName}/emailOption/{id}/terminate
                          */
                         $post(): Promise<string>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -2327,10 +2259,6 @@ export interface Hosting {
                          * POST /hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfosUpdate
                          */
                         $post(params: { renew: service.RenewType }): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     terminate: {
                         /**
@@ -2338,10 +2266,6 @@ export interface Hosting {
                          * POST /hosting/web/{serviceName}/extraSqlPerso/{name}/terminate
                          */
                         $post(): Promise<string>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -2421,10 +2345,6 @@ export interface Hosting {
                              * POST /hosting/web/{serviceName}/localSeo/account/{id}/login
                              */
                             $post(): Promise<string>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -2476,10 +2396,6 @@ export interface Hosting {
                              * POST /hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate
                              */
                             $post(params: { renew: service.RenewType }): Promise<void>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         terminate: {
                             /**
@@ -2487,10 +2403,6 @@ export interface Hosting {
                              * POST /hosting/web/{serviceName}/localSeo/location/{id}/terminate
                              */
                             $post(): Promise<string>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -2531,10 +2443,6 @@ export interface Hosting {
                          * POST /hosting/web/{serviceName}/module/{id}/changePassword
                          */
                         $post(): Promise<hosting.web.task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -2564,10 +2472,6 @@ export interface Hosting {
                          * POST /hosting/web/{serviceName}/ovhConfig/{id}/changeConfiguration
                          */
                         $post(params?: { container?: hosting.web.ovhconfig.ContainerEnum, engineName?: hosting.web.ovhConfig.EngineNameEnum, engineVersion?: hosting.web.ovhConfig.AvailableEngineVersionEnum, environment?: hosting.web.ovhConfig.EnvironmentEnum, httpFirewall?: hosting.web.ovhConfig.HttpFirewallEnum }): Promise<hosting.web.task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     rollback: {
                         /**
@@ -2575,10 +2479,6 @@ export interface Hosting {
                          * POST /hosting/web/{serviceName}/ovhConfig/{id}/rollback
                          */
                         $post(params: { rollbackId: number }): Promise<hosting.web.task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -2610,10 +2510,6 @@ export interface Hosting {
                  * POST /hosting/web/{serviceName}/ovhConfigRefresh
                  */
                 $post(): Promise<hosting.web.task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             ownLogs: {
                 /**
@@ -2676,10 +2572,6 @@ export interface Hosting {
                                  * POST /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}/changePassword
                                  */
                                 $post(params: { password: string }): Promise<string>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                         };
                     }
@@ -2713,10 +2605,6 @@ export interface Hosting {
                  * POST /hosting/web/{serviceName}/request
                  */
                 $post(params: { action: hosting.web.RequestActionEnum }): Promise<hosting.web.task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             requestBoost: {
                 /**
@@ -2724,10 +2612,6 @@ export interface Hosting {
                  * POST /hosting/web/{serviceName}/requestBoost
                  */
                 $post(params?: { offer?: hosting.web.OfferEnum }): Promise<hosting.web.task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             restoreSnapshot: {
                 /**
@@ -2735,10 +2619,6 @@ export interface Hosting {
                  * POST /hosting/web/{serviceName}/restoreSnapshot
                  */
                 $post(params: { backup: hosting.web.backup.TypeEnum }): Promise<hosting.web.task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             runtime: {
                 /**
@@ -2852,10 +2732,6 @@ export interface Hosting {
                      * POST /hosting/web/{serviceName}/ssl/regenerate
                      */
                     $post(): Promise<hosting.web.ssl>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 report: {
                     /**
@@ -2908,10 +2784,6 @@ export interface Hosting {
                  * POST /hosting/web/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             token: {
                 /**
@@ -2965,10 +2837,6 @@ export interface Hosting {
                          * POST /hosting/web/{serviceName}/user/{login}/changePassword
                          */
                         $post(params: { password: string }): Promise<hosting.web.task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -3013,10 +2881,6 @@ export interface Hosting {
                          * POST /hosting/web/{serviceName}/userLogs/{login}/changePassword
                          */
                         $post(params: { password: string }): Promise<string>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }

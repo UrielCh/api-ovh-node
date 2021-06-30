@@ -26,7 +26,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "webPaaS.Capabilities"
+          "responseType": "webPaaS.Capabilities",
+          "scopes": [
+            "all",
+            "product/webPaaS/all"
+          ]
         }
       ],
       "path": "/webPaaS/capabilities"
@@ -43,7 +47,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/webPaaS/all"
+          ]
         }
       ],
       "path": "/webPaaS/subscription"
@@ -69,7 +77,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "webPaaS.Subscription"
+          "responseType": "webPaaS.Subscription",
+          "scopes": [
+            "all",
+            "product/webPaaS/all"
+          ]
         }
       ],
       "path": "/webPaaS/subscription/{serviceName}"
@@ -127,7 +139,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/webPaaS/all"
+          ]
         }
       ],
       "path": "/webPaaS/subscription/{serviceName}/confirmTermination"
@@ -153,7 +169,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "webPaaS.subscription.Customer[]"
+          "responseType": "webPaaS.subscription.Customer[]",
+          "scopes": [
+            "all",
+            "product/webPaaS/all"
+          ]
         },
         {
           "apiStatus": {
@@ -180,7 +200,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "webPaaS.subscription.Customer"
+          "responseType": "webPaaS.subscription.Customer",
+          "scopes": [
+            "all",
+            "product/webPaaS/all"
+          ]
         }
       ],
       "path": "/webPaaS/subscription/{serviceName}/customer"
@@ -214,7 +238,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "webPaaS.subscription.Customer"
+          "responseType": "webPaaS.subscription.Customer",
+          "scopes": [
+            "all",
+            "product/webPaaS/all"
+          ]
         },
         {
           "apiStatus": {
@@ -242,7 +270,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "webPaaS.subscription.Customer"
+          "responseType": "webPaaS.subscription.Customer",
+          "scopes": [
+            "all",
+            "product/webPaaS/all"
+          ]
         }
       ],
       "path": "/webPaaS/subscription/{serviceName}/customer/{customerId}"
@@ -268,7 +300,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/webPaaS/all"
+          ]
         },
         {
           "apiStatus": {
@@ -295,7 +331,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/webPaaS/all"
+          ]
         }
       ],
       "path": "/webPaaS/subscription/{serviceName}/serviceInfos"
@@ -321,7 +361,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/webPaaS/all"
+          ]
         }
       ],
       "path": "/webPaaS/subscription/{serviceName}/terminate"

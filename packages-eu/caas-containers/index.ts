@@ -308,10 +308,6 @@ export interface Caas {
                  * POST /caas/containers/{serviceName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             frameworks: {
                 /**
@@ -350,10 +346,6 @@ export interface Caas {
                          * PUT /caas/containers/{serviceName}/frameworks/{frameworkId}/password
                          */
                         $put(params?: { password?: string }): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }

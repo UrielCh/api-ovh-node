@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         }
       ],
       "path": "/dedicated/nas"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nas.Nas"
+          "responseType": "dedicated.nas.Nas",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         },
         {
           "apiStatus": {
@@ -70,7 +78,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         }
       ],
       "path": "/dedicated/nas/{serviceName}"
@@ -96,7 +108,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         },
         {
           "apiStatus": {
@@ -140,7 +156,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task"
+          "responseType": "dedicated.nasTask.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         }
       ],
       "path": "/dedicated/nas/{serviceName}/partition"
@@ -174,7 +194,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task"
+          "responseType": "dedicated.nasTask.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         },
         {
           "apiStatus": {
@@ -202,7 +226,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nas.Partition"
+          "responseType": "dedicated.nas.Partition",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         },
         {
           "apiStatus": {
@@ -237,7 +265,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         }
       ],
       "path": "/dedicated/nas/{serviceName}/partition/{partitionName}"
@@ -271,7 +303,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]"
+          "responseType": "ipBlock[]",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         },
         {
           "apiStatus": {
@@ -307,7 +343,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task"
+          "responseType": "dedicated.nasTask.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         }
       ],
       "path": "/dedicated/nas/{serviceName}/partition/{partitionName}/access"
@@ -349,7 +389,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task"
+          "responseType": "dedicated.nasTask.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         },
         {
           "apiStatus": {
@@ -385,7 +429,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nas.Access"
+          "responseType": "dedicated.nas.Access",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         }
       ],
       "path": "/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}"
@@ -419,7 +467,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip[]"
+          "responseType": "ip[]",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         }
       ],
       "path": "/dedicated/nas/{serviceName}/partition/{partitionName}/authorizableIps"
@@ -453,7 +505,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         },
         {
           "apiStatus": {
@@ -497,7 +553,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task"
+          "responseType": "dedicated.nasTask.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         }
       ],
       "path": "/dedicated/nas/{serviceName}/partition/{partitionName}/quota"
@@ -539,7 +599,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task"
+          "responseType": "dedicated.nasTask.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         },
         {
           "apiStatus": {
@@ -575,7 +639,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nas.Quota"
+          "responseType": "dedicated.nas.Quota",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         }
       ],
       "path": "/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}"
@@ -601,7 +669,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         },
         {
           "apiStatus": {
@@ -628,7 +700,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         }
       ],
       "path": "/dedicated/nas/{serviceName}/serviceInfos"
@@ -670,7 +746,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         }
       ],
       "path": "/dedicated/nas/{serviceName}/task"
@@ -704,7 +784,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task"
+          "responseType": "dedicated.nasTask.Task",
+          "scopes": [
+            "all",
+            "product/dedicated-nas/all"
+          ]
         }
       ],
       "path": "/dedicated/nas/{serviceName}/task/{taskId}"

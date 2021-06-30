@@ -257,10 +257,6 @@ export interface License {
                  * POST /license/virtuozzo/{serviceName}/changeIp
                  */
                 $post(params: { destinationIp: string }): Promise<license.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             confirmTermination: {
                 /**
@@ -268,10 +264,6 @@ export interface License {
                  * POST /license/virtuozzo/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             option: {
                 /**
@@ -344,10 +336,6 @@ export interface License {
                  * POST /license/virtuozzo/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

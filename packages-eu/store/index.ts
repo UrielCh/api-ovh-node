@@ -150,10 +150,6 @@ export interface Store {
                      * DELETE /store/contact/{contactId}/document/{documentId}
                      */
                     $delete(): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
         };
@@ -179,10 +175,6 @@ export interface Store {
              * POST /store/document/cors
              */
             $post(params: { origin: string }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         $(documentId: string): {
             /**
@@ -257,10 +249,6 @@ export interface Store {
                      * DELETE /store/partner/{partnerId}/document/{documentId}
                      */
                     $delete(): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             product: {
@@ -319,10 +307,6 @@ export interface Store {
                              * DELETE /store/partner/{partnerId}/product/{productId}/document/{documentId}
                              */
                             $delete(): Promise<string[]>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                 };

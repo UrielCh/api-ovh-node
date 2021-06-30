@@ -226,10 +226,6 @@ export interface SslGateway {
              * POST /sslGateway/{serviceName}/changeContact
              */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         confirmTermination: {
             /**
@@ -237,10 +233,6 @@ export interface SslGateway {
              * POST /sslGateway/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         domain: {
             /**
@@ -291,10 +283,6 @@ export interface SslGateway {
              * POST /sslGateway/{serviceName}/renewCertificate
              */
             $post(params?: { domain?: string }): Promise<string[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         server: {
             /**
@@ -377,10 +365,6 @@ export interface SslGateway {
              * POST /sslGateway/{serviceName}/terminate
              */
             $post(): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     };
 }

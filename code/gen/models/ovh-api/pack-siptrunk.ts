@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/pack-siptrunk/all"
+          ]
         }
       ],
       "path": "/pack/siptrunk"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "pack.siptrunk.PackSipTrunk"
+          "responseType": "pack.siptrunk.PackSipTrunk",
+          "scopes": [
+            "all",
+            "product/pack-siptrunk/all"
+          ]
         }
       ],
       "path": "/pack/siptrunk/{packName}"
@@ -93,7 +101,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/pack-siptrunk/all"
+          ]
         }
       ],
       "path": "/pack/siptrunk/{packName}/changeContact"
@@ -119,7 +131,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/pack-siptrunk/all"
+          ]
         },
         {
           "apiStatus": {
@@ -146,7 +162,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/pack-siptrunk/all"
+          ]
         }
       ],
       "path": "/pack/siptrunk/{packName}/serviceInfos"

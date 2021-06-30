@@ -379,10 +379,6 @@ export interface Email {
                          * POST /email/mxplan/{service}/account/{email}/changePassword
                          */
                         $post(params: { password: string }): Promise<email.pro.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     diagnostic: {
                         /**
@@ -660,10 +656,6 @@ export interface Email {
                  * POST /email/mxplan/{service}/updateFlagsOnAllAccounts
                  */
                 $post(): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

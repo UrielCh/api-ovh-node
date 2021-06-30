@@ -253,10 +253,6 @@ export interface HorizonView {
                      * POST /horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout
                      */
                     $post(params: { expiration: number, onSingleAP?: horizonView.AccessPointTypeEnum }): Promise<horizonView.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 customerNetwork: {
                     /**
@@ -296,10 +292,6 @@ export interface HorizonView {
                      * POST /horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA
                      */
                     $post(): Promise<horizonView.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 disableWindowsUsernameOption: {
                     /**
@@ -307,10 +299,6 @@ export interface HorizonView {
                      * POST /horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption
                      */
                     $post(params?: { onSingleAP?: horizonView.AccessPointTypeEnum }): Promise<horizonView.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 enableTwoFA: {
                     /**
@@ -318,10 +306,6 @@ export interface HorizonView {
                      * POST /horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA
                      */
                     $post(params: { onSingleAP?: horizonView.AccessPointTypeEnum, radiusIp: string, secret: string }): Promise<horizonView.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 enableWindowsUsernameOption: {
                     /**
@@ -329,10 +313,6 @@ export interface HorizonView {
                      * POST /horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption
                      */
                     $post(params?: { onSingleAP?: horizonView.AccessPointTypeEnum }): Promise<horizonView.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -342,10 +322,6 @@ export interface HorizonView {
              * POST /horizonView/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         customerNetwork: {
             /**
@@ -425,10 +401,6 @@ export interface HorizonView {
                          * POST /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword
                          */
                         $post(params?: { password?: string }): Promise<horizonView.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -438,10 +410,6 @@ export interface HorizonView {
                  * POST /horizonView/{serviceName}/dedicatedHorizon/disableStorageAccelerator
                  */
                 $post(): Promise<horizonView.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             enableStorageAccelerator: {
                 /**
@@ -449,10 +417,6 @@ export interface HorizonView {
                  * POST /horizonView/{serviceName}/dedicatedHorizon/enableStorageAccelerator
                  */
                 $post(): Promise<horizonView.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             task: {
                 /**
@@ -492,10 +456,6 @@ export interface HorizonView {
                      * POST /horizonView/{serviceName}/dedicatedHorizon/user/changePassword
                      */
                     $post(params?: { password?: string }): Promise<horizonView.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 changeProperties: {
                     /**
@@ -503,10 +463,6 @@ export interface HorizonView {
                      * POST /horizonView/{serviceName}/dedicatedHorizon/user/changeProperties
                      */
                     $post(params?: { email?: string }): Promise<horizonView.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
         }
@@ -541,10 +497,6 @@ export interface HorizonView {
                      * POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain
                      */
                     $post(params: { activeDirectoryIP: string, domain: string, passphrase: string, serviceAccountPassword: string }): Promise<horizonView.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 addDomainController: {
                     /**
@@ -552,10 +504,6 @@ export interface HorizonView {
                      * POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController
                      */
                     $post(params: { domain: string, domainControllerIp: string }): Promise<horizonView.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 addDomainUserOnComposer: {
                     /**
@@ -563,10 +511,6 @@ export interface HorizonView {
                      * POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer
                      */
                     $post(params: { domain: string, password: string, username: string }): Promise<horizonView.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 createTrust: {
                     /**
@@ -574,10 +518,6 @@ export interface HorizonView {
                      * POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust
                      */
                     $post(params: { passphrase: string, serviceAccountPassword: string }): Promise<horizonView.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -603,10 +543,6 @@ export interface HorizonView {
              * POST /horizonView/{serviceName}/terminate
              */
             $post(): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     };
 }

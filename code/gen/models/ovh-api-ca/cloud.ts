@@ -26,7 +26,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ProductAgreements"
+          "responseType": "cloud.project.ProductAgreements",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/agreements"
@@ -71,7 +75,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.NewProject"
+          "responseType": "cloud.project.NewProject",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/createProject"
@@ -100,7 +108,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.NewProjectInfo"
+          "responseType": "cloud.project.NewProjectInfo",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/createProjectInfo"
@@ -126,7 +138,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.EligibilityInfo"
+          "responseType": "cloud.project.EligibilityInfo",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/eligibility"
@@ -152,7 +168,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.order.Order[]"
+          "responseType": "cloud.order.Order[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/order"
@@ -186,7 +206,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.order.rule.Availability"
+          "responseType": "cloud.order.rule.Availability",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/order/rule/availability"
@@ -223,7 +247,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.Price"
+          "responseType": "cloud.Price",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/price"
@@ -240,7 +268,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project"
@@ -266,7 +298,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Project"
+          "responseType": "cloud.Project",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -293,7 +329,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}"
@@ -327,7 +367,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -363,7 +407,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Acl"
+          "responseType": "cloud.Acl",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/acl"
@@ -397,7 +445,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -425,7 +477,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Acl"
+          "responseType": "cloud.Acl",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/acl/{accountId}"
@@ -458,7 +514,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail[]"
+          "responseType": "cloud.instance.InstanceDetail[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/activateMonthlyBilling"
@@ -484,7 +544,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.AuthorizationStatus"
+          "responseType": "cloud.project.ai.AuthorizationStatus",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -504,7 +568,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/authorization"
@@ -530,7 +598,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.Features"
+          "responseType": "cloud.project.ai.capabilities.Features",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/feature"
@@ -556,7 +628,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.Region[]"
+          "responseType": "cloud.project.ai.capabilities.Region[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/region"
@@ -590,7 +666,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.Region"
+          "responseType": "cloud.project.ai.capabilities.Region",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}"
@@ -624,7 +704,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}/data/region"
@@ -658,7 +742,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.Flavor[]"
+          "responseType": "cloud.project.ai.capabilities.Flavor[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}/flavor"
@@ -700,7 +788,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.Flavor"
+          "responseType": "cloud.project.ai.capabilities.Flavor",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}/flavor/{flavorId}"
@@ -737,7 +829,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.CapabilityResources"
+          "responseType": "cloud.project.ai.capabilities.CapabilityResources",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}/resource"
@@ -763,7 +859,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Backend[]"
+          "responseType": "cloud.project.ai.serving.Backend[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/backend"
@@ -789,7 +889,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Features"
+          "responseType": "cloud.project.ai.serving.Features",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/feature"
@@ -815,7 +919,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Flavor[]"
+          "responseType": "cloud.project.ai.serving.Flavor[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/flavor"
@@ -841,7 +949,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Framework[]"
+          "responseType": "cloud.project.ai.serving.Framework[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/framework"
@@ -867,7 +979,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.PresetImage[]"
+          "responseType": "cloud.project.ai.serving.PresetImage[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/presetImage"
@@ -893,7 +1009,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/region"
@@ -921,7 +1041,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.Features"
+          "responseType": "cloud.project.ai.capabilities.Features",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/training/feature"
@@ -949,7 +1073,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.job.PresetImage[]"
+          "responseType": "cloud.project.ai.job.PresetImage[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/training/presetImage"
@@ -978,7 +1106,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.Region[]"
+          "responseType": "cloud.project.ai.capabilities.Region[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/training/region"
@@ -1015,7 +1147,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.Region"
+          "responseType": "cloud.project.ai.capabilities.Region",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/training/region/{region}"
@@ -1039,9 +1175,29 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string[]",
+              "description": "Filter on status state",
+              "fullType": "string[]",
+              "name": "statusState",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter on updatedAt property (>=)",
+              "fullType": "datetime",
+              "name": "updatedAfter",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "cloud.project.ai.job.Job[]"
+          "responseType": "cloud.project.ai.job.Job[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1068,7 +1224,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.job.Job"
+          "responseType": "cloud.project.ai.job.Job",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/job"
@@ -1102,7 +1262,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.job.Job"
+          "responseType": "cloud.project.ai.job.Job",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/job/{jobId}"
@@ -1136,7 +1300,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/job/{jobId}/kill"
@@ -1170,7 +1338,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.Logs"
+          "responseType": "cloud.project.ai.Logs",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/job/{jobId}/log"
@@ -1196,7 +1368,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.job.PresetImage[]"
+          "responseType": "cloud.project.ai.job.PresetImage[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/job/capabilities/presetImage"
@@ -1222,7 +1398,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.registry.Registry[]"
+          "responseType": "cloud.project.ai.registry.Registry[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1249,7 +1429,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.registry.Registry"
+          "responseType": "cloud.project.ai.registry.Registry",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/registry"
@@ -1283,7 +1467,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1311,7 +1499,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.registry.Registry"
+          "responseType": "cloud.project.ai.registry.Registry",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/registry/{registryId}"
@@ -1337,7 +1529,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Namespace[]"
+          "responseType": "cloud.project.ai.serving.Namespace[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1364,7 +1560,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Namespace"
+          "responseType": "cloud.project.ai.serving.Namespace",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving"
@@ -1398,7 +1598,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1426,7 +1630,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Namespace"
+          "responseType": "cloud.project.ai.serving.Namespace",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving/{namespaceId}"
@@ -1460,7 +1668,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Metrics"
+          "responseType": "cloud.project.ai.serving.Metrics",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving/{namespaceId}/metrics"
@@ -1494,7 +1706,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Model[]"
+          "responseType": "cloud.project.ai.serving.Model[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1529,7 +1745,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Model"
+          "responseType": "cloud.project.ai.serving.Model",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving/{namespaceId}/model"
@@ -1571,7 +1791,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1607,7 +1831,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Model"
+          "responseType": "cloud.project.ai.serving.Model",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1643,7 +1871,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Model"
+          "responseType": "cloud.project.ai.serving.Model",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving/{namespaceId}/model/{modelId}"
@@ -1677,7 +1909,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1705,7 +1941,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Registry"
+          "responseType": "cloud.project.ai.serving.Registry",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1740,7 +1980,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.RegistryResponse"
+          "responseType": "cloud.project.ai.serving.RegistryResponse",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving/{namespaceId}/registry"
@@ -1774,7 +2018,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Token[]"
+          "responseType": "cloud.project.ai.serving.Token[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1809,7 +2057,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Token"
+          "responseType": "cloud.project.ai.serving.Token",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving/{namespaceId}/token"
@@ -1851,7 +2103,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1887,7 +2143,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Token"
+          "responseType": "cloud.project.ai.serving.Token",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1923,7 +2183,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Token"
+          "responseType": "cloud.project.ai.serving.Token",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving/{namespaceId}/token/{tokenId}"
@@ -1952,7 +2216,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.AuthorizationStatus"
+          "responseType": "cloud.project.ai.AuthorizationStatus",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1975,7 +2243,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/training/authorization"
@@ -2004,7 +2276,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.job.Job[]"
+          "responseType": "cloud.project.ai.job.Job[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2034,7 +2310,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.job.Job"
+          "responseType": "cloud.project.ai.job.Job",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/training/job"
@@ -2071,7 +2351,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.job.Job"
+          "responseType": "cloud.project.ai.job.Job",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/training/job/{jobId}"
@@ -2079,37 +2363,6 @@ export const schema: Schema = {
     {
       "description": "Kill a Training Platform job",
       "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2021-06-06T00:00:00+02:00",
-            "deprecatedDate": "2021-05-06T00:00:00+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/cloud/project/{serviceName}/ai/job/{jobId}/kill",
-            "value": "DEPRECATED"
-          },
-          "description": "Kill a Training Platform job",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Job ID",
-              "fullType": "uuid",
-              "name": "jobId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        },
         {
           "apiStatus": {
             "deletionDate": "2021-06-06T00:00:00+02:00",
@@ -2139,7 +2392,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/training/job/{jobId}/kill"
@@ -2176,47 +2433,14 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.Logs"
+          "responseType": "cloud.project.ai.Logs",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/training/job/{jobId}/log"
-    },
-    {
-      "description": "",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2021-06-06T00:00:00+02:00",
-            "deprecatedDate": "2021-05-20T00:00:00+00:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/cloud/project/{serviceName}/ai/job/{jobId}/log",
-            "value": "DEPRECATED"
-          },
-          "description": "Get the logs of a job",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Job ID",
-              "fullType": "uuid",
-              "name": "jobId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "cloud.project.ai.Logs"
-        }
-      ],
-      "path": "/cloud/project/{serviceName}/ai/training/job/{jobId}/logs"
     },
     {
       "description": "Manage AI Training Registries",
@@ -2242,7 +2466,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.registry.Registry[]"
+          "responseType": "cloud.project.ai.registry.Registry[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2272,7 +2500,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.registry.Registry"
+          "responseType": "cloud.project.ai.registry.Registry",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/training/registry"
@@ -2309,7 +2541,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2340,7 +2576,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.registry.Registry"
+          "responseType": "cloud.project.ai.registry.Registry",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/training/registry/{registryId}"
@@ -2366,7 +2606,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2410,7 +2654,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Alerting"
+          "responseType": "cloud.Alerting",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/alerting"
@@ -2444,7 +2692,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2472,7 +2724,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Alerting"
+          "responseType": "cloud.Alerting",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2507,7 +2763,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/alerting/{id}"
@@ -2541,7 +2801,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/alerting/{id}/alert"
@@ -2583,7 +2847,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.AlertingAlert"
+          "responseType": "cloud.AlertingAlert",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/alerting/{id}/alert/{alertId}"
@@ -2625,7 +2893,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.Bill[]"
+          "responseType": "cloud.project.Bill[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/bill"
@@ -2651,7 +2923,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/cancel"
@@ -2677,7 +2953,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.Capability[]"
+          "responseType": "cloud.containerRegistry.Capability[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/containerRegistry"
@@ -2711,7 +2991,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.kube.Flavor[]"
+          "responseType": "cloud.kube.Flavor[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/kube/flavors"
@@ -2737,7 +3021,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.RegionEnum[]"
+          "responseType": "cloud.kube.RegionEnum[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/kube/regions"
@@ -2763,7 +3051,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/region"
@@ -2797,7 +3089,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.loadbalancer.Region"
+          "responseType": "cloud.project.loadbalancer.Region",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/region/{regionName}"
@@ -2823,7 +3119,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.loadbalancer.SizeEnum[]"
+          "responseType": "cloud.project.loadbalancer.SizeEnum[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/size"
@@ -2857,7 +3157,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.loadbalancer.LoadBalancerSizeCapability"
+          "responseType": "cloud.project.loadbalancer.LoadBalancerSizeCapability",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/size/{size}"
@@ -2915,7 +3219,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.capabilities.Availability"
+          "responseType": "cloud.capabilities.Availability",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/productAvailability"
@@ -2953,7 +3261,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2992,7 +3304,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.Certificate"
+          "responseType": "cloud.project.Certificate",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/certificate"
@@ -3038,7 +3354,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3078,7 +3398,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.Certificate"
+          "responseType": "cloud.project.Certificate",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/certificate/{certificateId}"
@@ -3128,7 +3452,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/changeContact"
@@ -3186,7 +3514,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/confirmTermination"
@@ -3228,7 +3560,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ProjectUsage"
+          "responseType": "cloud.project.ProjectUsage",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/consumption"
@@ -3254,7 +3590,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.Registry[]"
+          "responseType": "cloud.containerRegistry.Registry[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3281,7 +3621,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.Registry"
+          "responseType": "cloud.containerRegistry.Registry",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/containerRegistry"
@@ -3315,7 +3659,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3343,7 +3691,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.Registry"
+          "responseType": "cloud.containerRegistry.Registry",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3378,7 +3730,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/containerRegistry/{registryID}"
@@ -3412,7 +3768,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.Plan[]"
+          "responseType": "cloud.containerRegistry.Plan[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/containerRegistry/{registryID}/capabilities/plan"
@@ -3446,7 +3806,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.Plan"
+          "responseType": "cloud.containerRegistry.Plan",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3481,7 +3845,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/containerRegistry/{registryID}/plan"
@@ -3515,7 +3883,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.User[]"
+          "responseType": "cloud.containerRegistry.User[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3550,7 +3922,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.User"
+          "responseType": "cloud.containerRegistry.User",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/containerRegistry/{registryID}/users"
@@ -3592,7 +3968,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}"
@@ -3618,7 +3998,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3646,7 +4030,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/credit"
@@ -3680,7 +4068,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Credit"
+          "responseType": "cloud.Credit",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/credit/{id}"
@@ -3694,6 +4086,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Get database engines availability",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3706,7 +4135,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Availability[]"
+          "responseType": "cloud.project.database.Availability[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/database/availability"
@@ -3720,6 +4153,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Get database engines capabilities",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3732,7 +4202,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Capabilities"
+          "responseType": "cloud.project.database.Capabilities",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/database/capabilities"
@@ -3746,6 +4220,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "List mongodbs of the project",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3758,7 +4269,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3766,6 +4281,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Create a new mongodb cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -3785,7 +4337,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.MongodbCreationResponse"
+          "responseType": "cloud.project.database.MongodbCreationResponse",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb"
@@ -3799,6 +4355,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Delete a mongodb cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -3819,7 +4412,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3827,6 +4424,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Get mongodb cluster properties",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3847,7 +4481,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Mongodb"
+          "responseType": "cloud.project.database.Mongodb",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3855,6 +4493,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Create a new mongodb cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -3882,7 +4557,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Mongodb"
+          "responseType": "cloud.project.database.Mongodb",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}"
@@ -3896,6 +4575,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "List backups of the mongodb",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3916,7 +4632,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3924,6 +4644,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Create a backup of the cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -3951,7 +4708,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.mongodb.Backup"
+          "responseType": "cloud.project.database.mongodb.Backup",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/backup"
@@ -3965,6 +4726,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Delete a mongodb backup",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -3993,7 +4791,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4001,6 +4803,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Get mongodb backups",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -4029,7 +4868,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.mongodb.Backup"
+          "responseType": "cloud.project.database.mongodb.Backup",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/backup/{backupId}"
@@ -4043,6 +4886,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Restore the backup",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -4071,7 +4951,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.mongodb.Backup"
+          "responseType": "cloud.project.database.mongodb.Backup",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/backup/{backupId}/restore"
@@ -4085,6 +4969,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "List mongodb ip restrictions",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -4105,7 +5026,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]"
+          "responseType": "ipBlock[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4113,6 +5038,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Add ip restrictions to the mongodb",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -4140,7 +5102,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction"
+          "responseType": "cloud.project.database.IpRestriction",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/ipRestriction"
@@ -4154,6 +5120,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Deletes the given IP from the restricted IPs of the mongodb",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -4182,7 +5185,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4190,6 +5197,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Get mongodb ip restrictions",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -4218,7 +5262,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction"
+          "responseType": "cloud.project.database.IpRestriction",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4226,6 +5274,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Changes the list of ip restrictions to the mongodb",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -4261,7 +5346,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction"
+          "responseType": "cloud.project.database.IpRestriction",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/ipRestriction/{ipBlock}"
@@ -4275,6 +5364,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "List nodes of the mongodb",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -4295,7 +5421,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4303,6 +5433,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Create a new node on the mongodb cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -4330,7 +5497,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.mongodb.Node"
+          "responseType": "cloud.project.database.mongodb.Node",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/node"
@@ -4344,6 +5515,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Delete a mongodb cluster's node",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -4372,7 +5580,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4380,6 +5592,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Get mongodb nodes",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -4408,7 +5657,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.mongodb.Node"
+          "responseType": "cloud.project.database.mongodb.Node",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/node/{nodeId}"
@@ -4422,6 +5675,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "List roles of the mongodb",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -4442,7 +5732,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/role"
@@ -4456,6 +5750,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Get mongodb roles",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -4484,7 +5815,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.mongodb.Role"
+          "responseType": "cloud.project.database.mongodb.Role",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/role/{roleId}"
@@ -4498,6 +5833,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "List users of the mongodb",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -4518,7 +5890,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4526,6 +5902,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Create a new user on the mongodb cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -4553,7 +5966,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.mongodb.User"
+          "responseType": "cloud.project.database.mongodb.User",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/user"
@@ -4567,6 +5984,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Delete a mongodb user",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -4595,7 +6049,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4603,6 +6061,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Get mongodb users",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -4631,7 +6126,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.mongodb.User"
+          "responseType": "cloud.project.database.mongodb.User",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4639,6 +6138,43 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Updates the user on the mongodb cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -4674,7 +6210,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.mongodb.User"
+          "responseType": "cloud.project.database.mongodb.User",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/user/{userId}"
@@ -4700,7 +6240,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.dataProcessing.AuthorizationStatus"
+          "responseType": "cloud.project.dataProcessing.AuthorizationStatus",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4720,7 +6264,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/dataProcessing/authorization"
@@ -4746,7 +6294,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.dataProcessing.Capability[]"
+          "responseType": "cloud.project.dataProcessing.Capability[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/dataProcessing/capabilities"
@@ -4772,7 +6324,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4799,7 +6355,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.dataProcessing.Job"
+          "responseType": "cloud.project.dataProcessing.Job",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/dataProcessing/jobs"
@@ -4833,7 +6393,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4861,7 +6425,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.dataProcessing.Job"
+          "responseType": "cloud.project.dataProcessing.Job",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/dataProcessing/jobs/{jobId}"
@@ -4903,7 +6471,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.dataProcessing.JobLogs"
+          "responseType": "cloud.project.dataProcessing.JobLogs",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/dataProcessing/jobs/{jobId}/logs"
@@ -4929,7 +6501,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.dataProcessing.Metrics"
+          "responseType": "cloud.project.dataProcessing.Metrics",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/dataProcessing/metrics"
@@ -4963,7 +6539,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.flavor.Flavor[]"
+          "responseType": "cloud.flavor.Flavor[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/flavor"
@@ -4997,7 +6577,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.flavor.Flavor"
+          "responseType": "cloud.flavor.Flavor",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/flavor/{flavorId}"
@@ -5034,7 +6618,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.forecast.ProjectForecast"
+          "responseType": "cloud.forecast.ProjectForecast",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/forecast"
@@ -5084,7 +6672,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.image.Image[]"
+          "responseType": "cloud.image.Image[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/image"
@@ -5118,7 +6710,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.image.Image"
+          "responseType": "cloud.image.Image",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/image/{imageId}"
@@ -5152,7 +6748,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.instance.Instance[]"
+          "responseType": "cloud.instance.Instance[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5179,7 +6779,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail"
+          "responseType": "cloud.instance.InstanceDetail",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance"
@@ -5213,7 +6817,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5241,7 +6849,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail"
+          "responseType": "cloud.instance.InstanceDetail",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5276,7 +6888,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}"
@@ -5310,7 +6926,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail"
+          "responseType": "cloud.instance.InstanceDetail",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/activeMonthlyBilling"
@@ -5344,7 +6964,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.ApplicationAccess"
+          "responseType": "cloud.instance.ApplicationAccess",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/applicationAccess"
@@ -5378,7 +7002,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instanceInterface.Interface[]"
+          "responseType": "cloud.instanceInterface.Interface[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5413,7 +7041,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instanceInterface.Interface"
+          "responseType": "cloud.instanceInterface.Interface",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/interface"
@@ -5455,7 +7087,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5491,7 +7127,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instanceInterface.Interface"
+          "responseType": "cloud.instanceInterface.Interface",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}"
@@ -5541,7 +7181,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceMetrics"
+          "responseType": "cloud.instance.InstanceMetrics",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/monitoring"
@@ -5582,7 +7226,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/reboot"
@@ -5623,7 +7271,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail"
+          "responseType": "cloud.instance.InstanceDetail",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/reinstall"
@@ -5664,7 +7316,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.RescueAdminPassword"
+          "responseType": "cloud.instance.RescueAdminPassword",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/rescueMode"
@@ -5705,7 +7361,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail"
+          "responseType": "cloud.instance.InstanceDetail",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/resize"
@@ -5739,7 +7399,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/resume"
@@ -5773,7 +7437,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/shelve"
@@ -5814,7 +7482,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/snapshot"
@@ -5848,7 +7520,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/start"
@@ -5882,7 +7558,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/stop"
@@ -5916,7 +7596,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/unshelve"
@@ -5950,7 +7634,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceVnc"
+          "responseType": "cloud.instance.InstanceVnc",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/vnc"
@@ -5983,7 +7671,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.Instance[]"
+          "responseType": "cloud.instance.Instance[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/bulk"
@@ -6017,7 +7709,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.instancegroup.InstanceGroup[]"
+          "responseType": "cloud.instancegroup.InstanceGroup[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6044,7 +7740,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instancegroup.InstanceGroup"
+          "responseType": "cloud.instancegroup.InstanceGroup",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/group"
@@ -6078,7 +7778,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6114,7 +7818,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.instancegroup.InstanceGroup"
+          "responseType": "cloud.instancegroup.InstanceGroup",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/group/{groupId}"
@@ -6140,7 +7848,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.ip.CloudIp[]"
+          "responseType": "cloud.ip.CloudIp[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ip"
@@ -6166,7 +7878,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.ip.FailoverIp[]"
+          "responseType": "cloud.ip.FailoverIp[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ip/failover"
@@ -6200,7 +7916,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.ip.FailoverIp"
+          "responseType": "cloud.ip.FailoverIp",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ip/failover/{id}"
@@ -6241,7 +7961,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.ip.FailoverIp"
+          "responseType": "cloud.ip.FailoverIp",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/ip/failover/{id}/attach"
@@ -6267,7 +7991,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6294,7 +8022,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Cluster"
+          "responseType": "cloud.kube.Cluster",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube"
@@ -6328,7 +8060,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6356,7 +8092,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Cluster"
+          "responseType": "cloud.kube.Cluster",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6391,7 +8131,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}"
@@ -6425,7 +8169,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.AuditLogs"
+          "responseType": "cloud.kube.AuditLogs",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/auditLogs"
@@ -6459,7 +8207,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Flavor[]"
+          "responseType": "cloud.kube.Flavor[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/flavors"
@@ -6493,7 +8245,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]"
+          "responseType": "ipBlock[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6528,7 +8284,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]"
+          "responseType": "ipBlock[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6563,7 +8323,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]"
+          "responseType": "ipBlock[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions"
@@ -6605,7 +8369,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions/{ip}"
@@ -6639,7 +8407,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Kubeconfig"
+          "responseType": "cloud.kube.Kubeconfig",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/kubeconfig"
@@ -6673,7 +8445,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/kubeconfig/reset"
@@ -6707,7 +8483,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Node[]"
+          "responseType": "cloud.kube.Node[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6745,7 +8525,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Node"
+          "responseType": "cloud.kube.Node",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/node"
@@ -6787,7 +8571,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6823,7 +8611,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Node"
+          "responseType": "cloud.kube.Node",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}"
@@ -6857,7 +8649,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.NodePool[]"
+          "responseType": "cloud.kube.NodePool[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6892,7 +8688,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.NodePool"
+          "responseType": "cloud.kube.NodePool",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/nodepool"
@@ -6934,7 +8734,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6970,7 +8774,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.NodePool"
+          "responseType": "cloud.kube.NodePool",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -7013,7 +8821,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}"
@@ -7055,7 +8867,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Node[]"
+          "responseType": "cloud.kube.Node[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}/nodes"
@@ -7096,10 +8912,59 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/reset"
+    },
+    {
+      "description": "Restart your cluster control plane",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Restarting your control plane apiserver to invalidate cache without downtime (using force will create a slight downtime)",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeRestart",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeRestart",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/restart"
     },
     {
       "description": "Update cluster",
@@ -7137,7 +9002,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/update"
@@ -7178,7 +9047,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy"
@@ -7207,7 +9080,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.RegionEnum[]"
+          "responseType": "cloud.kube.RegionEnum[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/regions"
@@ -7233,7 +9110,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Lab[]"
+          "responseType": "cloud.Lab[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/lab"
@@ -7267,7 +9148,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Lab"
+          "responseType": "cloud.Lab",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -7295,7 +9180,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation"
+          "responseType": "cloud.Operation",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/lab/{labId}"
@@ -7329,7 +9218,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.LabAgreements"
+          "responseType": "cloud.LabAgreements",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/lab/{labId}/agreement"
@@ -7384,7 +9277,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -7440,7 +9337,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.LoadBalancer"
+          "responseType": "cloud.project.LoadBalancer",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/loadbalancer"
@@ -7503,7 +9404,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -7560,7 +9465,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.LoadBalancer"
+          "responseType": "cloud.project.LoadBalancer",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -7624,7 +9533,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.LoadBalancer"
+          "responseType": "cloud.project.LoadBalancer",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/loadbalancer/{loadBalancerId}"
@@ -7687,7 +9600,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -7751,7 +9668,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.loadbalancer.Configuration"
+          "responseType": "cloud.project.loadbalancer.Configuration",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/loadbalancer/{loadBalancerId}/configuration"
@@ -7822,7 +9743,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -7887,7 +9812,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.loadbalancer.Configuration"
+          "responseType": "cloud.project.loadbalancer.Configuration",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/loadbalancer/{loadBalancerId}/configuration/{version}"
@@ -7958,7 +9887,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.loadbalancer.Configuration"
+          "responseType": "cloud.project.loadbalancer.Configuration",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/loadbalancer/{loadBalancerId}/configuration/{version}/apply"
@@ -7984,7 +9917,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.migration.Migration[]"
+          "responseType": "cloud.migration.Migration[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/migration"
@@ -8018,7 +9955,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.migration.Migration"
+          "responseType": "cloud.migration.Migration",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8053,7 +9994,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.migration.Migration"
+          "responseType": "cloud.migration.Migration",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/migration/{migrationId}"
@@ -8079,7 +10024,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Network[]"
+          "responseType": "cloud.network.Network[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8106,7 +10055,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Network"
+          "responseType": "cloud.network.Network",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/network/private"
@@ -8140,7 +10093,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8168,7 +10125,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Network"
+          "responseType": "cloud.network.Network",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8203,7 +10164,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/network/private/{networkId}"
@@ -8244,7 +10209,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Network"
+          "responseType": "cloud.network.Network",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/network/private/{networkId}/region"
@@ -8278,7 +10247,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Subnet[]"
+          "responseType": "cloud.network.Subnet[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8313,7 +10286,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Subnet"
+          "responseType": "cloud.network.Subnet",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/network/private/{networkId}/subnet"
@@ -8355,7 +10332,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}"
@@ -8381,7 +10362,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Network[]"
+          "responseType": "cloud.network.Network[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/network/public"
@@ -8407,7 +10392,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.openstackClient.Session"
+          "responseType": "cloud.openstackClient.Session",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/openstackClient"
@@ -8433,7 +10422,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation[]"
+          "responseType": "cloud.Operation[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/operation"
@@ -8467,7 +10460,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation"
+          "responseType": "cloud.Operation",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/operation/{operationId}"
@@ -8493,7 +10490,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.quota.Quotas[]"
+          "responseType": "cloud.quota.Quotas[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/quota"
@@ -8519,7 +10520,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8546,7 +10551,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Region"
+          "responseType": "cloud.Region",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/region"
@@ -8580,7 +10589,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Region"
+          "responseType": "cloud.Region",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}"
@@ -8614,7 +10627,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.quota.Quotas"
+          "responseType": "cloud.quota.Quotas",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8649,7 +10666,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation"
+          "responseType": "cloud.Operation",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/quota"
@@ -8683,7 +10704,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.quota.AllowedQuota[]"
+          "responseType": "cloud.quota.AllowedQuota[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/quota/allowed"
@@ -8717,7 +10742,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8745,7 +10774,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.quota.storage.Quota"
+          "responseType": "cloud.quota.storage.Quota",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8780,7 +10813,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/quota/storage"
@@ -8814,7 +10851,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Backup[]"
+          "responseType": "cloud.Backup[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8849,7 +10890,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Backup"
+          "responseType": "cloud.Backup",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/workflow/backup"
@@ -8891,7 +10936,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -8927,7 +10976,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Backup"
+          "responseType": "cloud.Backup",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}"
@@ -8953,7 +11006,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.AvailableRegion[]"
+          "responseType": "cloud.AvailableRegion[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/regionAvailable"
@@ -8979,7 +11036,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/retain"
@@ -9005,7 +11066,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.role.Roles"
+          "responseType": "cloud.role.Roles",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/role"
@@ -9031,7 +11096,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9058,7 +11127,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/serviceInfos"
@@ -9100,7 +11173,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.image.Image[]"
+          "responseType": "cloud.image.Image[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/snapshot"
@@ -9134,7 +11211,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.image.Image"
+          "responseType": "cloud.image.Image",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9162,7 +11243,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.image.Image"
+          "responseType": "cloud.image.Image",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/snapshot/{imageId}"
@@ -9196,7 +11281,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.sshkey.SshKey[]"
+          "responseType": "cloud.sshkey.SshKey[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9223,7 +11312,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.sshkey.SshKeyDetail"
+          "responseType": "cloud.sshkey.SshKeyDetail",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/sshkey"
@@ -9257,7 +11350,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9285,7 +11382,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.sshkey.SshKeyDetail"
+          "responseType": "cloud.sshkey.SshKeyDetail",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/sshkey/{keyId}"
@@ -9311,7 +11412,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.stack.Stack[]"
+          "responseType": "cloud.stack.Stack[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/stack"
@@ -9345,7 +11450,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.stack.Stack"
+          "responseType": "cloud.stack.Stack",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/stack/{stackId}"
@@ -9379,7 +11488,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.openstackClient.Session"
+          "responseType": "cloud.openstackClient.Session",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/stack/{stackId}/client"
@@ -9405,7 +11518,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.storage.Container[]"
+          "responseType": "cloud.storage.Container[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9432,7 +11549,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.storage.Container"
+          "responseType": "cloud.storage.Container",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/storage"
@@ -9474,7 +11595,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9510,7 +11635,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.storage.ContainerDetail"
+          "responseType": "cloud.storage.ContainerDetail",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9545,7 +11674,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/storage/{containerId}"
@@ -9587,7 +11720,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9622,7 +11759,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/storage/{containerId}/cors"
@@ -9663,7 +11804,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.storage.ContainerObjectTempURL"
+          "responseType": "cloud.storage.ContainerObjectTempURL",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/storage/{containerId}/publicUrl"
@@ -9697,7 +11842,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/storage/{containerId}/static"
@@ -9738,7 +11887,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.UserDetail"
+          "responseType": "cloud.user.UserDetail",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/storage/{containerId}/user"
@@ -9767,7 +11920,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.storage.ContainerAccess"
+          "responseType": "cloud.storage.ContainerAccess",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -9787,7 +11944,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.storage.ContainerAccess"
+          "responseType": "cloud.storage.ContainerAccess",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/storage/access"
@@ -9813,7 +11974,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/terminate"
@@ -9839,7 +12004,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/unleash"
@@ -9865,7 +12034,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.usage.UsageCurrent"
+          "responseType": "cloud.usage.UsageCurrent",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/usage/current"
@@ -9891,7 +12064,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.usage.UsageForecast"
+          "responseType": "cloud.usage.UsageForecast",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/usage/forecast"
@@ -9933,7 +12110,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.usage.UsageHistory[]"
+          "responseType": "cloud.usage.UsageHistory[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/usage/history"
@@ -9967,7 +12148,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.usage.UsageHistoryDetail"
+          "responseType": "cloud.usage.UsageHistoryDetail",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/usage/history/{usageId}"
@@ -9993,7 +12178,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.User[]"
+          "responseType": "cloud.user.User[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10020,7 +12209,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.UserDetail"
+          "responseType": "cloud.user.UserDetail",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/user"
@@ -10054,7 +12247,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10082,7 +12279,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.User"
+          "responseType": "cloud.user.User",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}"
@@ -10132,7 +12333,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.user.Openrc"
+          "responseType": "cloud.user.Openrc",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/openrc"
@@ -10174,7 +12379,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.Rclone"
+          "responseType": "cloud.user.Rclone",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/rclone"
@@ -10208,7 +12417,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.UserDetail"
+          "responseType": "cloud.user.UserDetail",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/regeneratePassword"
@@ -10242,7 +12455,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.role.Role[]"
+          "responseType": "cloud.role.Role[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10277,7 +12494,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.UserDetail"
+          "responseType": "cloud.user.UserDetail",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10312,7 +12533,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.UserDetail"
+          "responseType": "cloud.user.UserDetail",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/role"
@@ -10354,7 +12579,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10390,7 +12619,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.role.Role"
+          "responseType": "cloud.role.Role",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/role/{roleId}"
@@ -10424,7 +12657,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.S3CredentialsWithSecret[]"
+          "responseType": "cloud.user.S3CredentialsWithSecret[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10452,7 +12689,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.S3CredentialsWithSecret"
+          "responseType": "cloud.user.S3CredentialsWithSecret",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/s3Credentials"
@@ -10494,7 +12735,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10530,7 +12775,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.S3CredentialsWithSecret"
+          "responseType": "cloud.user.S3CredentialsWithSecret",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/s3Credentials/{access}"
@@ -10571,7 +12820,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.authentication.Token"
+          "responseType": "cloud.authentication.Token",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/token"
@@ -10605,7 +12858,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.volume.Volume[]"
+          "responseType": "cloud.volume.Volume[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10632,7 +12889,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume"
+          "responseType": "cloud.volume.Volume",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/volume"
@@ -10666,7 +12927,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10694,7 +12959,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume"
+          "responseType": "cloud.volume.Volume",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10729,7 +12998,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume"
+          "responseType": "cloud.volume.Volume",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/volume/{volumeId}"
@@ -10770,7 +13043,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume"
+          "responseType": "cloud.volume.Volume",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/volume/{volumeId}/attach"
@@ -10811,7 +13088,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume"
+          "responseType": "cloud.volume.Volume",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/volume/{volumeId}/detach"
@@ -10852,7 +13133,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Snapshot"
+          "responseType": "cloud.volume.Snapshot",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/volume/{volumeId}/snapshot"
@@ -10893,7 +13178,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume"
+          "responseType": "cloud.volume.Volume",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/volume/{volumeId}/upsize"
@@ -10927,7 +13216,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.volume.Snapshot[]"
+          "responseType": "cloud.volume.Snapshot[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/volume/snapshot"
@@ -10961,7 +13254,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -10989,7 +13286,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Snapshot"
+          "responseType": "cloud.volume.Snapshot",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/volume/snapshot/{snapshotId}"
@@ -11015,7 +13316,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Vrack"
+          "responseType": "cloud.Vrack",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         },
         {
           "apiStatus": {
@@ -11035,7 +13340,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation"
+          "responseType": "cloud.Operation",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/vrack"
@@ -12739,6 +15048,21 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.ProjectKubeRestart": {
+      "description": "Missing description",
+      "id": "ProjectKubeRestart",
+      "namespace": "cloud",
+      "properties": {
+        "force": {
+          "canBeNull": true,
+          "description": "Force restarting control plane apiserver (will create a slight downtime)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
     "cloud.ProjectKubeUpdate": {
       "description": "Missing description",
       "id": "ProjectKubeUpdate",
@@ -14343,6 +16667,14 @@ export const schema: Schema = {
       "id": "HourlyStorage",
       "namespace": "cloud.billingView",
       "properties": {
+        "bucketName": {
+          "canBeNull": true,
+          "description": "Bucket Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "incomingBandwidth": {
           "canBeNull": true,
           "description": "Storage incoming bandwidth details",
@@ -14354,6 +16686,14 @@ export const schema: Schema = {
         "outgoingBandwidth": {
           "canBeNull": true,
           "description": "Storage outgoing bandwidth details",
+          "fullType": "cloud.billingView.BandwidthStorage",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.BandwidthStorage"
+        },
+        "outgoingInternalBandwidth": {
+          "canBeNull": true,
+          "description": "Storage outgoing internal bandwidth details",
           "fullType": "cloud.billingView.BandwidthStorage",
           "readOnly": true,
           "required": false,
@@ -14761,7 +17101,8 @@ export const schema: Schema = {
       "description": "StorageTypeEnum",
       "enum": [
         "pcs",
-        "pca"
+        "pca",
+        "storage-high-perf"
       ],
       "enumType": "string",
       "id": "StorageTypeEnum",
@@ -16963,12 +19304,13 @@ export const schema: Schema = {
     "cloud.kube.FlavorCategoryEnum": {
       "description": "Enum values for category",
       "enum": [
-        "c",
-        "g",
-        "t",
         "b",
+        "c",
+        "d",
+        "g",
+        "i",
         "r",
-        "i"
+        "t"
       ],
       "enumType": "string",
       "id": "FlavorCategoryEnum",
@@ -19299,7 +21641,7 @@ export const schema: Schema = {
         },
         "gpuMemory": {
           "canBeNull": true,
-          "description": "The GPU Memory in bits",
+          "description": "The GPU Memory in bytes",
           "fullType": "long",
           "readOnly": false,
           "required": false,
@@ -19323,7 +21665,7 @@ export const schema: Schema = {
         },
         "privateNetwork": {
           "canBeNull": true,
-          "description": "The guarantee private bandwidth in bytes per seconds",
+          "description": "The private network bandwidth in bits per seconds",
           "fullType": "long",
           "readOnly": false,
           "required": false,
@@ -19331,7 +21673,7 @@ export const schema: Schema = {
         },
         "publicNetwork": {
           "canBeNull": true,
-          "description": "The guarantee public bandwidth in bytes per seconds",
+          "description": "The public network bandwidth in bits per seconds",
           "fullType": "long",
           "readOnly": false,
           "required": false,
@@ -21126,6 +23468,18 @@ export const schema: Schema = {
       "id": "DataSyncEnum",
       "namespace": "cloud.project.ai.volume"
     },
+    "cloud.project.ai.volume.DataSyncProgressStateEnum": {
+      "description": "State of the progress sync",
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "DONE",
+        "FAILED"
+      ],
+      "enumType": "string",
+      "id": "DataSyncProgressStateEnum",
+      "namespace": "cloud.project.ai.volume"
+    },
     "cloud.project.ai.volume.DataSyncSpec": {
       "description": "AI Solutions Data Sync Spec",
       "id": "DataSyncSpec",
@@ -21217,6 +23571,37 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.ai.volume.PrivateSwift": {
+      "description": "AI Solutions Volume Object",
+      "id": "PrivateSwift",
+      "namespace": "cloud.project.ai.volume",
+      "properties": {
+        "container": {
+          "canBeNull": false,
+          "description": "Public Cloud Storage container to attach",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "prefix": {
+          "canBeNull": true,
+          "description": "Prefix to fetch only part of the volume",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Public Cloud Storage Region",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
     "cloud.project.ai.volume.Progress": {
       "description": "AI Solutions Progress Object",
       "id": "Progress",
@@ -21229,14 +23614,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
-        },
-        "container": {
-          "canBeNull": false,
-          "description": "Public Cloud Storage container",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
         },
         "createdAt": {
           "canBeNull": false,
@@ -21278,6 +23655,14 @@ export const schema: Schema = {
           "required": false,
           "type": "uuid"
         },
+        "info": {
+          "canBeNull": false,
+          "description": "Volume information",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "processed": {
           "canBeNull": false,
           "description": "Number of processed files",
@@ -21293,6 +23678,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "State of the progress sync",
+          "fullType": "cloud.project.ai.volume.DataSyncProgressStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.volume.DataSyncProgressStateEnum"
         },
         "total": {
           "canBeNull": false,
@@ -21317,6 +23710,29 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "datetime"
+        },
+        "volumeIndex": {
+          "canBeNull": false,
+          "description": "The volume index in the job spec",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.ai.volume.PublicSwift": {
+      "description": "AI Solutions Volume Object",
+      "id": "PublicSwift",
+      "namespace": "cloud.project.ai.volume",
+      "properties": {
+        "url": {
+          "canBeNull": false,
+          "description": "URL of the public swift container",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
@@ -21334,11 +23750,11 @@ export const schema: Schema = {
           "type": "boolean"
         },
         "container": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Public Cloud Storage container to attach",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "mountPath": {
@@ -21365,12 +23781,28 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "privateSwift": {
+          "canBeNull": true,
+          "description": "Volume details for private swift containers",
+          "fullType": "cloud.project.ai.volume.PrivateSwift",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.volume.PrivateSwift"
+        },
+        "publicSwift": {
+          "canBeNull": true,
+          "description": "Volume details for public swift containers",
+          "fullType": "cloud.project.ai.volume.PublicSwift",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.volume.PublicSwift"
+        },
         "region": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Public Cloud Storage Region",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -21727,6 +24159,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "cloud.project.dataProcessing.StatusEnum"
+        },
+        "ttl": {
+          "canBeNull": true,
+          "description": "Maximum \"Time To Live\" (in RFC3339 (duration)) of this job, after which it will be automatically terminated",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
         }
       }
     },
@@ -23392,7 +25832,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "disableH2": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Disable HTTP2",
           "fullType": "boolean",
           "readOnly": false,

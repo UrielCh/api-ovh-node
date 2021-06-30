@@ -328,10 +328,6 @@ export interface License {
                          * POST /license/office/{serviceName}/user/{activationEmail}/changePassword
                          */
                         $post(params: { notifyEmail?: string, password?: string, shouldSendMail: boolean }): Promise<license.office.OfficeTask>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }

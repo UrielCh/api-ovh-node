@@ -101,9 +101,5 @@ export interface Supply {
          * POST /supply/mondialRelay
          */
         $post(params: { address?: string, city?: string, country: coreTypes.CountryEnum, zipcode?: string }): Promise<supply.MondialRelayReturn>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
 }

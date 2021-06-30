@@ -413,8 +413,10 @@ export class CodeGenerator {
         }
         let ident = indentGen(depth);
         if (api._api) {
+            const operationSet: Set<"DELETE" | "GET" | "POST" | "PUT"> = new Set();
             // loop on Http method
             for (const op of api._api.operations.sort((a, b) => a.httpMethod.localeCompare(b.httpMethod))) {
+                operationSet.add(op.httpMethod);
                 code += `${ident}/**${eol}`;
                 if (op.description)
                     code += `${ident} * ${op.description}${eol}`;
@@ -479,17 +481,19 @@ export class CodeGenerator {
                 code += `Promise<${retType}>;${eol}`; // DedicatedServerCatalog
             }
             // append $cache(param?: ICacheOptions)
-            code += `${ident}/**${eol}`;
-            code += `${ident} * Controle cache${eol}`;
-            code += `${ident} */${eol}`;
-            code += `${ident}$cache(param?: ICacheOptions | CacheAction): Promise<any>;${eol}`;
-
+            /**
+             * only add $cache method if a GET is implemented
+             */
+            if (operationSet.has('GET')) {
+                code += `${ident}/**${eol}`;
+                code += `${ident} * Controle cache${eol}`;
+                code += `${ident} */${eol}`;
+                code += `${ident}$cache(param?: ICacheOptions | CacheAction): Promise<any>;${eol}`;
+            }
         }
 
         for (const k of keys.sort()) {
             const value: any = api[k];
-            // API | string | CacheApi | undefined
-            // console.log(indent(depth), value._path, value);
             if (value['_path']) {
                 code = this.dumpApiHarmony(depth + 1, value, code);
             } else {

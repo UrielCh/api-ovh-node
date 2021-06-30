@@ -336,10 +336,6 @@ export interface Dbaas {
                          * POST /dbaas/queue/{serviceName}/user/{userId}/changePassword
                          */
                         $post(): Promise<dbaas.queue.UserWithPassword>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     roles: {
                         /**

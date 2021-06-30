@@ -329,10 +329,6 @@ export interface Cluster {
                          * POST /cluster/hadoop/{serviceName}/node/{hostname}/decommission
                          */
                         $post(): Promise<cluster.hadoop.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     recommission: {
                         /**
@@ -340,10 +336,6 @@ export interface Cluster {
                          * POST /cluster/hadoop/{serviceName}/node/{hostname}/recommission
                          */
                         $post(): Promise<cluster.hadoop.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     role: {
                         /**
@@ -381,10 +373,6 @@ export interface Cluster {
                                  * POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart
                                  */
                                 $post(): Promise<cluster.hadoop.Task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             start: {
                                 /**
@@ -392,10 +380,6 @@ export interface Cluster {
                                  * POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start
                                  */
                                 $post(): Promise<cluster.hadoop.Task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             stop: {
                                 /**
@@ -403,10 +387,6 @@ export interface Cluster {
                                  * POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop
                                  */
                                 $post(): Promise<cluster.hadoop.Task>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                         };
                     }
@@ -440,10 +420,6 @@ export interface Cluster {
                  * POST /cluster/hadoop/{serviceName}/orderNewNodeHourly
                  */
                 $post(params: { nodeProfile: string }): Promise<cluster.hadoop.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             orderableNodeProfiles: {
                 /**
@@ -462,10 +438,6 @@ export interface Cluster {
                  * POST /cluster/hadoop/{serviceName}/restart
                  */
                 $post(): Promise<cluster.hadoop.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             service: {
                 restart: {
@@ -474,10 +446,6 @@ export interface Cluster {
                      * POST /cluster/hadoop/{serviceName}/service/restart
                      */
                     $post(params: { service: cluster.hadoop.ClusterServiceNameEnum }): Promise<cluster.hadoop.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 start: {
                     /**
@@ -485,10 +453,6 @@ export interface Cluster {
                      * POST /cluster/hadoop/{serviceName}/service/start
                      */
                     $post(params: { service: cluster.hadoop.ClusterServiceNameEnum }): Promise<cluster.hadoop.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 stop: {
                     /**
@@ -496,10 +460,6 @@ export interface Cluster {
                      * POST /cluster/hadoop/{serviceName}/service/stop
                      */
                     $post(params: { service: cluster.hadoop.ClusterServiceNameEnum }): Promise<cluster.hadoop.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             serviceInfos: {
@@ -524,10 +484,6 @@ export interface Cluster {
                  * POST /cluster/hadoop/{serviceName}/start
                  */
                 $post(): Promise<cluster.hadoop.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             stop: {
                 /**
@@ -535,10 +491,6 @@ export interface Cluster {
                  * POST /cluster/hadoop/{serviceName}/stop
                  */
                 $post(): Promise<cluster.hadoop.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             task: {
                 /**
@@ -568,10 +520,6 @@ export interface Cluster {
                  * POST /cluster/hadoop/{serviceName}/terminate
                  */
                 $post(): Promise<cluster.hadoop.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             user: {
                 /**
@@ -614,10 +562,6 @@ export interface Cluster {
                          * POST /cluster/hadoop/{serviceName}/user/{username}/resetPassword
                          */
                         $post(params: { password: string }): Promise<cluster.hadoop.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }

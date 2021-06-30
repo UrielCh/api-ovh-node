@@ -402,10 +402,6 @@ export interface Email {
                          * POST /email/pro/{service}/account/{email}/changePassword
                          */
                         $post(params: { password: string }): Promise<email.pro.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     diagnostics: {
                         /**
@@ -547,10 +543,6 @@ export interface Email {
                          * POST /email/pro/{service}/account/{email}/terminate
                          */
                         $post(): Promise<string>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -575,6 +567,13 @@ export interface Email {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            changeContact: {
+                /**
+                 * Launch a contact change procedure
+                 * POST /email/pro/{service}/changeContact
+                 */
+                $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
             }
             domain: {
                 /**
@@ -742,10 +741,6 @@ export interface Email {
                  * POST /email/pro/{service}/updateFlagsOnAllAccounts
                  */
                 $post(): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

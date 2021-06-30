@@ -906,10 +906,6 @@ export interface Dbaas {
                  * POST /dbaas/logs/{serviceName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             cluster: {
                 /**
@@ -1012,10 +1008,6 @@ export interface Dbaas {
                          * POST /dbaas/logs/{serviceName}/input/{inputId}/configtest
                          */
                         $post(): Promise<dbaas.logs.Operation>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         result: {
                             /**
                              * Returns the config test operation result
@@ -1068,10 +1060,6 @@ export interface Dbaas {
                          * POST /dbaas/logs/{serviceName}/input/{inputId}/end
                          */
                         $post(): Promise<dbaas.logs.Operation>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     logs: {
                         url: {
@@ -1080,10 +1068,6 @@ export interface Dbaas {
                              * POST /dbaas/logs/{serviceName}/input/{inputId}/logs/url
                              */
                             $post(): Promise<dbaas.logs.TemporaryLogsLink>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     }
                     restart: {
@@ -1092,10 +1076,6 @@ export interface Dbaas {
                          * POST /dbaas/logs/{serviceName}/input/{inputId}/restart
                          */
                         $post(): Promise<dbaas.logs.Operation>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     start: {
                         /**
@@ -1103,10 +1083,6 @@ export interface Dbaas {
                          * POST /dbaas/logs/{serviceName}/input/{inputId}/start
                          */
                         $post(): Promise<dbaas.logs.Operation>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     url: {
                         /**
@@ -1213,10 +1189,6 @@ export interface Dbaas {
                                      * DELETE /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}
                                      */
                                     $delete(): Promise<dbaas.logs.Operation>;
-                                    /**
-                                     * Controle cache
-                                     */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 };
                             }
                             stream: {
@@ -1241,10 +1213,6 @@ export interface Dbaas {
                                      * DELETE /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}
                                      */
                                     $delete(): Promise<dbaas.logs.Operation>;
-                                    /**
-                                     * Controle cache
-                                     */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 };
                             }
                             url: {
@@ -1399,10 +1367,6 @@ export interface Dbaas {
                                  * POST /dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/duplicate
                                  */
                                 $post(params: { description: string, streamId?: string, title: string }): Promise<dbaas.logs.Operation>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             url: {
                                 /**
@@ -1515,10 +1479,6 @@ export interface Dbaas {
                                          * POST /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/url
                                          */
                                         $post(): Promise<dbaas.logs.ArchiveUrl>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                 };
                             }
@@ -1657,10 +1617,6 @@ export interface Dbaas {
                              * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/alias
                              */
                             $post(params: { aliasId: string }): Promise<dbaas.logs.Operation>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         dashboard: {
                             /**
@@ -1668,10 +1624,6 @@ export interface Dbaas {
                              * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard
                              */
                             $post(params: { dashboardId: string, permissionType?: dbaas.logs.PermissionTypeEnum }): Promise<dbaas.logs.Operation>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         index: {
                             /**
@@ -1679,10 +1631,6 @@ export interface Dbaas {
                              * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/index
                              */
                             $post(params: { indexId: string, permissionType?: dbaas.logs.PermissionTypeEnum }): Promise<dbaas.logs.Operation>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         kibana: {
                             /**
@@ -1690,10 +1638,6 @@ export interface Dbaas {
                              * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/kibana
                              */
                             $post(params: { kibanaId: string, permissionType?: dbaas.logs.PermissionTypeEnum }): Promise<dbaas.logs.Operation>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         stream: {
                             /**
@@ -1701,10 +1645,6 @@ export interface Dbaas {
                              * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/stream
                              */
                             $post(params: { streamId: string }): Promise<dbaas.logs.Operation>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         $(permissionId: string): {
                             /**
@@ -1791,10 +1731,6 @@ export interface Dbaas {
                      * POST /dbaas/logs/{serviceName}/user/changePassword
                      */
                     $post(params: { password: string }): Promise<dbaas.logs.Operation>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
         };

@@ -857,10 +857,6 @@ export interface Order {
                  * POST /order/cart/{cartId}/assign
                  */
                 $post(): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             baremetalServers: {
                 /**

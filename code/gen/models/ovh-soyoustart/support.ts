@@ -90,7 +90,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "support/all",
+            "all"
+          ]
         }
       ],
       "path": "/support/tickets"
@@ -116,7 +120,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "support.Ticket"
+          "responseType": "support.Ticket",
+          "scopes": [
+            "support/all",
+            "all"
+          ]
         }
       ],
       "path": "/support/tickets/{ticketId}"
@@ -142,7 +150,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean"
+          "responseType": "boolean",
+          "scopes": [
+            "support/all",
+            "all"
+          ]
         }
       ],
       "path": "/support/tickets/{ticketId}/canBeScored"
@@ -168,7 +180,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "support/all",
+            "all"
+          ]
         }
       ],
       "path": "/support/tickets/{ticketId}/close"
@@ -194,7 +210,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "support.Message[]"
+          "responseType": "support.Message[]",
+          "scopes": [
+            "support/all",
+            "all"
+          ]
         }
       ],
       "path": "/support/tickets/{ticketId}/messages"
@@ -228,7 +248,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "support/all",
+            "all"
+          ]
         }
       ],
       "path": "/support/tickets/{ticketId}/reopen"
@@ -262,7 +286,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "support/all",
+            "all"
+          ]
         }
       ],
       "path": "/support/tickets/{ticketId}/reply"
@@ -304,7 +332,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "support/all",
+            "all"
+          ]
         }
       ],
       "path": "/support/tickets/{ticketId}/score"
@@ -378,7 +410,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "support.NewMessageInfo"
+          "responseType": "support.NewMessageInfo",
+          "scopes": [
+            "support/all",
+            "all"
+          ]
         }
       ],
       "path": "/support/tickets/create"

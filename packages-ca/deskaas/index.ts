@@ -182,10 +182,6 @@ export interface Deskaas {
              * POST /deskaas/{serviceName}/changeAlias
              */
             $post(params: { alias: string }): Promise<deskaas.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         changeContact: {
             /**
@@ -193,10 +189,6 @@ export interface Deskaas {
              * POST /deskaas/{serviceName}/changeContact
              */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         confirmTermination: {
             /**
@@ -204,10 +196,6 @@ export interface Deskaas {
              * POST /deskaas/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         console: {
             /**
@@ -215,10 +203,6 @@ export interface Deskaas {
              * POST /deskaas/{serviceName}/console
              */
             $post(): Promise<deskaas.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         passwordPolicy: {
             /**
@@ -237,10 +221,6 @@ export interface Deskaas {
              * POST /deskaas/{serviceName}/reboot
              */
             $post(): Promise<deskaas.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         refresh: {
             /**
@@ -248,10 +228,6 @@ export interface Deskaas {
              * POST /deskaas/{serviceName}/refresh
              */
             $post(): Promise<deskaas.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         serviceInfos: {
             /**
@@ -297,10 +273,6 @@ export interface Deskaas {
              * POST /deskaas/{serviceName}/terminate
              */
             $post(): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         upgrade: {
             /**
@@ -308,10 +280,6 @@ export interface Deskaas {
              * POST /deskaas/{serviceName}/upgrade
              */
             $post(params?: { newReference?: string, planCode?: string }): Promise<deskaas.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         user: {
             /**
@@ -329,10 +297,6 @@ export interface Deskaas {
                  * POST /deskaas/{serviceName}/user/changePassword
                  */
                 $post(params?: { password?: string }): Promise<deskaas.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             changeProperties: {
                 /**
@@ -340,10 +304,6 @@ export interface Deskaas {
                  * POST /deskaas/{serviceName}/user/changeProperties
                  */
                 $post(params?: { email?: string }): Promise<deskaas.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             task: {
                 /**

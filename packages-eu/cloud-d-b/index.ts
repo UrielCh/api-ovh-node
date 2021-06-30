@@ -932,10 +932,6 @@ export interface CloudDB {
                      * POST /cloudDB/enterprise/cluster/{clusterId}/confirmTermination
                      */
                     $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 endpoint: {
                     /**
@@ -1120,10 +1116,6 @@ export interface CloudDB {
                      * POST /cloudDB/enterprise/cluster/{clusterId}/scale
                      */
                     $post(params: { count: number }): Promise<cloudDB.enterprise_Cluster>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 securityGroup: {
                     /**
@@ -1238,10 +1230,6 @@ export interface CloudDB {
                      * POST /cloudDB/enterprise/cluster/{clusterId}/terminate
                      */
                     $post(): Promise<string>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 user: {
                     /**

@@ -860,7 +860,7 @@ export namespace nichandle {
      * Languages a nichandle can choose
      * type fullname: nichandle.LanguageEnum
      */
-    export type LanguageEnum = "cs_CZ" | "de_DE" | "en_AU" | "en_CA" | "en_GB" | "en_IE" | "en_US" | "es_ES" | "fi_FI" | "fr_CA" | "fr_FR" | "fr_MA" | "fr_SN" | "fr_TN" | "it_IT" | "lt_LT" | "nl_NL" | "pl_PL" | "pt_PT"
+    export type LanguageEnum = "de_DE" | "en_AU" | "en_CA" | "en_GB" | "en_IE" | "en_US" | "es_ES" | "fr_CA" | "fr_FR" | "fr_MA" | "fr_SN" | "fr_TN" | "it_IT" | "nl_NL" | "pl_PL" | "pt_PT"
     /**
      * Legal forms a nichandle can be registered as
      * type fullname: nichandle.LegalFormEnum
@@ -1048,10 +1048,6 @@ export interface Domain {
              * POST /domain/configurationRule/check
              */
             $post(params?: { adminAccount?: nichandle.Nichandle, domain?: domain.Data, extras?: domain.configuration.rules.RuleExtraData, owner?: domain.Contact, techAccount?: nichandle.Nichandle }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     }
     contact: {
@@ -1342,10 +1338,6 @@ export interface Domain {
                  * POST /domain/zone/{zoneName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             confirmTermination: {
                 /**
@@ -1353,10 +1345,6 @@ export interface Domain {
                  * POST /domain/zone/{zoneName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             dnssec: {
                 /**
@@ -1421,10 +1409,6 @@ export interface Domain {
                              * POST /domain/zone/{zoneName}/dynHost/login/{login}/changePassword
                              */
                             $post(params: { password: string }): Promise<void>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -1503,10 +1487,6 @@ export interface Domain {
                          * POST /domain/zone/{zoneName}/history/{creationDate}/restore
                          */
                         $post(): Promise<domain.zone.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -1516,10 +1496,6 @@ export interface Domain {
                  * POST /domain/zone/{zoneName}/import
                  */
                 $post(params: { zoneFile: string }): Promise<domain.zone.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             option: {
                 /**
@@ -1639,10 +1615,6 @@ export interface Domain {
                  * POST /domain/zone/{zoneName}/refresh
                  */
                 $post(): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             reset: {
                 /**
@@ -1650,10 +1622,6 @@ export interface Domain {
                  * POST /domain/zone/{zoneName}/reset
                  */
                 $post(params?: { DnsRecords?: zone.ResetRecord[], minimized?: boolean }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -1724,10 +1692,6 @@ export interface Domain {
                          * POST /domain/zone/{zoneName}/task/{id}/accelerate
                          */
                         $post(): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     cancel: {
                         /**
@@ -1735,10 +1699,6 @@ export interface Domain {
                          * POST /domain/zone/{zoneName}/task/{id}/cancel
                          */
                         $post(): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     relaunch: {
                         /**
@@ -1746,10 +1706,6 @@ export interface Domain {
                          * POST /domain/zone/{zoneName}/task/{id}/relaunch
                          */
                         $post(): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -1759,10 +1715,6 @@ export interface Domain {
                  * POST /domain/zone/{zoneName}/terminate
                  */
                 $post(): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }
@@ -1787,10 +1739,6 @@ export interface Domain {
              * POST /domain/{serviceName}/activateZone
              */
             $post(params?: { minimized?: boolean }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         authInfo: {
             /**
@@ -1809,10 +1757,6 @@ export interface Domain {
              * POST /domain/{serviceName}/changeContact
              */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         configurations: {
             obfuscatedEmails: {
@@ -1836,10 +1780,6 @@ export interface Domain {
                      * POST /domain/{serviceName}/configurations/obfuscatedEmails/refresh
                      */
                     $post(params: { contacts: domain.ContactAllTypesEnum[] }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             optin: {
@@ -1894,10 +1834,6 @@ export interface Domain {
                      * POST /domain/{serviceName}/email/obfuscated/refresh
                      */
                     $post(params: { contactType: domain.DomainContactTypeEnum[] }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
         }
@@ -1937,10 +1873,6 @@ export interface Domain {
                      * POST /domain/{serviceName}/glueRecord/{host}/update
                      */
                     $post(params: { ips: string[] }): Promise<domain.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -1980,10 +1912,6 @@ export interface Domain {
                      * POST /domain/{serviceName}/nameServer/{id}/status
                      */
                     $post(): Promise<domain.DomainNsStatus>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -1994,10 +1922,6 @@ export interface Domain {
                  * POST /domain/{serviceName}/nameServers/update
                  */
                 $post(params: { nameServers: domain.DomainNs[] }): Promise<domain.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         option: {
@@ -2136,10 +2060,6 @@ export interface Domain {
                      * POST /domain/{serviceName}/task/{id}/accelerate
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 cancel: {
                     /**
@@ -2147,10 +2067,6 @@ export interface Domain {
                      * POST /domain/{serviceName}/task/{id}/cancel
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 relaunch: {
                     /**
@@ -2158,10 +2074,6 @@ export interface Domain {
                      * POST /domain/{serviceName}/task/{id}/relaunch
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -2171,10 +2083,6 @@ export interface Domain {
              * POST /domain/{serviceName}/ukOutgoingTransfer
              */
             $post(params: { tag: string }): Promise<domain.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         ukRegistrars: {
             /**

@@ -31,7 +31,7 @@ export namespace connectivity {
         export interface MeetingSlot {
             endDate: string;
             startDate: string;
-            uiCode: string;
+            uiCode?: string;
         }
         /**
          * List of available meeting time slots
@@ -1543,10 +1543,6 @@ export interface Xdsl {
                  * POST /xdsl/eligibility/lines/active
                  */
                 $post(params: { city: xdsl.eligibility.City, contactName: string, street: xdsl.eligibility.Street, streetNumber?: string }): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             inactive: {
                 /**
@@ -1554,10 +1550,6 @@ export interface Xdsl {
                  * POST /xdsl/eligibility/lines/inactive
                  */
                 $post(params: { city: xdsl.eligibility.City, contactName?: string, street: xdsl.eligibility.Street, streetNumber?: string }): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         meetings: {
@@ -1578,10 +1570,6 @@ export interface Xdsl {
                  * POST /xdsl/eligibility/search/buildings
                  */
                 $post(params: { streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Building>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             cities: {
                 /**
@@ -1589,10 +1577,6 @@ export interface Xdsl {
                  * POST /xdsl/eligibility/search/cities
                  */
                 $post(params: { zipCode: string }): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.City>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             fiberStreets: {
                 /**
@@ -1600,10 +1584,6 @@ export interface Xdsl {
                  * POST /xdsl/eligibility/search/fiberStreets
                  */
                 $post(params: { inseeCode: string }): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.FiberStreet>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             streetNumbers: {
                 /**
@@ -1611,10 +1591,6 @@ export interface Xdsl {
                  * POST /xdsl/eligibility/search/streetNumbers
                  */
                 $post(params: { streetCode: string }): Promise<xdsl.AsyncTaskArray<string>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         streets: {
@@ -1644,10 +1620,6 @@ export interface Xdsl {
                  * POST /xdsl/eligibility/test/address
                  */
                 $post(params: { address: xdsl.eligibility.Address }): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             fiber: {
                 building: {
@@ -1656,10 +1628,6 @@ export interface Xdsl {
                      * POST /xdsl/eligibility/test/fiber/building
                      */
                     $post(params: { building: string }): Promise<xdsl.AsyncTask<xdsl.eligibility.FiberEligibility>>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             line: {
@@ -1668,10 +1636,6 @@ export interface Xdsl {
                  * POST /xdsl/eligibility/test/line
                  */
                 $post(params: { lineNumber: string, lineStatus: xdsl.eligibility.LandlineStatusEnum }): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
     }
@@ -1712,10 +1676,6 @@ export interface Xdsl {
                      * POST /xdsl/email/pro/{email}/changePassword
                      */
                     $post(params: { password: string }): Promise<xdsl.email.pro.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -1795,10 +1755,6 @@ export interface Xdsl {
                  * POST /xdsl/spare/{spare}/replace
                  */
                 $post(params: { domain: string }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             returnMerchandise: {
                 /**
@@ -1806,10 +1762,6 @@ export interface Xdsl {
                  * POST /xdsl/spare/{spare}/returnMerchandise
                  */
                 $post(): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -1899,10 +1851,6 @@ export interface Xdsl {
                  * POST /xdsl/{serviceName}/addressMove/extraIpRangeMove
                  */
                 $post(): Promise<xdsl.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         antiSpams: {
@@ -1944,10 +1892,6 @@ export interface Xdsl {
              * POST /xdsl/{serviceName}/applyTemplateToModem
              */
             $post(params: { templateName: string }): Promise<xdsl.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         canCancelResiliation: {
             /**
@@ -1966,10 +1910,6 @@ export interface Xdsl {
              * POST /xdsl/{serviceName}/cancelResiliation
              */
             $post(): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         changeContact: {
             /**
@@ -1977,10 +1917,6 @@ export interface Xdsl {
              * POST /xdsl/{serviceName}/changeContact
              */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         diagnostic: {
             /**
@@ -2047,10 +1983,6 @@ export interface Xdsl {
              * POST /xdsl/{serviceName}/ipv6
              */
             $post(params: { enabled: boolean }): Promise<xdsl.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         lines: {
             /**
@@ -2079,10 +2011,6 @@ export interface Xdsl {
                          * POST /xdsl/{serviceName}/lines/{number}/diagnostic/cancel
                          */
                         $post(): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     run: {
                         /**
@@ -2090,10 +2018,6 @@ export interface Xdsl {
                          * POST /xdsl/{serviceName}/lines/{number}/diagnostic/run
                          */
                         $post(params: { actionsDone?: xdsl.lineDiagnostic.CustomerActionsEnum[], answers?: xdsl.lineDiagnostic.Answers, faultType: xdsl.lineDiagnostic.FaultTypeEnum }): Promise<xdsl.lineDiagnostic.Diagnostic>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
                 dslamPort: {
@@ -2123,10 +2047,6 @@ export interface Xdsl {
                          * POST /xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile
                          */
                         $post(params: { dslamProfileId: number }): Promise<xdsl.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     logs: {
                         /**
@@ -2145,10 +2065,6 @@ export interface Xdsl {
                          * POST /xdsl/{serviceName}/lines/{number}/dslamPort/reset
                          */
                         $post(): Promise<xdsl.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
                 statistics: {
@@ -2293,10 +2209,6 @@ export interface Xdsl {
                  * POST /xdsl/{serviceName}/modem/duplicatePortMappingConfig
                  */
                 $post(params: { accessName: string }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             firmware: {
                 /**
@@ -2491,10 +2403,6 @@ export interface Xdsl {
                  * POST /xdsl/{serviceName}/modem/reboot
                  */
                 $post(params?: { todoDate?: string }): Promise<xdsl.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             reconfigureVoip: {
                 /**
@@ -2502,10 +2410,6 @@ export interface Xdsl {
                  * POST /xdsl/{serviceName}/modem/reconfigureVoip
                  */
                 $post(): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             refreshConnectedDevices: {
                 /**
@@ -2513,10 +2417,6 @@ export interface Xdsl {
                  * POST /xdsl/{serviceName}/modem/refreshConnectedDevices
                  */
                 $post(): Promise<xdsl.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             reset: {
                 /**
@@ -2524,10 +2424,6 @@ export interface Xdsl {
                  * POST /xdsl/{serviceName}/modem/reset
                  */
                 $post(params?: { resetOvhConfig?: boolean }): Promise<xdsl.Task>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             resetPortMappingConfig: {
                 /**
@@ -2535,10 +2431,6 @@ export interface Xdsl {
                  * POST /xdsl/{serviceName}/modem/resetPortMappingConfig
                  */
                 $post(): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             retrieveInfo: {
                 /**
@@ -2546,10 +2438,6 @@ export interface Xdsl {
                  * POST /xdsl/{serviceName}/modem/retrieveInfo
                  */
                 $post(): Promise<xdsl.AsyncTask<xdsl.ModemInfo>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             sipAlg: {
                 /**
@@ -2665,10 +2553,6 @@ export interface Xdsl {
              * POST /xdsl/{serviceName}/orderMeeting
              */
             $post(params: { endDate: string, startDate: string, uiCode: string }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         pendingAction: {
             /**
@@ -2698,10 +2582,6 @@ export interface Xdsl {
              * POST /xdsl/{serviceName}/requestPPPLoginMail
              */
             $post(): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         requestTotalDeconsolidation: {
             /**
@@ -2709,10 +2589,6 @@ export interface Xdsl {
              * POST /xdsl/{serviceName}/requestTotalDeconsolidation
              */
             $post(params?: { noPortability?: boolean, rio?: string }): Promise<xdsl.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         resiliate: {
             /**
@@ -2720,10 +2596,6 @@ export interface Xdsl {
              * POST /xdsl/{serviceName}/resiliate
              */
             $post(params: { resiliationDate?: string, resiliationSurvey: xdsl.ResiliationSurvey }): Promise<xdsl.ResiliationFollowUpDetail>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         resiliationFollowup: {
             /**
@@ -2785,10 +2657,6 @@ export interface Xdsl {
              * POST /xdsl/{serviceName}/searchOrderMeetings
              */
             $post(): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         sendOrderToProvider: {
             /**
@@ -2796,10 +2664,6 @@ export interface Xdsl {
              * POST /xdsl/{serviceName}/sendOrderToProvider
              */
             $post(): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         serviceInfos: {
             /**
@@ -2854,10 +2718,6 @@ export interface Xdsl {
                      * POST /xdsl/{serviceName}/tasks/{id}/archive
                      */
                     $post(): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -2878,10 +2738,6 @@ export interface Xdsl {
              * POST /xdsl/{serviceName}/updateInvalidOrMissingRio
              */
             $post(params: { relaunchWithoutPortability: boolean, rio?: string }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     };
 }

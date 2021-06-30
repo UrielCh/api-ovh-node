@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service"
@@ -77,7 +85,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.ExchangeService"
+          "responseType": "email.exchange.ExchangeService",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -112,7 +124,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}"
@@ -170,7 +186,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -446,7 +466,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account"
@@ -488,7 +512,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -524,7 +552,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Account"
+          "responseType": "email.exchange.Account",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -567,7 +599,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}"
@@ -609,7 +645,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -653,7 +693,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias"
@@ -703,7 +747,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -747,7 +795,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeAccountAlias"
+          "responseType": "email.exchange.exchangeAccountAlias",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias/{alias}"
@@ -789,7 +841,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -825,7 +881,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeAccountArchive"
+          "responseType": "email.exchange.exchangeAccountArchive",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -869,7 +929,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -912,7 +976,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive"
@@ -962,7 +1030,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/changePassword"
@@ -1004,7 +1076,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeAccountDiagnosis"
+          "responseType": "email.exchange.exchangeAccountDiagnosis",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1048,7 +1124,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics"
@@ -1090,7 +1170,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1126,7 +1210,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Export"
+          "responseType": "email.exchange.Export",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1162,7 +1250,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export"
@@ -1204,7 +1296,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.ExportUrl"
+          "responseType": "email.exchange.ExportUrl",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1240,7 +1336,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/exportURL"
@@ -1282,7 +1382,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1326,7 +1430,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess"
@@ -1376,7 +1484,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1420,7 +1532,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeAccountFullAccess"
+          "responseType": "email.exchange.exchangeAccountFullAccess",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess/{allowedAccountId}"
@@ -1462,7 +1578,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.OutlookUrl"
+          "responseType": "email.exchange.OutlookUrl",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1514,7 +1634,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL"
@@ -1556,7 +1680,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeAccountProtocol"
+          "responseType": "email.exchange.exchangeAccountProtocol",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1599,7 +1727,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol"
@@ -1641,7 +1773,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1685,7 +1821,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs"
@@ -1735,7 +1875,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1779,7 +1923,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeAccountSendAs"
+          "responseType": "email.exchange.exchangeAccountSendAs",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs/{allowedAccountId}"
@@ -1821,7 +1969,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1865,7 +2017,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo"
@@ -1915,7 +2071,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1959,7 +2119,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeAccountSendOnBehalfTo"
+          "responseType": "email.exchange.exchangeAccountSendOnBehalfTo",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo/{allowedAccountId}"
@@ -2001,7 +2165,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks"
@@ -2051,7 +2219,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks/{id}"
@@ -2093,7 +2265,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/terminate"
@@ -2143,7 +2319,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/activateSharepoint"
@@ -2201,7 +2381,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/changeHostname"
@@ -2235,7 +2419,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/dcvEmails"
@@ -2293,7 +2481,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/device"
@@ -2335,7 +2527,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeServiceDevice"
+          "responseType": "email.exchange.exchangeServiceDevice",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2378,7 +2574,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}"
@@ -2420,7 +2620,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}/clearDevice"
@@ -2470,7 +2674,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2554,7 +2762,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain"
@@ -2596,7 +2808,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2632,7 +2848,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Domain"
+          "responseType": "email.exchange.Domain",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2675,7 +2895,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}"
@@ -2717,7 +2941,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2753,7 +2981,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.disclaimer"
+          "responseType": "email.exchange.disclaimer",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2805,7 +3037,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -2848,7 +3084,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer"
@@ -2890,7 +3130,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.DisclaimerAttributeEnum[]"
+          "responseType": "email.exchange.DisclaimerAttributeEnum[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimerAttribute"
@@ -2964,7 +3208,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3048,7 +3296,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/externalContact"
@@ -3090,7 +3342,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3126,7 +3382,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeExternalContact"
+          "responseType": "email.exchange.exchangeExternalContact",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3169,7 +3429,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}"
@@ -3227,7 +3491,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "email.exchange.DailyLicense[]"
+          "responseType": "email.exchange.DailyLicense[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/license"
@@ -3269,7 +3537,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3361,7 +3633,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList"
@@ -3403,7 +3679,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3439,7 +3719,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.mailingList"
+          "responseType": "email.exchange.mailingList",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3482,7 +3766,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}"
@@ -3524,7 +3812,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3568,7 +3860,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias"
@@ -3618,7 +3914,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3662,7 +3962,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeMailingListAlias"
+          "responseType": "email.exchange.exchangeMailingListAlias",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}"
@@ -3704,7 +4008,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3748,7 +4056,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account"
@@ -3798,7 +4110,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3842,7 +4158,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeDistributionGroupManager"
+          "responseType": "email.exchange.exchangeDistributionGroupManager",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}"
@@ -3884,7 +4204,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -3936,7 +4260,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account"
@@ -3986,7 +4314,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4030,7 +4362,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeDistributionGroupMember"
+          "responseType": "email.exchange.exchangeDistributionGroupMember",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account/{memberAccountId}"
@@ -4072,7 +4408,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4124,7 +4464,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact"
@@ -4174,7 +4518,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4218,7 +4566,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeDistributionGroupMember"
+          "responseType": "email.exchange.exchangeDistributionGroupMember",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact/{memberContactId}"
@@ -4260,7 +4612,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4304,7 +4660,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs"
@@ -4354,7 +4714,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4398,7 +4762,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeDistributionGroupSendAs"
+          "responseType": "email.exchange.exchangeDistributionGroupSendAs",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}"
@@ -4440,7 +4808,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4484,7 +4856,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo"
@@ -4534,7 +4910,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4578,7 +4958,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeDistributionGroupSendOnBehalfTo"
+          "responseType": "email.exchange.exchangeDistributionGroupSendOnBehalfTo",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}"
@@ -4628,7 +5012,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "email.exchange.OutlookVersions[]"
+          "responseType": "email.exchange.OutlookVersions[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability"
@@ -4662,7 +5050,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeServiceProtocol"
+          "responseType": "email.exchange.exchangeServiceProtocol",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4697,7 +5089,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/protocol"
@@ -4731,7 +5127,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4767,7 +5167,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification"
@@ -4809,7 +5213,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4845,7 +5253,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeServiceActiveSyncNotification"
+          "responseType": "email.exchange.exchangeServiceActiveSyncNotification",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification/{notifiedAccountId}"
@@ -4887,7 +5299,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -4955,7 +5371,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/publicFolder"
@@ -4997,7 +5417,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5033,7 +5457,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.publicFolder"
+          "responseType": "email.exchange.publicFolder",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5076,7 +5504,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}"
@@ -5118,7 +5550,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5170,7 +5606,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission"
@@ -5220,7 +5660,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5264,7 +5708,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangePublicFolderPermission"
+          "responseType": "email.exchange.exchangePublicFolderPermission",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5315,7 +5763,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}"
@@ -5349,7 +5801,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.PublicFolderQuota"
+          "responseType": "email.exchange.PublicFolderQuota",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/publicFolderQuota"
@@ -5391,7 +5847,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/renewSSL"
@@ -5433,7 +5893,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5557,7 +6021,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount"
@@ -5599,7 +6067,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5635,7 +6107,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.resourceAccount"
+          "responseType": "email.exchange.resourceAccount",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5678,7 +6154,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}"
@@ -5720,7 +6200,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5764,7 +6248,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate"
@@ -5814,7 +6302,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5858,7 +6350,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeResourceAccountDelegate"
+          "responseType": "email.exchange.exchangeResourceAccountDelegate",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}"
@@ -5892,7 +6388,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Server"
+          "responseType": "email.exchange.Server",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5927,7 +6427,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/server"
@@ -5961,7 +6465,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -5996,7 +6504,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos"
@@ -6038,7 +6550,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6130,7 +6646,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount"
@@ -6172,7 +6692,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6208,7 +6732,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.sharedAccount"
+          "responseType": "email.exchange.sharedAccount",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6251,7 +6779,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}"
@@ -6293,7 +6825,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6337,7 +6873,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess"
@@ -6387,7 +6927,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6431,7 +6975,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeSharedAccountFullAccess"
+          "responseType": "email.exchange.exchangeSharedAccountFullAccess",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess/{allowedAccountId}"
@@ -6473,7 +7021,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6517,7 +7069,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs"
@@ -6567,7 +7123,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6611,7 +7171,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeSharedAccountSendAs"
+          "responseType": "email.exchange.exchangeSharedAccountSendAs",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs/{allowedAccountId}"
@@ -6653,7 +7217,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6697,7 +7265,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo"
@@ -6747,7 +7319,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         },
         {
           "apiStatus": {
@@ -6791,7 +7367,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeSharedAccountSendOnBehalfTo"
+          "responseType": "email.exchange.exchangeSharedAccountSendOnBehalfTo",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}"
@@ -6833,7 +7413,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks"
@@ -6883,7 +7467,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks/{id}"
@@ -6917,7 +7505,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.SharedAccountQuota"
+          "responseType": "email.exchange.SharedAccountQuota",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccountQuota"
@@ -6951,7 +7543,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/task"
@@ -6993,7 +7589,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/task/{id}"
@@ -7027,7 +7627,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.exchange.Task"
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/updateDeviceList"
@@ -7061,7 +7665,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/updateFlagsOnAllAccounts"

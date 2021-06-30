@@ -192,10 +192,6 @@ export interface Freefax {
              * POST /freefax/{serviceName}/changePassword
              */
             $post(): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         mainService: {
             /**
@@ -245,10 +241,6 @@ export interface Freefax {
                  * POST /freefax/{serviceName}/voicemail/changePassword
                  */
                 $post(params: { password: string }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             changeRouting: {
                 /**
@@ -256,10 +248,6 @@ export interface Freefax {
                  * POST /freefax/{serviceName}/voicemail/changeRouting
                  */
                 $post(params: { routing: telephony.VoicefaxRoutingEnum }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             routing: {
                 /**

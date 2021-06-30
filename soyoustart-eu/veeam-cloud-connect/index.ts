@@ -194,10 +194,6 @@ export interface VeeamCloudConnect {
                      * POST /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota
                      */
                     $post(params: { newQuota: number }): Promise<veeamCloudConnect.Task[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -229,10 +225,6 @@ export interface VeeamCloudConnect {
              * POST /veeamCloudConnect/{serviceName}/resetPassword
              */
             $post(): Promise<veeamCloudConnect.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         serviceInfos: {
             /**

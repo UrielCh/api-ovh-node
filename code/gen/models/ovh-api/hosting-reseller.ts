@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.reseller.product"
+          "responseType": "hosting.reseller.product",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller/{serviceName}"
@@ -93,7 +101,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]"
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller/{serviceName}/changeContact"
@@ -127,7 +139,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller/{serviceName}/email"
@@ -161,7 +177,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller/{serviceName}/language"
@@ -203,7 +223,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller/{serviceName}/migration"
@@ -237,7 +261,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller/{serviceName}/reboot"
@@ -263,7 +291,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller/{serviceName}/reinstall"
@@ -289,7 +321,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller/{serviceName}/resetPasswordUrl"
@@ -323,7 +359,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller/{serviceName}/reverse"
@@ -349,7 +389,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         },
         {
           "apiStatus": {
@@ -376,7 +420,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller/{serviceName}/serviceInfos"
@@ -402,7 +450,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "reseller.snapshot[]"
+          "responseType": "reseller.snapshot[]",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         },
         {
           "apiStatus": {
@@ -422,7 +474,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller/{serviceName}/snapshot"
@@ -456,7 +512,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "reseller.snapshot"
+          "responseType": "reseller.snapshot",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller/{serviceName}/snapshot/{snapshotId}"
@@ -490,7 +550,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore"
@@ -516,7 +580,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "reseller.task[]"
+          "responseType": "reseller.task[]",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller/{serviceName}/task"
@@ -550,7 +618,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "reseller.task"
+          "responseType": "reseller.task",
+          "scopes": [
+            "all",
+            "product/hosting-reseller/all"
+          ]
         }
       ],
       "path": "/hosting/reseller/{serviceName}/task/{taskId}"

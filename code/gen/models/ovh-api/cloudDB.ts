@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster"
+          "responseType": "cloudDB.enterprise.Cluster",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -70,7 +78,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}"
@@ -96,7 +108,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -124,7 +140,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Backup"
+          "responseType": "cloudDB.enterprise.Cluster.Backup",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/backup"
@@ -158,7 +178,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -186,7 +210,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Backup"
+          "responseType": "cloudDB.enterprise.Cluster.Backup",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/backup/{backupId}"
@@ -244,7 +272,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/confirmTermination"
@@ -270,7 +302,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/endpoint"
@@ -304,7 +340,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Endpoint"
+          "responseType": "cloudDB.enterprise.Cluster.Endpoint",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/endpoint/{endpointId}"
@@ -330,7 +370,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/host"
@@ -364,7 +408,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Host"
+          "responseType": "cloudDB.enterprise.Cluster.Host",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/host/{hostId}"
@@ -390,7 +438,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -426,7 +478,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.LdpMember"
+          "responseType": "cloudDB.enterprise.Cluster.LdpMember",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/logs"
@@ -460,7 +516,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -488,7 +548,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.LdpMember"
+          "responseType": "cloudDB.enterprise.Cluster.LdpMember",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/logs/{logsId}"
@@ -514,7 +578,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/maintenance"
@@ -548,7 +616,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -576,7 +648,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Maintenance"
+          "responseType": "cloudDB.enterprise.Cluster.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/maintenance/{maintenanceId}"
@@ -602,7 +678,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -622,7 +702,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.MaintenanceWindow"
+          "responseType": "cloudDB.enterprise.Cluster.MaintenanceWindow",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -666,7 +750,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.MaintenanceWindow"
+          "responseType": "cloudDB.enterprise.Cluster.MaintenanceWindow",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -693,7 +781,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/maintenanceWindow"
@@ -719,7 +811,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -755,7 +851,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Restore"
+          "responseType": "cloudDB.enterprise.Cluster.Restore",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/restore"
@@ -789,7 +889,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -817,7 +921,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Restore"
+          "responseType": "cloudDB.enterprise.Cluster.Restore",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}"
@@ -851,7 +959,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Restore.User"
+          "responseType": "cloudDB.enterprise.Cluster.Restore.User",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -887,7 +999,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Restore.User"
+          "responseType": "cloudDB.enterprise.Cluster.Restore.User",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}/user"
@@ -921,7 +1037,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster"
+          "responseType": "cloudDB.enterprise.Cluster",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/scale"
@@ -947,7 +1067,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -975,7 +1099,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup"
+          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/securityGroup"
@@ -1009,7 +1137,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1037,7 +1169,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup"
+          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1072,7 +1208,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}"
@@ -1106,7 +1246,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1142,7 +1286,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup.Rule"
+          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup.Rule",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule"
@@ -1184,7 +1332,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1220,7 +1372,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup.Rule"
+          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup.Rule",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule/{ruleId}"
@@ -1246,7 +1402,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1273,7 +1433,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/serviceInfos"
@@ -1315,7 +1479,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "uuid[]"
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/task"
@@ -1349,7 +1517,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.Task"
+          "responseType": "cloudDB.Task",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/task/{taskId}"
@@ -1375,7 +1547,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/terminate"
@@ -1401,7 +1577,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.User"
+          "responseType": "cloudDB.enterprise.Cluster.User",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         },
         {
           "apiStatus": {
@@ -1429,7 +1609,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.User"
+          "responseType": "cloudDB.enterprise.Cluster.User",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/cluster/{clusterId}/user"
@@ -1446,7 +1630,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/offer"
@@ -1472,7 +1660,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Offer"
+          "responseType": "cloudDB.enterprise.Offer",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/offer/{offerName}"
@@ -1498,7 +1690,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/offer/{offerName}/region"
@@ -1532,7 +1728,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Offer.Region"
+          "responseType": "cloudDB.enterprise.Offer.Region",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/offer/{offerName}/region/{regionName}"
@@ -1549,7 +1749,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/region"
@@ -1575,7 +1779,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Region"
+          "responseType": "cloudDB.enterprise.Region",
+          "scopes": [
+            "all",
+            "product/cloudDB/all"
+          ]
         }
       ],
       "path": "/cloudDB/enterprise/region/{regionName}"

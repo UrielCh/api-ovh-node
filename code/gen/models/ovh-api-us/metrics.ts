@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/metrics/all"
+          ]
         }
       ],
       "path": "/metrics"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "metrics.api.Service"
+          "responseType": "metrics.api.Service",
+          "scopes": [
+            "all",
+            "product/metrics/all"
+          ]
         },
         {
           "apiStatus": {
@@ -71,7 +79,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "metrics.api.Service"
+          "responseType": "metrics.api.Service",
+          "scopes": [
+            "all",
+            "product/metrics/all"
+          ]
         }
       ],
       "path": "/metrics/{serviceName}"
@@ -129,7 +141,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/metrics/all"
+          ]
         }
       ],
       "path": "/metrics/{serviceName}/confirmTermination"
@@ -163,7 +179,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "metrics.api.Consumption"
+          "responseType": "metrics.api.Consumption",
+          "scopes": [
+            "all",
+            "product/metrics/all"
+          ]
         }
       ],
       "path": "/metrics/{serviceName}/consumption"
@@ -197,7 +217,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/metrics/all"
+          ]
         }
       ],
       "path": "/metrics/{serviceName}/lookup/token"
@@ -231,7 +255,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/metrics/all"
+          ]
         }
       ],
       "path": "/metrics/{serviceName}/quota"
@@ -257,7 +285,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/metrics/all"
+          ]
         },
         {
           "apiStatus": {
@@ -284,7 +316,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/metrics/all"
+          ]
         }
       ],
       "path": "/metrics/{serviceName}/serviceInfos"
@@ -310,7 +346,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string"
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "product/metrics/all"
+          ]
         }
       ],
       "path": "/metrics/{serviceName}/terminate"
@@ -336,7 +376,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/metrics/all"
+          ]
         },
         {
           "apiStatus": {
@@ -380,7 +424,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "metrics.api.Token"
+          "responseType": "metrics.api.Token",
+          "scopes": [
+            "all",
+            "product/metrics/all"
+          ]
         }
       ],
       "path": "/metrics/{serviceName}/token"
@@ -414,7 +462,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/metrics/all"
+          ]
         },
         {
           "apiStatus": {
@@ -442,7 +494,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "metrics.api.Token"
+          "responseType": "metrics.api.Token",
+          "scopes": [
+            "all",
+            "product/metrics/all"
+          ]
         },
         {
           "apiStatus": {
@@ -478,7 +534,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "metrics.api.Token"
+          "responseType": "metrics.api.Token",
+          "scopes": [
+            "all",
+            "product/metrics/all"
+          ]
         }
       ],
       "path": "/metrics/{serviceName}/token/{tokenId}"

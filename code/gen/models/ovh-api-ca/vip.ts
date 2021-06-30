@@ -17,7 +17,10 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all"
+          ]
         }
       ],
       "path": "/vip"
@@ -43,7 +46,10 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vip.SupportVip"
+          "responseType": "vip.SupportVip",
+          "scopes": [
+            "all"
+          ]
         }
       ],
       "path": "/vip/{serviceName}"
@@ -69,7 +75,10 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all"
+          ]
         },
         {
           "apiStatus": {
@@ -96,7 +105,10 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all"
+          ]
         }
       ],
       "path": "/vip/{serviceName}/serviceInfos"

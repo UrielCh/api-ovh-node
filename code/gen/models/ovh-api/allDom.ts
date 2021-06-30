@@ -17,7 +17,11 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/allDom/all"
+          ]
         }
       ],
       "path": "/allDom"
@@ -43,7 +47,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "allDom.AllDom"
+          "responseType": "allDom.AllDom",
+          "scopes": [
+            "all",
+            "product/allDom/all"
+          ]
         }
       ],
       "path": "/allDom/{serviceName}"
@@ -77,7 +85,11 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/allDom/all"
+          ]
         }
       ],
       "path": "/allDom/{serviceName}/domain"
@@ -111,7 +123,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "allDom.AllDomDomain"
+          "responseType": "allDom.AllDomDomain",
+          "scopes": [
+            "all",
+            "product/allDom/all"
+          ]
         }
       ],
       "path": "/allDom/{serviceName}/domain/{domain}"
@@ -137,7 +153,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service"
+          "responseType": "services.Service",
+          "scopes": [
+            "all",
+            "product/allDom/all"
+          ]
         },
         {
           "apiStatus": {
@@ -164,7 +184,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/allDom/all"
+          ]
         }
       ],
       "path": "/allDom/{serviceName}/serviceInfos"

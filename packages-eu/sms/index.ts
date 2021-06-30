@@ -737,10 +737,6 @@ export interface Sms {
          * POST /sms/estimate
          */
         $post(params: { message: string, noStopClause: boolean, senderType: sms.TypeSenderEnum }): Promise<sms.JobEstimate>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     ptts: {
         /**
@@ -866,10 +862,6 @@ export interface Sms {
                      * POST /sms/{serviceName}/batches/{id}/cancel
                      */
                     $post(): Promise<sms.Batch>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 statistics: {
                     /**
@@ -1120,10 +1112,6 @@ export interface Sms {
                      * POST /sms/{serviceName}/phonebooks/{bookKey}/import
                      */
                     $post(params: { documentId: string }): Promise<telephony.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 phonebookContact: {
                     /**
@@ -1205,10 +1193,6 @@ export interface Sms {
                      * POST /sms/{serviceName}/receivers/{slotId}/clean
                      */
                     $post(params: { freemium: boolean, priceOnly: boolean }): Promise<sms.ReceiversAsynchronousCleanReport>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 csv: {
                     /**
@@ -1307,10 +1291,6 @@ export interface Sms {
                      * POST /sms/{serviceName}/senders/{sender}/validate
                      */
                     $post(params: { code: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -1404,10 +1384,6 @@ export interface Sms {
                      * POST /sms/{serviceName}/templatesControl/{name}/relaunchValidation
                      */
                     $post(params: { description: string, message: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -1417,10 +1393,6 @@ export interface Sms {
              * POST /sms/{serviceName}/transferCredits
              */
             $post(params: { credits: number, smsAccountTarget: string }): Promise<void>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         users: {
             /**
@@ -1606,10 +1578,6 @@ export interface Sms {
                              * POST /sms/{serviceName}/users/{login}/receivers/{slotId}/clean
                              */
                             $post(params: { freemium: boolean, priceOnly: boolean }): Promise<sms.ReceiversAsynchronousCleanReport>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         csv: {
                             /**

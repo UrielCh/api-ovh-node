@@ -32,9 +32,5 @@ export interface Secret {
          * POST /secret/retrieve
          */
         $post(params: { id: string }): Promise<secret.Secret>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
 }

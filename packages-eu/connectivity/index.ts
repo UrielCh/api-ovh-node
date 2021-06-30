@@ -140,7 +140,7 @@ export namespace connectivity {
         export interface MeetingSlot {
             endDate: string;
             startDate: string;
-            uiCode: string;
+            uiCode?: string;
         }
         /**
          * List of available meeting time slots
@@ -204,7 +204,7 @@ export namespace connectivity {
          * Offer product provider
          * type fullname: connectivity.eligibility.OfferProductProviderEnum
          */
-        export type OfferProductProviderEnum = "AXIONE" | "KOSC" | "ORANGE" | "SFR"
+        export type OfferProductProviderEnum = "AI" | "ALTERNATIVE" | "AXIONE" | "FI" | "KOSC" | "ORANGE" | "REFERENCE" | "SFR"
         /**
          * Offer product type
          * type fullname: connectivity.eligibility.OfferProductTypeEnum
@@ -351,10 +351,6 @@ export interface Connectivity {
                  * POST /connectivity/eligibility/search/buildingDetails
                  */
                 $post(params: { building: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.Building>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             buildings: {
                 /**
@@ -362,10 +358,6 @@ export interface Connectivity {
                  * POST /connectivity/eligibility/search/buildings
                  */
                 $post(params: { streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             buildingsByLine: {
                 /**
@@ -373,10 +365,6 @@ export interface Connectivity {
                  * POST /connectivity/eligibility/search/buildingsByLine
                  */
                 $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum }): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             cities: {
                 /**
@@ -384,10 +372,6 @@ export interface Connectivity {
                  * POST /connectivity/eligibility/search/cities
                  */
                 $post(params: { zipCode: string }): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.City>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             lines: {
                 /**
@@ -395,21 +379,13 @@ export interface Connectivity {
                  * POST /connectivity/eligibility/search/lines
                  */
                 $post(params: { ownerName?: string, streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Line>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             meetings: {
                 /**
-                 * Search for available line creation meeting time slots, for copper only
+                 * Search for available copper line creation or fiber installation meeting time slots
                  * POST /connectivity/eligibility/search/meetings
                  */
                 $post(params: { eligibilityReference: string, productCode: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             streetNumbers: {
                 /**
@@ -417,10 +393,6 @@ export interface Connectivity {
                  * POST /connectivity/eligibility/search/streetNumbers
                  */
                 $post(params: { streetCode: string }): Promise<xdsl.AsyncTaskArray<string>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             streets: {
                 /**
@@ -428,10 +400,6 @@ export interface Connectivity {
                  * POST /connectivity/eligibility/search/streets
                  */
                 $post(params: { inseeCode: string }): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Street>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         test: {
@@ -450,20 +418,12 @@ export interface Connectivity {
                  * POST /connectivity/eligibility/test/address
                  */
                 $post(params: { streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 partners: {
                     /**
                      * Do an eligibility for an address, if no line exist. Partners only.
                      * POST /connectivity/eligibility/test/address/partners
                      */
                     $post(params: { streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             building: {
@@ -472,10 +432,6 @@ export interface Connectivity {
                  * POST /connectivity/eligibility/test/building
                  */
                 $post(params: { building: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             line: {
                 /**
@@ -483,20 +439,12 @@ export interface Connectivity {
                  * POST /connectivity/eligibility/test/line
                  */
                 $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 partners: {
                     /**
                      * Do an eligibility test on a line number, for copper only. Partners only.
                      * POST /connectivity/eligibility/test/line/partners
                      */
                     $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             otp: {
@@ -505,10 +453,6 @@ export interface Connectivity {
                  * POST /connectivity/eligibility/test/otp
                  */
                 $post(params: { otp: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
     }
