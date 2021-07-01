@@ -70,14 +70,16 @@ export class OvhError extends Error implements IOvhError {
         this.path = m.path;
         this.errorCode = m.errorCode;
         this.httpCode = m.httpCode;
-        this.parent = parent;
-        if (this.parent) {
-            if (this.parent.stack)
-                this.stack = this.stack + '\nFrom previous ' + this.parent.stack.split('\n').slice(0, 2).join('\n') + '\n'
-            else if (typeof this.parent == "string")
-                this.stack = this.parent + '\n' + this.stack;
+        // this.parent = parent;
+        if (parent) {
+            this.parent = parent;
+            if (parent.stack)
+                this.stack = this.stack + '\nFrom previous ' + parent.stack.split('\n').slice(0, 2).join('\n') + '\n'
+            else if (typeof parent == "string")
+                this.stack = parent + '\n' + this.stack;
         }
-        this.XOvhQueryid = XOvhQueryid;
+        if (XOvhQueryid)
+            this.XOvhQueryid = XOvhQueryid;
         Object.setPrototypeOf(this, OvhError.prototype);
     }
 }
