@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/api",
   "description": "Ovh api connector implementation",
-  "version": "3.1.8",
+  "version": "3.1.9",
   "keywords": [
     "ovh",
     "ovhCloud",
@@ -15,18 +15,18 @@
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "dependencies": {
     "@ovh-api/common": "^3.1.2",
-    "open": "^8.2.0"
+    "open": "^8.2.1"
   },
   "devDependencies": {
-    "@types/chai": "^4.2.18",
+    "@types/chai": "^4.2.19",
     "@types/mocha": "^8.2.2",
-    "@types/node": "^15.12.2",
+    "@types/node": "^15.12.5",
     "@types/open": "^6.2.1",
     "chai": "^4.3.4",
     "mocha": "^9.0.1",
     "rimraf": "^3.0.2",
     "ts-node": "^10.0.0",
-    "typescript": "^4.3.4"
+    "typescript": "^4.3.5"
   },
   "publishConfig": {
     "access": "public"

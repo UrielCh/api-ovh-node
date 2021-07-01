@@ -62,8 +62,9 @@ export class OvhError extends Error implements IOvhError {
     errorCode: 'INVALID_CREDENTIAL' | 'NOT_CREDENTIAL' | 'QUERY_TIME_OUT' | 'NOT_GRANTED_CALL' | 'HTTP_ERROR' | 'NETWORK_ERROR';
     httpCode: string;
     parent?: Error;
+    XOvhQueryid?: string
 
-    constructor(m: IOvhError, parent?: Error) {
+    constructor(m: IOvhError, parent?: Error, XOvhQueryid?: string) {
         super(m.message);
         this.method = m.method;
         this.path = m.path;
@@ -76,6 +77,7 @@ export class OvhError extends Error implements IOvhError {
             else if (typeof this.parent == "string")
                 this.stack = this.parent + '\n' + this.stack;
         }
+        this.XOvhQueryid = XOvhQueryid;
         Object.setPrototypeOf(this, OvhError.prototype);
     }
 }
@@ -613,13 +615,17 @@ by default I will ask for all rights`);
                     try {
                         newCert = await this.queryForCredencial()
                     } catch (e) {
+                        // other unised headers: X-IPLB-Instance: number
+                        // X-Iplb-Request-Id: string
+                        // X-IPLB-Request-ID: string
+                        const XOvhQueryid = `${response.headers['X-Ovh-Queryid']}`;
                         throw new OvhError({
                             method,
                             path: options.path as string,
                             errorCode: 'HTTP_ERROR',
                             httpCode: `${statusCode} ${statusMessage}`,
-                            message: `failed to request a credential with rule ${JSON.stringify(this.accessRules)} ${e.message || e}`
-                        }, e);
+                            message: `failed to request a credential with rule ${JSON.stringify(this.accessRules)} ${e.message || e}`,
+                        }, e, XOvhQueryid);
                     }
                     await waitForCertValidation(newCert);
                     let resp = await this.request(method, path, params);

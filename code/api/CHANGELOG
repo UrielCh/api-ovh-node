@@ -1,3 +1,5 @@
+V 3.1.9
+- store 'X-Ovh-Queryid' response header as 'XOvhQueryid' in OvhError Exception
 V 3.1.8
 - accept all 2XX responce as valid. (use to be 200 only) [PR10]
 V 3.1.7
