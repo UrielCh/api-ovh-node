@@ -95,6 +95,7 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
 
     public async listen() {
         return new Promise(async (resolve) => {
+            // group tokens by 5
             let groups2: IEvTokenGroup[] = [];
             groups2.push({ groups: [], session: '' });
             for (let i = 0; i < this.tokens.length; i++) {
@@ -111,7 +112,7 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
             }
             console.log(`Registred Ok on event Api V2`)
             resolve(undefined);
-            const token2Billing = {} as {[tokrn:string]: string};
+            const token2Billing = {} as {[token:string]: string};
             this.tokens.forEach((token) => token2Billing[token.token] =  token.billingAccount)
 
             const listen = groups2.map(async (group: IEvTokenGroup) => {
