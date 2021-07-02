@@ -110,7 +110,7 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
                 await this.connectGroup(group);
             }
             console.log(`Registred Ok on event Api V2`)
-            resolve();
+            resolve(undefined);
             const token2Billing = {} as {[tokrn:string]: string};
             this.tokens.forEach((token) => token2Billing[token.token] =  token.billingAccount)
 

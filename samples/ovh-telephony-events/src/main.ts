@@ -1,6 +1,7 @@
-import program from 'commander'
+import { program } from 'commander'
 import { IEvToken, IOvhEventListener } from './model';
 import { createHandyClient, IHandyRedis } from 'handy-redis';
+// import { createNodeRedisClient, WrappedNodeRedisClient } from 'handy-redis';
 import { OvhEventListenerV1 } from './OvhEventListenerV1';
 import { OvhEventListenerV2 } from './OvhEventListenerV2';
 import { OvhEventTokenImporter } from './OvhEventTokenImporter';
@@ -13,6 +14,19 @@ import { myDebounce } from './myDebounce';
 
 // sample exec line:
 // ts-node main.ts --redis-host 127.0.0.1 --cache tokens.json --channel event-voip
+
+interface ProgrameOptions {
+    reset?: boolean;
+    redisHost?: string;
+    redisPort?: string;
+    redisPassword?: string;
+    channel?: string;
+    cache?: string;
+    certCache?: string;
+    debounce?: string;
+    v1?: boolean;
+}
+
 
 const { version } = require('../package.json');
 program
@@ -63,43 +77,46 @@ function checkUpdate() {
 
 async function main() {
     checkUpdate();
+    const options = program.opts<ProgrameOptions>();
     const engine = new OvhApi({
         accessRules: 'GET /me, GET /telephony, GET /telephony/*/eventToken, POST /telephony/*/eventToken, DELETE /telephony/*/eventToken',
-        certCache: program.certCache,
+        certCache: options.certCache,
     });
 
     const importer = new OvhEventTokenImporter(engine);
-    if (program['reset']) {
-        if (program.cache) {
-            console.log(`Try to deleting old token file ${program.cache}`);
+    if (options.reset) {
+        if (options.cache) {
+            console.log(`Try to deleting old token file ${options.cache}`);
             try {
-                await fse.remove(program.cache)
+                await fse.remove(options.cache)
             } catch (e) {
             }
             await importer.reset();
         }
         return "reset Done";
     }
+    //let redis: WrappedNodeRedisClient | null = null;
     let redis: IHandyRedis | null = null;
-    if (program.redisHost) {
-        redis = createHandyClient({ host: program['redisHost'], port: Number(program['redisPort']) | 6379, password: program['redisPassword'] });
+    if (options.redisHost) {
+        // redis = createNodeRedisClient({ host: options.redisHost, port: Number(options.redisPort) | 6379, password: options.redisPassword });
+        redis = createHandyClient({ host: options.redisHost, port: Number(options.redisPort) | 6379, password: options.redisPassword });
     }
-    const cachefile: string = program.cache;
+    const cachefile: string = options.cache || 'cache.json';
     const tokens: IEvToken[] = await importer.cacheFile(cachefile).load();
 
     let listener: IOvhEventListener;
-    if (program.v1)
+    if (options.v1)
         listener = new OvhEventListenerV1(tokens);
     else
         listener = new OvhEventListenerV2(tokens);
 
-    if (!program.channel) {
-        program.channel = 'event-voip';
+    if (!options.channel) {
+        options.channel = 'event-voip';
         if (redis)
-            console.log(`--channel not provided, using default '${program.channel}'`);
+            console.log(`--channel not provided, using default '${options.channel}'`);
     }
     if (redis)
-        listener.redis(redis, program.channel)
+        listener.redis(redis, options.channel)
 
     const logError = debounce((msg:any) => {
         console.error(msg)
@@ -117,14 +134,14 @@ async function main() {
      */
     const logSentEvent = () => {
         const now = new Date();
-        console.log(`${now.toISOString()} Sent ${nbEvent} event to ch: ${program.channel} grps: ${[...actifBillings].join(', ')} (nic: ${importer.nic})`);
+        console.log(`${now.toISOString()} Sent ${nbEvent} event to ch: ${options.channel} grps: ${[...actifBillings].join(', ')} (nic: ${importer.nic})`);
         nbEvent = 0;
         actifBillings.clear();
         // fromtime = 0;
     };
-    const logEvents = myDebounce(logSentEvent, Number(program.debounce))
-    const logIdle1 = debounce(() => { console.error(`${new Date().toISOString()} WARNING no Activity in ${program.channel} (${importer.nic}) for more than 2 min`) }, 120000)
-    const logIdle2 = debounce(() => { console.error(`${new Date().toISOString()} ERROR   no Activity in ${program.channel} (${importer.nic}) for more than 10 min, you may need to reset your tokens with OvhEventTokenImporter --reset`) }, 600000)
+    const logEvents = myDebounce(logSentEvent, Number(options.debounce))
+    const logIdle1 = debounce(() => { console.error(`${new Date().toISOString()} WARNING no Activity in ${options.channel} (${importer.nic}) for more than 2 min`) }, 120000)
+    const logIdle2 = debounce(() => { console.error(`${new Date().toISOString()} ERROR   no Activity in ${options.channel} (${importer.nic}) for more than 10 min, you may need to reset your tokens with OvhEventTokenImporter --reset`) }, 600000)
     logIdle1();
     logIdle2();
     listener.on('message', (ev) => {

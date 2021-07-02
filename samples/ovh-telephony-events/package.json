@@ -35,22 +35,23 @@
     "bin"
   ],
   "dependencies": {
-    "@ovh-api/api": "^3.1.5",
-    "@ovh-api/me": "^3.1.10",
-    "@ovh-api/telephony": "^3.1.10",
+    "@ovh-api/api": "^3.1.9",
+    "@ovh-api/me": "^3.1.19",
+    "@ovh-api/telephony": "^3.1.19",
     "bluebird": "^3.7.2",
-    "commander": "^6.1.0",
-    "debounce": "^1.2.0",
-    "fs-extra": "^9.0.1",
+    "commander": "^8.0.0",
+    "fs-extra": "^10.0.0",
     "handy-redis": "^1.8.3",
-    "kleur": "^4.1.1",
+    "kleur": "^4.1.4",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
-    "@types/bluebird": "^3.5.32",
-    "@types/fs-extra": "^9.0.1",
-    "@types/node-fetch": "^2.5.7",
-    "ts-node": "^9.0.0",
-    "typescript": "^4.0.2"
+    "@types/bluebird": "^3.5.35",
+    "@types/debounce": "^1.2.0",
+    "@types/fs-extra": "^9.0.11",
+    "@types/node-fetch": "^2.5.10",
+    "debounce": "^1.2.1",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
   }
 }
