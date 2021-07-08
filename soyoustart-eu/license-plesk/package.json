@@ -1,7 +1,7 @@
 {
     "name": "@ovh-soyoustart/license-plesk",
     "description": "Add typing to to ovh api license-plesk",
-    "version": "3.1.19",
+    "version": "3.1.20",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
