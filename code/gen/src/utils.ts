@@ -35,8 +35,9 @@ export const protectHarmonyField = (name: string): string => {
 const needProtectMap: { [key: string]: boolean } = { 'default': true, 'function': true };
 
 export function protectJsonKey(key: string): string {
-    key = key.replace('.', '_');
-    if (~'0123456789'.indexOf(key[0]) | ~key.indexOf(".") | ~key.indexOf("-"))
+    // keep .
+    //if (key.includes('.')) key = key.replace('.', '_');
+    if (~'0123456789'.indexOf(key[0]) || key.includes(".") || key.includes("-"))
         return "'" + key + "'";
     const needProtect = needProtectMap[key];
     if (needProtect)

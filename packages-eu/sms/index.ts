@@ -908,7 +908,7 @@ export interface Sms {
              * Get the /me/document id generated
              * GET /sms/{serviceName}/document
              */
-            $get(params: { batchID?: string, creationDatetime_from?: string, creationDatetime_to?: string, tag?: string, wayType: sms.DocumentWayTypeEnum }): Promise<string>;
+            $get(params: { batchID?: string, 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, tag?: string, wayType: sms.DocumentWayTypeEnum }): Promise<string>;
             /**
              * Controle cache
              */
@@ -968,7 +968,7 @@ export interface Sms {
              * Sms received associated to the sms account
              * GET /sms/{serviceName}/incoming
              */
-            $get(params?: { creationDatetime_from?: string, creationDatetime_to?: string, sender?: string, tag?: string }): Promise<number[]>;
+            $get(params?: { 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, sender?: string, tag?: string }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -1027,7 +1027,7 @@ export interface Sms {
              * Get SMS list
              * GET /sms/{serviceName}/outgoing
              */
-            $get(params?: { batchID?: string, creationDatetime_from?: string, creationDatetime_to?: string, deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string }): Promise<number[]>;
+            $get(params?: { batchID?: string, 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -1434,7 +1434,7 @@ export interface Sms {
                      * Get the /me/document id generated
                      * GET /sms/{serviceName}/users/{login}/document
                      */
-                    $get(params: { creationDatetime_from?: string, creationDatetime_to?: string, tag?: string, wayType: sms.DocumentWayTypeEnum }): Promise<string>;
+                    $get(params: { 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, tag?: string, wayType: sms.DocumentWayTypeEnum }): Promise<string>;
                     /**
                      * Controle cache
                      */
@@ -1640,7 +1640,7 @@ export interface Sms {
                      * Sms received associated to the sms account
                      * GET /sms/{serviceName}/virtualNumbers/{number}/incoming
                      */
-                    $get(params?: { creationDatetime_from?: string, creationDatetime_to?: string, sender?: string, tag?: string }): Promise<number[]>;
+                    $get(params?: { 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, sender?: string, tag?: string }): Promise<number[]>;
                     /**
                      * Controle cache
                      */
@@ -1699,7 +1699,7 @@ export interface Sms {
                      * Sms sent associated to the sms account
                      * GET /sms/{serviceName}/virtualNumbers/{number}/outgoing
                      */
-                    $get(params?: { creationDatetime_from?: string, creationDatetime_to?: string, deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string }): Promise<number[]>;
+                    $get(params?: { 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string }): Promise<number[]>;
                     /**
                      * Controle cache
                      */

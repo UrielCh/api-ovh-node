@@ -587,7 +587,7 @@ export interface Ip {
      * Your OVH IPs
      * GET /ip
      */
-    $get(params?: { description?: string, ip?: string, routedTo_serviceName?: string, type?: ip.IpTypeEnum }): Promise<string[]>;
+    $get(params?: { description?: string, ip?: string, 'routedTo.serviceName'?: string, type?: ip.IpTypeEnum }): Promise<string[]>;
     /**
      * Controle cache
      */

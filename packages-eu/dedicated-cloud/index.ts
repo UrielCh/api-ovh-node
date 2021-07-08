@@ -2443,7 +2443,7 @@ export interface DedicatedCloud {
              * Get filtered tasks associated with this Dedicated Cloud
              * GET /dedicatedCloud/{serviceName}/globalTasks
              */
-            $get(params?: { datacenterId?: number, endDate_from?: string, endDate_to?: string, executionDate_from?: string, executionDate_to?: string, filerId?: number, hostId?: number, lastModificationDate_from?: string, lastModificationDate_to?: string, name?: string, networkAccessId?: number, orderId?: number, parentTaskId?: number, state?: dedicatedCloudTaskStateEnum[], userId?: number, vlanId?: number }): Promise<number[]>;
+            $get(params?: { datacenterId?: number, 'endDate.from'?: string, 'endDate.to'?: string, 'executionDate.from'?: string, 'executionDate.to'?: string, filerId?: number, hostId?: number, 'lastModificationDate.from'?: string, 'lastModificationDate.to'?: string, name?: string, networkAccessId?: number, orderId?: number, parentTaskId?: number, state?: dedicatedCloudTaskStateEnum[], userId?: number, vlanId?: number }): Promise<number[]>;
             /**
              * Controle cache
              */

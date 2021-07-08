@@ -1081,7 +1081,7 @@ export interface IpLoadbalancing {
              * Quota history informations, per month
              * GET /ipLoadbalancing/{serviceName}/quotaHistory
              */
-            $get(params?: { historizedDate_from?: string, historizedDate_to?: string, zone?: string }): Promise<number[]>;
+            $get(params?: { 'historizedDate.from'?: string, 'historizedDate.to'?: string, zone?: string }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -1174,7 +1174,7 @@ export interface IpLoadbalancing {
              * Task for this iplb
              * GET /ipLoadbalancing/{serviceName}/task
              */
-            $get(params?: { action?: ipLoadbalancing.TaskActionEnum, creationDate_from?: string, creationDate_to?: string, doneDate_from?: string, doneDate_to?: string, status?: ipLoadbalancing.TaskStatusEnum }): Promise<number[]>;
+            $get(params?: { action?: ipLoadbalancing.TaskActionEnum, 'creationDate.from'?: string, 'creationDate.to'?: string, 'doneDate.from'?: string, 'doneDate.to'?: string, status?: ipLoadbalancing.TaskStatusEnum }): Promise<number[]>;
             /**
              * Controle cache
              */

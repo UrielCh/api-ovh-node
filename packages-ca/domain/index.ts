@@ -1171,7 +1171,7 @@ export interface Domain {
              * List all your SMD files
              * GET /domain/data/smd
              */
-            $get(params?: { protectedLabels_label?: string }): Promise<number[]>;
+            $get(params?: { 'protectedLabels.label'?: string }): Promise<number[]>;
             /**
              * Post a new SMD file
              * POST /domain/data/smd
@@ -1363,7 +1363,7 @@ export interface Domain {
                  * Zone restore points
                  * GET /domain/zone/{zoneName}/history
                  */
-                $get(params?: { creationDate_from?: string, creationDate_to?: string }): Promise<string[]>;
+                $get(params?: { 'creationDate.from'?: string, 'creationDate.to'?: string }): Promise<string[]>;
                 /**
                  * Controle cache
                  */

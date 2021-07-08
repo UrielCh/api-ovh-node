@@ -2694,7 +2694,7 @@ export interface Me {
          * List of all the bills the logged account has
          * GET /me/bill
          */
-        $get(params?: { category?: billing.CategoryEnum, date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
+        $get(params?: { category?: billing.CategoryEnum, 'date.from'?: string, 'date.to'?: string, orderId?: number }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -3046,7 +3046,7 @@ export interface Me {
          * List of all the deposits made to your prepaid account or debt account
          * GET /me/deposit
          */
-        $get(params?: { date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
+        $get(params?: { 'date.from'?: string, 'date.to'?: string, orderId?: number }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -3273,7 +3273,7 @@ export interface Me {
              * List of entries of the fidelity account
              * GET /me/fidelityAccount/movements
              */
-            $get(params?: { date_from?: string, date_to?: string }): Promise<number[]>;
+            $get(params?: { 'date.from'?: string, 'date.to'?: string }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -3683,7 +3683,7 @@ export interface Me {
          * List of all the orders the logged account has
          * GET /me/order
          */
-        $get(params?: { date_from?: string, date_to?: string }): Promise<number[]>;
+        $get(params?: { 'date.from'?: string, 'date.to'?: string }): Promise<number[]>;
         /**
          * Controle cache
          */
@@ -3986,7 +3986,7 @@ export interface Me {
                  * Details about an entry of the OVH account
                  * GET /me/ovhAccount/{ovhAccountId}/movements
                  */
-                $get(params?: { date_from?: string, date_to?: string }): Promise<number[]>;
+                $get(params?: { 'date.from'?: string, 'date.to'?: string }): Promise<number[]>;
                 /**
                  * Controle cache
                  */
@@ -4313,7 +4313,7 @@ export interface Me {
          * List of all the refunds the logged account has
          * GET /me/refund
          */
-        $get(params?: { date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
+        $get(params?: { 'date.from'?: string, 'date.to'?: string, orderId?: number }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -4711,7 +4711,7 @@ export interface Me {
          * List of all the withdrawals made from your prepaid account
          * GET /me/withdrawal
          */
-        $get(params?: { date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
+        $get(params?: { 'date.from'?: string, 'date.to'?: string, orderId?: number }): Promise<string[]>;
         /**
          * Controle cache
          */

@@ -1,3 +1,4 @@
+import fs from 'fs'
 import fse from 'fs-extra'
 import path from 'path'
 import GenApiTypes from './GenApiTypes';
@@ -41,7 +42,7 @@ export class RegionGenerator {
         let allApi = apis.map(pathToApiName);
         let apiSet = new Set(allApi);
         await fse.mkdirp(this.workDir);
-        let oldApis = await fse.readdir(this.workDir)
+        let oldApis = await fs.promises.readdir(this.workDir)
         oldApis = oldApis.filter(name => !apiSet.has(name))
         oldApis.forEach(name => this.deleteApi(name))
     }
@@ -114,7 +115,7 @@ export class RegionGenerator {
 
             let fn = path.join(dir, 'index.ts');
             let code = await cg.generate();
-            await fse.writeFile(fn, code);
+            await fs.promises.writeFile(fn, code);
 
             await this.genPackageReadme(dir, cg);
             await this.genPackageJson(dir, flat);
@@ -186,7 +187,7 @@ export class RegionGenerator {
         content.push('```');
         content.push('');
         // import { EOL } from 'os';
-        await fse.writeFile(fn, content.join('\n'));
+        await fs.promises.writeFile(fn, content.join('\n'));
 
     }
 
@@ -196,7 +197,7 @@ export class RegionGenerator {
         const fn = path.join(dir, 'package.json');
         let rwfile = true;
         try {
-            await fse.stat(fn);
+            await fs.promises.stat(fn);
             rwfile = false;
         } catch { }
         //rwfile = true;
@@ -247,7 +248,7 @@ export class RegionGenerator {
         const fn = path.join(dir, 'tsconfig.json');
         let rwfile = true;
         try {
-            await fse.stat(fn);
+            await fs.promises.stat(fn);
             rwfile = false;
         } catch (e) {
         }

@@ -3166,7 +3166,7 @@ export interface Telephony {
                      * List your past conferences for this number
                      * GET /telephony/{billingAccount}/conference/{serviceName}/histories
                      */
-                    $get(params?: { dateBegin_from?: string, dateBegin_to?: string }): Promise<number[]>;
+                    $get(params?: { 'dateBegin.from'?: string, 'dateBegin.to'?: string }): Promise<number[]>;
                     /**
                      * Controle cache
                      */
@@ -3300,7 +3300,7 @@ export interface Telephony {
                              * List your past conferences for this room
                              * GET /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/histories
                              */
-                            $get(params?: { dateBegin_from?: string, dateBegin_to?: string }): Promise<number[]>;
+                            $get(params?: { 'dateBegin.from'?: string, 'dateBegin.to'?: string }): Promise<number[]>;
                             /**
                              * Controle cache
                              */
@@ -6713,7 +6713,7 @@ export interface Telephony {
                      * Custom events scheduled
                      * GET /telephony/{billingAccount}/scheduler/{serviceName}/events
                      */
-                    $get(params?: { categories?: telephony.SchedulerCategoryEnum, dateEnd_from?: string, dateEnd_to?: string, dateStart_from?: string, dateStart_to?: string }): Promise<string[]>;
+                    $get(params?: { categories?: telephony.SchedulerCategoryEnum, 'dateEnd.from'?: string, 'dateEnd.to'?: string, 'dateStart.from'?: string, 'dateStart.to'?: string }): Promise<string[]>;
                     /**
                      * Add a scheduler event
                      * POST /telephony/{billingAccount}/scheduler/{serviceName}/events
@@ -6939,7 +6939,7 @@ export interface Telephony {
                      * Fax delivery records.
                      * GET /telephony/{billingAccount}/service/{serviceName}/faxConsumption
                      */
-                    $get(params?: { creationDatetime_from?: string, creationDatetime_to?: string, wayType?: telephony.FaxConsumptionWayTypeEnum }): Promise<number[]>;
+                    $get(params?: { 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, wayType?: telephony.FaxConsumptionWayTypeEnum }): Promise<number[]>;
                     /**
                      * Controle cache
                      */
@@ -7020,7 +7020,7 @@ export interface Telephony {
                      * Call delivery records of the previous month.
                      * GET /telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption
                      */
-                    $get(params?: { creationDatetime_from?: string, creationDatetime_to?: string, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, planType?: telephony.VoiceConsumptionPlanTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum }): Promise<number[]>;
+                    $get(params?: { 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, planType?: telephony.VoiceConsumptionPlanTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum }): Promise<number[]>;
                     /**
                      * Controle cache
                      */
@@ -7042,7 +7042,7 @@ export interface Telephony {
                      * Call which could be repayable
                      * GET /telephony/{billingAccount}/service/{serviceName}/repaymentConsumption
                      */
-                    $get(params?: { creationDatetime_from?: string, creationDatetime_to?: string }): Promise<number[]>;
+                    $get(params?: { 'creationDatetime.from'?: string, 'creationDatetime.to'?: string }): Promise<number[]>;
                     /**
                      * Controle cache
                      */
@@ -7086,7 +7086,7 @@ export interface Telephony {
                      * Call delivery records.
                      * GET /telephony/{billingAccount}/service/{serviceName}/voiceConsumption
                      */
-                    $get(params?: { creationDatetime_from?: string, creationDatetime_to?: string, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, planType?: telephony.VoiceConsumptionPlanTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum }): Promise<number[]>;
+                    $get(params?: { 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, planType?: telephony.VoiceConsumptionPlanTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum }): Promise<number[]>;
                     /**
                      * Controle cache
                      */
