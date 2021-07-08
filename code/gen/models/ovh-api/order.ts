@@ -33659,6 +33659,22 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "planCode": {
+          "canBeNull": true,
+          "description": "Identifier of the commercial offer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "pricingMode": {
+          "canBeNull": true,
+          "description": "Pricing mode selected for the purchase of the product",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "quantity": {
           "canBeNull": true,
           "description": "Quantity to order",

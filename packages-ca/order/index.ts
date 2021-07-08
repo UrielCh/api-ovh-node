@@ -524,6 +524,8 @@ export namespace order {
             domain: string;
             duration?: string;
             offerId?: string;
+            planCode?: string;
+            pricingMode?: string;
             quantity?: number;
         }
         /**
@@ -1813,7 +1815,7 @@ export interface Order {
                  * Post a new domain in your cart
                  * POST /order/cart/{cartId}/domain
                  */
-                $post(params: { domain: string, duration?: string, offerId?: string, quantity?: number }): Promise<order.cart.Item>;
+                $post(params: { domain: string, duration?: string, offerId?: string, planCode?: string, pricingMode?: string, quantity?: number }): Promise<order.cart.Item>;
                 /**
                  * Controle cache
                  */

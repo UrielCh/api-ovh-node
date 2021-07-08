@@ -18,9 +18,8 @@ export interface API {
     description: string;
 }
 
-
 export type OvhErrorsMajor = 'Server' | 'Client';
-export type OvhErrorsMinor = 'NoContent' | 'NotFound' | 'BadRequest' | 'InternalServerError' | 'Forbidden' | 'ValidationError' | 'Conflict' | 'NotImplemented' | 'PaymentRequired';
+export type OvhErrorsMinor = 'NoContent' | 'NotFound' | 'BadRequest' | 'InternalServerError' | 'Forbidden' | 'Unauthorized' | 'ValidationError' | 'Conflict' | 'NotImplemented' | 'PaymentRequired';
 /**
  * added on 30/06/2021
  */

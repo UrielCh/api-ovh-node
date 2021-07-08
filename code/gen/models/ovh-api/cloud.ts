@@ -3106,74 +3106,6 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "List all available sizes",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "cloud.project.loadbalancer.SizeEnum[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
-        }
-      ],
-      "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/size"
-    },
-    {
-      "description": "",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get specific information of load balancer size",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "cloud.project.loadbalancer.SizeEnum",
-              "description": "Size",
-              "fullType": "cloud.project.loadbalancer.SizeEnum",
-              "name": "size",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "cloud.project.loadbalancer.LoadBalancerSizeCapability",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
-        }
-      ],
-      "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/size/{size}"
-    },
-    {
-      "description": "",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
           "description": "List product availability",
           "httpMethod": "GET",
           "noAuthentication": false,
@@ -3227,185 +3159,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/productAvailability"
-    },
-    {
-      "description": "",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "List all Certificates for a tenant",
-          "errors": [
-            "Client::BadRequest::UnprocessableEntity",
-            "Client::Forbidden::CouldNotDeleteCertificate",
-            "Client::Forbidden::QuotaReached",
-            "Server::InternalServerError::CouldNotImportCertificate",
-            "Server::InternalServerError::CouldNotListCertificate",
-            "Server::InternalServerError::CouldNotParseRequest",
-            "Server::InternalServerError::CouldNotSerializeResponse",
-            "Server::InternalServerError::MarshalingError",
-            "Server::InternalServerError::MissingParameterInRequestContext"
-          ],
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "operationId": "listCertificates",
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Add a new certificate",
-          "errors": [
-            "Client::BadRequest::UnprocessableEntity",
-            "Client::Forbidden::CouldNotDeleteCertificate",
-            "Client::Forbidden::QuotaReached",
-            "Server::InternalServerError::CouldNotImportCertificate",
-            "Server::InternalServerError::CouldNotListCertificate",
-            "Server::InternalServerError::CouldNotParseRequest",
-            "Server::InternalServerError::CouldNotSerializeResponse",
-            "Server::InternalServerError::MarshalingError",
-            "Server::InternalServerError::MissingParameterInRequestContext"
-          ],
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "operationId": "addCertificate",
-          "parameters": [
-            {
-              "dataType": "cloud.project.CertificateAdd",
-              "description": "Request Body",
-              "fullType": "cloud.project.CertificateAdd",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "cloud.project.Certificate",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
-        }
-      ],
-      "path": "/cloud/project/{serviceName}/certificate"
-    },
-    {
-      "description": "",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Delete a certificate",
-          "errors": [
-            "Client::BadRequest::UnprocessableEntity",
-            "Client::Forbidden::CouldNotDeleteCertificate",
-            "Client::Forbidden::QuotaReached",
-            "Server::InternalServerError::CouldNotImportCertificate",
-            "Server::InternalServerError::CouldNotListCertificate",
-            "Server::InternalServerError::CouldNotParseRequest",
-            "Server::InternalServerError::CouldNotSerializeResponse",
-            "Server::InternalServerError::MarshalingError",
-            "Server::InternalServerError::MissingParameterInRequestContext"
-          ],
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "operationId": "deleteCertificate",
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Certificate ID",
-              "fullType": "uuid",
-              "name": "certificateId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get a certificate",
-          "errors": [
-            "Client::BadRequest::UnprocessableEntity",
-            "Client::Forbidden::CouldNotDeleteCertificate",
-            "Client::Forbidden::QuotaReached",
-            "Server::InternalServerError::CouldNotImportCertificate",
-            "Server::InternalServerError::CouldNotListCertificate",
-            "Server::InternalServerError::CouldNotParseRequest",
-            "Server::InternalServerError::CouldNotSerializeResponse",
-            "Server::InternalServerError::MarshalingError",
-            "Server::InternalServerError::MissingParameterInRequestContext"
-          ],
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "operationId": "getCertificate",
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Certificate ID",
-              "fullType": "uuid",
-              "name": "certificateId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "cloud.project.Certificate",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
-        }
-      ],
-      "path": "/cloud/project/{serviceName}/certificate/{certificateId}"
     },
     {
       "description": "Change the contacts of this service",
@@ -22209,6 +21962,21 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.ai.Info": {
+      "description": "Information about the state of this entity",
+      "id": "Info",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "message": {
+          "canBeNull": false,
+          "description": "Formatted message",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "cloud.project.ai.LogLine": {
       "description": "Log line",
       "id": "LogLine",
@@ -23119,9 +22887,25 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.project.ai.job.JobStatusHistory[]"
         },
+        "info": {
+          "canBeNull": false,
+          "description": "Information about the job",
+          "fullType": "cloud.project.ai.Info",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.Info"
+        },
+        "infoUrl": {
+          "canBeNull": true,
+          "description": "Job info url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "infos": {
           "canBeNull": true,
-          "description": "Infos about the job",
+          "description": "Deprecated, use `info` field",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -23689,9 +23473,25 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "info": {
+          "canBeNull": false,
+          "description": "Information about the notebook",
+          "fullType": "cloud.project.ai.Info",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.Info"
+        },
+        "infoUrl": {
+          "canBeNull": true,
+          "description": "Notebook info url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "infos": {
           "canBeNull": true,
-          "description": "Infos about the notebook",
+          "description": "Deprecated, use `info` field",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -24745,9 +24545,17 @@ export const schema: Schema = {
           "required": false,
           "type": "datetime"
         },
+        "info": {
+          "canBeNull": false,
+          "description": "Information about the data sync",
+          "fullType": "cloud.project.ai.Info",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.Info"
+        },
         "infos": {
           "canBeNull": true,
-          "description": "Infos about the job",
+          "description": "Deprecated, use `info` field",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -27685,6 +27493,61 @@ export const schema: Schema = {
       "id": "SizeEnum",
       "namespace": "cloud.project.loadbalancer"
     },
+    "cloud.project.loadbalancer.Stats": {
+      "description": "Loadbalancer stats",
+      "id": "Stats",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "concurrentFlows": {
+          "canBeNull": false,
+          "description": "Concurrent connections",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "httpRequestsPerSecond": {
+          "canBeNull": false,
+          "description": "HTTP requests made",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Main loadbalancer status",
+          "fullType": "cloud.project.loadbalancer.stats.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.stats.StatusEnum"
+        },
+        "targets": {
+          "canBeNull": false,
+          "description": "Targets state",
+          "fullType": "cloud.project.loadbalancer.stats.Target[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.stats.Target[]"
+        },
+        "tcpConnectionsPerSecond": {
+          "canBeNull": false,
+          "description": "New connections opened per second",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "throughput": {
+          "canBeNull": false,
+          "description": "Throughput consumed on the entrypoints",
+          "fullType": "cloud.project.loadbalancer.stats.Throughput",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.stats.Throughput"
+        }
+      }
+    },
     "cloud.project.loadbalancer.StatusEnum": {
       "description": "Status of a load balancer",
       "enum": [
@@ -28032,6 +27895,102 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "KindEnum",
       "namespace": "cloud.project.loadbalancer.networking.ingress"
+    },
+    "cloud.project.loadbalancer.stats.StatusEnum": {
+      "description": "Status of availability of loadbalancer",
+      "enum": [
+        "HEALTHY",
+        "NOT_AVAILABLE"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloud.project.loadbalancer.stats"
+    },
+    "cloud.project.loadbalancer.stats.Target": {
+      "description": "Loadbalancer target stats",
+      "id": "Target",
+      "namespace": "cloud.project.loadbalancer.stats",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Target name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "servers": {
+          "canBeNull": false,
+          "description": "Concurrent connections",
+          "fullType": "cloud.project.loadbalancer.stats.target.Server[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.stats.target.Server[]"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.stats.Throughput": {
+      "description": "Loadbalancer bandwidth stats",
+      "id": "Throughput",
+      "namespace": "cloud.project.loadbalancer.stats",
+      "properties": {
+        "in": {
+          "canBeNull": false,
+          "description": "Consumed inbound bandwidth (bytes/s)",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "out": {
+          "canBeNull": false,
+          "description": "Consumed outbound bandwidth (bytes/s)",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.stats.target.Server": {
+      "description": "Loadbalancer target server stats",
+      "id": "Server",
+      "namespace": "cloud.project.loadbalancer.stats.target",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Target name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Server status",
+          "fullType": "cloud.project.loadbalancer.stats.target.server.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.stats.target.server.StatusEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.stats.target.server.StatusEnum": {
+      "description": "Status of target's server",
+      "enum": [
+        "UNKNOWN",
+        "INIT",
+        "HEALTHY",
+        "L4_TIMEOUT_ERROR",
+        "L4_CONNECTION_ERROR",
+        "L7_TIMEOUT",
+        "L7_PROTOCOL_ERROR",
+        "L7_RESPONSE_ERROR",
+        "ERROR"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloud.project.loadbalancer.stats.target.server"
     },
     "cloud.project.loadbalancer.target.BalancerAlgorithmEnum": {
       "description": "Available load balancer target balancer algorithm",

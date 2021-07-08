@@ -9075,6 +9075,47 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/vrops/enable"
     },
     {
+      "description": "upgrade operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/upgrade/privateCloud/{serviceName}/{planCode}",
+            "value": "DEPRECATED"
+          },
+          "description": "Request vRealize Operations Manager upgrade",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Target version for vRealize Operations Manager upgrade",
+              "fullType": "string",
+              "name": "version",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/vrops/upgrade"
+    },
+    {
       "description": "List the dedicatedCloud.CommercialRange objects",
       "operations": [
         {
@@ -12545,9 +12586,25 @@ export const schema: Schema = {
           "required": false,
           "type": "dedicatedCloud.option.StateEnum"
         },
+        "upgrades": {
+          "canBeNull": true,
+          "description": "Available upgrades for the vRealize Operations Manager",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
         "url": {
           "canBeNull": true,
-          "description": "Url of the vRealize Operations interface",
+          "description": "Url of the vRealize Operations Manager interface",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "version": {
+          "canBeNull": true,
+          "description": "Version of the vRealize Operations Manager",
           "fullType": "string",
           "readOnly": true,
           "required": false,

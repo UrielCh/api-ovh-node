@@ -649,7 +649,9 @@ export namespace dedicatedCloud {
      */
     export interface Vrops {
         state: dedicatedCloudoptionStateEnum;
+        upgrades?: string[];
         url?: string;
+        version?: string;
     }
     /**
      * Zpool and their availability
@@ -3307,6 +3309,13 @@ export interface DedicatedCloud {
                  * POST /dedicatedCloud/{serviceName}/vrops/enable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
+            }
+            upgrade: {
+                /**
+                 * Request vRealize Operations Manager upgrade
+                 * POST /dedicatedCloud/{serviceName}/vrops/upgrade
+                 */
+                $post(params?: { version?: string }): Promise<dedicatedCloud.Task>;
             }
         }
     };

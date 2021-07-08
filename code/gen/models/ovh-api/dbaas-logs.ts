@@ -1669,7 +1669,7 @@ export const schema: Schema = {
             "Client::Forbidden::Busy",
             "Client::Forbidden::NotOnSameCluster",
             "Client::Forbidden::OnlyOwnerCanPerformAction",
-            "Client::Forbidden::NotOnSameCluster",
+            "Client::Forbidden::StreamAlreadyLinked",
             "Client::NotFound::AliasDoesNotExists",
             "Client::NotFound::ServiceDoesNotExists"
           ],
@@ -2654,9 +2654,11 @@ export const schema: Schema = {
             "Client::ValidationError::InvalidSubStreamParent",
             "Client::ValidationError::InvalidUUID",
             "Client::ValidationError::RequiredField",
+            "Client::ValidationError::StreamRetentionMismatch",
             "Client::Forbidden::Busy",
             "Client::Forbidden::ItemQuotaReached",
             "Client::Forbidden::PCIDSSColdStorageDeny",
+            "Client::Forbidden::ParentStreamLocked",
             "Client::Forbidden::ServiceUnavailable",
             "Client::Forbidden::SubStreamColdstorageAddRules",
             "Client::Forbidden::SubStreamColdstorageIndexingMaxSize",
@@ -3297,6 +3299,7 @@ export const schema: Schema = {
             "Client::ValidationError::ValueNotInRange",
             "Client::Forbidden::OnlyOwnerCanPerformAction",
             "Client::Forbidden::ServiceUnavailable",
+            "Client::Forbidden::StreamLocked",
             "Client::NotFound::ServiceDoesNotExists",
             "Client::NotFound::StreamDoesNotExists",
             "Client::Conflict::RuleAlreadyExists"

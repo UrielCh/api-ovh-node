@@ -2948,6 +2948,14 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
+        "serviceName": {
+          "canBeNull": true,
+          "description": "Service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "size": {
           "canBeNull": false,
           "fullType": "long",

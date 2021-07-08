@@ -197,6 +197,7 @@ export namespace vps {
         id: number;
         lowFreeSpaceThreshold?: number;
         monitoring?: boolean;
+        serviceName?: string;
         size: number;
         state: vps.disk.StateEnum;
         type: vps.disk.TypeEnum;
@@ -816,7 +817,7 @@ export interface Vps {
                  * Alter this object properties
                  * PUT /vps/{serviceName}/disks/{id}
                  */
-                $put(params?: { bandwidthLimit?: number, id?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: vps.disk.StateEnum, type?: vps.disk.TypeEnum }): Promise<void>;
+                $put(params?: { bandwidthLimit?: number, id?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, serviceName?: string, size?: number, state?: vps.disk.StateEnum, type?: vps.disk.TypeEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

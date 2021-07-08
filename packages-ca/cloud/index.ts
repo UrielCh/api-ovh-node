@@ -2333,6 +2333,13 @@ export namespace cloud {
                 command: string;
             }
             /**
+             * Information about the state of this entity
+             * interface fullName: cloud.project.ai.Info.Info
+             */
+            export interface Info {
+                message: string;
+            }
+            /**
              * Log line
              * interface fullName: cloud.project.ai.LogLine.LogLine
              */
@@ -2546,6 +2553,8 @@ export namespace cloud {
                     exitCode?: number;
                     finalizedAt?: string;
                     history: cloud.project.ai.job.JobStatusHistory[];
+                    info: cloud.project.ai.Info;
+                    infoUrl?: string;
                     infos?: string;
                     initializingAt?: string;
                     ip?: string;
@@ -2585,6 +2594,113 @@ export namespace cloud {
                     link?: string;
                     logo?: string;
                     name: string;
+                }
+            }
+            export namespace notebook {
+                /**
+                 * AI Solutions Data Object
+                 * interface fullName: cloud.project.ai.notebook.Editor.Editor
+                 */
+                export interface Editor {
+                    description: string;
+                    docUrl: string;
+                    id: string;
+                    logoUrl: string;
+                    name: string;
+                    version: string;
+                }
+                /**
+                 * AI Solutions Data Object
+                 * interface fullName: cloud.project.ai.notebook.Framework.Framework
+                 */
+                export interface Framework {
+                    description: string;
+                    docUrl: string;
+                    id: string;
+                    logoUrl: string;
+                    name: string;
+                    versions: string[];
+                }
+                /**
+                 * AI Solutions Platform Notebook Object
+                 * interface fullName: cloud.project.ai.notebook.Notebook.Notebook
+                 */
+                export interface Notebook {
+                    createdAt: string;
+                    id: string;
+                    spec: cloud.project.ai.notebook.NotebookSpec;
+                    status: cloud.project.ai.notebook.NotebookStatus;
+                    updatedAt: string;
+                    user: string;
+                }
+                /**
+                 * AI Solutions Framework Object to create a notebook
+                 * interface fullName: cloud.project.ai.notebook.NotebookEnv.NotebookEnv
+                 */
+                export interface NotebookEnv {
+                    editorId: string;
+                    frameworkId: string;
+                    frameworkVersion?: string;
+                }
+                /**
+                 * AI Solutions Notebook Spec Object to create a notebook
+                 * interface fullName: cloud.project.ai.notebook.NotebookSpec.NotebookSpec
+                 */
+                export interface NotebookSpec {
+                    env: cloud.project.ai.notebook.NotebookEnv;
+                    flavor?: string;
+                    labels?: { [key: string]: string };
+                    name: string;
+                    region: string;
+                    resources: cloud.project.ai.Resources;
+                    shutdown?: cloud.project.ai.ShutdownStrategyEnum;
+                    unsecureHttp?: boolean;
+                    volumes?: cloud.project.ai.volume.Volume[];
+                }
+                /**
+                 * AI Solutions Notebook Spec Object to create a notebook
+                 * interface fullName: cloud.project.ai.notebook.NotebookSpecInput.NotebookSpecInput
+                 */
+                export interface NotebookSpecInput {
+                    env: cloud.project.ai.notebook.NotebookEnv;
+                    labels?: { [key: string]: string };
+                    name: string;
+                    region: string;
+                    resources: cloud.project.ai.ResourcesInput;
+                    shutdown?: cloud.project.ai.ShutdownStrategyEnum;
+                    unsecureHttp?: boolean;
+                    volumes?: cloud.project.ai.volume.Volume[];
+                }
+                /**
+                 * State of the notebook
+                 * type fullname: cloud.project.ai.notebook.NotebookStateEnum
+                 */
+                export type NotebookStateEnum = "STARTING" | "RUNNING" | "STOPPING" | "STOPPED"
+                /**
+                 * AI Solutions Notebook Status Object
+                 * interface fullName: cloud.project.ai.notebook.NotebookStatus.NotebookStatus
+                 */
+                export interface NotebookStatus {
+                    dataSync: cloud.project.ai.volume.DataSync[];
+                    duration?: number;
+                    info: cloud.project.ai.Info;
+                    infoUrl?: string;
+                    infos?: string;
+                    lastStartedAt?: string;
+                    lastStoppedAt?: string;
+                    monitoringUrl?: string;
+                    state?: cloud.project.ai.notebook.NotebookStateEnum;
+                    url?: string;
+                }
+                /**
+                 * AI Solutions Notebook Spec Object to create a notebook
+                 * interface fullName: cloud.project.ai.notebook.NotebookUpdate.NotebookUpdate
+                 */
+                export interface NotebookUpdate {
+                    labels?: { [key: string]: string };
+                    resources?: cloud.project.ai.ResourcesInput;
+                    unsecureHttp?: boolean;
+                    volumes?: cloud.project.ai.volume.Volume[];
                 }
             }
             export namespace registry {
@@ -2846,6 +2962,7 @@ export namespace cloud {
                  */
                 export interface DataSyncStatus {
                     endedAt?: string;
+                    info: cloud.project.ai.Info;
                     infos?: string;
                     progress: cloud.project.ai.volume.Progress[];
                     queuedAt: string;
@@ -3515,6 +3632,18 @@ export namespace cloud {
              */
             export type SizeEnum = "S" | "M" | "L"
             /**
+             * Loadbalancer stats
+             * interface fullName: cloud.project.loadbalancer.Stats.Stats
+             */
+            export interface Stats {
+                concurrentFlows: number;
+                httpRequestsPerSecond: number;
+                status: cloud.project.loadbalancer.stats.StatusEnum;
+                targets: cloud.project.loadbalancer.stats.Target[];
+                tcpConnectionsPerSecond: number;
+                throughput: cloud.project.loadbalancer.stats.Throughput;
+            }
+            /**
              * Status of a load balancer
              * type fullname: cloud.project.loadbalancer.StatusEnum
              */
@@ -3659,6 +3788,46 @@ export namespace cloud {
                      * type fullname: cloud.project.loadbalancer.networking.ingress.KindEnum
                      */
                     export type KindEnum = "public"
+                }
+            }
+            export namespace stats {
+                /**
+                 * Status of availability of loadbalancer
+                 * type fullname: cloud.project.loadbalancer.stats.StatusEnum
+                 */
+                export type StatusEnum = "HEALTHY" | "NOT_AVAILABLE"
+                /**
+                 * Loadbalancer target stats
+                 * interface fullName: cloud.project.loadbalancer.stats.Target.Target
+                 */
+                export interface Target {
+                    name: string;
+                    servers: cloud.project.loadbalancer.stats.target.Server[];
+                }
+                /**
+                 * Loadbalancer bandwidth stats
+                 * interface fullName: cloud.project.loadbalancer.stats.Throughput.Throughput
+                 */
+                export interface Throughput {
+                    in: number;
+                    out: number;
+                }
+                export namespace target {
+                    /**
+                     * Loadbalancer target server stats
+                     * interface fullName: cloud.project.loadbalancer.stats.target.Server.Server
+                     */
+                    export interface Server {
+                        name: string;
+                        status: cloud.project.loadbalancer.stats.target.server.StatusEnum;
+                    }
+                    export namespace server {
+                        /**
+                         * Status of target's server
+                         * type fullname: cloud.project.loadbalancer.stats.target.server.StatusEnum
+                         */
+                        export type StatusEnum = "UNKNOWN" | "INIT" | "HEALTHY" | "L4_TIMEOUT_ERROR" | "L4_CONNECTION_ERROR" | "L7_TIMEOUT" | "L7_PROTOCOL_ERROR" | "L7_RESPONSE_ERROR" | "ERROR"
+                    }
                 }
             }
             export namespace target {
@@ -5085,28 +5254,6 @@ export interface Cloud {
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
-                    size: {
-                        /**
-                         * List all available sizes
-                         * GET /cloud/project/{serviceName}/capabilities/loadbalancer/size
-                         */
-                        $get(): Promise<cloud.project.loadbalancer.SizeEnum[]>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        $(size: cloud.project.loadbalancer.SizeEnum): {
-                            /**
-                             * Get specific information of load balancer size
-                             * GET /cloud/project/{serviceName}/capabilities/loadbalancer/size/{size}
-                             */
-                            $get(): Promise<cloud.project.loadbalancer.LoadBalancerSizeCapability>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        };
-                    }
                 }
                 productAvailability: {
                     /**
@@ -5119,38 +5266,6 @@ export interface Cloud {
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
-            }
-            certificate: {
-                /**
-                 * List all Certificates for a tenant
-                 * GET /cloud/project/{serviceName}/certificate
-                 */
-                $get(): Promise<string[]>;
-                /**
-                 * Add a new certificate
-                 * POST /cloud/project/{serviceName}/certificate
-                 */
-                $post(params: { import?: cloud.project.certificate.Import, name: string }): Promise<cloud.project.Certificate>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                $(certificateId: string): {
-                    /**
-                     * Delete a certificate
-                     * DELETE /cloud/project/{serviceName}/certificate/{certificateId}
-                     */
-                    $delete(): Promise<void>;
-                    /**
-                     * Get a certificate
-                     * GET /cloud/project/{serviceName}/certificate/{certificateId}
-                     */
-                    $get(): Promise<cloud.project.Certificate>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                };
             }
             changeContact: {
                 /**
