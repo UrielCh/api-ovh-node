@@ -31,5 +31,6 @@
     "files": [
         "index.js",
         "index.d.ts"
-    ]
+    ],
+    "gitHead": "19b5a9f5f6c2b8373c5170ba0c25a2fa70a6af5c"
 }
