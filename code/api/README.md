@@ -2,21 +2,23 @@
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api/common.svg?style=api)](https://www.npmjs.org/package/@ovh-api/api)
 
-This package mostly contains typings file to assist developer in Ovh-Cloud api usage.
+This OvhCloud API client intended to match the largest OVH customer needs and tested in the worsts conditions.
 
-This client bling you, API's doc within your IDE.
+These node modules bring Ovh cloud API documentation directly within your IDE.
 
 * Api call documentations.
 * Mandatory / Optional parameters.
-* parameters types.
+* Parameters types.
+* Return types.
 
-with this client your IDE will only allow valid code.
-
-By the way, this api contains a lot of information about the API usage, but do not include those data in you your bundled code, and do not increase the size of your distributable bundled code.
+This module enforces OVH API prototyping; you can only call a function if you provide the correct argument.
 
 ## Basic
 
-This Ovh api client, use very compact and intuitive syntax to works, take any API call from any OVH swagger and convert it to code like this:
+This module takes care of all of the OVH certificate's extra steps.
+To get started, no need to take care of the OVH Authentification; This API will open the required webpage on your screen.
+
+This Ovh API client uses a compact and intuitive syntax to works, take any API call from an OVH swagger, and convert it to code like this:
 
 For example with the API **dbaas** from [here](https://api.ovh.com/console/#/dbaas/logs):
 
@@ -27,7 +29,7 @@ The call: `GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archiv
     // call API      GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}
 ```
 
-The API code is matching the raw query as must as it could.
+The API code is matching the raw query as must as Javascript can.
 
 ### Factorize API calls
 
@@ -100,17 +102,18 @@ await alertApi.$(id[0]).$delete()
 ids = await alertApi.$get();
 ```
 
-### certificate management
+### Certificate management
 
-The Api can query for a new certificate by opening a new browser.
+The API can query for a new certificate by opening a new browser.
 
-The activated consumerKey can be store in a cache file if `certCache` option is provided.
+If you provide a `certCache` option, the activated ConsumerKey will be store in a disk cache file.
 
-### retries management
 
-if you have a connexion error, the api will try to recover up to 10 times by default, an more using `maxRetry` options.
+### Retries management
 
-## interactive usage
+If you have a connexion error, the API will try to recover up to 10 times by default and more using `maxRetry` options.
+
+## Interactive usage
 
 ```typescript
 import ApiIp from '@ovh-api/ip';
@@ -121,7 +124,7 @@ import Ovh from '@ovh-api/api';
 const engine = new Ovh({accessRules: 'GET /ip, GET /me', certCache: 'secretToken.json'});
 
 /**
- * you can build and api object to store all the sub-api you will used
+ * You can build an API object to store all the sub-API you will use
  */
 const api = {
     ip: ApiIp(engine)
@@ -142,9 +145,9 @@ printIP().then(console.log)
 
 ```
 
-## available packages
+## Available packages
 
-### Packages for API ovh in Europe
+### Packages for API OvhCloud in Europe
 
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-api/all-dom.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/all-dom) *Api @ovh-api/all-dom* Add typing to to ovh api all-dom
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-api/analytics.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/analytics) *Api @ovh-api/analytics* Add typing to to ovh api analytics
@@ -228,7 +231,7 @@ printIP().then(console.log)
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-api/vrack.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/vrack) *Api @ovh-api/vrack* Add typing to to ovh api vrack
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-api/xdsl.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/xdsl) *Api @ovh-api/xdsl* Add typing to to ovh api xdsl
 
-### Packages for API ovh in Canada
+### Packages for API OvhCloud in Canada
 
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-api-ca/auth.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-ca/auth) *Api @ovh-api-ca/auth* Add typing to to ovh api auth
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-api-ca/cdn-dedicated.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-ca/cdn-dedicated) *Api @ovh-api-ca/cdn-dedicated* Add typing to to ovh api cdn-dedicated
@@ -277,7 +280,7 @@ printIP().then(console.log)
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-api-ca/vps.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-ca/vps) *Api @ovh-api-ca/vps* Add typing to to ovh api vps
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-api-ca/vrack.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-ca/vrack) *Api @ovh-api-ca/vrack* Add typing to to ovh api vrack
 
-### Packages for API ovh in USA
+### Packages for API OvhCloud in the USA
 
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-api-us/auth.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-us/auth) *Api @ovh-api-us/auth* Add typing to to ovh api auth
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-api-us/cloud.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-us/cloud) *Api @ovh-api-us/cloud* Add typing to to ovh api cloud
@@ -316,7 +319,7 @@ printIP().then(console.log)
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-api-us/vps.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-us/vps) *Api @ovh-api-us/vps* Add typing to to ovh api vps
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-api-us/vrack.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-us/vrack) *Api @ovh-api-us/vrack* Add typing to to ovh api vrack
 
-### Packages for API so you start in Europe
+### Packages for API SoYouStart in Europe
 
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart/all-dom.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart/all-dom) *Api @ovh-soyoustart/all-dom* Add typing to to ovh api all-dom
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart/analytics.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart/analytics) *Api @ovh-soyoustart/analytics* Add typing to to ovh api analytics
@@ -398,7 +401,7 @@ printIP().then(console.log)
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart/vrack.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart/vrack) *Api @ovh-soyoustart/vrack* Add typing to to ovh api vrack
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart/xdsl.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart/xdsl) *Api @ovh-soyoustart/xdsl* Add typing to to ovh api xdsl
 
-### Packages for API so you start in Canada
+### Packages for API SoYouStart in Canada
 
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart-ca/auth.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart-ca/auth) *Api @ovh-soyoustart-ca/auth* Add typing to to ovh api auth
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart-ca/dedicated-installation-template.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart-ca/dedicated-installation-template) *Api @ovh-soyoustart-ca/dedicated-installation-template* Add typing to to ovh api dedicated-installation-template
@@ -418,7 +421,7 @@ printIP().then(console.log)
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart-ca/support.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart-ca/support) *Api @ovh-soyoustart-ca/support* Add typing to to ovh api support
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart-ca/veeam-cloud-connect.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart-ca/veeam-cloud-connect) *Api @ovh-soyoustart-ca/veeam-cloud-connect* Add typing to to ovh api veeam-cloud-connect
 
-### Packages for API kimsufi in Europe
+### Packages for API Kimsufi in Europe
 
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi/all-dom.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi/all-dom) *Api @ovh-kimsufi/all-dom* Add typing to to ovh api all-dom
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi/analytics.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi/analytics) *Api @ovh-kimsufi/analytics* Add typing to to ovh api analytics
@@ -500,7 +503,7 @@ printIP().then(console.log)
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi/vrack.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi/vrack) *Api @ovh-kimsufi/vrack* Add typing to to ovh api vrack
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi/xdsl.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi/xdsl) *Api @ovh-kimsufi/xdsl* Add typing to to ovh api xdsl
 
-### Packages for API kimsufi in Canada
+### Packages for API Kimsufi in Canada
 
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi-ca/auth.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi-ca/auth) *Api @ovh-kimsufi-ca/auth* Add typing to to ovh api auth
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi-ca/dedicated-installation-template.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi-ca/dedicated-installation-template) *Api @ovh-kimsufi-ca/dedicated-installation-template* Add typing to to ovh api dedicated-installation-template
@@ -513,4 +516,4 @@ printIP().then(console.log)
 
 ## Samples
 
-[working samples can be find here](https://github.com/UrielCh/api-ovh-node/tree/master/samples)
+You can find real-life code samples can be found [here](https://github.com/UrielCh/api-ovh-node/tree/master/samples)
