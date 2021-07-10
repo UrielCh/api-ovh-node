@@ -15,7 +15,17 @@ This module enforces OVH API prototyping; you can only call a function if you pr
 
 ## Quick start
 
-Each OVH API endpoint has a related package, and each of them contains a working code sample. If you want to start with OVH telephony, see [@ovh-api/telephony](https://www.npmjs.com/package/@ovh-api/telephony) for hosting see [@ovh-api/hosting-web](https://www.npmjs.com/package/@ovh-api/hosting-web)... hundreds of packages are available.
+Each OVH API endpoint has a related package, and each of them contains a working code sample. If you want to start with:
+* telephony see: [@ovh-api/telephony](https://www.npmjs.com/package/@ovh-api/telephony)
+* hosting see: [@ovh-api/hosting-web](https://www.npmjs.com/package/@ovh-api/hosting-web)
+* ...hundreds of packages are available 
+* see [OVH Europe](https://www.npmjs.com/search?q=%40ovh-api)
+* see [OVH USA](https://www.npmjs.com/search?q=%40ovh-api-us)
+* see [OVH Canada](https://www.npmjs.com/search?q=%40ovh-api-ca)
+* see [SoYouStart Europe](https://www.npmjs.com/search?q=%40ovh-soyoustart)
+* see [SoYouStart Canada](https://www.npmjs.com/search?q=%40ovh-soyoustart-ca)
+* see [kimsufi Europe](https://www.npmjs.com/search?q=%40ovh-kimsufi)
+* see [kimsufi Canada](https://www.npmjs.com/search?q=%40ovh-kimsufi-ca)
 
 ## Basic
 
