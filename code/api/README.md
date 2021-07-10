@@ -56,7 +56,7 @@ if you have a lots of call with the same prefix example:
 
 > */dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert* prefixing all HTTP path.
 
-you can factorize thoses call like this:
+You can factorize thoses call like this:
 
 ```typescript
 const alertApi = dbaas.logs.$(serviceName).output.graylog.stream.$(streamId).alert;
