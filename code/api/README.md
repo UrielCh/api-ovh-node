@@ -13,6 +13,10 @@ These node modules bring Ovh cloud API documentation directly within your IDE.
 
 This module enforces OVH API prototyping; you can only call a function if you provide the correct argument.
 
+## Quick start
+
+Each OVH API endpoint has a related package, and each of them contains a working code sample. If you want to start with OVH telephony, see [@ovh-api/telephony](https://www.npmjs.com/package/@ovh-api/telephony) for hosting see [@ovh-api/hosting-web](https://www.npmjs.com/package/@ovh-api/hosting-web)... hundreds of packages are available.
+
 ## Basic
 
 This module takes care of all of the OVH certificate's extra steps.

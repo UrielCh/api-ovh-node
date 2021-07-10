@@ -1,3 +1,5 @@
+V 3.1.10
+- Improve package documentation.
 V 3.1.9
 - store 'X-Ovh-Queryid' response header as 'XOvhQueryid' in OvhError Exception
 V 3.1.8
