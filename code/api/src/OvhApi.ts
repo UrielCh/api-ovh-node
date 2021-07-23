@@ -135,7 +135,11 @@
                  this.data.certCache = path.join(os.homedir(), '.ovh');
              }
              if (this.data.nichandle) {
-                 const stat = fs.statSync(this.data.certCache, {throwIfNoEntry: false});
+                 let stat: fs.Stats | null = null;
+                 try {
+                     stat = fs.statSync(this.data.certCache);
+                 } catch (e) {
+                 }
                  if (!stat) {
                      try { fs.mkdirSync(this.data.certCache); } catch (e) {
                          throw Error(`failed to create missing certCachedirectory: ${this.data.certCache}`);
