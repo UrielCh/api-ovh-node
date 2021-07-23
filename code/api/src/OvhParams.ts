@@ -4,7 +4,6 @@ import { CertMonitorProvider } from ".";
 export type OvhEntryPointEnum = 'ovh-eu' | 'ovh-us' | 'ovh-ca' | 'runabove-ca' | 'sys-eu' | 'sys-ca' | 'soyoustart-eu' | 'soyoustart-ca' | 'ks-eu' | 'ks-ca' | 'kimsufi-eu' | 'kimsufi-ca';
 
 export type OvhParams = Partial<OvhParamsFull>;
-
 export interface OvhParamsFull {
     /** 
      * appKey generated from https://eu.api.ovh.com/createApp/
