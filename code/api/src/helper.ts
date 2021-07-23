@@ -93,11 +93,11 @@ export class RequestContext {
         return this.options.method as HttpMethod;
     }
 
-    get path(): string {
-        return this.options.path as string;
-    }
+    // get path(): string {
+    //     return this.options.path as string;
+    // }
 
-    constructor(public api: OvhApi, public options: RequestOptions, public reqBody: string, public params?: { [key: string]: any }) {
+    constructor(public api: OvhApi, public path: string, public pathTemplate: string, public options: RequestOptions, public reqBody: string, public params?: { [key: string]: any }) {
         this.maxRetry = api.maxRetry;
         this.retrySleep = api.retrySleep;
         this.timeout = api.timeout;

@@ -473,7 +473,7 @@
              options.headers['X-Ovh-Timestamp'] = XOvhTimestamp;
  
              // Sign request
-             if (typeof (this.data.consumerKey) === 'string') {
+             if (this.data.consumerKey) {
                  options.headers['X-Ovh-Consumer'] = this.data.consumerKey;
                  options.headers['X-Ovh-Signature'] = this.signRequest(
                      method, `https://${options.host}${options.path}`,
@@ -487,7 +487,7 @@
          if (this.listenerCount('debug')) {
              this.emit('debug', `[OVH] API call: ${method} ${options.path} ${reqBody}`);
          }
-         const rqCtxt = new RequestContext(this, options, reqBody, params);
+         const rqCtxt = new RequestContext(this, path, pathTemplate, options, reqBody, params);
          return makeRequest(rqCtxt);// end return Query promise
      }
  

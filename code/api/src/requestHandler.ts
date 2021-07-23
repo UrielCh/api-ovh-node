@@ -45,14 +45,15 @@ const handleResponse = async (ctxt: RequestContext, response: IncomingMessage, b
 
     const error: IOvhError = responseData as IOvhError;
     if (error.errorCode === 'INVALID_CREDENTIAL' || error.message === 'You must login first') {
-        // ctxt.api.certCache && 
-        if (!ctxt.canIssueNewCert())
-            throw new OvhError(error);
-        await ctxt.renewCert();
-        // Restart restart reseting context, so retry count return to 0.
-        // certRenew also
-        // TODO fix certRenew should not be reset to 0
-        return ctxt.api.request(method, path, ctxt.params);
+        if (ctxt.path !== '/auth/currentCredential') {
+            if (!ctxt.canIssueNewCert())
+                throw new OvhError(error);
+            await ctxt.renewCert();
+            // Restart restart reseting context, so retry count return to 0.
+            // certRenew also
+            // TODO fix certRenew should not be reset to 0
+            return ctxt.api.doRequest(method, path, ctxt.pathTemplate, ctxt.params);
+        }
     }
     if (!error.errorCode)
         error.errorCode = "HTTP_ERROR";
@@ -67,7 +68,7 @@ const handleResponse = async (ctxt: RequestContext, response: IncomingMessage, b
 }
 
 export const makeRequest = (ctxt: RequestContext) => new Promise((resolve, reject) => {
-    const { timeout, maxRetry, method, path, options } = ctxt;
+    const { timeout, method, options } = ctxt;
 
     let req = https.request(options, (res: IncomingMessage) => {
         let body = '';
