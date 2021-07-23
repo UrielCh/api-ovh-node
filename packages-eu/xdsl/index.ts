@@ -590,7 +590,7 @@ export namespace xdsl {
      * Various types of statisctics available for the line.
      * type fullname: xdsl.LineStatisticsTypeEnum
      */
-    export type LineStatisticsTypeEnum = "attenuation:download" | "attenuation:upload" | "snr:download" | "snr:upload" | "synchronization:download" | "synchronization:upload"
+    export type LineStatisticsTypeEnum = "attenuation:download" | "attenuation:upload" | "error:crc" | "error:fec" | "error:hec" | "snr:download" | "snr:upload" | "synchronization:download" | "synchronization:upload"
     /**
      * Line tests results
      * type fullname: xdsl.LineTestEnum

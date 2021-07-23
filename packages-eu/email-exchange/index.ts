@@ -586,6 +586,7 @@ export namespace email {
          * interface fullName: email.exchange.mailingList.mailingList
          */
         export interface mailingList {
+            company?: string;
             creationDate: string;
             departRestriction: email.exchange.MailingListDepartRestrictionEnum;
             displayName?: string;
@@ -636,6 +637,7 @@ export namespace email {
             allowConflict: boolean;
             bookingWindow: number;
             capacity: number;
+            company?: string;
             creationDate?: string;
             deleteComments: boolean;
             deleteSubject: boolean;
@@ -1280,7 +1282,7 @@ export interface Email {
                          * Add mailing list
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList
                          */
-                        $post(params: { departRestriction: email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction: email.exchange.MailingListJoinRestrictionEnum, mailingListAddress: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean }): Promise<email.exchange.Task>;
+                        $post(params: { company?: string, departRestriction: email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction: email.exchange.MailingListJoinRestrictionEnum, mailingListAddress: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean }): Promise<email.exchange.Task>;
                         /**
                          * Controle cache
                          */
@@ -1300,7 +1302,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}
                              */
-                            $put(params?: { creationDate?: string, departRestriction?: email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction?: email.exchange.MailingListJoinRestrictionEnum, lastUpdateDate?: string, mailingListAddress?: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
+                            $put(params?: { company?: string, creationDate?: string, departRestriction?: email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction?: email.exchange.MailingListJoinRestrictionEnum, lastUpdateDate?: string, mailingListAddress?: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -1664,7 +1666,7 @@ export interface Email {
                          * create new resource account in exchange server
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount
                          */
-                        $post(params: { addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity: number, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress: string, showMeetingDetails?: email.exchange.ShowMeetingDetailsEnum, type: email.exchange.ResourceTypeEnum }): Promise<email.exchange.Task>;
+                        $post(params: { addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity: number, company?: string, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress: string, showMeetingDetails?: email.exchange.ShowMeetingDetailsEnum, type: email.exchange.ResourceTypeEnum }): Promise<email.exchange.Task>;
                         /**
                          * Controle cache
                          */
@@ -1684,7 +1686,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}
                              */
-                            $put(params?: { addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity?: number, creationDate?: string, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress?: string, showMeetingDetails?: email.exchange.ShowMeetingDetailsEnum, state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.ResourceTypeEnum }): Promise<void>;
+                            $put(params?: { addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity?: number, company?: string, creationDate?: string, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress?: string, showMeetingDetails?: email.exchange.ShowMeetingDetailsEnum, state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.ResourceTypeEnum }): Promise<void>;
                             /**
                              * Controle cache
                              */

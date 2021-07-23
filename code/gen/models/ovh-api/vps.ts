@@ -3578,6 +3578,22 @@ export const schema: Schema = {
           "required": false,
           "type": "datetime"
         },
+        "needSchedule": {
+          "canBeNull": false,
+          "description": "Whether this task need to be scheduled or not",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "note": {
+          "canBeNull": true,
+          "description": "Extra information about this task",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "startDate": {
           "canBeNull": false,
           "description": "Task Creation date",
@@ -3601,6 +3617,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "ticketReference": {
+          "canBeNull": true,
+          "description": "Reference of the thread on the support tool",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },

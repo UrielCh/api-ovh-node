@@ -691,7 +691,7 @@ export namespace dbaas {
          * Possible values for StreamColdStorageTargetEnum
          * type fullname: dbaas.logs.StreamColdStorageTargetEnum
          */
-        export type StreamColdStorageTargetEnum = "PCA" | "PCS"
+        export type StreamColdStorageTargetEnum = "PCA" | "PCI_DSS" | "PCS"
         /**
          * Stream rule
          * interface fullName: dbaas.logs.StreamRule.StreamRule

@@ -3553,6 +3553,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Company name",
+              "fullType": "string",
+              "name": "company",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "email.exchange.MailingListDepartRestrictionEnum",
               "description": "Depart restriction policy",
               "fullType": "email.exchange.MailingListDepartRestrictionEnum",
@@ -5939,6 +5947,14 @@ export const schema: Schema = {
               "name": "capacity",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Company name",
+              "fullType": "string",
+              "name": "company",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "boolean",
@@ -10502,6 +10518,14 @@ export const schema: Schema = {
       "id": "mailingList",
       "namespace": "email.exchange",
       "properties": {
+        "company": {
+          "canBeNull": true,
+          "description": "Company name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "creationDate": {
           "canBeNull": false,
           "description": "Creation date",
@@ -10788,6 +10812,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
+        },
+        "company": {
+          "canBeNull": true,
+          "description": "Company name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "creationDate": {
           "canBeNull": true,

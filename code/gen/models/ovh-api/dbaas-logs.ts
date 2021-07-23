@@ -461,7 +461,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/input"
     },
     {
-      "description": "Input",
+      "description": "Inputs",
       "operations": [
         {
           "apiStatus": {
@@ -1217,7 +1217,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/operation"
     },
     {
-      "description": "Operation",
+      "description": "Operations",
       "operations": [
         {
           "apiStatus": {
@@ -1338,7 +1338,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias"
     },
     {
-      "description": "Alias",
+      "description": "Aliases",
       "operations": [
         {
           "apiStatus": {
@@ -1561,7 +1561,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index"
     },
     {
-      "description": "AliasStream",
+      "description": "AliasStreams",
       "operations": [
         {
           "apiStatus": {
@@ -1710,7 +1710,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream"
     },
     {
-      "description": "AliasStream",
+      "description": "AliasStreams",
       "operations": [
         {
           "apiStatus": {
@@ -1887,7 +1887,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index"
     },
     {
-      "description": "Index",
+      "description": "Indexes",
       "operations": [
         {
           "apiStatus": {
@@ -2381,7 +2381,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/output/graylog/dashboard"
     },
     {
-      "description": "Dashboard",
+      "description": "Dashboards",
       "operations": [
         {
           "apiStatus": {
@@ -2697,7 +2697,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream"
     },
     {
-      "description": "Stream",
+      "description": "Streams",
       "operations": [
         {
           "apiStatus": {
@@ -2935,7 +2935,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert"
     },
     {
-      "description": "StreamAlert",
+      "description": "StreamAlerts",
       "operations": [
         {
           "apiStatus": {
@@ -3139,7 +3139,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive"
     },
     {
-      "description": "StreamArchive",
+      "description": "StreamArchives",
       "operations": [
         {
           "apiStatus": {
@@ -3341,7 +3341,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule"
     },
     {
-      "description": "StreamRule",
+      "description": "StreamRules",
       "operations": [
         {
           "apiStatus": {
@@ -3558,7 +3558,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/role"
     },
     {
-      "description": "Role",
+      "description": "Roles",
       "operations": [
         {
           "apiStatus": {
@@ -3781,7 +3781,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/member"
     },
     {
-      "description": "RoleMember",
+      "description": "RoleMembers",
       "operations": [
         {
           "apiStatus": {
@@ -3983,7 +3983,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission"
     },
     {
-      "description": "RolePermission",
+      "description": "RolePermissions",
       "operations": [
         {
           "apiStatus": {
@@ -4494,7 +4494,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/token"
     },
     {
-      "description": "Token",
+      "description": "Tokens",
       "operations": [
         {
           "apiStatus": {
@@ -4674,7 +4674,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/input/engine"
     },
     {
-      "description": "Engine",
+      "description": "Engines",
       "operations": [
         {
           "apiStatus": {
@@ -7529,6 +7529,7 @@ export const schema: Schema = {
       "description": "Possible values for StreamColdStorageTargetEnum",
       "enum": [
         "PCA",
+        "PCI_DSS",
         "PCS"
       ],
       "enumType": "string",

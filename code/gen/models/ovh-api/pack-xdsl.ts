@@ -1859,6 +1859,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "xdsl.eligibility.BookMeetingSlot",
+              "description": "Data to book a meeting slot",
+              "fullType": "xdsl.eligibility.BookMeetingSlot",
+              "name": "meeting",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "long",
               "description": "Mondial relay ID if a shipping is needed",
               "fullType": "long",
@@ -1903,6 +1911,14 @@ export const schema: Schema = {
               "description": "Reference of the Optical Termination Point",
               "fullType": "string",
               "name": "otpReference",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Product code, an unique identifier to designate the chosen offer",
+              "fullType": "string",
+              "name": "productCode",
               "paramType": "body",
               "required": false
             },

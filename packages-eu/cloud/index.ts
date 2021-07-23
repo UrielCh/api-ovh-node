@@ -2166,6 +2166,36 @@ export namespace cloud {
             size?: cloud.project.loadbalancer.SizeEnum;
         }
         /**
+         * A network load balancer for TCP/UDP workloads
+         * interface fullName: cloud.project.NetworkLoadBalancer.NetworkLoadBalancer
+         */
+        export interface NetworkLoadBalancer {
+            address: cloud.project.loadbalancer.Address;
+            configuration: cloud.project.loadbalancer.ConfigurationVersion;
+            createdAt: string;
+            description?: string;
+            egressAddress: cloud.project.loadbalancer.Addresses;
+            id: string;
+            name?: string;
+            openstackRegion: string;
+            region: string;
+            size: cloud.project.loadbalancer.SizeEnum;
+            status: cloud.project.loadbalancer.StatusEnum;
+        }
+        /**
+         * A network load balancer for TCP/UDP workloads
+         * interface fullName: cloud.project.NetworkLoadBalancerCreation.NetworkLoadBalancerCreation
+         */
+        export interface NetworkLoadBalancerCreation {
+            description?: string;
+            id: string;
+            name?: string;
+            networking?: cloud.project.loadbalancer.networking.NetworkingCreation;
+            openstackRegion: string;
+            region: string;
+            size?: cloud.project.loadbalancer.SizeEnum;
+        }
+        /**
          * New cloud project
          * interface fullName: cloud.project.NewProject.NewProject
          */
@@ -2392,6 +2422,11 @@ export namespace cloud {
              * type fullname: cloud.project.ai.ShutdownStrategyEnum
              */
             export type ShutdownStrategyEnum = "Stop"
+            /**
+             * Role granted with an application token
+             * type fullname: cloud.project.ai.TokenRoleEnum
+             */
+            export type TokenRoleEnum = "ai_training_operator" | "ai_training_read"
             /**
              * Permissions to apply on a volume
              * type fullname: cloud.project.ai.VolumePermissionEnum
@@ -2921,6 +2956,37 @@ export namespace cloud {
                  */
                 export type WorkflowTemplateEnum = "build-image" | "preset-image"
             }
+            export namespace token {
+                /**
+                 * AI Solutions Application Token
+                 * interface fullName: cloud.project.ai.token.Token.Token
+                 */
+                export interface Token {
+                    createdAt: string;
+                    id: string;
+                    spec: cloud.project.ai.token.TokenSpec;
+                    status: cloud.project.ai.token.TokenStatus;
+                    updatedAt: string;
+                }
+                /**
+                 * AI Solutions Application Token Spec Object to create a notebook
+                 * interface fullName: cloud.project.ai.token.TokenSpec.TokenSpec
+                 */
+                export interface TokenSpec {
+                    labelSelector?: string;
+                    name: string;
+                    region: string;
+                    role: cloud.project.ai.TokenRoleEnum;
+                }
+                /**
+                 * AI Solutions Application Token Status Object
+                 * interface fullName: cloud.project.ai.token.TokenStatus.TokenStatus
+                 */
+                export interface TokenStatus {
+                    value: string;
+                    version: number;
+                }
+            }
             export namespace volume {
                 /**
                  * AI Solutions Data Sync
@@ -2955,7 +3021,7 @@ export namespace cloud {
                  * State of the data sync
                  * type fullname: cloud.project.ai.volume.DataSyncStateEnum
                  */
-                export type DataSyncStateEnum = "QUEUED" | "RUNNING" | "DONE" | "FAILED" | "ERROR"
+                export type DataSyncStateEnum = "QUEUED" | "RUNNING" | "DONE" | "FAILED" | "ERROR" | "INTERRUPTED"
                 /**
                  * AI Solutions Data Sync Status
                  * interface fullName: cloud.project.ai.volume.DataSyncStatus.DataSyncStatus
@@ -3610,7 +3676,7 @@ export namespace cloud {
              * interface fullName: cloud.project.loadbalancer.ApplicationLoadBalancerSizeCapability.ApplicationLoadBalancerSizeCapability
              */
             export interface ApplicationLoadBalancerSizeCapability {
-                bandwidthMbPerSecond: number;
+                bandwidth: number;
                 maximumConnection: number;
                 requestsPerSecond: number;
                 size: cloud.project.loadbalancer.SizeEnum;
@@ -3707,7 +3773,7 @@ export namespace cloud {
              * interface fullName: cloud.project.loadbalancer.LoadBalancerSizeCapability.LoadBalancerSizeCapability
              */
             export interface LoadBalancerSizeCapability {
-                bandwidthMbPerSecond: number;
+                bandwidth: number;
                 maximumConnection: number;
                 newConnectionPerSecond: number;
                 size: cloud.project.loadbalancer.SizeEnum;
@@ -3757,7 +3823,7 @@ export namespace cloud {
              */
             export interface Stats {
                 concurrentFlows: number;
-                httpRequestsPerSecond: number;
+                httpRequestsPerSecond?: number;
                 status: cloud.project.loadbalancer.stats.StatusEnum;
                 targets: cloud.project.loadbalancer.stats.Target[];
                 tcpConnectionsPerSecond: number;
@@ -3961,6 +4027,95 @@ export namespace cloud {
                  * type fullname: cloud.project.loadbalancer.target.ProxyProtocolEnum
                  */
                 export type ProxyProtocolEnum = "v1" | "v2" | "v2-ssl" | "v2-cn"
+            }
+        }
+        export namespace networkloadbalancer {
+            /**
+             * network load balancer reject action
+             * interface fullName: cloud.project.networkloadbalancer.ActionReject.ActionReject
+             */
+            export interface ActionReject {
+                name: string;
+                type: cloud.project.networkloadbalancer.action.RejectTypeEnum;
+            }
+            /**
+             * Network Loadbalancer action
+             * interface fullName: cloud.project.networkloadbalancer.Actions.Actions
+             */
+            export interface Actions {
+                dispatch?: cloud.project.loadbalancer.ActionDispatch[];
+                reject?: cloud.project.networkloadbalancer.ActionReject[];
+            }
+            /**
+             * A condition
+             * interface fullName: cloud.project.networkloadbalancer.Condition.Condition
+             */
+            export interface Condition {
+                key?: string;
+                match: cloud.project.loadbalancer.condition.MatchEnum;
+                name: string;
+                negate?: boolean;
+                type: cloud.project.networkloadbalancer.condition.TypeEnum;
+                values: string[];
+            }
+            /**
+             * A network load balancer configuration
+             * interface fullName: cloud.project.networkloadbalancer.Configuration.Configuration
+             */
+            export interface Configuration {
+                actions?: cloud.project.networkloadbalancer.Actions;
+                conditions?: cloud.project.networkloadbalancer.Condition[];
+                entryPoints: cloud.project.networkloadbalancer.EntryPoint[];
+                networking: cloud.project.loadbalancer.configuration.networking.Networking;
+                targets?: cloud.project.loadbalancer.Target[];
+                version: number;
+            }
+            /**
+             * A network load balancer configuration
+             * interface fullName: cloud.project.networkloadbalancer.ConfigurationCreation.ConfigurationCreation
+             */
+            export interface ConfigurationCreation {
+                actions?: cloud.project.networkloadbalancer.Actions;
+                conditions?: cloud.project.networkloadbalancer.Condition[];
+                entryPoints: cloud.project.networkloadbalancer.EntryPoint[];
+                networking?: cloud.project.loadbalancer.configuration.networking.Networking;
+                targets?: cloud.project.loadbalancer.Target[];
+                version: number;
+            }
+            /**
+             * A network load balancer entryPoint
+             * interface fullName: cloud.project.networkloadbalancer.EntryPoint.EntryPoint
+             */
+            export interface EntryPoint {
+                defaultTarget?: string;
+                name: string;
+                portRanges?: cloud.project.loadbalancer.PortRange[];
+                ports?: number[];
+                rules: cloud.project.loadbalancer.Rule[];
+            }
+            /**
+             * Network load balancer size capability
+             * interface fullName: cloud.project.networkloadbalancer.LoadBalancerSizeCapability.LoadBalancerSizeCapability
+             */
+            export interface LoadBalancerSizeCapability {
+                bandwidth: number;
+                maximumConnection: number;
+                requestsPerSecond: number;
+                size: cloud.project.loadbalancer.SizeEnum;
+            }
+            export namespace action {
+                /**
+                 * Available type of Reject action
+                 * type fullname: cloud.project.networkloadbalancer.action.RejectTypeEnum
+                 */
+                export type RejectTypeEnum = "deny" | "drop"
+            }
+            export namespace condition {
+                /**
+                 * Matching field
+                 * type fullname: cloud.project.networkloadbalancer.condition.TypeEnum
+                 */
+                export type TypeEnum = "source"
             }
         }
     }
@@ -4253,6 +4408,28 @@ export namespace cloud {
          * type fullname: cloud.storage.PolicyRoleEnum
          */
         export type PolicyRoleEnum = "admin" | "deny" | "readOnly" | "readWrite"
+        /**
+         * Presigned URL
+         * interface fullName: cloud.storage.PresignedURL.PresignedURL
+         */
+        export interface PresignedURL {
+            method: cloud.storage.PresignedURLMethodEnum;
+            url: string;
+        }
+        /**
+         * Inputs to generate a presigned URL
+         * interface fullName: cloud.storage.PresignedURLInput.PresignedURLInput
+         */
+        export interface PresignedURLInput {
+            expire: number;
+            method: cloud.storage.PresignedURLMethodEnum;
+            object: string;
+        }
+        /**
+         * Presigned URL method
+         * type fullname: cloud.storage.PresignedURLMethodEnum
+         */
+        export type PresignedURLMethodEnum = "GET" | "PUT"
         /**
          * RetrievalStateEnum
          * type fullname: cloud.storage.RetrievalStateEnum
@@ -4942,6 +5119,13 @@ export interface Cloud {
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     }
+                    command: {
+                        /**
+                         * Generate a job spec corresponding CLI command
+                         * POST /cloud/project/{serviceName}/ai/job/command
+                         */
+                        $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, readUser?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], timeout?: number, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
+                    }
                     $(jobId: string): {
                         /**
                          * Get job information
@@ -4969,6 +5153,99 @@ export interface Cloud {
                              * Controle cache
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                    };
+                }
+                notebook: {
+                    /**
+                     * List notebooks
+                     * GET /cloud/project/{serviceName}/ai/notebook
+                     */
+                    $get(): Promise<cloud.project.ai.notebook.Notebook[]>;
+                    /**
+                     * Create a new notebook
+                     * POST /cloud/project/{serviceName}/ai/notebook
+                     */
+                    $post(params: { env: cloud.project.ai.notebook.NotebookEnv, labels?: { [key: string]: string }, name?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.notebook.Notebook>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    capabilities: {
+                        editor: {
+                            /**
+                             * List AI Solutions Notebook available code editors
+                             * GET /cloud/project/{serviceName}/ai/notebook/capabilities/editor
+                             */
+                            $get(): Promise<cloud.project.ai.notebook.Editor[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        framework: {
+                            /**
+                             * List AI Solutions Notebook available frameworks
+                             * GET /cloud/project/{serviceName}/ai/notebook/capabilities/framework
+                             */
+                            $get(): Promise<cloud.project.ai.notebook.Framework[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                    }
+                    command: {
+                        /**
+                         * Generate a notebook spec corresponding CLI command
+                         * POST /cloud/project/{serviceName}/ai/notebook/command
+                         */
+                        $post(params: { env: cloud.project.ai.notebook.NotebookEnv, labels?: { [key: string]: string }, name?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
+                    }
+                    $(notebookId: string): {
+                        /**
+                         * Delete a notebook
+                         * DELETE /cloud/project/{serviceName}/ai/notebook/{notebookId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get notebook information
+                         * GET /cloud/project/{serviceName}/ai/notebook/{notebookId}
+                         */
+                        $get(): Promise<cloud.project.ai.notebook.Notebook>;
+                        /**
+                         * Update an existing notebook. Only labels update can be done while notebook is running.
+                         * PUT /cloud/project/{serviceName}/ai/notebook/{notebookId}
+                         */
+                        $put(params?: { labels?: { [key: string]: string }, resources?: cloud.project.ai.ResourcesInput, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        log: {
+                            /**
+                             * Get the logs of a notebook
+                             * GET /cloud/project/{serviceName}/ai/notebook/{notebookId}/log
+                             */
+                            $get(): Promise<cloud.project.ai.Logs>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        start: {
+                            /**
+                             * Start an AI Solutions notebook
+                             * PUT /cloud/project/{serviceName}/ai/notebook/{notebookId}/start
+                             */
+                            $put(): Promise<void>;
+                        }
+                        stop: {
+                            /**
+                             * Stop an AI Solutions notebook
+                             * PUT /cloud/project/{serviceName}/ai/notebook/{notebookId}/stop
+                             */
+                            $put(): Promise<void>;
                         }
                     };
                 }
@@ -5139,6 +5416,45 @@ export interface Cloud {
                                  */
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
+                        }
+                    };
+                }
+                token: {
+                    /**
+                     * List application tokens
+                     * GET /cloud/project/{serviceName}/ai/token
+                     */
+                    $get(): Promise<cloud.project.ai.token.Token[]>;
+                    /**
+                     * Create a new application token
+                     * POST /cloud/project/{serviceName}/ai/token
+                     */
+                    $post(params: { labelSelector?: string, name: string, region: string, role: cloud.project.ai.TokenRoleEnum }): Promise<cloud.project.ai.token.Token>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(id: string): {
+                        /**
+                         * Delete this application token
+                         * DELETE /cloud/project/{serviceName}/ai/token/{id}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get application token information
+                         * GET /cloud/project/{serviceName}/ai/token/{id}
+                         */
+                        $get(): Promise<cloud.project.ai.token.Token>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        renew: {
+                            /**
+                             * Renew an application token
+                             * POST /cloud/project/{serviceName}/ai/token/{id}/renew
+                             */
+                            $post(): Promise<cloud.project.ai.token.Token>;
                         }
                     };
                 }

@@ -1187,9 +1187,12 @@ export namespace dedicated {
             doneDate?: string;
             function: dedicated.TaskFunctionEnum;
             lastUpdate?: string;
+            needSchedule: boolean;
+            note?: string;
             startDate: string;
             status: dedicated.TaskStatusEnum;
             taskId: number;
+            ticketReference?: string;
         }
         /**
          * Miscellaneous template capabilities regarding the server.

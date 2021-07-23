@@ -1513,10 +1513,10 @@ export const schema: Schema = {
         "provider": {
           "canBeNull": false,
           "description": "Service Key provider",
-          "fullType": "ovhcloudconnect.key.ProviderEnum",
+          "fullType": "ovhcloudconnect.service.ProviderEnum",
           "readOnly": true,
           "required": false,
-          "type": "ovhcloudconnect.key.ProviderEnum"
+          "type": "ovhcloudconnect.service.ProviderEnum"
         },
         "status": {
           "canBeNull": false,
@@ -1873,17 +1873,6 @@ export const schema: Schema = {
       "id": "StatusEnum",
       "namespace": "ovhcloudconnect.interface"
     },
-    "ovhcloudconnect.key.ProviderEnum": {
-      "description": "Enum values for service key provider",
-      "enum": [
-        "megaport",
-        "equinix",
-        "internal"
-      ],
-      "enumType": "string",
-      "id": "ProviderEnum",
-      "namespace": "ovhcloudconnect.key"
-    },
     "ovhcloudconnect.key.StatusEnum": {
       "description": "Enum values for service key status",
       "enum": [
@@ -1954,9 +1943,12 @@ export const schema: Schema = {
     "ovhcloudconnect.service.ProviderEnum": {
       "description": "Enum values for service provider",
       "enum": [
-        "megaport",
         "equinix",
+        "intercloud",
         "internal",
+        "interxion",
+        "megaport",
+        "orange",
         "OVHcloud"
       ],
       "enumType": "string",
@@ -1994,10 +1986,11 @@ export const schema: Schema = {
     "ovhcloudconnect.task.StatusEnum": {
       "description": "Enum values for Task status",
       "enum": [
-        "todo",
         "doing",
         "done",
-        "error"
+        "error",
+        "pause",
+        "todo"
       ],
       "enumType": "string",
       "id": "StatusEnum",

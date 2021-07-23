@@ -7488,6 +7488,9 @@ export const schema: Schema = {
       "enum": [
         "attenuation:download",
         "attenuation:upload",
+        "error:crc",
+        "error:fec",
+        "error:hec",
         "snr:download",
         "snr:upload",
         "synchronization:download",

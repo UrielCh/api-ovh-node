@@ -56,7 +56,7 @@ export namespace ovhcloudconnect {
     export interface Key {
         id: number;
         key: string;
-        provider: ovhcloudconnect.key.ProviderEnum;
+        provider: ovhcloudconnect.service.ProviderEnum;
         status: ovhcloudconnect.key.StatusEnum;
     }
     /**
@@ -171,11 +171,6 @@ export namespace ovhcloudconnect {
     }
     export namespace key {
         /**
-         * Enum values for service key provider
-         * type fullname: ovhcloudconnect.key.ProviderEnum
-         */
-        export type ProviderEnum = "megaport" | "equinix" | "internal"
-        /**
          * Enum values for service key status
          * type fullname: ovhcloudconnect.key.StatusEnum
          */
@@ -215,7 +210,7 @@ export namespace ovhcloudconnect {
          * Enum values for service provider
          * type fullname: ovhcloudconnect.service.ProviderEnum
          */
-        export type ProviderEnum = "megaport" | "equinix" | "internal" | "OVHcloud"
+        export type ProviderEnum = "equinix" | "intercloud" | "internal" | "interxion" | "megaport" | "orange" | "OVHcloud"
         /**
          * Enum values for the Service
          * type fullname: ovhcloudconnect.service.StatusEnum
@@ -232,7 +227,7 @@ export namespace ovhcloudconnect {
          * Enum values for Task status
          * type fullname: ovhcloudconnect.task.StatusEnum
          */
-        export type StatusEnum = "todo" | "doing" | "done" | "error"
+        export type StatusEnum = "doing" | "done" | "error" | "pause" | "todo"
     }
 }
 export namespace service {

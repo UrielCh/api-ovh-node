@@ -12291,6 +12291,164 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.NetworkLoadBalancer": {
+      "description": "A network load balancer for TCP/UDP workloads",
+      "id": "NetworkLoadBalancer",
+      "namespace": "cloud.project",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": "Address to reach the load balancer",
+          "fullType": "cloud.project.loadbalancer.Address",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Address"
+        },
+        "configuration": {
+          "canBeNull": false,
+          "description": "Information about version of the configuration",
+          "fullType": "cloud.project.loadbalancer.ConfigurationVersion",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.ConfigurationVersion"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation date and time of the load balancer",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "egressAddress": {
+          "canBeNull": false,
+          "description": "IPs used by the load balancer to contact backend's servers",
+          "fullType": "cloud.project.loadbalancer.Addresses",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Addresses"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the load balancer",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "openstackRegion": {
+          "canBeNull": false,
+          "description": "Openstack region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the load balancer",
+          "fullType": "cloud.project.loadbalancer.SizeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.SizeEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of a load balancer",
+          "fullType": "cloud.project.loadbalancer.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.StatusEnum"
+        }
+      }
+    },
+    "cloud.project.NetworkLoadBalancerCreation": {
+      "description": "A network load balancer for TCP/UDP workloads",
+      "id": "NetworkLoadBalancerCreation",
+      "namespace": "cloud.project",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "Description of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the load balancer",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "networking": {
+          "canBeNull": true,
+          "description": "Networking definition",
+          "fullType": "cloud.project.loadbalancer.networking.NetworkingCreation",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.NetworkingCreation"
+        },
+        "openstackRegion": {
+          "canBeNull": false,
+          "description": "Openstack Region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": true,
+          "description": "Size of the load balancer",
+          "fullType": "cloud.project.loadbalancer.SizeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.SizeEnum"
+        }
+      }
+    },
     "cloud.project.ProjectStatus": {
       "description": "Possible values for project status",
       "enum": [
@@ -12444,7 +12602,7 @@ export const schema: Schema = {
       "properties": {
         "name": {
           "canBeNull": false,
-          "description": "The backend name",
+          "description": "The action name",
           "fullType": "string",
           "readOnly": false,
           "required": true,
@@ -13065,7 +13223,7 @@ export const schema: Schema = {
       "id": "LoadBalancerSizeCapability",
       "namespace": "cloud.project.loadbalancer",
       "properties": {
-        "bandwidthMbPerSecond": {
+        "bandwidth": {
           "canBeNull": false,
           "description": "Bandwidth allowed in Mb/s",
           "fullType": "long",
@@ -13232,7 +13390,7 @@ export const schema: Schema = {
           "type": "double"
         },
         "httpRequestsPerSecond": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "HTTP requests made",
           "fullType": "double",
           "readOnly": true,
@@ -13741,6 +13899,283 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ProxyProtocolEnum",
       "namespace": "cloud.project.loadbalancer.target"
+    },
+    "cloud.project.networkloadbalancer.ActionReject": {
+      "description": "network load balancer reject action",
+      "id": "ActionReject",
+      "namespace": "cloud.project.networkloadbalancer",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "The action name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "type of reject action",
+          "fullType": "cloud.project.networkloadbalancer.action.RejectTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.networkloadbalancer.action.RejectTypeEnum"
+        }
+      }
+    },
+    "cloud.project.networkloadbalancer.Actions": {
+      "description": "Network Loadbalancer action",
+      "id": "Actions",
+      "namespace": "cloud.project.networkloadbalancer",
+      "properties": {
+        "dispatch": {
+          "canBeNull": true,
+          "description": "List of dispatch actions",
+          "fullType": "cloud.project.loadbalancer.ActionDispatch[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.ActionDispatch[]"
+        },
+        "reject": {
+          "canBeNull": true,
+          "description": "List of reject actions",
+          "fullType": "cloud.project.networkloadbalancer.ActionReject[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.networkloadbalancer.ActionReject[]"
+        }
+      }
+    },
+    "cloud.project.networkloadbalancer.Condition": {
+      "description": "A condition",
+      "id": "Condition",
+      "namespace": "cloud.project.networkloadbalancer",
+      "properties": {
+        "key": {
+          "canBeNull": true,
+          "description": "The condition name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "match": {
+          "canBeNull": false,
+          "description": "Criterion matching operation",
+          "fullType": "cloud.project.loadbalancer.condition.MatchEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.condition.MatchEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The condition name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "negate": {
+          "canBeNull": true,
+          "description": "Negate the condition",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Criterion used to chose the appropriate action",
+          "fullType": "cloud.project.networkloadbalancer.condition.TypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.networkloadbalancer.condition.TypeEnum"
+        },
+        "values": {
+          "canBeNull": false,
+          "description": "The list of values to match",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.networkloadbalancer.Configuration": {
+      "description": "A network load balancer configuration",
+      "id": "Configuration",
+      "namespace": "cloud.project.networkloadbalancer",
+      "properties": {
+        "actions": {
+          "canBeNull": true,
+          "description": "All actions",
+          "fullType": "cloud.project.networkloadbalancer.Actions",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.networkloadbalancer.Actions"
+        },
+        "conditions": {
+          "canBeNull": true,
+          "description": "List of conditions",
+          "fullType": "cloud.project.networkloadbalancer.Condition[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.networkloadbalancer.Condition[]"
+        },
+        "entryPoints": {
+          "canBeNull": false,
+          "description": "List of entryPoints",
+          "fullType": "cloud.project.networkloadbalancer.EntryPoint[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.networkloadbalancer.EntryPoint[]"
+        },
+        "networking": {
+          "canBeNull": false,
+          "description": "networking configuration",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Networking",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Networking"
+        },
+        "targets": {
+          "canBeNull": true,
+          "description": "List of targets",
+          "fullType": "cloud.project.loadbalancer.Target[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Target[]"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Identifier and version of the configuration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.networkloadbalancer.ConfigurationCreation": {
+      "description": "A network load balancer configuration",
+      "id": "ConfigurationCreation",
+      "namespace": "cloud.project.networkloadbalancer",
+      "properties": {
+        "actions": {
+          "canBeNull": true,
+          "description": "All actions",
+          "fullType": "cloud.project.networkloadbalancer.Actions",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.networkloadbalancer.Actions"
+        },
+        "conditions": {
+          "canBeNull": true,
+          "description": "List of conditions",
+          "fullType": "cloud.project.networkloadbalancer.Condition[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.networkloadbalancer.Condition[]"
+        },
+        "entryPoints": {
+          "canBeNull": false,
+          "description": "List of entryPointss",
+          "fullType": "cloud.project.networkloadbalancer.EntryPoint[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.networkloadbalancer.EntryPoint[]"
+        },
+        "networking": {
+          "canBeNull": true,
+          "description": "networking configuration",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Networking",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Networking"
+        },
+        "targets": {
+          "canBeNull": true,
+          "description": "List of targets",
+          "fullType": "cloud.project.loadbalancer.Target[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Target[]"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Identifier and version of the configuration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.networkloadbalancer.EntryPoint": {
+      "description": "A network load balancer entryPoint",
+      "id": "EntryPoint",
+      "namespace": "cloud.project.networkloadbalancer",
+      "properties": {
+        "defaultTarget": {
+          "canBeNull": true,
+          "description": "The default target name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The frontend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "portRanges": {
+          "canBeNull": true,
+          "description": "Port ranges to listen",
+          "fullType": "cloud.project.loadbalancer.PortRange[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.PortRange[]"
+        },
+        "ports": {
+          "canBeNull": true,
+          "description": "Ports to listen",
+          "fullType": "long[]",
+          "readOnly": false,
+          "required": false,
+          "type": "long[]"
+        },
+        "rules": {
+          "canBeNull": false,
+          "description": "List of rules",
+          "fullType": "cloud.project.loadbalancer.Rule[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Rule[]"
+        }
+      }
+    },
+    "cloud.project.networkloadbalancer.action.RejectTypeEnum": {
+      "description": "Available type of Reject action",
+      "enum": [
+        "deny",
+        "drop"
+      ],
+      "enumType": "string",
+      "id": "RejectTypeEnum",
+      "namespace": "cloud.project.networkloadbalancer.action"
+    },
+    "cloud.project.networkloadbalancer.condition.TypeEnum": {
+      "description": "Matching field",
+      "enum": [
+        "source"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "cloud.project.networkloadbalancer.condition"
     },
     "cloud.quota.AllowedQuota": {
       "description": "Quotas",
@@ -14745,6 +15180,70 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "PolicyRoleEnum",
+      "namespace": "cloud.storage"
+    },
+    "cloud.storage.PresignedURL": {
+      "description": "Presigned URL",
+      "id": "PresignedURL",
+      "namespace": "cloud.storage",
+      "properties": {
+        "method": {
+          "canBeNull": false,
+          "description": "Presigned URL method",
+          "fullType": "cloud.storage.PresignedURLMethodEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.storage.PresignedURLMethodEnum"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "Presigned URL",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.storage.PresignedURLInput": {
+      "description": "Inputs to generate a presigned URL",
+      "id": "PresignedURLInput",
+      "namespace": "cloud.storage",
+      "properties": {
+        "expire": {
+          "canBeNull": false,
+          "description": "URL expiration in seconds",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "method": {
+          "canBeNull": false,
+          "description": "Presigned URL method",
+          "fullType": "cloud.storage.PresignedURLMethodEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.storage.PresignedURLMethodEnum"
+        },
+        "object": {
+          "canBeNull": false,
+          "description": "Object name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.storage.PresignedURLMethodEnum": {
+      "description": "Presigned URL method",
+      "enum": [
+        "GET",
+        "PUT"
+      ],
+      "enumType": "string",
+      "id": "PresignedURLMethodEnum",
       "namespace": "cloud.storage"
     },
     "cloud.storage.RetrievalStateEnum": {

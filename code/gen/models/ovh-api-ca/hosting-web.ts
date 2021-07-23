@@ -6755,6 +6755,18 @@ export const schema: Schema = {
       "id": "OptionCategoryEnum",
       "namespace": "cdn"
     },
+    "cdn.OptionConfigParamTypeEnum": {
+      "description": "Option Config Parameter type",
+      "enum": [
+        "bool",
+        "int",
+        "list",
+        "str"
+      ],
+      "enumType": "string",
+      "id": "OptionConfigParamTypeEnum",
+      "namespace": "cdn"
+    },
     "cdn.OptionPatternTypeEnum": {
       "description": "Option pattern type",
       "enum": [
@@ -6791,7 +6803,8 @@ export const schema: Schema = {
         "prefetch",
         "querystring",
         "geo_headers",
-        "mobile_redirect"
+        "mobile_redirect",
+        "prewarm"
       ],
       "enumType": "string",
       "id": "OptionTypeEnum",
@@ -6831,6 +6844,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cdn.OptionCategoryEnum"
         },
+        "config": {
+          "canBeNull": true,
+          "description": "Option configuration",
+          "fullType": "cdn.availableOptions.config",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.availableOptions.config"
+        },
         "maxItems": {
           "canBeNull": false,
           "description": "Max option items",
@@ -6846,6 +6867,132 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "cdn.availableOptions.config": {
+      "description": "Option configuration",
+      "id": "config",
+      "namespace": "cdn.availableOptions",
+      "properties": {
+        "destination": {
+          "canBeNull": true,
+          "description": "URL used for Mobile Redirect",
+          "fullType": "cdn.availableOptions.config.constraints",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.availableOptions.config.constraints"
+        },
+        "followUri": {
+          "canBeNull": true,
+          "description": "Follow Uri on Mobile Redirect",
+          "fullType": "cdn.availableOptions.config.constraints",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.availableOptions.config.constraints"
+        },
+        "origins": {
+          "canBeNull": true,
+          "description": "Authorized Origins separated by a comma",
+          "fullType": "cdn.availableOptions.config.constraints",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.availableOptions.config.constraints"
+        },
+        "patternType": {
+          "canBeNull": true,
+          "description": "Option pattern type",
+          "fullType": "cdn.availableOptions.config.constraints",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.availableOptions.config.constraints"
+        },
+        "priority": {
+          "canBeNull": true,
+          "description": "Cache Rule priority (lower is the strongest priority)",
+          "fullType": "cdn.availableOptions.config.constraints",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.availableOptions.config.constraints"
+        },
+        "queryParameters": {
+          "canBeNull": true,
+          "description": "Action to apply on query parameters",
+          "fullType": "cdn.availableOptions.config.constraints",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.availableOptions.config.constraints"
+        },
+        "resources": {
+          "canBeNull": true,
+          "description": "List of URI",
+          "fullType": "cdn.availableOptions.config.constraints",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.availableOptions.config.constraints"
+        },
+        "statusCode": {
+          "canBeNull": true,
+          "description": "Redirection HTTP Code",
+          "fullType": "cdn.availableOptions.config.constraints",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.availableOptions.config.constraints"
+        },
+        "ttl": {
+          "canBeNull": true,
+          "description": "Cache time in seconds",
+          "fullType": "cdn.availableOptions.config.constraints",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.availableOptions.config.constraints"
+        }
+      }
+    },
+    "cdn.availableOptions.config.constraints": {
+      "description": "Option configuration constraints",
+      "id": "constraints",
+      "namespace": "cdn.availableOptions.config",
+      "properties": {
+        "length": {
+          "canBeNull": true,
+          "description": "Maximum number of items in value",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maximum": {
+          "canBeNull": true,
+          "description": "Maximum value",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "message": {
+          "canBeNull": true,
+          "description": "Description of value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "minimum": {
+          "canBeNull": true,
+          "description": "Minimum value",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "type": {
+          "canBeNull": true,
+          "description": "Type of value",
+          "fullType": "cdn.OptionConfigParamTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.OptionConfigParamTypeEnum"
         }
       }
     },
@@ -6964,6 +7111,14 @@ export const schema: Schema = {
           "required": true,
           "type": "boolean"
         },
+        "extra": {
+          "canBeNull": true,
+          "description": "Additional informations about option",
+          "fullType": "cdn.domain.option.extra",
+          "readOnly": false,
+          "required": false,
+          "type": "cdn.domain.option.extra"
+        },
         "name": {
           "canBeNull": false,
           "description": "Option name",
@@ -7043,6 +7198,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cdn.OptionQueryParametersEnum"
         },
+        "resources": {
+          "canBeNull": true,
+          "description": "List of URI",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
         "statusCode": {
           "canBeNull": true,
           "description": "Redirection HTTP Code",
@@ -7054,6 +7217,29 @@ export const schema: Schema = {
         "ttl": {
           "canBeNull": true,
           "description": "Cache time in seconds",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cdn.domain.option.extra": {
+      "description": "Additional informations about option",
+      "id": "extra",
+      "namespace": "cdn.domain.option",
+      "properties": {
+        "quota": {
+          "canBeNull": true,
+          "description": "Maximum usage of the option",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "usage": {
+          "canBeNull": true,
+          "description": "Current usage of the option",
           "fullType": "long",
           "readOnly": false,
           "required": false,

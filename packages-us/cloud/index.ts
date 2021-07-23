@@ -1473,6 +1473,36 @@ export namespace cloud {
             size?: cloud.project.loadbalancer.SizeEnum;
         }
         /**
+         * A network load balancer for TCP/UDP workloads
+         * interface fullName: cloud.project.NetworkLoadBalancer.NetworkLoadBalancer
+         */
+        export interface NetworkLoadBalancer {
+            address: cloud.project.loadbalancer.Address;
+            configuration: cloud.project.loadbalancer.ConfigurationVersion;
+            createdAt: string;
+            description?: string;
+            egressAddress: cloud.project.loadbalancer.Addresses;
+            id: string;
+            name?: string;
+            openstackRegion: string;
+            region: string;
+            size: cloud.project.loadbalancer.SizeEnum;
+            status: cloud.project.loadbalancer.StatusEnum;
+        }
+        /**
+         * A network load balancer for TCP/UDP workloads
+         * interface fullName: cloud.project.NetworkLoadBalancerCreation.NetworkLoadBalancerCreation
+         */
+        export interface NetworkLoadBalancerCreation {
+            description?: string;
+            id: string;
+            name?: string;
+            networking?: cloud.project.loadbalancer.networking.NetworkingCreation;
+            openstackRegion: string;
+            region: string;
+            size?: cloud.project.loadbalancer.SizeEnum;
+        }
+        /**
          * Possible values for project status
          * type fullname: cloud.project.ProjectStatus
          */
@@ -1684,7 +1714,7 @@ export namespace cloud {
              * interface fullName: cloud.project.loadbalancer.LoadBalancerSizeCapability.LoadBalancerSizeCapability
              */
             export interface LoadBalancerSizeCapability {
-                bandwidthMbPerSecond: number;
+                bandwidth: number;
                 maximumConnection: number;
                 newConnectionPerSecond: number;
                 size: cloud.project.loadbalancer.SizeEnum;
@@ -1734,7 +1764,7 @@ export namespace cloud {
              */
             export interface Stats {
                 concurrentFlows: number;
-                httpRequestsPerSecond: number;
+                httpRequestsPerSecond?: number;
                 status: cloud.project.loadbalancer.stats.StatusEnum;
                 targets: cloud.project.loadbalancer.stats.Target[];
                 tcpConnectionsPerSecond: number;
@@ -1938,6 +1968,85 @@ export namespace cloud {
                  * type fullname: cloud.project.loadbalancer.target.ProxyProtocolEnum
                  */
                 export type ProxyProtocolEnum = "v1" | "v2" | "v2-ssl" | "v2-cn"
+            }
+        }
+        export namespace networkloadbalancer {
+            /**
+             * network load balancer reject action
+             * interface fullName: cloud.project.networkloadbalancer.ActionReject.ActionReject
+             */
+            export interface ActionReject {
+                name: string;
+                type: cloud.project.networkloadbalancer.action.RejectTypeEnum;
+            }
+            /**
+             * Network Loadbalancer action
+             * interface fullName: cloud.project.networkloadbalancer.Actions.Actions
+             */
+            export interface Actions {
+                dispatch?: cloud.project.loadbalancer.ActionDispatch[];
+                reject?: cloud.project.networkloadbalancer.ActionReject[];
+            }
+            /**
+             * A condition
+             * interface fullName: cloud.project.networkloadbalancer.Condition.Condition
+             */
+            export interface Condition {
+                key?: string;
+                match: cloud.project.loadbalancer.condition.MatchEnum;
+                name: string;
+                negate?: boolean;
+                type: cloud.project.networkloadbalancer.condition.TypeEnum;
+                values: string[];
+            }
+            /**
+             * A network load balancer configuration
+             * interface fullName: cloud.project.networkloadbalancer.Configuration.Configuration
+             */
+            export interface Configuration {
+                actions?: cloud.project.networkloadbalancer.Actions;
+                conditions?: cloud.project.networkloadbalancer.Condition[];
+                entryPoints: cloud.project.networkloadbalancer.EntryPoint[];
+                networking: cloud.project.loadbalancer.configuration.networking.Networking;
+                targets?: cloud.project.loadbalancer.Target[];
+                version: number;
+            }
+            /**
+             * A network load balancer configuration
+             * interface fullName: cloud.project.networkloadbalancer.ConfigurationCreation.ConfigurationCreation
+             */
+            export interface ConfigurationCreation {
+                actions?: cloud.project.networkloadbalancer.Actions;
+                conditions?: cloud.project.networkloadbalancer.Condition[];
+                entryPoints: cloud.project.networkloadbalancer.EntryPoint[];
+                networking?: cloud.project.loadbalancer.configuration.networking.Networking;
+                targets?: cloud.project.loadbalancer.Target[];
+                version: number;
+            }
+            /**
+             * A network load balancer entryPoint
+             * interface fullName: cloud.project.networkloadbalancer.EntryPoint.EntryPoint
+             */
+            export interface EntryPoint {
+                defaultTarget?: string;
+                name: string;
+                portRanges?: cloud.project.loadbalancer.PortRange[];
+                ports?: number[];
+                rules: cloud.project.loadbalancer.Rule[];
+            }
+            export namespace action {
+                /**
+                 * Available type of Reject action
+                 * type fullname: cloud.project.networkloadbalancer.action.RejectTypeEnum
+                 */
+                export type RejectTypeEnum = "deny" | "drop"
+            }
+            export namespace condition {
+                /**
+                 * Matching field
+                 * type fullname: cloud.project.networkloadbalancer.condition.TypeEnum
+                 */
+                export type TypeEnum = "source"
             }
         }
     }
@@ -2230,6 +2339,28 @@ export namespace cloud {
          * type fullname: cloud.storage.PolicyRoleEnum
          */
         export type PolicyRoleEnum = "admin" | "deny" | "readOnly" | "readWrite"
+        /**
+         * Presigned URL
+         * interface fullName: cloud.storage.PresignedURL.PresignedURL
+         */
+        export interface PresignedURL {
+            method: cloud.storage.PresignedURLMethodEnum;
+            url: string;
+        }
+        /**
+         * Inputs to generate a presigned URL
+         * interface fullName: cloud.storage.PresignedURLInput.PresignedURLInput
+         */
+        export interface PresignedURLInput {
+            expire: number;
+            method: cloud.storage.PresignedURLMethodEnum;
+            object: string;
+        }
+        /**
+         * Presigned URL method
+         * type fullname: cloud.storage.PresignedURLMethodEnum
+         */
+        export type PresignedURLMethodEnum = "GET" | "PUT"
         /**
          * RetrievalStateEnum
          * type fullname: cloud.storage.RetrievalStateEnum

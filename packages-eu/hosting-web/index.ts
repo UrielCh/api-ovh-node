@@ -46,6 +46,11 @@ export namespace cdn {
      */
     export type OptionCategoryEnum = "cache" | "performance" | "security"
     /**
+     * Option Config Parameter type
+     * type fullname: cdn.OptionConfigParamTypeEnum
+     */
+    export type OptionConfigParamTypeEnum = "bool" | "int" | "list" | "str"
+    /**
      * Option pattern type
      * type fullname: cdn.OptionPatternTypeEnum
      */
@@ -59,7 +64,7 @@ export namespace cdn {
      * Option type
      * type fullname: cdn.OptionTypeEnum
      */
-    export type OptionTypeEnum = "devmode" | "brotli" | "cache_rule" | "https_redirect" | "hsts" | "mixed_content" | "cors" | "waf" | "prefetch" | "querystring" | "geo_headers" | "mobile_redirect"
+    export type OptionTypeEnum = "devmode" | "brotli" | "cache_rule" | "https_redirect" | "hsts" | "mixed_content" | "cors" | "waf" | "prefetch" | "querystring" | "geo_headers" | "mobile_redirect" | "prewarm"
     /**
      * Option type
      * type fullname: cdn.OptionTypePostEnum
@@ -76,8 +81,39 @@ export namespace cdn {
      */
     export interface availableOptions {
         category?: cdn.OptionCategoryEnum;
+        config?: cdn.availableOptions.config;
         maxItems: number;
         type: string;
+    }
+    export namespace availableOptions {
+        /**
+         * Option configuration
+         * interface fullName: cdn.availableOptions.config.config
+         */
+        export interface config {
+            destination?: cdn.availableOptions.config.constraints;
+            followUri?: cdn.availableOptions.config.constraints;
+            origins?: cdn.availableOptions.config.constraints;
+            patternType?: cdn.availableOptions.config.constraints;
+            priority?: cdn.availableOptions.config.constraints;
+            queryParameters?: cdn.availableOptions.config.constraints;
+            resources?: cdn.availableOptions.config.constraints;
+            statusCode?: cdn.availableOptions.config.constraints;
+            ttl?: cdn.availableOptions.config.constraints;
+        }
+        export namespace config {
+            /**
+             * Option configuration constraints
+             * interface fullName: cdn.availableOptions.config.constraints.constraints
+             */
+            export interface constraints {
+                length?: number;
+                maximum?: number;
+                message?: string;
+                minimum?: number;
+                type?: cdn.OptionConfigParamTypeEnum;
+            }
+        }
     }
     /**
      * Domain details
@@ -111,6 +147,7 @@ export namespace cdn {
         export interface option {
             config?: cdn.domain.option.config;
             enabled: boolean;
+            extra?: cdn.domain.option.extra;
             name: string;
             pattern?: string;
             type: cdn.OptionTypeEnum;
@@ -127,8 +164,17 @@ export namespace cdn {
                 patternType?: cdn.OptionPatternTypeEnum;
                 priority?: number;
                 queryParameters?: cdn.OptionQueryParametersEnum;
+                resources?: string[];
                 statusCode?: number;
                 ttl?: number;
+            }
+            /**
+             * Additional informations about option
+             * interface fullName: cdn.domain.option.extra.extra
+             */
+            export interface extra {
+                quota?: number;
+                usage?: number;
             }
         }
         /**
@@ -1748,7 +1794,7 @@ export interface Hosting {
                                  * Update an option on a domain
                                  * PUT /hosting/web/{serviceName}/cdn/domain/{domainName}/option/{optionName}
                                  */
-                                $put(params: { config?: cdn.domain.option.config, enabled: boolean, name?: string, pattern?: string, type: cdn.OptionTypeEnum }): Promise<cdn.domain.option>;
+                                $put(params: { config?: cdn.domain.option.config, enabled: boolean, extra?: cdn.domain.option.extra, name?: string, pattern?: string, type: cdn.OptionTypeEnum }): Promise<cdn.domain.option>;
                                 /**
                                  * Controle cache
                                  */

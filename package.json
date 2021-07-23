@@ -13,12 +13,11 @@
     "license": "MIT",
     "devDependencies": {
         "@types/debounce": "^1.2.0",
-        "@types/node": "^15.12.2",
+        "@types/node": "^16.4.1",
         "lerna": "^4.0.0",
-        "npm": "^7.18.1",
         "rimraf": "^3.0.2",
-        "ts-node": "^10.0.0",
-        "typescript": "^4.3.4"
+        "ts-node": "^10.1.0",
+        "typescript": "^4.3.5"
     },
     "publishConfig": {
         "access": "restricted"
