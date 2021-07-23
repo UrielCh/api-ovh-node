@@ -159,6 +159,11 @@ printIP().then(console.log)
 
 ```
 
+### Automatique cert storage usage
+
+Since V 3.2.0, you can provide an extra parameter `nichandle` to the OvhEngine, so the engine will take care of storing and recovering all certificates, orgenized by `nichandle` and `accessRules`. If you do not log in with the correct nichandle, the certificate will be logged out before being discarded. If for any reason, you want to keep those mismatching certificated, you can keep them using the `keepUnexpectedCredential` boolean option.
+
+
 ## Available packages
 
 ### Packages for API OvhCloud in Europe

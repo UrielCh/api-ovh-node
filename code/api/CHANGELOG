@@ -1,3 +1,7 @@
+V 3.2.0
+- Refactor code
+- improve concurent consumerKey renew request
+- add new certificates storage system
 V 3.1.10
 - Improve package documentation.
 V 3.1.9

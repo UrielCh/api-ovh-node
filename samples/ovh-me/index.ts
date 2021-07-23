@@ -11,7 +11,17 @@ if (process.env.APP_KEY && process.env.APP_SECRET && process.env.CONSUMER_KEY)
         consumerKey: String(process.env.CONSUMER_KEY)
     };
 
-const ovh = new Ovh(config);
-const apiMe = ApiMe(ovh);
 
-apiMe.$get().then(console.log);
+async function main() {
+    try {
+        const ovh = new Ovh(config);
+        const apiMe = ApiMe(ovh);
+        // await ovh.request('POST', '/auth/logout');
+        const info = await apiMe.$get();
+        console.log(info);
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+void main();
