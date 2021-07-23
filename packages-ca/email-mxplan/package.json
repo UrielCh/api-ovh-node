@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-ca/email-mxplan",
     "description": "Add typing to to ovh api email-mxplan",
-    "version": "3.1.20",
+    "version": "3.1.21",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
