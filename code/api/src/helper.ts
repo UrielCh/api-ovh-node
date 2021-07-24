@@ -32,7 +32,7 @@ const saveCert = async (api: OvhApi, req: OvhCredential, consumerKey: string) =>
 
 // retry the Query thith a new cert
 // updateset consumerKey
-export const waitForCertValidation = async (api: OvhApi, newCert: OvhCredentialNew): Promise<void> => {
+export const waitForCertValidation = async (api: OvhApi, newCert: OvhCredentialNew): Promise<boolean> => {
     const certMonitor = api.certMonitorProvider(api, newCert);
     const { consumerKey, validationUrl } = newCert;
     api.consumerKey = consumerKey;
@@ -69,9 +69,12 @@ export const waitForCertValidation = async (api: OvhApi, newCert: OvhCredentialN
                     }
                 }
                 await saveCert(api, req, consumerKey);
-                return undefined;
+                return true;
             }
         } catch ({ errorCode }) {
+            if (errorCode === 'QUERY_TIME_OUT') {
+                return false;
+            }
             await certMonitor.notValid(errorCode, ++pass);
             await wait(2000);
         }
@@ -163,8 +166,14 @@ export class RequestContext {
                     // message: `failed to request a credential with rule ${JSON.stringify(ctxt.api.accessRules)} ${e.message || e}`,
                 }, e, XOvhQueryid);
             }
-            await waitForCertValidation(api, newCert);
+            for (let i = 0; i < 3; i++) {
+                if (await waitForCertValidation(api, newCert)) {
+                    this.certIssued();
+                    return;
+                }
+            }
             this.certIssued();
+            throw new Error('All token renewal atemptes failed!');
         } else {
             await api.updatingCert;
         }

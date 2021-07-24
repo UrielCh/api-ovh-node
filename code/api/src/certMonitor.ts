@@ -20,10 +20,11 @@ export const stdOutCertMonitorProvider: CertMonitorProvider = (ovhApi: OvhApi, c
             // httpCode:"403 Forbidden"
             // message:"This credential is not valid"
             if (pass % 15 == 0) {
-                if (errorCode === 'MISSING_CREDENTIAL')
-                    console.log(`waiting for cert validation here: ${validationUrl}`)
-                else
-                    console.log(`\n${errorCode}: ${consumerKey} url:\n${validationUrl}`)
+                if (errorCode === 'MISSING_CREDENTIAL') {
+                    console.log(`Waiting for credential validation${extra} here: ${validationUrl}`);
+                } else {
+                    console.log(`\nUnexpected error "${errorCode}" expecting "MISSING_CREDENTIAL", consumerKey:${consumerKey}${extra} url:\n${validationUrl}`);
+                }
             }
         },
         validated: async (status: OvhCredential) => {

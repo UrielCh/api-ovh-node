@@ -1,6 +1,6 @@
 V 3.2.3
-- stress tested version.
-- small improvements.
+- verbose login prompt.
+- add support for QUERY_TIME_OUT in credential validation
 V 3.2.2
 - fix consumerkey test.
 V 3.2.1
