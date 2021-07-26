@@ -11,9 +11,12 @@ export type CertMonitorProvider = (ovhApi: OvhApi, credential: OvhCredentialNew)
 export const stdOutCertMonitorProvider: CertMonitorProvider = (ovhApi: OvhApi, credential: OvhCredentialNew) => {
     const { validationUrl, consumerKey } = credential;
     let extra = '';
-    if (ovhApi.nichandle)
+    let extra2 = '';
+    if (ovhApi.nichandle) {
         extra = ` for ${ovhApi.nichandle}`;
-    console.log(`[OVH] MISSING_CREDENTIAL issue a new one: ${consumerKey}${extra}\nValidate this cert with this url to continue:\n${validationUrl}`)
+        extra2 = `${ovhApi.nichandle} `;
+    }
+    console.log(`[OVH] MISSING_CREDENTIAL issue a new one: ${consumerKey}${extra}\nValidate ${extra2}certificate with this url to continue:\n${validationUrl}`)
     return {
         notValid: async (errorCode: string, pass: number) => {
             // errorCode:"INVALID_CREDENTIAL"
