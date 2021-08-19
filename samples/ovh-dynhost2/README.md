@@ -21,14 +21,27 @@ npx ovh-dynhost2 --help
 ## Usage
 
 ```bash
-$ ovh-dynhost2
+$> ovh-dynhost2 --help
+Usage: index [options] [command]
+
+create and update a dyn-host or standard DNS entry.
+
 Options:
-    Options:
-    -d [domain]               add domain to configure
-    -u [url]                  add url used to find public IP
-    -l, --local <localAdress> Local address to bind if you have mutiple gateway
-    -t, --token <tokenfile>   save and reuse the certificat by storing them in a file
-    --timeout [timeout]       timeout to get ip address
+  -V, --version                  output the version number
+  -v, --verbose                  verbose process
+  -s, --standard                 use standard DNS entry instead of dynhost (default: [])
+  -d, --domain <domain>          add domain to configure (default: [])
+  -u, --url <url>                add url used to find public IP (default: [])
+  -l, --local <localAdress>      Local address to bind if you have mutiple gateway
+  -i, --interface <inet>         interface to use
+  -t, --token <tokenfile>        save and reuse the certificat by storing them in a file
+  -c, --credential <credential>  provide a credential as {appKey}:{appSecret}:{consumerKey} to be store in token file
+  --curl                         use curl
+  --timeout <timeout>            timeout to get ip address (default: "2000")
+  -h, --help                     display help for command
+
+Commands:
+  dump                           dump compact credential for quick deploy
 ```
 
 ### example
