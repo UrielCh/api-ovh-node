@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/license-office",
     "description": "Add typing to to ovh api license-office",
-    "version": "3.1.21",
+    "version": "3.1.22",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
