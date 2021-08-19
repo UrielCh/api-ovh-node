@@ -42,7 +42,7 @@
         "bootstrap": "lerna bootstrap --concurrency=1 --ignore-scripts --force-local",
         "bootstrap2": "lerna bootstrap --mutex file:/tmp/.npm-mutex --force-local",
         "build": "lerna run build",
-        "do-publish": "npm run clean && npm run install-all && npm run bootstrap && npm run clean-cache && npm run lerna",
+        "do-publish": "npm run clean && npm run install-all && npm run bootstrap && npm run clean-cache && git commit -avm 'update package-lock.json'; npm run lerna",
         "lerna": "lerna publish patch --yes"
     },
     "name": "api-ovh-node"
