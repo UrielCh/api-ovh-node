@@ -251,9 +251,9 @@ class DynHost {
                 }
 
                 if (!records.length) {
-                    console.error(`${chalk.green(subDomain)}.${chalk.yellow(service)} do not exists creating it now.`);
+                    console.error(`${chalk.green(subDomain)}.${chalk.yellow(service)} do not exists, creating it ${chalk.redBright('now')}!`);
                     await api.zone.$(service).record.$post({ fieldType: 'A', subDomain, target: ip, ttl: 60 });
-                    console.log(`Sucess ${chalk.green(subDomain)}.${chalk.yellow(service)} have IP: ${chalk.yellow(ip)}`);
+                    console.log(`${chalk.greenBright('Success')} ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('have IP')}: ${chalk.yellow(ip)}`);
                     await api.zone.$(service).refresh.$post();
                     console.log(`Refresh ${chalk.yellow(service)} Done`);
                 } else {
@@ -282,7 +282,7 @@ class DynHost {
                 if (!subidDyn.length) {
                     console.error(`${chalk.green(subDomain)}.${chalk.yellow(service)} do not exists creating it now.`);
                     await recordApiDyn.$post({ ip, subDomain });
-                    console.log(`Sucess ${chalk.green(subDomain)}.${chalk.yellow(service)} have IP: ${chalk.yellow(ip)}`);
+                    console.log(`${chalk.greenBright('Success')} ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('have IP')}: ${chalk.yellow(ip)}`);
                     await api.zone.$(service).refresh.$post();
                     console.log(`Refresh ${chalk.yellow(service)} Done`);
                 } else {
