@@ -57,6 +57,7 @@ export namespace email {
             region?: string;
             renewOutlookPeriod?: email.exchange.renewPeriodEnum;
             renewPeriod?: email.exchange.renewPeriodEnum;
+            sbrDestination?: string;
             spamAndVirusConfiguration: email.exchange.spamAndVirusConfiguration;
             spamDetected: boolean;
             spamTicketNumber?: number;
@@ -117,6 +118,7 @@ export namespace email {
             mxRelay?: string;
             name: string;
             organization2010?: string;
+            sbrDefault?: string;
             srvIsValid: boolean;
             srvRecord?: string[];
             state: email.exchange.ObjectStateEnum;
@@ -789,7 +791,7 @@ export interface Email {
                          * Create new mailbox in exchange server
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/account
                          */
-                        $post(params: { city?: string, company?: string, countryCode?: email.exchange.CountryCodeEnum, description?: string, displayName?: string, domain: string, fax?: string, firstName?: string, forwardingEmail?: string, hiddenFromGAL?: boolean, initials?: string, jobDepartment?: string, jobTitle?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], mobile?: string, office?: string, outlookLicense?: boolean, password: string, phone?: string, postalCode?: string, quota?: number, region?: string, SAMAccountName?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, storeCopyOfEmail?: boolean, streetAddress?: string }): Promise<email.exchange.Task>;
+                        $post(params: { city?: string, company?: string, countryCode?: email.exchange.CountryCodeEnum, description?: string, displayName?: string, domain: string, fax?: string, firstName?: string, forwardingEmail?: string, hiddenFromGAL?: boolean, initials?: string, jobDepartment?: string, jobTitle?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], mobile?: string, office?: string, outlookLicense?: boolean, password: string, phone?: string, postalCode?: string, quota?: number, region?: string, SAMAccountName?: string, sbrDestination?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, storeCopyOfEmail?: boolean, streetAddress?: string }): Promise<email.exchange.Task>;
                         /**
                          * Controle cache
                          */
@@ -809,7 +811,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}
                              */
-                            $put(params?: { SAMAccountName?: string, accountLicense?: email.exchange.OvhLicenceEnum, city?: string, company?: string, configured?: boolean, countryCode?: email.exchange.CountryCodeEnum, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, description?: string, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, fax?: string, firstName?: string, forwardingEmail?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, jobDepartment?: string, jobTitle?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailingFilter?: email.exchange.MailingFilterEnum[], mobile?: string, numberOfAliases?: number, office?: string, outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, phone?: string, postalCode?: string, primaryEmailAddress?: string, quota?: number, region?: string, renewOutlookPeriod?: email.exchange.renewPeriodEnum, renewPeriod?: email.exchange.renewPeriodEnum, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, storeCopyOfEmail?: boolean, streetAddress?: string, taskPendingId?: number }): Promise<void>;
+                            $put(params?: { SAMAccountName?: string, accountLicense?: email.exchange.OvhLicenceEnum, city?: string, company?: string, configured?: boolean, countryCode?: email.exchange.CountryCodeEnum, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, description?: string, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, fax?: string, firstName?: string, forwardingEmail?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, jobDepartment?: string, jobTitle?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailingFilter?: email.exchange.MailingFilterEnum[], mobile?: string, numberOfAliases?: number, office?: string, outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, phone?: string, postalCode?: string, primaryEmailAddress?: string, quota?: number, region?: string, renewOutlookPeriod?: email.exchange.renewPeriodEnum, renewPeriod?: email.exchange.renewPeriodEnum, sbrDestination?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, storeCopyOfEmail?: boolean, streetAddress?: string, taskPendingId?: number }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -1160,7 +1162,7 @@ export interface Email {
                          * Create new domain in exchange services
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/domain
                          */
-                        $post(params: { configureAutodiscover?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, type: email.exchange.DomainTypeEnum }): Promise<email.exchange.Task>;
+                        $post(params: { configureAutodiscover?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, sbrDefault?: string, type: email.exchange.DomainTypeEnum }): Promise<email.exchange.Task>;
                         /**
                          * Controle cache
                          */
@@ -1180,7 +1182,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}
                              */
-                            $put(params?: { cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.DomainTypeEnum }): Promise<void>;
+                            $put(params?: { cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, sbrDefault?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.DomainTypeEnum }): Promise<void>;
                             /**
                              * Controle cache
                              */

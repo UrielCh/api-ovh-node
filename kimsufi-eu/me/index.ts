@@ -837,7 +837,7 @@ export namespace billing {
          * List of payment sub type enum
          * type fullname: billing.paymentMethod.PaymentSubTypeEnum
          */
-        export type PaymentSubTypeEnum = "AMERICAN_EXPRESS" | "MASTERCARD" | "VISA"
+        export type PaymentSubTypeEnum = "AMERICAN_EXPRESS" | "CARTE_BANCAIRE" | "MASTERCARD" | "VISA"
         /**
          * List of payment type enum
          * type fullname: billing.paymentMethod.PaymentTypeEnum
@@ -2216,9 +2216,13 @@ export namespace payment {
          * interface fullName: payment.method.AvailablePaymentMethod.AvailablePaymentMethod
          */
         export interface AvailablePaymentMethod {
+            formSessionId?: string;
             icon: payment.method.Icon;
             integration: paymentmethodIntegrationType;
+            merchantId?: string;
             oneshot: boolean;
+            organizationId?: string;
+            paymentSubType?: string;
             paymentType: string;
             registerable: boolean;
             registerableWithTransaction: boolean;
@@ -2230,6 +2234,7 @@ export namespace payment {
         export interface Icon {
             data?: string;
             name?: string;
+            url?: string;
         }
         /**
          * Payment method integration type

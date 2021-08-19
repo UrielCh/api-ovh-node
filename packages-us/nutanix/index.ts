@@ -11,6 +11,20 @@ export namespace nutanix {
      */
     export type LicenseEnum = "pro" | "ultimate"
     /**
+     * Cluster redundancy factor
+     * type fullname: nutanix.RedundancyFactorEnum
+     */
+    export type RedundancyFactorEnum = 2 | 3
+    /**
+     * Return the needed requirements for a given cluster configuration
+     * interface fullName: nutanix.Requirements.Requirements
+     */
+    export interface Requirements {
+        maxNodes: number;
+        minNodes: number;
+        scaleFactor: number;
+    }
+    /**
      * Cluster configuration
      * interface fullName: nutanix.cluster.cluster
      */
@@ -89,6 +103,17 @@ export interface Nutanix {
      * Controle cache
      */
     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    requirements: {
+        /**
+         * Fetch the requirements for a given cluster configuration
+         * GET /nutanix/requirements
+         */
+        $get(params: { erasureCoding: boolean, rackAwareness: boolean, redundancyFactor: nutanix.RedundancyFactorEnum }): Promise<nutanix.Requirements>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    }
     $(serviceName: string): {
         /**
          * Get nutanix cluster info

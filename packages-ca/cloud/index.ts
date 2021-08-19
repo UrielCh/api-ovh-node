@@ -1066,7 +1066,7 @@ export namespace cloud {
          * interface fullName: cloud.billingView.MonthlyResources.MonthlyResources
          */
         export interface MonthlyResources {
-            certification: cloud.billingView.MonthlyCertification[];
+            certification?: cloud.billingView.MonthlyCertification[];
             instance: cloud.billingView.MonthlyInstance[];
             instanceOption: cloud.billingView.MonthlyInstanceOption[];
         }
@@ -2367,8 +2367,14 @@ export namespace cloud {
              * interface fullName: cloud.project.ai.Info.Info
              */
             export interface Info {
+                code: cloud.project.ai.InfoCodeEnum;
                 message: string;
             }
+            /**
+             * Code enum for Info object
+             * type fullname: cloud.project.ai.InfoCodeEnum
+             */
+            export type InfoCodeEnum = "COMPATIBILITY" | "JOB_QUEUED" | "JOB_INITIALIZING" | "JOB_PENDING" | "JOB_RUNNING" | "JOB_INTERRUPTING" | "JOB_FINALIZING" | "JOB_DONE" | "JOB_INTERRUPTED" | "JOB_TIMEOUT" | "JOB_FAILED" | "JOB_ERROR" | "JOB_EVICTED" | "JOB_IMAGE_PULL_BACKOFF" | "JOB_IMAGE_INSPECT_ERROR" | "JOB_IMAGE_PULL" | "JOB_REGISTRY_UNAVAILABLE" | "JOB_INVALID_IMAGE_NAME" | "JOB_CREATE_CONTAINER_CONFIG_ERROR" | "JOB_CREATE_CONTAINER_ERROR" | "JOB_INTERRUPTED_BY_PLATFORM" | "DATASYNC_QUEUED" | "DATASYNC_RUNNING" | "DATASYNC_DONE" | "DATASYNC_FAILED" | "DATASYNC_ERROR" | "DATASYNC_RETRY_ERROR" | "DATASYNC_AUTHENTICATE_FAILED" | "DATASYNC_INVALID_CONTAINER" | "NOTEBOOK_STARTING" | "NOTEBOOK_INITIALIZING" | "NOTEBOOK_PENDING" | "NOTEBOOK_RUNNING" | "NOTEBOOK_FINALIZING" | "NOTEBOOK_STOPPING" | "NOTEBOOK_STOPPED" | "NOTEBOOK_FAILED"
             /**
              * Log line
              * interface fullName: cloud.project.ai.LogLine.LogLine
@@ -2710,7 +2716,7 @@ export namespace cloud {
                  * State of the notebook
                  * type fullname: cloud.project.ai.notebook.NotebookStateEnum
                  */
-                export type NotebookStateEnum = "STARTING" | "RUNNING" | "STOPPING" | "STOPPED"
+                export type NotebookStateEnum = "STARTING" | "RUNNING" | "STOPPING" | "STOPPED" | "FAILED"
                 /**
                  * AI Solutions Notebook Status Object
                  * interface fullName: cloud.project.ai.notebook.NotebookStatus.NotebookStatus
@@ -3473,6 +3479,52 @@ export namespace cloud {
                 export interface UserUpdate {
                     password: string;
                 }
+            }
+            export namespace service {
+                /**
+                 * A single value from a metric
+                 * interface fullName: cloud.project.database.service.DataPoint.DataPoint
+                 */
+                export interface DataPoint {
+                    timestamp: number;
+                    value: number;
+                }
+                /**
+                 * Metrics datapoints from a specific host
+                 * interface fullName: cloud.project.database.service.HostMetric.HostMetric
+                 */
+                export interface HostMetric {
+                    dataPoints: cloud.project.database.service.DataPoint[];
+                    hostname: string;
+                }
+                /**
+                 * A single log entry
+                 * interface fullName: cloud.project.database.service.LogEntry.LogEntry
+                 */
+                export interface LogEntry {
+                    hostname: string;
+                    message: string;
+                    timestamp: number;
+                }
+                /**
+                 * Metric definition for cloud project databases
+                 * interface fullName: cloud.project.database.service.Metric.Metric
+                 */
+                export interface Metric {
+                    metrics: cloud.project.database.service.HostMetric[];
+                    name: string;
+                    units: cloud.project.database.service.MetricUnitEnum;
+                }
+                /**
+                 * Supported metrics query period
+                 * type fullname: cloud.project.database.service.MetricPeriodEnum
+                 */
+                export type MetricPeriodEnum = "lastHour" | "lastDay" | "lastWeek" | "lastMonth" | "lastYear"
+                /**
+                 * Supported unit types for metrics
+                 * type fullname: cloud.project.database.service.MetricUnitEnum
+                 */
+                export type MetricUnitEnum = "PERCENT" | "MILLISECONDS" | "SECONDS" | "BYTES" | "GIGABYTES" | "BYTES_PER_SECOND" | "MEGABYTES_PER_SECOND" | "GIGABYTES_PER_HOUR" | "SCALAR_PER_SECOND" | "SCALAR" | "UNKNOWN"
             }
         }
         export namespace loadbalancer {
@@ -4510,7 +4562,7 @@ export namespace cloud {
          * VolumeTypeEnum
          * type fullname: cloud.volume.VolumeTypeEnum
          */
-        export type VolumeTypeEnum = "classic" | "high-speed"
+        export type VolumeTypeEnum = "classic" | "high-speed" | "high-speed-gen2"
     }
 }
 export namespace complexType {
@@ -5925,6 +5977,39 @@ export interface Cloud {
                                  * PUT /cloud/project/{serviceName}/database/mongodb/{clusterId}/ipRestriction/{ipBlock}
                                  */
                                 $put(params?: { description?: string, ip?: string }): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        logs: {
+                            /**
+                             * Retrieve the most recent mongoDB log messages (limited to 1000)
+                             * GET /cloud/project/{serviceName}/database/mongodb/{clusterId}/logs
+                             */
+                            $get(): Promise<cloud.project.database.service.LogEntry[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        metric: {
+                            /**
+                             * List available metrics for the mongodb cluster
+                             * GET /cloud/project/{serviceName}/database/mongodb/{clusterId}/metric
+                             */
+                            $get(params?: { extended?: boolean }): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(metricName: string): {
+                                /**
+                                 * Get the metric values for the mongodb cluster
+                                 * GET /cloud/project/{serviceName}/database/mongodb/{clusterId}/metric/{metricName}
+                                 */
+                                $get(params: { period: cloud.project.database.service.MetricPeriodEnum }): Promise<cloud.project.database.service.Metric>;
                                 /**
                                  * Controle cache
                                  */

@@ -4443,6 +4443,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -4510,6 +4511,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -4577,6 +4579,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -4638,6 +4641,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -4712,6 +4716,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -4781,6 +4786,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -4850,6 +4856,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -4932,6 +4939,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -5001,6 +5009,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -5083,6 +5092,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -5160,6 +5170,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -5243,6 +5254,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -5326,6 +5338,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -5395,6 +5408,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -5477,6 +5491,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -5554,6 +5569,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -5631,6 +5647,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -5696,6 +5713,258 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/ipRestriction/{ipBlock}"
     },
     {
+      "description": "Query operations on mongodb cluster logs",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve the most recent mongoDB log messages (limited to 1000)",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.LogEntry[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/logs"
+    },
+    {
+      "description": "Query operations on mongodb cluster metrics",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available metrics for the mongodb cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Display DB specific metrics",
+              "fullType": "boolean",
+              "name": "extended",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/metric"
+    },
+    {
+      "description": "Query operations on mongodb cluster metrics",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the metric values for the mongodb cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::ServiceNotReady",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Metric name",
+              "fullType": "string",
+              "name": "metricName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "cloud.project.database.service.MetricPeriodEnum",
+              "description": "The period of time to query metrics for",
+              "fullType": "cloud.project.database.service.MetricPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Metric",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/metric/{metricName}"
+    },
+    {
       "description": "Operations about the cloud project mongodb nodes",
       "operations": [
         {
@@ -5721,6 +5990,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -5790,6 +6060,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -5872,6 +6143,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -5949,6 +6221,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -6032,6 +6305,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -6107,6 +6381,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -6190,6 +6465,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -6259,6 +6535,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -6341,6 +6618,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -6418,6 +6696,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -6495,6 +6774,7 @@ export const schema: Schema = {
             "Client::NotFound::EngineNameNotFound",
             "Client::NotFound::FlavorNameNotFound",
             "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
             "Client::NotFound::InvalidNodeNumber",
             "Client::NotFound::IpRestrictionAlreadyExists",
             "Client::NotFound::IpRestrictionIDNotFound",
@@ -17366,7 +17646,7 @@ export const schema: Schema = {
       "namespace": "cloud.billingView",
       "properties": {
         "certification": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Details about certifications",
           "fullType": "cloud.billingView.MonthlyCertification[]",
           "readOnly": true,
@@ -21964,6 +22244,14 @@ export const schema: Schema = {
       "id": "Info",
       "namespace": "cloud.project.ai",
       "properties": {
+        "code": {
+          "canBeNull": false,
+          "description": "Info code identifier",
+          "fullType": "cloud.project.ai.InfoCodeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.InfoCodeEnum"
+        },
         "message": {
           "canBeNull": false,
           "description": "Formatted message",
@@ -21973,6 +22261,51 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "cloud.project.ai.InfoCodeEnum": {
+      "description": "Code enum for Info object",
+      "enum": [
+        "COMPATIBILITY",
+        "JOB_QUEUED",
+        "JOB_INITIALIZING",
+        "JOB_PENDING",
+        "JOB_RUNNING",
+        "JOB_INTERRUPTING",
+        "JOB_FINALIZING",
+        "JOB_DONE",
+        "JOB_INTERRUPTED",
+        "JOB_TIMEOUT",
+        "JOB_FAILED",
+        "JOB_ERROR",
+        "JOB_EVICTED",
+        "JOB_IMAGE_PULL_BACKOFF",
+        "JOB_IMAGE_INSPECT_ERROR",
+        "JOB_IMAGE_PULL",
+        "JOB_REGISTRY_UNAVAILABLE",
+        "JOB_INVALID_IMAGE_NAME",
+        "JOB_CREATE_CONTAINER_CONFIG_ERROR",
+        "JOB_CREATE_CONTAINER_ERROR",
+        "JOB_INTERRUPTED_BY_PLATFORM",
+        "DATASYNC_QUEUED",
+        "DATASYNC_RUNNING",
+        "DATASYNC_DONE",
+        "DATASYNC_FAILED",
+        "DATASYNC_ERROR",
+        "DATASYNC_RETRY_ERROR",
+        "DATASYNC_AUTHENTICATE_FAILED",
+        "DATASYNC_INVALID_CONTAINER",
+        "NOTEBOOK_STARTING",
+        "NOTEBOOK_INITIALIZING",
+        "NOTEBOOK_PENDING",
+        "NOTEBOOK_RUNNING",
+        "NOTEBOOK_FINALIZING",
+        "NOTEBOOK_STOPPING",
+        "NOTEBOOK_STOPPED",
+        "NOTEBOOK_FAILED"
+      ],
+      "enumType": "string",
+      "id": "InfoCodeEnum",
+      "namespace": "cloud.project.ai"
     },
     "cloud.project.ai.LogLine": {
       "description": "Log line",
@@ -23453,7 +23786,8 @@ export const schema: Schema = {
         "STARTING",
         "RUNNING",
         "STOPPING",
-        "STOPPED"
+        "STOPPED",
+        "FAILED"
       ],
       "enumType": "string",
       "id": "NotebookStateEnum",
@@ -26413,6 +26747,146 @@ export const schema: Schema = {
           "type": "password"
         }
       }
+    },
+    "cloud.project.database.service.DataPoint": {
+      "description": "A single value from a metric",
+      "id": "DataPoint",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "timestamp": {
+          "canBeNull": false,
+          "description": "Timestamp in seconds since epoch time",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value of this datapoint",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.project.database.service.HostMetric": {
+      "description": "Metrics datapoints from a specific host",
+      "id": "HostMetric",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "dataPoints": {
+          "canBeNull": false,
+          "description": "List of metric's samples",
+          "fullType": "cloud.project.database.service.DataPoint[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.DataPoint[]"
+        },
+        "hostname": {
+          "canBeNull": false,
+          "description": "Name of the originating host",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.service.LogEntry": {
+      "description": "A single log entry",
+      "id": "LogEntry",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "hostname": {
+          "canBeNull": false,
+          "description": "Host from which the log is coming from",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "message": {
+          "canBeNull": false,
+          "description": "The log message",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "timestamp": {
+          "canBeNull": false,
+          "description": "Timestamp in seconds since epoch time",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.database.service.Metric": {
+      "description": "Metric definition for cloud project databases",
+      "id": "Metric",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "metrics": {
+          "canBeNull": false,
+          "description": "Metric values for each cluster's host",
+          "fullType": "cloud.project.database.service.HostMetric[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.HostMetric[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the metric",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "units": {
+          "canBeNull": false,
+          "description": "Unit of the metric",
+          "fullType": "cloud.project.database.service.MetricUnitEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.MetricUnitEnum"
+        }
+      }
+    },
+    "cloud.project.database.service.MetricPeriodEnum": {
+      "description": "Supported metrics query period",
+      "enum": [
+        "lastHour",
+        "lastDay",
+        "lastWeek",
+        "lastMonth",
+        "lastYear"
+      ],
+      "enumType": "string",
+      "id": "MetricPeriodEnum",
+      "namespace": "cloud.project.database.service"
+    },
+    "cloud.project.database.service.MetricUnitEnum": {
+      "description": "Supported unit types for metrics",
+      "enum": [
+        "PERCENT",
+        "MILLISECONDS",
+        "SECONDS",
+        "BYTES",
+        "GIGABYTES",
+        "BYTES_PER_SECOND",
+        "MEGABYTES_PER_SECOND",
+        "GIGABYTES_PER_HOUR",
+        "SCALAR_PER_SECOND",
+        "SCALAR",
+        "UNKNOWN"
+      ],
+      "enumType": "string",
+      "id": "MetricUnitEnum",
+      "namespace": "cloud.project.database.service"
     },
     "cloud.project.loadbalancer.ActionDispatch": {
       "description": "HTTP load balancer dispatch action",
@@ -29887,7 +30361,8 @@ export const schema: Schema = {
       "description": "VolumeTypeEnum",
       "enum": [
         "classic",
-        "high-speed"
+        "high-speed",
+        "high-speed-gen2"
       ],
       "enumType": "string",
       "id": "VolumeTypeEnum",

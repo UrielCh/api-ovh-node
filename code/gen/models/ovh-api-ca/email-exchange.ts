@@ -426,6 +426,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "string",
+              "description": "Sender base routing destination domain",
+              "fullType": "string",
+              "name": "sbrDestination",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "email.exchange.spamAndVirusConfiguration",
               "description": "Antispam and Antivirus configuration",
               "fullType": "email.exchange.spamAndVirusConfiguration",
@@ -2734,6 +2742,14 @@ export const schema: Schema = {
               "description": "If specified, indicates which organization this newly created domain will be part of (Exchange 2010 only)",
               "fullType": "string",
               "name": "organization2010",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Default Sender base routing destination domain applied on all new created accounts",
+              "fullType": "string",
+              "name": "sbrDefault",
               "paramType": "body",
               "required": false
             },
@@ -8066,6 +8082,14 @@ export const schema: Schema = {
           "required": false,
           "type": "email.exchange.renewPeriodEnum"
         },
+        "sbrDestination": {
+          "canBeNull": true,
+          "description": "Relay domain address that will be used to all e-mails send from this account",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "spamAndVirusConfiguration": {
           "canBeNull": false,
           "description": "Spam and Antivirus configuration",
@@ -8567,6 +8591,14 @@ export const schema: Schema = {
           "description": "If specified, indicates to which organization this domain belongs (Exchange 2010 only)",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "sbrDefault": {
+          "canBeNull": true,
+          "description": "Relay domain address that will be used to all newly created accounts",
+          "fullType": "string",
+          "readOnly": false,
           "required": false,
           "type": "string"
         },

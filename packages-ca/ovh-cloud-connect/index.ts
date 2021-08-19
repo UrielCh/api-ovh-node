@@ -43,10 +43,16 @@ export namespace ovhcloudconnect {
      * interface fullName: ovhcloudconnect.Interface.Interface
      */
     export interface Interface {
+        deviceDisplayName?: string;
+        deviceRackDisplayName?: string;
         id: number;
         incomingLightStatus: ovhcloudconnect.interf.LightStatusEnum;
+        incomingLightValue?: number;
+        interfaceName?: string;
+        interfaceTerminationType?: ovhcloudconnect.interf.TerminationTypeEnum;
         lightLastUpdate: string;
         outgoingLightStatus: ovhcloudconnect.interf.LightStatusEnum;
+        outgoingLightValue?: number;
         status: ovhcloudconnect.interf.StatusEnum;
     }
     /**
@@ -168,6 +174,11 @@ export namespace ovhcloudconnect {
          * type fullname: ovhcloudconnect.interf.StatusEnum
          */
         export type StatusEnum = "enabled" | "disabled"
+        /**
+         * Enum values for the termination type
+         * type fullname: ovhcloudconnect.interf.TerminationTypeEnum
+         */
+        export type TerminationTypeEnum = "LC/PC" | "SC/PC"
     }
     export namespace key {
         /**

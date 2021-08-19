@@ -50,6 +50,7 @@ export namespace dbaas {
          * interface fullName: dbaas.logs.Cluster.Cluster
          */
         export interface Cluster {
+            archiveAllowedNetworks: string[];
             clusterId: string;
             clusterType: dbaas.logs.ClusterClusterTypeEnum;
             dedicatedInputPEM: string;
@@ -86,6 +87,7 @@ export namespace dbaas {
          * interface fullName: dbaas.logs.ClusterUpdate.ClusterUpdate
          */
         export interface ClusterUpdate {
+            archiveAllowedNetworks?: string[];
             directInputAllowedNetworks?: string[];
             queryAllowedNetworks?: string[];
         }
@@ -927,7 +929,7 @@ export interface Dbaas {
                      * Update details of an allowed cluster
                      * PUT /dbaas/logs/{serviceName}/cluster/{clusterId}
                      */
-                    $put(params?: { directInputAllowedNetworks?: string[], queryAllowedNetworks?: string[] }): Promise<dbaas.logs.Operation>;
+                    $put(params?: { archiveAllowedNetworks?: string[], directInputAllowedNetworks?: string[], queryAllowedNetworks?: string[] }): Promise<dbaas.logs.Operation>;
                     /**
                      * Controle cache
                      */

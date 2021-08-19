@@ -13262,6 +13262,7 @@ export const schema: Schema = {
       "description": "List of payment sub type enum",
       "enum": [
         "AMERICAN_EXPRESS",
+        "CARTE_BANCAIRE",
         "MASTERCARD",
         "VISA"
       ],
@@ -19306,6 +19307,13 @@ export const schema: Schema = {
       "id": "AvailablePaymentMethod",
       "namespace": "payment.method",
       "properties": {
+        "formSessionId": {
+          "canBeNull": true,
+          "description": "Payment method session identifier",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "icon": {
           "canBeNull": false,
           "description": "Payment method type icon",
@@ -19320,12 +19328,33 @@ export const schema: Schema = {
           "required": false,
           "type": "payment.method.IntegrationType"
         },
+        "merchantId": {
+          "canBeNull": true,
+          "description": "Payment method merchant identifier",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "oneshot": {
           "canBeNull": false,
           "description": "Payment method type is possible to pay in oneshot mode ?",
           "readOnly": false,
           "required": false,
           "type": "boolean"
+        },
+        "organizationId": {
+          "canBeNull": true,
+          "description": "Payment method organization identifier",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "paymentSubType": {
+          "canBeNull": true,
+          "description": "Payment method subtype",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "paymentType": {
           "canBeNull": false,
@@ -19365,6 +19394,13 @@ export const schema: Schema = {
         "name": {
           "canBeNull": true,
           "description": "Icon name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Icon URL",
           "readOnly": false,
           "required": false,
           "type": "string"

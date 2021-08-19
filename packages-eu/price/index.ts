@@ -3724,32 +3724,6 @@ export namespace price {
             export type SslEnum = "HOSTEDSSL"
         }
     }
-    export namespace Hpcspot {
-        export namespace Account {
-            /**
-             * Enum of Subscriptions
-             * type fullname: price.Hpcspot.Account.SubscriptionEnum
-             */
-            export type SubscriptionEnum = "HPCSPOT"
-        }
-        export namespace Consumption {
-            /**
-             * Enum of Jobs
-             * type fullname: price.Hpcspot.Consumption.JobEnum
-             */
-            export type JobEnum = "16core.64gb" | "4core.32gb" | "8core.32gb"
-            /**
-             * Enum of Reservations
-             * type fullname: price.Hpcspot.Consumption.ReservationEnum
-             */
-            export type ReservationEnum = "12core.60gb.quadrok400" | "1core.4gb" | "1core.4gb.quadrok4000" | "2core.8gb" | "2core.8gb.quadrok4000" | "4core.15gb" | "4core.15gb.quadrok4000" | "8core.30gb" | "8core.30gb.quadrok4000"
-            /**
-             * Enum of Sessions
-             * type fullname: price.Hpcspot.Consumption.SessionEnum
-             */
-            export type SessionEnum = "16core.64gb" | "4core.32gb" | "8core.32gb"
-        }
-    }
     export namespace License {
         /**
          * Enum of Offices
@@ -12057,64 +12031,6 @@ export interface Price {
                     /**
                      * Get the price for hosted ssl option
                      * GET /price/hosting/web/ssl/{sslName}
-                     */
-                    $get(): Promise<order.Price>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                };
-            }
-        }
-    }
-    hpcspot: {
-        account: {
-            subscription: {
-                $(subscriptionName: price.Hpcspot.Account.SubscriptionEnum): {
-                    /**
-                     * Get the price of a HPC Spot Account for 1 month
-                     * GET /price/hpcspot/account/subscription/{subscriptionName}
-                     */
-                    $get(): Promise<order.Price>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                };
-            }
-        }
-        consumption: {
-            job: {
-                $(reference: price.Hpcspot.Consumption.JobEnum): {
-                    /**
-                     * Get the price of a JOB consumption for 1 hour
-                     * GET /price/hpcspot/consumption/job/{reference}
-                     */
-                    $get(): Promise<order.Price>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                };
-            }
-            reservation: {
-                $(reference: price.Hpcspot.Consumption.ReservationEnum): {
-                    /**
-                     * Get the price of a RESERVATION consumption for 1 hour
-                     * GET /price/hpcspot/consumption/reservation/{reference}
-                     */
-                    $get(): Promise<order.Price>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                };
-            }
-            session: {
-                $(reference: price.Hpcspot.Consumption.SessionEnum): {
-                    /**
-                     * Get the price of a SESSION consumption for 1 hour
-                     * GET /price/hpcspot/consumption/session/{reference}
                      */
                     $get(): Promise<order.Price>;
                     /**
