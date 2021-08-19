@@ -205,7 +205,7 @@ class DynHost {
         }
 
         if (domain.length === 0) {
-            console.error("warning: you should provide at least one dyn domain, use -d parameter");
+            console.error(`${chalk.redBright('warning')}: you should provide at least one dyn domain, use -d parameter`);
         }
 
         if (url.length === 0) {
