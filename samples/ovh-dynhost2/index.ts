@@ -4,7 +4,6 @@ import http from 'http';
 import https, { RequestOptions } from 'https';
 import chalk from 'chalk';
 import os, { EOL } from 'os';
-// import { Curl } from 'node-libcurl';
 import fs from 'fs';
 import { Command, OptionValues } from "commander";
 
@@ -44,7 +43,7 @@ class DynHost {
                     return reject('Timeout');
                 return reject(error);
             });
-            req.on('timeout', () => req.abort());
+            req.on('timeout', () => req.destroy());
             // req.on('socket', (socket) => socket.setTimeout(timeout, () => { socket.destroy(); }));
         });
     }
@@ -82,7 +81,6 @@ class DynHost {
         // fallback use curl binary
         return child_process.execSync(cmd, {encoding: 'utf8'});
     }
-
 
     async detectPublicIpFrom(urls: string[]) {
         if (this.lastIp) return this.lastIp;
@@ -152,6 +150,9 @@ class DynHost {
         return this.apiDomain;
     }
 
+    /**
+     * split full domain name in subdomain + domain
+     */
     async findDomain(dom: string): Promise<{ service: string, subDomain: string }> {
         const api = await this.getApiDomain();
         let split = dom.split(".");
@@ -304,7 +305,7 @@ const { version } = require('./package.json');
 
 const append = (value: string, previous: string[]) => { previous.push(value); return previous };
 program.version(version)
-    .description('create and update dyndnh host entry.');
+    .description('create and update a dyn-host or standard DNS entry.');
 
 program.option('-v, --verbose', 'verbose process');
 program.option('-s, --standard', 'use standard DNS entry instead of dynhost', append, []);
