@@ -19,7 +19,7 @@ class DynHost {
 
     constructor() {
         this.options = program.opts();
-     }
+    }
 
     async doGet(url: string): Promise<string> {
         return new Promise((resolve, reject) => {
@@ -79,7 +79,7 @@ class DynHost {
         } catch (e) {
         }
         // fallback use curl binary
-        return child_process.execSync(cmd, {encoding: 'utf8'});
+        return child_process.execSync(cmd, { encoding: 'utf8' });
     }
 
     async detectPublicIpFrom(urls: string[]) {
@@ -126,7 +126,7 @@ class DynHost {
         if (this.options.credential) {
             const [appKey, appSecret, consumerKey] = (this.options.credential as string).split(/:/);
             const tokenData = JSON.stringify({ appKey, appSecret, consumerKey }, null, 2) + EOL;
-            await fs.promises.writeFile(token, tokenData, {encoding: 'utf-8'});
+            await fs.promises.writeFile(token, tokenData, { encoding: 'utf-8' });
         }
 
         this.engine = new Ovh({
@@ -218,6 +218,8 @@ class DynHost {
         const ip = await this.detectPublicIpFrom(url);
         console.log(`Your IP is ${chalk.yellow(ip)}`);
 
+        const refreshSet = new Set<string>();
+
         for (const dom of domain) {
             const { service, subDomain } = await this.findDomain(dom);
 
@@ -226,78 +228,104 @@ class DynHost {
             const subidDyn = await recordApiDyn.$get({ subDomain });
             const subidStds = await api.zone.$(service).record.$get({ subDomain });
 
-            let records: domain.zone.Record[] = [];
+            let stdRecords: domain.zone.Record[] = [];
             for (const id of subidStds) {
-                records.push(await api.zone.$(service).record.$(id).$get());
+                stdRecords.push(await api.zone.$(service).record.$(id).$get());
             }
-            records = records.filter(rec => (rec.fieldType === 'A' || rec.fieldType === 'AAAA' || rec.fieldType === 'CNAME'));
+            stdRecords = stdRecords.filter(rec => (rec.fieldType === 'A' || rec.fieldType === 'AAAA' || rec.fieldType === 'CNAME'));
 
+            /**
+             * implementation for standard DNS entry
+             */
             if (this.options.standard) {
+                // droping old created dynhost
                 for (const subId of subidDyn) {
                     console.log(`Removing dynHost ${chalk.green(subDomain)}.${chalk.yellow(service)} id: ${chalk.yellow(subId)}`);
                     await recordApiDyn.$(subId).$delete();
                 }
-                const cnames = records.filter(rec => rec.fieldType === 'CNAME' || rec.fieldType === 'AAAA');
+                // remove old CNAME and AAAA entry Keeping only A
+                // TODO add support for ipV6 DNS
+                const cnames = stdRecords.filter(rec => rec.fieldType === 'CNAME' || rec.fieldType === 'AAAA');
                 for (const rec of cnames) {
                     console.log(`Removing old ${chalk.green(subDomain)}.${chalk.yellow(service)} Type ${chalk.yellow(rec.fieldType)} TTL: ${chalk.yellow(rec.ttl)}`);
                     await api.zone.$(service).record.$(rec.id).$delete();
                 }
 
-                records = records.filter(rec => rec.fieldType === 'A');
-                for (let i = 1; i < records.length; i++) {
-                    const rec = records[i];
+                stdRecords = stdRecords.filter(rec => rec.fieldType === 'A');
+                /**
+                 * keep only a single A entry
+                 **/
+                for (let i = 1; i < stdRecords.length; i++) {
+                    const rec = stdRecords[i];
                     console.log(`Removing old ${chalk.green(subDomain)}.${chalk.yellow(service)} Type ${chalk.yellow(rec.fieldType)} TTL: ${chalk.yellow(rec.ttl)}`);
                     await api.zone.$(service).record.$(rec.id).$delete();
                 }
 
-                if (!records.length) {
+                if (!stdRecords.length) {
+                    /**
+                     * A entry is missing creating one
+                     */
                     console.error(`${chalk.green(subDomain)}.${chalk.yellow(service)} do not exists, creating it ${chalk.redBright('now')}!`);
                     await api.zone.$(service).record.$post({ fieldType: 'A', subDomain, target: ip, ttl: 60 });
                     console.log(`${chalk.greenBright('Success')} ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('have IP')}: ${chalk.yellow(ip)}`);
-                    await api.zone.$(service).refresh.$post();
-                    console.log(`Refresh ${chalk.yellow(service)} Done`);
+                    refreshSet.add(service);
                 } else {
-                    const old = await api.zone.$(service).record.$(records[0].id).$get();
+                    /**
+                     * check and update current A entry if needed
+                     */
+                    const old = await api.zone.$(service).record.$(stdRecords[0].id).$get();
                     if (!old) {
-                        console.error(`OVH internal Error can not retrive ${service} zone: ${records[0].id}`);
+                        console.error(`OVH internal Error can not retrive ${service} zone: ${stdRecords[0].id}`);
                         return;
                     }
                     if (old.target != ip || old.ttl != 60) {
                         console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('from')} ${chalk.yellow(old.target)} TTL:${old.ttl} ${chalk.whiteBright('to')} ${chalk.yellow(ip)} TTL:60`);
-                        await api.zone.$(service).record.$(records[0].id).$put({ target: ip, ttl: 60 });
+                        await api.zone.$(service).record.$(stdRecords[0].id).$put({ target: ip, ttl: 60 });
                         console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.green('done')}.`);
-                        await api.zone.$(service).refresh.$post();
-                        console.log(`Refresh ${chalk.yellow(service)} Done`);
+                        refreshSet.add(service);
                     } else {
                         console.log(`No change ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('Keep IP')} ${chalk.yellow(old.target)}`);
                     }
                 }
-
             } else {
-                for (const rec of records) {
+                /**
+                 * implementation for dyn-host entry
+                 */
+                for (const rec of stdRecords) {
                     console.log(`Removing old ${chalk.green(subDomain)}.${chalk.yellow(service)} Type ${chalk.yellow(rec.fieldType)} TTL: ${chalk.yellow(rec.ttl)}`);
                     await api.zone.$(service).record.$(rec.id).$delete();
                 }
 
                 if (!subidDyn.length) {
+                    /**
+                     * create a new dynHost entry
+                     */
                     console.error(`${chalk.green(subDomain)}.${chalk.yellow(service)} do not exists creating it now.`);
                     await recordApiDyn.$post({ ip, subDomain });
                     console.log(`${chalk.greenBright('Success')} ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('have IP')}: ${chalk.yellow(ip)}`);
-                    await api.zone.$(service).refresh.$post();
-                    console.log(`Refresh ${chalk.yellow(service)} Done`);
+                    refreshSet.add(service);
                 } else {
-                    const old = await recordApiDyn.$(subidDyn[0]).$get();
+                    /**
+                     * check and update current DynHost entry if needed
+                     */
+                     const old = await recordApiDyn.$(subidDyn[0]).$get();
                     if (old.ip != ip) {
                         console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('from')} ${chalk.yellow(old.ip)} ${chalk.whiteBright('to')} ${chalk.yellow(ip)}`);
                         await recordApiDyn.$(subidDyn[0]).$put({ ip });
                         console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.green('done')}.`);
-                        await api.zone.$(service).refresh.$post();
-                        console.log(`Refresh ${chalk.yellow(service)} Done`);
+                        refreshSet.add(service);
                     } else {
                         console.log(`No change ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('Keep IP')} ${chalk.yellow(old.ip)}`);
                     }
                 }
             }
+        }
+        /**
+         * refresh altered zones
+         */
+        for (const service of refreshSet) {
+            await api.zone.$(service).refresh.$post();
+            console.log(`Refresh ${chalk.yellow(service)} Done`);
         }
     }
 }
