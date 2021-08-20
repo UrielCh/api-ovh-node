@@ -1447,6 +1447,22 @@ export const schema: Schema = {
       "id": "Interface",
       "namespace": "ovhcloudconnect",
       "properties": {
+        "deviceDisplayName": {
+          "canBeNull": true,
+          "description": "Patch panel name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "deviceRackDisplayName": {
+          "canBeNull": true,
+          "description": "Equipment name in the rack",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "id": {
           "canBeNull": false,
           "description": "Interface reference",
@@ -1463,6 +1479,30 @@ export const schema: Schema = {
           "required": false,
           "type": "ovhcloudconnect.interface.LightStatusEnum"
         },
+        "incomingLightValue": {
+          "canBeNull": true,
+          "description": "Value of the light received on the port (checked every 5 min)",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "interfaceName": {
+          "canBeNull": true,
+          "description": "Port location",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "interfaceTerminationType": {
+          "canBeNull": true,
+          "description": "Fiber termination type",
+          "fullType": "ovhcloudconnect.interface.TerminationTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.interface.TerminationTypeEnum"
+        },
         "lightLastUpdate": {
           "canBeNull": false,
           "description": "Date of the last light change detected",
@@ -1478,6 +1518,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "ovhcloudconnect.interface.LightStatusEnum"
+        },
+        "outgoingLightValue": {
+          "canBeNull": true,
+          "description": "Value of the light emitted on the port (checked every 5 min)",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
         },
         "status": {
           "canBeNull": false,
@@ -1871,6 +1919,16 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "StatusEnum",
+      "namespace": "ovhcloudconnect.interface"
+    },
+    "ovhcloudconnect.interface.TerminationTypeEnum": {
+      "description": "Enum values for the termination type",
+      "enum": [
+        "LC/PC",
+        "SC/PC"
+      ],
+      "enumType": "string",
+      "id": "TerminationTypeEnum",
       "namespace": "ovhcloudconnect.interface"
     },
     "ovhcloudconnect.key.StatusEnum": {

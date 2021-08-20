@@ -11587,6 +11587,32 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve License cPanel catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/licensecPanel"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
@@ -19195,81 +19221,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/hosting/web/new/{duration}"
-    },
-    {
-      "description": "Order a HPC Spot Account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        }
-      ],
-      "path": "/order/hpcspot/new"
-    },
-    {
-      "description": "Order a HPC Spot Account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        }
-      ],
-      "path": "/order/hpcspot/new/{duration}"
     },
     {
       "description": "Order a new license on a given Ip with some given options",
@@ -31372,6 +31323,7 @@ export const schema: Schema = {
         "VERSION_11_FOR_LINUX",
         "VERSION_11_FOR_VIRTUOZZO",
         "VERSION_11_FOR_VPS",
+        "cpanel-license-admin-cloud-accounts",
         "cpanel-license-premier-cloud-100-accounts",
         "cpanel-license-premier-cloud-1000-accounts",
         "cpanel-license-premier-cloud-10000-accounts",
@@ -31379,6 +31331,7 @@ export const schema: Schema = {
         "cpanel-license-premier-cloud-1200-accounts",
         "cpanel-license-premier-cloud-1300-accounts",
         "cpanel-license-premier-cloud-1400-accounts",
+        "cpanel-license-premier-cloud-150-accounts",
         "cpanel-license-premier-cloud-1500-accounts",
         "cpanel-license-premier-cloud-1600-accounts",
         "cpanel-license-premier-cloud-1700-accounts",
@@ -31390,6 +31343,7 @@ export const schema: Schema = {
         "cpanel-license-premier-cloud-2200-accounts",
         "cpanel-license-premier-cloud-2300-accounts",
         "cpanel-license-premier-cloud-2400-accounts",
+        "cpanel-license-premier-cloud-250-accounts",
         "cpanel-license-premier-cloud-2500-accounts",
         "cpanel-license-premier-cloud-2600-accounts",
         "cpanel-license-premier-cloud-2700-accounts",
@@ -31479,6 +31433,7 @@ export const schema: Schema = {
         "cpanel-license-premier-metal-1200-accounts",
         "cpanel-license-premier-metal-1300-accounts",
         "cpanel-license-premier-metal-1400-accounts",
+        "cpanel-license-premier-metal-150-accounts",
         "cpanel-license-premier-metal-1500-accounts",
         "cpanel-license-premier-metal-1600-accounts",
         "cpanel-license-premier-metal-1700-accounts",
@@ -31490,6 +31445,7 @@ export const schema: Schema = {
         "cpanel-license-premier-metal-2200-accounts",
         "cpanel-license-premier-metal-2300-accounts",
         "cpanel-license-premier-metal-2400-accounts",
+        "cpanel-license-premier-metal-250-accounts",
         "cpanel-license-premier-metal-2500-accounts",
         "cpanel-license-premier-metal-2600-accounts",
         "cpanel-license-premier-metal-2700-accounts",
@@ -31572,6 +31528,9 @@ export const schema: Schema = {
         "cpanel-license-premier-metal-9700-accounts",
         "cpanel-license-premier-metal-9800-accounts",
         "cpanel-license-premier-metal-9900-accounts",
+        "cpanel-license-pro-cloud-accounts",
+        "cpanel-license-solo-cloud-accounts",
+        "cpanel-license-solo-metal-accounts",
         "cpanel-license-version-11",
         "cpanel-license-version-11-for-virtuozzo",
         "cpanel-license-version-11-for-vps",
@@ -36410,6 +36369,59 @@ export const schema: Schema = {
         }
       }
     },
+    "order.catalog.public.EngagementConfiguration": {
+      "description": "Configuration of an engagement triggered by a given pricing",
+      "id": "EngagementConfiguration",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "defaultEndAction": {
+          "canBeNull": false,
+          "description": "Default action executed once the engagement is fully consumed",
+          "fullType": "order.catalog.public.EngagementConfiguration.EndStrategyEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.EngagementConfiguration.EndStrategyEnum"
+        },
+        "duration": {
+          "canBeNull": false,
+          "description": "Engagement's duration displayed using ISO8601",
+          "fullType": "duration",
+          "readOnly": true,
+          "required": false,
+          "type": "duration"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Engagement type, either fully pre-paid (upfront) or periodically paid up to engagement duration (periodic)",
+          "fullType": "order.catalog.public.EngagementConfiguration.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.EngagementConfiguration.TypeEnum"
+        }
+      }
+    },
+    "order.catalog.public.EngagementConfiguration.EndStrategyEnum": {
+      "description": "Strategy applicable at the end of the Engagement",
+      "enum": [
+        "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE",
+        "REACTIVATE_ENGAGEMENT",
+        "CANCEL_SERVICE",
+        "STOP_ENGAGEMENT_KEEP_PRICE"
+      ],
+      "enumType": "string",
+      "id": "EndStrategyEnum",
+      "namespace": "order.catalog.public.EngagementConfiguration"
+    },
+    "order.catalog.public.EngagementConfiguration.TypeEnum": {
+      "description": "Engagement's type, either fully pre-paid (upfront) or periodically paid up to engagement duration (periodic)",
+      "enum": [
+        "periodic",
+        "upfront"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "order.catalog.public.EngagementConfiguration"
+    },
     "order.catalog.public.Locale": {
       "description": "Describes specifics for a given Subsidiary",
       "id": "Locale",
@@ -36573,6 +36585,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "engagementConfiguration": {
+          "canBeNull": true,
+          "description": "Engagement Configuration",
+          "fullType": "order.catalog.public.EngagementConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.EngagementConfiguration"
         },
         "interval": {
           "canBeNull": false,

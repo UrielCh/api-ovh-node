@@ -810,7 +810,7 @@ export namespace billing {
          * List of payment sub type enum
          * type fullname: billing.paymentMethod.PaymentSubTypeEnum
          */
-        export type PaymentSubTypeEnum = "AMERICAN_EXPRESS" | "MASTERCARD" | "VISA"
+        export type PaymentSubTypeEnum = "AMERICAN_EXPRESS" | "CARTE_BANCAIRE" | "MASTERCARD" | "VISA"
         /**
          * List of payment type enum
          * type fullname: billing.paymentMethod.PaymentTypeEnum
@@ -2634,6 +2634,47 @@ export namespace nichandle {
         keyName: string;
     }
 }
+export namespace notification {
+    export namespace gdpr {
+        /**
+         * Data accuracy notification
+         * interface fullName: notification.gdpr.DataAccuracy.DataAccuracy
+         */
+        export interface DataAccuracy {
+            shouldDisplay: boolean;
+        }
+    }
+}
+export namespace oauth2 {
+    /**
+     * An oAuth2 Client
+     * interface fullName: oauth2.client.client
+     */
+    export interface client {
+        callbackUrls: string[];
+        clientId: string;
+        createdAt: string;
+        description: string;
+        name: string;
+    }
+    /**
+     * An oAuth2 Client Request
+     * interface fullName: oauth2.clientRequest.clientRequest
+     */
+    export interface clientRequest {
+        callbackUrls: string[];
+        description: string;
+        name: string;
+    }
+    /**
+     * An oAuth2 Client Secret
+     * interface fullName: oauth2.clientSecret.clientSecret
+     */
+    export interface clientSecret {
+        clientId: string;
+        clientSecret: string;
+    }
+}
 export namespace order {
     /**
      * A contract
@@ -2774,9 +2815,13 @@ export namespace payment {
          * interface fullName: payment.method.AvailablePaymentMethod.AvailablePaymentMethod
          */
         export interface AvailablePaymentMethod {
+            formSessionId?: string;
             icon: payment.method.Icon;
             integration: paymentmethodIntegrationType;
+            merchantId?: string;
             oneshot: boolean;
+            organizationId?: string;
+            paymentSubType?: string;
             paymentType: string;
             registerable: boolean;
             registerableWithTransaction: boolean;
@@ -2788,6 +2833,7 @@ export namespace payment {
         export interface Icon {
             data?: string;
             name?: string;
+            url?: string;
         }
         /**
          * Payment method integration type

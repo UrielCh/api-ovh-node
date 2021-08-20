@@ -82,6 +82,48 @@ export const schema: Schema = {
         }
       ],
       "path": "/nutanix/{serviceName}"
+    },
+    {
+      "description": "Fetch the requirements for a given cluster configuration",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Fetch the requirements for a given cluster configuration",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "",
+              "fullType": "boolean",
+              "name": "erasureCoding",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "",
+              "fullType": "boolean",
+              "name": "rackAwareness",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "nutanix.RedundancyFactorEnum",
+              "description": "",
+              "fullType": "nutanix.RedundancyFactorEnum",
+              "name": "redundancyFactor",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "nutanix.Requirements"
+        }
+      ],
+      "path": "/nutanix/requirements"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
@@ -95,6 +137,47 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "LicenseEnum",
       "namespace": "nutanix"
+    },
+    "nutanix.RedundancyFactorEnum": {
+      "description": "Cluster redundancy factor",
+      "enum": [
+        "2",
+        "3"
+      ],
+      "enumType": "long",
+      "id": "RedundancyFactorEnum",
+      "namespace": "nutanix"
+    },
+    "nutanix.Requirements": {
+      "description": "Return the needed requirements for a given cluster configuration",
+      "id": "Requirements",
+      "namespace": "nutanix",
+      "properties": {
+        "maxNodes": {
+          "canBeNull": false,
+          "description": "Maximum number of nodes",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minNodes": {
+          "canBeNull": false,
+          "description": "Minimum number of nodes",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "scaleFactor": {
+          "canBeNull": false,
+          "description": "Number of added/removed nodes in case of scaling up/down",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
     },
     "nutanix.cluster": {
       "description": "Cluster configuration",

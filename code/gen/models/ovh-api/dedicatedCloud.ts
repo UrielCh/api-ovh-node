@@ -1412,44 +1412,6 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/checkBackupJobs"
     },
     {
-      "description": "copyFilerStatus operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List SBG Filer data migration status",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "datacenterId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicatedCloud.FilerDataMigrationTask[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
-        }
-      ],
-      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/copyFilerStatus"
-    },
-    {
       "description": "disable operations",
       "operations": [
         {
@@ -10780,76 +10742,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
-        }
-      }
-    },
-    "dedicatedCloud.FilerDataMigrationTask": {
-      "description": "Display filer data migration status",
-      "id": "FilerDataMigrationTask",
-      "namespace": "dedicatedCloud",
-      "properties": {
-        "creationDate": {
-          "canBeNull": true,
-          "description": "Task creation date",
-          "readOnly": false,
-          "required": false,
-          "type": "datetime"
-        },
-        "domain": {
-          "canBeNull": false,
-          "description": "Target domain",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "doneDate": {
-          "canBeNull": true,
-          "description": "Task completion date",
-          "readOnly": false,
-          "required": false,
-          "type": "datetime"
-        },
-        "filerId": {
-          "canBeNull": false,
-          "description": "SBG filer id",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "filerName": {
-          "canBeNull": false,
-          "description": "SBG filer name",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Task identifier",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "progress": {
-          "canBeNull": false,
-          "description": "Data migration progress (percentage)",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "status": {
-          "canBeNull": false,
-          "description": "Task status",
-          "readOnly": false,
-          "required": false,
-          "type": "dedicatedCloud.TaskStateEnum"
-        },
-        "transfered": {
-          "canBeNull": false,
-          "description": "Data migration progress (transfered bytes)",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
         }
       }
     },

@@ -2487,7 +2487,7 @@ export namespace cloud {
          * VolumeTypeEnum
          * type fullname: cloud.volume.VolumeTypeEnum
          */
-        export type VolumeTypeEnum = "classic" | "high-speed"
+        export type VolumeTypeEnum = "classic" | "high-speed" | "high-speed-gen2"
     }
 }
 export namespace nichandle {

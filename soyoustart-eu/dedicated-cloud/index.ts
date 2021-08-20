@@ -219,21 +219,6 @@ export namespace dedicatedCloud {
         vmTotal?: number;
     }
     /**
-     * Display filer data migration status
-     * interface fullName: dedicatedCloud.FilerDataMigrationTask.FilerDataMigrationTask
-     */
-    export interface FilerDataMigrationTask {
-        creationDate?: string;
-        domain: string;
-        doneDate?: string;
-        filerId: number;
-        filerName: string;
-        id: number;
-        progress: number;
-        status: dedicatedCloudTaskStateEnum;
-        transfered: string;
-    }
-    /**
      * The generation of a Dedicated Cloud
      * type fullname: dedicatedCloud.GenerationEnum
      */
@@ -1737,17 +1722,6 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/checkBackupJobs
                      */
                     $post(): Promise<dedicatedCloud.Task>;
-                }
-                copyFilerStatus: {
-                    /**
-                     * List SBG Filer data migration status
-                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/copyFilerStatus
-                     */
-                    $get(): Promise<dedicatedCloud.FilerDataMigrationTask[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 disasterRecovery: {
                     zerto: {
@@ -3341,7 +3315,6 @@ type dedicatedCloudfilerNodeTypeEnum = dedicatedCloud.filer.NodeTypeEnum;
 type dedicatedCloudressourcesBillingTypeEnum = dedicatedCloud.ressources.BillingTypeEnum;
 type dedicatedCloudfilerConnexionStateEnum = dedicatedCloud.filer.ConnexionStateEnum;
 type dedicatedCloudfilerStateEnum = dedicatedCloud.filer.StateEnum;
-type dedicatedCloudTaskStateEnum = dedicatedCloud.TaskStateEnum;
 type dedicatedCloudhostSystemConnectionState = dedicatedCloud.hostSystemConnectionState;
 type dedicatedCloudhostStateEnum = dedicatedCloud.host.StateEnum;
 type dedicatedCloudHostStockHypervisor = dedicatedCloud.HostStockHypervisor;
@@ -3352,6 +3325,7 @@ type dedicatedCloudrightRightEnum = dedicatedCloud.right.RightEnum;
 type dedicatedCloudrightUserObjectRightTypeEnum = dedicatedCloud.right.UserObjectRightTypeEnum;
 type dedicatedCloudbackupBackupTypeEnum = dedicatedCloud.backup.BackupTypeEnum;
 type dedicatedCloudrightVmNetworkRoleEnum = dedicatedCloud.right.VmNetworkRoleEnum;
+type dedicatedCloudTaskStateEnum = dedicatedCloud.TaskStateEnum;
 type dedicatedClouduserActivationStateEnum = dedicatedCloud.user.ActivationStateEnum;
 type dedicatedClouduserStateEnum = dedicatedCloud.user.StateEnum;
 type dedicatedCloudvlanStateEnum = dedicatedCloud.vlan.StateEnum;

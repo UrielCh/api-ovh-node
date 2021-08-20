@@ -106,6 +106,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "vrack.AllowedServiceEnum",
+              "description": "Filter on a specific service family",
+              "fullType": "vrack.AllowedServiceEnum",
+              "name": "serviceFamily",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "vrack.AllowedServices",
@@ -1867,6 +1875,24 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "vrack.AllowedServiceEnum": {
+      "description": "Possible values for vrack allowed service",
+      "enum": [
+        "cloudProject",
+        "dedicatedCloud",
+        "dedicatedCloudDatacenter",
+        "dedicatedConnect",
+        "dedicatedServer",
+        "dedicatedServerInterface",
+        "ip",
+        "ipLoadbalancing",
+        "legacyVrack",
+        "ovhCloudConnect"
+      ],
+      "enumType": "string",
+      "id": "AllowedServiceEnum",
+      "namespace": "vrack"
     },
     "vrack.AllowedServices": {
       "description": "A structure given all service allowed for this vrack",

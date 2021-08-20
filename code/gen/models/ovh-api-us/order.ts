@@ -5351,6 +5351,32 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve License cPanel catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/licensecPanel"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "Retrieve Dedicated Cloud catalog",
           "httpMethod": "GET",
           "noAuthentication": true,
@@ -9558,6 +9584,59 @@ export const schema: Schema = {
         }
       }
     },
+    "order.catalog.public.EngagementConfiguration": {
+      "description": "Configuration of an engagement triggered by a given pricing",
+      "id": "EngagementConfiguration",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "defaultEndAction": {
+          "canBeNull": false,
+          "description": "Default action executed once the engagement is fully consumed",
+          "fullType": "order.catalog.public.EngagementConfiguration.EndStrategyEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.EngagementConfiguration.EndStrategyEnum"
+        },
+        "duration": {
+          "canBeNull": false,
+          "description": "Engagement's duration displayed using ISO8601",
+          "fullType": "duration",
+          "readOnly": true,
+          "required": false,
+          "type": "duration"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Engagement type, either fully pre-paid (upfront) or periodically paid up to engagement duration (periodic)",
+          "fullType": "order.catalog.public.EngagementConfiguration.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.EngagementConfiguration.TypeEnum"
+        }
+      }
+    },
+    "order.catalog.public.EngagementConfiguration.EndStrategyEnum": {
+      "description": "Strategy applicable at the end of the Engagement",
+      "enum": [
+        "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE",
+        "REACTIVATE_ENGAGEMENT",
+        "CANCEL_SERVICE",
+        "STOP_ENGAGEMENT_KEEP_PRICE"
+      ],
+      "enumType": "string",
+      "id": "EndStrategyEnum",
+      "namespace": "order.catalog.public.EngagementConfiguration"
+    },
+    "order.catalog.public.EngagementConfiguration.TypeEnum": {
+      "description": "Engagement's type, either fully pre-paid (upfront) or periodically paid up to engagement duration (periodic)",
+      "enum": [
+        "periodic",
+        "upfront"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "order.catalog.public.EngagementConfiguration"
+    },
     "order.catalog.public.Locale": {
       "description": "Describes specifics for a given Subsidiary",
       "id": "Locale",
@@ -9721,6 +9800,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "engagementConfiguration": {
+          "canBeNull": true,
+          "description": "Engagement Configuration",
+          "fullType": "order.catalog.public.EngagementConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.EngagementConfiguration"
         },
         "interval": {
           "canBeNull": false,

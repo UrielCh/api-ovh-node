@@ -15716,7 +15716,8 @@ export const schema: Schema = {
       "description": "VolumeTypeEnum",
       "enum": [
         "classic",
-        "high-speed"
+        "high-speed",
+        "high-speed-gen2"
       ],
       "enumType": "string",
       "id": "VolumeTypeEnum",

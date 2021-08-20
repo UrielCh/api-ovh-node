@@ -68,6 +68,11 @@ export namespace vrack {
         name: string;
     }
     /**
+     * Possible values for vrack allowed service
+     * type fullname: vrack.AllowedServiceEnum
+     */
+    export type AllowedServiceEnum = "cloudProject" | "dedicatedCloud" | "dedicatedCloudDatacenter" | "dedicatedConnect" | "dedicatedServer" | "dedicatedServerInterface" | "ip" | "ipLoadbalancing" | "legacyVrack" | "ovhCloudConnect"
+    /**
      * A structure given all service allowed for this vrack
      * interface fullName: vrack.AllowedServices.AllowedServices
      */
@@ -254,7 +259,7 @@ export interface Vrack {
              * List all services allowed in this vrack
              * GET /vrack/{serviceName}/allowedServices
              */
-            $get(): Promise<vrack.AllowedServices>;
+            $get(params?: { serviceFamily?: vrack.AllowedServiceEnum }): Promise<vrack.AllowedServices>;
             /**
              * Controle cache
              */

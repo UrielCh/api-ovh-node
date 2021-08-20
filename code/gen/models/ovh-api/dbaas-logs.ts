@@ -238,8 +238,9 @@ export const schema: Schema = {
             "Client::ValidationError::NotOwner",
             "Client::ValidationError::NothingToDo",
             "Client::ValidationError::RequiredField",
-            "Client::Forbidden::PCIDSSClusterUpdateDeny",
+            "Client::Forbidden::PCIDSSSettingOnly",
             "Client::Forbidden::ServiceNotMigrated",
+            "Client::Forbidden::TooManyActive",
             "Client::NotFound::ClusterDoesNotExists",
             "Client::NotFound::ServiceDoesNotExists"
           ],
@@ -4950,6 +4951,14 @@ export const schema: Schema = {
       "id": "Cluster",
       "namespace": "dbaas.logs",
       "properties": {
+        "archiveAllowedNetworks": {
+          "canBeNull": false,
+          "description": "Allowed networks for ARCHIVE flow type",
+          "fullType": "ipBlock[]",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock[]"
+        },
         "clusterId": {
           "canBeNull": false,
           "description": "Cluster ID",
@@ -5100,6 +5109,14 @@ export const schema: Schema = {
       "id": "ClusterUpdate",
       "namespace": "dbaas.logs",
       "properties": {
+        "archiveAllowedNetworks": {
+          "canBeNull": true,
+          "description": "Allowed networks for ARCHIVE flow type",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
+        },
         "directInputAllowedNetworks": {
           "canBeNull": true,
           "description": "Allowed networks for DIRECT_INPUT flow type",

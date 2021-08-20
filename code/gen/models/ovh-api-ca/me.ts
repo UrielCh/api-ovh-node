@@ -13126,6 +13126,7 @@ export const schema: Schema = {
       "description": "List of payment sub type enum",
       "enum": [
         "AMERICAN_EXPRESS",
+        "CARTE_BANCAIRE",
         "MASTERCARD",
         "VISA"
       ],
@@ -20788,6 +20789,122 @@ export const schema: Schema = {
         }
       }
     },
+    "notification.gdpr.DataAccuracy": {
+      "description": "Data accuracy notification",
+      "id": "DataAccuracy",
+      "namespace": "notification.gdpr",
+      "properties": {
+        "shouldDisplay": {
+          "canBeNull": false,
+          "description": "Indicate if the notification should be displayed",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "oauth2.client": {
+      "description": "An oAuth2 Client",
+      "id": "client",
+      "namespace": "oauth2",
+      "properties": {
+        "callbackUrls": {
+          "canBeNull": false,
+          "description": "allowed callback urls",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "clientId": {
+          "canBeNull": false,
+          "description": "client's client_id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "client's creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "client's description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "client's name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "oauth2.clientRequest": {
+      "description": "An oAuth2 Client Request",
+      "id": "clientRequest",
+      "namespace": "oauth2",
+      "properties": {
+        "callbackUrls": {
+          "canBeNull": false,
+          "description": "allowed callback urls",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "client's description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "client's name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "oauth2.clientSecret": {
+      "description": "An oAuth2 Client Secret",
+      "id": "clientSecret",
+      "namespace": "oauth2",
+      "properties": {
+        "clientId": {
+          "canBeNull": false,
+          "description": "client's client_id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "clientSecret": {
+          "canBeNull": false,
+          "description": "client's client_secret",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        }
+      }
+    },
     "order.Contract": {
       "description": "A contract",
       "id": "Contract",
@@ -21328,6 +21445,13 @@ export const schema: Schema = {
       "id": "AvailablePaymentMethod",
       "namespace": "payment.method",
       "properties": {
+        "formSessionId": {
+          "canBeNull": true,
+          "description": "Payment method session identifier",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "icon": {
           "canBeNull": false,
           "description": "Payment method type icon",
@@ -21342,12 +21466,33 @@ export const schema: Schema = {
           "required": false,
           "type": "payment.method.IntegrationType"
         },
+        "merchantId": {
+          "canBeNull": true,
+          "description": "Payment method merchant identifier",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "oneshot": {
           "canBeNull": false,
           "description": "Payment method type is possible to pay in oneshot mode ?",
           "readOnly": false,
           "required": false,
           "type": "boolean"
+        },
+        "organizationId": {
+          "canBeNull": true,
+          "description": "Payment method organization identifier",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "paymentSubType": {
+          "canBeNull": true,
+          "description": "Payment method subtype",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "paymentType": {
           "canBeNull": false,
@@ -21387,6 +21532,13 @@ export const schema: Schema = {
         "name": {
           "canBeNull": true,
           "description": "Icon name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Icon URL",
           "readOnly": false,
           "required": false,
           "type": "string"

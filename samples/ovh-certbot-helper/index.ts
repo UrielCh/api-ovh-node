@@ -16,8 +16,10 @@ dns_ovh_application_secret = ${ovhEngine.appSecret}
 dns_ovh_consumer_key = ${ovhEngine.consumerKey}`;
   console.log('');
   console.log('Copy this line to a file like ~/.secrets/certbot/ovh.ini');
-  console.log('then use certbot like:')
-  console.log('certbot certonly --dns-ovh --dns-ovh-credentials ~/.secrets/certbot/ovh.ini --dns-ovh-propagation-seconds 60 -d example.com')
+  console.log('then use certbot as root ex:')
+  console.log('chmod 600 ~/.secrets/certbot/ovh.ini')
+  console.log('sudo snap install certbot-dns-ovh')
+  console.log('sudo certbot certonly --dns-ovh --dns-ovh-credentials ~/.secrets/certbot/ovh.ini --dns-ovh-propagation-seconds 60 -d "*.example.com"')
   console.log('');
   console.log(config);
 }

@@ -687,6 +687,27 @@ export namespace order {
                 raid: string;
             }
             /**
+             * Configuration of an engagement triggered by a given pricing
+             * interface fullName: order.catalog.publik.EngagementConfiguration.EngagementConfiguration
+             */
+            export interface EngagementConfiguration {
+                defaultEndAction: order.catalog.publik.EngagementConfiguration.EndStrategyEnum;
+                duration: string;
+                type: order.catalog.publik.EngagementConfiguration.TypeEnum;
+            }
+            export namespace EngagementConfiguration {
+                /**
+                 * Strategy applicable at the end of the Engagement
+                 * type fullname: order.catalog.publik.EngagementConfiguration.EndStrategyEnum
+                 */
+                export type EndStrategyEnum = "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE" | "REACTIVATE_ENGAGEMENT" | "CANCEL_SERVICE" | "STOP_ENGAGEMENT_KEEP_PRICE"
+                /**
+                 * Engagement's type, either fully pre-paid (upfront) or periodically paid up to engagement duration (periodic)
+                 * type fullname: order.catalog.publik.EngagementConfiguration.TypeEnum
+                 */
+                export type TypeEnum = "periodic" | "upfront"
+            }
+            /**
              * Describes specifics for a given Subsidiary
              * interface fullName: order.catalog.publik.Locale.Locale
              */
@@ -730,6 +751,7 @@ export namespace order {
                 capacities: order.cart.GenericProductPricingCapacitiesEnum[];
                 commitment: number;
                 description: string;
+                engagementConfiguration?: order.catalog.publik.EngagementConfiguration;
                 interval: number;
                 intervalUnit: order.cart.DurationUnitEnum;
                 mode: string;
@@ -2032,6 +2054,17 @@ export interface Order {
                 /**
                  * Retrieve Enterprise Cloud Databases catalog
                  * GET /order/catalog/public/enterpriseCloudDatabases
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            licensecPanel: {
+                /**
+                 * Retrieve License cPanel catalog
+                 * GET /order/catalog/public/licensecPanel
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
