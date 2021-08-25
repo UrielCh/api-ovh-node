@@ -13,7 +13,7 @@
   ],
   "typings": "index.d.ts",
   "license": "MIT",
-  "author": "Uriel Chemouni <uchemouni@gmail.com>",
+  "author": "Uriel Chemouni <uchemouni@gmail.com> (https://urielch.github.io/)",
   "bin": {
     "ovh-vps-config-failover": "./bin/ovh-vps-config-failover"
   },

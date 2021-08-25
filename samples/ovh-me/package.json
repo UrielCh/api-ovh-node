@@ -5,6 +5,7 @@
   "main": "index.js",
   "typings": "index.d.ts",
   "license": "MIT",
+  "author": "Uriel Chemouni <uchemouni@gmail.com> (https://urielch.github.io/)",
   "scripts": {
     "build": "tsc -p .",
     "build:watch": "tsc -p . --watch",

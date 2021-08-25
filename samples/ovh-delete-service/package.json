@@ -9,7 +9,7 @@
   ],
   "typings": "index.d.ts",
   "license": "MIT",
-  "author": "Uriel Chemouni <uchemouni@gmail.com>",
+  "author": "Uriel Chemouni <uchemouni@gmail.com> (https://urielch.github.io/)",
   "bin": {
     "ovh-bill-importer": "./bin/ovh-delete-service"
   },

@@ -6,7 +6,7 @@ import { nichandle } from '@ovh-api/me';
 import fse from 'fs-extra';
 import rp from 'request-promise'
 
-const ovh = new Ovh({ accessRules: 'GET /me/document, POST /me/document,GET /me/document/*', certCache: '../../upload.json' });
+const ovh = new Ovh({ accessRules: 'GET /me/document, POST /me/document, GET /me/document/*', certCache: '../../upload.json' });
 const apiMe = ApiMe(ovh);
 
 async function main(documentName: string, filename: string) {
