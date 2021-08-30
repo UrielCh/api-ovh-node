@@ -8,11 +8,12 @@ import { IOvhError, OvhError } from './OvhError';
 
 // Promisify https.request
 const handleResponse = async (ctxt: RequestContext, response: IncomingMessage, body: string) => {
+    // security, should not occure
     let responseData: any;
     const { statusCode, statusMessage } = response;
     const { method, path, cacheSilot } = ctxt;
     let size = 0;
-    if (body.length > 0) {
+    if (body && body.length > 0) {
         size = body.length;
         try {
             responseData = JSON.parse(body);
@@ -26,7 +27,7 @@ const handleResponse = async (ctxt: RequestContext, response: IncomingMessage, b
             }, e);
         }
     } else {
-        responseData = '';
+        responseData = {};
     }
     ctxt.emitDebug(body);
     if (statusCode && statusCode >= 200 && statusCode < 300) {
@@ -43,7 +44,15 @@ const handleResponse = async (ctxt: RequestContext, response: IncomingMessage, b
         return responseData;
     }
 
-    const error: IOvhError = responseData as IOvhError;
+    let error: IOvhError = responseData as IOvhError;
+    if (!error) {
+        // should not occure
+        error = {
+            method, path, errorCode: "HTTP_ERROR",
+            httpCode: '',
+            message: 'error',
+        }
+    }
     if (error.errorCode === 'INVALID_CREDENTIAL' || error.message === 'You must login first') {
         if (ctxt.path !== '/auth/currentCredential') {
             if (!ctxt.canIssueNewCert())
