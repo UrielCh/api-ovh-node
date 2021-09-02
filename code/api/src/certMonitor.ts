@@ -16,7 +16,7 @@ export const stdOutCertMonitorProvider: CertMonitorProvider = (ovhApi: OvhApi, c
         extra = ` for ${ovhApi.nichandle}`;
         extra2 = `${ovhApi.nichandle} `;
     }
-    console.log(`[OVH] MISSING_CREDENTIAL issue a new one: ${consumerKey}${extra}\nValidate ${extra2}certificate with this url to continue:\n${validationUrl}`)
+    console.log(`[OVH] MISSING_CREDENTIAL issue a new one: ${consumerKey}${extra}\nPlease validate ${extra2}certificate with this url to continue:\n${validationUrl}`)
     return {
         notValid: async (errorCode: string, pass: number) => {
             // errorCode:"INVALID_CREDENTIAL"

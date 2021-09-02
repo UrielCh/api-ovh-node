@@ -5,6 +5,7 @@ import { EOL } from 'os';
 import { RequestOptions } from "https";
 import { ICacheSilot } from "@ovh-api/common";
 import { OvhError } from "./OvhError";
+// import open from 'open';
 
 /**
  * simple wait promise generator
@@ -38,10 +39,10 @@ export const waitForCertValidation = async (api: OvhApi, newCert: OvhCredentialN
     api.consumerKey = consumerKey;
     if (api.launchBrower)
         try {
-            // try to open a brower, ignorring error
+            // try to open a brower, ignoring error
             // import open from 'open';
             const open = require('open');
-            open(validationUrl).catch(() => { });
+            await open(validationUrl, { wait: false });
         } catch (e) {
             // exception if used in browser
             // Try to open a popup

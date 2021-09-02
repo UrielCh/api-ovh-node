@@ -1,3 +1,5 @@
+V 3.2.6
+- fix open usage, that may stop the process
 V 3.2.5
 - improve error handling. 
 V 3.2.4
