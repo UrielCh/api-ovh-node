@@ -21,6 +21,14 @@ dns_ovh_consumer_key = ${ovhEngine.consumerKey}`;
   console.log('sudo snap install certbot-dns-ovh')
   console.log('sudo certbot certonly --dns-ovh --dns-ovh-credentials ~/.secrets/certbot/ovh.ini --dns-ovh-propagation-seconds 60 -d "*.example.com"')
   console.log('');
+  console.log('using Docker:');
+  console.log('sudo mkdir /etc/letsencrypt');
+  console.log('sudo chown ${USER}: /etc/letsencrypt');
+  console.log('docker run -it --rm --name certbot \
+            -v "/etc/letsencrypt:/etc/letsencrypt" \
+            -v "${HOME}/.secrets/certbot/ovh.ini:/ovh.ini" \
+            certbot/dns-ovh certonly --dns-ovh --dns-ovh-credentials /ovh.ini --dns-ovh-propagation-seconds 60 -d "*.example.com"');
+  console.log('');
   console.log(config);
 }
 
