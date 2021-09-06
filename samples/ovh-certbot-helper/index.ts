@@ -27,7 +27,9 @@ dns_ovh_consumer_key = ${ovhEngine.consumerKey}`;
   console.log('docker run -it --rm --name certbot \
             -v "/etc/letsencrypt:/etc/letsencrypt" \
             -v "${HOME}/.secrets/certbot/ovh.ini:/ovh.ini" \
-            certbot/dns-ovh certonly --dns-ovh --dns-ovh-credentials /ovh.ini --dns-ovh-propagation-seconds 60 -d "*.example.com"');
+            certbot/dns-ovh certonly --dns-ovh --dns-ovh-credentials /ovh.ini --dns-ovh-propagation-seconds 60 -d "*.example.com"');  
+  console.log('Docker renew:');
+  console.log('docker run -it --rm --name certbot -v "/etc/letsencrypt:/etc/letsencrypt" -v "${HOME}/.secrets/certbot/ovh.ini:/ovh.ini" certbot/dns-ovh renew');
   console.log('');
   console.log(config);
 }
