@@ -1,31 +1,58 @@
 import ApiDomain, { Domain, domain } from "@ovh-api/domain";
 import Ovh from "@ovh-api/api";
 import http from 'http';
-import https, { RequestOptions } from 'https';
+import https from 'https';
 import chalk from 'chalk';
-import os, { EOL } from 'os';
+import { networkInterfaces, EOL } from 'os';
 import fs from 'fs';
-import { Command, OptionValues } from "commander";
-
+import { Command, Option } from "commander";
+import pMap from 'p-map';
 import child_process from 'child_process';
 
 const program = new Command();
 
+
+interface MyOption {
+    /**
+     * timeout to detect an IP
+     */
+    timeout: number;
+    local?: string;
+    verbose?: boolean;
+    curl?: boolean;
+
+    standard?: boolean;
+    dynhost?: boolean;
+
+    url?: string[];
+    url4?: string[];
+    url6?: string[];
+    domain: string[];
+    credential?: string;
+    token?: string;
+    ipv4?: boolean;
+    ipv6?: boolean;
+    /**
+     * interface to bing to detect public IP
+     */
+    interface?: string;
+}
+
 class DynHost {
-    private lastIp = "";
+    private lastIp = { '4': '', '6': '' };
     private apiDomain?: Domain;
     private engine?: Ovh;
-    private options: OptionValues;
+    private options: MyOption;
 
     constructor() {
         this.options = program.opts();
     }
 
-    async doGet(url: string): Promise<string> {
+    async doGet(url: string, ipVersion: 4 | 6): Promise<string> {
         return new Promise((resolve, reject) => {
             const timeout = Number(this.options.timeout);
             const data: string[] = [];
-            const options: RequestOptions = {
+            const options: https.RequestOptions = {
                 timeout,
             };
             if (this.options.local) {
@@ -48,43 +75,54 @@ class DynHost {
         });
     }
 
-    async doCurl(url: string): Promise<string> {
-        let cmd = `curl "${url}"`;
+    async doCurl(url: string, ipVersion: 4 | 6): Promise<string> {
+        let cmd = 'curl -s';
         if (this.options.interface) {
             cmd += ` --interface ${this.options.interface}`
         }
+        if (ipVersion === 4)
+            cmd += ' --ipv4';
+        else
+            cmd += ' --ipv6';
+
+        cmd += ` "${url}"`;
+
         if (this.options.verbose) {
             console.log(cmd);
         }
-        try {
-            const { Curl } = require('node-libcurl');
-            if (Curl) {
-                return new Promise((resolve, reject) => {
-                    const curl = new Curl();
-                    curl.setOpt(Curl.option.URL, url);
-                    if (this.options.interface) {
-                        curl.setOpt(Curl.option.INTERFACE, this.options.interface);
-                    }
-                    curl.on('end', function (statusCode: number, data: string, headers: any) {
-                        if (statusCode >= 200 && statusCode < 300)
-                            resolve(data);
-                        else
-                            reject(data);
-                        curl.close();
-                    });
-                    curl.on('error', curl.close.bind(curl));
-                    curl.perform();
-                });
-            }
-        } catch (e) {
-        }
-        // fallback use curl binary
         return child_process.execSync(cmd, { encoding: 'utf8' });
     }
 
-    async detectPublicIpFrom(urls: string[]) {
-        if (this.lastIp) return this.lastIp;
-        loop: while (urls.length) {
+    /**
+     * extract an IP from a string;
+     * @param text text to check
+     * @returns an IP V4 or V6 or and empty string
+     */
+    extractIP(text: string): string {
+        const matcherV6 = text.match(/([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}/);
+        if (matcherV6) {
+            return matcherV6[0];
+        }
+        console.log('no IP V6 in')
+        console.log(text);
+        const matcherV4 = text.match(/([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})/);
+        if (matcherV4) {
+            for (let i = 1; i < 5; i++) {
+                if (Number(matcherV4[i]) > 255) {
+                    // invalid IP
+                    return '';
+                }
+            }
+            return matcherV4[0];
+        }
+        return '';
+    }
+
+
+    async detectPublicIpFrom(urls: string[], ipVersion: 4 | 6) {
+        if (this.lastIp[ipVersion])
+            return this.lastIp[ipVersion];
+        while (urls.length) {
             const index = Math.floor(Math.random() * urls.length);
             const url = urls[index];
             try {
@@ -95,22 +133,26 @@ class DynHost {
                 console.log(`Detecting IP using ${chalk.green(url)} ${this.options.curl ? 'With CURL' : ''}`);
                 let text = '';
                 if (!this.options.curl) {
-                    text = await this.doGet(url);
+                    text = await this.doGet(url, ipVersion);
                 } else {
-                    text = await this.doCurl(url);
+                    text = await this.doCurl(url, ipVersion);
                 }
-                const matcher = text.match(/([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})/);
-                if (!matcher) continue;
-                for (let i = 1; i < 5; i++) {
-                    if (Number(matcher[i]) > 255) continue loop;
+                const ip = this.extractIP(text);
+                if (!ip)
+                    continue;
+                if (ip.includes(':')) {
+                    this.lastIp[6] = ip;
+                } else {
+                    this.lastIp[4] = ip;
                 }
-                this.lastIp = matcher[0];
-                return this.lastIp;
+                if (this.lastIp[ipVersion])
+                    return this.lastIp[ipVersion];
             } catch (e) {
                 console.error(url, e);
             }
         }
-        throw "faild to detect IP";
+        console.error(`failed to detect IPv${ipVersion}`);
+        process.exit(-1)
     }
 
     async getApiDomain(): Promise<Domain> {
@@ -187,15 +229,115 @@ class DynHost {
         }
     }
 
+    async removeEntrys(service: string, entrys: domain.zone.Record[]): Promise<void> {
+        for (const rec of entrys) {
+            console.log(`Removing old ${chalk.green(rec.subDomain)}.${chalk.yellow(service)} Type ${chalk.yellow(rec.fieldType)} TTL: ${chalk.yellow(rec.ttl)}`);
+            const api = await this.getApiDomain();
+            await api.zone.$(service).record.$(rec.id).$delete();
+        }
+    }
+
+    async updateIP(dom: string, ip: string): Promise<void> {
+        const api = await this.getApiDomain();
+        const { service, subDomain } = await this.findDomain(dom);
+        const recordApiDyn = api.zone.$(service).dynHost.record;
+        const subidDyn = await recordApiDyn.$get({ subDomain });
+        const fieldType = ip.includes(':') ? 'AAAA' : 'A';
+
+        /**
+         * preload STD subdomain entry
+         */
+        // let stdRecords: domain.zone.Record[] = [];
+        const record = api.zone.$(service).record;
+        const stdRecordsCNAME: domain.zone.Record[] = await pMap(await record.$get({ subDomain, fieldType: "CNAME" }), (id) => record.$(id).$get(), { concurrency: 3 });
+
+        await this.removeEntrys(service, stdRecordsCNAME);
+
+        /**
+         * implementation for standard DNS entry
+         */
+        if (this.options.standard || !this.options.dynhost) {
+            // droping old created dynhost
+            for (const subId of subidDyn) {
+                console.log(`Removing dynHost ${chalk.green(subDomain)}.${chalk.yellow(service)} id: ${chalk.yellow(subId)}`);
+                await recordApiDyn.$(subId).$delete();
+            }
+
+
+            const entrys = await pMap(await record.$get({ subDomain, fieldType }), (id) => record.$(id).$get(), { concurrency: 3 });
+            const [entry, ...other] = entrys;
+            /**
+             * keep only a single A entry
+             **/
+            await this.removeEntrys(service, other);
+
+            if (!entry) {
+                /**
+                 * A entry is missing creating one
+                 */
+                console.error(`${chalk.whiteBright(fieldType)} ${chalk.green(subDomain)}.${chalk.yellow(service)} do not exists, creating it ${chalk.redBright('now')}!`);
+                await api.zone.$(service).record.$post({ fieldType, subDomain, target: ip, ttl: 60 });
+                console.log(`${chalk.greenBright('Success')} ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('have IP')}: ${chalk.yellow(ip)}`);
+                this.refreshSet.add(service);
+            } else {
+                /**
+                 * check and update current A entry if needed
+                 */
+                if (entry.target != ip || entry.ttl != 60) {
+                    console.log(`Updating ${chalk.whiteBright(fieldType)}  ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('from')} ${chalk.yellow(entry.target)} TTL:${entry.ttl} ${chalk.whiteBright('to')} ${chalk.yellow(ip)} TTL:60`);
+                    await api.zone.$(service).record.$(entrys[0].id).$put({ target: ip, ttl: 60 });
+                    console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.green('done')}.`);
+                    this.refreshSet.add(service);
+                } else {
+                    console.log(`No change ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('Keep IP')} ${chalk.yellow(entry.target)}`);
+                }
+            }
+        } else {
+            /**
+             * implementation for dyn-host entry
+             */
+            const stdRecordsA: domain.zone.Record[] = await pMap(await record.$get({ subDomain, fieldType: "A" }), (id) => record.$(id).$get(), { concurrency: 3 });
+            const stdRecordsAAAA: domain.zone.Record[] = await pMap(await record.$get({ subDomain, fieldType: "AAAA" }), (id) => record.$(id).$get(), { concurrency: 3 });
+
+            await this.removeEntrys(service, stdRecordsA);
+            await this.removeEntrys(service, stdRecordsAAAA);
+
+            if (!subidDyn.length) {
+                /**
+                 * create a new dynHost entry
+                 */
+                console.error(`${chalk.green(subDomain)}.${chalk.yellow(service)} do not exists creating it now.`);
+                await recordApiDyn.$post({ ip, subDomain });
+                console.log(`${chalk.greenBright('Success')} ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('have IP')}: ${chalk.yellow(ip)}`);
+                this.refreshSet.add(service);
+            } else {
+                /**
+                 * check and update current DynHost entry if needed
+                 */
+                const old = await recordApiDyn.$(subidDyn[0]).$get();
+                if (old.ip != ip) {
+                    console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('from')} ${chalk.yellow(old.ip)} ${chalk.whiteBright('to')} ${chalk.yellow(ip)}`);
+                    await recordApiDyn.$(subidDyn[0]).$put({ ip });
+                    console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.green('done')}.`);
+                    this.refreshSet.add(service);
+                } else {
+                    console.log(`No change ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('Keep IP')} ${chalk.yellow(old.ip)}`);
+                }
+            }
+        }
+    }
+
+    private refreshSet = new Set<string>();
+
     async main() {
-        let { url, domain, local } = this.options;
+        let { domain, local } = this.options;
 
         if (local) {
             if (!local.match(/$(\d+\.){3}\d+$/)) {
                 console.error(`invalid local value: '${local}' should be an IPv4`);
                 process.exit(1);
             }
-            const netss = os.networkInterfaces();
+            const netss = networkInterfaces();
             let nets = netss[local];
             if (nets) {
                 nets = nets.filter(net => net.address)
@@ -204,129 +346,68 @@ class DynHost {
             }
         }
 
-        if (domain.length === 0) {
+        if (!domain || domain.length === 0) {
             console.error(`${chalk.redBright('warning')}: you should provide at least one dyn domain, use -d parameter`);
         }
 
-        if (url.length === 0) {
-            url.push("https://api.ipify.org");
-            url.push("https://ifconfig.co/ip");
-            url.push("https://ipinfo.io/ip");
-            url.push("https://myexternalip.com/raw");
+
+        if (!this.options.ipv4 && !this.options.ipv6) {
+            this.options.ipv4 = true;
         }
-        const api = await this.getApiDomain();
-        const ip = await this.detectPublicIpFrom(url);
-        console.log(`Your IP is ${chalk.yellow(ip)}`);
 
-        const refreshSet = new Set<string>();
-
-        for (const dom of domain) {
-            const { service, subDomain } = await this.findDomain(dom);
-
-            const recordApiDyn = api.zone.$(service).dynHost.record;
-
-            const subidDyn = await recordApiDyn.$get({ subDomain });
-            const subidStds = await api.zone.$(service).record.$get({ subDomain });
-
-            let stdRecords: domain.zone.Record[] = [];
-            for (const id of subidStds) {
-                stdRecords.push(await api.zone.$(service).record.$(id).$get());
+        this.refreshSet = new Set<string>();
+        if (this.options.ipv4) {
+            let url: string[] = [];
+            if (this.options.url && this.options.url.length)
+                url = [...url, ...this.options.url];
+            if (this.options.url4 && this.options.url4.length)
+                url = [...url, ...this.options.url4];
+            if (url.length === 0) {
+                url.push("https://api.ipify.org"); // V4
+                // url.push("https://ifconfig.co/ip"); // V4 + V6
+                url.push("https://ipinfo.io/ip"); // V4
+                url.push("https://myexternalip.com/raw"); // V4
             }
-            stdRecords = stdRecords.filter(rec => (rec.fieldType === 'A' || rec.fieldType === 'AAAA' || rec.fieldType === 'CNAME'));
-
+            const ip = await this.detectPublicIpFrom(url, 4);
+            console.log(`Your IP is ${chalk.yellow(ip)}`);
+            for (const dom of domain) {
+                await this.updateIP(dom, ip);
+            }
             /**
-             * implementation for standard DNS entry
+             * refresh altered zones
              */
-            if (this.options.standard) {
-                // droping old created dynhost
-                for (const subId of subidDyn) {
-                    console.log(`Removing dynHost ${chalk.green(subDomain)}.${chalk.yellow(service)} id: ${chalk.yellow(subId)}`);
-                    await recordApiDyn.$(subId).$delete();
-                }
-                // remove old CNAME and AAAA entry Keeping only A
-                // TODO add support for ipV6 DNS
-                const cnames = stdRecords.filter(rec => rec.fieldType === 'CNAME' || rec.fieldType === 'AAAA');
-                for (const rec of cnames) {
-                    console.log(`Removing old ${chalk.green(subDomain)}.${chalk.yellow(service)} Type ${chalk.yellow(rec.fieldType)} TTL: ${chalk.yellow(rec.ttl)}`);
-                    await api.zone.$(service).record.$(rec.id).$delete();
-                }
-
-                stdRecords = stdRecords.filter(rec => rec.fieldType === 'A');
-                /**
-                 * keep only a single A entry
-                 **/
-                for (let i = 1; i < stdRecords.length; i++) {
-                    const rec = stdRecords[i];
-                    console.log(`Removing old ${chalk.green(subDomain)}.${chalk.yellow(service)} Type ${chalk.yellow(rec.fieldType)} TTL: ${chalk.yellow(rec.ttl)}`);
-                    await api.zone.$(service).record.$(rec.id).$delete();
-                }
-
-                if (!stdRecords.length) {
-                    /**
-                     * A entry is missing creating one
-                     */
-                    console.error(`${chalk.green(subDomain)}.${chalk.yellow(service)} do not exists, creating it ${chalk.redBright('now')}!`);
-                    await api.zone.$(service).record.$post({ fieldType: 'A', subDomain, target: ip, ttl: 60 });
-                    console.log(`${chalk.greenBright('Success')} ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('have IP')}: ${chalk.yellow(ip)}`);
-                    refreshSet.add(service);
-                } else {
-                    /**
-                     * check and update current A entry if needed
-                     */
-                    const old = await api.zone.$(service).record.$(stdRecords[0].id).$get();
-                    if (!old) {
-                        console.error(`OVH internal Error can not retrive ${service} zone: ${stdRecords[0].id}`);
-                        return;
-                    }
-                    if (old.target != ip || old.ttl != 60) {
-                        console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('from')} ${chalk.yellow(old.target)} TTL:${old.ttl} ${chalk.whiteBright('to')} ${chalk.yellow(ip)} TTL:60`);
-                        await api.zone.$(service).record.$(stdRecords[0].id).$put({ target: ip, ttl: 60 });
-                        console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.green('done')}.`);
-                        refreshSet.add(service);
-                    } else {
-                        console.log(`No change ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('Keep IP')} ${chalk.yellow(old.target)}`);
-                    }
-                }
-            } else {
-                /**
-                 * implementation for dyn-host entry
-                 */
-                for (const rec of stdRecords) {
-                    console.log(`Removing old ${chalk.green(subDomain)}.${chalk.yellow(service)} Type ${chalk.yellow(rec.fieldType)} TTL: ${chalk.yellow(rec.ttl)}`);
-                    await api.zone.$(service).record.$(rec.id).$delete();
-                }
-
-                if (!subidDyn.length) {
-                    /**
-                     * create a new dynHost entry
-                     */
-                    console.error(`${chalk.green(subDomain)}.${chalk.yellow(service)} do not exists creating it now.`);
-                    await recordApiDyn.$post({ ip, subDomain });
-                    console.log(`${chalk.greenBright('Success')} ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('have IP')}: ${chalk.yellow(ip)}`);
-                    refreshSet.add(service);
-                } else {
-                    /**
-                     * check and update current DynHost entry if needed
-                     */
-                     const old = await recordApiDyn.$(subidDyn[0]).$get();
-                    if (old.ip != ip) {
-                        console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('from')} ${chalk.yellow(old.ip)} ${chalk.whiteBright('to')} ${chalk.yellow(ip)}`);
-                        await recordApiDyn.$(subidDyn[0]).$put({ ip });
-                        console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.green('done')}.`);
-                        refreshSet.add(service);
-                    } else {
-                        console.log(`No change ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('Keep IP')} ${chalk.yellow(old.ip)}`);
-                    }
-                }
-            }
         }
-        /**
-         * refresh altered zones
-         */
-        for (const service of refreshSet) {
+
+        if (this.options.ipv6) {
+            let url: string[] = [];
+            if (this.options.url && this.options.url.length)
+                url = [...url, ...this.options.url];
+            if (this.options.url6 && this.options.url6.length)
+                url = [...url, ...this.options.url6];
+            // url.push("https://ifconfig.co/ip"); // V4 + V6
+            if (url.length === 0) {
+                url.push("https://ds.ams2.test-ipv6.com/ip/");
+                url.push("https://whatismyv6.com/"); // OK
+                url.push("https://www.whatismyip.com/my-ip-information/");
+                url.push("https://www.showmyip.com/");
+            }
+            const ip = await this.detectPublicIpFrom(url, 6);
+            console.log(`Your IP is ${chalk.yellow(ip)}`);
+            for (const dom of domain) {
+                await this.updateIP(dom, ip);
+            }
+            /**
+             * refresh altered zones
+             */
+        }
+
+
+        const api = await this.getApiDomain();
+        for (const service of this.refreshSet) {
             await api.zone.$(service).refresh.$post();
             console.log(`Refresh ${chalk.yellow(service)} Done`);
         }
+
     }
 }
 const { version } = require('./package.json');
@@ -336,15 +417,33 @@ program.version(version)
     .description('create and update a dyn-host or standard DNS entry.');
 
 program.option('-v, --verbose', 'verbose process');
-program.option('-s, --standard', 'use standard DNS entry instead of dynhost', append, []);
+program.option('-s, --standard', 'use standard DNS entry instead of dynhost');
+program.option('--dynhost', 'use dynhost OVH feature, (do not Support ipV6)');
+
 program.option('-d, --domain <domain>', 'add domain to configure', append, []);
 program.option('-u, --url <url>', 'add url used to find public IP', append, []);
+program.option('--url4 <url>', 'add url used to find public IPv4', append, []);
+program.option('--url6 <url>', 'add url used to find public IPv6', append, []);
+
 program.option('-l, --local <localAdress>', 'Local address to bind if you have mutiple gateway');
 program.option('-i, --interface <inet>', 'interface to use');
 program.option('-t, --token <tokenfile>', 'save and reuse the certificat by storing them in a file');
 program.option('-c, --credential <credential>', 'provide a credential as {appKey}:{appSecret}:{consumerKey} to be store in token file');
 program.option('--curl', 'use curl');
-program.option('--timeout <timeout>', 'timeout to get ip address', /\d+/, '2000');
+program.option('-4, --ipv4', 'update ipv4');
+program.option('-6, --ipv6', 'update ipv6');
+
+//program.option('--timeout <timeout>', 'timeout to get ip address', /\d+/, '2000');
+const timeoutOpt = new Option('--timeout <timeout>', 'timeout to get ip address').default(2000);
+timeoutOpt.argParser((value) => {
+    const v = Number(value);
+    if (v > 20 && v < 120000)
+        return v;
+    console.error('timeout is a time in millisec, it must be a value beetwen 20 and 120000. (20ms up to 2 minutes)');
+    process.exit(-1);
+})
+
+program.addOption(timeoutOpt);
 
 program.action(() => {
     new DynHost().main().catch(console.error);
