@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/price",
     "description": "Add typing to to ovh api price",
-    "version": "3.1.22",
+    "version": "3.1.23",
     "keywords": [
         "ovh",
         "ovhCloud",
