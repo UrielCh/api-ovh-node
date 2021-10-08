@@ -769,7 +769,6 @@ export namespace services {
          * interface fullName: services.terminate.ConfirmServiceTerminationRequest.ConfirmServiceTerminationRequest
          */
         export interface ConfirmServiceTerminationRequest {
-            acknowledgePotentialFees: boolean;
             token: string;
         }
         /**
@@ -778,21 +777,6 @@ export namespace services {
          */
         export interface TerminationAnswer {
             message: string;
-        }
-        /**
-         * Termination fees
-         * interface fullName: services.terminate.TerminationFees.TerminationFees
-         */
-        export interface TerminationFees {
-            durationLeft: string;
-            fees: order.Price;
-        }
-        /**
-         * Service termination request
-         * interface fullName: services.terminate.TerminationRequest.TerminationRequest
-         */
-        export interface TerminationRequest {
-            acknowledgePotentialFees: boolean;
         }
     }
 }

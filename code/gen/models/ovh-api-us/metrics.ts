@@ -174,7 +174,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Last 'm' minutes. Default is 60min",
               "fullType": "long",
-              "name": "duration",
+              "name": "Duration",
               "paramType": "query",
               "required": false
             }

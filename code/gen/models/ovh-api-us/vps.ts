@@ -334,7 +334,7 @@ export const schema: Schema = {
               "dataType": "vps.RestoreStateEnum",
               "description": "The state of the restore point",
               "fullType": "vps.RestoreStateEnum",
-              "name": "state",
+              "name": "State",
               "paramType": "query",
               "required": true
             }
@@ -617,7 +617,7 @@ export const schema: Schema = {
               "dataType": "vps.VpsMonitoringPeriodEnum",
               "description": "The period the statistics are fetched for",
               "fullType": "vps.VpsMonitoringPeriodEnum",
-              "name": "period",
+              "name": "Period",
               "paramType": "query",
               "required": true
             },
@@ -625,7 +625,7 @@ export const schema: Schema = {
               "dataType": "vps.disk.StatisticTypeEnum",
               "description": "The type of statistic to be fetched",
               "fullType": "vps.disk.StatisticTypeEnum",
-              "name": "type",
+              "name": "Type",
               "paramType": "query",
               "required": true
             }
@@ -671,7 +671,7 @@ export const schema: Schema = {
               "dataType": "vps.disk.StatisticTypeEnum",
               "description": "The type of statistic to be fetched",
               "fullType": "vps.disk.StatisticTypeEnum",
-              "name": "type",
+              "name": "Type",
               "paramType": "query",
               "required": true
             }
@@ -1072,7 +1072,7 @@ export const schema: Schema = {
               "dataType": "vps.VpsMonitoringPeriodEnum",
               "description": "The period the statistics are fetched for",
               "fullType": "vps.VpsMonitoringPeriodEnum",
-              "name": "period",
+              "name": "Period",
               "paramType": "query",
               "required": true
             },
@@ -1080,7 +1080,7 @@ export const schema: Schema = {
               "dataType": "vps.VpsStatisticTypeEnum",
               "description": "The type of statistic to be fetched",
               "fullType": "vps.VpsStatisticTypeEnum",
-              "name": "type",
+              "name": "Type",
               "paramType": "query",
               "required": true
             }
@@ -1156,7 +1156,7 @@ export const schema: Schema = {
               "dataType": "boolean",
               "description": "Delete option now, don't wait for expiration",
               "fullType": "boolean",
-              "name": "deleteNow",
+              "name": "Deletenow",
               "paramType": "query",
               "required": false
             }
@@ -1831,7 +1831,7 @@ export const schema: Schema = {
               "dataType": "vps.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "vps.TaskStateEnum",
-              "name": "state",
+              "name": "State",
               "paramType": "query",
               "required": false
             },
@@ -1839,7 +1839,7 @@ export const schema: Schema = {
               "dataType": "vps.TaskTypeEnum",
               "description": "Filter the value of type property (=)",
               "fullType": "vps.TaskTypeEnum",
-              "name": "type",
+              "name": "Type",
               "paramType": "query",
               "required": false
             }
@@ -2490,6 +2490,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "plannedInterventionId": {
+          "canBeNull": true,
+          "description": "ID of the planned intervention for this task",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "startDate": {
           "canBeNull": false,
@@ -3687,6 +3695,7 @@ export const schema: Schema = {
         "installing",
         "maintenance",
         "rebooting",
+        "rescued",
         "running",
         "stopped",
         "stopping",
@@ -4084,6 +4093,13 @@ export const schema: Schema = {
         "currentPlan": {
           "canBeNull": false,
           "description": "VPS current plan code",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "datacenter": {
+          "canBeNull": false,
+          "description": "Datacenter of the migration",
           "readOnly": false,
           "required": false,
           "type": "string"

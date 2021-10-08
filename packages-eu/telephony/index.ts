@@ -1229,12 +1229,12 @@ export namespace telephony {
      * Number country code
      * type fullname: telephony.NumberCountryCodeEnum
      */
-    export type NumberCountryCodeEnum = 32 | 33 | 34 | 39 | 41 | 44 | 49
+    export type NumberCountryCodeEnum = 32 | 33 | 34 | 41 | 44 | 49
     /**
      * Number country
      * type fullname: telephony.NumberCountryEnum
      */
-    export type NumberCountryEnum = "be" | "ch" | "de" | "es" | "fr" | "gb" | "it" | "uk"
+    export type NumberCountryEnum = "be" | "ch" | "de" | "es" | "fr" | "gb" | "uk"
     /**
      * A geographic zone from a country
      * interface fullName: telephony.NumberDetailedZone.NumberDetailedZone
@@ -1827,6 +1827,22 @@ export namespace telephony {
         wayType: telephony.VoiceConsumptionWayTypeEnum;
     }
     /**
+     * Procedure linked to your account
+     * interface fullName: telephony.Procedure.Procedure
+     */
+    export interface Procedure {
+        finishDate?: string;
+        id: number;
+        pdfUrl: string;
+        requestDate: string;
+        status: telephony.ProcedureStatusEnum;
+    }
+    /**
+     * Telephony procedure status
+     * type fullname: telephony.ProcedureStatusEnum
+     */
+    export type ProcedureStatusEnum = "cancelled" | "doing" | "done" | "todo" | "waiting_for_customer"
+    /**
      * All existing properties of line or alias offer
      * type fullname: telephony.PropertyEnum
      */
@@ -1946,6 +1962,11 @@ export namespace telephony {
         terminationDatetime?: string;
         type: telephony.RmaTypeEnum;
     }
+    /**
+     * Types of return merchandise authorisation you can change to
+     * type fullname: telephony.RmaChangeTypeEnum
+     */
+    export type RmaChangeTypeEnum = "resiliate" | "toSip"
     /**
      * Return merchandise authorisation offer type
      * type fullname: telephony.RmaOfferTypeEnum
@@ -2763,6 +2784,40 @@ export interface Telephony {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
+    }
+    procedure: {
+        /**
+         * Procedures linked to your nichandle
+         * GET /telephony/procedure
+         */
+        $get(): Promise<number[]>;
+        /**
+         * Create a telephony procedure
+         * POST /telephony/procedure
+         */
+        $post(params?: { bic?: string, iban?: string, ownerAddress?: string, ownerName?: string, paymentMeanID?: number }): Promise<telephony.Procedure>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $(id: number): {
+            /**
+             * Get this object properties
+             * GET /telephony/procedure/{id}
+             */
+            $get(): Promise<telephony.Procedure>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            cancel: {
+                /**
+                 * Cancel the given procedure.
+                 * POST /telephony/procedure/{id}/cancel
+                 */
+                $post(): Promise<void>;
+            }
+        };
     }
     searchServices: {
         /**
@@ -5156,6 +5211,13 @@ export interface Telephony {
                              * Controle cache
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            changeType: {
+                                /**
+                                 * Change RMA type
+                                 * POST /telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}/changeType
+                                 */
+                                $post(params: { type: telephony.RmaChangeTypeEnum }): Promise<void>;
+                            }
                         };
                     }
                     supportsPhonebook: {

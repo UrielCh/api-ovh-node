@@ -4663,7 +4663,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This partitioning scheme name",
               "fullType": "string",
               "name": "name",
               "paramType": "body",
@@ -4709,7 +4709,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This partitioning scheme name",
               "fullType": "string",
               "name": "schemeName",
               "paramType": "path",
@@ -4741,7 +4741,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This partitioning scheme name",
               "fullType": "string",
               "name": "schemeName",
               "paramType": "path",
@@ -4780,7 +4780,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This partitioning scheme name",
               "fullType": "string",
               "name": "schemeName",
               "paramType": "path",
@@ -4818,7 +4818,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This partitioning scheme name",
               "fullType": "string",
               "name": "schemeName",
               "paramType": "path",
@@ -4882,7 +4882,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This partitioning scheme name",
               "fullType": "string",
               "name": "schemeName",
               "paramType": "path",
@@ -4928,7 +4928,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This partitioning scheme name",
               "fullType": "string",
               "name": "schemeName",
               "paramType": "path",
@@ -4968,7 +4968,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This partitioning scheme name",
               "fullType": "string",
               "name": "schemeName",
               "paramType": "path",
@@ -5015,7 +5015,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This partitioning scheme name",
               "fullType": "string",
               "name": "schemeName",
               "paramType": "path",
@@ -5053,7 +5053,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This partitioning scheme name",
               "fullType": "string",
               "name": "schemeName",
               "paramType": "path",
@@ -5093,23 +5093,23 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "partition mount point",
+              "description": "Partition mount point",
               "fullType": "string",
               "name": "mountpoint",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
+              "dataType": "dedicated.server.PartitionRaidEnum",
+              "description": "Partition raid",
+              "fullType": "dedicated.server.PartitionRaidEnum",
               "name": "raid",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "long",
-              "description": "size of partition in Mb, 0 => rest of the space",
+              "description": "Partition size in MiB, 0 => rest of the space",
               "fullType": "long",
               "name": "size",
               "paramType": "body",
@@ -5117,7 +5117,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "",
+              "description": "Partition step",
               "fullType": "long",
               "name": "step",
               "paramType": "body",
@@ -5125,7 +5125,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "dedicated.TemplatePartitionTypeEnum",
-              "description": "",
+              "description": "Partition type",
               "fullType": "dedicated.TemplatePartitionTypeEnum",
               "name": "type",
               "paramType": "body",
@@ -5133,7 +5133,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The volume name needed for proxmox distribution",
+              "description": "Logical volume name (required if type is lv)",
               "fullType": "string",
               "name": "volumeName",
               "paramType": "body",
@@ -5141,7 +5141,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This partitioning scheme name",
               "fullType": "string",
               "name": "schemeName",
               "paramType": "path",
@@ -5179,7 +5179,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "partition mount point",
+              "description": "Partition mount point",
               "fullType": "string",
               "name": "mountpoint",
               "paramType": "path",
@@ -5187,7 +5187,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This partitioning scheme name",
               "fullType": "string",
               "name": "schemeName",
               "paramType": "path",
@@ -5219,7 +5219,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "partition mount point",
+              "description": "Partition mount point",
               "fullType": "string",
               "name": "mountpoint",
               "paramType": "path",
@@ -5227,7 +5227,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This partitioning scheme name",
               "fullType": "string",
               "name": "schemeName",
               "paramType": "path",
@@ -5266,7 +5266,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "partition mount point",
+              "description": "Partition mount point",
               "fullType": "string",
               "name": "mountpoint",
               "paramType": "path",
@@ -5274,7 +5274,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This partitioning scheme name",
               "fullType": "string",
               "name": "schemeName",
               "paramType": "path",
@@ -14289,6 +14289,13 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "version": {
+          "canBeNull": true,
+          "description": "OS template project item version",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -14519,6 +14526,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "endOfInstall": {
+          "canBeNull": false,
+          "description": "after this date, install of this template will not be possible at OVH",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
         "family": {
           "canBeNull": false,
           "description": "this template family type",
@@ -14582,6 +14597,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "dedicated.TemplateOsInfoProject"
+        },
+        "softRaidOnlyMirroring": {
+          "canBeNull": false,
+          "description": "Partitioning customization is available but limited to mirroring for this OS template",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "subfamily": {
           "canBeNull": false,
@@ -14687,7 +14710,7 @@ export const schema: Schema = {
       "properties": {
         "name": {
           "canBeNull": false,
-          "description": "name of this partitioning scheme",
+          "description": "This partitioning scheme name",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -14718,7 +14741,7 @@ export const schema: Schema = {
         },
         "mountpoint": {
           "canBeNull": false,
-          "description": "partition mount point",
+          "description": "Partition mount point",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -14733,8 +14756,8 @@ export const schema: Schema = {
           "type": "long"
         },
         "raid": {
-          "canBeNull": true,
-          "description": "raid partition type",
+          "canBeNull": false,
+          "description": "Partition raid",
           "fullType": "dedicated.server.PartitionRaidEnum",
           "readOnly": false,
           "required": false,
@@ -14742,7 +14765,7 @@ export const schema: Schema = {
         },
         "size": {
           "canBeNull": false,
-          "description": "size of partition in Mb, 0 => rest of the space",
+          "description": "Partition size in MiB, 0 => rest of the space",
           "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
@@ -14750,6 +14773,7 @@ export const schema: Schema = {
         },
         "type": {
           "canBeNull": false,
+          "description": "Partition type",
           "fullType": "dedicated.TemplatePartitionTypeEnum",
           "readOnly": false,
           "required": false,
@@ -14757,7 +14781,7 @@ export const schema: Schema = {
         },
         "volumeName": {
           "canBeNull": true,
-          "description": "The volume name needed for proxmox distribution",
+          "description": "Logical volume name (required if type is lv)",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -16117,13 +16141,13 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
-        "idpSigningCertificate": {
+        "idpSigningCertificates": {
           "canBeNull": false,
           "description": "IdP's signing certificate",
-          "fullType": "nichandle.Authentication.Certificate",
+          "fullType": "nichandle.Authentication.Certificate[]",
           "readOnly": true,
           "required": false,
-          "type": "nichandle.Authentication.Certificate"
+          "type": "nichandle.Authentication.Certificate[]"
         },
         "lastUpdate": {
           "canBeNull": false,

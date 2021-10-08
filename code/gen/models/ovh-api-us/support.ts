@@ -21,7 +21,7 @@ export const schema: Schema = {
               "dataType": "boolean",
               "description": "Search archived tickets",
               "fullType": "boolean",
-              "name": "archived",
+              "name": "Archived",
               "paramType": "query",
               "required": false
             },
@@ -29,7 +29,7 @@ export const schema: Schema = {
               "dataType": "support.TicketCategoryEnum",
               "description": "Search by ticket category",
               "fullType": "support.TicketCategoryEnum",
-              "name": "category",
+              "name": "Category",
               "paramType": "query",
               "required": false
             },
@@ -37,7 +37,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Maximum creation date",
               "fullType": "datetime",
-              "name": "maxCreationDate",
+              "name": "Maxcreationdate",
               "paramType": "query",
               "required": false
             },
@@ -45,7 +45,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Minimum creation date",
               "fullType": "datetime",
-              "name": "minCreationDate",
+              "name": "Mincreationdate",
               "paramType": "query",
               "required": false
             },
@@ -53,7 +53,7 @@ export const schema: Schema = {
               "dataType": "support.TicketProductEnum",
               "description": "Search by ticket product",
               "fullType": "support.TicketProductEnum",
-              "name": "product",
+              "name": "Product",
               "paramType": "query",
               "required": false
             },
@@ -61,7 +61,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Ticket message service name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "Servicename",
               "paramType": "query",
               "required": false
             },
@@ -69,7 +69,7 @@ export const schema: Schema = {
               "dataType": "support.TicketStatusEnum",
               "description": "Status of ticket",
               "fullType": "support.TicketStatusEnum",
-              "name": "status",
+              "name": "Status",
               "paramType": "query",
               "required": false
             },
@@ -77,7 +77,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Search by ticket subject",
               "fullType": "string",
-              "name": "subject",
+              "name": "Subject",
               "paramType": "query",
               "required": false
             },
@@ -85,7 +85,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Search by ticket number",
               "fullType": "string",
-              "name": "ticketNumber",
+              "name": "Ticketnumber",
               "paramType": "query",
               "required": false
             }

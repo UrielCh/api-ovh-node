@@ -157,7 +157,7 @@ export interface Veeam {
                  * Tasks associated with Veeam Enterprise
                  * GET /veeam/veeamEnterprise/{serviceName}/task
                  */
-                $get(params?: { name?: string, state?: veeamEnterpriseTaskStateEnum }): Promise<number[]>;
+                $get(params?: { Name?: string, State?: veeamEnterpriseTaskStateEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */

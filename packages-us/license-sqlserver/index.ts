@@ -153,7 +153,7 @@ export interface License {
              * Get the orderable Sql Server versions
              * GET /license/sqlserver/orderableVersions
              */
-            $get(params: { ip: string }): Promise<license.SqlServerOrderConfiguration[]>;
+            $get(params: { Ip: string }): Promise<license.SqlServerOrderConfiguration[]>;
             /**
              * Controle cache
              */
@@ -197,7 +197,7 @@ export interface License {
                  * Tasks linked to this license
                  * GET /license/sqlserver/{serviceName}/tasks
                  */
-                $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
+                $get(params?: { Action?: license.ActionType, Status?: license.TaskStateEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */

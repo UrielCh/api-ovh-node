@@ -69,6 +69,7 @@ export namespace dedicated {
             lastUpdate?: string;
             needSchedule: boolean;
             note?: string;
+            plannedInterventionId?: number;
             startDate: string;
             status: dedicated.TaskStatusEnum;
             taskId: number;
@@ -415,7 +416,7 @@ export namespace vps {
      * All states a VPS can be in
      * type fullname: vps.VpsStateEnum
      */
-    export type VpsStateEnum = "backuping" | "installing" | "maintenance" | "rebooting" | "running" | "stopped" | "stopping" | "upgrading"
+    export type VpsStateEnum = "backuping" | "installing" | "maintenance" | "rebooting" | "rescued" | "running" | "stopped" | "stopping" | "upgrading"
     /**
      * Available types for the VPS monitoring and use
      * type fullname: vps.VpsStatisticTypeEnum
@@ -559,6 +560,7 @@ export namespace vps {
          */
         export interface VPS2016to2020 {
             currentPlan: string;
+            datacenter: string;
             date?: string;
             newPlan: string;
             options: vps.migration.OptionMapping2016[];
@@ -768,7 +770,7 @@ export interface Vps {
                  * Get available Restore Points
                  * GET /vps/{serviceName}/automatedBackup/restorePoints
                  */
-                $get(params: { state: vps.RestoreStateEnum }): Promise<string[]>;
+                $get(params: { State: vps.RestoreStateEnum }): Promise<string[]>;
                 /**
                  * Controle cache
                  */
@@ -830,7 +832,7 @@ export interface Vps {
                      * Return many statistics about the disk for a given period
                      * GET /vps/{serviceName}/disks/{id}/monitoring
                      */
-                    $get(params: { period: vps.VpsMonitoringPeriodEnum, type: vps.disk.StatisticTypeEnum }): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+                    $get(params: { Period: vps.VpsMonitoringPeriodEnum, Type: vps.disk.StatisticTypeEnum }): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
                     /**
                      * Controle cache
                      */
@@ -841,7 +843,7 @@ export interface Vps {
                      * Return many statistics about the disk at that time
                      * GET /vps/{serviceName}/disks/{id}/use
                      */
-                    $get(params: { type: vps.disk.StatisticTypeEnum }): Promise<complexType.UnitAndValue<number>>;
+                    $get(params: { Type: vps.disk.StatisticTypeEnum }): Promise<complexType.UnitAndValue<number>>;
                     /**
                      * Controle cache
                      */
@@ -955,7 +957,7 @@ export interface Vps {
              * Return many statistics about the virtual machine for a given period
              * GET /vps/{serviceName}/monitoring
              */
-            $get(params: { period: vps.VpsMonitoringPeriodEnum, type: vps.VpsStatisticTypeEnum }): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+            $get(params: { Period: vps.VpsMonitoringPeriodEnum, Type: vps.VpsStatisticTypeEnum }): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
             /**
              * Controle cache
              */
@@ -976,7 +978,7 @@ export interface Vps {
                  * Release a given option
                  * DELETE /vps/{serviceName}/option/{option}
                  */
-                $delete(params?: { deleteNow?: boolean }): Promise<void>;
+                $delete(params?: { Deletenow?: boolean }): Promise<void>;
                 /**
                  * Get this object properties
                  * GET /vps/{serviceName}/option/{option}
@@ -1135,7 +1137,7 @@ export interface Vps {
              * Tasks associated to this virtual server
              * GET /vps/{serviceName}/tasks
              */
-            $get(params?: { state?: vps.TaskStateEnum, type?: vps.TaskTypeEnum }): Promise<number[]>;
+            $get(params?: { State?: vps.TaskStateEnum, Type?: vps.TaskTypeEnum }): Promise<number[]>;
             /**
              * Controle cache
              */

@@ -1084,6 +1084,7 @@ export namespace dedicated {
         governance?: string[];
         releaseNotes?: string;
         url?: string;
+        version?: string;
     }
     /**
      * all language available
@@ -1134,6 +1135,7 @@ export namespace dedicated {
             defaultLanguage: dedicated.TemplateOsLanguageEnum;
             description: string;
             distribution: string;
+            endOfInstall: string;
             family: dedicated.TemplateOsTypeEnum;
             filesystems: dedicated.TemplateOsFileSystemEnum[];
             hardRaidConfiguration?: boolean;
@@ -1142,6 +1144,7 @@ export namespace dedicated {
             lvmReady?: boolean;
             noPartitioning: boolean;
             project?: dedicated.TemplateOsInfoProject;
+            softRaidOnlyMirroring: boolean;
             subfamily: dedicated.TemplateOsSubfamilyEnum;
             supportsDistributionKernel?: boolean;
             supportsGptLabel?: boolean;
@@ -1176,7 +1179,7 @@ export namespace dedicated {
             filesystem: dedicated.TemplateOsFileSystemEnum;
             mountpoint: string;
             order: number;
-            raid?: dedicated.server.PartitionRaidEnum;
+            raid: dedicated.server.PartitionRaidEnum;
             size: complexType.UnitAndValue<number>;
             type: dedicated.TemplatePartitionTypeEnum;
             volumeName?: string;
@@ -1573,7 +1576,7 @@ export namespace nichandle {
         export interface Provider {
             creation: string;
             groupAttributeName: string;
-            idpSigningCertificate: nichandle.Authentication.Certificate;
+            idpSigningCertificates: nichandle.Authentication.Certificate[];
             lastUpdate: string;
             ssoServiceUrl: string;
         }
@@ -3625,7 +3628,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/installationTemplate/{templateName}
              */
-            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
+            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, endOfInstall?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, softRaidOnlyMirroring?: boolean, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -3719,7 +3722,7 @@ export interface Me {
                          * Add a partition in this partitioning scheme
                          * POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
                          */
-                        $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: number, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
+                        $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid: dedicated.server.PartitionRaidEnum, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
                         /**
                          * Controle cache
                          */

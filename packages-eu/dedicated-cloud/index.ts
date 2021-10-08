@@ -453,6 +453,13 @@ export namespace dedicatedCloud {
         type: string;
     }
     /**
+     * Security options of your Dedicated Cloud
+     * interface fullName: dedicatedCloud.SecurityOption.SecurityOption
+     */
+    export interface SecurityOption {
+        state: dedicatedCloudsecurityOptionStateEnum;
+    }
+    /**
      * List of Service Packs compliant with the current Dedicated Cloud
      * interface fullName: dedicatedCloud.ServicePack.ServicePack
      */
@@ -1072,6 +1079,52 @@ export namespace dedicatedCloud {
          * type fullname: dedicatedCloud.right.VmNetworkRoleEnum
          */
         export type VmNetworkRoleEnum = "admin" | "noAccess" | "readonly"
+    }
+    export namespace securityOption {
+        /**
+         * Representation of a security option
+         * interface fullName: dedicatedCloud.securityOption.CompatibilityMatrixEntry.CompatibilityMatrixEntry
+         */
+        export interface CompatibilityMatrixEntry {
+            compatible: boolean;
+            description: string;
+            enabled: boolean;
+            name: dedicatedCloudsecurityOptionSecurityOptionEnum;
+            reason?: dedicatedCloudsecurityOptionErrorMessage;
+            state: dedicatedCloudsecurityOptionStateEnum;
+        }
+        /**
+         * Display requirements, conflicts and dependencies of a security option
+         * interface fullName: dedicatedCloud.securityOption.DependenciesTree.DependenciesTree
+         */
+        export interface DependenciesTree {
+            conflicts: dedicatedCloudsecurityOptionSecurityOptionEnum[];
+            depends: dedicatedCloudsecurityOptionSecurityOptionEnum[];
+            requires: dedicatedCloudsecurityOptionSecurityOptionEnum[];
+        }
+        /**
+         * Security option management errors
+         * type fullname: dedicatedCloud.securityOption.ErrorEnum
+         */
+        export type ErrorEnum = "ACTION_IMPOSSIBLE" | "ALREADY_DISABLED" | "ALREADY_ENABLED" | "BAD_ZONE" | "BREAKING_REQUIREMENTS" | "CONFLICTING_OPTIONS" | "DEFINITIVE_OPTION" | "GENERIC_ERROR" | "HAS_UNSUPPORTED_DEPENDENCIES" | "MISSING_REQUIREMENTS_OPTIONS" | "NOT_ENABLED" | "NOT_MANAGEABLE_DIRECTLY" | "SERVICE_SUSPENDED"
+        /**
+         * Security option code
+         * interface fullName: dedicatedCloud.securityOption.ErrorMessage.ErrorMessage
+         */
+        export interface ErrorMessage {
+            code: dedicatedCloudsecurityOptionErrorEnum;
+            message: string;
+        }
+        /**
+         * Security option identifiers
+         * type fullname: dedicatedCloud.securityOption.SecurityOptionEnum
+         */
+        export type SecurityOptionEnum = "accessNetworkFiltered" | "advancedSecurity" | "base" | "grsecKernel" | "hds" | "hids" | "hipaa" | "nids" | "pcidss" | "privateCustomerVlan" | "privateGw" | "sendLogToCustomer" | "sessionTimeout" | "sftp" | "snc" | "spla" | "sslV3" | "tls1.2" | "tokenValidation" | "twoFa" | "twoFaFail2ban" | "vrliForwarder" | "waf"
+        /**
+         * Security option detailed states
+         * type fullname: dedicatedCloud.securityOption.StateEnum
+         */
+        export type StateEnum = "creating" | "deleted" | "deleting" | "delivered" | "disabled" | "pending" | "toCreate" | "updating"
     }
     /**
      * List of possible service pack
@@ -2796,6 +2849,57 @@ export interface DedicatedCloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
+        securityOptions: {
+            /**
+             * Get this object properties
+             * GET /dedicatedCloud/{serviceName}/securityOptions
+             */
+            $get(): Promise<dedicatedCloud.SecurityOption>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            compatibilityMatrix: {
+                /**
+                 * Show compatibility matrix of security options with your Dedicated Cloud
+                 * GET /dedicatedCloud/{serviceName}/securityOptions/compatibilityMatrix
+                 */
+                $get(params?: { showIncompatible?: boolean, showInternal?: boolean }): Promise<dedicatedCloud.securityOption.CompatibilityMatrixEntry[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            dependenciesTree: {
+                /**
+                 * Show the dependencies tree of a security option
+                 * GET /dedicatedCloud/{serviceName}/securityOptions/dependenciesTree
+                 */
+                $get(params: { option: dedicatedCloudsecurityOptionSecurityOptionEnum }): Promise<dedicatedCloud.securityOption.DependenciesTree>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            pendingOptions: {
+                /**
+                 * List pending security options enabling on your Dedicated Cloud
+                 * GET /dedicatedCloud/{serviceName}/securityOptions/pendingOptions
+                 */
+                $get(): Promise<dedicatedCloud.securityOption.SecurityOptionEnum[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            resumePendingEnabling: {
+                /**
+                 * Resume enabling of pending security options on your Dedicated Cloud
+                 * POST /dedicatedCloud/{serviceName}/securityOptions/resumePendingEnabling
+                 */
+                $post(params: { option: dedicatedCloudsecurityOptionSecurityOptionEnum }): Promise<dedicatedCloud.Task>;
+            }
+        }
         serviceInfos: {
             /**
              * Get this object properties
@@ -3332,6 +3436,7 @@ type dedicatedCloudrightRightEnum = dedicatedCloud.right.RightEnum;
 type dedicatedCloudrightUserObjectRightTypeEnum = dedicatedCloud.right.UserObjectRightTypeEnum;
 type dedicatedCloudbackupBackupTypeEnum = dedicatedCloud.backup.BackupTypeEnum;
 type dedicatedCloudrightVmNetworkRoleEnum = dedicatedCloud.right.VmNetworkRoleEnum;
+type dedicatedCloudsecurityOptionStateEnum = dedicatedCloud.securityOption.StateEnum;
 type dedicatedCloudTaskStateEnum = dedicatedCloud.TaskStateEnum;
 type dedicatedClouduserActivationStateEnum = dedicatedCloud.user.ActivationStateEnum;
 type dedicatedClouduserStateEnum = dedicatedCloud.user.StateEnum;
@@ -3364,6 +3469,9 @@ type dedicatedClouddisasterRecoveryRemoteSiteDetails = dedicatedCloud.disasterRe
 type dedicatedClouddisasterRecoveryVpnConfigStateEnum = dedicatedCloud.disasterRecovery.VpnConfigStateEnum;
 type dedicatedCloudresourceNewPricesEntry = dedicatedCloud.resourceNewPricesEntry;
 type dedicatedCloudressourcesResourceTypeEnum = dedicatedCloud.ressources.ResourceTypeEnum;
+type dedicatedCloudsecurityOptionSecurityOptionEnum = dedicatedCloud.securityOption.SecurityOptionEnum;
+type dedicatedCloudsecurityOptionErrorMessage = dedicatedCloud.securityOption.ErrorMessage;
+type dedicatedCloudsecurityOptionErrorEnum = dedicatedCloud.securityOption.ErrorEnum;
 type dedicatedCloudservicePackEnum = dedicatedCloud.servicePackEnum;
 type dedicatedCloudservicePackStateEnum = dedicatedCloud.servicePackStateEnum;
 type dedicatedCloudTwoFAWhitelistStateEnum = dedicatedCloud.TwoFAWhitelistStateEnum;

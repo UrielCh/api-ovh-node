@@ -65,6 +65,57 @@ export namespace api {
         status: auth.CredentialStateEnum;
     }
 }
+export namespace audit {
+    /**
+     * An audit Log
+     * interface fullName: audit.Log.Log
+     */
+    export interface Log {
+        authDetails?: audit.LogAuthDetails;
+        createdAt: string;
+        ip?: string;
+        loginSuccessDetails?: audit.LogLoginSuccessDetails;
+        type: audit.LogTypeEnum;
+    }
+    /**
+     * Authentication details
+     * interface fullName: audit.LogAuthDetails.LogAuthDetails
+     */
+    export interface LogAuthDetails {
+        userDetails: audit.LogAuthUserDetails;
+    }
+    /**
+     * Authentication MFA type
+     * type fullname: audit.LogAuthMFATypeEnum
+     */
+    export type LogAuthMFATypeEnum = "NONE" | "MAIL" | "SMS" | "TOTP" | "U2F" | "UNKNOWN"
+    /**
+     * Authenticated user details
+     * interface fullName: audit.LogAuthUserDetails.LogAuthUserDetails
+     */
+    export interface LogAuthUserDetails {
+        type: audit.LogAuthUserTypeEnum;
+        user?: string;
+    }
+    /**
+     * Authentication type
+     * type fullname: audit.LogAuthUserTypeEnum
+     */
+    export type LogAuthUserTypeEnum = "ACCOUNT" | "USER" | "PROVIDER"
+    /**
+     * specific fields for LOGIN_SUCCESS events
+     * interface fullName: audit.LogLoginSuccessDetails.LogLoginSuccessDetails
+     */
+    export interface LogLoginSuccessDetails {
+        mfaType?: audit.LogAuthMFATypeEnum;
+        userAgent: string;
+    }
+    /**
+     * Audit event type
+     * type fullname: audit.LogTypeEnum
+     */
+    export type LogTypeEnum = "LOGIN_SUCCESS"
+}
 export namespace auth {
     /**
      * Access rule required for the application
@@ -1057,6 +1108,7 @@ export namespace dedicated {
         governance?: string[];
         releaseNotes?: string;
         url?: string;
+        version?: string;
     }
     /**
      * all language available
@@ -1107,6 +1159,7 @@ export namespace dedicated {
             defaultLanguage: dedicated.TemplateOsLanguageEnum;
             description: string;
             distribution: string;
+            endOfInstall: string;
             family: dedicated.TemplateOsTypeEnum;
             filesystems: dedicated.TemplateOsFileSystemEnum[];
             hardRaidConfiguration?: boolean;
@@ -1115,6 +1168,7 @@ export namespace dedicated {
             lvmReady?: boolean;
             noPartitioning: boolean;
             project?: dedicated.TemplateOsInfoProject;
+            softRaidOnlyMirroring: boolean;
             subfamily: dedicated.TemplateOsSubfamilyEnum;
             supportsDistributionKernel?: boolean;
             supportsGptLabel?: boolean;
@@ -1149,7 +1203,7 @@ export namespace dedicated {
             filesystem: dedicated.TemplateOsFileSystemEnum;
             mountpoint: string;
             order: number;
-            raid?: dedicated.server.PartitionRaidEnum;
+            raid: dedicated.server.PartitionRaidEnum;
             size: complexType.UnitAndValue<number>;
             type: dedicated.TemplatePartitionTypeEnum;
             volumeName?: string;
@@ -1620,7 +1674,12 @@ export namespace me {
          * Payment method available sub-type enum
          * type fullname: me.payment.AvailableSubTypeEnum
          */
-        export type AvailableSubTypeEnum = "NONE" | "CHORUS"
+        export type AvailableSubTypeEnum = "30_DAYS" | "45_DAYS" | "60_DAYS" | "AMERICAN_EXPRESS" | "AURA" | "CARTE_BANCAIRE" | "CARTE_BLEUE" | "DINERS_CLUB" | "DISCOVER" | "JCB" | "MAESTRO" | "MASTERCARD" | "VISA" | "CHORUS" | "NONE"
+        /**
+         * Payment method creation sub-type enum
+         * type fullname: me.payment.CreationSubTypeEnum
+         */
+        export type CreationSubTypeEnum = "CHORUS" | "NONE"
         /**
          * Icon
          * interface fullName: me.payment.Icon.Icon
@@ -1650,7 +1709,7 @@ export namespace me {
             lastUpdate: string;
             paymentMeanId?: number;
             paymentMethodId: number;
-            paymentSubType?: string;
+            paymentSubType?: me.payment.AvailableSubTypeEnum;
             paymentType: string;
             status: me.payment.method.StatusEnum;
         }
@@ -1710,7 +1769,7 @@ export namespace me {
                 description?: string;
                 formData?: string;
                 orderId?: number;
-                paymentSubType?: me.payment.AvailableSubTypeEnum;
+                paymentSubType?: me.payment.CreationSubTypeEnum;
                 paymentType: string;
                 register: boolean;
             }
@@ -2107,7 +2166,7 @@ export namespace nichandle {
         export interface Provider {
             creation: string;
             groupAttributeName: string;
-            idpSigningCertificate: nichandle.Authentication.Certificate;
+            idpSigningCertificates: nichandle.Authentication.Certificate[];
             lastUpdate: string;
             ssoServiceUrl: string;
         }
@@ -2632,17 +2691,6 @@ export namespace nichandle {
         default: boolean;
         key: string;
         keyName: string;
-    }
-}
-export namespace notification {
-    export namespace gdpr {
-        /**
-         * Data accuracy notification
-         * interface fullName: notification.gdpr.DataAccuracy.DataAccuracy
-         */
-        export interface DataAccuracy {
-            shouldDisplay: boolean;
-        }
     }
 }
 export namespace oauth2 {
@@ -4199,7 +4247,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/installationTemplate/{templateName}
              */
-            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
+            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, endOfInstall?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, softRaidOnlyMirroring?: boolean, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -4293,7 +4341,7 @@ export interface Me {
                          * Add a partition in this partitioning scheme
                          * POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
                          */
-                        $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: number, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
+                        $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid: dedicated.server.PartitionRaidEnum, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
                         /**
                          * Controle cache
                          */
@@ -4820,7 +4868,7 @@ export interface Me {
              * Register a new payment method
              * POST /me/payment/method
              */
-            $post(params: { callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, formData?: string, orderId?: number, paymentSubType?: me.payment.AvailableSubTypeEnum, paymentType: string, register?: boolean }): Promise<me.payment.method.Validation>;
+            $post(params: { callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, formData?: string, orderId?: number, paymentSubType?: me.payment.CreationSubTypeEnum, paymentType: string, register?: boolean }): Promise<me.payment.method.Validation>;
             /**
              * Controle cache
              */
@@ -4840,7 +4888,7 @@ export interface Me {
                  * Edit payment method
                  * PUT /me/payment/method/{paymentMethodId}
                  */
-                $put(params?: { billingContactId?: number, creationDate?: string, default_?: boolean, description?: string, expirationDate?: string, icon?: me.payment.Icon, label?: string, lastUpdate?: string, paymentMeanId?: number, paymentMethodId?: number, paymentSubType?: string, paymentType?: string, status?: me.payment.method.StatusEnum }): Promise<me.payment.PaymentMethod>;
+                $put(params?: { billingContactId?: number, creationDate?: string, default_?: boolean, description?: string, expirationDate?: string, icon?: me.payment.Icon, label?: string, lastUpdate?: string, paymentMeanId?: number, paymentMethodId?: number, paymentSubType?: me.payment.AvailableSubTypeEnum, paymentType?: string, status?: me.payment.method.StatusEnum }): Promise<me.payment.PaymentMethod>;
                 /**
                  * Controle cache
                  */

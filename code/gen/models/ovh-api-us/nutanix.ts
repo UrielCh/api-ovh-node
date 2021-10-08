@@ -71,7 +71,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "boolean",
-              "description": "I aware that I'm going to make changes that will reinstall my cluster",
+              "description": "I am aware that I am going to make changes that will reinstall my cluster",
               "fullType": "boolean",
               "name": "redeploycluster",
               "paramType": "query",
@@ -192,6 +192,14 @@ export const schema: Schema = {
           "required": false,
           "type": "long[]"
         },
+        "controlPanelURL": {
+          "canBeNull": false,
+          "description": "Control Panel URL",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "erasureCoding": {
           "canBeNull": false,
           "description": "Erasure coding activation",
@@ -215,6 +223,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "ipBlock"
+        },
+        "iplb": {
+          "canBeNull": false,
+          "description": "IPLB ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "license": {
           "canBeNull": false,

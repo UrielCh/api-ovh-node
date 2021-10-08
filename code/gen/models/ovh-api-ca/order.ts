@@ -7826,6 +7826,32 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve Anthos catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/anthos"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
@@ -7898,6 +7924,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/catalog/public/dns"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve domain catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/domain"
     },
     {
       "description": "Missing description",
@@ -21636,7 +21688,8 @@ export const schema: Schema = {
         "postgresql_11",
         "postgresql_12",
         "postgresql_9.6",
-        "redis_4.0"
+        "redis_4.0",
+        "redis_6.0"
       ],
       "enumType": "string",
       "id": "OrderableVersionEnum",

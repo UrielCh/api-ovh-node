@@ -587,7 +587,7 @@ export interface Ip {
      * Your OVH IPs
      * GET /ip
      */
-    $get(params?: { description?: string, ip?: string, 'routedTo.serviceName'?: string, type?: ip.IpTypeEnum }): Promise<string[]>;
+    $get(params?: { Description?: string, Ip?: string, 'Routedto.servicename'?: string, Type?: ip.IpTypeEnum }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -686,7 +686,7 @@ export interface Ip {
                  * Ip subnet used by OVH to nat requests on your ip lb to your backends. You must ensure that your backends are not part of a network that overlap with this one.
                  * GET /ip/loadBalancing/{serviceName}/internalNatIp
                  */
-                $get(params: { zone: ip.LoadBalancingZoneEnum }): Promise<string>;
+                $get(params: { Zone: ip.LoadBalancingZoneEnum }): Promise<string>;
                 /**
                  * Controle cache
                  */
@@ -729,7 +729,7 @@ export interface Ip {
                  * Ip subnet used to send probes to your backends
                  * GET /ip/loadBalancing/{serviceName}/probeIp
                  */
-                $get(params: { zone: ip.LoadBalancingZoneEnum }): Promise<string[]>;
+                $get(params: { Zone: ip.LoadBalancingZoneEnum }): Promise<string[]>;
                 /**
                  * Controle cache
                  */
@@ -868,7 +868,7 @@ export interface Ip {
              * Anti-Hack blocked IP
              * GET /ip/{ip}/antihack
              */
-            $get(params?: { state?: ip.BlockedIpStateEnum }): Promise<string[]>;
+            $get(params?: { State?: ip.BlockedIpStateEnum }): Promise<string[]>;
             /**
              * Controle cache
              */
@@ -897,7 +897,7 @@ export interface Ip {
              * ARP blocked IP
              * GET /ip/{ip}/arp
              */
-            $get(params?: { state?: ip.ArpStateEnum }): Promise<string[]>;
+            $get(params?: { State?: ip.ArpStateEnum }): Promise<string[]>;
             /**
              * Controle cache
              */
@@ -965,7 +965,7 @@ export interface Ip {
              * Ip under firewall
              * GET /ip/{ip}/firewall
              */
-            $get(params?: { enabled?: boolean, state?: ip.FirewallStateEnum }): Promise<string[]>;
+            $get(params?: { Enabled?: boolean, State?: ip.FirewallStateEnum }): Promise<string[]>;
             /**
              * AntiDDOS option. Add new IP on firewall
              * POST /ip/{ip}/firewall
@@ -1000,7 +1000,7 @@ export interface Ip {
                      * Rules for this IP
                      * GET /ip/{ip}/firewall/{ipOnFirewall}/rule
                      */
-                    $get(params?: { state?: ip.FirewallRuleStateEnum }): Promise<number[]>;
+                    $get(params?: { State?: ip.FirewallRuleStateEnum }): Promise<number[]>;
                     /**
                      * AntiDDOS option. Add new rule on your IP
                      * POST /ip/{ip}/firewall/{ipOnFirewall}/rule
@@ -1094,7 +1094,7 @@ export interface Ip {
                  * Cloud Linux licenses associated to this IP
                  * GET /ip/{ip}/license/cloudLinux
                  */
-                $get(params?: { ipAddress?: string }): Promise<string[]>;
+                $get(params?: { Ipaddress?: string }): Promise<string[]>;
                 /**
                  * Controle cache
                  */
@@ -1105,7 +1105,7 @@ export interface Ip {
                  * Cpanel licenses associated to this IP
                  * GET /ip/{ip}/license/cpanel
                  */
-                $get(params?: { ipAddress?: string }): Promise<string[]>;
+                $get(params?: { Ipaddress?: string }): Promise<string[]>;
                 /**
                  * Controle cache
                  */
@@ -1116,7 +1116,7 @@ export interface Ip {
                  * DirectAdmin licenses associated to this IP
                  * GET /ip/{ip}/license/directadmin
                  */
-                $get(params?: { ipAddress?: string }): Promise<string[]>;
+                $get(params?: { Ipaddress?: string }): Promise<string[]>;
                 /**
                  * Controle cache
                  */
@@ -1127,7 +1127,7 @@ export interface Ip {
                  * Plesk licenses associated to this IP
                  * GET /ip/{ip}/license/plesk
                  */
-                $get(params?: { ipAddress?: string }): Promise<string[]>;
+                $get(params?: { Ipaddress?: string }): Promise<string[]>;
                 /**
                  * Controle cache
                  */
@@ -1138,7 +1138,7 @@ export interface Ip {
                  * SQL Server licenses associated to this IP
                  * GET /ip/{ip}/license/sqlserver
                  */
-                $get(params?: { ipAddress?: string }): Promise<string[]>;
+                $get(params?: { Ipaddress?: string }): Promise<string[]>;
                 /**
                  * Controle cache
                  */
@@ -1149,7 +1149,7 @@ export interface Ip {
                  * Virtuozzo licenses associated to this IP
                  * GET /ip/{ip}/license/virtuozzo
                  */
-                $get(params?: { ipAddress?: string }): Promise<string[]>;
+                $get(params?: { Ipaddress?: string }): Promise<string[]>;
                 /**
                  * Controle cache
                  */
@@ -1160,7 +1160,7 @@ export interface Ip {
                  * Windows licenses associated to this IP
                  * GET /ip/{ip}/license/windows
                  */
-                $get(params?: { ipAddress?: string }): Promise<string[]>;
+                $get(params?: { Ipaddress?: string }): Promise<string[]>;
                 /**
                  * Controle cache
                  */
@@ -1171,7 +1171,7 @@ export interface Ip {
                  * WorkLight licenses associated to this IP
                  * GET /ip/{ip}/license/worklight
                  */
-                $get(params?: { ipAddress?: string }): Promise<string[]>;
+                $get(params?: { Ipaddress?: string }): Promise<string[]>;
                 /**
                  * Controle cache
                  */
@@ -1199,7 +1199,7 @@ export interface Ip {
              * Ip under mitigation
              * GET /ip/{ip}/mitigation
              */
-            $get(params?: { auto?: boolean, state?: ip.MitigationStateEnum }): Promise<string[]>;
+            $get(params?: { Auto?: boolean, State?: ip.MitigationStateEnum }): Promise<string[]>;
             /**
              * AntiDDOS option. Add new IP on permanent mitigation
              * POST /ip/{ip}/mitigation
@@ -1234,7 +1234,7 @@ export interface Ip {
                      * AntiDDOS option. Get statistics about your traffic in and out during this mitigation
                      * GET /ip/{ip}/mitigation/{ipOnMitigation}/stats
                      */
-                    $get(params: { from: string, scale: ip.MitigationStatsScaleEnum, to: string }): Promise<ip.MitigationStats[]>;
+                    $get(params: { From: string, Scale: ip.MitigationStatsScaleEnum, To: string }): Promise<ip.MitigationStats[]>;
                     /**
                      * Controle cache
                      */
@@ -1245,7 +1245,7 @@ export interface Ip {
                      * AntiDDOS option. Get top stream on your ip on a specific timestamp
                      * GET /ip/{ip}/mitigation/{ipOnMitigation}/topStream
                      */
-                    $get(params: { date: string, scale: ip.MitigationStatsScaleEnum }): Promise<ip.MitigationDetailedStats[]>;
+                    $get(params: { Date: string, Scale: ip.MitigationStatsScaleEnum }): Promise<ip.MitigationDetailedStats[]>;
                     /**
                      * Controle cache
                      */
@@ -1318,7 +1318,7 @@ export interface Ip {
              * Ip under anti-phishing
              * GET /ip/{ip}/phishing
              */
-            $get(params?: { ipOnAntiphishing?: string, state?: ip.AntiphishingStateEnum }): Promise<number[]>;
+            $get(params?: { Iponantiphishing?: string, State?: ip.AntiphishingStateEnum }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -1388,7 +1388,7 @@ export interface Ip {
              * Ip spamming
              * GET /ip/{ip}/spam
              */
-            $get(params?: { state?: ip.SpamStateEnum }): Promise<string[]>;
+            $get(params?: { State?: ip.SpamStateEnum }): Promise<string[]>;
             /**
              * Controle cache
              */
@@ -1408,7 +1408,7 @@ export interface Ip {
                      * Get statistics about the email traffic
                      * GET /ip/{ip}/spam/{ipSpamming}/stats
                      */
-                    $get(params: { from: string, to: string }): Promise<ip.SpamStats[]>;
+                    $get(params: { From: string, To: string }): Promise<ip.SpamStats[]>;
                     /**
                      * Controle cache
                      */
@@ -1428,7 +1428,7 @@ export interface Ip {
              * IP tasks
              * GET /ip/{ip}/task
              */
-            $get(params?: { function_?: ip.TaskFunctionEnum, status?: ip.TaskStatusEnum }): Promise<number[]>;
+            $get(params?: { Function?: ip.TaskFunctionEnum, Status?: ip.TaskStatusEnum }): Promise<number[]>;
             /**
              * Controle cache
              */

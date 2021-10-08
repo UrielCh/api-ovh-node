@@ -843,7 +843,7 @@ export interface Order {
          * List of your OVH order carts
          * GET /order/cart
          */
-        $get(params?: { description?: string }): Promise<string[]>;
+        $get(params?: { Description?: string }): Promise<string[]>;
         /**
          * Create a new OVH order cart
          * POST /order/cart
@@ -900,7 +900,7 @@ export interface Order {
                      * Get informations about baremetal server options
                      * GET /order/cart/{cartId}/baremetalServers/options
                      */
-                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params: { Plancode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
                      * Post a new baremetal server option in your cart
                      * POST /order/cart/{cartId}/baremetalServers/options
@@ -948,7 +948,7 @@ export interface Order {
                      * Get informations about Public Cloud options
                      * GET /order/cart/{cartId}/cloud/options
                      */
-                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params: { Plancode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
                      * Post a new Public Cloud option in your cart
                      * POST /order/cart/{cartId}/cloud/options
@@ -965,7 +965,7 @@ export interface Order {
                  * Delete a coupon from cart
                  * DELETE /order/cart/{cartId}/coupon
                  */
-                $delete(params: { coupon: string }): Promise<void>;
+                $delete(params: { Coupon: string }): Promise<void>;
                 /**
                  * Retrieve coupons associated to cart
                  * GET /order/cart/{cartId}/coupon
@@ -986,7 +986,7 @@ export interface Order {
                  * Get informations about a dedicated server
                  * GET /order/cart/{cartId}/dedicated
                  */
-                $get(params?: { family?: string, planCode?: string }): Promise<order.cart.GenericProductDefinition[]>;
+                $get(params?: { Family?: string, Plancode?: string }): Promise<order.cart.GenericProductDefinition[]>;
                 /**
                  * Post a new dedicated server item in your cart
                  * POST /order/cart/{cartId}/dedicated
@@ -1001,7 +1001,7 @@ export interface Order {
                      * Get informations about dedicated server options
                      * GET /order/cart/{cartId}/dedicated/options
                      */
-                    $get(params: { family?: string, planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params: { Family?: string, Plancode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
                      * Post a new dedicated server option in your cart
                      * POST /order/cart/{cartId}/dedicated/options
@@ -1033,7 +1033,7 @@ export interface Order {
                      * Get informations about Dedicated Discover server options
                      * GET /order/cart/{cartId}/discover/options
                      */
-                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params: { Plancode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
                      * Post a new Dedicated Discover server option in your cart
                      * POST /order/cart/{cartId}/discover/options
@@ -1065,7 +1065,7 @@ export interface Order {
                      * Get information about IP addresses options
                      * GET /order/cart/{cartId}/ip/options
                      */
-                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params: { Plancode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
                      * Post a new IP addresses option in your cart
                      * POST /order/cart/{cartId}/ip/options
@@ -1097,7 +1097,7 @@ export interface Order {
                      * Get informations about IP Load-Balancing options
                      * GET /order/cart/{cartId}/ipLoadbalancing/options
                      */
-                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params: { Plancode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
                      * Post a new IP Load-Balancing option in your cart
                      * POST /order/cart/{cartId}/ipLoadbalancing/options
@@ -1144,7 +1144,7 @@ export interface Order {
                          * Retrieve all configuration item of the cart item
                          * GET /order/cart/{cartId}/item/{itemId}/configuration
                          */
-                        $get(params?: { label?: string }): Promise<number[]>;
+                        $get(params?: { Label?: string }): Promise<number[]>;
                         /**
                          * Setup configuration item for the product
                          * POST /order/cart/{cartId}/item/{itemId}/configuration
@@ -1236,7 +1236,7 @@ export interface Order {
                      * Get informations about Plesk license options
                      * GET /order/cart/{cartId}/licensePlesk/options
                      */
-                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params: { Plancode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
                      * Post a new Plesk license option in your cart
                      * POST /order/cart/{cartId}/licensePlesk/options
@@ -1284,7 +1284,7 @@ export interface Order {
                      * Get informations about Virtuozzo license options
                      * GET /order/cart/{cartId}/licenseVirtuozzo/options
                      */
-                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params: { Plancode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
                      * Post a new Virtuozzo license option in your cart
                      * POST /order/cart/{cartId}/licenseVirtuozzo/options
@@ -1380,7 +1380,7 @@ export interface Order {
                      * Get informations about Hosted Dedicated Cloud options
                      * GET /order/cart/{cartId}/privateCloud/options
                      */
-                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params: { Plancode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
                      * Post a new Hosted Dedicated Cloud option in your cart
                      * POST /order/cart/{cartId}/privateCloud/options
@@ -1412,7 +1412,7 @@ export interface Order {
                      * Get informations about SSL Comodo options
                      * GET /order/cart/{cartId}/sslComodo/options
                      */
-                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params: { Plancode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
                      * Post a new SSL Comodo option in your cart
                      * POST /order/cart/{cartId}/sslComodo/options
@@ -1455,7 +1455,7 @@ export interface Order {
                      * Get informations about Veeam Enterprise options
                      * GET /order/cart/{cartId}/veeamEnterprise/options
                      */
-                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params: { Plancode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
                      * Post a new Veeam Enterprise option in your cart
                      * POST /order/cart/{cartId}/veeamEnterprise/options
@@ -1487,7 +1487,7 @@ export interface Order {
                      * Get informations about Veeam Cloud Connect options
                      * GET /order/cart/{cartId}/veeamcc/options
                      */
-                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params: { Plancode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
                      * Post a new Veeam Cloud Connect option in your cart
                      * POST /order/cart/{cartId}/veeamcc/options
@@ -1519,7 +1519,7 @@ export interface Order {
                      * Get informations about VPS options
                      * GET /order/cart/{cartId}/vps/options
                      */
-                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params: { Plancode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
                      * Post a new VPS option in your cart
                      * POST /order/cart/{cartId}/vps/options
@@ -1864,7 +1864,7 @@ export interface Order {
                  * Retrieve information of Public Cloud catalog
                  * GET /order/catalog/formatted/cloud
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -1875,7 +1875,7 @@ export interface Order {
                  * Retrieve information of dedicated server catalog
                  * GET /order/catalog/formatted/dedicated
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -1886,7 +1886,7 @@ export interface Order {
                  * Retrieve information of dedicated discover offer server catalog
                  * GET /order/catalog/formatted/discover
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -1897,7 +1897,7 @@ export interface Order {
                  * Retrieve information of IP addresses catalog
                  * GET /order/catalog/formatted/ip
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -1908,7 +1908,7 @@ export interface Order {
                  * Retrieve information of CloudLinux licenses catalog
                  * GET /order/catalog/formatted/licenseCloudLinux
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -1919,7 +1919,7 @@ export interface Order {
                  * Retrieve information of Directadmin licenses offers catalog
                  * GET /order/catalog/formatted/licenseDirectadmin
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -1930,7 +1930,7 @@ export interface Order {
                  * Retrieve information of Plesk licenses catalog
                  * GET /order/catalog/formatted/licensePlesk
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -1941,7 +1941,7 @@ export interface Order {
                  * Retrieve information of SqlServer licenses catalog
                  * GET /order/catalog/formatted/licenseSqlServer
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -1952,7 +1952,7 @@ export interface Order {
                  * Retrieve information of Virtuozzo licenses catalog
                  * GET /order/catalog/formatted/licenseVirtuozzo
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -1963,7 +1963,7 @@ export interface Order {
                  * Retrieve information of Windows licenses catalog
                  * GET /order/catalog/formatted/licenseWindows
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -1974,7 +1974,7 @@ export interface Order {
                  * Retrieve information of Worklight licenses catalog
                  * GET /order/catalog/formatted/licenseWorklight
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -1985,7 +1985,7 @@ export interface Order {
                  * Retrieve information of cPanel licenses catalog
                  * GET /order/catalog/formatted/licensecPanel
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -1996,7 +1996,7 @@ export interface Order {
                  * Retrieve information of Dedicated Cloud catalog
                  * GET /order/catalog/formatted/privateCloud
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.pcc.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.pcc.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -2007,7 +2007,7 @@ export interface Order {
                  * Retrieve information of VPS catalog
                  * GET /order/catalog/formatted/vps
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -2020,7 +2020,7 @@ export interface Order {
                  * Retrieve information of catalog
                  * GET /order/catalog/private/privateCloud
                  */
-                $get(params: { catalogName: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.pcc.Catalog>;
+                $get(params: { Catalogname: string, Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.pcc.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -2028,12 +2028,23 @@ export interface Order {
             }
         }
         public: {
+            anthos: {
+                /**
+                 * Retrieve Anthos catalog
+                 * GET /order/catalog/public/anthos
+                 */
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             baremetalServers: {
                 /**
                  * Retrieve bare-metal servers catalog
                  * GET /order/catalog/public/baremetalServers
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.DedicatedServerCatalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.DedicatedServerCatalog>;
                 /**
                  * Controle cache
                  */
@@ -2044,7 +2055,18 @@ export interface Order {
                  * Retrieve Public Cloud catalog
                  * GET /order/catalog/public/cloud
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            domain: {
+                /**
+                 * Retrieve domain catalog
+                 * GET /order/catalog/public/domain
+                 */
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -2055,7 +2077,7 @@ export interface Order {
                  * Retrieve Enterprise Cloud Databases catalog
                  * GET /order/catalog/public/enterpriseCloudDatabases
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -2066,7 +2088,7 @@ export interface Order {
                  * Retrieve License cPanel catalog
                  * GET /order/catalog/public/licensecPanel
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -2077,7 +2099,7 @@ export interface Order {
                  * Retrieve Dedicated Cloud catalog
                  * GET /order/catalog/public/privateCloud
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -2088,7 +2110,7 @@ export interface Order {
                  * Retrieve Private SQL catalog
                  * GET /order/catalog/public/privateSQL
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -2099,7 +2121,7 @@ export interface Order {
                  * Retrieve Telephony catalog
                  * GET /order/catalog/public/telephony
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -2110,7 +2132,7 @@ export interface Order {
                  * Retrieve VPS catalog
                  * GET /order/catalog/public/vps
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -2121,7 +2143,7 @@ export interface Order {
                  * Retrieve Web PaaS catalog
                  * GET /order/catalog/public/webPaaS
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                $get(params: { Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -2155,7 +2177,7 @@ export interface Order {
                      * Get a provisional order for the selected upgrade of your service
                      * GET /order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}
                      */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: { Quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}
@@ -2193,7 +2215,7 @@ export interface Order {
                      * Get a provisional order for the selected upgrade of your service
                      * GET /order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}
                      */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: { Quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}
@@ -2231,7 +2253,7 @@ export interface Order {
                      * Get a provisional order for the selected upgrade of your service
                      * GET /order/upgrade/licensePlesk/{serviceName}/{planCode}
                      */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: { Quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/licensePlesk/{serviceName}/{planCode}
@@ -2269,7 +2291,7 @@ export interface Order {
                      * Get a provisional order for the selected upgrade of your service
                      * GET /order/upgrade/licensecPanel/{serviceName}/{planCode}
                      */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: { Quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/licensecPanel/{serviceName}/{planCode}
@@ -2307,7 +2329,7 @@ export interface Order {
                      * Get a provisional order for the selected upgrade of your service
                      * GET /order/upgrade/privateCloud/{serviceName}/{planCode}
                      */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: { Quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/privateCloud/{serviceName}/{planCode}
@@ -2345,7 +2367,7 @@ export interface Order {
                      * Get a provisional order for the selected upgrade of your service
                      * GET /order/upgrade/privateCloudManagementFee/{serviceName}/{planCode}
                      */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: { Quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/privateCloudManagementFee/{serviceName}/{planCode}
@@ -2383,7 +2405,7 @@ export interface Order {
                      * Get a provisional order for the selected upgrade of your service
                      * GET /order/upgrade/vps/{serviceName}/{planCode}
                      */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: { Quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/vps/{serviceName}/{planCode}
@@ -2421,7 +2443,7 @@ export interface Order {
                      * Get a provisional order for the selected upgrade of your service
                      * GET /order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}
                      */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: { Quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}

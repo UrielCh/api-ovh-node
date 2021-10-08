@@ -259,7 +259,7 @@ export interface Vrack {
              * List all services allowed in this vrack
              * GET /vrack/{serviceName}/allowedServices
              */
-            $get(params?: { serviceFamily?: vrack.AllowedServiceEnum }): Promise<vrack.AllowedServices>;
+            $get(params?: { Servicefamily?: vrack.AllowedServiceEnum }): Promise<vrack.AllowedServices>;
             /**
              * Controle cache
              */
@@ -431,7 +431,7 @@ export interface Vrack {
                      * Retrieve vrack traffic graph values (LEGACY)
                      * GET /vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg
                      */
-                    $get(params: { period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum }): Promise<dedicated.server.MrtgTimestampValue[]>;
+                    $get(params: { Period: dedicated.server.MrtgPeriodEnum, Type: dedicated.server.MrtgTypeEnum }): Promise<dedicated.server.MrtgTimestampValue[]>;
                     /**
                      * Controle cache
                      */

@@ -180,6 +180,11 @@ export namespace dedicated {
      */
     export type OperationFunctionEnum = "bmc/javaKvm" | "bmc/restart" | "bmc/revokeSessions" | "bmc/sshSol" | "bmc/testPassword" | "bmc/testPing" | "bmc/testWeb" | "bmc/webKvm" | "bmc/webSol"
     /**
+     * Intervention status
+     * type fullname: dedicated.PlannedInterventionStatusEnum
+     */
+    export type PlannedInterventionStatusEnum = "doing" | "done" | "todo"
+    /**
      * A time slot for a planned intervention
      * interface fullName: dedicated.PlannedInterventionTimeSlot.PlannedInterventionTimeSlot
      */
@@ -187,6 +192,11 @@ export namespace dedicated {
         endDate: string;
         startDate: string;
     }
+    /**
+     * Intervention type
+     * type fullname: dedicated.PlannedInterventionTypeEnum
+     */
+    export type PlannedInterventionTypeEnum = "HARDWARE_UPGRADE_ON_ACTIVE_SERVER"
     /**
      * profile firewall asa
      * type fullname: dedicated.ProfileFirewallEnum
@@ -920,6 +930,17 @@ export namespace dedicated {
          */
         export type OrderableSysFeatureEnum = "backupProtocol" | "monitoring"
         /**
+         * Planned intervention on the server
+         * interface fullName: dedicated.server.PlannedIntervention.PlannedIntervention
+         */
+        export interface PlannedIntervention {
+            expectedEndDate: string;
+            id: number;
+            status: dedicated.PlannedInterventionStatusEnum;
+            type: dedicated.PlannedInterventionTypeEnum;
+            wantedStartDate: string;
+        }
+        /**
          * A structure describing routing informations about this dedicated server
          * interface fullName: dedicated.server.RoutingDetails.RoutingDetails
          */
@@ -1189,6 +1210,7 @@ export namespace dedicated {
             lastUpdate?: string;
             needSchedule: boolean;
             note?: string;
+            plannedInterventionId?: number;
             startDate: string;
             status: dedicated.TaskStatusEnum;
             taskId: number;
@@ -1609,7 +1631,7 @@ export interface Dedicated {
              * List the availability of dedicated server
              * GET /dedicated/server/availabilities
              */
-            $get(params: { country: nichandle.OvhSubsidiaryEnum, hardware?: string }): Promise<dedicated.Availabilities[]>;
+            $get(params: { Country: nichandle.OvhSubsidiaryEnum, Hardware?: string }): Promise<dedicated.Availabilities[]>;
             /**
              * Controle cache
              */
@@ -1632,7 +1654,7 @@ export interface Dedicated {
                  * List the availability of dedicated server
                  * GET /dedicated/server/datacenter/availabilities
                  */
-                $get(params?: { datacenters?: string, excludeDatacenters?: boolean, gpu?: string, memory?: string, planCode?: string, server?: string, storage?: string, systemStorage?: string }): Promise<dedicated.DatacenterAvailability[]>;
+                $get(params?: { Datacenters?: string, Excludedatacenters?: boolean, Gpu?: string, Memory?: string, Plancode?: string, Server?: string, Storage?: string, Systemstorage?: string }): Promise<dedicated.DatacenterAvailability[]>;
                 /**
                  * Controle cache
                  */
@@ -1642,7 +1664,7 @@ export interface Dedicated {
                      * List the raw availability of dedicated server
                      * GET /dedicated/server/datacenter/availabilities/raw
                      */
-                    $get(params?: { datacenters?: string, excludeDatacenters?: boolean, gpu?: string, memory?: string, planCode?: string, server?: string, storage?: string, systemStorage?: string }): Promise<dedicated.DatacenterRawAvailability[]>;
+                    $get(params?: { Datacenters?: string, Excludedatacenters?: boolean, Gpu?: string, Memory?: string, Plancode?: string, Server?: string, Storage?: string, Systemstorage?: string }): Promise<dedicated.DatacenterRawAvailability[]>;
                     /**
                      * Controle cache
                      */
@@ -1655,7 +1677,7 @@ export interface Dedicated {
              * List the os available for a specified hardware reference
              * GET /dedicated/server/osAvailabilities
              */
-            $get(params: { hardware: string }): Promise<string[]>;
+            $get(params: { Hardware: string }): Promise<string[]>;
             /**
              * Controle cache
              */
@@ -1741,7 +1763,7 @@ export interface Dedicated {
                  * Server compatibles netboots
                  * GET /dedicated/server/{serviceName}/boot
                  */
-                $get(params?: { bootType?: dedicated.server.BootTypeEnum }): Promise<number[]>;
+                $get(params?: { Boottype?: dedicated.server.BootTypeEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */
@@ -1884,7 +1906,7 @@ export interface Dedicated {
                          * IPMI access method
                          * GET /dedicated/server/{serviceName}/features/ipmi/access
                          */
-                        $get(params: { type: dedicated.server.IpmiAccessTypeEnum }): Promise<dedicated.server.IpmiAccessValue>;
+                        $get(params: { Type: dedicated.server.IpmiAccessTypeEnum }): Promise<dedicated.server.IpmiAccessValue>;
                         /**
                          * Request an acces on KVM IPMI interface
                          * POST /dedicated/server/{serviceName}/features/ipmi/access
@@ -1914,7 +1936,7 @@ export interface Dedicated {
                          * Result of http, ping and identification tests on IPMI interface
                          * GET /dedicated/server/{serviceName}/features/ipmi/test
                          */
-                        $get(params: { type: dedicated.server.IpmiTestTypeEnum }): Promise<dedicated.server.IpmiTestResult>;
+                        $get(params: { Type: dedicated.server.IpmiTestTypeEnum }): Promise<dedicated.server.IpmiTestResult>;
                         /**
                          * Launch test on KVM IPMI interface
                          * POST /dedicated/server/{serviceName}/features/ipmi/test
@@ -1956,7 +1978,7 @@ export interface Dedicated {
                          * Get url of binary to update firewall asa
                          * GET /dedicated/server/{serviceName}/firewall/binary/link
                          */
-                        $get(params: { binaryName: string }): Promise<dedicated.BinaryFirewallLink>;
+                        $get(params: { Binaryname: string }): Promise<dedicated.BinaryFirewallLink>;
                         /**
                          * Controle cache
                          */
@@ -1970,7 +1992,7 @@ export interface Dedicated {
                      * Retrieve compatible  install template partitions scheme
                      * GET /dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes
                      */
-                    $get(params: { templateName: string }): Promise<string[]>;
+                    $get(params: { Templatename: string }): Promise<string[]>;
                     /**
                      * Controle cache
                      */
@@ -2003,7 +2025,7 @@ export interface Dedicated {
                      * Get hardware RAID size for a given configuration
                      * GET /dedicated/server/{serviceName}/install/hardwareRaidSize
                      */
-                    $get(params: { partitionSchemeName: string, templateName: string }): Promise<dedicated.server.HardwareRaidSize>;
+                    $get(params: { Partitionschemename: string, Templatename: string }): Promise<dedicated.server.HardwareRaidSize>;
                     /**
                      * Controle cache
                      */
@@ -2032,7 +2054,7 @@ export interface Dedicated {
                      * Gives some capabilities regarding the template for the current dedicated server.
                      * GET /dedicated/server/{serviceName}/install/templateCapabilities
                      */
-                    $get(params: { templateName: string }): Promise<dedicated.server.TemplateCaps>;
+                    $get(params: { Templatename: string }): Promise<dedicated.server.TemplateCaps>;
                     /**
                      * Controle cache
                      */
@@ -2073,7 +2095,7 @@ export interface Dedicated {
                  * Check if given IP can be moved to this server
                  * GET /dedicated/server/{serviceName}/ipCanBeMovedTo
                  */
-                $get(params: { ip: string }): Promise<void>;
+                $get(params: { Ip: string }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -2144,7 +2166,7 @@ export interface Dedicated {
                  * Retrieve traffic graph values
                  * GET /dedicated/server/{serviceName}/mrtg
                  */
-                $get(params: { period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum }): Promise<dedicated.server.MrtgTimestampValue[]>;
+                $get(params: { Period: dedicated.server.MrtgPeriodEnum, Type: dedicated.server.MrtgTypeEnum }): Promise<dedicated.server.MrtgTimestampValue[]>;
                 /**
                  * Controle cache
                  */
@@ -2155,7 +2177,7 @@ export interface Dedicated {
                  * List server networkInterfaceController
                  * GET /dedicated/server/{serviceName}/networkInterfaceController
                  */
-                $get(params?: { linkType?: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum }): Promise<string[]>;
+                $get(params?: { Linktype?: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum }): Promise<string[]>;
                 /**
                  * Controle cache
                  */
@@ -2175,7 +2197,7 @@ export interface Dedicated {
                          * Retrieve traffic graph values
                          * GET /dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg
                          */
-                        $get(params: { period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum }): Promise<dedicated.server.MrtgTimestampValue[]>;
+                        $get(params: { Period: dedicated.server.MrtgPeriodEnum, Type: dedicated.server.MrtgTypeEnum }): Promise<dedicated.server.MrtgTimestampValue[]>;
                         /**
                          * Controle cache
                          */
@@ -2279,7 +2301,7 @@ export interface Dedicated {
                      * Is this feature orderable with your server
                      * GET /dedicated/server/{serviceName}/orderable/feature
                      */
-                    $get(params: { feature: dedicated.server.OrderableSysFeatureEnum }): Promise<boolean>;
+                    $get(params: { Feature: dedicated.server.OrderableSysFeatureEnum }): Promise<boolean>;
                     /**
                      * Controle cache
                      */
@@ -2412,7 +2434,7 @@ export interface Dedicated {
                  * DNS field to temporarily add to your zone so that we can verify you are the owner of this domain
                  * GET /dedicated/server/{serviceName}/secondaryDnsNameDomainToken
                  */
-                $get(params: { domain: string }): Promise<secondaryDns.SecondaryDNSCheckField>;
+                $get(params: { Domain: string }): Promise<secondaryDns.SecondaryDNSCheckField>;
                 /**
                  * Controle cache
                  */
@@ -2598,7 +2620,7 @@ export interface Dedicated {
                  * Your own SPLA licenses attached to this dedicated server
                  * GET /dedicated/server/{serviceName}/spla
                  */
-                $get(params?: { status?: dedicated.server.SplaStatusEnum, type?: dedicated.server.SplaTypeEnum }): Promise<number[]>;
+                $get(params?: { Status?: dedicated.server.SplaStatusEnum, Type?: dedicated.server.SplaTypeEnum }): Promise<number[]>;
                 /**
                  * Add a new SPLA license
                  * POST /dedicated/server/{serviceName}/spla
@@ -2647,7 +2669,7 @@ export interface Dedicated {
                      * Retrieve RTM graph values
                      * GET /dedicated/server/{serviceName}/statistics/chart
                      */
-                    $get(params: { period: dedicated.server.RtmChartPeriodEnum, type: dedicated.server.RtmChartTypeEnum }): Promise<complexType.ChartReturn>;
+                    $get(params: { Period: dedicated.server.RtmChartPeriodEnum, Type: dedicated.server.RtmChartTypeEnum }): Promise<complexType.ChartReturn>;
                     /**
                      * Controle cache
                      */
@@ -2777,7 +2799,7 @@ export interface Dedicated {
                              * Retrieve partition charts
                              * GET /dedicated/server/{serviceName}/statistics/partition/{partition}/chart
                              */
-                            $get(params: { period: dedicated.server.RtmChartPeriodEnum }): Promise<complexType.ChartReturn>;
+                            $get(params: { Period: dedicated.server.RtmChartPeriodEnum }): Promise<complexType.ChartReturn>;
                             /**
                              * Controle cache
                              */
@@ -2904,7 +2926,7 @@ export interface Dedicated {
                  * Dedicated server todos
                  * GET /dedicated/server/{serviceName}/task
                  */
-                $get(params?: { function_?: dedicated.TaskFunctionEnum, status?: dedicated.TaskStatusEnum }): Promise<number[]>;
+                $get(params?: { Function?: dedicated.TaskFunctionEnum, Status?: dedicated.TaskStatusEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */
@@ -2999,7 +3021,7 @@ export interface Dedicated {
                  * List server VirtualNetworkInterfaces
                  * GET /dedicated/server/{serviceName}/virtualNetworkInterface
                  */
-                $get(params?: { enabled?: boolean, mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string, vrack?: string }): Promise<string[]>;
+                $get(params?: { Enabled?: boolean, Mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, Name?: string, Vrack?: string }): Promise<string[]>;
                 /**
                  * Controle cache
                  */
@@ -3065,7 +3087,7 @@ export interface Dedicated {
                          * Retrieve vrack traffic graph values (LEGACY)
                          * GET /dedicated/server/{serviceName}/vrack/{vrack}/mrtg
                          */
-                        $get(params: { period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum }): Promise<dedicated.server.MrtgTimestampValue[]>;
+                        $get(params: { Period: dedicated.server.MrtgPeriodEnum, Type: dedicated.server.MrtgTypeEnum }): Promise<dedicated.server.MrtgTimestampValue[]>;
                         /**
                          * Controle cache
                          */

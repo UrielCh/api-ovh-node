@@ -1218,7 +1218,7 @@ export const schema: Schema = {
               "dataType": "dedicated.storage.PartitionUsageTypeEnum",
               "description": "The type of statistic to be fetched",
               "fullType": "dedicated.storage.PartitionUsageTypeEnum",
-              "name": "type",
+              "name": "Type",
               "paramType": "query",
               "required": true
             }
@@ -1317,7 +1317,7 @@ export const schema: Schema = {
               "dataType": "dedicated.storage.TaskFunctionEnum",
               "description": "Filter the value of operation property (=)",
               "fullType": "dedicated.storage.TaskFunctionEnum",
-              "name": "operation",
+              "name": "Operation",
               "paramType": "query",
               "required": false
             },
@@ -1325,7 +1325,7 @@ export const schema: Schema = {
               "dataType": "dedicated.TaskStatusEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "dedicated.TaskStatusEnum",
-              "name": "status",
+              "name": "Status",
               "paramType": "query",
               "required": false
             }
@@ -1431,7 +1431,7 @@ export const schema: Schema = {
               "dataType": "dedicated.storage.NasUsageTypeEnum",
               "description": "The type of statistic to be fetched",
               "fullType": "dedicated.storage.NasUsageTypeEnum",
-              "name": "type",
+              "name": "Type",
               "paramType": "query",
               "required": true
             }

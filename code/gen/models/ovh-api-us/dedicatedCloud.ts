@@ -301,7 +301,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "name",
+              "name": "Name",
               "paramType": "query",
               "required": false
             },
@@ -309,7 +309,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "state",
+              "name": "State",
               "paramType": "query",
               "required": false
             }
@@ -2087,7 +2087,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.filer.NodeTypeEnum",
               "description": "Filer cluster node used to get location (default value: master)",
               "fullType": "dedicatedCloud.filer.NodeTypeEnum",
-              "name": "node",
+              "name": "Node",
               "paramType": "query",
               "required": false
             }
@@ -2187,7 +2187,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "name",
+              "name": "Name",
               "paramType": "query",
               "required": false
             },
@@ -2195,7 +2195,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "state",
+              "name": "State",
               "paramType": "query",
               "required": false
             }
@@ -2898,7 +2898,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "name",
+              "name": "Name",
               "paramType": "query",
               "required": false
             },
@@ -2906,7 +2906,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "state",
+              "name": "State",
               "paramType": "query",
               "required": false
             }
@@ -3444,7 +3444,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "name",
+              "name": "Name",
               "paramType": "query",
               "required": false
             },
@@ -3452,7 +3452,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "state",
+              "name": "State",
               "paramType": "query",
               "required": false
             }
@@ -4840,7 +4840,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.filer.NodeTypeEnum",
               "description": "Filer cluster node used to get location (default value: master)",
               "fullType": "dedicatedCloud.filer.NodeTypeEnum",
-              "name": "node",
+              "name": "Node",
               "paramType": "query",
               "required": false
             }
@@ -4924,7 +4924,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "name",
+              "name": "Name",
               "paramType": "query",
               "required": false
             },
@@ -4932,7 +4932,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "state",
+              "name": "State",
               "paramType": "query",
               "required": false
             }
@@ -5124,7 +5124,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by datacenter Id",
               "fullType": "long",
-              "name": "datacenterId",
+              "name": "Datacenterid",
               "paramType": "query",
               "required": false
             },
@@ -5132,7 +5132,7 @@ export const schema: Schema = {
               "dataType": "date",
               "description": "Filter the tasks by end date (>=)",
               "fullType": "date",
-              "name": "endDate.from",
+              "name": "Enddate.from",
               "paramType": "query",
               "required": false
             },
@@ -5140,7 +5140,7 @@ export const schema: Schema = {
               "dataType": "date",
               "description": "Filter the tasks by end date (<=)",
               "fullType": "date",
-              "name": "endDate.to",
+              "name": "Enddate.to",
               "paramType": "query",
               "required": false
             },
@@ -5148,7 +5148,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Filter the tasks by execution date (>=)",
               "fullType": "datetime",
-              "name": "executionDate.from",
+              "name": "Executiondate.from",
               "paramType": "query",
               "required": false
             },
@@ -5156,7 +5156,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Filter the tasks by execution date (<=)",
               "fullType": "datetime",
-              "name": "executionDate.to",
+              "name": "Executiondate.to",
               "paramType": "query",
               "required": false
             },
@@ -5164,7 +5164,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by filer Id",
               "fullType": "long",
-              "name": "filerId",
+              "name": "Filerid",
               "paramType": "query",
               "required": false
             },
@@ -5172,7 +5172,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by host Id",
               "fullType": "long",
-              "name": "hostId",
+              "name": "Hostid",
               "paramType": "query",
               "required": false
             },
@@ -5180,7 +5180,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Filter the tasks by last modification date (>=)",
               "fullType": "datetime",
-              "name": "lastModificationDate.from",
+              "name": "Lastmodificationdate.from",
               "paramType": "query",
               "required": false
             },
@@ -5188,7 +5188,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Filter the tasks by last modification date (<=)",
               "fullType": "datetime",
-              "name": "lastModificationDate.to",
+              "name": "Lastmodificationdate.to",
               "paramType": "query",
               "required": false
             },
@@ -5196,7 +5196,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the tasks by name",
               "fullType": "string",
-              "name": "name",
+              "name": "Name",
               "paramType": "query",
               "required": false
             },
@@ -5204,7 +5204,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by network access Id",
               "fullType": "long",
-              "name": "networkAccessId",
+              "name": "Networkaccessid",
               "paramType": "query",
               "required": false
             },
@@ -5212,7 +5212,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by order Id",
               "fullType": "long",
-              "name": "orderId",
+              "name": "Orderid",
               "paramType": "query",
               "required": false
             },
@@ -5220,7 +5220,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by parent task Id",
               "fullType": "long",
-              "name": "parentTaskId",
+              "name": "Parenttaskid",
               "paramType": "query",
               "required": false
             },
@@ -5228,7 +5228,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum[]",
               "description": "Filter the tasks by state",
               "fullType": "dedicatedCloud.TaskStateEnum[]",
-              "name": "state",
+              "name": "State",
               "paramType": "query",
               "required": false
             },
@@ -5236,7 +5236,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by user Id",
               "fullType": "long",
-              "name": "userId",
+              "name": "Userid",
               "paramType": "query",
               "required": false
             },
@@ -5244,7 +5244,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by vlan Id",
               "fullType": "long",
-              "name": "vlanId",
+              "name": "Vlanid",
               "paramType": "query",
               "required": false
             }
@@ -5879,7 +5879,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "name",
+              "name": "Name",
               "paramType": "query",
               "required": false
             },
@@ -5887,7 +5887,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "state",
+              "name": "State",
               "paramType": "query",
               "required": false
             }
@@ -6606,6 +6606,188 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/robot/{name}"
     },
     {
+      "description": "Security options of your Dedicated Cloud",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.SecurityOption",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/securityOptions"
+    },
+    {
+      "description": "compatibilityMatrix operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Show compatibility matrix of security options with your Dedicated Cloud",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Show incompatible security options (enabled by default)",
+              "fullType": "boolean",
+              "name": "Showincompatible",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Show internal security options",
+              "fullType": "boolean",
+              "name": "Showinternal",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "dedicatedCloud.securityOption.CompatibilityMatrixEntry[]",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/securityOptions/compatibilityMatrix"
+    },
+    {
+      "description": "dependenciesTree operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Show the dependencies tree of a security option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicatedCloud.securityOption.SecurityOptionEnum",
+              "description": "Target security option",
+              "fullType": "dedicatedCloud.securityOption.SecurityOptionEnum",
+              "name": "Option",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.securityOption.DependenciesTree",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/securityOptions/dependenciesTree"
+    },
+    {
+      "description": "pendingOptions operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List pending security options enabling on your Dedicated Cloud",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.securityOption.SecurityOptionEnum[]",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/securityOptions/pendingOptions"
+    },
+    {
+      "description": "resumePendingEnabling operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Resume enabling of pending security options on your Dedicated Cloud",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicatedCloud.securityOption.SecurityOptionEnum",
+              "description": "Security option to resume enabling",
+              "fullType": "dedicatedCloud.securityOption.SecurityOptionEnum",
+              "name": "option",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/securityOptions/resumePendingEnabling"
+    },
+    {
       "description": "Details about a Service",
       "operations": [
         {
@@ -6788,7 +6970,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "name",
+              "name": "Name",
               "paramType": "query",
               "required": false
             },
@@ -6796,7 +6978,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "state",
+              "name": "State",
               "paramType": "query",
               "required": false
             }
@@ -7251,7 +7433,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "name",
+              "name": "Name",
               "paramType": "query",
               "required": false
             }
@@ -8162,7 +8344,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "name",
+              "name": "Name",
               "paramType": "query",
               "required": false
             },
@@ -8170,7 +8352,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "state",
+              "name": "State",
               "paramType": "query",
               "required": false
             }
@@ -9331,7 +9513,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Minimum reference year",
               "fullType": "long",
-              "name": "minYear",
+              "name": "Minyear",
               "paramType": "query",
               "required": false
             }
@@ -9399,7 +9581,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Profile filter",
               "fullType": "string",
-              "name": "profileFilter",
+              "name": "Profilefilter",
               "paramType": "query",
               "required": false
             }
@@ -11585,6 +11767,21 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "dedicatedCloud.SecurityOption": {
+      "description": "Security options of your Dedicated Cloud",
+      "id": "SecurityOption",
+      "namespace": "dedicatedCloud",
+      "properties": {
+        "state": {
+          "canBeNull": false,
+          "description": "State of security options",
+          "fullType": "dedicatedCloud.securityOption.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicatedCloud.securityOption.StateEnum"
         }
       }
     },
@@ -13936,6 +14133,172 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "VmNetworkRoleEnum",
       "namespace": "dedicatedCloud.right"
+    },
+    "dedicatedCloud.securityOption.CompatibilityMatrixEntry": {
+      "description": "Representation of a security option",
+      "id": "CompatibilityMatrixEntry",
+      "namespace": "dedicatedCloud.securityOption",
+      "properties": {
+        "compatible": {
+          "canBeNull": false,
+          "description": "Indicates if option is compatible and can be enabled on your Dedicated Cloud",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Security option description",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "enabled": {
+          "canBeNull": false,
+          "description": "Indicates if option is enabled on your Dedicated Cloud",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Security option name",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicatedCloud.securityOption.SecurityOptionEnum"
+        },
+        "reason": {
+          "canBeNull": true,
+          "description": "If your Dedicated Cloud is not compatible with this option, indicates the reason",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicatedCloud.securityOption.ErrorMessage"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Detailed security option state",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicatedCloud.securityOption.StateEnum"
+        }
+      }
+    },
+    "dedicatedCloud.securityOption.DependenciesTree": {
+      "description": "Display requirements, conflicts and dependencies of a security option",
+      "id": "DependenciesTree",
+      "namespace": "dedicatedCloud.securityOption",
+      "properties": {
+        "conflicts": {
+          "canBeNull": false,
+          "description": "List of conflicting security options which prevents installing given security option",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicatedCloud.securityOption.SecurityOptionEnum[]"
+        },
+        "depends": {
+          "canBeNull": false,
+          "description": "List of dependencies that will also be enabled during an install of given security option",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicatedCloud.securityOption.SecurityOptionEnum[]"
+        },
+        "requires": {
+          "canBeNull": false,
+          "description": "List of required security options which must be enabled to install given security option",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicatedCloud.securityOption.SecurityOptionEnum[]"
+        }
+      }
+    },
+    "dedicatedCloud.securityOption.ErrorEnum": {
+      "description": "Security option management errors",
+      "enum": [
+        "ACTION_IMPOSSIBLE",
+        "ALREADY_DISABLED",
+        "ALREADY_ENABLED",
+        "BAD_ZONE",
+        "BREAKING_REQUIREMENTS",
+        "CONFLICTING_OPTIONS",
+        "DEFINITIVE_OPTION",
+        "GENERIC_ERROR",
+        "HAS_UNSUPPORTED_DEPENDENCIES",
+        "MISSING_REQUIREMENTS_OPTIONS",
+        "NOT_ENABLED",
+        "NOT_MANAGEABLE_DIRECTLY",
+        "SERVICE_SUSPENDED"
+      ],
+      "enumType": "string",
+      "id": "ErrorEnum",
+      "namespace": "dedicatedCloud.securityOption"
+    },
+    "dedicatedCloud.securityOption.ErrorMessage": {
+      "description": "Security option code",
+      "id": "ErrorMessage",
+      "namespace": "dedicatedCloud.securityOption",
+      "properties": {
+        "code": {
+          "canBeNull": false,
+          "description": "Error code",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicatedCloud.securityOption.ErrorEnum"
+        },
+        "message": {
+          "canBeNull": false,
+          "description": "Error message",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "dedicatedCloud.securityOption.SecurityOptionEnum": {
+      "description": "Security option identifiers",
+      "enum": [
+        "accessNetworkFiltered",
+        "advancedSecurity",
+        "base",
+        "grsecKernel",
+        "hds",
+        "hids",
+        "hipaa",
+        "nids",
+        "pcidss",
+        "privateCustomerVlan",
+        "privateGw",
+        "sendLogToCustomer",
+        "sessionTimeout",
+        "sftp",
+        "snc",
+        "spla",
+        "sslV3",
+        "tls1.2",
+        "tokenValidation",
+        "twoFa",
+        "twoFaFail2ban",
+        "vrliForwarder",
+        "waf"
+      ],
+      "enumType": "string",
+      "id": "SecurityOptionEnum",
+      "namespace": "dedicatedCloud.securityOption"
+    },
+    "dedicatedCloud.securityOption.StateEnum": {
+      "description": "Security option detailed states",
+      "enum": [
+        "creating",
+        "deleted",
+        "deleting",
+        "delivered",
+        "disabled",
+        "pending",
+        "toCreate",
+        "updating"
+      ],
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "dedicatedCloud.securityOption"
     },
     "dedicatedCloud.servicePackEnum": {
       "description": "List of possible service pack",

@@ -3243,6 +3243,17 @@ export const schema: Schema = {
       "id": "OperationFunctionEnum",
       "namespace": "dedicated"
     },
+    "dedicated.PlannedInterventionStatusEnum": {
+      "description": "Intervention status",
+      "enum": [
+        "doing",
+        "done",
+        "todo"
+      ],
+      "enumType": "string",
+      "id": "PlannedInterventionStatusEnum",
+      "namespace": "dedicated"
+    },
     "dedicated.PlannedInterventionTimeSlot": {
       "description": "A time slot for a planned intervention",
       "id": "PlannedInterventionTimeSlot",
@@ -3261,6 +3272,71 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "datetime"
+        }
+      }
+    },
+    "dedicated.PlannedInterventionTypeEnum": {
+      "description": "Intervention type",
+      "enum": [
+        "HARDWARE_UPGRADE_ON_ACTIVE_SERVER"
+      ],
+      "enumType": "string",
+      "id": "PlannedInterventionTypeEnum",
+      "namespace": "dedicated"
+    },
+    "dedicated.PublicLog": {
+      "description": "List of logs",
+      "id": "PublicLog",
+      "namespace": "dedicated",
+      "properties": {
+        "cacheDate": {
+          "canBeNull": true,
+          "description": "Cache store timestamp",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "count": {
+          "canBeNull": false,
+          "description": "Total amount of lines",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "data": {
+          "canBeNull": false,
+          "description": "Logs",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.PublicLogEntry[]"
+        }
+      }
+    },
+    "dedicated.PublicLogEntry": {
+      "description": "A log entry for a specific server",
+      "id": "PublicLogEntry",
+      "namespace": "dedicated",
+      "properties": {
+        "datetime": {
+          "canBeNull": false,
+          "description": "Timestamp logged",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "resume": {
+          "canBeNull": false,
+          "description": "Short text describing the entry",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "server": {
+          "canBeNull": false,
+          "description": "Name of the dedicated server",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -4988,6 +5064,53 @@ export const schema: Schema = {
       "id": "OptionStateEnum",
       "namespace": "dedicated.server"
     },
+    "dedicated.server.PlannedIntervention": {
+      "description": "Planned intervention on the server",
+      "id": "PlannedIntervention",
+      "namespace": "dedicated.server",
+      "properties": {
+        "expectedEndDate": {
+          "canBeNull": false,
+          "description": "Expected end date for this intervention",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the intervention",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the intervention",
+          "fullType": "dedicated.PlannedInterventionStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.PlannedInterventionStatusEnum"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Operation purpose",
+          "fullType": "dedicated.PlannedInterventionTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.PlannedInterventionTypeEnum"
+        },
+        "wantedStartDate": {
+          "canBeNull": false,
+          "description": "Wanted start date for this intervention",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
     "dedicated.server.RoutingDetails": {
       "description": "A structure describing routing informations about this dedicated server",
       "id": "RoutingDetails",
@@ -5886,6 +6009,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "plannedInterventionId": {
+          "canBeNull": true,
+          "description": "ID of the planned intervention for this task",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "startDate": {
           "canBeNull": false,

@@ -308,7 +308,7 @@ export const schema: Schema = {
               "dataType": "date",
               "description": "Period's start point.",
               "fullType": "date",
-              "name": "from",
+              "name": "From",
               "paramType": "query",
               "required": true
             },
@@ -316,7 +316,7 @@ export const schema: Schema = {
               "dataType": "date",
               "description": "Period's end point.",
               "fullType": "date",
-              "name": "to",
+              "name": "To",
               "paramType": "query",
               "required": true
             }
@@ -354,7 +354,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of activationEmail property (like)",
               "fullType": "string",
-              "name": "activationEmail",
+              "name": "Activationemail",
               "paramType": "query",
               "required": false
             },
@@ -362,7 +362,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of firstName property (like)",
               "fullType": "string",
-              "name": "firstName",
+              "name": "Firstname",
               "paramType": "query",
               "required": false
             },
@@ -370,7 +370,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of lastName property (like)",
               "fullType": "string",
-              "name": "lastName",
+              "name": "Lastname",
               "paramType": "query",
               "required": false
             },
@@ -378,7 +378,7 @@ export const schema: Schema = {
               "dataType": "license.office.LicenceEnum[]",
               "description": "Filter the value of licences property (=)",
               "fullType": "license.office.LicenceEnum[]",
-              "name": "licences",
+              "name": "Licences",
               "paramType": "query",
               "required": false
             }

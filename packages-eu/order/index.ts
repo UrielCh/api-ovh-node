@@ -224,7 +224,7 @@ export namespace hosting {
          * Private database orderable versions
          * type fullname: hosting.PrivateDatabase.OrderableVersionEnum
          */
-        export type OrderableVersionEnum = "mariadb_10.2" | "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mysql_5.7" | "mysql_8.0" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_9.6" | "redis_4.0"
+        export type OrderableVersionEnum = "mariadb_10.2" | "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mysql_5.7" | "mysql_8.0" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_9.6" | "redis_4.0" | "redis_6.0"
     }
     export namespace web {
         /**
@@ -1528,7 +1528,7 @@ export namespace telephony {
      * Number country
      * type fullname: telephony.NumberCountryEnum
      */
-    export type NumberCountryEnum = "be" | "ch" | "de" | "es" | "fr" | "gb" | "it" | "uk"
+    export type NumberCountryEnum = "be" | "ch" | "de" | "es" | "fr" | "gb" | "uk"
     /**
      * Number offer
      * type fullname: telephony.NumberOffer
@@ -4698,6 +4698,17 @@ export interface Order {
             }
         }
         public: {
+            anthos: {
+                /**
+                 * Retrieve Anthos catalog
+                 * GET /order/catalog/public/anthos
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             baremetalServers: {
                 /**
                  * Retrieve bare-metal servers catalog
@@ -4735,6 +4746,17 @@ export interface Order {
                 /**
                  * Retrieve DNS catalog
                  * GET /order/catalog/public/dns
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            domain: {
+                /**
+                 * Retrieve domain catalog
+                 * GET /order/catalog/public/domain
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**

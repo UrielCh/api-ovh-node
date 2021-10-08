@@ -1152,6 +1152,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "plannedInterventionId": {
+          "canBeNull": true,
+          "description": "ID of the planned intervention for this task",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "startDate": {
           "canBeNull": false,
           "description": "Task Creation date",

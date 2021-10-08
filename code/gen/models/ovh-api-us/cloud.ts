@@ -6,12 +6,12 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Missing description",
+      "description": "Manage cloud orders",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get all cloud pending orders",
           "httpMethod": "GET",
@@ -47,6 +47,14 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Addon family filter",
+              "fullType": "string",
+              "name": "addonFamily",
+              "paramType": "query",
+              "required": false
+            },
             {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "OVH subsidiary",
@@ -349,6 +357,14 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "string",
+              "description": "Addon family filter",
+              "fullType": "string",
+              "name": "addonFamily",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "OVH subsidiary",
               "fullType": "nichandle.OvhSubsidiaryEnum",
@@ -366,7 +382,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Plan family filter",
+              "description": "Plan family filter (deprecated, use addonFamily instead)",
               "fullType": "string",
               "name": "planFamily",
               "paramType": "query",
@@ -2778,6 +2794,154 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}/nodes"
     },
     {
+      "description": "Manage OpenIdConnect integration with Kube APIServer",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Remove OpenIdConnect integration from APIServer",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get openIdConnect integration parameters",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.OpenIdConnect",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Configure APIServer for OpenIdConnect",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeOpenIdConnectCreation",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeOpenIdConnectCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.OpenIdConnect",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Update parameters and reconfigure APIServer",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeOpenIdConnectUpdate",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeOpenIdConnectUpdate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/openIdConnect"
+    },
+    {
       "description": "Reset your cluster",
       "operations": [
         {
@@ -4501,6 +4665,190 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/region/{regionName}"
     },
     {
+      "description": "Manage your networks",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List networks",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.Network[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/network"
+    },
+    {
+      "description": "Manage your networks",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get network",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Network ID",
+              "fullType": "string",
+              "name": "networkId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.Network",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/network/{networkId}"
+    },
+    {
+      "description": "Manage your subnets",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List subnets",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Network ID",
+              "fullType": "string",
+              "name": "networkId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.Subnet[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/network/{networkId}/subnet"
+    },
+    {
+      "description": "Manage your subnets",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get subnet",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Network ID",
+              "fullType": "string",
+              "name": "networkId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Subnet ID",
+              "fullType": "string",
+              "name": "subnetId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.Subnet",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/network/{networkId}/subnet/{subnetId}"
+    },
+    {
       "description": "Consult quotas",
       "operations": [
         {
@@ -4723,6 +5071,353 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/quota/storage"
+    },
+    {
+      "description": "Manage your storage containers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get storage containers",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.StorageContainer[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create storage container",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.StorageContainerCreation",
+              "description": "Request Body",
+              "fullType": "cloud.StorageContainerCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.StorageContainer",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/storage"
+    },
+    {
+      "description": "Manage your storage containers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete storage container",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get storage container",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Limits the number of objects in the result",
+              "fullType": "long",
+              "name": "limit",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Constrains the list to objects whose names are greater than the marker",
+              "fullType": "string",
+              "name": "marker",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cloud.StorageContainer",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/storage/{name}"
+    },
+    {
+      "description": "Manage storage container objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete storage container object",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Object key",
+              "fullType": "string",
+              "name": "objectKey",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/storage/{name}/object/{objectKey}"
+    },
+    {
+      "description": "Manage storage container policy",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Add storage container policy",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.storage.AddContainerPolicy",
+              "description": "Request Body",
+              "fullType": "cloud.storage.AddContainerPolicy",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User ID",
+              "fullType": "string",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/storage/{name}/policy/{userId}"
+    },
+    {
+      "description": "Generate presigned URLs to download or upload objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Generate presigned URLs to download or upload objects",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.storage.PresignedURLInput",
+              "description": "Request Body",
+              "fullType": "cloud.storage.PresignedURLInput",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.storage.PresignedURL",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/storage/{name}/presign"
     },
     {
       "description": "Manage your automated backups",
@@ -6039,6 +6734,83 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/openrc"
+    },
+    {
+      "description": "Manage user storage policies",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Export user storage policy",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.storage.PolicyRaw",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Import user storage policy",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.storage.PolicyRaw",
+              "description": "Request Body",
+              "fullType": "cloud.storage.PolicyRaw",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/user/{userId}/policy"
     },
     {
       "description": "Missing description",
@@ -9957,6 +10729,14 @@ export const schema: Schema = {
           "required": false,
           "type": "datetime"
         },
+        "currentMonthOutgoingTraffic": {
+          "canBeNull": true,
+          "description": "Instance outgoing network traffic for the current month (in bytes)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "flavorId": {
           "canBeNull": false,
           "description": "Instance flavor id",
@@ -10059,6 +10839,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "datetime"
+        },
+        "currentMonthOutgoingTraffic": {
+          "canBeNull": true,
+          "description": "Instance outgoing network traffic for the current month (in bytes)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "flavor": {
           "canBeNull": false,
@@ -11366,11 +12154,12 @@ export const schema: Schema = {
     "cloud.kube.UpgradeVersionEnum": {
       "description": "List of available versions for upgrade",
       "enum": [
-        "1.16",
         "1.17",
         "1.18",
         "1.19",
-        "1.20"
+        "1.20",
+        "1.21",
+        "1.22"
       ],
       "enumType": "string",
       "id": "UpgradeVersionEnum",
@@ -11379,14 +12168,153 @@ export const schema: Schema = {
     "cloud.kube.VersionEnum": {
       "description": "List of available versions for installation",
       "enum": [
-        "1.17",
         "1.18",
         "1.19",
-        "1.20"
+        "1.20",
+        "1.21",
+        "1.22"
       ],
       "enumType": "string",
       "id": "VersionEnum",
       "namespace": "cloud.kube"
+    },
+    "cloud.loadbalancing.Flavor": {
+      "description": "Flavor",
+      "id": "Flavor",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Flavor id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Flavor name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.loadbalancing.LoadBalancer": {
+      "description": "LoadBalancer",
+      "id": "LoadBalancer",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "The UTC date and timestamp when the resource was created",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "flavorID": {
+          "canBeNull": false,
+          "description": "ID of the flavor",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the resource",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "operatingStatus": {
+          "canBeNull": false,
+          "description": "Operating status of the resource",
+          "fullType": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum"
+        },
+        "provisioningStatus": {
+          "canBeNull": false,
+          "description": "provisioning status of the resource",
+          "fullType": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "UTC date and timestamp when the resource was created",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "vipAddress": {
+          "canBeNull": false,
+          "description": "IP address of the Virtual IP",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "vipNetworkID": {
+          "canBeNull": false,
+          "description": "Openstack ID of the network for the Virtual IP",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "vipSubnetID": {
+          "canBeNull": false,
+          "description": "ID of the subnet for the Virtual IP",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.loadbalancing.LoadBalancerOperatingStatusEnum": {
+      "description": "Load balancer operating status",
+      "enum": [
+        "degraded",
+        "draining",
+        "error",
+        "noMonitor",
+        "offline",
+        "online"
+      ],
+      "enumType": "string",
+      "id": "LoadBalancerOperatingStatusEnum",
+      "namespace": "cloud.loadbalancing"
+    },
+    "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum": {
+      "description": "Load balancer provisioning status",
+      "enum": [
+        "active",
+        "creating",
+        "updating",
+        "deleting",
+        "deleted",
+        "error"
+      ],
+      "enumType": "string",
+      "id": "LoadBalancerProvisioningStatusEnum",
+      "namespace": "cloud.loadbalancing"
     },
     "cloud.migration.Migration": {
       "description": "Migration",
@@ -11600,6 +12528,16 @@ export const schema: Schema = {
       "id": "NetworkTypeEnum",
       "namespace": "cloud.network"
     },
+    "cloud.network.NetworkVisibilityEnum": {
+      "description": "NetworkVisibilityEnum",
+      "enum": [
+        "public",
+        "private"
+      ],
+      "enumType": "string",
+      "id": "NetworkVisibilityEnum",
+      "namespace": "cloud.network"
+    },
     "cloud.network.Subnet": {
       "description": "Subnet",
       "id": "Subnet",
@@ -11694,7 +12632,7 @@ export const schema: Schema = {
       }
     },
     "cloud.order.Order": {
-      "description": "Order",
+      "description": "Cloud Order",
       "id": "Order",
       "namespace": "cloud.order",
       "properties": {
@@ -11740,7 +12678,7 @@ export const schema: Schema = {
       }
     },
     "cloud.order.StatusEnum": {
-      "description": "StatusEnum",
+      "description": "Order status",
       "enum": [
         "unpaid",
         "delivering",
@@ -11817,6 +12755,29 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.AllocationPool": {
+      "description": "AllocationPool",
+      "id": "AllocationPool",
+      "namespace": "cloud.project",
+      "properties": {
+        "end": {
+          "canBeNull": false,
+          "description": "Last IP for the pool (eg: 192.168.1.24)",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "start": {
+          "canBeNull": false,
+          "description": "First IP for the pool (eg: 192.168.1.12)",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         }
       }
     },
@@ -12291,6 +13252,45 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.Network": {
+      "description": "Network",
+      "id": "Network",
+      "namespace": "cloud.project",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Network id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Network name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "visibility": {
+          "canBeNull": false,
+          "description": "Network visibility",
+          "fullType": "cloud.network.NetworkVisibilityEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.network.NetworkVisibilityEnum"
+        },
+        "vlanId": {
+          "canBeNull": true,
+          "description": "Network VLAN id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "cloud.project.NetworkLoadBalancer": {
       "description": "A network load balancer for TCP/UDP workloads",
       "id": "NetworkLoadBalancer",
@@ -12474,6 +13474,53 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ProjectStatusEnum",
       "namespace": "cloud.project"
+    },
+    "cloud.project.Subnet": {
+      "description": "Subnet",
+      "id": "Subnet",
+      "namespace": "cloud.project",
+      "properties": {
+        "allocationPools": {
+          "canBeNull": false,
+          "description": "List of ip pools allocated in subnet",
+          "fullType": "cloud.project.AllocationPool[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.AllocationPool[]"
+        },
+        "cidr": {
+          "canBeNull": false,
+          "description": "Subnet CIDR",
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Subnet id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "ipVersion": {
+          "canBeNull": false,
+          "description": "IP Version (4 or 6)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Subnet name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "cloud.project.certificate.Import": {
       "description": "Import external certificate",
@@ -15722,6 +16769,127 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "VolumeTypeEnum",
       "namespace": "cloud.volume"
+    },
+    "cloud.volumeBackup.VolumeBackup": {
+      "description": "A volume backup",
+      "id": "VolumeBackup",
+      "namespace": "cloud.volumeBackup",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of the backup",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Volume backup id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Volume backup name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the backup in GiB",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Staus of the backup",
+          "fullType": "cloud.volumeBackup.VolumeBackupStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.volumeBackup.VolumeBackupStatusEnum"
+        },
+        "volumeId": {
+          "canBeNull": false,
+          "description": "ID of the volume used to create the backup",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.volumeBackup.VolumeBackupCreation": {
+      "description": "Create a volume backup",
+      "id": "VolumeBackupCreation",
+      "namespace": "cloud.volumeBackup",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "name of the backup",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "volumeId": {
+          "canBeNull": false,
+          "description": "ID of the volume to backup",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.volumeBackup.VolumeBackupRestore": {
+      "description": "Restore a volume backup on a volume",
+      "id": "VolumeBackupRestore",
+      "namespace": "cloud.volumeBackup",
+      "properties": {
+        "volumeId": {
+          "canBeNull": false,
+          "description": "ID of the volume to restore on",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.volumeBackup.VolumeBackupStatusEnum": {
+      "description": "VolumeBackupStatusEnum",
+      "enum": [
+        "creating",
+        "deleting",
+        "error",
+        "ok",
+        "restoring"
+      ],
+      "enumType": "string",
+      "id": "VolumeBackupStatusEnum",
+      "namespace": "cloud.volumeBackup"
+    },
+    "cloud.volumeBackup.VolumeCreationFromBackup": {
+      "description": "Create a volume from a volume backup",
+      "id": "VolumeCreationFromBackup",
+      "namespace": "cloud.volumeBackup",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "name of the new volume",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "nichandle.OvhSubsidiaryEnum": {
       "description": "OVH subsidiaries",

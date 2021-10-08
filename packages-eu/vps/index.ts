@@ -69,6 +69,7 @@ export namespace dedicated {
             lastUpdate?: string;
             needSchedule: boolean;
             note?: string;
+            plannedInterventionId?: number;
             startDate: string;
             status: dedicated.TaskStatusEnum;
             taskId: number;
@@ -420,7 +421,7 @@ export namespace vps {
      * All states a VPS can be in
      * type fullname: vps.VpsStateEnum
      */
-    export type VpsStateEnum = "backuping" | "installing" | "maintenance" | "rebooting" | "running" | "stopped" | "stopping" | "upgrading"
+    export type VpsStateEnum = "backuping" | "installing" | "maintenance" | "rebooting" | "rescued" | "running" | "stopped" | "stopping" | "upgrading"
     /**
      * Available types for the VPS monitoring and use
      * type fullname: vps.VpsStatisticTypeEnum
@@ -564,6 +565,7 @@ export namespace vps {
          */
         export interface VPS2016to2020 {
             currentPlan: string;
+            datacenter: string;
             date?: string;
             newPlan: string;
             options: vps.migration.OptionMapping2016[];
@@ -1078,6 +1080,22 @@ export interface Vps {
              * POST /vps/{serviceName}/migration2014
              */
             $post(params: { date: string }): Promise<vps.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        migration2016: {
+            /**
+             * Get information on a possible migration of a VPS 2016 to VPS 2020
+             * GET /vps/{serviceName}/migration2016
+             */
+            $get(): Promise<vps.migration.VPS2016to2020>;
+            /**
+             * Schedule the migration of a VPS 2016 to VPS 2020
+             * POST /vps/{serviceName}/migration2016
+             */
+            $post(): Promise<vps.Task>;
             /**
              * Controle cache
              */

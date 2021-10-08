@@ -1516,6 +1516,60 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/migration2014"
     },
     {
+      "description": "migration2016 operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get information on a possible migration of a VPS 2016 to VPS 2020",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.migration.VPS2016to2020",
+          "scopes": [
+            "all",
+            "product/vps/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Schedule the migration of a VPS 2016 to VPS 2020",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.Task",
+          "scopes": [
+            "all",
+            "product/vps/all"
+          ]
+        }
+      ],
+      "path": "/vps/{serviceName}/migration2016"
+    },
+    {
       "description": "models operations",
       "operations": [
         {
@@ -3594,6 +3648,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "plannedInterventionId": {
+          "canBeNull": true,
+          "description": "ID of the planned intervention for this task",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "startDate": {
           "canBeNull": false,
           "description": "Task Creation date",
@@ -5035,6 +5097,7 @@ export const schema: Schema = {
         "installing",
         "maintenance",
         "rebooting",
+        "rescued",
         "running",
         "stopped",
         "stopping",
@@ -5432,6 +5495,13 @@ export const schema: Schema = {
         "currentPlan": {
           "canBeNull": false,
           "description": "VPS current plan code",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "datacenter": {
+          "canBeNull": false,
+          "description": "Datacenter of the migration",
           "readOnly": false,
           "required": false,
           "type": "string"

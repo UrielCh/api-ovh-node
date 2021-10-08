@@ -12283,6 +12283,60 @@ export const schema: Schema = {
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}"
     },
     {
+      "description": "changeType operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change RMA type",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "telephony.RmaChangeTypeEnum",
+              "description": "new RMA type",
+              "fullType": "telephony.RmaChangeTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Return merchandise authorisation identifier",
+              "fullType": "string",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/telephony/all"
+          ]
+        }
+      ],
+      "path": "/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}/changeType"
+    },
+    {
       "description": "supportsPhonebook operations",
       "operations": [
         {
@@ -26088,6 +26142,143 @@ export const schema: Schema = {
       "path": "/telephony/number/zones"
     },
     {
+      "description": "List the telephony.Procedure objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Procedures linked to your nichandle",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/telephony/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a telephony procedure",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Account's BIC",
+              "fullType": "string",
+              "name": "bic",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Account's IBAN",
+              "fullType": "string",
+              "name": "iban",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Account owner's address",
+              "fullType": "string",
+              "name": "ownerAddress",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Account owner's name",
+              "fullType": "string",
+              "name": "ownerName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "The ID of your registered SEPA account payment mean.",
+              "fullType": "long",
+              "name": "paymentMeanID",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "responseType": "telephony.Procedure",
+          "scopes": [
+            "all",
+            "product/telephony/all"
+          ]
+        }
+      ],
+      "path": "/telephony/procedure"
+    },
+    {
+      "description": "Procedure linked to your account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Procedure ID",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.Procedure",
+          "scopes": [
+            "all",
+            "product/telephony/all"
+          ]
+        }
+      ],
+      "path": "/telephony/procedure/{id}"
+    },
+    {
+      "description": "cancel operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Cancel the given procedure.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Procedure ID",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/telephony/all"
+          ]
+        }
+      ],
+      "path": "/telephony/procedure/{id}/cancel"
+    },
+    {
       "description": "Search a service with its domain, to get its billing account and type",
       "operations": [
         {
@@ -32328,7 +32519,6 @@ export const schema: Schema = {
         "32",
         "33",
         "34",
-        "39",
         "41",
         "44",
         "49"
@@ -32346,7 +32536,6 @@ export const schema: Schema = {
         "es",
         "fr",
         "gb",
-        "it",
         "uk"
       ],
       "enumType": "string",
@@ -34687,6 +34876,66 @@ export const schema: Schema = {
         }
       }
     },
+    "telephony.Procedure": {
+      "description": "Procedure linked to your account",
+      "id": "Procedure",
+      "namespace": "telephony",
+      "properties": {
+        "finishDate": {
+          "canBeNull": true,
+          "description": "The date at which the procedure was closed.",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Procedure ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "pdfUrl": {
+          "canBeNull": false,
+          "description": "The URL of the procedure document.",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "requestDate": {
+          "canBeNull": false,
+          "description": "The date at which the procedure was opened.",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "The current status of the procedure.",
+          "fullType": "telephony.ProcedureStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "telephony.ProcedureStatusEnum"
+        }
+      }
+    },
+    "telephony.ProcedureStatusEnum": {
+      "description": "Telephony procedure status",
+      "enum": [
+        "cancelled",
+        "doing",
+        "done",
+        "todo",
+        "waiting_for_customer"
+      ],
+      "enumType": "string",
+      "id": "ProcedureStatusEnum",
+      "namespace": "telephony"
+    },
     "telephony.PropertyEnum": {
       "description": "All existing properties of line or alias offer",
       "enum": [
@@ -35131,6 +35380,16 @@ export const schema: Schema = {
           "type": "telephony.RmaTypeEnum"
         }
       }
+    },
+    "telephony.RmaChangeTypeEnum": {
+      "description": "Types of return merchandise authorisation you can change to",
+      "enum": [
+        "resiliate",
+        "toSip"
+      ],
+      "enumType": "string",
+      "id": "RmaChangeTypeEnum",
+      "namespace": "telephony"
     },
     "telephony.RmaOfferTypeEnum": {
       "description": "Return merchandise authorisation offer type",

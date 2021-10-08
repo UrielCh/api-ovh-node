@@ -1175,7 +1175,7 @@ export interface IpLoadbalancing {
              * Ssl for this iplb
              * GET /ipLoadbalancing/{serviceName}/ssl
              */
-            $get(params?: { fingerprint?: string, serial?: string, type?: ipLoadbalancing.SslTypeEnum }): Promise<number[]>;
+            $get(params?: { expireDate?: string, fingerprint?: string, serial?: string, type?: ipLoadbalancing.SslTypeEnum }): Promise<number[]>;
             /**
              * Add a new custom SSL certificate on your IP Load Balancing
              * POST /ipLoadbalancing/{serviceName}/ssl

@@ -584,7 +584,6 @@ export const schema: Schema = {
         "Debian_5.0_64",
         "Debian_6.0_32",
         "Debian_6.0_64",
-        "Debian_7.0_32",
         "Debian_7.0_64",
         "Debian_8.0_64",
         "Debian_9.0_64",

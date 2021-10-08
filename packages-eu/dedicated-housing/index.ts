@@ -158,6 +158,7 @@ export namespace dedicated {
             lastUpdate?: string;
             needSchedule: boolean;
             note?: string;
+            plannedInterventionId?: number;
             startDate: string;
             status: dedicated.TaskStatusEnum;
             taskId: number;

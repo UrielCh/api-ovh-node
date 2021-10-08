@@ -158,6 +158,7 @@ export namespace dedicated {
             lastUpdate?: string;
             needSchedule: boolean;
             note?: string;
+            plannedInterventionId?: number;
             startDate: string;
             status: dedicated.TaskStatusEnum;
             taskId: number;
@@ -352,7 +353,7 @@ export interface Dedicated {
                  * View task list
                  * GET /dedicated/housing/{serviceName}/task
                  */
-                $get(params?: { function_?: dedicated.housing.TaskFunctionEnum, status?: dedicated.TaskStatusEnum }): Promise<number[]>;
+                $get(params?: { Function?: dedicated.housing.TaskFunctionEnum, Status?: dedicated.TaskStatusEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */

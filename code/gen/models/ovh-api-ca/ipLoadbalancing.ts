@@ -2225,6 +2225,14 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of expireDate property (<)",
+              "fullType": "datetime",
+              "name": "expireDate",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "string",
               "description": "Filter the value of fingerprint property (like)",
               "fullType": "string",

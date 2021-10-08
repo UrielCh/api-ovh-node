@@ -234,7 +234,7 @@ export const schema: Schema = {
               "dataType": "license.ActionType",
               "description": "Filter the value of action property (=)",
               "fullType": "license.ActionType",
-              "name": "action",
+              "name": "Action",
               "paramType": "query",
               "required": false
             },
@@ -242,7 +242,7 @@ export const schema: Schema = {
               "dataType": "license.TaskStateEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "license.TaskStateEnum",
-              "name": "status",
+              "name": "Status",
               "paramType": "query",
               "required": false
             }

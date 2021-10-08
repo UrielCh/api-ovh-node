@@ -2369,11 +2369,10 @@ export const schema: Schema = {
         "postgresql_10",
         "postgresql_11",
         "postgresql_12",
-        "postgresql_9.4",
         "postgresql_9.5",
         "postgresql_9.6",
-        "redis_3.2",
-        "redis_4.0"
+        "redis_4.0",
+        "redis_6.0"
       ],
       "enumType": "string",
       "id": "AvailableVersionEnum",
@@ -2735,6 +2734,9 @@ export const schema: Schema = {
         "grant/update",
         "halt",
         "install",
+        "overquota/in",
+        "overquota/out",
+        "quotaRefresh",
         "refresh",
         "reopen",
         "restart",

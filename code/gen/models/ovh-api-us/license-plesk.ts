@@ -141,7 +141,7 @@ export const schema: Schema = {
               "dataType": "ipv4",
               "description": "The Ip on which you want to move this license",
               "fullType": "ipv4",
-              "name": "destinationIp",
+              "name": "Destinationip",
               "paramType": "query",
               "required": true
             }
@@ -440,7 +440,7 @@ export const schema: Schema = {
               "dataType": "license.ActionType",
               "description": "Filter the value of action property (=)",
               "fullType": "license.ActionType",
-              "name": "action",
+              "name": "Action",
               "paramType": "query",
               "required": false
             },
@@ -448,7 +448,7 @@ export const schema: Schema = {
               "dataType": "license.TaskStateEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "license.TaskStateEnum",
-              "name": "status",
+              "name": "Status",
               "paramType": "query",
               "required": false
             }
@@ -546,7 +546,7 @@ export const schema: Schema = {
               "dataType": "ipv4",
               "description": "Your license Ip",
               "fullType": "ipv4",
-              "name": "ip",
+              "name": "Ip",
               "paramType": "query",
               "required": true
             }

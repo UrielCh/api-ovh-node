@@ -32,6 +32,7 @@ export namespace dedicated {
     export interface TemplateOsInfo {
         category: dedicated.TemplateOsUsageEnum;
         description: string;
+        endOfInstall?: string;
         family: dedicated.TemplateOsTypeEnum;
         license?: dedicated.TemplateOsInfoLicense;
         project?: dedicated.TemplateOsInfoProject;
@@ -75,6 +76,7 @@ export namespace dedicated {
         governance?: string[];
         releaseNotes?: string;
         url?: string;
+        version?: string;
     }
     /**
      * all language available
@@ -125,6 +127,7 @@ export namespace dedicated {
             defaultLanguage: dedicated.TemplateOsLanguageEnum;
             description: string;
             distribution: string;
+            endOfInstall: string;
             family: dedicated.TemplateOsTypeEnum;
             filesystems: dedicated.TemplateOsFileSystemEnum[];
             hardRaidConfiguration?: boolean;
@@ -133,6 +136,7 @@ export namespace dedicated {
             lvmReady?: boolean;
             noPartitioning: boolean;
             project?: dedicated.TemplateOsInfoProject;
+            softRaidOnlyMirroring: boolean;
             subfamily: dedicated.TemplateOsSubfamilyEnum;
             supportsDistributionKernel?: boolean;
             supportsGptLabel?: boolean;
@@ -167,7 +171,7 @@ export namespace dedicated {
             filesystem: dedicated.TemplateOsFileSystemEnum;
             mountpoint: string;
             order: number;
-            raid?: dedicated.server.PartitionRaidEnum;
+            raid: dedicated.server.PartitionRaidEnum;
             size: complexType.UnitAndValue<number>;
             type: dedicated.TemplatePartitionTypeEnum;
             volumeName?: string;

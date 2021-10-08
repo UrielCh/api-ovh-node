@@ -30,9 +30,11 @@ export namespace nutanix {
      */
     export interface cluster {
         allowedRedundancyFactor: number[];
+        controlPanelURL: string;
         erasureCoding: boolean;
         gatewayCidr: string;
         ipfo: string;
+        iplb: string;
         license: nutanix.LicenseEnum;
         name: string;
         nodes: nutanix.nodes[];
@@ -124,7 +126,7 @@ export interface Nutanix {
          * Update nutanix cluster info
          * PUT /nutanix/{serviceName}
          */
-        $put(params?: { allowedRedundancyFactor?: number[], erasureCoding?: boolean, gatewayCidr?: string, ipfo?: string, license?: nutanix.LicenseEnum, name?: string, nodes?: nutanix.nodes[], prismCentral?: nutanix.prismcentral, prismElementVip?: string, prismSecretId?: string, rackAwareness?: boolean, redundancyFactor?: number, version?: string, vrack?: string }): Promise<nutanix.state>;
+        $put(params?: { allowedRedundancyFactor?: number[], controlPanelURL?: string, erasureCoding?: boolean, gatewayCidr?: string, ipfo?: string, iplb?: string, license?: nutanix.LicenseEnum, name?: string, nodes?: nutanix.nodes[], prismCentral?: nutanix.prismcentral, prismElementVip?: string, prismSecretId?: string, rackAwareness?: boolean, redundancyFactor?: number, version?: string, vrack?: string }): Promise<nutanix.state>;
         /**
          * Controle cache
          */

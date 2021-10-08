@@ -504,7 +504,7 @@ export const schema: Schema = {
               "dataType": "dedicated.housing.TaskFunctionEnum",
               "description": "Filter the value of function property (=)",
               "fullType": "dedicated.housing.TaskFunctionEnum",
-              "name": "function",
+              "name": "Function",
               "paramType": "query",
               "required": false
             },
@@ -512,7 +512,7 @@ export const schema: Schema = {
               "dataType": "dedicated.TaskStatusEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "dedicated.TaskStatusEnum",
-              "name": "status",
+              "name": "Status",
               "paramType": "query",
               "required": false
             }
@@ -1151,6 +1151,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "plannedInterventionId": {
+          "canBeNull": true,
+          "description": "ID of the planned intervention for this task",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "startDate": {
           "canBeNull": false,

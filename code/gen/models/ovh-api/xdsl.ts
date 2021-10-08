@@ -3649,6 +3649,52 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/rma/{id}"
     },
     {
+      "description": "changeType operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change RMA type",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "telephony.RmaChangeTypeEnum",
+              "description": "new RMA type",
+              "fullType": "telephony.RmaChangeTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Return merchandise authorisation identifier",
+              "fullType": "string",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your XDSL offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/xdsl/all"
+          ]
+        }
+      ],
+      "path": "/xdsl/{serviceName}/rma/{id}/changeType"
+    },
+    {
       "description": "searchOrderMeetings operations",
       "operations": [
         {
@@ -6072,6 +6118,16 @@ export const schema: Schema = {
           "type": "telephony.RmaTypeEnum"
         }
       }
+    },
+    "telephony.RmaChangeTypeEnum": {
+      "description": "Types of return merchandise authorisation you can change to",
+      "enum": [
+        "resiliate",
+        "toSip"
+      ],
+      "enumType": "string",
+      "id": "RmaChangeTypeEnum",
+      "namespace": "telephony"
     },
     "telephony.RmaOfferTypeEnum": {
       "description": "Return merchandise authorisation offer type",

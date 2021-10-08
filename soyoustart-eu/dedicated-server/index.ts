@@ -91,6 +91,11 @@ export namespace dedicated {
      */
     export type OperationFunctionEnum = "bmc/javaKvm" | "bmc/restart" | "bmc/revokeSessions" | "bmc/sshSol" | "bmc/testPassword" | "bmc/testPing" | "bmc/testWeb" | "bmc/webKvm" | "bmc/webSol"
     /**
+     * Intervention status
+     * type fullname: dedicated.PlannedInterventionStatusEnum
+     */
+    export type PlannedInterventionStatusEnum = "doing" | "done" | "todo"
+    /**
      * A time slot for a planned intervention
      * interface fullName: dedicated.PlannedInterventionTimeSlot.PlannedInterventionTimeSlot
      */
@@ -99,10 +104,33 @@ export namespace dedicated {
         startDate: string;
     }
     /**
+     * Intervention type
+     * type fullname: dedicated.PlannedInterventionTypeEnum
+     */
+    export type PlannedInterventionTypeEnum = "HARDWARE_UPGRADE_ON_ACTIVE_SERVER"
+    /**
      * profile firewall asa
      * type fullname: dedicated.ProfileFirewallEnum
      */
     export type ProfileFirewallEnum = "cisco.asa5505" | "cisco.asa5510" | "cisco.asa5520"
+    /**
+     * List of logs
+     * interface fullName: dedicated.PublicLog.PublicLog
+     */
+    export interface PublicLog {
+        cacheDate?: string;
+        count: number;
+        data: dedicated.PublicLogEntry[];
+    }
+    /**
+     * A log entry for a specific server
+     * interface fullName: dedicated.PublicLogEntry.PublicLogEntry
+     */
+    export interface PublicLogEntry {
+        datetime: string;
+        resume: string;
+        server: string;
+    }
     /**
      * enable or disable
      * type fullname: dedicated.StatusEnum
@@ -816,6 +844,17 @@ export namespace dedicated {
          */
         export type OrderableSysFeatureEnum = "backupProtocol" | "monitoring"
         /**
+         * Planned intervention on the server
+         * interface fullName: dedicated.server.PlannedIntervention.PlannedIntervention
+         */
+        export interface PlannedIntervention {
+            expectedEndDate: string;
+            id: number;
+            status: dedicated.PlannedInterventionStatusEnum;
+            type: dedicated.PlannedInterventionTypeEnum;
+            wantedStartDate: string;
+        }
+        /**
          * A structure describing routing informations about this dedicated server
          * interface fullName: dedicated.server.RoutingDetails.RoutingDetails
          */
@@ -1077,6 +1116,7 @@ export namespace dedicated {
             lastUpdate?: string;
             needSchedule: boolean;
             note?: string;
+            plannedInterventionId?: number;
             startDate: string;
             status: dedicated.TaskStatusEnum;
             taskId: number;

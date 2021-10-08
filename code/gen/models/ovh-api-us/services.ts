@@ -3660,14 +3660,6 @@ export const schema: Schema = {
       "id": "ConfirmServiceTerminationRequest",
       "namespace": "services.terminate",
       "properties": {
-        "acknowledgePotentialFees": {
-          "canBeNull": false,
-          "description": "Acknowledge potential fees regarding service termination. Fees can be deduced from GET /1.0/services/{serviceId}/terminate/fees",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": true,
-          "type": "boolean"
-        },
         "token": {
           "canBeNull": false,
           "description": "The termination token sent by mail to the admin contact",
@@ -3690,44 +3682,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
-        }
-      }
-    },
-    "services.terminate.TerminationFees": {
-      "description": "Termination fees",
-      "id": "TerminationFees",
-      "namespace": "services.terminate",
-      "properties": {
-        "durationLeft": {
-          "canBeNull": false,
-          "description": "Duration (compliant with RFC3339) used to calculate your termination fees",
-          "fullType": "duration",
-          "readOnly": true,
-          "required": false,
-          "type": "duration"
-        },
-        "fees": {
-          "canBeNull": false,
-          "description": "Price computed from the duration left",
-          "fullType": "order.Price",
-          "readOnly": true,
-          "required": false,
-          "type": "order.Price"
-        }
-      }
-    },
-    "services.terminate.TerminationRequest": {
-      "description": "Service termination request",
-      "id": "TerminationRequest",
-      "namespace": "services.terminate",
-      "properties": {
-        "acknowledgePotentialFees": {
-          "canBeNull": false,
-          "description": "Acknowledge potential fees regarding service termination. Fees can be deduced from GET /1.0/services/{serviceId}/terminate/fees",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": true,
-          "type": "boolean"
         }
       }
     }

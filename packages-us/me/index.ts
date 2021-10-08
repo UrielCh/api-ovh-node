@@ -833,6 +833,7 @@ export namespace dedicated {
         governance?: string[];
         releaseNotes?: string;
         url?: string;
+        version?: string;
     }
     /**
      * all language available
@@ -883,6 +884,7 @@ export namespace dedicated {
             defaultLanguage: dedicated.TemplateOsLanguageEnum;
             description: string;
             distribution: string;
+            endOfInstall: string;
             family: dedicated.TemplateOsTypeEnum;
             filesystems: dedicated.TemplateOsFileSystemEnum[];
             hardRaidConfiguration?: boolean;
@@ -891,6 +893,7 @@ export namespace dedicated {
             lvmReady?: boolean;
             noPartitioning: boolean;
             project?: dedicated.TemplateOsInfoProject;
+            softRaidOnlyMirroring: boolean;
             subfamily: dedicated.TemplateOsSubfamilyEnum;
             supportsDistributionKernel?: boolean;
             supportsGptLabel?: boolean;
@@ -925,7 +928,7 @@ export namespace dedicated {
             filesystem: dedicated.TemplateOsFileSystemEnum;
             mountpoint: string;
             order: number;
-            raid?: dedicated.server.PartitionRaidEnum;
+            raid: dedicated.server.PartitionRaidEnum;
             size: complexType.UnitAndValue<number>;
             type: dedicated.TemplatePartitionTypeEnum;
             volumeName?: string;
@@ -1396,7 +1399,7 @@ export namespace nichandle {
         export interface Provider {
             creation: string;
             groupAttributeName: string;
-            idpSigningCertificate: nichandle.Authentication.Certificate;
+            idpSigningCertificates: nichandle.Authentication.Certificate[];
             lastUpdate: string;
             ssoServiceUrl: string;
         }
@@ -2248,7 +2251,7 @@ export interface Me {
          * List of contracts signed between you and OVH
          * GET /me/agreements
          */
-        $get(params?: { agreed?: agreements.AgreementStateEnum, contractId?: number }): Promise<number[]>;
+        $get(params?: { Agreed?: agreements.AgreementStateEnum, Contractid?: number }): Promise<number[]>;
         /**
          * Controle cache
          */
@@ -2316,7 +2319,7 @@ export interface Me {
              * List of your Api Credentials
              * GET /me/api/credential
              */
-            $get(params?: { applicationId?: number, status?: auth.CredentialStateEnum }): Promise<number[]>;
+            $get(params?: { Applicationid?: number, Status?: auth.CredentialStateEnum }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -2371,7 +2374,7 @@ export interface Me {
          * List of all the bills the logged account has
          * GET /me/bill
          */
-        $get(params?: { 'date.from'?: string, 'date.to'?: string, orderId?: number }): Promise<string[]>;
+        $get(params?: { 'Date.from'?: string, 'Date.to'?: string, Orderid?: number }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -2401,7 +2404,7 @@ export interface Me {
                      * All operations related to these debts
                      * GET /me/bill/{billId}/debt/operation
                      */
-                    $get(params?: { depositOrderId?: number }): Promise<number[]>;
+                    $get(params?: { Depositorderid?: number }): Promise<number[]>;
                     /**
                      * Controle cache
                      */
@@ -2457,7 +2460,7 @@ export interface Me {
                  * Generate download link for the document
                  * GET /me/bill/{billId}/download
                  */
-                $get(params?: { extension?: billing.DocumentExtensionEnum }): Promise<string>;
+                $get(params?: { Extension?: billing.DocumentExtensionEnum }): Promise<string>;
                 /**
                  * Controle cache
                  */
@@ -2541,7 +2544,7 @@ export interface Me {
          * Get all certificates of the account
          * GET /me/certificates
          */
-        $get(params?: { name?: string }): Promise<string[]>;
+        $get(params?: { Name?: string }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -2628,7 +2631,7 @@ export interface Me {
                  * Get list of transactions between two dates
                  * GET /me/consumption/usage/history
                  */
-                $get(params: { beginDate: string, endDate: string }): Promise<me.consumption.Transaction[]>;
+                $get(params: { Begindate: string, Enddate: string }): Promise<me.consumption.Transaction[]>;
                 /**
                  * Controle cache
                  */
@@ -2767,7 +2770,7 @@ export interface Me {
                      * All operations related to these debts
                      * GET /me/debtAccount/debt/{debtId}/operation
                      */
-                    $get(params?: { depositOrderId?: number }): Promise<number[]>;
+                    $get(params?: { Depositorderid?: number }): Promise<number[]>;
                     /**
                      * Controle cache
                      */
@@ -2810,7 +2813,7 @@ export interface Me {
          * List of all the deposits made to your prepaid account or debt account
          * GET /me/deposit
          */
-        $get(params?: { 'date.from'?: string, 'date.to'?: string, orderId?: number }): Promise<string[]>;
+        $get(params?: { 'Date.from'?: string, 'Date.to'?: string, Orderid?: number }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -2871,7 +2874,7 @@ export interface Me {
                              * All operations related to these debts
                              * GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation
                              */
-                            $get(params?: { depositOrderId?: number }): Promise<number[]>;
+                            $get(params?: { Depositorderid?: number }): Promise<number[]>;
                             /**
                              * Controle cache
                              */
@@ -2927,7 +2930,7 @@ export interface Me {
                          * Generate download link for the document
                          * GET /me/deposit/{depositId}/paidBills/{billId}/download
                          */
-                        $get(params?: { extension?: billing.DocumentExtensionEnum }): Promise<string>;
+                        $get(params?: { Extension?: billing.DocumentExtensionEnum }): Promise<string>;
                         /**
                          * Controle cache
                          */
@@ -2942,7 +2945,7 @@ export interface Me {
          * List of all the deposit requests made
          * GET /me/depositRequest
          */
-        $get(params?: { 'creationDate.from'?: string, 'creationDate.to'?: string }): Promise<number[]>;
+        $get(params?: { 'Creationdate.from'?: string, 'Creationdate.to'?: string }): Promise<number[]>;
         /**
          * Controle cache
          */
@@ -2986,7 +2989,7 @@ export interface Me {
              * List of entries of the fidelity account
              * GET /me/fidelityAccount/movements
              */
-            $get(params?: { 'date.from'?: string, 'date.to'?: string }): Promise<number[]>;
+            $get(params?: { 'Date.from'?: string, 'Date.to'?: string }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -3131,7 +3134,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/installationTemplate/{templateName}
              */
-            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
+            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, endOfInstall?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, softRaidOnlyMirroring?: boolean, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -3225,7 +3228,7 @@ export interface Me {
                          * Add a partition in this partitioning scheme
                          * POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
                          */
-                        $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: number, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
+                        $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid: dedicated.server.PartitionRaidEnum, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
                         /**
                          * Controle cache
                          */
@@ -3577,7 +3580,7 @@ export interface Me {
              * Retrieve payment method ID list
              * GET /me/payment/method
              */
-            $get(params?: { paymentType?: string, status?: me.payment.method.PaymentMethod.Status }): Promise<number[]>;
+            $get(params?: { Paymenttype?: string, Status?: me.payment.method.PaymentMethod.Status }): Promise<number[]>;
             /**
              * Pay an order and register a new payment method if necessary
              * POST /me/payment/method
@@ -3635,7 +3638,7 @@ export interface Me {
              * Retrieve associated payment method transaction ID list
              * GET /me/payment/transaction
              */
-            $get(params?: { paymentMethodId?: number, status?: me.payment.method.Transaction.Status }): Promise<number[]>;
+            $get(params?: { Paymentmethodid?: number, Status?: me.payment.method.Transaction.Status }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -3658,7 +3661,7 @@ export interface Me {
          * Retrieve payment method id list
          * GET /me/paymentMethod
          */
-        $get(params?: { paymentType?: billing.paymentMethod.PaymentTypeEnum, status?: billing.paymentMethod.StatusEnum }): Promise<number[]>;
+        $get(params?: { Paymenttype?: billing.paymentMethod.PaymentTypeEnum, Status?: billing.paymentMethod.StatusEnum }): Promise<number[]>;
         /**
          * Create payment method
          * POST /me/paymentMethod
@@ -3695,7 +3698,7 @@ export interface Me {
          * List of all the refunds the logged account has
          * GET /me/refund
          */
-        $get(params?: { 'date.from'?: string, 'date.to'?: string, orderId?: number }): Promise<string[]>;
+        $get(params?: { 'Date.from'?: string, 'Date.to'?: string, Orderid?: number }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -3737,7 +3740,7 @@ export interface Me {
                  * Generate download link for the document
                  * GET /me/refund/{refundId}/download
                  */
-                $get(params?: { extension?: billing.DocumentExtensionEnum }): Promise<string>;
+                $get(params?: { Extension?: billing.DocumentExtensionEnum }): Promise<string>;
                 /**
                  * Controle cache
                  */
@@ -3932,7 +3935,7 @@ export interface Me {
              * List of email change tasks you are involved in
              * GET /me/task/emailChange
              */
-            $get(params?: { state?: nichandle.changeEmail.TaskStateEnum }): Promise<number[]>;
+            $get(params?: { State?: nichandle.changeEmail.TaskStateEnum }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -3989,7 +3992,7 @@ export interface Me {
          * List of all the withdrawals made from your prepaid account
          * GET /me/withdrawal
          */
-        $get(params?: { 'date.from'?: string, 'date.to'?: string, orderId?: number }): Promise<string[]>;
+        $get(params?: { 'Date.from'?: string, 'Date.to'?: string, Orderid?: number }): Promise<string[]>;
         /**
          * Controle cache
          */

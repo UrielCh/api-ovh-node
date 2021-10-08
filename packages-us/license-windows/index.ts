@@ -176,7 +176,7 @@ export interface License {
              * Get the orderable Windows versions
              * GET /license/windows/orderableVersions
              */
-            $get(params: { ip: string }): Promise<license.WindowsOrderConfiguration[]>;
+            $get(params: { Ip: string }): Promise<license.WindowsOrderConfiguration[]>;
             /**
              * Controle cache
              */
@@ -259,7 +259,7 @@ export interface License {
                  * tasks linked to this license
                  * GET /license/windows/{serviceName}/tasks
                  */
-                $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
+                $get(params?: { Action?: license.ActionType, Status?: license.TaskStateEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */

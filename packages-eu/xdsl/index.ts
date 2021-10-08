@@ -217,6 +217,11 @@ export namespace telephony {
         type: telephony.RmaTypeEnum;
     }
     /**
+     * Types of return merchandise authorisation you can change to
+     * type fullname: telephony.RmaChangeTypeEnum
+     */
+    export type RmaChangeTypeEnum = "resiliate" | "toSip"
+    /**
      * Return merchandise authorisation offer type
      * type fullname: telephony.RmaOfferTypeEnum
      */
@@ -2649,6 +2654,13 @@ export interface Xdsl {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                changeType: {
+                    /**
+                     * Change RMA type
+                     * POST /xdsl/{serviceName}/rma/{id}/changeType
+                     */
+                    $post(params: { type: telephony.RmaChangeTypeEnum }): Promise<void>;
+                }
             };
         }
         searchOrderMeetings: {
