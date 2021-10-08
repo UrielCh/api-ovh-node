@@ -24,7 +24,7 @@ const handleResponse = async (ctxt: RequestContext, response: IncomingMessage, b
                 errorCode: 'HTTP_ERROR',
                 httpCode: `${statusCode} ${statusMessage}`,
                 message: `[OVH] Unable to parse ${method} ${path} JSON reponse:${body}`
-            }, e);
+            }, e as Error);
         }
     } else {
         responseData = {};

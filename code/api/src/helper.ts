@@ -76,7 +76,7 @@ export const waitForCertValidation = async (api: OvhApi, newCert: OvhCredentialN
             if (errorCode === 'QUERY_TIME_OUT') {
                 return false;
             }
-            await certMonitor.notValid(errorCode, ++pass);
+            await certMonitor.notValid(errorCode as string, ++pass);
             await wait(2000);
         }
     }
@@ -153,6 +153,7 @@ export class RequestContext {
             try {
                 newCert = await api.queryForCredencial()
             } catch (e) {
+                const err = e as Error;
                 // other unised headers: X-IPLB-Instance: number
                 // X-Iplb-Request-Id: string
                 // X-IPLB-Request-ID: string
@@ -164,8 +165,8 @@ export class RequestContext {
                     httpCode: `Renew Cert failed after failed Query ${this.maxRetry} ${this.path}`,
                     message: `Renew Cert failed after failed Query ${this.maxRetry} ${this.path}`,
                     // httpCode: `${statusCode} ${statusMessage}`,
-                    // message: `failed to request a credential with rule ${JSON.stringify(ctxt.api.accessRules)} ${e.message || e}`,
-                }, e, XOvhQueryid);
+                    // message: `failed to request a credential with rule ${JSON.stringify(ctxt.api.accessRules)} ${err.message || err}`,
+                }, err, XOvhQueryid);
             }
             for (let i = 0; i < 3; i++) {
                 if (await waitForCertValidation(api, newCert)) {

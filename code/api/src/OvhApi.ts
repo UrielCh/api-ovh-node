@@ -344,13 +344,14 @@
              const resp = await this.request(method, path, rules);
              return resp as OvhCredentialNew;
          } catch (e) {
+             const err = e as Error;
              throw new OvhError({
                  method,
                  path,
                  errorCode: 'HTTP_ERROR',
                  httpCode: `${e}`,
-                 message: `failed to request a credential with rule ${JSON.stringify(this.data.accessRules)} ${e.message || e}`
-             }, e);
+                 message: `failed to request a credential with rule ${JSON.stringify(this.data.accessRules)} ${err.message || err}`
+             }, err);
          }
      }
  
@@ -395,7 +396,7 @@
                  const time = await this.request<number>('GET', '/auth/time', {});
                  this.data.apiTimeDiff = time - Math.round(Date.now() / 1000);
              } catch (err) {
-                 throw new Error(`[OVH] Unable to fetch OVH API time ${err.message || err}`);
+                 throw new Error(`[OVH] Unable to fetch OVH API time ${(err as Error).message || err}`);
              }
          }
          let cacheSilot: ICacheSilot | undefined;
