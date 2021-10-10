@@ -54,7 +54,7 @@ export const waitForCertValidation = async (api: OvhApi, newCert: OvhCredentialN
     await wait(2000);
     while (true) {
         try {
-            const req = await api.request('GET', '/auth/currentCredential') as OvhCredential;
+            const req = await api.request<OvhCredential>('GET', '/auth/currentCredential');
             const { status } = req;
             if (status === 'validated') {
                 if (api.nichandle) {

@@ -55,14 +55,13 @@ export class CacheSilot implements ICacheSilot {
     async cleanup(): Promise<void> {
         const now = Date.now();
         while (this.values.length) {
-            let value = this.values[0];
+            let value: ICacheEntry = this.values[0];
             if (
                 value.exp < now ||
                 (this.options.size && this.size > this.options.size) ||
                 (this.options.count && this.size > this.options.count)
             ) {
-                // const old = 
-                value = this.values.shift() as ICacheEntry;
+                value = this.values.shift()!;
                 if (value.exp) {
                     this.count--;
                     this.size -= value.size;
