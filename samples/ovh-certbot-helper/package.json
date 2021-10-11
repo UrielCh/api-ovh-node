@@ -1,6 +1,6 @@
 {
   "name": "ovh-certbot-helper",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Generate for you a certbot-dns-ovh config file",
   "main": "index.js",
   "keywords": [
@@ -33,7 +33,7 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@ovh-api/api": "^3.2.6",
+    "@ovh-api/api": "^3.2.7",
     "@ovh-api/auth": "^3.1.23",
     "@ovh-api/common": "^3.1.2"
   },
