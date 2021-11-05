@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/freefax",
     "description": "Add typing to to ovh api freefax",
-    "version": "3.1.24",
+    "version": "3.1.25",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",

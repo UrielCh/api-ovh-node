@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-ca/partner",
     "description": "Add typing to to ovh api partner",
-    "version": "3.1.24",
+    "version": "3.1.25",
     "keywords": [
         "ovh",
         "ovhCloud",
