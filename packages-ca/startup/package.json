@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-ca/startup",
     "description": "Add typing to to ovh api startup",
-    "version": "3.1.23",
+    "version": "3.1.24",
     "keywords": [
         "ovh",
         "ovhCloud",

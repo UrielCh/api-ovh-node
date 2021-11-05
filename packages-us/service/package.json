@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-us/service",
     "description": "Add typing to to ovh api service",
-    "version": "3.1.23",
+    "version": "3.1.24",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
