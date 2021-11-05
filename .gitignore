@@ -40,5 +40,4 @@ samples/ovh-delete-service/src/*.js
 code/gen/models/**/*.js
 code/gen/models/**/*.map
 code/gen/models/**/*.d.ts
-
-code/gen/package-lock.json
+**/package-lock.json
