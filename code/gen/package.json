@@ -8,11 +8,11 @@
   "author": "Uriel Chemouni <uchemouni@gmail.com> (https://urielch.github.io/)",
   "devDependencies": {
     "@types/bluebird": "^3.5.36",
-    "@types/fs-extra": "^9.0.12",
-    "@types/node": "^16.0.1",
-    "@types/rimraf": "^3.0.1",
-    "ts-node": "^10.0.0",
-    "typescript": "^4.3.5"
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^16.11.6",
+    "@types/rimraf": "^3.0.2",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
   },
   "publishConfig": {
     "access": "public"
