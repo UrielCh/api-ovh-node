@@ -5383,6 +5383,60 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/enable"
+    },
+    {
+      "description": "Get public logs for servers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get public logs for servers",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.DatacenterEnum",
+              "description": "Restrict on the given datacenter",
+              "fullType": "dedicated.DatacenterEnum",
+              "name": "datacenter",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Amount of rows per page",
+              "fullType": "long",
+              "name": "limit",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Page to display",
+              "fullType": "long",
+              "name": "page",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Restrict on the given server",
+              "fullType": "string",
+              "name": "server",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "dedicated.PublicLog",
+          "scopes": [
+            "all",
+            "dedicated/server/all"
+          ]
+        }
+      ],
+      "path": "/dedicated/server/log"
     }
   ],
   "basePath": "https://eu.api.soyoustart.com/1.0",
@@ -6499,9 +6553,16 @@ export const schema: Schema = {
       "description": "SGX PRMRR value enum",
       "enum": [
         "128",
+        "16384",
+        "2048",
         "256",
         "32",
-        "64"
+        "32768",
+        "4096",
+        "512",
+        "64",
+        "65536",
+        "8192"
       ],
       "enumType": "string",
       "id": "BiosSettingsSgxPrmrrEnum",
@@ -8120,6 +8181,13 @@ export const schema: Schema = {
           "required": false,
           "type": "dedicated.server.TrafficDetails"
         },
+        "vmac": {
+          "canBeNull": false,
+          "description": "A structure describing VMAC Infos for this dedicated server",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.VmacDetails"
+        },
         "vrack": {
           "canBeNull": true,
           "description": "vRack details",
@@ -9521,6 +9589,20 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "dedicated.server.VmacDetails": {
+      "description": "A structure describing VMAC Infos for this dedicated server",
+      "id": "VmacDetails",
+      "namespace": "dedicated.server",
+      "properties": {
+        "supported": {
+          "canBeNull": false,
+          "description": "Server is compatible vmac or not",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         }
       }
     },

@@ -185,7 +185,7 @@ export interface Metrics {
              * Get consumption for your service
              * GET /metrics/{serviceName}/consumption
              */
-            $get(params?: { Duration?: number }): Promise<metrics.api.Consumption>;
+            $get(params?: { duration?: number }): Promise<metrics.api.Consumption>;
             /**
              * Controle cache
              */

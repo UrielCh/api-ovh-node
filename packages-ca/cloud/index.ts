@@ -404,11 +404,21 @@ export namespace cloud {
     }
     /**
      * Missing description
+     * interface fullName: cloud.ProjectKubeNodePoolAutoscalingParams.ProjectKubeNodePoolAutoscalingParams
+     */
+    export interface ProjectKubeNodePoolAutoscalingParams {
+        scaleDownUnneededTimeSeconds?: number;
+        scaleDownUnreadyTimeSeconds?: number;
+        scaleDownUtilizationThreshold?: number;
+    }
+    /**
+     * Missing description
      * interface fullName: cloud.ProjectKubeNodePoolCreation.ProjectKubeNodePoolCreation
      */
     export interface ProjectKubeNodePoolCreation {
         antiAffinity?: boolean;
         autoscale?: boolean;
+        autoscaling?: cloud.ProjectKubeNodePoolAutoscalingParams;
         desiredNodes?: number;
         flavorName: string;
         maxNodes?: number;
@@ -422,6 +432,7 @@ export namespace cloud {
      */
     export interface ProjectKubeNodePoolUpdate {
         autoscale?: boolean;
+        autoscaling?: cloud.ProjectKubeNodePoolAutoscalingParams;
         desiredNodes?: number;
         maxNodes?: number;
         minNodes?: number;
@@ -1749,6 +1760,7 @@ export namespace cloud {
         export interface NodePool {
             antiAffinity: boolean;
             autoscale: boolean;
+            autoscaling: cloud.kube.NodePoolAutoscaling;
             availableNodes: number;
             createdAt: string;
             currentNodes: number;
@@ -1764,6 +1776,15 @@ export namespace cloud {
             status: cloud.kube.NodePoolStatusEnum;
             upToDateNodes: number;
             updatedAt: string;
+        }
+        /**
+         * Autoscaling customization parameters
+         * interface fullName: cloud.kube.NodePoolAutoscaling.NodePoolAutoscaling
+         */
+        export interface NodePoolAutoscaling {
+            scaleDownUnneededTimeSeconds: number;
+            scaleDownUnreadyTimeSeconds: number;
+            scaleDownUtilizationThreshold: number;
         }
         /**
          * Enum values for NodePool size Status
@@ -1802,7 +1823,7 @@ export namespace cloud {
          * Enum values for available regions
          * type fullname: cloud.kube.RegionEnum
          */
-        export type RegionEnum = "GRA5" | "GRA7" | "BHS5" | "SBG5" | "WAW1" | "SGP1" | "SYD1" | "US-EAST-VA-1" | "US-WEST-OR-1"
+        export type RegionEnum = "GRA5" | "GRA7" | "GRA9" | "BHS5" | "SBG5" | "WAW1" | "SGP1" | "SYD1" | "US-EAST-VA-1" | "US-WEST-OR-1"
         /**
          * Enum values for worker nodes reset policy
          * type fullname: cloud.kube.ResetWorkerNodesPolicy
@@ -2750,6 +2771,7 @@ export namespace cloud {
                     region: string;
                     resources: cloud.project.ai.Resources;
                     shutdown?: cloud.project.ai.ShutdownStrategyEnum;
+                    sshPublicKeys?: string[];
                     unsecureHttp?: boolean;
                     volumes?: cloud.project.ai.volume.Volume[];
                 }
@@ -2764,6 +2786,7 @@ export namespace cloud {
                     region: string;
                     resources: cloud.project.ai.ResourcesInput;
                     shutdown?: cloud.project.ai.ShutdownStrategyEnum;
+                    sshPublicKeys?: string[];
                     unsecureHttp?: boolean;
                     volumes?: cloud.project.ai.volume.Volume[];
                 }
@@ -2785,6 +2808,7 @@ export namespace cloud {
                     lastStartedAt?: string;
                     lastStoppedAt?: string;
                     monitoringUrl?: string;
+                    sshUrl?: string;
                     state?: cloud.project.ai.notebook.NotebookStateEnum;
                     url?: string;
                 }
@@ -3097,7 +3121,7 @@ export namespace cloud {
                     state: cloud.project.ai.volume.DataSyncStateEnum;
                 }
                 /**
-                 * AI Solutions Volume Object
+                 * AI Solutions private Swift container Volume Object
                  * interface fullName: cloud.project.ai.volume.PrivateSwift.PrivateSwift
                  */
                 export interface PrivateSwift {
@@ -3125,7 +3149,14 @@ export namespace cloud {
                     updatedAt: string;
                 }
                 /**
-                 * AI Solutions Volume Object
+                 * AI Solutions public Git repository Volume Object
+                 * interface fullName: cloud.project.ai.volume.PublicGit.PublicGit
+                 */
+                export interface PublicGit {
+                    url: string;
+                }
+                /**
+                 * AI Solutions public Swift container Volume Object
                  * interface fullName: cloud.project.ai.volume.PublicSwift.PublicSwift
                  */
                 export interface PublicSwift {
@@ -3142,6 +3173,7 @@ export namespace cloud {
                     permission: cloud.project.ai.VolumePermissionEnum;
                     prefix: string;
                     privateSwift?: cloud.project.ai.volume.PrivateSwift;
+                    publicGit?: cloud.project.ai.volume.PublicGit;
                     publicSwift?: cloud.project.ai.volume.PublicSwift;
                     region?: string;
                 }
@@ -3334,7 +3366,7 @@ export namespace cloud {
              * Possible names of the engines
              * type fullname: cloud.project.database.EngineEnum
              */
-            export type EngineEnum = "mongodb" | "postgresql" | "mysql" | "kafka" | "redis"
+            export type EngineEnum = "mongodb" | "postgresql" | "mysql" | "kafka" | "kafkaMirrorMaker" | "opensearch" | "redis"
             /**
              * Ip Restriction definition for cloud project databases
              * interface fullName: cloud.project.database.IpRestriction.IpRestriction
@@ -3351,7 +3383,6 @@ export namespace cloud {
             export interface IpRestrictionCreation {
                 description: string;
                 ip: string;
-                status: cloud.project.database.StatusEnum;
             }
             /**
              * Type of network in which the databases cluster are
@@ -3421,6 +3452,7 @@ export namespace cloud {
                     defaultVersion: string;
                     description: string;
                     name: string;
+                    sslModes: string[];
                     versions: string[];
                 }
                 /**
@@ -3490,6 +3522,209 @@ export namespace cloud {
                     export interface Access {
                         cert: string;
                         key: string;
+                    }
+                }
+            }
+            export namespace mysql {
+                /**
+                 * Cloud database mysql query statistics response body definition
+                 * interface fullName: cloud.project.database.mysql.QueryStatistics.QueryStatistics
+                 */
+                export interface QueryStatistics {
+                    queries: cloud.project.database.mysql.querystatistics.Query[];
+                }
+                export namespace querystatistics {
+                    /**
+                     * Cloud database mysql single query statistic definition
+                     * interface fullName: cloud.project.database.mysql.querystatistics.Query.Query
+                     */
+                    export interface Query {
+                        avgTimerWait: number;
+                        countStar: number;
+                        digest: string;
+                        digestText: string;
+                        firstSeen: string;
+                        lastSeen: string;
+                        maxTimerWait: number;
+                        minTimerWait: number;
+                        quantile95: number;
+                        quantile99: number;
+                        quantile999: number;
+                        querySampleSeen: string;
+                        querySampleText: string;
+                        querySampleTimerWait: number;
+                        schemaName: string;
+                        sumCreatedTmpDiskTables: number;
+                        sumCreatedTmpTables: number;
+                        sumErrors: number;
+                        sumLockTime: number;
+                        sumNoGoodIndexUsed: number;
+                        sumNoIndexUsed: number;
+                        sumRowsAffected: number;
+                        sumRowsExamined: number;
+                        sumRowsSent: number;
+                        sumSelectFullJoin: number;
+                        sumSelectFullRangeJoin: number;
+                        sumSelectRange: number;
+                        sumSelectRangeCheck: number;
+                        sumSelectScan: number;
+                        sumSortMergePasses: number;
+                        sumSortRange: number;
+                        sumSortRows: number;
+                        sumSortScan: number;
+                        sumTimerWait: number;
+                        sumWarnings: number;
+                    }
+                }
+            }
+            export namespace opensearch {
+                /**
+                 * Cloud database opensearch index definition
+                 * interface fullName: cloud.project.database.opensearch.Index.Index
+                 */
+                export interface Index {
+                    createdAt: string;
+                    documents: number;
+                    id: string;
+                    name: string;
+                    replicasNumber: number;
+                    shardsNumber: number;
+                    size: number;
+                }
+                /**
+                 * Cloud database opensearch pattern definition
+                 * interface fullName: cloud.project.database.opensearch.Pattern.Pattern
+                 */
+                export interface Pattern {
+                    id: string;
+                    maxIndexCount: number;
+                    pattern: string;
+                }
+                /**
+                 * Cloud database opensearch permissions definition
+                 * interface fullName: cloud.project.database.opensearch.Permissions.Permissions
+                 */
+                export interface Permissions {
+                    names: string[];
+                }
+                /**
+                 * Cloud database opensearch service definition
+                 * interface fullName: cloud.project.database.opensearch.Service.Service
+                 */
+                export interface Service {
+                    aclsEnabled: boolean;
+                    additionalUris: cloud.project.database.opensearch.service.AdditionalUris;
+                    createdAt: string;
+                    description: string;
+                    domain: string;
+                    engine: cloud.project.database.EngineEnum;
+                    flavor: string;
+                    id: string;
+                    maintenanceWindow: cloud.project.database.service.MaintenanceWindow;
+                    networkId?: string;
+                    networkType: cloud.project.database.NetworkTypeEnum;
+                    nodeNumber: number;
+                    plan: string;
+                    port: number;
+                    sslMode: string;
+                    status: cloud.project.database.StatusEnum;
+                    subnetId?: string;
+                    uri: string;
+                    version: string;
+                }
+                /**
+                 * Opensearch user definition
+                 * interface fullName: cloud.project.database.opensearch.User.User
+                 */
+                export interface User {
+                    acls: cloud.project.database.opensearch.UserAcl[];
+                    createdAt: string;
+                    id: string;
+                    status: cloud.project.database.StatusEnum;
+                    username: string;
+                }
+                /**
+                 * Opensearch user acl definition
+                 * interface fullName: cloud.project.database.opensearch.UserAcl.UserAcl
+                 */
+                export interface UserAcl {
+                    pattern: string;
+                    permission: string;
+                }
+                /**
+                 * Opensearch user creation definition
+                 * interface fullName: cloud.project.database.opensearch.UserCreation.UserCreation
+                 */
+                export interface UserCreation {
+                    acls: cloud.project.database.opensearch.UserAcl[];
+                    name: string;
+                }
+                /**
+                 * Opensearch user definition
+                 * interface fullName: cloud.project.database.opensearch.UserWithPassword.UserWithPassword
+                 */
+                export interface UserWithPassword {
+                    acls: cloud.project.database.opensearch.UserAcl[];
+                    createdAt: string;
+                    id: string;
+                    password: string;
+                    status: cloud.project.database.StatusEnum;
+                    username: string;
+                }
+                export namespace service {
+                    /**
+                     * Cloud database opensearch service additional uri definition
+                     * interface fullName: cloud.project.database.opensearch.service.AdditionalUris.AdditionalUris
+                     */
+                    export interface AdditionalUris {
+                        kibana: string;
+                    }
+                }
+            }
+            export namespace postgresql {
+                /**
+                 * Cloud database postgresql query statistics response body definition
+                 * interface fullName: cloud.project.database.postgresql.QueryStatistics.QueryStatistics
+                 */
+                export interface QueryStatistics {
+                    queries: cloud.project.database.postgresql.querystatistics.Query[];
+                }
+                export namespace querystatistics {
+                    /**
+                     * Cloud database postgresql single query statistic definition
+                     * interface fullName: cloud.project.database.postgresql.querystatistics.Query.Query
+                     */
+                    export interface Query {
+                        blkReadTime: number;
+                        blkWriteTime: number;
+                        calls: number;
+                        databaseName: string;
+                        localBlksDirtied: number;
+                        localBlksHit: number;
+                        localBlksRead: number;
+                        localBlksWritten: number;
+                        maxPlanTime: number;
+                        maxTime: number;
+                        meanPlanTime: number;
+                        meanTime: number;
+                        minPlanTime: number;
+                        minTime: number;
+                        query: string;
+                        rows: number;
+                        sharedBlksDirtied: number;
+                        sharedBlksHit: number;
+                        sharedBlksRead: number;
+                        sharedBlksWritten: number;
+                        stddevPlanTime: number;
+                        stddevTime: number;
+                        tempBlksRead: number;
+                        tempBlksWritten: number;
+                        totalPlanTime: number;
+                        totalTime: number;
+                        username: string;
+                        walBytes: complexType.UnitAndValue<number>;
+                        walFpi: number;
+                        walRecords: number;
                     }
                 }
             }
@@ -3581,6 +3816,17 @@ export namespace cloud {
                     hostname: string;
                 }
                 /**
+                 * Cloud database service integration definition
+                 * interface fullName: cloud.project.database.service.Integration.Integration
+                 */
+                export interface Integration {
+                    destinationServiceId: string;
+                    id: string;
+                    sourceServiceId: string;
+                    status: cloud.project.database.service.integration.StatusEnum;
+                    type: cloud.project.database.service.integration.TypeEnum;
+                }
+                /**
                  * A single log entry
                  * interface fullName: cloud.project.database.service.LogEntry.LogEntry
                  */
@@ -3637,6 +3883,37 @@ export namespace cloud {
                     flavor: string;
                     number: number;
                     region: string;
+                }
+                /**
+                 * Cloud database service replication definition
+                 * interface fullName: cloud.project.database.service.Replication.Replication
+                 */
+                export interface Replication {
+                    emitHeartbeats: boolean;
+                    enabled: boolean;
+                    id: string;
+                    replicationPolicyClass: cloud.project.database.service.replication.PolicyClassEnum;
+                    sourceIntegration: string;
+                    syncGroupOffsets: boolean;
+                    syncInterval: number;
+                    targetIntegration: string;
+                    topicExcludeList: string[];
+                    topics: string[];
+                }
+                /**
+                 * Cloud database service replication definition
+                 * interface fullName: cloud.project.database.service.ReplicationCreation.ReplicationCreation
+                 */
+                export interface ReplicationCreation {
+                    emitHeartbeats: boolean;
+                    enabled: boolean;
+                    replicationPolicyClass: cloud.project.database.service.replication.PolicyClassEnum;
+                    sourceIntegration: string;
+                    syncGroupOffsets: boolean;
+                    syncInterval: number;
+                    targetIntegration: string;
+                    topicExcludeList: string[];
+                    topics: string[];
                 }
                 /**
                  * Role definition
@@ -3715,6 +3992,25 @@ export namespace cloud {
                         id: string;
                         serviceId: string;
                     }
+                }
+                export namespace integration {
+                    /**
+                     * Possible state of the integration
+                     * type fullname: cloud.project.database.service.integration.StatusEnum
+                     */
+                    export type StatusEnum = "READY"
+                    /**
+                     * Possible type of the service integration
+                     * type fullname: cloud.project.database.service.integration.TypeEnum
+                     */
+                    export type TypeEnum = "kafkaMirrorMaker"
+                }
+                export namespace replication {
+                    /**
+                     * Possible type of the service integration
+                     * type fullname: cloud.project.database.service.replication.PolicyClassEnum
+                     */
+                    export type PolicyClassEnum = "org.apache.kafka.connect.mirror.DefaultReplicationPolicy" | "org.apache.kafka.connect.mirror.IdentityReplicationPolicy"
                 }
             }
         }
@@ -5270,7 +5566,7 @@ export interface Cloud {
                      * Create a new notebook
                      * POST /cloud/project/{serviceName}/ai/notebook
                      */
-                    $post(params: { env: cloud.project.ai.notebook.NotebookEnv, labels?: { [key: string]: string }, name?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.notebook.Notebook>;
+                    $post(params: { env: cloud.project.ai.notebook.NotebookEnv, labels?: { [key: string]: string }, name?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.notebook.Notebook>;
                     /**
                      * Controle cache
                      */
@@ -5304,7 +5600,7 @@ export interface Cloud {
                          * Generate a notebook spec corresponding CLI command
                          * POST /cloud/project/{serviceName}/ai/notebook/command
                          */
-                        $post(params: { env: cloud.project.ai.notebook.NotebookEnv, labels?: { [key: string]: string }, name?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
+                        $post(params: { env: cloud.project.ai.notebook.NotebookEnv, labels?: { [key: string]: string }, name?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
                     }
                     $(notebookId: string): {
                         /**
@@ -6044,6 +6340,28 @@ export interface Cloud {
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
+                        integration: {
+                            /**
+                             * List integrations of the kafka
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/integration
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(integrationId: string): {
+                                /**
+                                 * Get kafka integration
+                                 * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/integration/{integrationId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Integration>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         ipRestriction: {
                             /**
                              * List kafka ip restrictions
@@ -6054,7 +6372,7 @@ export interface Cloud {
                              * Add ip restrictions to the kafka
                              * POST /cloud/project/{serviceName}/database/kafka/{clusterId}/ipRestriction
                              */
-                            $post(params?: { description?: string, ip?: string, status?: cloud.project.database.StatusEnum }): Promise<cloud.project.database.IpRestriction>;
+                            $post(params?: { description?: string, ip?: string }): Promise<cloud.project.database.IpRestriction>;
                             /**
                              * Controle cache
                              */
@@ -6317,7 +6635,7 @@ export interface Cloud {
                              * Add ip restrictions to the mongodb
                              * POST /cloud/project/{serviceName}/database/mongodb/{clusterId}/ipRestriction
                              */
-                            $post(params?: { description?: string, ip?: string, status?: cloud.project.database.StatusEnum }): Promise<cloud.project.database.IpRestriction>;
+                            $post(params?: { description?: string, ip?: string }): Promise<cloud.project.database.IpRestriction>;
                             /**
                              * Controle cache
                              */
@@ -6609,7 +6927,7 @@ export interface Cloud {
                              * Add ip restrictions to the mysql
                              * POST /cloud/project/{serviceName}/database/mysql/{clusterId}/ipRestriction
                              */
-                            $post(params?: { description?: string, ip?: string, status?: cloud.project.database.StatusEnum }): Promise<cloud.project.database.IpRestriction>;
+                            $post(params?: { description?: string, ip?: string }): Promise<cloud.project.database.IpRestriction>;
                             /**
                              * Controle cache
                              */
@@ -6853,7 +7171,7 @@ export interface Cloud {
                              * Add ip restrictions to the postgresql
                              * POST /cloud/project/{serviceName}/database/postgresql/{clusterId}/ipRestriction
                              */
-                            $post(params?: { description?: string, ip?: string, status?: cloud.project.database.StatusEnum }): Promise<cloud.project.database.IpRestriction>;
+                            $post(params?: { description?: string, ip?: string }): Promise<cloud.project.database.IpRestriction>;
                             /**
                              * Controle cache
                              */
@@ -7071,7 +7389,7 @@ export interface Cloud {
                              * Add ip restrictions to the redis
                              * POST /cloud/project/{serviceName}/database/redis/{clusterId}/ipRestriction
                              */
-                            $post(params?: { description?: string, ip?: string, status?: cloud.project.database.StatusEnum }): Promise<cloud.project.database.IpRestriction>;
+                            $post(params?: { description?: string, ip?: string }): Promise<cloud.project.database.IpRestriction>;
                             /**
                              * Controle cache
                              */
@@ -7677,7 +7995,7 @@ export interface Cloud {
                          * Create a nodepool on your cluster
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/nodepool
                          */
-                        $post(params: { antiAffinity?: boolean, autoscale?: boolean, desiredNodes?: number, flavorName: string, maxNodes?: number, minNodes?: number, monthlyBilled?: boolean, name?: string }): Promise<cloud.kube.NodePool>;
+                        $post(params: { antiAffinity?: boolean, autoscale?: boolean, autoscaling?: cloud.ProjectKubeNodePoolAutoscalingParams, desiredNodes?: number, flavorName: string, maxNodes?: number, minNodes?: number, monthlyBilled?: boolean, name?: string }): Promise<cloud.kube.NodePool>;
                         /**
                          * Controle cache
                          */
@@ -7697,7 +8015,7 @@ export interface Cloud {
                              * Update your nodepool (quota or size)
                              * PUT /cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}
                              */
-                            $put(params?: { autoscale?: boolean, desiredNodes?: number, maxNodes?: number, minNodes?: number, nodesToRemove?: string[] }): Promise<void>;
+                            $put(params?: { autoscale?: boolean, autoscaling?: cloud.ProjectKubeNodePoolAutoscalingParams, desiredNodes?: number, maxNodes?: number, minNodes?: number, nodesToRemove?: string[] }): Promise<void>;
                             /**
                              * Controle cache
                              */

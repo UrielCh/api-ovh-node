@@ -111,7 +111,7 @@ export const schema: Schema = {
               "dataType": "vrack.AllowedServiceEnum",
               "description": "Filter on a specific service family",
               "fullType": "vrack.AllowedServiceEnum",
-              "name": "Servicefamily",
+              "name": "serviceFamily",
               "paramType": "query",
               "required": false
             }
@@ -815,7 +815,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.MrtgPeriodEnum",
               "description": "mrtg period",
               "fullType": "dedicated.server.MrtgPeriodEnum",
-              "name": "Period",
+              "name": "period",
               "paramType": "query",
               "required": true
             },
@@ -823,7 +823,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.MrtgTypeEnum",
               "description": "mrtg type",
               "fullType": "dedicated.server.MrtgTypeEnum",
-              "name": "Type",
+              "name": "type",
               "paramType": "query",
               "required": true
             }

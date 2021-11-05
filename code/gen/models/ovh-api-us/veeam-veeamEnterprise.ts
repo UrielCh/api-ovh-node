@@ -265,7 +265,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "Name",
+              "name": "name",
               "paramType": "query",
               "required": false
             },
@@ -273,7 +273,7 @@ export const schema: Schema = {
               "dataType": "veeamEnterprise.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "veeamEnterprise.TaskStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }

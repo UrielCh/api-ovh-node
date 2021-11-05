@@ -167,7 +167,7 @@ export interface License {
              * Get the orderable WorkLight versions
              * GET /license/worklight/orderableVersions
              */
-            $get(params: { Ip: string }): Promise<license.WorkLightOrderConfiguration[]>;
+            $get(params: { ip: string }): Promise<license.WorkLightOrderConfiguration[]>;
             /**
              * Controle cache
              */
@@ -204,7 +204,7 @@ export interface License {
                  * Will tell if the ip can accept the license
                  * GET /license/worklight/{serviceName}/canLicenseBeMovedTo
                  */
-                $get(params: { Destinationip: string }): Promise<license.ChangeIpStatus>;
+                $get(params: { destinationIp: string }): Promise<license.ChangeIpStatus>;
                 /**
                  * Controle cache
                  */
@@ -245,7 +245,7 @@ export interface License {
                  * Tasks linked to this license
                  * GET /license/worklight/{serviceName}/tasks
                  */
-                $get(params?: { Action?: license.ActionType, Status?: license.TaskStateEnum }): Promise<number[]>;
+                $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */

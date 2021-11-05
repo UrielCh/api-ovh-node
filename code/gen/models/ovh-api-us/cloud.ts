@@ -2062,8 +2062,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Generate a temporary url to retrieve auditlogs",
           "httpMethod": "POST",
@@ -2138,8 +2138,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List your ip restrictions on your cluster",
           "httpMethod": "GET",
@@ -2170,8 +2170,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Append a list of ip restrictions on your cluster",
           "httpMethod": "POST",
@@ -2209,8 +2209,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Remove the current list and add a list of ip restrictions on your cluster",
           "httpMethod": "PUT",
@@ -2254,8 +2254,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete an ip restriction from your cluster",
           "httpMethod": "DELETE",
@@ -8845,6 +8845,37 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.ProjectKubeNodePoolAutoscalingParams": {
+      "description": "Missing description",
+      "id": "ProjectKubeNodePoolAutoscalingParams",
+      "namespace": "cloud",
+      "properties": {
+        "scaleDownUnneededTimeSeconds": {
+          "canBeNull": true,
+          "description": "How long a node should be unneeded before it is eligible for scale down",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "scaleDownUnreadyTimeSeconds": {
+          "canBeNull": true,
+          "description": "How long an unready node should be unneeded before it is eligible for scale down",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "scaleDownUtilizationThreshold": {
+          "canBeNull": true,
+          "description": "Sum of cpu or memory of all pods running on the node divided by node's corresponding allocatable resource, below which a node can be considered for scale down",
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
     "cloud.ProjectKubeNodePoolCreation": {
       "description": "Missing description",
       "id": "ProjectKubeNodePoolCreation",
@@ -8865,6 +8896,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "boolean"
+        },
+        "autoscaling": {
+          "canBeNull": true,
+          "description": "Autoscaling customization parameters",
+          "fullType": "cloud.ProjectKubeNodePoolAutoscalingParams",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.ProjectKubeNodePoolAutoscalingParams"
         },
         "desiredNodes": {
           "canBeNull": true,
@@ -8928,6 +8967,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "boolean"
+        },
+        "autoscaling": {
+          "canBeNull": true,
+          "description": "Autoscaling customization parameters",
+          "fullType": "cloud.ProjectKubeNodePoolAutoscalingParams",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.ProjectKubeNodePoolAutoscalingParams"
         },
         "desiredNodes": {
           "canBeNull": true,
@@ -11897,6 +11944,14 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
+        "autoscaling": {
+          "canBeNull": false,
+          "description": "Autoscaling customization parameters",
+          "fullType": "cloud.kube.NodePoolAutoscaling",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.kube.NodePoolAutoscaling"
+        },
         "availableNodes": {
           "canBeNull": false,
           "description": "Number of nodes which are actually ready in the pool",
@@ -12019,6 +12074,37 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.kube.NodePoolAutoscaling": {
+      "description": "Autoscaling customization parameters",
+      "id": "NodePoolAutoscaling",
+      "namespace": "cloud.kube",
+      "properties": {
+        "scaleDownUnneededTimeSeconds": {
+          "canBeNull": false,
+          "description": "How long a node should be unneeded before it is eligible for scale down",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "scaleDownUnreadyTimeSeconds": {
+          "canBeNull": false,
+          "description": "How long an unready node should be unneeded before it is eligible for scale down",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "scaleDownUtilizationThreshold": {
+          "canBeNull": false,
+          "description": "Sum of cpu or memory of all pods running on the node divided by node's corresponding allocatable resource, below which a node can be considered for scale down",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
     "cloud.kube.NodePoolSizeStatusEnum": {
       "description": "Enum values for NodePool size Status",
       "enum": [
@@ -12108,6 +12194,7 @@ export const schema: Schema = {
       "enum": [
         "GRA5",
         "GRA7",
+        "GRA9",
         "BHS5",
         "SBG5",
         "WAW1",

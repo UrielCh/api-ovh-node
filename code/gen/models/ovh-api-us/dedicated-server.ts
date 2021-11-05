@@ -277,7 +277,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.BootTypeEnum",
               "description": "Filter the value of bootType property (=)",
               "fullType": "dedicated.server.BootTypeEnum",
-              "name": "Boottype",
+              "name": "bootType",
               "paramType": "query",
               "required": false
             }
@@ -917,7 +917,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.IpmiAccessTypeEnum",
               "description": "IPMI console access",
               "fullType": "dedicated.server.IpmiAccessTypeEnum",
-              "name": "Type",
+              "name": "type",
               "paramType": "query",
               "required": true
             }
@@ -1071,7 +1071,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.IpmiTestTypeEnum",
               "description": "Test type result on KVM IPMI interface",
               "fullType": "dedicated.server.IpmiTestTypeEnum",
-              "name": "Type",
+              "name": "type",
               "paramType": "query",
               "required": true
             }
@@ -1209,7 +1209,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Binary name",
               "fullType": "string",
-              "name": "Binaryname",
+              "name": "binaryName",
               "paramType": "query",
               "required": true
             }
@@ -1247,7 +1247,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "Templatename",
+              "name": "templateName",
               "paramType": "query",
               "required": true
             }
@@ -1345,7 +1345,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Partition scheme name",
               "fullType": "string",
-              "name": "Partitionschemename",
+              "name": "partitionSchemeName",
               "paramType": "query",
               "required": true
             },
@@ -1353,7 +1353,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Template name",
               "fullType": "string",
-              "name": "Templatename",
+              "name": "templateName",
               "paramType": "query",
               "required": true
             }
@@ -1483,7 +1483,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "Templatename",
+              "name": "templateName",
               "paramType": "query",
               "required": true
             }
@@ -1627,7 +1627,7 @@ export const schema: Schema = {
               "dataType": "ipBlock",
               "description": "The ip to move to this server",
               "fullType": "ipBlock",
-              "name": "Ip",
+              "name": "ip",
               "paramType": "query",
               "required": true
             }
@@ -1872,7 +1872,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.MrtgPeriodEnum",
               "description": "mrtg period",
               "fullType": "dedicated.server.MrtgPeriodEnum",
-              "name": "Period",
+              "name": "period",
               "paramType": "query",
               "required": true
             },
@@ -1880,7 +1880,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.MrtgTypeEnum",
               "description": "mrtg type",
               "fullType": "dedicated.server.MrtgTypeEnum",
-              "name": "Type",
+              "name": "type",
               "paramType": "query",
               "required": true
             }
@@ -1918,7 +1918,7 @@ export const schema: Schema = {
               "dataType": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum",
               "description": "Filter the value of linkType property (=)",
               "fullType": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum",
-              "name": "Linktype",
+              "name": "linkType",
               "paramType": "query",
               "required": false
             }
@@ -2002,7 +2002,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.MrtgPeriodEnum",
               "description": "mrtg period",
               "fullType": "dedicated.server.MrtgPeriodEnum",
-              "name": "Period",
+              "name": "period",
               "paramType": "query",
               "required": true
             },
@@ -2010,7 +2010,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.MrtgTypeEnum",
               "description": "mrtg type",
               "fullType": "dedicated.server.MrtgTypeEnum",
-              "name": "Type",
+              "name": "type",
               "paramType": "query",
               "required": true
             }
@@ -2412,7 +2412,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.OrderableSysFeatureEnum",
               "description": "the feature",
               "fullType": "dedicated.server.OrderableSysFeatureEnum",
-              "name": "Feature",
+              "name": "feature",
               "paramType": "query",
               "required": true
             }
@@ -2877,7 +2877,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The domain to check",
               "fullType": "string",
-              "name": "Domain",
+              "name": "domain",
               "paramType": "query",
               "required": true
             }
@@ -3777,7 +3777,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.SplaStatusEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "dedicated.server.SplaStatusEnum",
-              "name": "Status",
+              "name": "status",
               "paramType": "query",
               "required": false
             },
@@ -3785,7 +3785,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.SplaTypeEnum",
               "description": "Filter the value of type property (=)",
               "fullType": "dedicated.server.SplaTypeEnum",
-              "name": "Type",
+              "name": "type",
               "paramType": "query",
               "required": false
             }
@@ -4008,7 +4008,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.RtmChartPeriodEnum",
               "description": "chart period",
               "fullType": "dedicated.server.RtmChartPeriodEnum",
-              "name": "Period",
+              "name": "period",
               "paramType": "query",
               "required": true
             },
@@ -4016,7 +4016,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.RtmChartTypeEnum",
               "description": "RTM chart type",
               "fullType": "dedicated.server.RtmChartTypeEnum",
-              "name": "Type",
+              "name": "type",
               "paramType": "query",
               "required": true
             }
@@ -4416,7 +4416,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.RtmChartPeriodEnum",
               "description": "chart period",
               "fullType": "dedicated.server.RtmChartPeriodEnum",
-              "name": "Period",
+              "name": "period",
               "paramType": "query",
               "required": true
             }
@@ -4920,7 +4920,7 @@ export const schema: Schema = {
               "dataType": "dedicated.TaskFunctionEnum",
               "description": "Filter the value of function property (=)",
               "fullType": "dedicated.TaskFunctionEnum",
-              "name": "Function",
+              "name": "function",
               "paramType": "query",
               "required": false
             },
@@ -4928,7 +4928,7 @@ export const schema: Schema = {
               "dataType": "dedicated.TaskStatusEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "dedicated.TaskStatusEnum",
-              "name": "Status",
+              "name": "status",
               "paramType": "query",
               "required": false
             }
@@ -5360,7 +5360,7 @@ export const schema: Schema = {
               "dataType": "boolean",
               "description": "Filter the value of enabled property (=)",
               "fullType": "boolean",
-              "name": "Enabled",
+              "name": "enabled",
               "paramType": "query",
               "required": false
             },
@@ -5368,7 +5368,7 @@ export const schema: Schema = {
               "dataType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum",
               "description": "Filter the value of mode property (=)",
               "fullType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum",
-              "name": "Mode",
+              "name": "mode",
               "paramType": "query",
               "required": false
             },
@@ -5376,7 +5376,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (=)",
               "fullType": "string",
-              "name": "Name",
+              "name": "name",
               "paramType": "query",
               "required": false
             },
@@ -5384,7 +5384,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of vrack property (=)",
               "fullType": "string",
-              "name": "Vrack",
+              "name": "vrack",
               "paramType": "query",
               "required": false
             }
@@ -5695,7 +5695,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.MrtgPeriodEnum",
               "description": "mrtg period",
               "fullType": "dedicated.server.MrtgPeriodEnum",
-              "name": "Period",
+              "name": "period",
               "paramType": "query",
               "required": true
             },
@@ -5703,7 +5703,7 @@ export const schema: Schema = {
               "dataType": "dedicated.server.MrtgTypeEnum",
               "description": "mrtg type",
               "fullType": "dedicated.server.MrtgTypeEnum",
-              "name": "Type",
+              "name": "type",
               "paramType": "query",
               "required": true
             }
@@ -5733,7 +5733,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "The subsidiary company where the availability is requested",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Country",
+              "name": "country",
               "paramType": "query",
               "required": true
             },
@@ -5741,7 +5741,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The kind of hardware which is requested",
               "fullType": "string",
-              "name": "Hardware",
+              "name": "hardware",
               "paramType": "query",
               "required": false
             }
@@ -5784,7 +5784,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The names of datacenters separated by commas",
               "fullType": "string",
-              "name": "Datacenters",
+              "name": "datacenters",
               "paramType": "query",
               "required": false
             },
@@ -5792,7 +5792,7 @@ export const schema: Schema = {
               "dataType": "boolean",
               "description": "If true, all datacenters are returned except those listed in datacenters parameter",
               "fullType": "boolean",
-              "name": "Excludedatacenters",
+              "name": "excludeDatacenters",
               "paramType": "query",
               "required": false
             },
@@ -5800,7 +5800,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The name of the gpu hardware part",
               "fullType": "string",
-              "name": "Gpu",
+              "name": "gpu",
               "paramType": "query",
               "required": false
             },
@@ -5808,7 +5808,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The name of the memory hardware part",
               "fullType": "string",
-              "name": "Memory",
+              "name": "memory",
               "paramType": "query",
               "required": false
             },
@@ -5816,7 +5816,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The plan code in which the hardware is involved",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": false
             },
@@ -5824,7 +5824,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The name of the base hardware",
               "fullType": "string",
-              "name": "Server",
+              "name": "server",
               "paramType": "query",
               "required": false
             },
@@ -5832,7 +5832,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The name of the storage hardware part",
               "fullType": "string",
-              "name": "Storage",
+              "name": "storage",
               "paramType": "query",
               "required": false
             },
@@ -5840,7 +5840,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The name of the system storage hardware part",
               "fullType": "string",
-              "name": "Systemstorage",
+              "name": "systemStorage",
               "paramType": "query",
               "required": false
             }
@@ -5866,7 +5866,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The names of datacenters separated by commas",
               "fullType": "string",
-              "name": "Datacenters",
+              "name": "datacenters",
               "paramType": "query",
               "required": false
             },
@@ -5874,7 +5874,7 @@ export const schema: Schema = {
               "dataType": "boolean",
               "description": "If true, all datacenters are returned except those listed in datacenters parameter",
               "fullType": "boolean",
-              "name": "Excludedatacenters",
+              "name": "excludeDatacenters",
               "paramType": "query",
               "required": false
             },
@@ -5882,7 +5882,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The name of the gpu hardware part",
               "fullType": "string",
-              "name": "Gpu",
+              "name": "gpu",
               "paramType": "query",
               "required": false
             },
@@ -5890,7 +5890,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The name of the memory hardware part",
               "fullType": "string",
-              "name": "Memory",
+              "name": "memory",
               "paramType": "query",
               "required": false
             },
@@ -5898,7 +5898,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The plan code in which the hardware is involved",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": false
             },
@@ -5906,7 +5906,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The name of the base hardware",
               "fullType": "string",
-              "name": "Server",
+              "name": "server",
               "paramType": "query",
               "required": false
             },
@@ -5914,7 +5914,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The name of the storage hardware part",
               "fullType": "string",
-              "name": "Storage",
+              "name": "storage",
               "paramType": "query",
               "required": false
             },
@@ -5922,7 +5922,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "The name of the system storage hardware part",
               "fullType": "string",
-              "name": "Systemstorage",
+              "name": "systemStorage",
               "paramType": "query",
               "required": false
             }
@@ -5948,7 +5948,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Hardware reference requested",
               "fullType": "string",
-              "name": "Hardware",
+              "name": "hardware",
               "paramType": "query",
               "required": true
             }
@@ -7409,9 +7409,16 @@ export const schema: Schema = {
       "description": "SGX PRMRR value enum",
       "enum": [
         "128",
+        "16384",
+        "2048",
         "256",
         "32",
-        "64"
+        "32768",
+        "4096",
+        "512",
+        "64",
+        "65536",
+        "8192"
       ],
       "enumType": "string",
       "id": "BiosSettingsSgxPrmrrEnum",
@@ -9041,6 +9048,13 @@ export const schema: Schema = {
           "required": false,
           "type": "dedicated.server.TrafficDetails"
         },
+        "vmac": {
+          "canBeNull": false,
+          "description": "A structure describing VMAC Infos for this dedicated server",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.VmacDetails"
+        },
         "vrack": {
           "canBeNull": true,
           "description": "vRack details",
@@ -10497,6 +10511,20 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "dedicated.server.VmacDetails": {
+      "description": "A structure describing VMAC Infos for this dedicated server",
+      "id": "VmacDetails",
+      "namespace": "dedicated.server",
+      "properties": {
+        "supported": {
+          "canBeNull": false,
+          "description": "Server is compatible vmac or not",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         }
       }
     },

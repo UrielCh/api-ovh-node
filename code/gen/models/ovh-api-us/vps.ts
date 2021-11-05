@@ -334,7 +334,7 @@ export const schema: Schema = {
               "dataType": "vps.RestoreStateEnum",
               "description": "The state of the restore point",
               "fullType": "vps.RestoreStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": true
             }
@@ -617,7 +617,7 @@ export const schema: Schema = {
               "dataType": "vps.VpsMonitoringPeriodEnum",
               "description": "The period the statistics are fetched for",
               "fullType": "vps.VpsMonitoringPeriodEnum",
-              "name": "Period",
+              "name": "period",
               "paramType": "query",
               "required": true
             },
@@ -625,7 +625,7 @@ export const schema: Schema = {
               "dataType": "vps.disk.StatisticTypeEnum",
               "description": "The type of statistic to be fetched",
               "fullType": "vps.disk.StatisticTypeEnum",
-              "name": "Type",
+              "name": "type",
               "paramType": "query",
               "required": true
             }
@@ -671,7 +671,7 @@ export const schema: Schema = {
               "dataType": "vps.disk.StatisticTypeEnum",
               "description": "The type of statistic to be fetched",
               "fullType": "vps.disk.StatisticTypeEnum",
-              "name": "Type",
+              "name": "type",
               "paramType": "query",
               "required": true
             }
@@ -1072,7 +1072,7 @@ export const schema: Schema = {
               "dataType": "vps.VpsMonitoringPeriodEnum",
               "description": "The period the statistics are fetched for",
               "fullType": "vps.VpsMonitoringPeriodEnum",
-              "name": "Period",
+              "name": "period",
               "paramType": "query",
               "required": true
             },
@@ -1080,7 +1080,7 @@ export const schema: Schema = {
               "dataType": "vps.VpsStatisticTypeEnum",
               "description": "The type of statistic to be fetched",
               "fullType": "vps.VpsStatisticTypeEnum",
-              "name": "Type",
+              "name": "type",
               "paramType": "query",
               "required": true
             }
@@ -1156,7 +1156,7 @@ export const schema: Schema = {
               "dataType": "boolean",
               "description": "Delete option now, don't wait for expiration",
               "fullType": "boolean",
-              "name": "Deletenow",
+              "name": "deleteNow",
               "paramType": "query",
               "required": false
             }
@@ -1831,7 +1831,7 @@ export const schema: Schema = {
               "dataType": "vps.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "vps.TaskStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             },
@@ -1839,7 +1839,7 @@ export const schema: Schema = {
               "dataType": "vps.TaskTypeEnum",
               "description": "Filter the value of type property (=)",
               "fullType": "vps.TaskTypeEnum",
-              "name": "Type",
+              "name": "type",
               "paramType": "query",
               "required": false
             }

@@ -284,11 +284,21 @@ export namespace cloud {
     }
     /**
      * Missing description
+     * interface fullName: cloud.ProjectKubeNodePoolAutoscalingParams.ProjectKubeNodePoolAutoscalingParams
+     */
+    export interface ProjectKubeNodePoolAutoscalingParams {
+        scaleDownUnneededTimeSeconds?: number;
+        scaleDownUnreadyTimeSeconds?: number;
+        scaleDownUtilizationThreshold?: number;
+    }
+    /**
+     * Missing description
      * interface fullName: cloud.ProjectKubeNodePoolCreation.ProjectKubeNodePoolCreation
      */
     export interface ProjectKubeNodePoolCreation {
         antiAffinity?: boolean;
         autoscale?: boolean;
+        autoscaling?: cloud.ProjectKubeNodePoolAutoscalingParams;
         desiredNodes?: number;
         flavorName: string;
         maxNodes?: number;
@@ -302,6 +312,7 @@ export namespace cloud {
      */
     export interface ProjectKubeNodePoolUpdate {
         autoscale?: boolean;
+        autoscaling?: cloud.ProjectKubeNodePoolAutoscalingParams;
         desiredNodes?: number;
         maxNodes?: number;
         minNodes?: number;
@@ -1167,6 +1178,7 @@ export namespace cloud {
         export interface NodePool {
             antiAffinity: boolean;
             autoscale: boolean;
+            autoscaling: cloud.kube.NodePoolAutoscaling;
             availableNodes: number;
             createdAt: string;
             currentNodes: number;
@@ -1182,6 +1194,15 @@ export namespace cloud {
             status: cloud.kube.NodePoolStatusEnum;
             upToDateNodes: number;
             updatedAt: string;
+        }
+        /**
+         * Autoscaling customization parameters
+         * interface fullName: cloud.kube.NodePoolAutoscaling.NodePoolAutoscaling
+         */
+        export interface NodePoolAutoscaling {
+            scaleDownUnneededTimeSeconds: number;
+            scaleDownUnreadyTimeSeconds: number;
+            scaleDownUtilizationThreshold: number;
         }
         /**
          * Enum values for NodePool size Status
@@ -1210,7 +1231,7 @@ export namespace cloud {
          * Enum values for available regions
          * type fullname: cloud.kube.RegionEnum
          */
-        export type RegionEnum = "GRA5" | "GRA7" | "BHS5" | "SBG5" | "WAW1" | "SGP1" | "SYD1" | "US-EAST-VA-1" | "US-WEST-OR-1"
+        export type RegionEnum = "GRA5" | "GRA7" | "GRA9" | "BHS5" | "SBG5" | "WAW1" | "SGP1" | "SYD1" | "US-EAST-VA-1" | "US-WEST-OR-1"
         /**
          * Enum values for worker nodes reset policy
          * type fullname: cloud.kube.ResetWorkerNodesPolicyEnum
@@ -3241,7 +3262,7 @@ export interface Cloud {
                          * Create a nodepool on your cluster
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/nodepool
                          */
-                        $post(params: { antiAffinity?: boolean, autoscale?: boolean, desiredNodes?: number, flavorName: string, maxNodes?: number, minNodes?: number, monthlyBilled?: boolean, name?: string }): Promise<cloud.kube.NodePool>;
+                        $post(params: { antiAffinity?: boolean, autoscale?: boolean, autoscaling?: cloud.ProjectKubeNodePoolAutoscalingParams, desiredNodes?: number, flavorName: string, maxNodes?: number, minNodes?: number, monthlyBilled?: boolean, name?: string }): Promise<cloud.kube.NodePool>;
                         /**
                          * Controle cache
                          */
@@ -3261,7 +3282,7 @@ export interface Cloud {
                              * Update your nodepool (quota or size)
                              * PUT /cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}
                              */
-                            $put(params?: { autoscale?: boolean, desiredNodes?: number, maxNodes?: number, minNodes?: number, nodesToRemove?: string[] }): Promise<void>;
+                            $put(params?: { autoscale?: boolean, autoscaling?: cloud.ProjectKubeNodePoolAutoscalingParams, desiredNodes?: number, maxNodes?: number, minNodes?: number, nodesToRemove?: string[] }): Promise<void>;
                             /**
                              * Controle cache
                              */

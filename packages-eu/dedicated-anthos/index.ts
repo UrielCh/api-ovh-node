@@ -35,6 +35,13 @@ export namespace dedicated {
             versions: string[];
         }
         /**
+         * IpRestrictionUpsert
+         * interface fullName: dedicated.anthos.IpRestrictionUpsert.IpRestrictionUpsert
+         */
+        export interface IpRestrictionUpsert {
+            ips?: string[];
+        }
+        /**
          * NetappAccess
          * interface fullName: dedicated.anthos.NetappAccess.NetappAccess
          */
@@ -100,6 +107,7 @@ export namespace dedicated {
             location: string;
             name: string;
             serviceName: string;
+            status?: dedicated.anthos.TenantStatusEnum;
             storage?: dedicated.anthos.Storage;
             version: string;
             vrackId: string;
@@ -112,6 +120,18 @@ export namespace dedicated {
             accessUrl: string;
         }
         /**
+         * Tenant status
+         * type fullname: dedicated.anthos.TenantStatusEnum
+         */
+        export type TenantStatusEnum = "TENANT_STATUS_UNSPECIFIED" | "TENANT_STATUS_UPGRADING" | "TENANT_STATUS_READY" | "TENANT_STATUS_ERROR"
+        /**
+         * Upgrade Anthos version for the tenant
+         * interface fullName: dedicated.anthos.UpgradeAnthosRequest.UpgradeAnthosRequest
+         */
+        export interface UpgradeAnthosRequest {
+            version: string;
+        }
+        /**
          * Usage
          * interface fullName: dedicated.anthos.Usage.Usage
          */
@@ -119,6 +139,15 @@ export namespace dedicated {
             reservedSize: number;
             totalSize: number;
             usedSize: number;
+        }
+        /**
+         * Anthos version informations
+         * interface fullName: dedicated.anthos.VersionInfo.VersionInfo
+         */
+        export interface VersionInfo {
+            changelogLink: string;
+            latest: boolean;
+            version: string;
         }
     }
 }
@@ -219,7 +248,7 @@ export interface Dedicated {
                  * Edit an Anthos tenant
                  * PUT /dedicated/anthos/tenants/{serviceName}
                  */
-                $put(params?: { accessUrl?: string, description?: string, id?: string, location?: string, name?: string, serviceName?: string, storage?: dedicated.anthos.Storage, version?: string, vrackId?: string }): Promise<dedicated.anthos.Tenant>;
+                $put(params?: { accessUrl?: string, description?: string, id?: string, location?: string, name?: string, serviceName?: string, status?: dedicated.anthos.TenantStatusEnum, storage?: dedicated.anthos.Storage, version?: string, vrackId?: string }): Promise<dedicated.anthos.Tenant>;
                 /**
                  * Controle cache
                  */

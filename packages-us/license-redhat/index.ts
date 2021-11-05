@@ -172,7 +172,7 @@ export interface License {
                  * tasks linked to this license
                  * GET /license/redhat/{serviceName}/tasks
                  */
-                $get(params?: { Action?: license.ActionType, Status?: license.TaskStateEnum }): Promise<number[]>;
+                $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */

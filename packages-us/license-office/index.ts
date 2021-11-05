@@ -281,7 +281,7 @@ export interface License {
                  * Shows the subscriptions' usage statistics for the given time period
                  * GET /license/office/{serviceName}/usageStatistics
                  */
-                $get(params: { From: string, To: string }): Promise<license.office.Statistics[]>;
+                $get(params: { from: string, to: string }): Promise<license.office.Statistics[]>;
                 /**
                  * Controle cache
                  */
@@ -292,7 +292,7 @@ export interface License {
                  * Accounts associated to this office tenant
                  * GET /license/office/{serviceName}/user
                  */
-                $get(params?: { Activationemail?: string, Firstname?: string, Lastname?: string, Licences?: license.office.LicenceEnum[] }): Promise<string[]>;
+                $get(params?: { activationEmail?: string, firstName?: string, lastName?: string, licences?: license.office.LicenceEnum[] }): Promise<string[]>;
                 /**
                  * Create new office user
                  * POST /license/office/{serviceName}/user

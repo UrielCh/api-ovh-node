@@ -21,7 +21,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of description property (like)",
               "fullType": "string",
-              "name": "Description",
+              "name": "description",
               "paramType": "query",
               "required": false
             },
@@ -29,7 +29,7 @@ export const schema: Schema = {
               "dataType": "ipBlock",
               "description": "Filter the value of ip property (contains or equals)",
               "fullType": "ipBlock",
-              "name": "Ip",
+              "name": "ip",
               "paramType": "query",
               "required": false
             },
@@ -37,7 +37,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of routedTo.serviceName property (like)",
               "fullType": "string",
-              "name": "Routedto.servicename",
+              "name": "routedTo.serviceName",
               "paramType": "query",
               "required": false
             },
@@ -45,7 +45,7 @@ export const schema: Schema = {
               "dataType": "ip.IpTypeEnum",
               "description": "Filter the value of type property (=)",
               "fullType": "ip.IpTypeEnum",
-              "name": "Type",
+              "name": "type",
               "paramType": "query",
               "required": false
             }
@@ -144,7 +144,7 @@ export const schema: Schema = {
               "dataType": "ip.BlockedIpStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "ip.BlockedIpStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -258,7 +258,7 @@ export const schema: Schema = {
               "dataType": "ip.ArpStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "ip.ArpStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -542,7 +542,7 @@ export const schema: Schema = {
               "dataType": "boolean",
               "description": "Filter the value of enabled property (=)",
               "fullType": "boolean",
-              "name": "Enabled",
+              "name": "enabled",
               "paramType": "query",
               "required": false
             },
@@ -550,7 +550,7 @@ export const schema: Schema = {
               "dataType": "ip.FirewallStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "ip.FirewallStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -737,7 +737,7 @@ export const schema: Schema = {
               "dataType": "ip.FirewallRuleStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "ip.FirewallRuleStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -1228,7 +1228,7 @@ export const schema: Schema = {
               "dataType": "ipv4",
               "description": "Filter the value of ipAddress property (=)",
               "fullType": "ipv4",
-              "name": "Ipaddress",
+              "name": "ipAddress",
               "paramType": "query",
               "required": false
             }
@@ -1266,7 +1266,7 @@ export const schema: Schema = {
               "dataType": "ipv4",
               "description": "Filter the value of ipAddress property (=)",
               "fullType": "ipv4",
-              "name": "Ipaddress",
+              "name": "ipAddress",
               "paramType": "query",
               "required": false
             }
@@ -1304,7 +1304,7 @@ export const schema: Schema = {
               "dataType": "ipv4",
               "description": "Filter the value of ipAddress property (=)",
               "fullType": "ipv4",
-              "name": "Ipaddress",
+              "name": "ipAddress",
               "paramType": "query",
               "required": false
             }
@@ -1342,7 +1342,7 @@ export const schema: Schema = {
               "dataType": "ipv4",
               "description": "Filter the value of ipAddress property (=)",
               "fullType": "ipv4",
-              "name": "Ipaddress",
+              "name": "ipAddress",
               "paramType": "query",
               "required": false
             }
@@ -1380,7 +1380,7 @@ export const schema: Schema = {
               "dataType": "ipv4",
               "description": "Filter the value of ipAddress property (=)",
               "fullType": "ipv4",
-              "name": "Ipaddress",
+              "name": "ipAddress",
               "paramType": "query",
               "required": false
             }
@@ -1418,7 +1418,7 @@ export const schema: Schema = {
               "dataType": "ipv4",
               "description": "Filter the value of ipAddress property (=)",
               "fullType": "ipv4",
-              "name": "Ipaddress",
+              "name": "ipAddress",
               "paramType": "query",
               "required": false
             }
@@ -1456,7 +1456,7 @@ export const schema: Schema = {
               "dataType": "ipv4",
               "description": "Filter the value of ipAddress property (=)",
               "fullType": "ipv4",
-              "name": "Ipaddress",
+              "name": "ipAddress",
               "paramType": "query",
               "required": false
             }
@@ -1494,7 +1494,7 @@ export const schema: Schema = {
               "dataType": "ipv4",
               "description": "Filter the value of ipAddress property (=)",
               "fullType": "ipv4",
-              "name": "Ipaddress",
+              "name": "ipAddress",
               "paramType": "query",
               "required": false
             }
@@ -1594,7 +1594,7 @@ export const schema: Schema = {
               "dataType": "boolean",
               "description": "Filter the value of auto property (=)",
               "fullType": "boolean",
-              "name": "Auto",
+              "name": "auto",
               "paramType": "query",
               "required": false
             },
@@ -1602,7 +1602,7 @@ export const schema: Schema = {
               "dataType": "ip.MitigationStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "ip.MitigationStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -1789,7 +1789,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Start date",
               "fullType": "datetime",
-              "name": "From",
+              "name": "from",
               "paramType": "query",
               "required": true
             },
@@ -1797,7 +1797,7 @@ export const schema: Schema = {
               "dataType": "ip.MitigationStatsScaleEnum",
               "description": "Scale of aggregation",
               "fullType": "ip.MitigationStatsScaleEnum",
-              "name": "Scale",
+              "name": "scale",
               "paramType": "query",
               "required": true
             },
@@ -1805,7 +1805,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "End date",
               "fullType": "datetime",
-              "name": "To",
+              "name": "to",
               "paramType": "query",
               "required": true
             }
@@ -1851,7 +1851,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Date to view top traffic",
               "fullType": "datetime",
-              "name": "Date",
+              "name": "date",
               "paramType": "query",
               "required": true
             },
@@ -1859,7 +1859,7 @@ export const schema: Schema = {
               "dataType": "ip.MitigationStatsScaleEnum",
               "description": "Scale of aggregation",
               "fullType": "ip.MitigationStatsScaleEnum",
-              "name": "Scale",
+              "name": "scale",
               "paramType": "query",
               "required": true
             }
@@ -2176,7 +2176,7 @@ export const schema: Schema = {
               "dataType": "ipv4",
               "description": "Filter the value of ipOnAntiphishing property (within or equals)",
               "fullType": "ipv4",
-              "name": "Iponantiphishing",
+              "name": "ipOnAntiphishing",
               "paramType": "query",
               "required": false
             },
@@ -2184,7 +2184,7 @@ export const schema: Schema = {
               "dataType": "ip.AntiphishingStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "ip.AntiphishingStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -2461,7 +2461,7 @@ export const schema: Schema = {
               "dataType": "ip.SpamStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "ip.SpamStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -2545,7 +2545,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Start date",
               "fullType": "datetime",
-              "name": "From",
+              "name": "from",
               "paramType": "query",
               "required": true
             },
@@ -2553,7 +2553,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "End date",
               "fullType": "datetime",
-              "name": "To",
+              "name": "to",
               "paramType": "query",
               "required": true
             }
@@ -2629,7 +2629,7 @@ export const schema: Schema = {
               "dataType": "ip.TaskFunctionEnum",
               "description": "Filter the value of function property (=)",
               "fullType": "ip.TaskFunctionEnum",
-              "name": "Function",
+              "name": "function",
               "paramType": "query",
               "required": false
             },
@@ -2637,7 +2637,7 @@ export const schema: Schema = {
               "dataType": "ip.TaskStatusEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "ip.TaskStatusEnum",
-              "name": "Status",
+              "name": "status",
               "paramType": "query",
               "required": false
             }
@@ -3168,7 +3168,7 @@ export const schema: Schema = {
               "dataType": "ip.LoadBalancingZoneEnum",
               "description": "one of your ip loadbalancing's zone",
               "fullType": "ip.LoadBalancingZoneEnum",
-              "name": "Zone",
+              "name": "zone",
               "paramType": "query",
               "required": true
             }
@@ -3337,7 +3337,7 @@ export const schema: Schema = {
               "dataType": "ip.LoadBalancingZoneEnum",
               "description": "one of your ip loadbalancing's zone",
               "fullType": "ip.LoadBalancingZoneEnum",
-              "name": "Zone",
+              "name": "zone",
               "paramType": "query",
               "required": true
             }

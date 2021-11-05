@@ -1491,7 +1491,7 @@ export interface DedicatedCloud {
                      * Available host stock
                      * GET /dedicatedCloud/location/{pccZone}/stock/host
                      */
-                    $get(params?: { Minyear?: number }): Promise<dedicatedCloud.HostStockProfile[]>;
+                    $get(params?: { minYear?: number }): Promise<dedicatedCloud.HostStockProfile[]>;
                     /**
                      * Controle cache
                      */
@@ -1513,7 +1513,7 @@ export interface DedicatedCloud {
                      * Available zpool stock
                      * GET /dedicatedCloud/location/{pccZone}/stock/zpool
                      */
-                    $get(params?: { Profilefilter?: string }): Promise<dedicatedCloud.ZpoolStockProfile[]>;
+                    $get(params?: { profileFilter?: string }): Promise<dedicatedCloud.ZpoolStockProfile[]>;
                     /**
                      * Controle cache
                      */
@@ -1577,7 +1577,7 @@ export interface DedicatedCloud {
                      * Tasks associated with this allowed network
                      * GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task
                      */
-                    $get(params?: { Name?: string, State?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+                    $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
                     /**
                      * Controle cache
                      */
@@ -1851,6 +1851,13 @@ export interface DedicatedCloud {
                              */
                             $post(params: { localVraNetwork: string, ovhEndpointIp: string, remoteVraNetwork: string }): Promise<dedicatedCloud.Task>;
                         }
+                        requestPairingToken: {
+                            /**
+                             * Request a pairing token in order to link your OVHcloud Zerto Virtual Manager to your local one
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/requestPairingToken
+                             */
+                            $post(): Promise<dedicatedCloud.Task>;
+                        }
                     }
                 }
                 filer: {
@@ -1907,7 +1914,7 @@ export interface DedicatedCloud {
                              * Location of the Filer
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/location
                              */
-                            $get(params?: { Node?: dedicatedCloudfilerNodeTypeEnum }): Promise<dedicatedCloud.filer.Location>;
+                            $get(params?: { node?: dedicatedCloudfilerNodeTypeEnum }): Promise<dedicatedCloud.filer.Location>;
                             /**
                              * Controle cache
                              */
@@ -1925,7 +1932,7 @@ export interface DedicatedCloud {
                              * Tasks associated with this Filer
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task
                              */
-                            $get(params?: { Name?: string, State?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+                            $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
                             /**
                              * Controle cache
                              */
@@ -2055,7 +2062,7 @@ export interface DedicatedCloud {
                              * Tasks associated with this Host
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task
                              */
-                            $get(params?: { Name?: string, State?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+                            $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
                             /**
                              * Controle cache
                              */
@@ -2154,7 +2161,7 @@ export interface DedicatedCloud {
                      * Tasks associated with this Datacenter
                      * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task
                      */
-                    $get(params?: { Name?: string, State?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+                    $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
                     /**
                      * Controle cache
                      */
@@ -2407,7 +2414,7 @@ export interface DedicatedCloud {
                      * Location of the Filer
                      * GET /dedicatedCloud/{serviceName}/filer/{filerId}/location
                      */
-                    $get(params?: { Node?: dedicatedCloudfilerNodeTypeEnum }): Promise<dedicatedCloud.filer.Location>;
+                    $get(params?: { node?: dedicatedCloudfilerNodeTypeEnum }): Promise<dedicatedCloud.filer.Location>;
                     /**
                      * Controle cache
                      */
@@ -2425,7 +2432,7 @@ export interface DedicatedCloud {
                      * Tasks associated with this Filer
                      * GET /dedicatedCloud/{serviceName}/filer/{filerId}/task
                      */
-                    $get(params?: { Name?: string, State?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+                    $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
                     /**
                      * Controle cache
                      */
@@ -2463,7 +2470,7 @@ export interface DedicatedCloud {
              * Get filtered tasks associated with this Dedicated Cloud
              * GET /dedicatedCloud/{serviceName}/globalTasks
              */
-            $get(params?: { Datacenterid?: number, 'Enddate.from'?: string, 'Enddate.to'?: string, 'Executiondate.from'?: string, 'Executiondate.to'?: string, Filerid?: number, Hostid?: number, 'Lastmodificationdate.from'?: string, 'Lastmodificationdate.to'?: string, Name?: string, Networkaccessid?: number, Orderid?: number, Parenttaskid?: number, State?: dedicatedCloudTaskStateEnum[], Userid?: number, Vlanid?: number }): Promise<number[]>;
+            $get(params?: { datacenterId?: number, 'endDate.from'?: string, 'endDate.to'?: string, 'executionDate.from'?: string, 'executionDate.to'?: string, filerId?: number, hostId?: number, 'lastModificationDate.from'?: string, 'lastModificationDate.to'?: string, name?: string, networkAccessId?: number, orderId?: number, parentTaskId?: number, state?: dedicatedCloudTaskStateEnum[], userId?: number, vlanId?: number }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -2646,7 +2653,7 @@ export interface DedicatedCloud {
                      * Tasks associated with this IP Block
                      * GET /dedicatedCloud/{serviceName}/ip/{network}/task
                      */
-                    $get(params?: { Name?: string, State?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+                    $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
                     /**
                      * Controle cache
                      */
@@ -2857,7 +2864,7 @@ export interface DedicatedCloud {
                  * Show compatibility matrix of security options with your Dedicated Cloud
                  * GET /dedicatedCloud/{serviceName}/securityOptions/compatibilityMatrix
                  */
-                $get(params?: { Showincompatible?: boolean, Showinternal?: boolean }): Promise<dedicatedCloud.securityOption.CompatibilityMatrixEntry[]>;
+                $get(params?: { showIncompatible?: boolean, showInternal?: boolean }): Promise<dedicatedCloud.securityOption.CompatibilityMatrixEntry[]>;
                 /**
                  * Controle cache
                  */
@@ -2868,7 +2875,7 @@ export interface DedicatedCloud {
                  * Show the dependencies tree of a security option
                  * GET /dedicatedCloud/{serviceName}/securityOptions/dependenciesTree
                  */
-                $get(params: { Option: dedicatedCloudsecurityOptionSecurityOptionEnum }): Promise<dedicatedCloud.securityOption.DependenciesTree>;
+                $get(params: { option: dedicatedCloudsecurityOptionSecurityOptionEnum }): Promise<dedicatedCloud.securityOption.DependenciesTree>;
                 /**
                  * Controle cache
                  */
@@ -2947,7 +2954,7 @@ export interface DedicatedCloud {
              * Tasks associated with this Dedicated Cloud
              * GET /dedicatedCloud/{serviceName}/task
              */
-            $get(params?: { Name?: string, State?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+            $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -3043,7 +3050,7 @@ export interface DedicatedCloud {
              * Dedicated Cloud users
              * GET /dedicatedCloud/{serviceName}/user
              */
-            $get(params?: { Name?: string }): Promise<number[]>;
+            $get(params?: { name?: string }): Promise<number[]>;
             /**
              * Create a new User in your Dedicated Cloud
              * POST /dedicatedCloud/{serviceName}/user
@@ -3174,7 +3181,7 @@ export interface DedicatedCloud {
                      * Tasks associated with this User
                      * GET /dedicatedCloud/{serviceName}/user/{userId}/task
                      */
-                    $get(params?: { Name?: string, State?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+                    $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
                     /**
                      * Controle cache
                      */

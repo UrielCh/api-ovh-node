@@ -247,7 +247,7 @@ export interface VeeamCloudConnect {
              * Tasks associated with Cloud Tenant
              * GET /veeamCloudConnect/{serviceName}/task
              */
-            $get(params?: { Name?: string, State?: veeamCloudConnect.TaskStateEnum }): Promise<number[]>;
+            $get(params?: { name?: string, state?: veeamCloudConnect.TaskStateEnum }): Promise<number[]>;
             /**
              * Controle cache
              */

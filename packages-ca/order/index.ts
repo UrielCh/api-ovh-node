@@ -3553,6 +3553,17 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            nasha: {
+                /**
+                 * Retrieve nasha catalog
+                 * GET /order/catalog/public/nasha
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             ovhCloudConnect: {
                 /**
                  * Retrieve OVH Cloud Connect catalog

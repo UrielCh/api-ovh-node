@@ -770,7 +770,7 @@ export interface Vps {
                  * Get available Restore Points
                  * GET /vps/{serviceName}/automatedBackup/restorePoints
                  */
-                $get(params: { State: vps.RestoreStateEnum }): Promise<string[]>;
+                $get(params: { state: vps.RestoreStateEnum }): Promise<string[]>;
                 /**
                  * Controle cache
                  */
@@ -832,7 +832,7 @@ export interface Vps {
                      * Return many statistics about the disk for a given period
                      * GET /vps/{serviceName}/disks/{id}/monitoring
                      */
-                    $get(params: { Period: vps.VpsMonitoringPeriodEnum, Type: vps.disk.StatisticTypeEnum }): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+                    $get(params: { period: vps.VpsMonitoringPeriodEnum, type: vps.disk.StatisticTypeEnum }): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
                     /**
                      * Controle cache
                      */
@@ -843,7 +843,7 @@ export interface Vps {
                      * Return many statistics about the disk at that time
                      * GET /vps/{serviceName}/disks/{id}/use
                      */
-                    $get(params: { Type: vps.disk.StatisticTypeEnum }): Promise<complexType.UnitAndValue<number>>;
+                    $get(params: { type: vps.disk.StatisticTypeEnum }): Promise<complexType.UnitAndValue<number>>;
                     /**
                      * Controle cache
                      */
@@ -957,7 +957,7 @@ export interface Vps {
              * Return many statistics about the virtual machine for a given period
              * GET /vps/{serviceName}/monitoring
              */
-            $get(params: { Period: vps.VpsMonitoringPeriodEnum, Type: vps.VpsStatisticTypeEnum }): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+            $get(params: { period: vps.VpsMonitoringPeriodEnum, type: vps.VpsStatisticTypeEnum }): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
             /**
              * Controle cache
              */
@@ -978,7 +978,7 @@ export interface Vps {
                  * Release a given option
                  * DELETE /vps/{serviceName}/option/{option}
                  */
-                $delete(params?: { Deletenow?: boolean }): Promise<void>;
+                $delete(params?: { deleteNow?: boolean }): Promise<void>;
                 /**
                  * Get this object properties
                  * GET /vps/{serviceName}/option/{option}
@@ -1137,7 +1137,7 @@ export interface Vps {
              * Tasks associated to this virtual server
              * GET /vps/{serviceName}/tasks
              */
-            $get(params?: { State?: vps.TaskStateEnum, Type?: vps.TaskTypeEnum }): Promise<number[]>;
+            $get(params?: { state?: vps.TaskStateEnum, type?: vps.TaskTypeEnum }): Promise<number[]>;
             /**
              * Controle cache
              */

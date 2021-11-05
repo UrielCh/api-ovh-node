@@ -347,6 +347,11 @@ export interface OverTheBox {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(backupId: string): {
                 /**
+                 * Delete a backup
+                 * DELETE /overTheBox/{serviceName}/backups/{backupId}
+                 */
+                $delete(): Promise<void>;
+                /**
                  * Get this object properties
                  * GET /overTheBox/{serviceName}/backups/{backupId}
                  */

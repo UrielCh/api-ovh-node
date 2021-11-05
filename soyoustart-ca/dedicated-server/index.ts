@@ -296,7 +296,7 @@ export namespace dedicated {
          * SGX PRMRR value enum
          * type fullname: dedicated.server.BiosSettingsSgxPrmrrEnum
          */
-        export type BiosSettingsSgxPrmrrEnum = "128" | "256" | "32" | "64"
+        export type BiosSettingsSgxPrmrrEnum = "128" | "16384" | "2048" | "256" | "32" | "32768" | "4096" | "512" | "64" | "65536" | "8192"
         /**
          * SGX Status enum
          * type fullname: dedicated.server.BiosSettingsSgxStatusEnum
@@ -768,6 +768,7 @@ export namespace dedicated {
             routing?: dedicated.server.RoutingDetails;
             switching?: dedicated.server.SwitchingDetails;
             traffic?: dedicated.server.TrafficDetails;
+            vmac: dedicated.server.VmacDetails;
             vrack?: dedicated.server.BandwidthvRackDetails;
         }
         /**
@@ -1173,6 +1174,13 @@ export namespace dedicated {
             virtualMachineName: string;
         }
         /**
+         * A structure describing VMAC Infos for this dedicated server
+         * interface fullName: dedicated.server.VmacDetails.VmacDetails
+         */
+        export interface VmacDetails {
+            supported: boolean;
+        }
+        /**
          * Distinct type of virtual mac
          * type fullname: dedicated.server.VmacTypeEnum
          */
@@ -1411,6 +1419,17 @@ export interface Dedicated {
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        log: {
+            /**
+             * Get public logs for servers
+             * GET /dedicated/server/log
+             */
+            $get(params?: { datacenter?: dedicated.DatacenterEnum, limit?: number, page?: number, server?: string }): Promise<dedicated.PublicLog>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
         $(serviceName: string): {
             /**
              * Get this object properties

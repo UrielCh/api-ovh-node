@@ -3050,8 +3050,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List container registry capabilities per region",
           "httpMethod": "GET",
@@ -4861,6 +4861,170 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/certificates"
+    },
+    {
+      "description": "Operations about the cloud project kafka integrations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List integrations of the kafka",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/integration"
+    },
+    {
+      "description": "Operations about the cloud project kafka integrations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get kafka integration",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Integration ID",
+              "fullType": "uuid",
+              "name": "integrationId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Integration",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/integration/{integrationId}"
     },
     {
       "description": "Operations about the cloud project kafka ip restrictions",
@@ -18780,8 +18944,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Generate a temporary url to retrieve auditlogs",
           "httpMethod": "POST",
@@ -18856,8 +19020,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List your ip restrictions on your cluster",
           "httpMethod": "GET",
@@ -18888,8 +19052,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Append a list of ip restrictions on your cluster",
           "httpMethod": "POST",
@@ -18927,8 +19091,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Remove the current list and add a list of ip restrictions on your cluster",
           "httpMethod": "PUT",
@@ -18972,8 +19136,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete an ip restriction from your cluster",
           "httpMethod": "DELETE",
@@ -26244,6 +26408,37 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.ProjectKubeNodePoolAutoscalingParams": {
+      "description": "Missing description",
+      "id": "ProjectKubeNodePoolAutoscalingParams",
+      "namespace": "cloud",
+      "properties": {
+        "scaleDownUnneededTimeSeconds": {
+          "canBeNull": true,
+          "description": "How long a node should be unneeded before it is eligible for scale down",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "scaleDownUnreadyTimeSeconds": {
+          "canBeNull": true,
+          "description": "How long an unready node should be unneeded before it is eligible for scale down",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "scaleDownUtilizationThreshold": {
+          "canBeNull": true,
+          "description": "Sum of cpu or memory of all pods running on the node divided by node's corresponding allocatable resource, below which a node can be considered for scale down",
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
     "cloud.ProjectKubeNodePoolCreation": {
       "description": "Missing description",
       "id": "ProjectKubeNodePoolCreation",
@@ -26264,6 +26459,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "boolean"
+        },
+        "autoscaling": {
+          "canBeNull": true,
+          "description": "Autoscaling customization parameters",
+          "fullType": "cloud.ProjectKubeNodePoolAutoscalingParams",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.ProjectKubeNodePoolAutoscalingParams"
         },
         "desiredNodes": {
           "canBeNull": true,
@@ -26327,6 +26530,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "boolean"
+        },
+        "autoscaling": {
+          "canBeNull": true,
+          "description": "Autoscaling customization parameters",
+          "fullType": "cloud.ProjectKubeNodePoolAutoscalingParams",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.ProjectKubeNodePoolAutoscalingParams"
         },
         "desiredNodes": {
           "canBeNull": true,
@@ -30882,6 +31093,14 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
+        "autoscaling": {
+          "canBeNull": false,
+          "description": "Autoscaling customization parameters",
+          "fullType": "cloud.kube.NodePoolAutoscaling",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.kube.NodePoolAutoscaling"
+        },
         "availableNodes": {
           "canBeNull": false,
           "description": "Number of nodes which are actually ready in the pool",
@@ -31001,6 +31220,37 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "datetime"
+        }
+      }
+    },
+    "cloud.kube.NodePoolAutoscaling": {
+      "description": "Autoscaling customization parameters",
+      "id": "NodePoolAutoscaling",
+      "namespace": "cloud.kube",
+      "properties": {
+        "scaleDownUnneededTimeSeconds": {
+          "canBeNull": false,
+          "description": "How long a node should be unneeded before it is eligible for scale down",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "scaleDownUnreadyTimeSeconds": {
+          "canBeNull": false,
+          "description": "How long an unready node should be unneeded before it is eligible for scale down",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "scaleDownUtilizationThreshold": {
+          "canBeNull": false,
+          "description": "Sum of cpu or memory of all pods running on the node divided by node's corresponding allocatable resource, below which a node can be considered for scale down",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
         }
       }
     },
@@ -31125,6 +31375,7 @@ export const schema: Schema = {
       "enum": [
         "GRA5",
         "GRA7",
+        "GRA9",
         "BHS5",
         "SBG5",
         "WAW1",
@@ -34684,6 +34935,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.project.ai.ShutdownStrategyEnum"
         },
+        "sshPublicKeys": {
+          "canBeNull": true,
+          "description": "SSH keys authorized to access to the notebook",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
         "unsecureHttp": {
           "canBeNull": true,
           "description": "true if notebook api port can be accessed without any authentication token, false otherwise",
@@ -34754,6 +35013,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "cloud.project.ai.ShutdownStrategyEnum"
+        },
+        "sshPublicKeys": {
+          "canBeNull": true,
+          "description": "SSH keys authorized to access to the notebook",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         },
         "unsecureHttp": {
           "canBeNull": true,
@@ -34850,6 +35117,14 @@ export const schema: Schema = {
         "monitoringUrl": {
           "canBeNull": true,
           "description": "Notebook resource usage url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "sshUrl": {
+          "canBeNull": true,
+          "description": "SSH Url for the notebook",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -36041,7 +36316,7 @@ export const schema: Schema = {
       }
     },
     "cloud.project.ai.volume.PrivateSwift": {
-      "description": "AI Solutions Volume Object",
+      "description": "AI Solutions private Swift container Volume Object",
       "id": "PrivateSwift",
       "namespace": "cloud.project.ai.volume",
       "properties": {
@@ -36182,8 +36457,23 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.ai.volume.PublicGit": {
+      "description": "AI Solutions public Git repository Volume Object",
+      "id": "PublicGit",
+      "namespace": "cloud.project.ai.volume",
+      "properties": {
+        "url": {
+          "canBeNull": false,
+          "description": "URL of the public git repository",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
     "cloud.project.ai.volume.PublicSwift": {
-      "description": "AI Solutions Volume Object",
+      "description": "AI Solutions public Swift container Volume Object",
       "id": "PublicSwift",
       "namespace": "cloud.project.ai.volume",
       "properties": {
@@ -36249,6 +36539,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "cloud.project.ai.volume.PrivateSwift"
+        },
+        "publicGit": {
+          "canBeNull": true,
+          "description": "Volume details for public git repositories",
+          "fullType": "cloud.project.ai.volume.PublicGit",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.volume.PublicGit"
         },
         "publicSwift": {
           "canBeNull": true,
@@ -36961,6 +37259,8 @@ export const schema: Schema = {
         "postgresql",
         "mysql",
         "kafka",
+        "kafkaMirrorMaker",
+        "opensearch",
         "redis"
       ],
       "enumType": "string",
@@ -37018,14 +37318,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "ipBlock"
-        },
-        "status": {
-          "canBeNull": false,
-          "description": "Current status of the ip restriction",
-          "fullType": "cloud.project.database.StatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.database.StatusEnum"
         }
       }
     },
@@ -37324,6 +37616,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "sslModes": {
+          "canBeNull": false,
+          "description": "SSL modes for this engine",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
         "versions": {
           "canBeNull": false,
           "description": "Versions available for this engine",
@@ -37564,6 +37864,1001 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "password"
+        }
+      }
+    },
+    "cloud.project.database.mysql.QueryStatistics": {
+      "description": "Cloud database mysql query statistics response body definition",
+      "id": "QueryStatistics",
+      "namespace": "cloud.project.database.mysql",
+      "properties": {
+        "queries": {
+          "canBeNull": false,
+          "description": "Statistics of the queries",
+          "fullType": "cloud.project.database.mysql.querystatistics.Query[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.mysql.querystatistics.Query[]"
+        }
+      }
+    },
+    "cloud.project.database.mysql.querystatistics.Query": {
+      "description": "Cloud database mysql single query statistic definition",
+      "id": "Query",
+      "namespace": "cloud.project.database.mysql.querystatistics",
+      "properties": {
+        "avgTimerWait": {
+          "canBeNull": false,
+          "description": "Average wait time of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "countStar": {
+          "canBeNull": false,
+          "description": "Number of summarized events. This value includes all events, whether timed or nontimed",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "digest": {
+          "canBeNull": false,
+          "description": "Digest of the summarized events",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "digestText": {
+          "canBeNull": false,
+          "description": "Text of the summarized digest events",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "firstSeen": {
+          "canBeNull": false,
+          "description": "First appearance of the events",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lastSeen": {
+          "canBeNull": false,
+          "description": "Last appearance of the events",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "maxTimerWait": {
+          "canBeNull": false,
+          "description": "Maximum wait time of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minTimerWait": {
+          "canBeNull": false,
+          "description": "Mininum wait time of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "quantile95": {
+          "canBeNull": false,
+          "description": "95th percentile of the statement latency, in picoseconds",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "quantile99": {
+          "canBeNull": false,
+          "description": "99th percentile of the statement latency, in picoseconds",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "quantile999": {
+          "canBeNull": false,
+          "description": "99.9th percentile of the statement latency, in picoseconds",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "querySampleSeen": {
+          "canBeNull": false,
+          "description": "Datetime when the querySampleText column was seen",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "querySampleText": {
+          "canBeNull": false,
+          "description": "Sample SQL statement that produces the digest value in the row",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "querySampleTimerWait": {
+          "canBeNull": false,
+          "description": "Wait time for the sample statement in the querySampleText column",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "schemaName": {
+          "canBeNull": false,
+          "description": "SchemaName of the summarized events",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "sumCreatedTmpDiskTables": {
+          "canBeNull": false,
+          "description": "Number of internal on-disk temporary tables created",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumCreatedTmpTables": {
+          "canBeNull": false,
+          "description": "Number of internal temporary tables created",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumErrors": {
+          "canBeNull": false,
+          "description": "Number of errors",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumLockTime": {
+          "canBeNull": false,
+          "description": "Sum of lock time of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumNoGoodIndexUsed": {
+          "canBeNull": false,
+          "description": "Sum of not good indexes of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumNoIndexUsed": {
+          "canBeNull": false,
+          "description": "Sum of no indexes of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumRowsAffected": {
+          "canBeNull": false,
+          "description": "Sum of rows affected of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumRowsExamined": {
+          "canBeNull": false,
+          "description": "Sum of rows examined of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumRowsSent": {
+          "canBeNull": false,
+          "description": "Sum of rows sent of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSelectFullJoin": {
+          "canBeNull": false,
+          "description": "Sum of select full join of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSelectFullRangeJoin": {
+          "canBeNull": false,
+          "description": "Sum of select full range join of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSelectRange": {
+          "canBeNull": false,
+          "description": "Sum of select range of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSelectRangeCheck": {
+          "canBeNull": false,
+          "description": "Sum of select range check of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSelectScan": {
+          "canBeNull": false,
+          "description": "Sum of select scan of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSortMergePasses": {
+          "canBeNull": false,
+          "description": "Sum of sorted merge passes of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSortRange": {
+          "canBeNull": false,
+          "description": "Sum of sorted range of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSortRows": {
+          "canBeNull": false,
+          "description": "Sum of sorted rows of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSortScan": {
+          "canBeNull": false,
+          "description": "Sum of sort scan of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumTimerWait": {
+          "canBeNull": false,
+          "description": "Sum of wait time of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumWarnings": {
+          "canBeNull": false,
+          "description": "Number of warnings",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.Index": {
+      "description": "Cloud database opensearch index definition",
+      "id": "Index",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the index",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "documents": {
+          "canBeNull": false,
+          "description": "Number of documents hold by the index",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Index ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the index",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "replicasNumber": {
+          "canBeNull": false,
+          "description": "Number of replicas of the index",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "shardsNumber": {
+          "canBeNull": false,
+          "description": "Number of shards of the index",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the index",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.Pattern": {
+      "description": "Cloud database opensearch pattern definition",
+      "id": "Pattern",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Pattern ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "maxIndexCount": {
+          "canBeNull": false,
+          "description": "Maximum number of index for this pattern",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "pattern": {
+          "canBeNull": false,
+          "description": "Pattern format",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.Permissions": {
+      "description": "Cloud database opensearch permissions definition",
+      "id": "Permissions",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "names": {
+          "canBeNull": false,
+          "description": "Possible values for the permissions",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.Service": {
+      "description": "Cloud database opensearch service definition",
+      "id": "Service",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "aclsEnabled": {
+          "canBeNull": false,
+          "description": "Defines whether the acls are enabled on the cluster",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "additionalUris": {
+          "canBeNull": false,
+          "description": "Defines the additionnal uris available on the cluster",
+          "fullType": "cloud.project.database.opensearch.service.AdditionalUris",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.opensearch.service.AdditionalUris"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the cluster",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Domain of the cluster",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "engine": {
+          "canBeNull": false,
+          "description": "Name of the engine of the service",
+          "fullType": "cloud.project.database.EngineEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.EngineEnum"
+        },
+        "flavor": {
+          "canBeNull": false,
+          "description": "The VM flavor used for this cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Service ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "maintenanceWindow": {
+          "canBeNull": false,
+          "description": "Window during which the maintenance can occur",
+          "fullType": "cloud.project.database.service.MaintenanceWindow",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.MaintenanceWindow"
+        },
+        "networkId": {
+          "canBeNull": true,
+          "description": "Private network ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "networkType": {
+          "canBeNull": false,
+          "description": "Type of network of the cluster",
+          "fullType": "cloud.project.database.NetworkTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.NetworkTypeEnum"
+        },
+        "nodeNumber": {
+          "canBeNull": false,
+          "description": "Number of nodes in the cluster",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "plan": {
+          "canBeNull": false,
+          "description": "Plan of the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "port": {
+          "canBeNull": false,
+          "description": "Connection port for the cluster",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sslMode": {
+          "canBeNull": false,
+          "description": "Ssl connection mode for the cluster",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the cluster",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "subnetId": {
+          "canBeNull": true,
+          "description": "Private subnet ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "uri": {
+          "canBeNull": false,
+          "description": "Connection string for the cluster",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version of the engine deployed on the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.User": {
+      "description": "Opensearch user definition",
+      "id": "User",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "acls": {
+          "canBeNull": false,
+          "description": "Acls of the user",
+          "fullType": "cloud.project.database.opensearch.UserAcl[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.opensearch.UserAcl[]"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "User ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the user",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.UserAcl": {
+      "description": "Opensearch user acl definition",
+      "id": "UserAcl",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "pattern": {
+          "canBeNull": false,
+          "description": "Pattern of the ACL",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "permission": {
+          "canBeNull": false,
+          "description": "Permission of the ACL",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.UserCreation": {
+      "description": "Opensearch user creation definition",
+      "id": "UserCreation",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "acls": {
+          "canBeNull": false,
+          "description": "Acls of the user",
+          "fullType": "cloud.project.database.opensearch.UserAcl[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.opensearch.UserAcl[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.UserWithPassword": {
+      "description": "Opensearch user definition",
+      "id": "UserWithPassword",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "acls": {
+          "canBeNull": false,
+          "description": "Acls of the user",
+          "fullType": "cloud.project.database.opensearch.UserAcl[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.opensearch.UserAcl[]"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "User ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "password": {
+          "canBeNull": false,
+          "description": "Password of the user",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the user",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.service.AdditionalUris": {
+      "description": "Cloud database opensearch service additional uri definition",
+      "id": "AdditionalUris",
+      "namespace": "cloud.project.database.opensearch.service",
+      "properties": {
+        "kibana": {
+          "canBeNull": false,
+          "description": "URI to access the kibana",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.postgresql.QueryStatistics": {
+      "description": "Cloud database postgresql query statistics response body definition",
+      "id": "QueryStatistics",
+      "namespace": "cloud.project.database.postgresql",
+      "properties": {
+        "queries": {
+          "canBeNull": false,
+          "description": "Statistics of the queries",
+          "fullType": "cloud.project.database.postgresql.querystatistics.Query[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.postgresql.querystatistics.Query[]"
+        }
+      }
+    },
+    "cloud.project.database.postgresql.querystatistics.Query": {
+      "description": "Cloud database postgresql single query statistic definition",
+      "id": "Query",
+      "namespace": "cloud.project.database.postgresql.querystatistics",
+      "properties": {
+        "blkReadTime": {
+          "canBeNull": false,
+          "description": "Time spent reading data file blocks by backends in this database, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "blkWriteTime": {
+          "canBeNull": false,
+          "description": "Time spent writing data file blocks by backends in this database, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "calls": {
+          "canBeNull": false,
+          "description": "Number of times this function has been called",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "databaseName": {
+          "canBeNull": false,
+          "description": "Name of the database",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "localBlksDirtied": {
+          "canBeNull": false,
+          "description": "Total number of local blocks dirtied by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "localBlksHit": {
+          "canBeNull": false,
+          "description": "Total number of local block cache hits by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "localBlksRead": {
+          "canBeNull": false,
+          "description": "Total number of local blocks read by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "localBlksWritten": {
+          "canBeNull": false,
+          "description": "Total number of local blocks written by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxPlanTime": {
+          "canBeNull": false,
+          "description": "Maximum time spent planning the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "maxTime": {
+          "canBeNull": false,
+          "description": "Maximum time spent for the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "meanPlanTime": {
+          "canBeNull": false,
+          "description": "Mean time spent planning the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "meanTime": {
+          "canBeNull": false,
+          "description": "Mean time spent for the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "minPlanTime": {
+          "canBeNull": false,
+          "description": "Minimum time spent planning the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "minTime": {
+          "canBeNull": false,
+          "description": "Minimum time spent for the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "query": {
+          "canBeNull": false,
+          "description": "Text of a representative statement",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "rows": {
+          "canBeNull": false,
+          "description": "Total number of rows retrieved or affected by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sharedBlksDirtied": {
+          "canBeNull": false,
+          "description": "Total number of shared blocks dirtied by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sharedBlksHit": {
+          "canBeNull": false,
+          "description": "Total number of shared block cache hits by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sharedBlksRead": {
+          "canBeNull": false,
+          "description": "Total number of shared blocks read by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sharedBlksWritten": {
+          "canBeNull": false,
+          "description": "Total number of shared blocks written by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "stddevPlanTime": {
+          "canBeNull": false,
+          "description": "Population standard deviation of time spent planning the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "stddevTime": {
+          "canBeNull": false,
+          "description": "Population standard deviation of time spent for the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "tempBlksRead": {
+          "canBeNull": false,
+          "description": "Total number of temp blocks read by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "tempBlksWritten": {
+          "canBeNull": false,
+          "description": "Total number of temp blocks written by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "totalPlanTime": {
+          "canBeNull": false,
+          "description": "Total time spent planning the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "totalTime": {
+          "canBeNull": false,
+          "description": "Total time spent for the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user who executed the statement",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "walBytes": {
+          "canBeNull": false,
+          "description": "Total amount of WAL generated by the statement in bytes",
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "walFpi": {
+          "canBeNull": false,
+          "description": "Total number of WAL full page images generated by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "walRecords": {
+          "canBeNull": false,
+          "description": "Total number of WAL records generated by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
@@ -37911,6 +39206,53 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.database.service.Integration": {
+      "description": "Cloud database service integration definition",
+      "id": "Integration",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "destinationServiceId": {
+          "canBeNull": false,
+          "description": "ID of the destination service",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Service ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "sourceServiceId": {
+          "canBeNull": false,
+          "description": "ID of the source service",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the integration",
+          "fullType": "cloud.project.database.service.integration.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.integration.StatusEnum"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of the integration",
+          "fullType": "cloud.project.database.service.integration.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.integration.TypeEnum"
+        }
+      }
+    },
     "cloud.project.database.service.LogEntry": {
       "description": "A single log entry",
       "id": "LogEntry",
@@ -38119,6 +39461,172 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.service.Replication": {
+      "description": "Cloud database service replication definition",
+      "id": "Replication",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "emitHeartbeats": {
+          "canBeNull": false,
+          "description": "Defines whether heartbeats are emitted",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "enabled": {
+          "canBeNull": false,
+          "description": "Defines whether the replication is actived",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Service ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "replicationPolicyClass": {
+          "canBeNull": false,
+          "description": "ReplicationPolicyClass used for the replication",
+          "fullType": "cloud.project.database.service.replication.PolicyClassEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.replication.PolicyClassEnum"
+        },
+        "sourceIntegration": {
+          "canBeNull": false,
+          "description": "ID of the integration source",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "syncGroupOffsets": {
+          "canBeNull": false,
+          "description": "Defines whether the group offsets must be sync",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "syncInterval": {
+          "canBeNull": false,
+          "description": "Defines the interval in second between 2 sync",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "targetIntegration": {
+          "canBeNull": false,
+          "description": "ID of the integration target",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "topicExcludeList": {
+          "canBeNull": false,
+          "description": "Patterns of the topics to exclude from the replication",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "topics": {
+          "canBeNull": false,
+          "description": "Patterns of the topics to replicate",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.database.service.ReplicationCreation": {
+      "description": "Cloud database service replication definition",
+      "id": "ReplicationCreation",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "emitHeartbeats": {
+          "canBeNull": false,
+          "description": "Defines whether heartbeats are emitted",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "enabled": {
+          "canBeNull": false,
+          "description": "Defines whether the replication is actived",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "replicationPolicyClass": {
+          "canBeNull": false,
+          "description": "ReplicationPolicyClass used for the replication",
+          "fullType": "cloud.project.database.service.replication.PolicyClassEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.replication.PolicyClassEnum"
+        },
+        "sourceIntegration": {
+          "canBeNull": false,
+          "description": "ID of the integration source",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "syncGroupOffsets": {
+          "canBeNull": false,
+          "description": "Defines whether the group offsets must be sync",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "syncInterval": {
+          "canBeNull": false,
+          "description": "Defines the interval in second between 2 sync",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "targetIntegration": {
+          "canBeNull": false,
+          "description": "ID of the integration target",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "topicExcludeList": {
+          "canBeNull": false,
+          "description": "Patterns of the topics to exclude from the replication",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "topics": {
+          "canBeNull": false,
+          "description": "Patterns of the topics to replicate",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
@@ -38401,6 +39909,34 @@ export const schema: Schema = {
           "type": "uuid"
         }
       }
+    },
+    "cloud.project.database.service.integration.StatusEnum": {
+      "description": "Possible state of the integration",
+      "enum": [
+        "READY"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloud.project.database.service.integration"
+    },
+    "cloud.project.database.service.integration.TypeEnum": {
+      "description": "Possible type of the service integration",
+      "enum": [
+        "kafkaMirrorMaker"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "cloud.project.database.service.integration"
+    },
+    "cloud.project.database.service.replication.PolicyClassEnum": {
+      "description": "Possible type of the service integration",
+      "enum": [
+        "org.apache.kafka.connect.mirror.DefaultReplicationPolicy",
+        "org.apache.kafka.connect.mirror.IdentityReplicationPolicy"
+      ],
+      "enumType": "string",
+      "id": "PolicyClassEnum",
+      "namespace": "cloud.project.database.service.replication"
     },
     "cloud.project.io.Stream": {
       "description": "A stream to send data",

@@ -733,7 +733,7 @@ export const schema: Schema = {
               "dataType": "dedicated.storage.TaskFunctionEnum",
               "description": "Filter the value of operation property (=)",
               "fullType": "dedicated.storage.TaskFunctionEnum",
-              "name": "Operation",
+              "name": "operation",
               "paramType": "query",
               "required": false
             },
@@ -741,7 +741,7 @@ export const schema: Schema = {
               "dataType": "dedicated.TaskStatusEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "dedicated.TaskStatusEnum",
-              "name": "Status",
+              "name": "status",
               "paramType": "query",
               "required": false
             }

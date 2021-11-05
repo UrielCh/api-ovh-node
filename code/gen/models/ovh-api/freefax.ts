@@ -118,6 +118,173 @@ export const schema: Schema = {
       "path": "/freefax/{serviceName}/changePassword"
     },
     {
+      "description": "Directory Informations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Freefax number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.DirectoryInfo",
+          "scopes": [
+            "all",
+            "product/freefax/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "telephony.DirectoryInfo",
+              "description": "New object properties",
+              "fullType": "telephony.DirectoryInfo",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Freefax number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/freefax/all"
+          ]
+        }
+      ],
+      "path": "/freefax/{serviceName}/directory"
+    },
+    {
+      "description": "fetchEntrepriseInformations operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get company entreprise informations by providing entreprise number",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Entreprise number to fetch informations from",
+              "fullType": "string",
+              "name": "entrepriseNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Freefax number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.EntrepriseNumberInformationsTask",
+          "scopes": [
+            "all",
+            "product/freefax/all"
+          ]
+        }
+      ],
+      "path": "/freefax/{serviceName}/directory/fetchEntrepriseInformations"
+    },
+    {
+      "description": "getDirectoryServiceCode operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get directory service code from an APE code ( principal activity of the firm code )",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Freefax number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "apeCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.DirectoryHeadingPJ[]",
+          "scopes": [
+            "all",
+            "product/freefax/all"
+          ]
+        }
+      ],
+      "path": "/freefax/{serviceName}/directory/getDirectoryServiceCode"
+    },
+    {
+      "description": "getWayTypes operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all the way types availables",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Freefax number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.DirectoryWayType[]",
+          "scopes": [
+            "all",
+            "product/freefax/all"
+          ]
+        }
+      ],
+      "path": "/freefax/{serviceName}/directory/getWayTypes"
+    },
+    {
       "description": "mainService operations",
       "operations": [
         {
@@ -513,6 +680,16 @@ export const schema: Schema = {
         }
       }
     },
+    "nichandle.GenderEnum": {
+      "description": "All genders a person can choose",
+      "enum": [
+        "female",
+        "male"
+      ],
+      "enumType": "string",
+      "id": "GenderEnum",
+      "namespace": "nichandle"
+    },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",
       "id": "RenewType",
@@ -683,6 +860,419 @@ export const schema: Schema = {
         }
       }
     },
+    "telephony.DirectoryHeadingPJ": {
+      "description": "Directory Informations",
+      "id": "DirectoryHeadingPJ",
+      "namespace": "telephony",
+      "properties": {
+        "apeCode": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "apeDescription": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "directoryServiceCode": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "directoryServiceDescription": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "notification": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "telephony.DirectoryInfo": {
+      "description": "Directory Informations",
+      "id": "DirectoryInfo",
+      "namespace": "telephony",
+      "properties": {
+        "PJSocialNomination": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "address": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "addressExtra": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "ape": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "areaCode": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "birthDate": {
+          "canBeNull": true,
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
+        },
+        "cedex": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "city": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "country": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "directoryServiceCode": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "displayFirstName": {
+          "canBeNull": false,
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "displayMarketingDirectory": {
+          "canBeNull": false,
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "displayOnlyCity": {
+          "canBeNull": false,
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "displaySearchReverse": {
+          "canBeNull": false,
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "displayUniversalDirectory": {
+          "canBeNull": false,
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "email": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "firstName": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "gender": {
+          "canBeNull": true,
+          "fullType": "nichandle.GenderEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.GenderEnum"
+        },
+        "inseeCode": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "legalForm": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "lineDescription": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "modificationDate": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "modificationType": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "number": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "occupation": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "postBox": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "postCode": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "receivePJDirectory": {
+          "canBeNull": false,
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "siret": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "socialNomination": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "socialNominationExtra": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "urbanDistrict": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "wayName": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "wayNumber": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "wayNumberExtra": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "wayType": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "telephony.DirectoryWayType": {
+      "description": "Directory way type",
+      "id": "DirectoryWayType",
+      "namespace": "telephony",
+      "properties": {
+        "abbreviatedName": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "wayName": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "telephony.EntrepriseNumberInformations": {
+      "description": "Task informations about an entreprise",
+      "id": "EntrepriseNumberInformations",
+      "namespace": "telephony",
+      "properties": {
+        "address": {
+          "canBeNull": true,
+          "description": "Address of the entreprise",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "ape": {
+          "canBeNull": true,
+          "description": "Entreprise's category code for directory services",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "brand": {
+          "canBeNull": true,
+          "description": "Brand of the entreprise",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "entrepriseNumber": {
+          "canBeNull": false,
+          "description": "Entreprise number",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "isValid": {
+          "canBeNull": false,
+          "description": "Is this a valid entreprise number?",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the entreprise",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "siren": {
+          "canBeNull": true,
+          "description": "Short version of the entreprise number (FR only)",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "telephony.EntrepriseNumberInformationsTask": {
+      "description": "Task about getting entreprise informations",
+      "id": "EntrepriseNumberInformationsTask",
+      "namespace": "telephony",
+      "properties": {
+        "informations": {
+          "canBeNull": false,
+          "description": "Informations about the enterprise",
+          "readOnly": false,
+          "required": false,
+          "type": "telephony.EntrepriseNumberInformations"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Task status",
+          "readOnly": false,
+          "required": false,
+          "type": "telephony.TaskStatusEnum"
+        }
+      }
+    },
     "telephony.FaxQualityEnum": {
       "description": "Available quality for fax documents",
       "enum": [
@@ -753,6 +1343,19 @@ export const schema: Schema = {
           "type": "telephony.ServiceVoicemailMailOptionEnum"
         }
       }
+    },
+    "telephony.TaskStatusEnum": {
+      "description": "Task status",
+      "enum": [
+        "doing",
+        "done",
+        "error",
+        "pause",
+        "todo"
+      ],
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "telephony"
     },
     "telephony.VoicefaxRoutingEnum": {
       "description": "All existing type of routing for a voicemail",

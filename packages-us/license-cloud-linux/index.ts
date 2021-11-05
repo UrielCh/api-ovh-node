@@ -153,7 +153,7 @@ export interface License {
              * Get the orderable CloudLinux versions
              * GET /license/cloudLinux/orderableVersions
              */
-            $get(params: { Ip: string }): Promise<license.CloudLinuxOrderConfiguration[]>;
+            $get(params: { ip: string }): Promise<license.CloudLinuxOrderConfiguration[]>;
             /**
              * Controle cache
              */
@@ -197,7 +197,7 @@ export interface License {
                  * Tasks linked to this license
                  * GET /license/cloudLinux/{serviceName}/tasks
                  */
-                $get(params?: { Action?: license.ActionType, Status?: license.TaskStateEnum }): Promise<number[]>;
+                $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */

@@ -293,7 +293,7 @@ export interface Dedicated {
                  * View task list
                  * GET /dedicated/nas/{serviceName}/task
                  */
-                $get(params?: { Operation?: dedicated.storage.TaskFunctionEnum, Status?: dedicated.TaskStatusEnum }): Promise<number[]>;
+                $get(params?: { operation?: dedicated.storage.TaskFunctionEnum, status?: dedicated.TaskStatusEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */

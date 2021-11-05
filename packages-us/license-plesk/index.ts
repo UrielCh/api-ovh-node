@@ -225,7 +225,7 @@ export interface License {
              * Get the orderable Plesk versions and their associated compatibilities
              * GET /license/plesk/orderableVersions
              */
-            $get(params: { Ip: string }): Promise<license.PleskOrderConfiguration[]>;
+            $get(params: { ip: string }): Promise<license.PleskOrderConfiguration[]>;
             /**
              * Controle cache
              */
@@ -262,7 +262,7 @@ export interface License {
                  * Will tell if the ip can accept the license
                  * GET /license/plesk/{serviceName}/canLicenseBeMovedTo
                  */
-                $get(params: { Destinationip: string }): Promise<license.ChangeIpStatus>;
+                $get(params: { destinationIp: string }): Promise<license.ChangeIpStatus>;
                 /**
                  * Controle cache
                  */
@@ -330,7 +330,7 @@ export interface License {
                  * tasks linked to this license
                  * GET /license/plesk/{serviceName}/tasks
                  */
-                $get(params?: { Action?: license.ActionType, Status?: license.TaskStateEnum }): Promise<number[]>;
+                $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */

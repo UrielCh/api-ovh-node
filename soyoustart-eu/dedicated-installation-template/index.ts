@@ -171,7 +171,7 @@ export namespace dedicated {
             filesystem: dedicated.TemplateOsFileSystemEnum;
             mountpoint: string;
             order: number;
-            raid: dedicated.server.PartitionRaidEnum;
+            raid?: dedicated.server.PartitionRaidEnum;
             size: complexType.UnitAndValue<number>;
             type: dedicated.TemplatePartitionTypeEnum;
             volumeName?: string;

@@ -179,7 +179,7 @@ export interface License {
              * Get the orderable DirectAdmin versions
              * GET /license/directadmin/orderableVersions
              */
-            $get(params: { Ip: string }): Promise<license.DirectAdminOrderConfiguration[]>;
+            $get(params: { ip: string }): Promise<license.DirectAdminOrderConfiguration[]>;
             /**
              * Controle cache
              */
@@ -216,7 +216,7 @@ export interface License {
                  * Will tell if the ip can accept the license
                  * GET /license/directadmin/{serviceName}/canLicenseBeMovedTo
                  */
-                $get(params: { Destinationip: string }): Promise<license.ChangeIpStatus>;
+                $get(params: { destinationIp: string }): Promise<license.ChangeIpStatus>;
                 /**
                  * Controle cache
                  */
@@ -264,7 +264,7 @@ export interface License {
                  * tasks linked to this license
                  * GET /license/directadmin/{serviceName}/tasks
                  */
-                $get(params?: { Action?: license.ActionType, Status?: license.TaskStateEnum }): Promise<number[]>;
+                $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */

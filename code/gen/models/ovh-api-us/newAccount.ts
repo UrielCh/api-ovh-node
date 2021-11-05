@@ -239,7 +239,7 @@ export const schema: Schema = {
               "dataType": "nichandle.CountryEnum",
               "description": "",
               "fullType": "nichandle.CountryEnum",
-              "name": "Country",
+              "name": "country",
               "paramType": "query",
               "required": true
             }
@@ -265,7 +265,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhCompanyEnum",
               "description": "",
               "fullType": "nichandle.OvhCompanyEnum",
-              "name": "Company",
+              "name": "company",
               "paramType": "query",
               "required": true
             },
@@ -273,7 +273,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Subsidiary",
+              "name": "subsidiary",
               "paramType": "query",
               "required": true
             }
@@ -299,7 +299,7 @@ export const schema: Schema = {
               "dataType": "nichandle.CountryEnum",
               "description": "",
               "fullType": "nichandle.CountryEnum",
-              "name": "Country",
+              "name": "country",
               "paramType": "query",
               "required": true
             }
@@ -325,7 +325,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhCompanyEnum",
               "description": "",
               "fullType": "nichandle.OvhCompanyEnum",
-              "name": "Ovhcompany",
+              "name": "ovhCompany",
               "paramType": "query",
               "required": true
             },
@@ -333,7 +333,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -359,7 +359,7 @@ export const schema: Schema = {
               "dataType": "nichandle.CountryEnum",
               "description": "",
               "fullType": "nichandle.CountryEnum",
-              "name": "Country",
+              "name": "country",
               "paramType": "query",
               "required": true
             },
@@ -367,7 +367,7 @@ export const schema: Schema = {
               "dataType": "nichandle.LegalFormEnum",
               "description": "",
               "fullType": "nichandle.LegalFormEnum",
-              "name": "Legalform",
+              "name": "legalform",
               "paramType": "query",
               "required": true
             },
@@ -375,7 +375,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhCompanyEnum",
               "description": "",
               "fullType": "nichandle.OvhCompanyEnum",
-              "name": "Ovhcompany",
+              "name": "ovhCompany",
               "paramType": "query",
               "required": true
             },
@@ -383,7 +383,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -409,7 +409,7 @@ export const schema: Schema = {
               "dataType": "nichandle.CountryEnum",
               "description": "",
               "fullType": "nichandle.CountryEnum",
-              "name": "Country",
+              "name": "country",
               "paramType": "query",
               "required": true
             }

@@ -4518,7 +4518,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "remove this template",
+          "description": "Remove this template",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -5105,7 +5105,7 @@ export const schema: Schema = {
               "fullType": "dedicated.server.PartitionRaidEnum",
               "name": "raid",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "long",
@@ -14756,7 +14756,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "raid": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Partition raid",
           "fullType": "dedicated.server.PartitionRaidEnum",
           "readOnly": false,

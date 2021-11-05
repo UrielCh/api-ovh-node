@@ -172,7 +172,7 @@ export interface License {
              * Get the orderable CPanel versions
              * GET /license/cpanel/orderableVersions
              */
-            $get(params: { Ip: string }): Promise<license.CpanelOrderConfiguration[]>;
+            $get(params: { ip: string }): Promise<license.CpanelOrderConfiguration[]>;
             /**
              * Controle cache
              */
@@ -209,7 +209,7 @@ export interface License {
                  * Will tell if the ip can accept the license
                  * GET /license/cpanel/{serviceName}/canLicenseBeMovedTo
                  */
-                $get(params: { Destinationip: string }): Promise<license.ChangeIpStatus>;
+                $get(params: { destinationIp: string }): Promise<license.ChangeIpStatus>;
                 /**
                  * Controle cache
                  */
@@ -250,7 +250,7 @@ export interface License {
                  * tasks linked to this license
                  * GET /license/cpanel/{serviceName}/tasks
                  */
-                $get(params?: { Action?: license.ActionType, Status?: license.TaskStateEnum }): Promise<number[]>;
+                $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */

@@ -27,6 +27,13 @@ export namespace freefax {
         redirectionEmail: string[];
     }
 }
+export namespace nichandle {
+    /**
+     * All genders a person can choose
+     * type fullname: nichandle.GenderEnum
+     */
+    export type GenderEnum = "female" | "male"
+}
 export namespace service {
     /**
      * Map a possible renew for a specific service
@@ -72,6 +79,90 @@ export namespace services {
 }
 export namespace telephony {
     /**
+     * Directory Informations
+     * interface fullName: telephony.DirectoryHeadingPJ.DirectoryHeadingPJ
+     */
+    export interface DirectoryHeadingPJ {
+        apeCode: string;
+        apeDescription: string;
+        directoryServiceCode: number;
+        directoryServiceDescription: string;
+        notification: string;
+    }
+    /**
+     * Directory Informations
+     * interface fullName: telephony.DirectoryInfo.DirectoryInfo
+     */
+    export interface DirectoryInfo {
+        PJSocialNomination: string;
+        address: string;
+        addressExtra: string;
+        ape: string;
+        areaCode: number;
+        birthDate?: string;
+        cedex: string;
+        city: string;
+        country: string;
+        directoryServiceCode: string;
+        displayFirstName: boolean;
+        displayMarketingDirectory: boolean;
+        displayOnlyCity: boolean;
+        displaySearchReverse: boolean;
+        displayUniversalDirectory: boolean;
+        email: string;
+        firstName: string;
+        gender?: nichandle.GenderEnum;
+        inseeCode: number;
+        legalForm: string;
+        lineDescription: string;
+        modificationDate: string;
+        modificationType: string;
+        name: string;
+        number: string;
+        occupation: string;
+        postBox: string;
+        postCode: string;
+        receivePJDirectory: boolean;
+        siret: string;
+        socialNomination: string;
+        socialNominationExtra: string;
+        status: string;
+        urbanDistrict: string;
+        wayName: string;
+        wayNumber: string;
+        wayNumberExtra: string;
+        wayType: string;
+    }
+    /**
+     * Directory way type
+     * interface fullName: telephony.DirectoryWayType.DirectoryWayType
+     */
+    export interface DirectoryWayType {
+        abbreviatedName: string;
+        wayName: string;
+    }
+    /**
+     * Task informations about an entreprise
+     * interface fullName: telephony.EntrepriseNumberInformations.EntrepriseNumberInformations
+     */
+    export interface EntrepriseNumberInformations {
+        address?: string;
+        ape?: string;
+        brand?: string;
+        entrepriseNumber: string;
+        isValid: boolean;
+        name: string;
+        siren?: string;
+    }
+    /**
+     * Task about getting entreprise informations
+     * interface fullName: telephony.EntrepriseNumberInformationsTask.EntrepriseNumberInformationsTask
+     */
+    export interface EntrepriseNumberInformationsTask {
+        informations: telephony.EntrepriseNumberInformations;
+        status: telephony.TaskStatusEnum;
+    }
+    /**
      * Available quality for fax documents
      * type fullname: telephony.FaxQualityEnum
      */
@@ -99,6 +190,11 @@ export namespace telephony {
         email: string;
         type: telephony.ServiceVoicemailMailOptionEnum;
     }
+    /**
+     * Task status
+     * type fullname: telephony.TaskStatusEnum
+     */
+    export type TaskStatusEnum = "doing" | "done" | "error" | "pause" | "todo"
     /**
      * All existing type of routing for a voicemail
      * type fullname: telephony.VoicefaxRoutingEnum
@@ -192,6 +288,51 @@ export interface Freefax {
              * POST /freefax/{serviceName}/changePassword
              */
             $post(): Promise<string>;
+        }
+        directory: {
+            /**
+             * Get this object properties
+             * GET /freefax/{serviceName}/directory
+             */
+            $get(): Promise<telephony.DirectoryInfo>;
+            /**
+             * Alter this object properties
+             * PUT /freefax/{serviceName}/directory
+             */
+            $put(params?: { PJSocialNomination?: string, address?: string, addressExtra?: string, ape?: string, areaCode?: number, birthDate?: string, cedex?: string, city?: string, country?: string, directoryServiceCode?: string, displayFirstName?: boolean, displayMarketingDirectory?: boolean, displayOnlyCity?: boolean, displaySearchReverse?: boolean, displayUniversalDirectory?: boolean, email?: string, firstName?: string, gender?: nichandle.GenderEnum, inseeCode?: number, legalForm?: string, lineDescription?: string, modificationDate?: string, modificationType?: string, name?: string, number?: string, occupation?: string, postBox?: string, postCode?: string, receivePJDirectory?: boolean, siret?: string, socialNomination?: string, socialNominationExtra?: string, status?: string, urbanDistrict?: string, wayName?: string, wayNumber?: string, wayNumberExtra?: string, wayType?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            fetchEntrepriseInformations: {
+                /**
+                 * Get company entreprise informations by providing entreprise number
+                 * POST /freefax/{serviceName}/directory/fetchEntrepriseInformations
+                 */
+                $post(params: { entrepriseNumber: string }): Promise<telephony.EntrepriseNumberInformationsTask>;
+            }
+            getDirectoryServiceCode: {
+                /**
+                 * Get directory service code from an APE code ( principal activity of the firm code )
+                 * GET /freefax/{serviceName}/directory/getDirectoryServiceCode
+                 */
+                $get(params: { apeCode: string }): Promise<telephony.DirectoryHeadingPJ[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            getWayTypes: {
+                /**
+                 * Get all the way types availables
+                 * GET /freefax/{serviceName}/directory/getWayTypes
+                 */
+                $get(): Promise<telephony.DirectoryWayType[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
         }
         mainService: {
             /**

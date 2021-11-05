@@ -467,7 +467,7 @@ export interface Dedicated {
                          * Return statistics about the partition
                          * GET /dedicated/nasha/{serviceName}/partition/{partitionName}/use
                          */
-                        $get(params: { Type: dedicated.storage.PartitionUsageTypeEnum }): Promise<complexType.UnitAndValue<number>>;
+                        $get(params: { type: dedicated.storage.PartitionUsageTypeEnum }): Promise<complexType.UnitAndValue<number>>;
                         /**
                          * Controle cache
                          */
@@ -496,7 +496,7 @@ export interface Dedicated {
                  * View task list
                  * GET /dedicated/nasha/{serviceName}/task
                  */
-                $get(params?: { Operation?: dedicated.storage.TaskFunctionEnum, Status?: dedicated.TaskStatusEnum }): Promise<number[]>;
+                $get(params?: { operation?: dedicated.storage.TaskFunctionEnum, status?: dedicated.TaskStatusEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */
@@ -525,7 +525,7 @@ export interface Dedicated {
                  * Return statistics about the nas
                  * GET /dedicated/nasha/{serviceName}/use
                  */
-                $get(params: { Type: dedicated.storage.NasUsageTypeEnum }): Promise<complexType.UnitAndValue<number>>;
+                $get(params: { type: dedicated.storage.NasUsageTypeEnum }): Promise<complexType.UnitAndValue<number>>;
                 /**
                  * Controle cache
                  */

@@ -1230,7 +1230,7 @@ export namespace dedicated {
             filesystem: dedicated.TemplateOsFileSystemEnum;
             mountpoint: string;
             order: number;
-            raid: dedicated.server.PartitionRaidEnum;
+            raid?: dedicated.server.PartitionRaidEnum;
             size: complexType.UnitAndValue<number>;
             type: dedicated.TemplatePartitionTypeEnum;
             volumeName?: string;
@@ -1572,6 +1572,50 @@ export namespace me {
             }
         }
     }
+    export namespace contact {
+        /**
+         * Representation of a Contact
+         * interface fullName: me.contact.Address.Address
+         */
+        export interface Address {
+            city: string;
+            country: nichandle.CountryEnum;
+            line1: string;
+            line2?: string;
+            line3?: string;
+            otherDetails?: string;
+            province?: string;
+            zip?: string;
+        }
+        /**
+         * Contact definition
+         * interface fullName: me.contact.Contact.Contact
+         */
+        export interface Contact {
+            address: me.contact.Address;
+            birthCity?: string;
+            birthCountry?: nichandle.CountryEnum;
+            birthDay?: string;
+            birthZip?: string;
+            cellPhone?: string;
+            companyNationalIdentificationNumber?: string;
+            email: string;
+            fax?: string;
+            firstName: string;
+            gender?: nichandle.GenderEnum;
+            id: number;
+            language: nichandle.LanguageEnum;
+            lastName: string;
+            legalForm: nichandle.LegalFormEnum;
+            nationalIdentificationNumber?: string;
+            nationality?: nichandle.CountryEnum;
+            organisationName?: string;
+            organisationType?: string;
+            phone?: string;
+            spareEmail?: string;
+            vat?: string;
+        }
+    }
     export namespace credit {
         /**
          * Missing description
@@ -1870,6 +1914,7 @@ export namespace me {
             icon: me.payment.Icon;
             label?: string;
             lastUpdate: string;
+            merchantId?: string;
             paymentMeanId?: number;
             paymentMethodId: number;
             paymentSubType?: me.payment.AvailableSubTypeEnum;
@@ -3958,7 +4003,7 @@ export interface Me {
     }
     contact: {
         /**
-         * Retrieve all contact that you created
+         * Retrieve every contact your created
          * GET /me/contact
          */
         $get(): Promise<number[]>;
@@ -3966,7 +4011,7 @@ export interface Me {
          * Create a new contact
          * POST /me/contact
          */
-        $post(params: { address: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email: string, fax?: string, firstName: string, gender?: nichandle.GenderEnum, language: nichandle.LanguageEnum, lastName: string, legalForm: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone: string, vat?: string }): Promise<contact.Contact>;
+        $post(params?: { address?: me.contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, id?: number, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone?: string, spareEmail?: string, vat?: string }): Promise<me.contact.Contact>;
         /**
          * Controle cache
          */
@@ -3976,12 +4021,12 @@ export interface Me {
              * Retrieve information about a contact
              * GET /me/contact/{contactId}
              */
-            $get(): Promise<contact.Contact>;
+            $get(): Promise<me.contact.Contact>;
             /**
              * Update an existing contact
              * PUT /me/contact/{contactId}
              */
-            $put(params?: { address?: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone?: string, vat?: string }): Promise<contact.Contact>;
+            $put(params?: { address?: me.contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, id?: number, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone?: string, spareEmail?: string, vat?: string }): Promise<me.contact.Contact>;
             /**
              * Controle cache
              */
@@ -4561,7 +4606,7 @@ export interface Me {
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(templateName: string): {
             /**
-             * remove this template
+             * Remove this template
              * DELETE /me/installationTemplate/{templateName}
              */
             $delete(): Promise<void>;
@@ -4668,7 +4713,7 @@ export interface Me {
                          * Add a partition in this partitioning scheme
                          * POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
                          */
-                        $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid: dedicated.server.PartitionRaidEnum, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
+                        $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: dedicated.server.PartitionRaidEnum, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
                         /**
                          * Controle cache
                          */
@@ -5277,7 +5322,7 @@ export interface Me {
                  * Edit payment method
                  * PUT /me/payment/method/{paymentMethodId}
                  */
-                $put(params?: { billingContactId?: number, creationDate?: string, default_?: boolean, description?: string, expirationDate?: string, icon?: me.payment.Icon, label?: string, lastUpdate?: string, paymentMeanId?: number, paymentMethodId?: number, paymentSubType?: me.payment.AvailableSubTypeEnum, paymentType?: string, status?: me.payment.method.StatusEnum }): Promise<me.payment.PaymentMethod>;
+                $put(params?: { billingContactId?: number, creationDate?: string, default_?: boolean, description?: string, expirationDate?: string, icon?: me.payment.Icon, label?: string, lastUpdate?: string, merchantId?: string, paymentMeanId?: number, paymentMethodId?: number, paymentSubType?: me.payment.AvailableSubTypeEnum, paymentType?: string, status?: me.payment.method.StatusEnum }): Promise<me.payment.PaymentMethod>;
                 /**
                  * Controle cache
                  */

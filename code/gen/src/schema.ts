@@ -24,7 +24,7 @@ export type OvhErrorsMinor = 'NoContent' | 'NotFound' | 'BadRequest' | 'Internal
  * added on 30/06/2021
  */
 export type IOvhErrors = `${OvhErrorsMajor}::${OvhErrorsMinor}::${string}`; 
-export type IOvhScopes = `account/${string}` | `product/${string}` | `services/${string}` | `order/${string}` | 'all' | '/all';
+export type IOvhScopes = `support/all` | `dedicated/${string}` | `account/${string}` | `product/${string}` | `services/${string}` | `order/${string}` | 'all' | '/all';
 //typeof AllScopes[number];
 
 export interface Operation {
@@ -40,7 +40,10 @@ export interface Operation {
      * operation name
      */
     operationId?:     string;
-    description:      string;
+    /**
+     * May be forgoten
+     */
+    description?:     string;
     /**
      * added on 09/22/2020
      * May contains duplicated entry

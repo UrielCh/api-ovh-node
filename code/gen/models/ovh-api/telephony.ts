@@ -26279,6 +26279,48 @@ export const schema: Schema = {
       "path": "/telephony/procedure/{id}/cancel"
     },
     {
+      "description": "Generate a new password for the reseller panel",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Generate a new password for the reseller panel",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/telephony/all"
+          ]
+        }
+      ],
+      "path": "/telephony/resellerPanel/generatePassword"
+    },
+    {
+      "description": "Status of customer reseller panel",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Status of customer reseller panel",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "telephony.ResellerPanelStatus",
+          "scopes": [
+            "all",
+            "product/telephony/all"
+          ]
+        }
+      ],
+      "path": "/telephony/resellerPanel/status"
+    },
+    {
       "description": "Search a service with its domain, to get its billing account and type",
       "operations": [
         {
@@ -35200,6 +35242,39 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
+        }
+      }
+    },
+    "telephony.ResellerPanelPasswordUpdateStatusEnum": {
+      "description": "Status of password update",
+      "enum": [
+        "doing",
+        "done",
+        "error",
+        "todo"
+      ],
+      "enumType": "string",
+      "id": "ResellerPanelPasswordUpdateStatusEnum",
+      "namespace": "telephony"
+    },
+    "telephony.ResellerPanelStatus": {
+      "description": "Describe the status of the reseller panel, if it is activated and if there is a password update ongoing",
+      "id": "ResellerPanelStatus",
+      "namespace": "telephony",
+      "properties": {
+        "enabled": {
+          "canBeNull": false,
+          "description": "Whether the reseller panel is enabled or not",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "passwordUpdateStatus": {
+          "canBeNull": true,
+          "description": "Password update task status",
+          "readOnly": false,
+          "required": false,
+          "type": "telephony.ResellerPanelPasswordUpdateStatusEnum"
         }
       }
     },

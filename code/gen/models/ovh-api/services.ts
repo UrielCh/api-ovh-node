@@ -671,9 +671,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "services.operation.ExecutionRequest",
+              "dataType": "services.operation.DetachExecutionRequest",
               "description": "Request Body",
-              "fullType": "services.operation.ExecutionRequest",
+              "fullType": "services.operation.DetachExecutionRequest",
               "paramType": "body",
               "required": true
             },
@@ -704,6 +704,44 @@ export const schema: Schema = {
       "path": "/services/{serviceId}/detach/{planCode}/execute"
     },
     {
+      "description": "Retrieve all possible options you can detach the given service's options to",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "View all offers compatible for the detachment for the given option offer",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.operation.DetachOptionsDefinition[]",
+          "scopes": [
+            "all",
+            "services/all"
+          ]
+        }
+      ],
+      "path": "/services/{serviceId}/detach/{planCode}/options"
+    },
+    {
       "description": "Detach your option offer to a standalone offer",
       "operations": [
         {
@@ -716,9 +754,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "services.operation.ExecutionRequest",
+              "dataType": "services.operation.DetachExecutionRequest",
               "description": "Request Body",
-              "fullType": "services.operation.ExecutionRequest",
+              "fullType": "services.operation.DetachExecutionRequest",
               "paramType": "body",
               "required": true
             },
@@ -3775,6 +3813,123 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "services.operation.AddonDetachExecutionRequest": {
+      "description": "Contains all information for the given addon in order to be detached",
+      "id": "AddonDetachExecutionRequest",
+      "namespace": "services.operation",
+      "properties": {
+        "duration": {
+          "canBeNull": false,
+          "description": "Duration selected for the operation execution",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": true,
+          "type": "duration"
+        },
+        "planCode": {
+          "canBeNull": false,
+          "description": "Commercial offer to detach the service to",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "pricingMode": {
+          "canBeNull": false,
+          "description": "Pricing mode selected for the operation execution",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Quantity for the operation execution",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": "ID of the service that will be detached",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        }
+      }
+    },
+    "services.operation.DetachExecutionRequest": {
+      "description": "Request allowing the detachment of a service from its parent",
+      "id": "DetachExecutionRequest",
+      "namespace": "services.operation",
+      "properties": {
+        "addons": {
+          "canBeNull": true,
+          "description": "Addons informations for the operation execution",
+          "fullType": "services.operation.AddonDetachExecutionRequest[]",
+          "readOnly": false,
+          "required": false,
+          "type": "services.operation.AddonDetachExecutionRequest[]"
+        },
+        "autoPayWithPreferredPaymentMethod": {
+          "canBeNull": false,
+          "description": "Indicates that order, if needed, will be automatically paid with preferred payment method",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "duration": {
+          "canBeNull": false,
+          "description": "Duration selected for the operation execution",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": true,
+          "type": "duration"
+        },
+        "pricingMode": {
+          "canBeNull": false,
+          "description": "Pricing mode selected for the operation execution",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Quantity for the operation execution",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        }
+      }
+    },
+    "services.operation.DetachOptionsDefinition": {
+      "description": "All possible detachment offers for the given service options",
+      "id": "DetachOptionsDefinition",
+      "namespace": "services.operation",
+      "properties": {
+        "plans": {
+          "canBeNull": false,
+          "description": "Possible options for the given service",
+          "fullType": "order.cart.GenericProductDefinition[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductDefinition[]"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": "ID of the service",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },

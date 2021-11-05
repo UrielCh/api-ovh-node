@@ -924,6 +924,21 @@ export const schema: Schema = {
         }
       }
     },
+    "dedicated.anthos.IpRestrictionUpsert": {
+      "description": "IpRestrictionUpsert",
+      "id": "IpRestrictionUpsert",
+      "namespace": "dedicated.anthos",
+      "properties": {
+        "ips": {
+          "canBeNull": true,
+          "description": "List of ips blocks to add to the Anthos restrictions",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
+        }
+      }
+    },
     "dedicated.anthos.NetappAccess": {
       "description": "NetappAccess",
       "id": "NetappAccess",
@@ -1157,6 +1172,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "status": {
+          "canBeNull": true,
+          "description": "Tenant status",
+          "fullType": "dedicated.anthos.TenantStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.anthos.TenantStatusEnum"
+        },
         "storage": {
           "canBeNull": true,
           "description": "Tenant storage cluster",
@@ -1198,6 +1221,33 @@ export const schema: Schema = {
         }
       }
     },
+    "dedicated.anthos.TenantStatusEnum": {
+      "description": "Tenant status",
+      "enum": [
+        "TENANT_STATUS_UNSPECIFIED",
+        "TENANT_STATUS_UPGRADING",
+        "TENANT_STATUS_READY",
+        "TENANT_STATUS_ERROR"
+      ],
+      "enumType": "string",
+      "id": "TenantStatusEnum",
+      "namespace": "dedicated.anthos"
+    },
+    "dedicated.anthos.UpgradeAnthosRequest": {
+      "description": "Upgrade Anthos version for the tenant",
+      "id": "UpgradeAnthosRequest",
+      "namespace": "dedicated.anthos",
+      "properties": {
+        "version": {
+          "canBeNull": false,
+          "description": "Desired Anthos version for the upgrade",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "dedicated.anthos.Usage": {
       "description": "Usage",
       "id": "Usage",
@@ -1226,6 +1276,37 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "double"
+        }
+      }
+    },
+    "dedicated.anthos.VersionInfo": {
+      "description": "Anthos version informations",
+      "id": "VersionInfo",
+      "namespace": "dedicated.anthos",
+      "properties": {
+        "changelogLink": {
+          "canBeNull": false,
+          "description": "Link to the version's changelog",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "latest": {
+          "canBeNull": false,
+          "description": "Indicates if this version is the latest",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Anthos version",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },

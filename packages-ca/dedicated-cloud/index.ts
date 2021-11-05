@@ -1858,6 +1858,13 @@ export interface DedicatedCloud {
                              */
                             $post(params: { localVraNetwork: string, ovhEndpointIp: string, remoteVraNetwork: string }): Promise<dedicatedCloud.Task>;
                         }
+                        requestPairingToken: {
+                            /**
+                             * Request a pairing token in order to link your OVHcloud Zerto Virtual Manager to your local one
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/requestPairingToken
+                             */
+                            $post(): Promise<dedicatedCloud.Task>;
+                        }
                     }
                 }
                 filer: {

@@ -126,7 +126,7 @@ export interface NewAccount {
          * All available areas for a given country
          * GET /newAccount/area
          */
-        $get(params: { Country: nichandle.CountryEnum }): Promise<string[]>;
+        $get(params: { country: nichandle.CountryEnum }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -137,7 +137,7 @@ export interface NewAccount {
          * Returns the contracts that governs the creation of an OVH identifier
          * GET /newAccount/contracts
          */
-        $get(params: { Company: nichandle.OvhCompanyEnum, Subsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.Contract[]>;
+        $get(params: { company: nichandle.OvhCompanyEnum, subsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.Contract[]>;
         /**
          * Controle cache
          */
@@ -148,7 +148,7 @@ export interface NewAccount {
          * All available corporation types for a given country
          * GET /newAccount/corporationType
          */
-        $get(params: { Country: nichandle.CountryEnum }): Promise<string[]>;
+        $get(params: { country: nichandle.CountryEnum }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -159,7 +159,7 @@ export interface NewAccount {
          * All available countries for an ovh company and an ovh subsidiary
          * GET /newAccount/countries
          */
-        $get(params: { Ovhcompany: nichandle.OvhCompanyEnum, Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<nichandle.CountryEnum[]>;
+        $get(params: { ovhCompany: nichandle.OvhCompanyEnum, ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<nichandle.CountryEnum[]>;
         /**
          * Controle cache
          */
@@ -170,7 +170,7 @@ export interface NewAccount {
          * Give all the rules to follow in order to create an OVH identifier
          * GET /newAccount/creationRules
          */
-        $get(params: { Country: nichandle.CountryEnum, Legalform: nichandle.LegalFormEnum, Ovhcompany: nichandle.OvhCompanyEnum, Ovhsubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<nichandle.CreationRules>;
+        $get(params: { country: nichandle.CountryEnum, legalform: nichandle.LegalFormEnum, ovhCompany: nichandle.OvhCompanyEnum, ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<nichandle.CreationRules>;
         /**
          * Controle cache
          */
@@ -181,7 +181,7 @@ export interface NewAccount {
          * All available legal forms for a given country
          * GET /newAccount/legalform
          */
-        $get(params: { Country: nichandle.CountryEnum }): Promise<string[]>;
+        $get(params: { country: nichandle.CountryEnum }): Promise<string[]>;
         /**
          * Controle cache
          */

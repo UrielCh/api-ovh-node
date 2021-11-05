@@ -1179,7 +1179,7 @@ export namespace dedicated {
             filesystem: dedicated.TemplateOsFileSystemEnum;
             mountpoint: string;
             order: number;
-            raid: dedicated.server.PartitionRaidEnum;
+            raid?: dedicated.server.PartitionRaidEnum;
             size: complexType.UnitAndValue<number>;
             type: dedicated.TemplatePartitionTypeEnum;
             volumeName?: string;
@@ -3709,7 +3709,7 @@ export interface Me {
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(templateName: string): {
             /**
-             * remove this template
+             * Remove this template
              * DELETE /me/installationTemplate/{templateName}
              */
             $delete(): Promise<void>;
@@ -3816,7 +3816,7 @@ export interface Me {
                          * Add a partition in this partitioning scheme
                          * POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
                          */
-                        $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid: dedicated.server.PartitionRaidEnum, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
+                        $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: dedicated.server.PartitionRaidEnum, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
                         /**
                          * Controle cache
                          */

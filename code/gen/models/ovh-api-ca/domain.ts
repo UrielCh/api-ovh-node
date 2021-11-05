@@ -1643,7 +1643,7 @@ export const schema: Schema = {
           },
           "description": "Validate a rule data for a specified domain",
           "httpMethod": "POST",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "domain.configuration.rules.RuleData",
@@ -1669,7 +1669,11 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/domain/all"
+          ]
         }
       ],
       "path": "/domain/configurationRule/check"

@@ -37,3 +37,6 @@ samples/ovh-delete-service/src/*.d.ts
 samples/ovh-delete-service/src/*.js
 */*/.cache/
 **/*pnpm-lock.yaml
+_code/gen/models/*/*.js
+_code/gen/models/*/*.js.map
+

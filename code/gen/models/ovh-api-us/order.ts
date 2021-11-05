@@ -21,7 +21,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of description property (=)",
               "fullType": "string",
-              "name": "Description",
+              "name": "description",
               "paramType": "query",
               "required": false
             }
@@ -289,7 +289,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Identifier of a baremetal server offer",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": true
             }
@@ -531,7 +531,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Identifier of the Public Cloud you want to consult options",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": true
             }
@@ -625,7 +625,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Coupon identifier",
               "fullType": "string",
-              "name": "Coupon",
+              "name": "coupon",
               "paramType": "query",
               "required": true
             }
@@ -707,7 +707,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of family property (=)",
               "fullType": "string",
-              "name": "Family",
+              "name": "family",
               "paramType": "query",
               "required": false
             },
@@ -715,7 +715,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of planCode property (=)",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": false
             }
@@ -801,7 +801,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of family property (=)",
               "fullType": "string",
-              "name": "Family",
+              "name": "family",
               "paramType": "query",
               "required": false
             },
@@ -809,7 +809,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Identifier of a dedicated server offer",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": true
             }
@@ -981,7 +981,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Identifier of the Dedicated Discover server you want to consult options",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": true
             }
@@ -1153,7 +1153,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Identifier of the IP addresses you want to consult options",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": true
             }
@@ -1325,7 +1325,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Identifier of the IP Load-Balancing you want to consult options",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": true
             }
@@ -1559,7 +1559,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of label property (=)",
               "fullType": "string",
-              "name": "Label",
+              "name": "label",
               "paramType": "query",
               "required": false
             }
@@ -2061,7 +2061,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Identifier of the Plesk license you want to consult options",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": true
             }
@@ -2311,7 +2311,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Identifier of the Virtuozzo license you want to consult options",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": true
             }
@@ -2717,7 +2717,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Identifier of the Hosted Dedicated Cloud you want to consult options",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": true
             }
@@ -2889,7 +2889,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Identifier of the SSL Comodo you want to consult options",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": true
             }
@@ -3091,7 +3091,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Identifier of the Veeam Cloud Connect you want to consult options",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": true
             }
@@ -3263,7 +3263,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Identifier of the Veeam Enterprise you want to consult options",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": true
             }
@@ -3435,7 +3435,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Identifier of the VPS you want to consult options",
               "fullType": "string",
-              "name": "Plancode",
+              "name": "planCode",
               "paramType": "query",
               "required": true
             }
@@ -4883,7 +4883,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -4909,7 +4909,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -4935,7 +4935,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -4961,7 +4961,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -4987,7 +4987,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5013,7 +5013,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5039,7 +5039,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5065,7 +5065,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5091,7 +5091,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5117,7 +5117,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5143,7 +5143,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5169,7 +5169,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5195,7 +5195,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5221,7 +5221,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5247,7 +5247,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Name of the private catalog you want to consult.",
               "fullType": "string",
-              "name": "Catalogname",
+              "name": "catalogName",
               "paramType": "query",
               "required": true
             },
@@ -5255,7 +5255,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult private catalog.",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5281,7 +5281,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5307,7 +5307,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5333,7 +5333,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5359,7 +5359,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5385,7 +5385,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5411,7 +5411,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5420,6 +5420,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/catalog/public/licensecPanel"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve nasha catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/nasha"
     },
     {
       "description": "Missing description",
@@ -5437,7 +5463,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5463,7 +5489,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5489,7 +5515,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5515,7 +5541,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5541,7 +5567,7 @@ export const schema: Schema = {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "Ovhsubsidiary",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -5634,7 +5660,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Quantity you want to upgrade to",
               "fullType": "long",
-              "name": "Quantity",
+              "name": "quantity",
               "paramType": "query",
               "required": true
             }
@@ -5779,7 +5805,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Quantity you want to upgrade to",
               "fullType": "long",
-              "name": "Quantity",
+              "name": "quantity",
               "paramType": "query",
               "required": true
             }
@@ -5924,7 +5950,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Quantity you want to upgrade to",
               "fullType": "long",
-              "name": "Quantity",
+              "name": "quantity",
               "paramType": "query",
               "required": true
             }
@@ -6069,7 +6095,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Quantity you want to upgrade to",
               "fullType": "long",
-              "name": "Quantity",
+              "name": "quantity",
               "paramType": "query",
               "required": true
             }
@@ -6214,7 +6240,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Quantity you want to upgrade to",
               "fullType": "long",
-              "name": "Quantity",
+              "name": "quantity",
               "paramType": "query",
               "required": true
             }
@@ -6359,7 +6385,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Quantity you want to upgrade to",
               "fullType": "long",
-              "name": "Quantity",
+              "name": "quantity",
               "paramType": "query",
               "required": true
             }
@@ -6504,7 +6530,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Quantity you want to upgrade to",
               "fullType": "long",
-              "name": "Quantity",
+              "name": "quantity",
               "paramType": "query",
               "required": true
             }
@@ -6649,7 +6675,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Quantity you want to upgrade to",
               "fullType": "long",
-              "name": "Quantity",
+              "name": "quantity",
               "paramType": "query",
               "required": true
             }

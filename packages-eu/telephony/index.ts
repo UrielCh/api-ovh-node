@@ -1921,6 +1921,19 @@ export namespace telephony {
         repayable?: boolean;
     }
     /**
+     * Status of password update
+     * type fullname: telephony.ResellerPanelPasswordUpdateStatusEnum
+     */
+    export type ResellerPanelPasswordUpdateStatusEnum = "doing" | "done" | "error" | "todo"
+    /**
+     * Describe the status of the reseller panel, if it is activated and if there is a password update ongoing
+     * interface fullName: telephony.ResellerPanelStatus.ResellerPanelStatus
+     */
+    export interface ResellerPanelStatus {
+        enabled: boolean;
+        passwordUpdateStatus?: telephony.ResellerPanelPasswordUpdateStatusEnum;
+    }
+    /**
      * Relevant informations about reset code
      * interface fullName: telephony.ResetPhoneCodeInfo.ResetPhoneCodeInfo
      */
@@ -2818,6 +2831,26 @@ export interface Telephony {
                 $post(): Promise<void>;
             }
         };
+    }
+    resellerPanel: {
+        generatePassword: {
+            /**
+             * Generate a new password for the reseller panel
+             * POST /telephony/resellerPanel/generatePassword
+             */
+            $post(): Promise<void>;
+        }
+        status: {
+            /**
+             * Status of customer reseller panel
+             * GET /telephony/resellerPanel/status
+             */
+            $get(): Promise<telephony.ResellerPanelStatus>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
     }
     searchServices: {
         /**

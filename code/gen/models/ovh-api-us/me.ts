@@ -1289,7 +1289,7 @@ export const schema: Schema = {
               "dataType": "agreements.AgreementStateEnum",
               "description": "Filter the value of agreed property",
               "fullType": "agreements.AgreementStateEnum",
-              "name": "Agreed",
+              "name": "agreed",
               "paramType": "query",
               "required": false
             },
@@ -1297,7 +1297,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the value of contractId property",
               "fullType": "long",
-              "name": "Contractid",
+              "name": "contractId",
               "paramType": "query",
               "required": false
             }
@@ -1492,7 +1492,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the value of applicationId property (like)",
               "fullType": "long",
-              "name": "Applicationid",
+              "name": "applicationId",
               "paramType": "query",
               "required": false
             },
@@ -1500,7 +1500,7 @@ export const schema: Schema = {
               "dataType": "auth.CredentialStateEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "auth.CredentialStateEnum",
-              "name": "Status",
+              "name": "status",
               "paramType": "query",
               "required": false
             }
@@ -1666,7 +1666,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Filter the value of date property (>=)",
               "fullType": "datetime",
-              "name": "Date.from",
+              "name": "date.from",
               "paramType": "query",
               "required": false
             },
@@ -1674,7 +1674,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Filter the value of date property (<=)",
               "fullType": "datetime",
-              "name": "Date.to",
+              "name": "date.to",
               "paramType": "query",
               "required": false
             },
@@ -1682,7 +1682,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the value of orderId property (=)",
               "fullType": "long",
-              "name": "Orderid",
+              "name": "orderId",
               "paramType": "query",
               "required": false
             }
@@ -1780,7 +1780,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the value of depositOrderId property (=)",
               "fullType": "long",
-              "name": "Depositorderid",
+              "name": "depositOrderId",
               "paramType": "query",
               "required": false
             }
@@ -1962,7 +1962,7 @@ export const schema: Schema = {
               "dataType": "billing.DocumentExtensionEnum",
               "description": "Document suffix",
               "fullType": "billing.DocumentExtensionEnum",
-              "name": "Extension",
+              "name": "extension",
               "paramType": "query",
               "required": false
             }
@@ -2269,7 +2269,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Certificate definition name",
               "fullType": "string",
-              "name": "Name",
+              "name": "name",
               "paramType": "query",
               "required": false
             }
@@ -2505,7 +2505,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Begin date",
               "fullType": "datetime",
-              "name": "Begindate",
+              "name": "beginDate",
               "paramType": "query",
               "required": true
             },
@@ -2513,7 +2513,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "End date",
               "fullType": "datetime",
-              "name": "Enddate",
+              "name": "endDate",
               "paramType": "query",
               "required": true
             }
@@ -2528,22 +2528,18 @@ export const schema: Schema = {
       "path": "/me/consumption/usage/history"
     },
     {
-      "description": "Missing description",
+      "description": "Contact management",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Retrieve all contact that you created",
+          "description": "Retrieve every contact your created",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -2555,177 +2551,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "contact.Address",
-              "description": "Address of the contact",
-              "fullType": "contact.Address",
-              "name": "address",
+              "dataType": "me.contact.Contact",
+              "description": "Request Body",
+              "fullType": "me.contact.Contact",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "City of birth",
-              "fullType": "string",
-              "name": "birthCity",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Birth Country",
-              "fullType": "nichandle.CountryEnum",
-              "name": "birthCountry",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "date",
-              "description": "Birthday date",
-              "fullType": "date",
-              "name": "birthDay",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Birth Zipcode",
-              "fullType": "string",
-              "name": "birthZip",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Cellphone number",
-              "fullType": "phoneNumber",
-              "name": "cellPhone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company national identification number",
-              "fullType": "string",
-              "name": "companyNationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Email address",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Fax phone number",
-              "fullType": "phoneNumber",
-              "name": "fax",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "First name",
-              "fullType": "string",
-              "name": "firstName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "nichandle.GenderEnum",
-              "description": "Gender",
-              "fullType": "nichandle.GenderEnum",
-              "name": "gender",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.LanguageEnum",
-              "description": "Language",
-              "fullType": "nichandle.LanguageEnum",
-              "name": "language",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Last name",
-              "fullType": "string",
-              "name": "lastName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "nichandle.LegalFormEnum",
-              "description": "Legal form of the contact",
-              "fullType": "nichandle.LegalFormEnum",
-              "name": "legalForm",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "National identification number",
-              "fullType": "string",
-              "name": "nationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Nationality",
-              "fullType": "nichandle.CountryEnum",
-              "name": "nationality",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Name of your organisation",
-              "fullType": "string",
-              "name": "organisationName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Type of your organisation",
-              "fullType": "string",
-              "name": "organisationType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Landline phone number",
-              "fullType": "phoneNumber",
-              "name": "phone",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "VAT number",
-              "fullType": "string",
-              "name": "vat",
-              "paramType": "body",
-              "required": false
             }
           ],
-          "responseType": "contact.Contact",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "me.contact.Contact"
         }
       ],
       "path": "/me/contact"
     },
     {
-      "description": "Missing description",
+      "description": "Contact management",
       "operations": [
         {
           "apiStatus": {
@@ -2738,18 +2577,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Contact Identifier",
+              "description": "Contact ID",
               "fullType": "long",
               "name": "contactId",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "contact.Contact",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "me.contact.Contact"
         },
         {
           "apiStatus": {
@@ -2761,179 +2596,22 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "contact.Address",
-              "description": "Address of the contact",
-              "fullType": "contact.Address",
-              "name": "address",
+              "dataType": "me.contact.Contact",
+              "description": "Request Body",
+              "fullType": "me.contact.Contact",
               "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "City of birth",
-              "fullType": "string",
-              "name": "birthCity",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Birth Country",
-              "fullType": "nichandle.CountryEnum",
-              "name": "birthCountry",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "date",
-              "description": "Birthday date",
-              "fullType": "date",
-              "name": "birthDay",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Birth Zipcode",
-              "fullType": "string",
-              "name": "birthZip",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Cellphone number",
-              "fullType": "phoneNumber",
-              "name": "cellPhone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company national identification number",
-              "fullType": "string",
-              "name": "companyNationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Email address",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Fax phone number",
-              "fullType": "phoneNumber",
-              "name": "fax",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "First name",
-              "fullType": "string",
-              "name": "firstName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.GenderEnum",
-              "description": "Gender",
-              "fullType": "nichandle.GenderEnum",
-              "name": "gender",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.LanguageEnum",
-              "description": "Language",
-              "fullType": "nichandle.LanguageEnum",
-              "name": "language",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Last name",
-              "fullType": "string",
-              "name": "lastName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.LegalFormEnum",
-              "description": "Legal form of the contact",
-              "fullType": "nichandle.LegalFormEnum",
-              "name": "legalForm",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "National identification number",
-              "fullType": "string",
-              "name": "nationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Nationality",
-              "fullType": "nichandle.CountryEnum",
-              "name": "nationality",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Name of your organisation",
-              "fullType": "string",
-              "name": "organisationName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Type of your organisation",
-              "fullType": "string",
-              "name": "organisationType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Landline phone number",
-              "fullType": "phoneNumber",
-              "name": "phone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "VAT number",
-              "fullType": "string",
-              "name": "vat",
-              "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "long",
-              "description": "Contact Identifier",
+              "description": "Contact ID",
               "fullType": "long",
               "name": "contactId",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "contact.Contact",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "me.contact.Contact"
         }
       ],
       "path": "/me/contact/{contactId}"
@@ -3221,7 +2899,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the value of depositOrderId property (=)",
               "fullType": "long",
-              "name": "Depositorderid",
+              "name": "depositOrderId",
               "paramType": "query",
               "required": false
             }
@@ -3365,7 +3043,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of date property (>=)",
               "fullType": "string",
-              "name": "Date.from",
+              "name": "date.from",
               "paramType": "query",
               "required": false
             },
@@ -3373,7 +3051,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of date property (<=)",
               "fullType": "string",
-              "name": "Date.to",
+              "name": "date.to",
               "paramType": "query",
               "required": false
             },
@@ -3381,7 +3059,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the value of orderId property (=)",
               "fullType": "long",
-              "name": "Orderid",
+              "name": "orderId",
               "paramType": "query",
               "required": false
             }
@@ -3593,7 +3271,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the value of depositOrderId property (=)",
               "fullType": "long",
-              "name": "Depositorderid",
+              "name": "depositOrderId",
               "paramType": "query",
               "required": false
             }
@@ -3815,7 +3493,7 @@ export const schema: Schema = {
               "dataType": "billing.DocumentExtensionEnum",
               "description": "Document suffix",
               "fullType": "billing.DocumentExtensionEnum",
-              "name": "Extension",
+              "name": "extension",
               "paramType": "query",
               "required": false
             }
@@ -3845,7 +3523,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Filter the value of creationDate property (>=)",
               "fullType": "datetime",
-              "name": "Creationdate.from",
+              "name": "creationDate.from",
               "paramType": "query",
               "required": false
             },
@@ -3853,7 +3531,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Filter the value of creationDate property (<=)",
               "fullType": "datetime",
-              "name": "Creationdate.to",
+              "name": "creationDate.to",
               "paramType": "query",
               "required": false
             }
@@ -3987,7 +3665,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Filter the value of date property (>=)",
               "fullType": "datetime",
-              "name": "Date.from",
+              "name": "date.from",
               "paramType": "query",
               "required": false
             },
@@ -3995,7 +3673,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Filter the value of date property (<=)",
               "fullType": "datetime",
-              "name": "Date.to",
+              "name": "date.to",
               "paramType": "query",
               "required": false
             }
@@ -4519,7 +4197,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "remove this template",
+          "description": "Remove this template",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -5106,7 +4784,7 @@ export const schema: Schema = {
               "fullType": "dedicated.server.PartitionRaidEnum",
               "name": "raid",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "long",
@@ -6508,7 +6186,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Payment method type",
               "fullType": "string",
-              "name": "Paymenttype",
+              "name": "paymentType",
               "paramType": "query",
               "required": false
             },
@@ -6516,7 +6194,7 @@ export const schema: Schema = {
               "dataType": "me.payment.method.PaymentMethod.Status",
               "description": "Status",
               "fullType": "me.payment.method.PaymentMethod.Status",
-              "name": "Status",
+              "name": "status",
               "paramType": "query",
               "required": false
             }
@@ -6866,7 +6544,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Payment method ID",
               "fullType": "long",
-              "name": "Paymentmethodid",
+              "name": "paymentMethodId",
               "paramType": "query",
               "required": false
             },
@@ -6874,7 +6552,7 @@ export const schema: Schema = {
               "dataType": "me.payment.method.Transaction.Status",
               "description": "Transaction status",
               "fullType": "me.payment.method.Transaction.Status",
-              "name": "Status",
+              "name": "status",
               "paramType": "query",
               "required": false
             }
@@ -6937,7 +6615,7 @@ export const schema: Schema = {
               "dataType": "billing.paymentMethod.PaymentTypeEnum",
               "description": "Payment type",
               "fullType": "billing.paymentMethod.PaymentTypeEnum",
-              "name": "Paymenttype",
+              "name": "paymentType",
               "paramType": "query",
               "required": false
             },
@@ -6945,7 +6623,7 @@ export const schema: Schema = {
               "dataType": "billing.paymentMethod.StatusEnum",
               "description": "Status",
               "fullType": "billing.paymentMethod.StatusEnum",
-              "name": "Status",
+              "name": "status",
               "paramType": "query",
               "required": false
             }
@@ -7137,7 +6815,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of date property (>=)",
               "fullType": "string",
-              "name": "Date.from",
+              "name": "date.from",
               "paramType": "query",
               "required": false
             },
@@ -7145,7 +6823,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of date property (<=)",
               "fullType": "string",
-              "name": "Date.to",
+              "name": "date.to",
               "paramType": "query",
               "required": false
             },
@@ -7153,7 +6831,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the value of orderId property (=)",
               "fullType": "long",
-              "name": "Orderid",
+              "name": "orderId",
               "paramType": "query",
               "required": false
             }
@@ -7289,7 +6967,7 @@ export const schema: Schema = {
               "dataType": "billing.DocumentExtensionEnum",
               "description": "Document suffix",
               "fullType": "billing.DocumentExtensionEnum",
-              "name": "Extension",
+              "name": "extension",
               "paramType": "query",
               "required": false
             }
@@ -7883,7 +7561,7 @@ export const schema: Schema = {
               "dataType": "nichandle.changeEmail.TaskStateEnum",
               "description": "Filter the value of state property (like)",
               "fullType": "nichandle.changeEmail.TaskStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -8070,7 +7748,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of date property (>=)",
               "fullType": "string",
-              "name": "Date.from",
+              "name": "date.from",
               "paramType": "query",
               "required": false
             },
@@ -8078,7 +7756,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of date property (<=)",
               "fullType": "string",
-              "name": "Date.to",
+              "name": "date.to",
               "paramType": "query",
               "required": false
             },
@@ -8086,7 +7764,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the value of orderId property (=)",
               "fullType": "long",
-              "name": "Orderid",
+              "name": "orderId",
               "paramType": "query",
               "required": false
             }
@@ -8386,6 +8064,148 @@ export const schema: Schema = {
           "type": "auth.CredentialStateEnum"
         }
       }
+    },
+    "audit.Log": {
+      "description": "An audit Log",
+      "id": "Log",
+      "namespace": "audit",
+      "properties": {
+        "authDetails": {
+          "canBeNull": true,
+          "description": "authentication details",
+          "fullType": "audit.LogAuthDetails",
+          "readOnly": true,
+          "required": false,
+          "type": "audit.LogAuthDetails"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "event's date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "ip": {
+          "canBeNull": true,
+          "description": "IP associated to this event",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "loginSuccessDetails": {
+          "canBeNull": true,
+          "description": "specific fields for LOGIN_SUCCESS events",
+          "fullType": "audit.LogLoginSuccessDetails",
+          "readOnly": true,
+          "required": false,
+          "type": "audit.LogLoginSuccessDetails"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "type of event",
+          "fullType": "audit.LogTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "audit.LogTypeEnum"
+        }
+      }
+    },
+    "audit.LogAuthDetails": {
+      "description": "Authentication details",
+      "id": "LogAuthDetails",
+      "namespace": "audit",
+      "properties": {
+        "userDetails": {
+          "canBeNull": false,
+          "description": "authenticated user details",
+          "fullType": "audit.LogAuthUserDetails",
+          "readOnly": true,
+          "required": false,
+          "type": "audit.LogAuthUserDetails"
+        }
+      }
+    },
+    "audit.LogAuthMFATypeEnum": {
+      "description": "Authentication MFA type",
+      "enum": [
+        "NONE",
+        "MAIL",
+        "SMS",
+        "TOTP",
+        "U2F",
+        "UNKNOWN"
+      ],
+      "enumType": "string",
+      "id": "LogAuthMFATypeEnum",
+      "namespace": "audit"
+    },
+    "audit.LogAuthUserDetails": {
+      "description": "Authenticated user details",
+      "id": "LogAuthUserDetails",
+      "namespace": "audit",
+      "properties": {
+        "type": {
+          "canBeNull": false,
+          "description": "authentication type",
+          "fullType": "audit.LogAuthUserTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "audit.LogAuthUserTypeEnum"
+        },
+        "user": {
+          "canBeNull": true,
+          "description": "authenticated user name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "audit.LogAuthUserTypeEnum": {
+      "description": "Authentication type",
+      "enum": [
+        "ACCOUNT",
+        "USER",
+        "PROVIDER"
+      ],
+      "enumType": "string",
+      "id": "LogAuthUserTypeEnum",
+      "namespace": "audit"
+    },
+    "audit.LogLoginSuccessDetails": {
+      "description": "specific fields for LOGIN_SUCCESS events",
+      "id": "LogLoginSuccessDetails",
+      "namespace": "audit",
+      "properties": {
+        "mfaType": {
+          "canBeNull": true,
+          "description": "Used MFA while login",
+          "fullType": "audit.LogAuthMFATypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "audit.LogAuthMFATypeEnum"
+        },
+        "userAgent": {
+          "canBeNull": false,
+          "description": "Browser's user agent",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "audit.LogTypeEnum": {
+      "description": "Audit event type",
+      "enum": [
+        "LOGIN_SUCCESS"
+      ],
+      "enumType": "string",
+      "id": "LogTypeEnum",
+      "namespace": "audit"
     },
     "auth.AccessRule": {
       "description": "Access rule required for the application",
@@ -12285,7 +12105,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "raid": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Partition raid",
           "fullType": "dedicated.server.PartitionRaidEnum",
           "readOnly": false,
@@ -12566,6 +12386,189 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "long"
+        }
+      }
+    },
+    "me.billing.purchaseOrder.Creation": {
+      "description": "Purchase order creation payload",
+      "id": "Creation",
+      "namespace": "me.billing.purchaseOrder",
+      "properties": {
+        "billingGroupId": {
+          "canBeNull": true,
+          "description": "Billing Group identifier",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "End date",
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
+        },
+        "reference": {
+          "canBeNull": false,
+          "description": "Reference",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Start date",
+          "fullType": "date",
+          "readOnly": false,
+          "required": true,
+          "type": "date"
+        }
+      }
+    },
+    "me.billing.purchaseOrder.PurchaseOrder": {
+      "description": "Purchase Order",
+      "id": "PurchaseOrder",
+      "namespace": "me.billing.purchaseOrder",
+      "properties": {
+        "billingGroupId": {
+          "canBeNull": true,
+          "description": "Billing Group identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "End date",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Purchase Order identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "reference": {
+          "canBeNull": false,
+          "description": "Reference",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Start date",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status",
+          "fullType": "me.billing.purchaseOrder.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.billing.purchaseOrder.StatusEnum"
+        }
+      }
+    },
+    "me.billing.purchaseOrder.StatusEnum": {
+      "description": "Status of the Purchase Order",
+      "enum": [
+        "CREATED",
+        "DELETED"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "me.billing.purchaseOrder"
+    },
+    "me.billing.purchaseOrder.Update": {
+      "description": "Purchase order update payload",
+      "id": "Update",
+      "namespace": "me.billing.purchaseOrder",
+      "properties": {
+        "billingGroupId": {
+          "canBeNull": true,
+          "description": "Billing group identifier",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "End date",
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
+        },
+        "reference": {
+          "canBeNull": true,
+          "description": "Reference",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "startDate": {
+          "canBeNull": true,
+          "description": "Start date",
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
         }
       }
     },
@@ -12851,6 +12854,260 @@ export const schema: Schema = {
           "description": "Unique ID associated to one service element",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "me.contact.Address": {
+      "description": "Representation of a Contact",
+      "id": "Address",
+      "namespace": "me.contact",
+      "properties": {
+        "city": {
+          "canBeNull": false,
+          "description": "City",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "country": {
+          "canBeNull": false,
+          "description": "Country",
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CountryEnum"
+        },
+        "line1": {
+          "canBeNull": false,
+          "description": "First line of the address",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "line2": {
+          "canBeNull": true,
+          "description": "Second line of the address",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "line3": {
+          "canBeNull": true,
+          "description": "Third line of the address",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "otherDetails": {
+          "canBeNull": true,
+          "description": "Other details",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "province": {
+          "canBeNull": true,
+          "description": "Province name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "zip": {
+          "canBeNull": true,
+          "description": "Zipcode",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "me.contact.Contact": {
+      "description": "Contact definition",
+      "id": "Contact",
+      "namespace": "me.contact",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": "Address for this contact",
+          "fullType": "me.contact.Address",
+          "readOnly": false,
+          "required": false,
+          "type": "me.contact.Address"
+        },
+        "birthCity": {
+          "canBeNull": true,
+          "description": "Birth city",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "birthCountry": {
+          "canBeNull": true,
+          "description": "Birth Country",
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CountryEnum"
+        },
+        "birthDay": {
+          "canBeNull": true,
+          "description": "Birth date",
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
+        },
+        "birthZip": {
+          "canBeNull": true,
+          "description": "Birth Zipcode",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "cellPhone": {
+          "canBeNull": true,
+          "description": "Cellphone number",
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
+        },
+        "companyNationalIdentificationNumber": {
+          "canBeNull": true,
+          "description": "National identification number of your company",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "email": {
+          "canBeNull": false,
+          "description": "Email address",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "fax": {
+          "canBeNull": true,
+          "description": "Fax number",
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
+        },
+        "firstName": {
+          "canBeNull": false,
+          "description": "First name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "gender": {
+          "canBeNull": true,
+          "description": "Gender",
+          "fullType": "nichandle.GenderEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.GenderEnum"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Contact Identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "language": {
+          "canBeNull": false,
+          "description": "Language",
+          "fullType": "nichandle.LanguageEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.LanguageEnum"
+        },
+        "lastName": {
+          "canBeNull": false,
+          "description": "Last name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "legalForm": {
+          "canBeNull": false,
+          "description": "Legal form of the contact",
+          "fullType": "nichandle.LegalFormEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.LegalFormEnum"
+        },
+        "nationalIdentificationNumber": {
+          "canBeNull": true,
+          "description": "National identification number of the contact",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "nationality": {
+          "canBeNull": true,
+          "description": "Nationality",
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CountryEnum"
+        },
+        "organisationName": {
+          "canBeNull": true,
+          "description": "Organisation name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "organisationType": {
+          "canBeNull": true,
+          "description": "Organisation type",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "phone": {
+          "canBeNull": true,
+          "description": "Telephone number",
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
+        },
+        "spareEmail": {
+          "canBeNull": true,
+          "description": "Spare email address",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "vat": {
+          "canBeNull": true,
+          "description": "VAT number",
+          "fullType": "string",
+          "readOnly": false,
           "required": false,
           "type": "string"
         }
@@ -14464,7 +14721,6 @@ export const schema: Schema = {
     "nichandle.LanguageEnum": {
       "description": "Languages a nichandle can choose",
       "enum": [
-        "cs_CZ",
         "de_DE",
         "en_AU",
         "en_CA",
@@ -14472,14 +14728,12 @@ export const schema: Schema = {
         "en_IE",
         "en_US",
         "es_ES",
-        "fi_FI",
         "fr_CA",
         "fr_FR",
         "fr_MA",
         "fr_SN",
         "fr_TN",
         "it_IT",
-        "lt_LT",
         "nl_NL",
         "pl_PL",
         "pt_PT"
@@ -15559,6 +15813,107 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "oauth2.client": {
+      "description": "An oAuth2 Client",
+      "id": "client",
+      "namespace": "oauth2",
+      "properties": {
+        "callbackUrls": {
+          "canBeNull": false,
+          "description": "allowed callback urls",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "clientId": {
+          "canBeNull": false,
+          "description": "client's client_id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "client's creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "client's description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "client's name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "oauth2.clientRequest": {
+      "description": "An oAuth2 Client Request",
+      "id": "clientRequest",
+      "namespace": "oauth2",
+      "properties": {
+        "callbackUrls": {
+          "canBeNull": false,
+          "description": "allowed callback urls",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "client's description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "client's name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "oauth2.clientSecret": {
+      "description": "An oAuth2 Client Secret",
+      "id": "clientSecret",
+      "namespace": "oauth2",
+      "properties": {
+        "clientId": {
+          "canBeNull": false,
+          "description": "client's client_id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "clientSecret": {
+          "canBeNull": false,
+          "description": "client's client_secret",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
         }
       }
     },

@@ -65,6 +65,57 @@ export namespace api {
         status: auth.CredentialStateEnum;
     }
 }
+export namespace audit {
+    /**
+     * An audit Log
+     * interface fullName: audit.Log.Log
+     */
+    export interface Log {
+        authDetails?: audit.LogAuthDetails;
+        createdAt: string;
+        ip?: string;
+        loginSuccessDetails?: audit.LogLoginSuccessDetails;
+        type: audit.LogTypeEnum;
+    }
+    /**
+     * Authentication details
+     * interface fullName: audit.LogAuthDetails.LogAuthDetails
+     */
+    export interface LogAuthDetails {
+        userDetails: audit.LogAuthUserDetails;
+    }
+    /**
+     * Authentication MFA type
+     * type fullname: audit.LogAuthMFATypeEnum
+     */
+    export type LogAuthMFATypeEnum = "NONE" | "MAIL" | "SMS" | "TOTP" | "U2F" | "UNKNOWN"
+    /**
+     * Authenticated user details
+     * interface fullName: audit.LogAuthUserDetails.LogAuthUserDetails
+     */
+    export interface LogAuthUserDetails {
+        type: audit.LogAuthUserTypeEnum;
+        user?: string;
+    }
+    /**
+     * Authentication type
+     * type fullname: audit.LogAuthUserTypeEnum
+     */
+    export type LogAuthUserTypeEnum = "ACCOUNT" | "USER" | "PROVIDER"
+    /**
+     * specific fields for LOGIN_SUCCESS events
+     * interface fullName: audit.LogLoginSuccessDetails.LogLoginSuccessDetails
+     */
+    export interface LogLoginSuccessDetails {
+        mfaType?: audit.LogAuthMFATypeEnum;
+        userAgent: string;
+    }
+    /**
+     * Audit event type
+     * type fullname: audit.LogTypeEnum
+     */
+    export type LogTypeEnum = "LOGIN_SUCCESS"
+}
 export namespace auth {
     /**
      * Access rule required for the application
@@ -928,7 +979,7 @@ export namespace dedicated {
             filesystem: dedicated.TemplateOsFileSystemEnum;
             mountpoint: string;
             order: number;
-            raid: dedicated.server.PartitionRaidEnum;
+            raid?: dedicated.server.PartitionRaidEnum;
             size: complexType.UnitAndValue<number>;
             type: dedicated.TemplatePartitionTypeEnum;
             volumeName?: string;
@@ -1026,6 +1077,50 @@ export namespace me {
                 }
             }
         }
+        export namespace purchaseOrder {
+            /**
+             * Purchase order creation payload
+             * interface fullName: me.billing.purchaseOrder.Creation.Creation
+             */
+            export interface Creation {
+                billingGroupId?: number;
+                description?: string;
+                endDate?: string;
+                reference: string;
+                startDate: string;
+            }
+            /**
+             * Purchase Order
+             * interface fullName: me.billing.purchaseOrder.PurchaseOrder.PurchaseOrder
+             */
+            export interface PurchaseOrder {
+                billingGroupId?: number;
+                creationDate: string;
+                description?: string;
+                endDate?: string;
+                id: number;
+                lastUpdate: string;
+                reference: string;
+                startDate: string;
+                status: me.billing.purchaseOrder.StatusEnum;
+            }
+            /**
+             * Status of the Purchase Order
+             * type fullname: me.billing.purchaseOrder.StatusEnum
+             */
+            export type StatusEnum = "CREATED" | "DELETED"
+            /**
+             * Purchase order update payload
+             * interface fullName: me.billing.purchaseOrder.Update.Update
+             */
+            export interface Update {
+                billingGroupId?: number;
+                description?: string;
+                endDate?: string;
+                reference?: string;
+                startDate?: string;
+            }
+        }
     }
     export namespace consent {
         /**
@@ -1109,6 +1204,50 @@ export namespace me {
                     unique_id?: string;
                 }
             }
+        }
+    }
+    export namespace contact {
+        /**
+         * Representation of a Contact
+         * interface fullName: me.contact.Address.Address
+         */
+        export interface Address {
+            city: string;
+            country: nichandle.CountryEnum;
+            line1: string;
+            line2?: string;
+            line3?: string;
+            otherDetails?: string;
+            province?: string;
+            zip?: string;
+        }
+        /**
+         * Contact definition
+         * interface fullName: me.contact.Contact.Contact
+         */
+        export interface Contact {
+            address: me.contact.Address;
+            birthCity?: string;
+            birthCountry?: nichandle.CountryEnum;
+            birthDay?: string;
+            birthZip?: string;
+            cellPhone?: string;
+            companyNationalIdentificationNumber?: string;
+            email: string;
+            fax?: string;
+            firstName: string;
+            gender?: nichandle.GenderEnum;
+            id: number;
+            language: nichandle.LanguageEnum;
+            lastName: string;
+            legalForm: nichandle.LegalFormEnum;
+            nationalIdentificationNumber?: string;
+            nationality?: nichandle.CountryEnum;
+            organisationName?: string;
+            organisationType?: string;
+            phone?: string;
+            spareEmail?: string;
+            vat?: string;
         }
     }
     export namespace credit {
@@ -1482,7 +1621,7 @@ export namespace nichandle {
      * Languages a nichandle can choose
      * type fullname: nichandle.LanguageEnum
      */
-    export type LanguageEnum = "cs_CZ" | "de_DE" | "en_AU" | "en_CA" | "en_GB" | "en_IE" | "en_US" | "es_ES" | "fi_FI" | "fr_CA" | "fr_FR" | "fr_MA" | "fr_SN" | "fr_TN" | "it_IT" | "lt_LT" | "nl_NL" | "pl_PL" | "pt_PT"
+    export type LanguageEnum = "de_DE" | "en_AU" | "en_CA" | "en_GB" | "en_IE" | "en_US" | "es_ES" | "fr_CA" | "fr_FR" | "fr_MA" | "fr_SN" | "fr_TN" | "it_IT" | "nl_NL" | "pl_PL" | "pt_PT"
     /**
      * Legal forms a nichandle can be registered as
      * type fullname: nichandle.LegalFormEnum
@@ -1803,6 +1942,36 @@ export namespace nichandle {
         default: boolean;
         key: string;
         keyName: string;
+    }
+}
+export namespace oauth2 {
+    /**
+     * An oAuth2 Client
+     * interface fullName: oauth2.client.client
+     */
+    export interface client {
+        callbackUrls: string[];
+        clientId: string;
+        createdAt: string;
+        description: string;
+        name: string;
+    }
+    /**
+     * An oAuth2 Client Request
+     * interface fullName: oauth2.clientRequest.clientRequest
+     */
+    export interface clientRequest {
+        callbackUrls: string[];
+        description: string;
+        name: string;
+    }
+    /**
+     * An oAuth2 Client Secret
+     * interface fullName: oauth2.clientSecret.clientSecret
+     */
+    export interface clientSecret {
+        clientId: string;
+        clientSecret: string;
     }
 }
 export namespace order {
@@ -2251,7 +2420,7 @@ export interface Me {
          * List of contracts signed between you and OVH
          * GET /me/agreements
          */
-        $get(params?: { Agreed?: agreements.AgreementStateEnum, Contractid?: number }): Promise<number[]>;
+        $get(params?: { agreed?: agreements.AgreementStateEnum, contractId?: number }): Promise<number[]>;
         /**
          * Controle cache
          */
@@ -2319,7 +2488,7 @@ export interface Me {
              * List of your Api Credentials
              * GET /me/api/credential
              */
-            $get(params?: { Applicationid?: number, Status?: auth.CredentialStateEnum }): Promise<number[]>;
+            $get(params?: { applicationId?: number, status?: auth.CredentialStateEnum }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -2374,7 +2543,7 @@ export interface Me {
          * List of all the bills the logged account has
          * GET /me/bill
          */
-        $get(params?: { 'Date.from'?: string, 'Date.to'?: string, Orderid?: number }): Promise<string[]>;
+        $get(params?: { 'date.from'?: string, 'date.to'?: string, orderId?: number }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -2404,7 +2573,7 @@ export interface Me {
                      * All operations related to these debts
                      * GET /me/bill/{billId}/debt/operation
                      */
-                    $get(params?: { Depositorderid?: number }): Promise<number[]>;
+                    $get(params?: { depositOrderId?: number }): Promise<number[]>;
                     /**
                      * Controle cache
                      */
@@ -2460,7 +2629,7 @@ export interface Me {
                  * Generate download link for the document
                  * GET /me/bill/{billId}/download
                  */
-                $get(params?: { Extension?: billing.DocumentExtensionEnum }): Promise<string>;
+                $get(params?: { extension?: billing.DocumentExtensionEnum }): Promise<string>;
                 /**
                  * Controle cache
                  */
@@ -2544,7 +2713,7 @@ export interface Me {
          * Get all certificates of the account
          * GET /me/certificates
          */
-        $get(params?: { Name?: string }): Promise<string[]>;
+        $get(params?: { name?: string }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -2631,7 +2800,7 @@ export interface Me {
                  * Get list of transactions between two dates
                  * GET /me/consumption/usage/history
                  */
-                $get(params: { Begindate: string, Enddate: string }): Promise<me.consumption.Transaction[]>;
+                $get(params: { beginDate: string, endDate: string }): Promise<me.consumption.Transaction[]>;
                 /**
                  * Controle cache
                  */
@@ -2641,7 +2810,7 @@ export interface Me {
     }
     contact: {
         /**
-         * Retrieve all contact that you created
+         * Retrieve every contact your created
          * GET /me/contact
          */
         $get(): Promise<number[]>;
@@ -2649,7 +2818,7 @@ export interface Me {
          * Create a new contact
          * POST /me/contact
          */
-        $post(params: { address: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email: string, fax?: string, firstName: string, gender?: nichandle.GenderEnum, language: nichandle.LanguageEnum, lastName: string, legalForm: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone: string, vat?: string }): Promise<contact.Contact>;
+        $post(params?: { address?: me.contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, id?: number, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone?: string, spareEmail?: string, vat?: string }): Promise<me.contact.Contact>;
         /**
          * Controle cache
          */
@@ -2659,12 +2828,12 @@ export interface Me {
              * Retrieve information about a contact
              * GET /me/contact/{contactId}
              */
-            $get(): Promise<contact.Contact>;
+            $get(): Promise<me.contact.Contact>;
             /**
              * Update an existing contact
              * PUT /me/contact/{contactId}
              */
-            $put(params?: { address?: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone?: string, vat?: string }): Promise<contact.Contact>;
+            $put(params?: { address?: me.contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, id?: number, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone?: string, spareEmail?: string, vat?: string }): Promise<me.contact.Contact>;
             /**
              * Controle cache
              */
@@ -2770,7 +2939,7 @@ export interface Me {
                      * All operations related to these debts
                      * GET /me/debtAccount/debt/{debtId}/operation
                      */
-                    $get(params?: { Depositorderid?: number }): Promise<number[]>;
+                    $get(params?: { depositOrderId?: number }): Promise<number[]>;
                     /**
                      * Controle cache
                      */
@@ -2813,7 +2982,7 @@ export interface Me {
          * List of all the deposits made to your prepaid account or debt account
          * GET /me/deposit
          */
-        $get(params?: { 'Date.from'?: string, 'Date.to'?: string, Orderid?: number }): Promise<string[]>;
+        $get(params?: { 'date.from'?: string, 'date.to'?: string, orderId?: number }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -2874,7 +3043,7 @@ export interface Me {
                              * All operations related to these debts
                              * GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation
                              */
-                            $get(params?: { Depositorderid?: number }): Promise<number[]>;
+                            $get(params?: { depositOrderId?: number }): Promise<number[]>;
                             /**
                              * Controle cache
                              */
@@ -2930,7 +3099,7 @@ export interface Me {
                          * Generate download link for the document
                          * GET /me/deposit/{depositId}/paidBills/{billId}/download
                          */
-                        $get(params?: { Extension?: billing.DocumentExtensionEnum }): Promise<string>;
+                        $get(params?: { extension?: billing.DocumentExtensionEnum }): Promise<string>;
                         /**
                          * Controle cache
                          */
@@ -2945,7 +3114,7 @@ export interface Me {
          * List of all the deposit requests made
          * GET /me/depositRequest
          */
-        $get(params?: { 'Creationdate.from'?: string, 'Creationdate.to'?: string }): Promise<number[]>;
+        $get(params?: { 'creationDate.from'?: string, 'creationDate.to'?: string }): Promise<number[]>;
         /**
          * Controle cache
          */
@@ -2989,7 +3158,7 @@ export interface Me {
              * List of entries of the fidelity account
              * GET /me/fidelityAccount/movements
              */
-            $get(params?: { 'Date.from'?: string, 'Date.to'?: string }): Promise<number[]>;
+            $get(params?: { 'date.from'?: string, 'date.to'?: string }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -3121,7 +3290,7 @@ export interface Me {
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(templateName: string): {
             /**
-             * remove this template
+             * Remove this template
              * DELETE /me/installationTemplate/{templateName}
              */
             $delete(): Promise<void>;
@@ -3228,7 +3397,7 @@ export interface Me {
                          * Add a partition in this partitioning scheme
                          * POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
                          */
-                        $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid: dedicated.server.PartitionRaidEnum, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
+                        $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: dedicated.server.PartitionRaidEnum, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
                         /**
                          * Controle cache
                          */
@@ -3580,7 +3749,7 @@ export interface Me {
              * Retrieve payment method ID list
              * GET /me/payment/method
              */
-            $get(params?: { Paymenttype?: string, Status?: me.payment.method.PaymentMethod.Status }): Promise<number[]>;
+            $get(params?: { paymentType?: string, status?: me.payment.method.PaymentMethod.Status }): Promise<number[]>;
             /**
              * Pay an order and register a new payment method if necessary
              * POST /me/payment/method
@@ -3638,7 +3807,7 @@ export interface Me {
              * Retrieve associated payment method transaction ID list
              * GET /me/payment/transaction
              */
-            $get(params?: { Paymentmethodid?: number, Status?: me.payment.method.Transaction.Status }): Promise<number[]>;
+            $get(params?: { paymentMethodId?: number, status?: me.payment.method.Transaction.Status }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -3661,7 +3830,7 @@ export interface Me {
          * Retrieve payment method id list
          * GET /me/paymentMethod
          */
-        $get(params?: { Paymenttype?: billing.paymentMethod.PaymentTypeEnum, Status?: billing.paymentMethod.StatusEnum }): Promise<number[]>;
+        $get(params?: { paymentType?: billing.paymentMethod.PaymentTypeEnum, status?: billing.paymentMethod.StatusEnum }): Promise<number[]>;
         /**
          * Create payment method
          * POST /me/paymentMethod
@@ -3698,7 +3867,7 @@ export interface Me {
          * List of all the refunds the logged account has
          * GET /me/refund
          */
-        $get(params?: { 'Date.from'?: string, 'Date.to'?: string, Orderid?: number }): Promise<string[]>;
+        $get(params?: { 'date.from'?: string, 'date.to'?: string, orderId?: number }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -3740,7 +3909,7 @@ export interface Me {
                  * Generate download link for the document
                  * GET /me/refund/{refundId}/download
                  */
-                $get(params?: { Extension?: billing.DocumentExtensionEnum }): Promise<string>;
+                $get(params?: { extension?: billing.DocumentExtensionEnum }): Promise<string>;
                 /**
                  * Controle cache
                  */
@@ -3935,7 +4104,7 @@ export interface Me {
              * List of email change tasks you are involved in
              * GET /me/task/emailChange
              */
-            $get(params?: { State?: nichandle.changeEmail.TaskStateEnum }): Promise<number[]>;
+            $get(params?: { state?: nichandle.changeEmail.TaskStateEnum }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -3992,7 +4161,7 @@ export interface Me {
          * List of all the withdrawals made from your prepaid account
          * GET /me/withdrawal
          */
-        $get(params?: { 'Date.from'?: string, 'Date.to'?: string, Orderid?: number }): Promise<string[]>;
+        $get(params?: { 'date.from'?: string, 'date.to'?: string, orderId?: number }): Promise<string[]>;
         /**
          * Controle cache
          */

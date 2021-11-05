@@ -1408,7 +1408,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "raid": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Partition raid",
           "fullType": "dedicated.server.PartitionRaidEnum",
           "readOnly": false,

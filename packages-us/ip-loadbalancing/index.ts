@@ -783,7 +783,7 @@ export interface IpLoadbalancing {
              * List of defined farms, and whether they are HTTP, TCP or UDP
              * GET /ipLoadbalancing/{serviceName}/definedFarms
              */
-            $get(params?: { Vracknetworkid?: number }): Promise<ipLoadbalancing.DefinedFarm[]>;
+            $get(params?: { vrackNetworkId?: number }): Promise<ipLoadbalancing.DefinedFarm[]>;
             /**
              * Controle cache
              */
@@ -835,7 +835,7 @@ export interface IpLoadbalancing {
                  * HTTP Farm for this iplb
                  * GET /ipLoadbalancing/{serviceName}/http/farm
                  */
-                $get(params?: { Vracknetworkid?: number, Zone?: string }): Promise<number[]>;
+                $get(params?: { vrackNetworkId?: number, zone?: string }): Promise<number[]>;
                 /**
                  * Add a new HTTP Farm on your IP Load Balancing
                  * POST /ipLoadbalancing/{serviceName}/http/farm
@@ -870,7 +870,7 @@ export interface IpLoadbalancing {
                          * HTTP Farm's Servers
                          * GET /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server
                          */
-                        $get(params?: { Address?: string, Cookie?: string, Status?: ipLoadbalancing.BackendCustomerServerStatusEnum }): Promise<number[]>;
+                        $get(params?: { address?: string, cookie?: string, status?: ipLoadbalancing.BackendCustomerServerStatusEnum }): Promise<number[]>;
                         /**
                          * Add a server to an HTTP Farm
                          * POST /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server
@@ -909,7 +909,7 @@ export interface IpLoadbalancing {
                  * HTTP frontends for this iplb
                  * GET /ipLoadbalancing/{serviceName}/http/frontend
                  */
-                $get(params?: { Defaultfarmid?: number, Port?: string, Zone?: string }): Promise<number[]>;
+                $get(params?: { defaultFarmId?: number, port?: string, zone?: string }): Promise<number[]>;
                 /**
                  * Add a new http frontend on your IP Load Balancing
                  * POST /ipLoadbalancing/{serviceName}/http/frontend
@@ -946,7 +946,7 @@ export interface IpLoadbalancing {
                  * HTTP routes for this iplb
                  * GET /ipLoadbalancing/{serviceName}/http/route
                  */
-                $get(params?: { Frontendid?: number }): Promise<number[]>;
+                $get(params?: { frontendId?: number }): Promise<number[]>;
                 /**
                  * Add a new HTTP route to your frontend
                  * POST /ipLoadbalancing/{serviceName}/http/route
@@ -1081,7 +1081,7 @@ export interface IpLoadbalancing {
              * Quota history informations, per month
              * GET /ipLoadbalancing/{serviceName}/quotaHistory
              */
-            $get(params?: { 'Historizeddate.from'?: string, 'Historizeddate.to'?: string, Zone?: string }): Promise<number[]>;
+            $get(params?: { 'historizedDate.from'?: string, 'historizedDate.to'?: string, zone?: string }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -1126,7 +1126,7 @@ export interface IpLoadbalancing {
              * Ssl for this iplb
              * GET /ipLoadbalancing/{serviceName}/ssl
              */
-            $get(params?: { Expiredate?: string, Fingerprint?: string, Serial?: string, Type?: ipLoadbalancing.SslTypeEnum }): Promise<number[]>;
+            $get(params?: { expireDate?: string, fingerprint?: string, serial?: string, type?: ipLoadbalancing.SslTypeEnum }): Promise<number[]>;
             /**
              * Add a new custom SSL certificate on your IP Load Balancing
              * POST /ipLoadbalancing/{serviceName}/ssl
@@ -1174,7 +1174,7 @@ export interface IpLoadbalancing {
              * Task for this iplb
              * GET /ipLoadbalancing/{serviceName}/task
              */
-            $get(params?: { Action?: ipLoadbalancing.TaskActionEnum, 'Creationdate.from'?: string, 'Creationdate.to'?: string, 'Donedate.from'?: string, 'Donedate.to'?: string, Status?: ipLoadbalancing.TaskStatusEnum }): Promise<number[]>;
+            $get(params?: { action?: ipLoadbalancing.TaskActionEnum, 'creationDate.from'?: string, 'creationDate.to'?: string, 'doneDate.from'?: string, 'doneDate.to'?: string, status?: ipLoadbalancing.TaskStatusEnum }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -1197,7 +1197,7 @@ export interface IpLoadbalancing {
                  * TCP Farm for this iplb
                  * GET /ipLoadbalancing/{serviceName}/tcp/farm
                  */
-                $get(params?: { Vracknetworkid?: number, Zone?: string }): Promise<number[]>;
+                $get(params?: { vrackNetworkId?: number, zone?: string }): Promise<number[]>;
                 /**
                  * Add a new TCP Farm on your IP Load Balancing
                  * POST /ipLoadbalancing/{serviceName}/tcp/farm
@@ -1232,7 +1232,7 @@ export interface IpLoadbalancing {
                          * TCP Farm's Servers
                          * GET /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server
                          */
-                        $get(params?: { Address?: string, Status?: ipLoadbalancing.BackendCustomerServerStatusEnum }): Promise<number[]>;
+                        $get(params?: { address?: string, status?: ipLoadbalancing.BackendCustomerServerStatusEnum }): Promise<number[]>;
                         /**
                          * Add a server to a TCP Farm
                          * POST /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server
@@ -1271,7 +1271,7 @@ export interface IpLoadbalancing {
                  * TCP frontends for this iplb
                  * GET /ipLoadbalancing/{serviceName}/tcp/frontend
                  */
-                $get(params?: { Defaultfarmid?: number, Port?: string, Zone?: string }): Promise<number[]>;
+                $get(params?: { defaultFarmId?: number, port?: string, zone?: string }): Promise<number[]>;
                 /**
                  * Add a new TCP frontend on your IP Load Balancing
                  * POST /ipLoadbalancing/{serviceName}/tcp/frontend
@@ -1308,7 +1308,7 @@ export interface IpLoadbalancing {
                  * TCP routes for this iplb
                  * GET /ipLoadbalancing/{serviceName}/tcp/route
                  */
-                $get(params?: { Frontendid?: number }): Promise<number[]>;
+                $get(params?: { frontendId?: number }): Promise<number[]>;
                 /**
                  * Add a new TCP route to your frontend
                  * POST /ipLoadbalancing/{serviceName}/tcp/route
@@ -1391,7 +1391,7 @@ export interface IpLoadbalancing {
                  * Descriptions of private networks in the vRack attached to this Load Balancer
                  * GET /ipLoadbalancing/{serviceName}/vrack/network
                  */
-                $get(params?: { Subnet?: string, Vlan?: number }): Promise<number[]>;
+                $get(params?: { subnet?: string, vlan?: number }): Promise<number[]>;
                 /**
                  * Add a description of a private network in the attached vRack
                  * POST /ipLoadbalancing/{serviceName}/vrack/network

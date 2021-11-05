@@ -504,7 +504,7 @@ export const schema: Schema = {
               "dataType": "dedicated.housing.TaskFunctionEnum",
               "description": "Filter the value of function property (=)",
               "fullType": "dedicated.housing.TaskFunctionEnum",
-              "name": "Function",
+              "name": "function",
               "paramType": "query",
               "required": false
             },
@@ -512,7 +512,7 @@ export const schema: Schema = {
               "dataType": "dedicated.TaskStatusEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "dedicated.TaskStatusEnum",
-              "name": "Status",
+              "name": "status",
               "paramType": "query",
               "required": false
             }

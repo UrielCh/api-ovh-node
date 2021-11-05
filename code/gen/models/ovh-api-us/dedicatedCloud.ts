@@ -301,7 +301,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "Name",
+              "name": "name",
               "paramType": "query",
               "required": false
             },
@@ -309,7 +309,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -1823,6 +1823,44 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/enable"
     },
     {
+      "description": "requestPairingToken operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Request a pairing token in order to link your OVHcloud Zerto Virtual Manager to your local one",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/requestPairingToken"
+    },
+    {
       "description": "List the dedicatedCloud.Filer objects",
       "operations": [
         {
@@ -2087,7 +2125,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.filer.NodeTypeEnum",
               "description": "Filer cluster node used to get location (default value: master)",
               "fullType": "dedicatedCloud.filer.NodeTypeEnum",
-              "name": "Node",
+              "name": "node",
               "paramType": "query",
               "required": false
             }
@@ -2187,7 +2225,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "Name",
+              "name": "name",
               "paramType": "query",
               "required": false
             },
@@ -2195,7 +2233,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -2898,7 +2936,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "Name",
+              "name": "name",
               "paramType": "query",
               "required": false
             },
@@ -2906,7 +2944,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -3444,7 +3482,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "Name",
+              "name": "name",
               "paramType": "query",
               "required": false
             },
@@ -3452,7 +3490,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -4840,7 +4878,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.filer.NodeTypeEnum",
               "description": "Filer cluster node used to get location (default value: master)",
               "fullType": "dedicatedCloud.filer.NodeTypeEnum",
-              "name": "Node",
+              "name": "node",
               "paramType": "query",
               "required": false
             }
@@ -4924,7 +4962,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "Name",
+              "name": "name",
               "paramType": "query",
               "required": false
             },
@@ -4932,7 +4970,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -5124,7 +5162,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by datacenter Id",
               "fullType": "long",
-              "name": "Datacenterid",
+              "name": "datacenterId",
               "paramType": "query",
               "required": false
             },
@@ -5132,7 +5170,7 @@ export const schema: Schema = {
               "dataType": "date",
               "description": "Filter the tasks by end date (>=)",
               "fullType": "date",
-              "name": "Enddate.from",
+              "name": "endDate.from",
               "paramType": "query",
               "required": false
             },
@@ -5140,7 +5178,7 @@ export const schema: Schema = {
               "dataType": "date",
               "description": "Filter the tasks by end date (<=)",
               "fullType": "date",
-              "name": "Enddate.to",
+              "name": "endDate.to",
               "paramType": "query",
               "required": false
             },
@@ -5148,7 +5186,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Filter the tasks by execution date (>=)",
               "fullType": "datetime",
-              "name": "Executiondate.from",
+              "name": "executionDate.from",
               "paramType": "query",
               "required": false
             },
@@ -5156,7 +5194,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Filter the tasks by execution date (<=)",
               "fullType": "datetime",
-              "name": "Executiondate.to",
+              "name": "executionDate.to",
               "paramType": "query",
               "required": false
             },
@@ -5164,7 +5202,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by filer Id",
               "fullType": "long",
-              "name": "Filerid",
+              "name": "filerId",
               "paramType": "query",
               "required": false
             },
@@ -5172,7 +5210,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by host Id",
               "fullType": "long",
-              "name": "Hostid",
+              "name": "hostId",
               "paramType": "query",
               "required": false
             },
@@ -5180,7 +5218,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Filter the tasks by last modification date (>=)",
               "fullType": "datetime",
-              "name": "Lastmodificationdate.from",
+              "name": "lastModificationDate.from",
               "paramType": "query",
               "required": false
             },
@@ -5188,7 +5226,7 @@ export const schema: Schema = {
               "dataType": "datetime",
               "description": "Filter the tasks by last modification date (<=)",
               "fullType": "datetime",
-              "name": "Lastmodificationdate.to",
+              "name": "lastModificationDate.to",
               "paramType": "query",
               "required": false
             },
@@ -5196,7 +5234,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the tasks by name",
               "fullType": "string",
-              "name": "Name",
+              "name": "name",
               "paramType": "query",
               "required": false
             },
@@ -5204,7 +5242,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by network access Id",
               "fullType": "long",
-              "name": "Networkaccessid",
+              "name": "networkAccessId",
               "paramType": "query",
               "required": false
             },
@@ -5212,7 +5250,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by order Id",
               "fullType": "long",
-              "name": "Orderid",
+              "name": "orderId",
               "paramType": "query",
               "required": false
             },
@@ -5220,7 +5258,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by parent task Id",
               "fullType": "long",
-              "name": "Parenttaskid",
+              "name": "parentTaskId",
               "paramType": "query",
               "required": false
             },
@@ -5228,7 +5266,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum[]",
               "description": "Filter the tasks by state",
               "fullType": "dedicatedCloud.TaskStateEnum[]",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             },
@@ -5236,7 +5274,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by user Id",
               "fullType": "long",
-              "name": "Userid",
+              "name": "userId",
               "paramType": "query",
               "required": false
             },
@@ -5244,7 +5282,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Filter the tasks by vlan Id",
               "fullType": "long",
-              "name": "Vlanid",
+              "name": "vlanId",
               "paramType": "query",
               "required": false
             }
@@ -5879,7 +5917,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "Name",
+              "name": "name",
               "paramType": "query",
               "required": false
             },
@@ -5887,7 +5925,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -6659,7 +6697,7 @@ export const schema: Schema = {
               "dataType": "boolean",
               "description": "Show incompatible security options (enabled by default)",
               "fullType": "boolean",
-              "name": "Showincompatible",
+              "name": "showIncompatible",
               "paramType": "query",
               "required": false
             },
@@ -6667,7 +6705,7 @@ export const schema: Schema = {
               "dataType": "boolean",
               "description": "Show internal security options",
               "fullType": "boolean",
-              "name": "Showinternal",
+              "name": "showInternal",
               "paramType": "query",
               "required": false
             }
@@ -6705,7 +6743,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.securityOption.SecurityOptionEnum",
               "description": "Target security option",
               "fullType": "dedicatedCloud.securityOption.SecurityOptionEnum",
-              "name": "Option",
+              "name": "option",
               "paramType": "query",
               "required": true
             }
@@ -6970,7 +7008,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "Name",
+              "name": "name",
               "paramType": "query",
               "required": false
             },
@@ -6978,7 +7016,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -7433,7 +7471,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "Name",
+              "name": "name",
               "paramType": "query",
               "required": false
             }
@@ -8344,7 +8382,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
-              "name": "Name",
+              "name": "name",
               "paramType": "query",
               "required": false
             },
@@ -8352,7 +8390,7 @@ export const schema: Schema = {
               "dataType": "dedicatedCloud.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "State",
+              "name": "state",
               "paramType": "query",
               "required": false
             }
@@ -9513,7 +9551,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "Minimum reference year",
               "fullType": "long",
-              "name": "Minyear",
+              "name": "minYear",
               "paramType": "query",
               "required": false
             }
@@ -9581,7 +9619,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "Profile filter",
               "fullType": "string",
-              "name": "Profilefilter",
+              "name": "profileFilter",
               "paramType": "query",
               "required": false
             }

@@ -353,7 +353,7 @@ export interface Dedicated {
                  * View task list
                  * GET /dedicated/housing/{serviceName}/task
                  */
-                $get(params?: { Function?: dedicated.housing.TaskFunctionEnum, Status?: dedicated.TaskStatusEnum }): Promise<number[]>;
+                $get(params?: { function_?: dedicated.housing.TaskFunctionEnum, status?: dedicated.TaskStatusEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */

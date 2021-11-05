@@ -746,6 +746,36 @@ export namespace services {
     }
     export namespace operation {
         /**
+         * Contains all information for the given addon in order to be detached
+         * interface fullName: services.operation.AddonDetachExecutionRequest.AddonDetachExecutionRequest
+         */
+        export interface AddonDetachExecutionRequest {
+            duration: string;
+            planCode: string;
+            pricingMode: string;
+            quantity: number;
+            serviceId: number;
+        }
+        /**
+         * Request allowing the detachment of a service from its parent
+         * interface fullName: services.operation.DetachExecutionRequest.DetachExecutionRequest
+         */
+        export interface DetachExecutionRequest {
+            addons?: services.operation.AddonDetachExecutionRequest[];
+            autoPayWithPreferredPaymentMethod: boolean;
+            duration: string;
+            pricingMode: string;
+            quantity: number;
+        }
+        /**
+         * All possible detachment offers for the given service options
+         * interface fullName: services.operation.DetachOptionsDefinition.DetachOptionsDefinition
+         */
+        export interface DetachOptionsDefinition {
+            plans: order.cart.GenericProductDefinition[];
+            serviceId: number;
+        }
+        /**
          * Missing description
          * interface fullName: services.operation.ExecutionRequest.ExecutionRequest
          */
@@ -972,14 +1002,25 @@ export interface Services {
                      * Perform the migration to a standalone offer. May require you to pay an Order
                      * POST /services/{serviceId}/detach/{planCode}/execute
                      */
-                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
+                    $post(params: { addons?: services.operation.AddonDetachExecutionRequest[], autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
+                }
+                options: {
+                    /**
+                     * View all offers compatible for the detachment for the given option offer
+                     * GET /services/{serviceId}/detach/{planCode}/options
+                     */
+                    $get(): Promise<services.operation.DetachOptionsDefinition[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 simulate: {
                     /**
                      * Simulate the migration to a standalone offer. It won't generate any Order or issue any changes to your Service
                      * POST /services/{serviceId}/detach/{planCode}/simulate
                      */
-                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
+                    $post(params: { addons?: services.operation.AddonDetachExecutionRequest[], autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
                 }
             };
         }
