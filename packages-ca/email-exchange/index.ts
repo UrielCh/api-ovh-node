@@ -19,6 +19,7 @@ export namespace email {
             countryCode?: email.exchange.CountryCodeEnum;
             creationDate?: string;
             currentUsage?: number;
+            customIsolationId?: number;
             deleteAtExpiration?: boolean;
             deleteOutlookAtExpiration?: boolean;
             description?: string;
@@ -58,6 +59,7 @@ export namespace email {
             renewOutlookPeriod?: email.exchange.renewPeriodEnum;
             renewPeriod?: email.exchange.renewPeriodEnum;
             sbrDestination?: string;
+            sendConnectorId?: number;
             spamAndVirusConfiguration: email.exchange.spamAndVirusConfiguration;
             spamDetected: boolean;
             spamTicketNumber?: number;
@@ -119,6 +121,7 @@ export namespace email {
             name: string;
             organization2010?: string;
             sbrDefault?: string;
+            sendConnectorIdDefault?: number;
             srvIsValid: boolean;
             srvRecord?: string[];
             state: email.exchange.ObjectStateEnum;
@@ -211,7 +214,7 @@ export namespace email {
          * Outlook version
          * type fullname: email.exchange.OutlookVersionEnum
          */
-        export type OutlookVersionEnum = "mac_x86_2011" | "mac_x86_2016" | "windows_x64_2013" | "windows_x64_2016" | "windows_x86_2013" | "windows_x86_2016"
+        export type OutlookVersionEnum = "mac_x86_2016" | "windows_x64_2016" | "windows_x86_2016"
         /**
          * Availability of outlook version
          * interface fullName: email.exchange.OutlookVersions.OutlookVersions
@@ -221,6 +224,11 @@ export namespace email {
             outlookVersion: email.exchange.OutlookVersionEnum;
             status: boolean;
         }
+        /**
+         * custom exchange isolation field
+         * type fullname: email.exchange.OvhCustomIsolationFieldEnum
+         */
+        export type OvhCustomIsolationFieldEnum = "company" | "country"
         /**
          * OVH licence account
          * type fullname: email.exchange.OvhLicenceEnum
@@ -314,7 +322,7 @@ export namespace email {
          * function enumeration for exchange task
          * type fullname: email.exchange.TaskFunctionEnum
          */
-        export type TaskFunctionEnum = "activateSharepoint" | "addAccount" | "addAccountArchive" | "addActiveSyncMailNotification" | "addAlias" | "addDistributionGroup" | "addDistributionGroupManager" | "addDistributionGroupMember" | "addDistributionGroupSendAs" | "addDistributionGroupSendOnBehalfTo" | "addDomain" | "addDomainDisclaimer" | "addExchangeServiceAuthorizedIp" | "addExportPstRequest" | "addExternalContact" | "addFullAccess" | "addOutlookLicense" | "addPublicFolder" | "addPublicFolderPermission" | "addResourceAccount" | "addResourceDelegate" | "addSendAs" | "addSendOnBehalfTo" | "addSharedAccount" | "addSharedAccountFullAccess" | "addSharedAccountSendAs" | "addSharedAccountSendOnBehalfTo" | "changeHostname" | "changePassword" | "clearDataOnDevice" | "cloneTemplateExchangePrivate" | "configureExchangeCustomer" | "configureExchangeOwaMfa" | "deleteAccount" | "deleteAccountArchive" | "deleteActiveSyncMailNotification" | "deleteAlias" | "deleteDistributionGroup" | "deleteDistributionGroupManager" | "deleteDistributionGroupMember" | "deleteDistributionGroupSendAs" | "deleteDistributionGroupSendOnBehalfTo" | "deleteDomain" | "deleteDomainDisclaimer" | "deleteExchangeService" | "deleteExchangeServiceAuthorizedIp" | "deleteExportPstRequest" | "deleteExternalContact" | "deleteFullAccess" | "deleteOutlookLicense" | "deletePublicFolder" | "deletePublicFolderPermission" | "deleteResourceAccount" | "deleteResourceDelegate" | "deleteSendAs" | "deleteSendOnBehalfTo" | "deleteSharedAccount" | "deleteSharedAccountFullAccess" | "deleteSharedAccountSendAs" | "deleteSharedAccountSendOnBehalfTo" | "destroyPrivateVm" | "diagnoseAccount" | "expandDrive" | "generateOutlookUrl" | "generatePstUrl" | "installExchange" | "installSSL" | "maintenance" | "migrationAccount" | "migrationDisclaimer" | "migrationExternalContact" | "migrationHistory" | "migrationMailingList" | "migrationResourceAccount" | "migrationService" | "reOpenHostedAccount" | "reOpenOutlookLicense" | "reOpenPrivateAccount" | "reOpenPrivateVm" | "setAccount" | "setAccountArchive" | "setAlias" | "setDistributionGroup" | "setDns" | "setDomain" | "setDomainDisclaimer" | "setExchangeAccountProtocol" | "setExchangeServiceDevice" | "setExternalContact" | "setPublicFolder" | "setPublicFolderPermission" | "setResourceAccount" | "setService" | "setSharedAccount" | "suspendAccount" | "suspendExchangeService" | "suspendHostedAccount" | "suspendOutlookLicense" | "suspendPrivateAccount" | "suspendPrivateVm" | "unsuspendAccount" | "unsuspendExchangeService" | "unsuspendHostedAccount" | "updateExchangeServiceDevice" | "upgrade2016"
+        export type TaskFunctionEnum = "activateSharepoint" | "addAccount" | "addAccountArchive" | "addActiveSyncMailNotification" | "addAlias" | "addDistributionGroup" | "addDistributionGroupManager" | "addDistributionGroupMember" | "addDistributionGroupSendAs" | "addDistributionGroupSendOnBehalfTo" | "addDomain" | "addDomainDisclaimer" | "addExchangeCustomIsolation" | "addExchangeServiceAuthorizedIp" | "addExportPstRequest" | "addExternalContact" | "addFullAccess" | "addOutlookLicense" | "addPublicFolder" | "addPublicFolderPermission" | "addResourceAccount" | "addResourceDelegate" | "addSendAs" | "addSendConnector" | "addSendOnBehalfTo" | "addSharedAccount" | "addSharedAccountFullAccess" | "addSharedAccountSendAs" | "addSharedAccountSendOnBehalfTo" | "changeHostname" | "changePassword" | "clearDataOnDevice" | "cloneTemplateExchangePrivate" | "configureExchangeCustomer" | "configureExchangeOwaMfa" | "deleteAccount" | "deleteAccountArchive" | "deleteActiveSyncMailNotification" | "deleteAlias" | "deleteDistributionGroup" | "deleteDistributionGroupManager" | "deleteDistributionGroupMember" | "deleteDistributionGroupSendAs" | "deleteDistributionGroupSendOnBehalfTo" | "deleteDomain" | "deleteDomainDisclaimer" | "deleteExchangeCustomIsolation" | "deleteExchangeService" | "deleteExchangeServiceAuthorizedIp" | "deleteExportPstRequest" | "deleteExternalContact" | "deleteFullAccess" | "deleteOutlookLicense" | "deletePublicFolder" | "deletePublicFolderPermission" | "deleteResourceAccount" | "deleteResourceDelegate" | "deleteSendAs" | "deleteSendConnector" | "deleteSendOnBehalfTo" | "deleteSharedAccount" | "deleteSharedAccountFullAccess" | "deleteSharedAccountSendAs" | "deleteSharedAccountSendOnBehalfTo" | "destroyPrivateVm" | "diagnoseAccount" | "expandDrive" | "generateOutlookUrl" | "generatePstUrl" | "installExchange" | "installSSL" | "maintenance" | "migrationAccount" | "migrationDisclaimer" | "migrationExternalContact" | "migrationHistory" | "migrationMailingList" | "migrationResourceAccount" | "migrationService" | "reOpenHostedAccount" | "reOpenOutlookLicense" | "reOpenPrivateAccount" | "reOpenPrivateVm" | "setAccount" | "setAccountArchive" | "setAlias" | "setDistributionGroup" | "setDns" | "setDomain" | "setDomainDisclaimer" | "setExchangeAccountProtocol" | "setExchangeServiceDevice" | "setExternalContact" | "setPublicFolder" | "setPublicFolderPermission" | "setResourceAccount" | "setSendConnector" | "setService" | "setSharedAccount" | "suspendAccount" | "suspendExchangeService" | "suspendHostedAccount" | "suspendOutlookLicense" | "suspendPrivateAccount" | "suspendPrivateVm" | "unsuspendAccount" | "unsuspendExchangeService" | "unsuspendHostedAccount" | "updateExchangeServiceDevice" | "upgrade2016"
         /**
          * Exchange task status
          * type fullname: email.exchange.TaskStatusEnum
@@ -422,6 +430,17 @@ export namespace email {
          * type fullname: email.exchange.exchangeCommercialVersionEnum
          */
         export type exchangeCommercialVersionEnum = "2010" | "2013" | "2016" | "2019"
+        /**
+         * custom exchange isolation
+         * interface fullName: email.exchange.exchangeCustomIsolation.exchangeCustomIsolation
+         */
+        export interface exchangeCustomIsolation {
+            creationDate: string;
+            isolationField: email.exchange.OvhCustomIsolationFieldEnum;
+            isolationValue: string;
+            name: string;
+            status: email.exchange.ObjectStateEnum;
+        }
         /**
          * Mailing list managers
          * interface fullName: email.exchange.exchangeDistributionGroupManager.exchangeDistributionGroupManager
@@ -653,6 +672,23 @@ export namespace email {
             type: email.exchange.ResourceTypeEnum;
         }
         /**
+         * Exchange Send Connector
+         * interface fullName: email.exchange.sendConnector.sendConnector
+         */
+        export interface sendConnector {
+            creationDate: string;
+            displayName: string;
+            id?: number;
+            lastUpdateDate?: string;
+            maxSendSize: number;
+            port: number;
+            requireTLS: boolean;
+            smartHost: string;
+            smartHostAuthMechanism: email.exchange.smartHostAuthMechanismEnum;
+            state: email.exchange.ObjectStateEnum;
+            taskPendingId?: number;
+        }
+        /**
          * Exchange shared mailbox
          * interface fullName: email.exchange.sharedAccount.sharedAccount
          */
@@ -675,6 +711,11 @@ export namespace email {
             state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
+        /**
+         * Smart host authentication mechanism
+         * type fullname: email.exchange.smartHostAuthMechanismEnum
+         */
+        export type smartHostAuthMechanismEnum = "basicAuth" | "basicAuthRequireTLS" | "none"
         /**
          * Spam and Antyvirus configuration
          * interface fullName: email.exchange.spamAndVirusConfiguration.spamAndVirusConfiguration
@@ -791,7 +832,7 @@ export interface Email {
                          * Create new mailbox in exchange server
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/account
                          */
-                        $post(params: { city?: string, company?: string, countryCode?: email.exchange.CountryCodeEnum, description?: string, displayName?: string, domain: string, fax?: string, firstName?: string, forwardingEmail?: string, hiddenFromGAL?: boolean, initials?: string, jobDepartment?: string, jobTitle?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], mobile?: string, office?: string, outlookLicense?: boolean, password: string, phone?: string, postalCode?: string, quota?: number, region?: string, SAMAccountName?: string, sbrDestination?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, storeCopyOfEmail?: boolean, streetAddress?: string }): Promise<email.exchange.Task>;
+                        $post(params: { city?: string, company?: string, countryCode?: email.exchange.CountryCodeEnum, description?: string, displayName?: string, domain: string, fax?: string, firstName?: string, forwardingEmail?: string, hiddenFromGAL?: boolean, initials?: string, jobDepartment?: string, jobTitle?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], mobile?: string, office?: string, outlookLicense?: boolean, password: string, phone?: string, postalCode?: string, quota?: number, region?: string, SAMAccountName?: string, sbrDestination?: string, sendConnectorId?: number, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, storeCopyOfEmail?: boolean, streetAddress?: string }): Promise<email.exchange.Task>;
                         /**
                          * Controle cache
                          */
@@ -811,7 +852,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}
                              */
-                            $put(params?: { SAMAccountName?: string, accountLicense?: email.exchange.OvhLicenceEnum, city?: string, company?: string, configured?: boolean, countryCode?: email.exchange.CountryCodeEnum, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, description?: string, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, fax?: string, firstName?: string, forwardingEmail?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, jobDepartment?: string, jobTitle?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailingFilter?: email.exchange.MailingFilterEnum[], mobile?: string, numberOfAliases?: number, office?: string, outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, phone?: string, postalCode?: string, primaryEmailAddress?: string, quota?: number, region?: string, renewOutlookPeriod?: email.exchange.renewPeriodEnum, renewPeriod?: email.exchange.renewPeriodEnum, sbrDestination?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, storeCopyOfEmail?: boolean, streetAddress?: string, taskPendingId?: number }): Promise<void>;
+                            $put(params?: { SAMAccountName?: string, accountLicense?: email.exchange.OvhLicenceEnum, city?: string, company?: string, configured?: boolean, countryCode?: email.exchange.CountryCodeEnum, creationDate?: string, currentUsage?: number, customIsolationId?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, description?: string, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, fax?: string, firstName?: string, forwardingEmail?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, jobDepartment?: string, jobTitle?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailingFilter?: email.exchange.MailingFilterEnum[], mobile?: string, numberOfAliases?: number, office?: string, outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, phone?: string, postalCode?: string, primaryEmailAddress?: string, quota?: number, region?: string, renewOutlookPeriod?: email.exchange.renewPeriodEnum, renewPeriod?: email.exchange.renewPeriodEnum, sbrDestination?: string, sendConnectorId?: number, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, storeCopyOfEmail?: boolean, streetAddress?: string, taskPendingId?: number }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -1107,6 +1148,38 @@ export interface Email {
                          */
                         $post(params: { dcvEmail: string, hostname: string, useDnsAssist: boolean }): Promise<email.exchange.Task>;
                     }
+                    customIsolation: {
+                        /**
+                         * custom isolation for mailbox
+                         * GET /email/exchange/{organizationName}/service/{exchangeService}/customIsolation
+                         */
+                        $get(params?: { isolationField?: email.exchange.OvhCustomIsolationFieldEnum, isolationValue?: string, name?: string }): Promise<string[]>;
+                        /**
+                         * Create new custom isolation for mailbox
+                         * POST /email/exchange/{organizationName}/service/{exchangeService}/customIsolation
+                         */
+                        $post(params: { isolationField: email.exchange.OvhCustomIsolationFieldEnum, isolationValue: string, name: string }): Promise<email.exchange.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(name: string): {
+                            /**
+                             * Delete existing custom isolation for mailbox
+                             * DELETE /email/exchange/{organizationName}/service/{exchangeService}/customIsolation/{name}
+                             */
+                            $delete(): Promise<email.exchange.Task>;
+                            /**
+                             * Get this object properties
+                             * GET /email/exchange/{organizationName}/service/{exchangeService}/customIsolation/{name}
+                             */
+                            $get(): Promise<email.exchange.exchangeCustomIsolation>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        };
+                    }
                     dcvEmails: {
                         /**
                          * Get DCV emails if your ssl will expire in next 30 days
@@ -1162,7 +1235,7 @@ export interface Email {
                          * Create new domain in exchange services
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/domain
                          */
-                        $post(params: { configureAutodiscover?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, sbrDefault?: string, type: email.exchange.DomainTypeEnum }): Promise<email.exchange.Task>;
+                        $post(params: { configureAutodiscover?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, sbrDefault?: string, sendConnectorIdDefault?: number, type: email.exchange.DomainTypeEnum }): Promise<email.exchange.Task>;
                         /**
                          * Controle cache
                          */
@@ -1182,11 +1255,18 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}
                              */
-                            $put(params?: { cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, sbrDefault?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.DomainTypeEnum }): Promise<void>;
+                            $put(params?: { cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, sbrDefault?: string, sendConnectorIdDefault?: number, srvIsValid?: boolean, srvRecord?: string[], state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.DomainTypeEnum }): Promise<void>;
                             /**
                              * Controle cache
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            changeDefaultSBR: {
+                                /**
+                                 * Change default values of SBR used for all new created account on this domain
+                                 * PUT /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/changeDefaultSBR
+                                 */
+                                $put(params?: { sbrDefault?: string, sendConnectorIdDefault?: number }): Promise<void>;
+                            }
                             disclaimer: {
                                 /**
                                  * Delete existing organization disclaimer
@@ -1279,7 +1359,7 @@ export interface Email {
                          * Mailing list for this service
                          * GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList
                          */
-                        $get(params?: { mailingListAddress?: string }): Promise<string[]>;
+                        $get(params?: { company?: string, mailingListAddress?: string }): Promise<string[]>;
                         /**
                          * Add mailing list
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList
@@ -1663,7 +1743,7 @@ export interface Email {
                          * Resource account associated to this service
                          * GET /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount
                          */
-                        $get(params?: { resourceEmailAddress?: string }): Promise<string[]>;
+                        $get(params?: { company?: string, resourceEmailAddress?: string }): Promise<string[]>;
                         /**
                          * create new resource account in exchange server
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount
@@ -1724,6 +1804,50 @@ export interface Email {
                                      */
                                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 };
+                            }
+                        };
+                    }
+                    sendConnector: {
+                        /**
+                         * List of your send connectors on this Exchange service
+                         * GET /email/exchange/{organizationName}/service/{exchangeService}/sendConnector
+                         */
+                        $get(): Promise<number[]>;
+                        /**
+                         * Create new send connector
+                         * POST /email/exchange/{organizationName}/service/{exchangeService}/sendConnector
+                         */
+                        $post(params: { displayName: string, maxSendSize?: number, password?: string, port?: number, requireTLS?: boolean, smartHost: string, smartHostAuthMechanism?: email.exchange.smartHostAuthMechanismEnum, user?: string }): Promise<email.exchange.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(id: number): {
+                            /**
+                             * Delete existing send connector
+                             * DELETE /email/exchange/{organizationName}/service/{exchangeService}/sendConnector/{id}
+                             */
+                            $delete(): Promise<email.exchange.Task>;
+                            /**
+                             * Get this object properties
+                             * GET /email/exchange/{organizationName}/service/{exchangeService}/sendConnector/{id}
+                             */
+                            $get(): Promise<email.exchange.sendConnector>;
+                            /**
+                             * Alter this object properties
+                             * PUT /email/exchange/{organizationName}/service/{exchangeService}/sendConnector/{id}
+                             */
+                            $put(params?: { creationDate?: string, displayName?: string, id?: number, lastUpdateDate?: string, maxSendSize?: number, port?: number, requireTLS?: boolean, smartHost?: string, smartHostAuthMechanism?: email.exchange.smartHostAuthMechanismEnum, state?: email.exchange.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            changeAuthentication: {
+                                /**
+                                 * Change authentication on send connector
+                                 * POST /email/exchange/{organizationName}/service/{exchangeService}/sendConnector/{id}/changeAuthentication
+                                 */
+                                $post(params?: { password?: string, smartHostAuthMechanism?: email.exchange.smartHostAuthMechanismEnum, user?: string }): Promise<email.exchange.Task>;
                             }
                         };
                     }

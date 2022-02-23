@@ -81,7 +81,7 @@ export namespace storage {
      * Service status
      * type fullname: storage.NetAppServiceStatusEnum
      */
-    export type NetAppServiceStatusEnum = "creating" | "running" | "reopening" | "suspending" | "suspended" | "deleting" | "deleted"
+    export type NetAppServiceStatusEnum = "creating" | "deleted" | "deleting" | "reopening" | "running" | "suspended" | "suspending"
     /**
      * Service updatable properties
      * interface fullName: storage.NetAppServiceUpdate.NetAppServiceUpdate
@@ -106,7 +106,7 @@ export namespace storage {
      * ACL permission
      * type fullname: storage.NetAppShareACLPermissionEnum
      */
-    export type NetAppShareACLPermissionEnum = "rw" | "ro"
+    export type NetAppShareACLPermissionEnum = "ro" | "rw"
     /**
      * A share ACL rule
      * interface fullName: storage.NetAppShareACLRule.NetAppShareACLRule
@@ -123,7 +123,7 @@ export namespace storage {
      * ACL status
      * type fullname: storage.NetAppShareACLStatusEnum
      */
-    export type NetAppShareACLStatusEnum = "queued_to_apply" | "applying" | "active" | "error" | "queued_to_deny" | "denying"
+    export type NetAppShareACLStatusEnum = "active" | "applying" | "denying" | "error" | "queued_to_apply" | "queued_to_deny"
     /**
      * ACL type
      * type fullname: storage.NetAppShareACLTypeEnum
@@ -211,7 +211,7 @@ export namespace storage {
      * Share status
      * type fullname: storage.NetAppShareStatusEnum
      */
-    export type NetAppShareStatusEnum = "creating" | "creating_from_snapshot" | "deleting" | "deleted" | "error" | "error_deleting" | "available" | "inactive" | "manage_starting" | "manage_error" | "unmanage_starting" | "unmanage_error" | "unmanaged" | "extending" | "extending_error" | "shrinking" | "shrinking_error" | "shrinking_possible_data_loss_error" | "migrating" | "migrating_to" | "replication_change" | "reverting" | "reverting_error"
+    export type NetAppShareStatusEnum = "available" | "creating" | "creating_from_snapshot" | "deleted" | "deleting" | "error" | "error_deleting" | "extending" | "extending_error" | "inactive" | "manage_error" | "manage_starting" | "migrating" | "migrating_to" | "replication_change" | "reverting" | "reverting_error" | "shrinking" | "shrinking_error" | "shrinking_possible_data_loss_error" | "unmanage_error" | "unmanage_starting" | "unmanaged"
     /**
      * NetApp share updatable properties
      * interface fullName: storage.NetAppShareUpdate.NetAppShareUpdate
@@ -257,7 +257,7 @@ export namespace storage {
      * Snapshot policy status
      * type fullname: storage.NetAppSnapshotPolicyStatusEnum
      */
-    export type NetAppSnapshotPolicyStatusEnum = "available" | "error" | "creating" | "deleting" | "updating"
+    export type NetAppSnapshotPolicyStatusEnum = "available" | "creating" | "deleting" | "error" | "updating"
     /**
      * Snapshot policy updatable properties
      * interface fullName: storage.NetAppSnapshotPolicyUpdate.NetAppSnapshotPolicyUpdate
@@ -270,7 +270,7 @@ export namespace storage {
      * Snapshot status
      * type fullname: storage.NetAppSnapshotStatusEnum
      */
-    export type NetAppSnapshotStatusEnum = "available" | "error" | "creating" | "deleting" | "error_deleting" | "manage_starting" | "manage_error" | "unmanage_starting" | "unmanage_error" | "restoring"
+    export type NetAppSnapshotStatusEnum = "available" | "creating" | "deleting" | "error" | "error_deleting" | "manage_error" | "manage_starting" | "restoring" | "unmanage_error" | "unmanage_starting"
     /**
      * Snapshot type
      * type fullname: storage.NetAppSnapshotTypeEnum

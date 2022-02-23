@@ -5306,6 +5306,7 @@ export const schema: Schema = {
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",
@@ -6009,14 +6010,14 @@ export const schema: Schema = {
     "sms.BatchStatusEnum": {
       "description": "Batch statuses",
       "enum": [
-        "PENDING",
-        "INSERTING",
-        "INSERTED",
-        "COMPLETED",
-        "TO_CANCEL",
-        "CANCELING",
         "CANCELED",
-        "FAILED"
+        "CANCELING",
+        "COMPLETED",
+        "FAILED",
+        "INSERTED",
+        "INSERTING",
+        "PENDING",
+        "TO_CANCEL"
       ],
       "enumType": "string",
       "id": "BatchStatusEnum",

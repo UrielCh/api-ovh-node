@@ -518,32 +518,12 @@ export namespace vps {
     }
     export namespace migration {
         /**
-         * A structure describing a migration from VPS Cloud 2014 to VPS 2020
-         * interface fullName: vps.migration.Cloud2014to2020.Cloud2014to2020
-         */
-        export interface Cloud2014to2020 {
-            date?: string;
-            model?: string;
-            notAfter?: string;
-            notBefore?: string;
-            options: vps.migration.OptionMapping[];
-            status: vps.migration.StatusEnum;
-        }
-        /**
          * Description not available
          * interface fullName: vps.migration.Migration.Migration
          */
         export interface Migration {
             date: string;
             id: string;
-        }
-        /**
-         * Mapping between a VPS 2014 option code and a VPS 2020 option code
-         * interface fullName: vps.migration.OptionMapping.OptionMapping
-         */
-        export interface OptionMapping {
-            vps2014code: vps.VpsOptionEnum;
-            vps2020code: string;
         }
         /**
          * Mapping between a VPS 2016 option code and a VPS 2020 option code
@@ -607,7 +587,7 @@ export namespace vps {
              * Possible values for OS choice status
              * type fullname: vps.order.rule.OSChoiceStatusEnum
              */
-            export type OSChoiceStatusEnum = "unavailable" | "available" | "checked-by-default"
+            export type OSChoiceStatusEnum = "available" | "checked-by-default" | "unavailable"
             /**
              * OS choices rules
              * interface fullName: vps.order.rule.OSChoices.OSChoices
@@ -1068,22 +1048,6 @@ export interface Vps {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
-        }
-        migration2014: {
-            /**
-             * Get information on a possible migration of a VPS Cloud 2014 to VPS Cloud 2020
-             * GET /vps/{serviceName}/migration2014
-             */
-            $get(): Promise<vps.migration.Cloud2014to2020>;
-            /**
-             * Schedule the migration of a VPS Cloud 2014 to VPS Cloud 2020
-             * POST /vps/{serviceName}/migration2014
-             */
-            $post(params: { date: string }): Promise<vps.Task>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         migration2016: {
             /**

@@ -16,7 +16,7 @@ export namespace partner2 {
      * Acceptance status
      * type fullname: partner2.AcceptanceStatusEnum
      */
-    export type AcceptanceStatusEnum = "Open" | "Rejected" | "RegisteredQualified" | "AdvancedQualified" | "Registered" | "Advanced" | "AdvancedHandOperated"
+    export type AcceptanceStatusEnum = "Advanced" | "AdvancedHandOperated" | "AdvancedQualified" | "Open" | "Registered" | "RegisteredQualified" | "Rejected"
     /**
      * Account Entity
      * interface fullName: partner2.Account.Account
@@ -34,7 +34,7 @@ export namespace partner2 {
      * Area of expertise
      * type fullname: partner2.AreaOfExpertiseEnum
      */
-    export type AreaOfExpertiseEnum = "HPC" | "DC" | "PC" | "Orchestration" | "BigData" | "VPS" | "SecurityCertif" | "DomainName" | "EmailMsSolution" | "WH" | "Connectivity" | "VoIP" | "PCIDSS"
+    export type AreaOfExpertiseEnum = "BigData" | "Connectivity" | "DC" | "DomainName" | "EmailMsSolution" | "HPC" | "Orchestration" | "PC" | "PCIDSS" | "SecurityCertif" | "VPS" | "VoIP" | "WH"
     /**
      * Contact Entity
      * interface fullName: partner2.Contact.Contact
@@ -76,17 +76,17 @@ export namespace partner2 {
      * Job positions
      * type fullname: partner2.PositionEnum
      */
-    export type PositionEnum = "ITSysAdmin" | "ITDevops" | "ITOther" | "Marketing" | "Sales" | "Purchasing" | "RD" | "AF" | "HR" | "Production" | "LC" | "Other" | "BusinessOwner" | "PreSales"
+    export type PositionEnum = "AF" | "BusinessOwner" | "HR" | "ITDevops" | "ITOther" | "ITSysAdmin" | "LC" | "Marketing" | "Other" | "PreSales" | "Production" | "Purchasing" | "RD" | "Sales"
     /**
      * employeesNumber
      * type fullname: partner2.employeesNumberEnum
      */
-    export type employeesNumberEnum = "1Or2" | "3To5" | "6To9" | "10To19" | "20To49" | "50To99" | "100To199" | "200To249" | "250To499" | "500to999" | "1000to1999" | "2000to4999" | "5000to9999" | "over10000"
+    export type employeesNumberEnum = "1000to1999" | "100To199" | "10To19" | "1Or2" | "2000to4999" | "200To249" | "20To49" | "250To499" | "3To5" | "5000to9999" | "500to999" | "50To99" | "6To9" | "over10000"
     /**
      * partner type
      * type fullname: partner2.partnerTypeEnum
      */
-    export type partnerTypeEnum = "valueAddedReseller" | "systemsIntegrator" | "iaasProvider" | "managedServiceProvider" | "softwareEditor" | "strategicConsulting" | "consultingCompany" | "trainingCompany" | "webAgency" | "telecomOperators" | "other"
+    export type partnerTypeEnum = "consultingCompany" | "iaasProvider" | "managedServiceProvider" | "other" | "softwareEditor" | "strategicConsulting" | "systemsIntegrator" | "telecomOperators" | "trainingCompany" | "valueAddedReseller" | "webAgency"
 }
 
 /**

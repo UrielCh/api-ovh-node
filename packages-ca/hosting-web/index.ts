@@ -14,7 +14,7 @@ export namespace cdn {
      * Statistics Period
      * type fullname: cdn.DomainStatisticsPeriodEnum
      */
-    export type DomainStatisticsPeriodEnum = "day" | "week" | "month" | "year"
+    export type DomainStatisticsPeriodEnum = "day" | "month" | "week" | "year"
     /**
      * Serie Unit
      * type fullname: cdn.DomainStatisticsUnitEnum
@@ -24,22 +24,22 @@ export namespace cdn {
      * Domain status
      * type fullname: cdn.DomainStatusEnum
      */
-    export type DomainStatusEnum = "ok" | "to_disable" | "disabling" | "disabled" | "to_refresh" | "refreshing" | "to_delete" | "deleting"
+    export type DomainStatusEnum = "deleting" | "disabled" | "disabling" | "ok" | "refreshing" | "to_delete" | "to_disable" | "to_refresh"
     /**
      * Operation function
      * type fullname: cdn.OperationFunctionEnum
      */
-    export type OperationFunctionEnum = "service_install" | "domain_purge" | "domain_refresh" | "domain_delete" | "domain_disable" | "ssl_install" | "ssl_delete"
+    export type OperationFunctionEnum = "domain_delete" | "domain_disable" | "domain_purge" | "domain_refresh" | "service_install" | "ssl_delete" | "ssl_install"
     /**
      * Shared CDN offer
      * type fullname: cdn.OperationOfferEnum
      */
-    export type OperationOfferEnum = "basic" | "security" | "advanced"
+    export type OperationOfferEnum = "advanced" | "basic" | "security"
     /**
      * Operation status
      * type fullname: cdn.OperationStatusEnum
      */
-    export type OperationStatusEnum = "todo" | "doing" | "done" | "error" | "cancelled"
+    export type OperationStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
     /**
      * Option category
      * type fullname: cdn.OptionCategoryEnum
@@ -59,12 +59,12 @@ export namespace cdn {
      * Option query parameters
      * type fullname: cdn.OptionQueryParametersEnum
      */
-    export type OptionQueryParametersEnum = "sorted" | "ignored"
+    export type OptionQueryParametersEnum = "ignored" | "sorted"
     /**
      * Option type
      * type fullname: cdn.OptionTypeEnum
      */
-    export type OptionTypeEnum = "devmode" | "brotli" | "cache_rule" | "https_redirect" | "hsts" | "mixed_content" | "cors" | "waf" | "prefetch" | "querystring" | "geo_headers" | "mobile_redirect" | "prewarm"
+    export type OptionTypeEnum = "brotli" | "cache_rule" | "cors" | "devmode" | "geo_headers" | "hsts" | "https_redirect" | "mixed_content" | "mobile_redirect" | "prefetch" | "prewarm" | "querystring" | "waf"
     /**
      * Option type
      * type fullname: cdn.OptionTypePostEnum
@@ -669,7 +669,7 @@ export namespace hosting {
              * Cron's language
              * type fullname: hosting.web.cron.LanguageEnum
              */
-            export type LanguageEnum = "node10" | "node11" | "node12" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "python2" | "python3" | "ruby2.5" | "ruby2.6"
+            export type LanguageEnum = "node10" | "node11" | "node12" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "php8.1" | "python2" | "python3" | "ruby2.5" | "ruby2.6"
             /**
              * Cron state
              * type fullname: hosting.web.cron.StateEnum
@@ -1200,7 +1200,7 @@ export namespace hosting {
              * Hosting available configuration version
              * type fullname: hosting.web.ovhConfig.AvailableEngineVersionEnum
              */
-            export type AvailableEngineVersionEnum = "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "8.0"
+            export type AvailableEngineVersionEnum = "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "8.0" | "8.1"
             /**
              * Hosting configuration engine
              * type fullname: hosting.web.ovhConfig.EngineNameEnum
@@ -1210,7 +1210,7 @@ export namespace hosting {
              * Hosting configuration version
              * type fullname: hosting.web.ovhConfig.EngineVersionEnum
              */
-            export type EngineVersionEnum = "4.4" | "5.0" | "5.1" | "5.2" | "5.3" | "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "8.0" | "AUTO"
+            export type EngineVersionEnum = "4.4" | "5.0" | "5.1" | "5.2" | "5.3" | "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "8.0" | "8.1" | "AUTO"
             /**
              * Hosting configuration environment
              * type fullname: hosting.web.ovhConfig.EnvironmentEnum
@@ -1412,7 +1412,7 @@ export namespace order {
     /**
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * Price with it's currency and textual representation
      * interface fullName: order.Price.Price

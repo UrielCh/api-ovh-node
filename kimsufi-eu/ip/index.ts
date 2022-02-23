@@ -4,6 +4,16 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /ip Models
  * Source: https://eu.api.kimsufi.com/1.0/ip.json
  */
+export namespace complexType {
+    /**
+     * Start and end points (inclusive) of a range
+     * interface fullName: complexType.Range.Range
+     */
+    export interface Range<T> {
+        from: T;
+        to: T;
+    }
+}
 export namespace coreTypes {
     /**
      * ISO country codes
@@ -61,10 +71,46 @@ export namespace ip {
      */
     export type BlockedIpStateEnum = "blocked" | "unblocking"
     /**
+     * GAME Anti-DDoS
+     * interface fullName: ip.GameMitigation.GameMitigation
+     */
+    export interface GameMitigation {
+        firewallModeEnabled: boolean;
+        ipOnGame: string;
+        state: ip.GameMitigationStateEnum;
+    }
+    /**
+     * Rule on ip:ports
+     * interface fullName: ip.GameMitigationRule.GameMitigationRule
+     */
+    export interface GameMitigationRule {
+        id: number;
+        ports: complexType.Range<number>;
+        protocol: ip.GameMitigationRuleProtocolEnum;
+        state: ip.GameMitigationRuleStateEnum;
+    }
+    /**
+     * Possible values for game rule protocol
+     * type fullname: ip.GameMitigationRuleProtocolEnum
+     */
+    export type GameMitigationRuleProtocolEnum = "arkSurvivalEvolved" | "arma" | "gtaMultiTheftAutoSanAndreas" | "gtaSanAndreasMultiplayerMod" | "hl2Source" | "minecraftPocketEdition" | "minecraftQuery" | "mumble" | "other" | "rust" | "teamspeak2" | "teamspeak3" | "trackmaniaShootmania"
+    /**
+     * Possible values for game mitigation rule state
+     * type fullname: ip.GameMitigationRuleStateEnum
+     */
+    export type GameMitigationRuleStateEnum = "createRulePending" | "deleteRulePending" | "ok"
+    /**
+     * Possible values for udp mitigation rule state
+     * type fullname: ip.GameMitigationStateEnum
+     */
+    export type GameMitigationStateEnum = "firewallModeDisablePending" | "firewallModeEnablePending" | "ok"
+    /**
      * Your IP
      * interface fullName: ip.Ip.Ip
      */
     export interface Ip {
+        bringYourOwnIp: boolean;
+        campus?: string;
         canBeTerminated: boolean;
         country?: coreTypes.CountryEnum;
         description?: string;
@@ -316,7 +362,7 @@ export interface Ip {
          * Alter this object properties
          * PUT /ip/{ip}
          */
-        $put(params?: { canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum }): Promise<void>;
+        $put(params?: { bringYourOwnIp?: boolean, campus?: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum }): Promise<void>;
         /**
          * Controle cache
          */
@@ -376,6 +422,65 @@ export interface Ip {
                      * POST /ip/{ip}/arp/{ipBlocked}/unblock
                      */
                     $post(): Promise<void>;
+                }
+            };
+        }
+        game: {
+            /**
+             * Ip under game anti-ddos
+             * GET /ip/{ip}/game
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(ipOnGame: string): {
+                /**
+                 * Get this object properties
+                 * GET /ip/{ip}/game/{ipOnGame}
+                 */
+                $get(): Promise<ip.GameMitigation>;
+                /**
+                 * Alter this object properties
+                 * PUT /ip/{ip}/game/{ipOnGame}
+                 */
+                $put(params?: { firewallModeEnabled?: boolean, ipOnGame?: string, state?: ip.GameMitigationStateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                rule: {
+                    /**
+                     * IDs of rules configured for this IP
+                     * GET /ip/{ip}/game/{ipOnGame}/rule
+                     */
+                    $get(): Promise<number[]>;
+                    /**
+                     * Add new rule on your IP
+                     * POST /ip/{ip}/game/{ipOnGame}/rule
+                     */
+                    $post(params: { ports: complexType.Range<number>, protocol: ip.GameMitigationRuleProtocolEnum }): Promise<ip.GameMitigationRule>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(id: number): {
+                        /**
+                         * Delete rule
+                         * DELETE /ip/{ip}/game/{ipOnGame}/rule/{id}
+                         */
+                        $delete(): Promise<ip.GameMitigationRule>;
+                        /**
+                         * Get this object properties
+                         * GET /ip/{ip}/game/{ipOnGame}/rule/{id}
+                         */
+                        $get(): Promise<ip.GameMitigationRule>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
                 }
             };
         }

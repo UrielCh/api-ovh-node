@@ -1,6 +1,6 @@
 import {Schema} from '../../src/schema';
 
-// imported from https://eu.api.ovh.com:443/1.0/storage.json
+// imported from https://ca.api.ovh.com:443/1.0/storage.json
 
 export const schema: Schema = {
   "apiVersion": "1.0",
@@ -1352,7 +1352,7 @@ export const schema: Schema = {
       "path": "/storage/netapp/{serviceName}/terminate"
     }
   ],
-  "basePath": "https://eu.api.ovh.com/1.0",
+  "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",

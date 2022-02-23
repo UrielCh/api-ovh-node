@@ -2557,6 +2557,22 @@ export const schema: Schema = {
       "id": "Ip",
       "namespace": "ip",
       "properties": {
+        "bringYourOwnIp": {
+          "canBeNull": false,
+          "description": "Is this IP part of the Bring your own IP program (alpha)",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "campus": {
+          "canBeNull": true,
+          "description": "Where is the IP used/usable (alpha)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "canBeTerminated": {
           "canBeNull": false,
           "fullType": "boolean",

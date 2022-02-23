@@ -102,6 +102,18 @@ export namespace dedicatedCloud {
         vmName?: string;
     }
     /**
+     * Backup Repository
+     * interface fullName: dedicatedCloud.BackupRepository.BackupRepository
+     */
+    export interface BackupRepository {
+        lastSuccessfulReplicationDate?: string;
+        replication?: dedicatedCloudoptionStateEnum;
+        replicationZone?: string;
+        repositoryId: number;
+        repositoryName: string;
+        syncStatus?: dedicatedCloudbackupReplicationSyncStatus;
+    }
+    /**
      * All states a Dedicated Cloud Backup can be in
      * type fullname: dedicatedCloud.BackupStateEnum
      */
@@ -192,7 +204,9 @@ export namespace dedicatedCloud {
         domainAlias: string;
         domainName: string;
         ip: string;
+        ldapHostname?: string;
         ldapTcpPort: number;
+        noSsl: boolean;
         sslThumbprint?: string;
         state: dedicatedCloudoptionAccessNetworkStateEnum;
         username: string;
@@ -207,6 +221,7 @@ export namespace dedicatedCloud {
         connectionState?: dedicatedCloudfilerConnexionStateEnum;
         filerId: number;
         fullProfile: string;
+        isManagedByOvh: boolean;
         master: string;
         name: string;
         profile: string;
@@ -318,7 +333,7 @@ export namespace dedicatedCloud {
      * The Hypervisor version of this Dedicated Cloud component
      * type fullname: dedicatedCloud.HypervisorVersionEnum
      */
-    export type HypervisorVersionEnum = "4.1" | "5.0" | "5.1" | "5.5" | "6.0" | "6.5" | "6.7" | "hv3.1" | "hvdc3.1" | "nc1.0"
+    export type HypervisorVersionEnum = "4.1" | "5.0" | "5.1" | "5.5" | "6.0" | "6.5" | "6.7" | "7.0" | "hv3.1" | "hvdc3.1" | "nc1.0"
     /**
      * IP Blocks associated with a Dedicated Cloud
      * interface fullName: dedicatedCloud.Ip.Ip
@@ -516,6 +531,8 @@ export namespace dedicatedCloud {
      */
     export interface User {
         activationState?: dedicatedClouduserActivationStateEnum;
+        activeDirectoryId?: number;
+        activeDirectoryType?: string;
         canManageIpFailOvers: boolean;
         canManageNetwork: boolean;
         canManageRights: boolean;
@@ -662,6 +679,7 @@ export namespace dedicatedCloud {
         export interface Backup {
             allocatedDisk?: number;
             backupDays?: dedicatedCloudbackupBackupDaysEnum[];
+            backupRepositoryId?: number;
             encryption?: boolean;
             lastCreationTime?: string;
             lastDuration?: complexType.UnitAndValue<number>;
@@ -730,6 +748,11 @@ export namespace dedicatedCloud {
          * type fullname: dedicatedCloud.backup.OptimizeRecommendationEnum
          */
         export type OptimizeRecommendationEnum = "add" | "optimized" | "remove"
+        /**
+         * All possible replication sync status
+         * type fullname: dedicatedCloud.backup.ReplicationSyncStatus
+         */
+        export type ReplicationSyncStatus = "ok" | "out-of-sync" | "sync-required" | "unknown"
         /**
          * Details about a restore point
          * interface fullName: dedicatedCloud.backup.RestorePoint.RestorePoint
@@ -1284,7 +1307,7 @@ export namespace order {
     /**
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * Price with it's currency and textual representation
      * interface fullName: order.Price.Price
@@ -1776,12 +1799,56 @@ export interface DedicatedCloud {
                         $post(): Promise<dedicatedCloud.Task>;
                     }
                 }
+                backupRepository: {
+                    /**
+                     * Backup repositories associated with this Datacenter
+                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backupRepository
+                     */
+                    $get(): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(repositoryId: number): {
+                        /**
+                         * Get this object properties
+                         * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backupRepository/{repositoryId}
+                         */
+                        $get(): Promise<dedicatedCloud.BackupRepository>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
+                }
                 checkBackupJobs: {
                     /**
                      * Check whether your backup jobs are correctly set in your current datacenter, use this when your virtual machines have been migrated through another datacenter
                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/checkBackupJobs
                      */
                     $post(): Promise<dedicatedCloud.Task>;
+                }
+                cluster: {
+                    /**
+                     * Clusters associated with this Datacenter
+                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/cluster
+                     */
+                    $get(): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(id: number): {
+                        /**
+                         * Get this object properties
+                         * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/cluster/{id}
+                         */
+                        $get(): Promise<dedicatedCloud.Cluster>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
                 }
                 disasterRecovery: {
                     zerto: {
@@ -2330,7 +2397,7 @@ export interface DedicatedCloud {
                  * Add a new option user access
                  * POST /dedicatedCloud/{serviceName}/federation/activeDirectory
                  */
-                $post(params: { baseDnForGroups: string, baseDnForUsers: string, description?: string, domainAlias: string, domainName: string, ip: string, password: string, username: string }): Promise<dedicatedCloud.Task>;
+                $post(params: { baseDnForGroups: string, baseDnForUsers: string, description?: string, domainAlias: string, domainName: string, ip: string, ldapHostname?: string, ldapTcpPort?: number, noSsl?: boolean, password: string, sslThumbprint?: string, username: string }): Promise<dedicatedCloud.Task>;
                 /**
                  * Controle cache
                  */
@@ -2355,7 +2422,14 @@ export interface DedicatedCloud {
                          * Change Active Directory properties
                          * POST /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/changeProperties
                          */
-                        $post(params: { description?: string, password: string, username: string }): Promise<dedicatedCloud.Task>;
+                        $post(params: { description?: string, password: string, sslThumbprint?: string, username: string }): Promise<dedicatedCloud.Task>;
+                    }
+                    grantActiveDirectoryGroup: {
+                        /**
+                         * Grant Active Directory group
+                         * POST /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/grantActiveDirectoryGroup
+                         */
+                        $post(params: { groupName: string }): Promise<dedicatedCloud.Task>;
                     }
                     grantActiveDirectoryUser: {
                         /**
@@ -3421,6 +3495,7 @@ type dedicatedCloudbackupOfferTypeEnum = dedicatedCloud.backup.OfferTypeEnum;
 type dedicatedCloudBackupStateEnum = dedicatedCloud.BackupStateEnum;
 type dedicatedCloudbackupBackupDaysEnum = dedicatedCloud.backup.BackupDaysEnum;
 type dedicatedCloudbackupStateEnum = dedicatedCloud.backup.StateEnum;
+type dedicatedCloudbackupReplicationSyncStatus = dedicatedCloud.backup.ReplicationSyncStatus;
 type dedicatedCloudcapabilitiesFeatureStatusEnum = dedicatedCloud.capabilities.FeatureStatusEnum;
 type dedicatedCloudclusterAutoScale = dedicatedCloud.cluster.AutoScale;
 type dedicatedCloudclusterClusterDrsModeEnum = dedicatedCloud.cluster.ClusterDrsModeEnum;

@@ -6,11 +6,6 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  */
 export namespace nutanix {
     /**
-     * License type
-     * type fullname: nutanix.LicenseEnum
-     */
-    export type LicenseEnum = "pro" | "ultimate"
-    /**
      * Cluster redundancy factor
      * type fullname: nutanix.RedundancyFactorEnum
      */
@@ -29,13 +24,11 @@ export namespace nutanix {
      * interface fullName: nutanix.cluster.cluster
      */
     export interface cluster {
-        allowedRedundancyFactor: number[];
         controlPanelURL: string;
         erasureCoding: boolean;
         gatewayCidr: string;
         ipfo: string;
         iplb: string;
-        license: nutanix.LicenseEnum;
         name: string;
         nodes: nutanix.nodes[];
         prismCentral: nutanix.prismcentral;
@@ -74,6 +67,8 @@ export namespace nutanix {
      * interface fullName: nutanix.state.state
      */
     export interface state {
+        allowedRedundancyFactor: number[];
+        availableVersions: string[];
         serviceName: string;
         status: nutanix.statusEnum;
         targetSpec: nutanix.cluster;
@@ -179,7 +174,7 @@ export interface Nutanix {
          * Update nutanix cluster info
          * PUT /nutanix/{serviceName}
          */
-        $put(params?: { allowedRedundancyFactor?: number[], controlPanelURL?: string, erasureCoding?: boolean, gatewayCidr?: string, ipfo?: string, iplb?: string, license?: nutanix.LicenseEnum, name?: string, nodes?: nutanix.nodes[], prismCentral?: nutanix.prismcentral, prismElementVip?: string, prismSecretId?: string, rackAwareness?: boolean, redundancyFactor?: number, version?: string, vrack?: string }): Promise<nutanix.state>;
+        $put(params?: { controlPanelURL?: string, erasureCoding?: boolean, gatewayCidr?: string, ipfo?: string, iplb?: string, name?: string, nodes?: nutanix.nodes[], prismCentral?: nutanix.prismcentral, prismElementVip?: string, prismSecretId?: string, rackAwareness?: boolean, redundancyFactor?: number, version?: string, vrack?: string }): Promise<nutanix.state>;
         /**
          * Controle cache
          */

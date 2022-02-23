@@ -4,6 +4,10 @@ import { Parameter, Schema, FieldProp, API } from './schema';
 
 let eol = '\n';
 
+interface Context {
+    dest: string;
+}
+
 export class CodeGenerator {
     /**
      * /license/office
@@ -23,7 +27,7 @@ export class CodeGenerator {
         this.schema = await this.gen.loadSchema(`${this.apiPath}.json`)
     }
 
-    async generate(): Promise<string> {
+    async generate(ctxt: Context): Promise<string> {
         if (!this.schema)
             await this.loadSchema();
         // start generation
@@ -31,7 +35,7 @@ export class CodeGenerator {
         code += ` * START API ${this.apiPath} Models${eol}`;
         code += ` * Source: ${this.gen.getFullPath(this.apiPath)}${eol} */${eol}`;
 
-        code = this.dumpModel(0, this.gen.models, code, '');
+        code = this.dumpModel(ctxt, 0, this.gen.models, code, '');
         code += `${eol}/**${eol} * END API ${this.apiPath} Models${eol} */${eol}`;
 
         let proxyCall = 'proxy' + formatUpperCamlCase(this.apiPath.replace(/\//g, '_'));
@@ -45,7 +49,7 @@ export class CodeGenerator {
 
         code += `/**${eol} * Api model for ${this.apiPath}${eol} */${eol}`
         // //code += `${ident0} * path ${api._path}${eol}`;
-        code += this.dumpApiHarmony(0, this.gen.apis, ''); // `// Apis harmony${eol}`
+        code += this.dumpApiHarmony(ctxt, 0, this.gen.apis, ''); // `// Apis harmony${eol}`
         // extra alias fo bypass namespace colision errors
         const collisions = Object.keys(this.NSCollision);
         if (collisions.length) {
@@ -98,7 +102,7 @@ export class CodeGenerator {
      * @param api 
      * @param code 
      */
-    dumpModel(depth: number, cache: CacheModel, code: string, fullNS: string): string {
+    dumpModel(ctxt: Context, depth: number, cache: CacheModel, code: string, fullNS: string): string {
         let ident0 = indentGen(depth - 1);
         //if ((<any>cache)._DEBUG) {
         //    console.log('DEBUUGG ' + (<any>cache)._DEBUG);
@@ -194,7 +198,7 @@ export class CodeGenerator {
             //console.log(ns['order']);
             for (const ns of keys) {
                 let fns = fullNS ? `${fullNS}.${ns}` : ns;
-                code = this.dumpModel(depth + 1, <CacheModel>cache[ns], code, fns);
+                code = this.dumpModel(ctxt, depth + 1, <CacheModel>cache[ns], code, fns);
             }
             if (cache._namespace || cache._name)
                 code += `${ident0}}${eol}`;
@@ -313,7 +317,7 @@ export class CodeGenerator {
                             if (schema && schema.models) {
                                 let modelsProp = schema.models[body[0].fullType];
                                 if (!modelsProp || !modelsProp.properties)
-                                    console.error(`ERROR in model Body Type ${body[0].fullType} do not exists`)
+                                    console.error(`ERROR2 in model Body Type ${body[0].fullType} do not exists`)
                                 else {
                                     for (let propName of Object.keys(modelsProp.properties).sort()) {
                                         let p = modelsProp.properties[propName];
@@ -364,7 +368,7 @@ export class CodeGenerator {
     * @param api 
     * @param code 
     */
-    dumpApiHarmony(depth: number, api: CacheApi, code: string): string {
+    dumpApiHarmony(ctxt: Context, depth: number, api: CacheApi, code: string): string {
         let ident0 = indentGen(depth - 1);
         // drop _ prefixed fields
         const keys = Object.keys(api).filter(k => !k.startsWith('_'))
@@ -438,7 +442,7 @@ export class CodeGenerator {
                     if (schema && schema.models) {
                         let modelsProp = schema.models[body[0].fullType];
                         if (!modelsProp || !modelsProp.properties)
-                            console.error(`ERROR in model Body Type ${body[0].fullType} do not exists`)
+                            console.error(`ERROR1 in model Body Type ${body[0].fullType} do not exists dest:${ctxt.dest}`)
                         else {
                             for (let propName of Object.keys(modelsProp.properties).sort()) {
                                 let p = modelsProp.properties[propName];
@@ -495,7 +499,7 @@ export class CodeGenerator {
         for (const k of keys.sort()) {
             const value: any = api[k];
             if (value['_path']) {
-                code = this.dumpApiHarmony(depth + 1, value, code);
+                code = this.dumpApiHarmony(ctxt, depth + 1, value, code);
             } else {
                 console.log('Done ', keys);
             }

@@ -104,7 +104,7 @@ export namespace metrics {
          * Status of of the service
          * type fullname: metrics.api.ServiceStatusEnum
          */
-        export type ServiceStatusEnum = "new" | "alive" | "disabled" | "dead"
+        export type ServiceStatusEnum = "alive" | "dead" | "disabled" | "new"
         /**
          * Structure holding the elements about a token
          * interface fullName: metrics.api.Token.Token

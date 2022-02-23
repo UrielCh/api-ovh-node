@@ -253,6 +253,120 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about Anthos offers",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new Anthos item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/anthos"
+    },
+    {
+      "description": "Anthos option",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about Anthos options",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the Anthos you want to consult options",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new Anthos option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/anthos/options"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "Assign a shopping cart to an loggedin client",
           "httpMethod": "POST",
           "noAuthentication": false,
@@ -2734,6 +2848,120 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/cart/{cartId}/domainTransfer/options"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get information about a eco",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post a new eco item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/eco"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get information about the options of a Eco",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of a Eco offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post a new Eco option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/eco/options"
     },
     {
       "description": "Order emails pack linked to one domain",
@@ -8223,6 +8451,113 @@ export const schema: Schema = {
       "path": "/order/cart/{cartId}/xdsl/options"
     },
     {
+      "description": "Operations about the ANTHOS service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "/all"
+          ]
+        }
+      ],
+      "path": "/order/cartServiceOption/anthos"
+    },
+    {
+      "description": "Listing offers /order/cartServiceOptions/anthos/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about additional anthos offer for your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The Anthos Tenant subscription Id",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post an additional anthos option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the additional anthos offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The Anthos Tenant subscription Id",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cartServiceOption/anthos/{serviceName}"
+    },
+    {
       "description": "Operations about the DEDICATED service",
       "operations": [
         {
@@ -11587,6 +11922,32 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve Eco catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/eco"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
@@ -11613,6 +11974,32 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve emailpro catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/emailpro"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
@@ -11633,6 +12020,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/catalog/public/enterpriseCloudDatabases"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve exchange catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/exchange"
     },
     {
       "description": "Missing description",
@@ -11717,6 +12130,84 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve Netapp catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/netapp"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve Nutanix clusters catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/nutanix"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve office365Prepaid catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/office365Prepaid"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
@@ -11763,6 +12254,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/catalog/public/privateCloud"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve Private Cloud Enterprise catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/privateCloudEnterprise"
     },
     {
       "description": "Missing description",
@@ -23256,7 +23773,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Companu siret",
+              "description": "Company siret",
               "fullType": "string",
               "name": "siret",
               "paramType": "query",
@@ -23432,7 +23949,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Companu siret",
+              "description": "Company siret",
               "fullType": "string",
               "name": "siret",
               "paramType": "body",
@@ -23630,7 +24147,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Companu siret",
+              "description": "Company siret",
               "fullType": "string",
               "name": "siret",
               "paramType": "query",
@@ -23798,7 +24315,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Companu siret",
+              "description": "Company siret",
               "fullType": "string",
               "name": "siret",
               "paramType": "body",
@@ -23884,11 +24401,27 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Contact address extra",
+              "fullType": "string",
+              "name": "addressExtra",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Company ape",
               "fullType": "string",
               "name": "ape",
               "paramType": "query",
-              "required": true
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Contact cedex",
+              "fullType": "string",
+              "name": "cedex",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "string",
@@ -23899,16 +24432,32 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "telephony.NumberCountryEnum",
+              "dataType": "telephony.SpecialNumberCountryEnum",
               "description": "Number country",
-              "fullType": "telephony.NumberCountryEnum",
+              "fullType": "telephony.SpecialNumberCountryEnum",
               "name": "country",
               "paramType": "query",
               "required": true
             },
             {
+              "dataType": "string",
+              "description": "Line description",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "boolean",
-              "description": "Publish contact informations on universal directories",
+              "description": "Publish informations on reversed directory ?",
+              "fullType": "boolean",
+              "name": "displaySearchReverse",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Publish informations on directory ? (Yellow Pages, 118XXX, ...)",
               "fullType": "boolean",
               "name": "displayUniversalDirectory",
               "paramType": "query",
@@ -23972,6 +24521,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Contact post box",
+              "fullType": "string",
+              "name": "postBox",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Special range",
               "fullType": "string",
               "name": "range",
@@ -23988,7 +24545,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Companu siret",
+              "description": "Company siret",
               "fullType": "string",
               "name": "siret",
               "paramType": "query",
@@ -24027,12 +24584,36 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "string",
+              "description": "Street number extra",
+              "fullType": "string",
+              "name": "streetNumberExtra",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Street type",
+              "fullType": "string",
+              "name": "streetType",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "telephony.NumberSpecialTypologyEnum",
               "description": "Special range typology",
               "fullType": "telephony.NumberSpecialTypologyEnum",
               "name": "typology",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Contact urban district",
+              "fullType": "string",
+              "name": "urbanDistrict",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "string",
@@ -24060,11 +24641,27 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Contact address extra",
+              "fullType": "string",
+              "name": "addressExtra",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Company ape",
               "fullType": "string",
               "name": "ape",
               "paramType": "body",
-              "required": true
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Contact cedex",
+              "fullType": "string",
+              "name": "cedex",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -24075,16 +24672,32 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "telephony.NumberCountryEnum",
+              "dataType": "telephony.SpecialNumberCountryEnum",
               "description": "Number country",
-              "fullType": "telephony.NumberCountryEnum",
+              "fullType": "telephony.SpecialNumberCountryEnum",
               "name": "country",
               "paramType": "body",
               "required": true
             },
             {
+              "dataType": "string",
+              "description": "Line description",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "boolean",
-              "description": "Publish contact informations on universal directories",
+              "description": "Publish informations on reversed directory ?",
+              "fullType": "boolean",
+              "name": "displaySearchReverse",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Publish informations on directory ? (Yellow Pages, 118XXX, ...)",
               "fullType": "boolean",
               "name": "displayUniversalDirectory",
               "paramType": "body",
@@ -24148,6 +24761,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Contact post box",
+              "fullType": "string",
+              "name": "postBox",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Special range",
               "fullType": "string",
               "name": "range",
@@ -24164,7 +24785,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Companu siret",
+              "description": "Company siret",
               "fullType": "string",
               "name": "siret",
               "paramType": "body",
@@ -24203,12 +24824,36 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "string",
+              "description": "Street number extra",
+              "fullType": "string",
+              "name": "streetNumberExtra",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Street type",
+              "fullType": "string",
+              "name": "streetType",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "telephony.NumberSpecialTypologyEnum",
               "description": "Special range typology",
               "fullType": "telephony.NumberSpecialTypologyEnum",
               "name": "typology",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Contact urban district",
+              "fullType": "string",
+              "name": "urbanDistrict",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -30183,13 +30828,15 @@ export const schema: Schema = {
       "properties": {
         "key": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "T",
+          "readOnly": true,
           "required": false,
           "type": "T"
         }
@@ -30205,13 +30852,17 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Unit of the value",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Value",
+          "fullType": "T",
+          "readOnly": true,
           "required": false,
           "type": "T"
         }
@@ -30778,11 +31429,8 @@ export const schema: Schema = {
     "email.exchange.OutlookVersionEnum": {
       "description": "Outlook version",
       "enum": [
-        "mac_x86_2011",
         "mac_x86_2016",
-        "windows_x64_2013",
         "windows_x64_2016",
-        "windows_x86_2013",
         "windows_x86_2016"
       ],
       "enumType": "string",
@@ -33244,9 +33892,9 @@ export const schema: Schema = {
     "order.ReductionTypeEnum": {
       "description": "Type of reduction",
       "enum": [
-        "percentage",
+        "fixed_amount",
         "forced_amount",
-        "fixed_amount"
+        "percentage"
       ],
       "enumType": "string",
       "id": "ReductionTypeEnum",
@@ -33442,9 +34090,9 @@ export const schema: Schema = {
       "description": "Action values for domain product information",
       "enum": [
         "create",
+        "trade",
         "transfer",
-        "update",
-        "trade"
+        "update"
       ],
       "enumType": "string",
       "id": "DomainActionEnum",
@@ -33582,10 +34230,11 @@ export const schema: Schema = {
       }
     },
     "order.cart.DurationUnitEnum": {
-      "description": "Unit that correspond to a duration range",
+      "description": "Unit corresponding to a duration range",
       "enum": [
-        "month",
         "day",
+        "hour",
+        "month",
         "none"
       ],
       "enumType": "string",
@@ -34074,12 +34723,13 @@ export const schema: Schema = {
     "order.cart.GenericProductPricingCapacitiesEnum": {
       "description": "Capacity of a pricing (type)",
       "enum": [
+        "consumption",
+        "detach",
+        "downgrade",
+        "dynamic",
         "installation",
         "renew",
-        "upgrade",
-        "downgrade",
-        "detach",
-        "dynamic"
+        "upgrade"
       ],
       "enumType": "string",
       "id": "GenericProductPricingCapacitiesEnum",
@@ -34089,8 +34739,8 @@ export const schema: Schema = {
       "description": "Strategy of a Pricing",
       "enum": [
         "stairstep",
-        "volume",
-        "tiered"
+        "tiered",
+        "volume"
       ],
       "enumType": "string",
       "id": "GenericProductPricingStrategyEnum",
@@ -34099,9 +34749,9 @@ export const schema: Schema = {
     "order.cart.GenericProductPricingTypeEnum": {
       "description": "Type of a pricing",
       "enum": [
-        "rental",
         "consumption",
-        "purchase"
+        "purchase",
+        "rental"
       ],
       "enumType": "string",
       "id": "GenericProductPricingTypeEnum",
@@ -34110,13 +34760,13 @@ export const schema: Schema = {
     "order.cart.GenericProductTypeEnum": {
       "description": "Type of a product",
       "enum": [
+        "cloud_service",
         "delivery",
         "deposit",
-        "shipping",
-        "cloud_service",
+        "domain",
         "saas_license",
-        "storage",
-        "domain"
+        "shipping",
+        "storage"
       ],
       "enumType": "string",
       "id": "GenericProductTypeEnum",
@@ -34281,11 +34931,11 @@ export const schema: Schema = {
     "order.cart.PriceLabelEnum": {
       "description": "Label corresponding to different type of price",
       "enum": [
-        "PRICE",
         "DISCOUNT",
         "FEE",
-        "TOTAL",
-        "RENEW"
+        "PRICE",
+        "RENEW",
+        "TOTAL"
       ],
       "enumType": "string",
       "id": "PriceLabelEnum",
@@ -34457,7 +35107,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "List of the addons of this family",
           "fullType": "order.catalog.AddonOffer[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.AddonOffer[]"
         },
@@ -34465,7 +35115,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Whether you can only have one instance of this addon family (xor)",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -34473,7 +35123,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Addon family name",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -34481,7 +35131,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Indicated if addon family must be contracted",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         }
@@ -34492,19 +35142,43 @@ export const schema: Schema = {
       "id": "AddonOffer",
       "namespace": "order.catalog",
       "properties": {
+        "default": {
+          "canBeNull": true,
+          "description": "Default",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "invoiceName": {
           "canBeNull": false,
           "description": "Name that appears on invoice",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "maximumQuantity": {
+          "canBeNull": true,
+          "description": "Maximum quantity",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minimumQuantity": {
+          "canBeNull": true,
+          "description": "Minimum quantity",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "plan": {
           "canBeNull": false,
           "description": "Describes of commercial offer of a product",
           "fullType": "order.catalog.ProductPlan",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.ProductPlan"
         }
@@ -34519,7 +35193,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Identifier of the catalog",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -34527,17 +35201,17 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "OVH Subsidiary concerned by this catalog",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
-        "plansFamily": {
-          "canBeNull": false,
+        "plans": {
+          "canBeNull": true,
           "description": "List of plans of the catalog",
-          "fullType": "order.catalog.PlansItem[]",
-          "readOnly": false,
+          "fullType": "order.catalog.ProductPlan[]",
+          "readOnly": true,
           "required": false,
-          "type": "order.catalog.PlansItem[]"
+          "type": "order.catalog.ProductPlan[]"
         }
       }
     },
@@ -34550,7 +35224,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "Default value of the configuration if not provided",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -34558,7 +35232,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Indicates if the configuration is free for writing (true) or have to follow an enum (false - have to follow values field)",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -34566,7 +35240,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Indicates if configuration is required",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -34574,7 +35248,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Label of the configuration",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -34582,7 +35256,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Values allowed if configuration isn't custom",
           "fullType": "string[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string[]"
         }
@@ -34620,7 +35294,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Install, renew ... What the pricing can be used for",
           "fullType": "string[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string[]"
         },
@@ -34628,7 +35302,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Engagement period",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -34636,7 +35310,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Description",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -34644,7 +35318,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Number length of the interval",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -34652,7 +35326,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Unit interval for duration",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -34660,7 +35334,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "Maximum quantity buyable",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -34668,7 +35342,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "Maximum repeat duration",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -34676,7 +35350,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Minimum quantity",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -34684,7 +35358,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Minimum repeat duration",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -34692,7 +35366,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Whether the catalog must reach max repeat before subscription can use another one",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -34700,7 +35374,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Price of the product",
           "fullType": "order.Price",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         },
@@ -34708,7 +35382,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "Max price customer will pay at the end of the period (cap)",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -34716,7 +35390,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Price in microcents",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -34724,7 +35398,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Strategy on which the pricing can change",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -34739,7 +35413,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Information about default pricing",
           "fullType": "order.catalog.Pricing[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.Pricing[]"
         }
@@ -34754,7 +35428,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "List of the configurations available for the product",
           "fullType": "order.catalog.ConfigurationItem[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.ConfigurationItem[]"
         },
@@ -34762,15 +35436,39 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Designation of the product",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "internalType": {
+          "canBeNull": false,
+          "description": "Type of product (deposit, etc...)",
+          "fullType": "order.cart.GenericProductTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductTypeEnum"
+        },
+        "metadatas": {
+          "canBeNull": true,
+          "description": "List of the metadatas attached",
+          "fullType": "complexType.SafeKeyValue<string>[]",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.SafeKeyValue<string>[]"
         },
         "name": {
           "canBeNull": false,
           "description": "Plan code identifier of the product",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "subType": {
+          "canBeNull": true,
+          "description": "Sub type",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -34778,9 +35476,17 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "Technicals details about product",
           "fullType": "complexType.SafeKeyValue<string>[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "complexType.SafeKeyValue<string>[]"
+        },
+        "type": {
+          "canBeNull": true,
+          "description": "Type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -34789,11 +35495,19 @@ export const schema: Schema = {
       "id": "ProductOfferDetails",
       "namespace": "order.catalog",
       "properties": {
+        "blobs": {
+          "canBeNull": true,
+          "description": "Extra informations of product offer",
+          "fullType": "order.catalog.cloud.Blob",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.cloud.Blob"
+        },
         "metadatas": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "List of the metadatas attached",
           "fullType": "complexType.SafeKeyValue<string>[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "complexType.SafeKeyValue<string>[]"
         },
@@ -34801,7 +35515,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describe default pricings",
           "fullType": "order.catalog.PricingDefault",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.PricingDefault"
         },
@@ -34809,7 +35523,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Information about the product",
           "fullType": "order.catalog.Product",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.Product"
         }
@@ -34824,7 +35538,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "List of addons",
           "fullType": "order.catalog.AddonItem[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.AddonItem[]"
         },
@@ -34832,7 +35546,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "Strategy that follow the pricing when product is in consumption mode",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -34840,15 +35554,23 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describe the details of a commercial offer",
           "fullType": "order.catalog.ProductOfferDetails",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.ProductOfferDetails"
+        },
+        "familyName": {
+          "canBeNull": true,
+          "description": "Family name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "invoiceName": {
           "canBeNull": false,
           "description": "Name that appears on invoice",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -34856,17 +35578,117 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Plan code identifier",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "prices": {
+          "canBeNull": true,
+          "description": "List of region prices",
+          "fullType": "order.catalog.cloud.RegionPrice[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.cloud.RegionPrice[]"
         },
         "pricingType": {
           "canBeNull": false,
           "description": "Main mode: rental, consumption",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "order.catalog.cloud.Blob": {
+      "description": "Describe extra informations of product offer",
+      "id": "Blob",
+      "namespace": "order.catalog.cloud",
+      "properties": {
+        "unit": {
+          "canBeNull": true,
+          "description": "Unit of billed quantity",
+          "fullType": "order.catalog.cloud.Blob.Unit",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.cloud.Blob.Unit"
+        }
+      }
+    },
+    "order.catalog.cloud.Blob.Unit": {
+      "description": "Label of the unit",
+      "id": "Unit",
+      "namespace": "order.catalog.cloud.Blob",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit of billed quantity",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.cloud.RegionPrice": {
+      "description": "Describes a region price",
+      "id": "RegionPrice",
+      "namespace": "order.catalog.cloud",
+      "properties": {
+        "price": {
+          "canBeNull": false,
+          "description": "Strategy that follow the pricing when product is in consumption mode",
+          "fullType": "order.catalog.cloud.RegionPrice.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.cloud.RegionPrice.Price"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.cloud.RegionPrice.Price": {
+      "description": "Describes a price",
+      "id": "Price",
+      "namespace": "order.catalog.cloud.RegionPrice",
+      "properties": {
+        "currencyCode": {
+          "canBeNull": false,
+          "description": "Currency code",
+          "fullType": "order.CurrencyCodeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.CurrencyCodeEnum"
+        },
+        "priceInUcents": {
+          "canBeNull": false,
+          "description": "Price in microcents",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "text": {
+          "canBeNull": false,
+          "description": "Price text with currency symbol",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Price in currency",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
         }
       }
     },
@@ -34875,19 +35697,27 @@ export const schema: Schema = {
       "id": "Catalog",
       "namespace": "order.catalog.pcc",
       "properties": {
+        "active": {
+          "canBeNull": false,
+          "description": "Describe if a catalog is Active",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "catalogId": {
           "canBeNull": false,
           "description": "Catalog ID",
-          "fullType": "long",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
-          "type": "long"
+          "type": "string"
         },
         "catalogName": {
           "canBeNull": false,
           "description": "Catalog name",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -34895,7 +35725,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Commercial Ranges of a Dedicated Cloud",
           "fullType": "order.catalog.pcc.CommercialRange[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.CommercialRange[]"
         },
@@ -34903,7 +35733,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "OVH Subsidiary of the Catalog",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -34911,7 +35741,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Commercial offers",
           "fullType": "order.catalog.ProductPlan[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.ProductPlan[]"
         }
@@ -34926,7 +35756,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Datacenters",
           "fullType": "order.catalog.pcc.Datacenter[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.Datacenter[]"
         },
@@ -34934,7 +35764,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Default datacenter of the commercial range",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -34942,7 +35772,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the commercial range",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -34957,15 +35787,15 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "City Code of a Datacenter",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "cityName": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "City Name of a Datacenter",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -34973,7 +35803,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Country Code of a Datacenter",
           "fullType": "nichandle.CountryEnum",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "nichandle.CountryEnum"
         },
@@ -34981,7 +35811,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the default hypervisor of a Datacenter",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -34989,7 +35819,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Hypervisors",
           "fullType": "order.catalog.pcc.Hypervisor[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.Hypervisor[]"
         },
@@ -34997,7 +35827,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Main plan code to use for a Datacenter",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35005,7 +35835,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "Describes the management cost of a range of Dedicated Cloud",
           "fullType": "order.catalog.pcc.managementFees",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.managementFees"
         },
@@ -35013,7 +35843,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if a Dedicated Cloud can be ordered on a Datacenter",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -35021,7 +35851,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if options can be ordered on a Datacenter",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -35029,7 +35859,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if resources can be ordered on a Datacenter",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -35037,7 +35867,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "List of filers add in case of a No Pack order",
           "fullType": "string[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string[]"
         },
@@ -35045,7 +35875,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Zone Code of a datacenter",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35053,7 +35883,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Zone Name of a datacenter",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -35068,7 +35898,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the host",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35076,7 +35906,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if host is orderable on a initial Order",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -35084,7 +35914,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if host is orderable on a upgrade order",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -35092,7 +35922,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Plan Code",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35100,15 +35930,15 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Host specifications",
           "fullType": "order.catalog.pcc.HostSpecifications",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.HostSpecifications"
         },
         "storagesPack": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "List of filers add in case of a Pack order",
           "fullType": "string[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string[]"
         }
@@ -35123,23 +35953,23 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Number of CPU Cores",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "frequency": {
           "canBeNull": false,
           "description": "CPU Frequency",
-          "fullType": "complexType.UnitAndValue<double>",
-          "readOnly": false,
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
           "required": false,
-          "type": "complexType.UnitAndValue<double>"
+          "type": "complexType.UnitAndValue<long>"
         },
         "generation": {
           "canBeNull": false,
           "description": "CPU Generation",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35147,7 +35977,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "CPU Model",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35155,7 +35985,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Number of CPU",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -35163,7 +35993,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Number of CPU Threads",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         }
@@ -35178,7 +36008,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Memory Size",
           "fullType": "complexType.UnitAndValue<long>",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
         }
@@ -35193,7 +36023,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Number of network interfaces",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -35201,7 +36031,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Speed of the network interfaces",
           "fullType": "complexType.UnitAndValue<long>",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
         }
@@ -35216,7 +36046,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes the CPU specification of a Host",
           "fullType": "order.catalog.pcc.HostCpuSpecifications",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.HostCpuSpecifications"
         },
@@ -35224,7 +36054,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes the memory specification of a Host",
           "fullType": "order.catalog.pcc.HostMemorySpecifications",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.HostMemorySpecifications"
         },
@@ -35232,9 +36062,39 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes the network specification of a Host",
           "fullType": "order.catalog.pcc.HostNetworkSpecifications[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.HostNetworkSpecifications[]"
+        },
+        "storage": {
+          "canBeNull": false,
+          "fullType": "order.catalog.pcc.HostStorageSpecifications",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.pcc.HostStorageSpecifications"
+        }
+      }
+    },
+    "order.catalog.pcc.HostStorageSpecifications": {
+      "description": "Describes a Dedicated Cloud Host Storage",
+      "id": "HostStorageSpecifications",
+      "namespace": "order.catalog.pcc",
+      "properties": {
+        "size": {
+          "canBeNull": false,
+          "description": "Size of storage",
+          "fullType": "order.catalog.pcc.PccUnitAndValue",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.pcc.PccUnitAndValue"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of storage",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -35247,7 +36107,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Hosts",
           "fullType": "order.catalog.pcc.Host[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.Host[]"
         },
@@ -35255,7 +36115,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the hypervisor",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35263,7 +36123,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Options",
           "fullType": "order.catalog.pcc.Option[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.Option[]"
         },
@@ -35271,7 +36131,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if an hypervisor is orderable",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -35279,7 +36139,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Service Packs",
           "fullType": "order.catalog.pcc.ServicePack[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.ServicePack[]"
         },
@@ -35287,7 +36147,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Short Name of the hypervisor",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35295,7 +36155,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Storages",
           "fullType": "order.catalog.pcc.Storage[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.Storage[]"
         },
@@ -35303,7 +36163,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Type of the hypervisor",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -35318,7 +36178,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes the maximum quantity on the initial order",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -35326,7 +36186,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the option",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35334,7 +36194,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if option is orderable on a initial order",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -35342,7 +36202,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if option is orderable on a upgrade order",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -35350,7 +36210,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Plan Code",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35358,9 +36218,32 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Category of the option",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "order.catalog.pcc.PccUnitAndValue": {
+      "description": "Describes unit and value for a Private Cloud",
+      "id": "PccUnitAndValue",
+      "namespace": "order.catalog.pcc",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
@@ -35373,7 +36256,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the service pack",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35381,7 +36264,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Option include in the service pack",
           "fullType": "order.catalog.pcc.ServicePackOption[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.ServicePackOption[]"
         },
@@ -35389,7 +36272,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Plan Code",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35397,7 +36280,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "List of available service pack upgrades",
           "fullType": "string[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string[]"
         }
@@ -35412,7 +36295,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the option",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35420,7 +36303,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Plan Code",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35428,7 +36311,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Category of the option",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -35443,7 +36326,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the filer",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35451,7 +36334,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if filer is orderable on a initial Order",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -35459,7 +36342,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if filer is orderable on a upgrade order",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -35467,7 +36350,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Plan Code",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35475,7 +36358,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Storage specifications",
           "fullType": "order.catalog.pcc.StorageSpecifications",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.StorageSpecifications"
         }
@@ -35490,7 +36373,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Size of the storage",
           "fullType": "complexType.UnitAndValue<long>",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
         },
@@ -35498,7 +36381,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Type of the storage",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -35513,7 +36396,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Plan Code",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -35521,7 +36404,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "List of available range upgrades",
           "fullType": "string[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string[]"
         }
@@ -35824,7 +36707,7 @@ export const schema: Schema = {
       "namespace": "order.catalog.public",
       "properties": {
         "addons": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "List of Commercial offers that can be ordered as an Addon of the current Commerical offer for the current Family",
           "fullType": "string[]",
           "readOnly": true,
@@ -35840,7 +36723,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "exclusive": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Whether this Addon family is exclusive and can be ordered only once for the main Commercial offer",
           "fullType": "boolean",
           "readOnly": true,
@@ -35848,7 +36731,7 @@ export const schema: Schema = {
           "type": "boolean"
         },
         "mandatory": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Whether this Addon family is mandatory",
           "fullType": "boolean",
           "readOnly": true,
@@ -35868,12 +36751,12 @@ export const schema: Schema = {
     "order.catalog.public.BillingStrategyEnum": {
       "description": "Enum values for Billing Strategy",
       "enum": [
-        "max",
-        "sum",
-        "max_retain",
+        "custom",
         "diff",
+        "max",
+        "max_retain",
         "ping",
-        "custom"
+        "sum"
       ],
       "enumType": "string",
       "id": "BillingStrategyEnum",
@@ -35964,7 +36847,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "values": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Possible values for this Configuration, if not custom",
           "fullType": "string[]",
           "readOnly": true,
@@ -36006,7 +36889,7 @@ export const schema: Schema = {
     },
     "order.catalog.public.DedicatedServerCatalog": {
       "description": "Describes a Dedicated server Catalog inside a Subsidiary",
-      "id": "Catalog",
+      "id": "DedicatedServerCatalog",
       "namespace": "order.catalog.public",
       "properties": {
         "addons": {
@@ -36067,10 +36950,18 @@ export const schema: Schema = {
         "blobs": {
           "canBeNull": true,
           "description": "Additional information for this Product",
-          "fullType": "order.catalog.public.DedicatedServerProductBlob",
+          "fullType": "order.catalog.public.ProductBlob",
           "readOnly": true,
           "required": false,
-          "type": "order.catalog.public.DedicatedServerProductBlob"
+          "type": "order.catalog.public.ProductBlob"
+        },
+        "configurations": {
+          "canBeNull": false,
+          "description": "List of possible Configurations for this Commercial offer",
+          "fullType": "order.catalog.public.Configuration[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.Configuration[]"
         },
         "description": {
           "canBeNull": false,
@@ -36463,7 +37354,7 @@ export const schema: Schema = {
         },
         "duration": {
           "canBeNull": false,
-          "description": "Engagement's duration displayed using ISO8601",
+          "description": "Engagement's duration",
           "fullType": "duration",
           "readOnly": true,
           "required": false,
@@ -36482,9 +37373,9 @@ export const schema: Schema = {
     "order.catalog.public.EngagementConfiguration.EndStrategyEnum": {
       "description": "Strategy applicable at the end of the Engagement",
       "enum": [
-        "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE",
-        "REACTIVATE_ENGAGEMENT",
         "CANCEL_SERVICE",
+        "REACTIVATE_ENGAGEMENT",
+        "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE",
         "STOP_ENGAGEMENT_KEEP_PRICE"
       ],
       "enumType": "string",
@@ -36535,8 +37426,8 @@ export const schema: Schema = {
     "order.catalog.public.PingEndPolicyEnum": {
       "description": "Enum values for Ping End Policy",
       "enum": [
-        "prorata",
-        "full"
+        "full",
+        "prorata"
       ],
       "enumType": "string",
       "id": "PingEndPolicyEnum",
@@ -36554,6 +37445,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "order.catalog.public.AddonFamily[]"
+        },
+        "blobs": {
+          "canBeNull": true,
+          "description": "Blobs",
+          "fullType": "order.catalog.public.ProductBlob",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlob"
         },
         "configurations": {
           "canBeNull": false,
@@ -36721,6 +37620,14 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "promotions": {
+          "canBeNull": true,
+          "description": "Promotions",
+          "fullType": "order.catalog.public.Promotion[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.Promotion[]"
+        },
         "quantity": {
           "canBeNull": false,
           "description": "Describes how many times the Commercial offer can be added to the Cart",
@@ -36791,6 +37698,22 @@ export const schema: Schema = {
       "id": "Product",
       "namespace": "order.catalog.public",
       "properties": {
+        "blobs": {
+          "canBeNull": true,
+          "description": "Product blobs",
+          "fullType": "order.catalog.public.ProductBlob",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlob"
+        },
+        "configurations": {
+          "canBeNull": true,
+          "description": "List of possible Configurations for this Commercial offer",
+          "fullType": "order.catalog.public.Configuration[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.Configuration[]"
+        },
         "description": {
           "canBeNull": false,
           "description": "Description of the Product",
@@ -36809,11 +37732,1542 @@ export const schema: Schema = {
         }
       }
     },
+    "order.catalog.public.ProductBlob": {
+      "description": "Describes a Blob",
+      "id": "ProductBlob",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "commercial": {
+          "canBeNull": true,
+          "description": "Commercial information for Dedicated Server Product",
+          "fullType": "order.catalog.public.ProductBlobCommercial",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobCommercial"
+        },
+        "marketing": {
+          "canBeNull": true,
+          "description": "Marketing information for VPS Product",
+          "fullType": "order.catalog.public.ProductBlobMarketing",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobMarketing"
+        },
+        "meta": {
+          "canBeNull": true,
+          "description": "Meta blobs for VPS Product",
+          "fullType": "order.catalog.public.ProductBlobMeta",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobMeta"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Tags",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "technical": {
+          "canBeNull": true,
+          "description": "Technical information for Dedicated Server Product",
+          "fullType": "order.catalog.public.ProductBlobTechnical",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnical"
+        },
+        "value": {
+          "canBeNull": true,
+          "description": "Value for meta blobs",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobCommercial": {
+      "description": "Describes a Commercial blob",
+      "id": "ProductBlobCommercial",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "brick": {
+          "canBeNull": true,
+          "description": "Brick",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "brickSubtype": {
+          "canBeNull": true,
+          "description": "Brick subtype",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "connection": {
+          "canBeNull": true,
+          "description": "Connection",
+          "fullType": "order.catalog.public.ProductBlobConnection",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobConnection"
+        },
+        "features": {
+          "canBeNull": true,
+          "description": "Features",
+          "fullType": "order.catalog.public.ProductBlobCommercialFeatures[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobCommercialFeatures[]"
+        },
+        "line": {
+          "canBeNull": true,
+          "description": "Line",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "price": {
+          "canBeNull": true,
+          "description": "Price",
+          "fullType": "order.catalog.public.ProductBlobCommercialPrice",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobCommercialPrice"
+        },
+        "range": {
+          "canBeNull": true,
+          "description": "Range",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobCommercialFeatures": {
+      "description": "Describes Features for a commercial blob",
+      "id": "ProductBlobCommercialFeatures",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "name": {
+          "canBeNull": true,
+          "description": "Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": true,
+          "description": "Value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobCommercialPrice": {
+      "description": "Describes a Price for a commercial blob",
+      "id": "ProductBlobCommercialPrice",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "display": {
+          "canBeNull": true,
+          "description": "Display",
+          "fullType": "order.catalog.public.ProductBlobCommercialPriceDisplay",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobCommercialPriceDisplay"
+        },
+        "interval": {
+          "canBeNull": true,
+          "description": "Interval",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "precision": {
+          "canBeNull": true,
+          "description": "Precision",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "unit": {
+          "canBeNull": true,
+          "description": "Unit",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobCommercialPriceDisplay": {
+      "description": "Describes a Display a price",
+      "id": "ProductBlobCommercialPriceDisplay",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobConnection": {
+      "description": "Describes a Connection for a blob for a Dedicated Server",
+      "id": "ProductBlobConnection",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "clients": {
+          "canBeNull": false,
+          "description": "Clients",
+          "fullType": "order.catalog.public.ProductBlobConnectionClients",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobConnectionClients"
+        },
+        "total": {
+          "canBeNull": false,
+          "description": "Total",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobConnectionClients": {
+      "description": "Describes Clients for a Connection for a blob for a Dedicated Server",
+      "id": "ProductBlobConnectionClients",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "concurrency": {
+          "canBeNull": false,
+          "description": "Concurrency",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "number": {
+          "canBeNull": false,
+          "description": "Number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobMarketing": {
+      "description": "Describes a Marketing blob",
+      "id": "ProductBlobMarketing",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "content": {
+          "canBeNull": false,
+          "description": "Marketing content information for VPS Product",
+          "fullType": "order.catalog.public.ProductBlobMarketingContent[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobMarketingContent[]"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobMarketingContent": {
+      "description": "Describes a Content for a Marketing blob",
+      "id": "ProductBlobMarketingContent",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "description": "Key",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobMeta": {
+      "description": "Describes a Meta blob",
+      "id": "ProductBlobMeta",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "configurations": {
+          "canBeNull": false,
+          "description": "Configurations",
+          "fullType": "order.catalog.public.ProductBlobMetaConfigurations[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobMetaConfigurations[]"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobMetaConfigurations": {
+      "description": "Describes a Configuration for a meta blob",
+      "id": "ProductBlobMetaConfigurations",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "values": {
+          "canBeNull": false,
+          "description": "Values",
+          "fullType": "order.catalog.public.ProductBlobMetaConfigurationsValues[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobMetaConfigurationsValues[]"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobMetaConfigurationsValues": {
+      "description": "Describes a Values configuration for a meta blob",
+      "id": "ProductBlobMetaConfigurationsValues",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "blobs": {
+          "canBeNull": false,
+          "description": "Blobs",
+          "fullType": "order.catalog.public.ProductBlob",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlob"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnical": {
+      "description": "Describes a Technical Blob",
+      "id": "ProductBlobTechnical",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "bandwidth": {
+          "canBeNull": true,
+          "description": "Network informations",
+          "fullType": "order.catalog.public.ProductBlobTechnicalNetwork",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalNetwork"
+        },
+        "connection": {
+          "canBeNull": true,
+          "description": "Connection",
+          "fullType": "order.catalog.public.ProductBlobConnection",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobConnection"
+        },
+        "connectionPerSeconds": {
+          "canBeNull": true,
+          "description": "Connection per seconds",
+          "fullType": "order.catalog.public.ProductBlobTechnicalPerSeconds",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalPerSeconds"
+        },
+        "cpu": {
+          "canBeNull": true,
+          "description": "CPU informations",
+          "fullType": "order.catalog.public.ProductBlobTechnicalCPU",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalCPU"
+        },
+        "datacenter": {
+          "canBeNull": true,
+          "description": "Datacenter",
+          "fullType": "order.catalog.public.ProductBlobTechnicalDatacenter",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalDatacenter"
+        },
+        "ephemeralLocalStorage": {
+          "canBeNull": true,
+          "description": "Ephemeral local storage",
+          "fullType": "order.catalog.public.ProductBlobTechnicalEphemeralStorage",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalEphemeralStorage"
+        },
+        "gpu": {
+          "canBeNull": true,
+          "description": "GPU informations",
+          "fullType": "order.catalog.public.ProductBlobTechnicalGPU",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalGPU"
+        },
+        "license": {
+          "canBeNull": true,
+          "description": "License informations",
+          "fullType": "order.catalog.public.ProductBlobTechnicalLicense",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalLicense"
+        },
+        "memory": {
+          "canBeNull": true,
+          "description": "Memory informations",
+          "fullType": "order.catalog.public.ProductBlobTechnicalMemory",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalMemory"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "nodes": {
+          "canBeNull": true,
+          "description": "Nodes",
+          "fullType": "order.catalog.public.ProductBlobTechnicalNodes",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalNodes"
+        },
+        "nvme": {
+          "canBeNull": true,
+          "description": "NVME",
+          "fullType": "order.catalog.public.ProductBlobTechnicalNvme",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalNvme"
+        },
+        "os": {
+          "canBeNull": true,
+          "description": "OS",
+          "fullType": "order.catalog.public.ProductBlobTechnicalOS",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalOS"
+        },
+        "requestPerSeconds": {
+          "canBeNull": true,
+          "description": "Connection per seconds",
+          "fullType": "order.catalog.public.ProductBlobTechnicalPerSeconds",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalPerSeconds"
+        },
+        "server": {
+          "canBeNull": true,
+          "description": "Hardware informations",
+          "fullType": "order.catalog.public.ProductBlobTechnicalServer",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalServer"
+        },
+        "storage": {
+          "canBeNull": true,
+          "description": "Disks informations",
+          "fullType": "order.catalog.public.ProductBlobTechnicalStorage",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalStorage"
+        },
+        "throughput": {
+          "canBeNull": true,
+          "description": "Throughput",
+          "fullType": "order.catalog.public.ProductBlobTechnicalThroughput",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalThroughput"
+        },
+        "virtualization": {
+          "canBeNull": true,
+          "description": "Virtualization",
+          "fullType": "order.catalog.public.ProductBlobTechnicalVirtualization",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalVirtualization"
+        },
+        "volume": {
+          "canBeNull": true,
+          "description": "Volume",
+          "fullType": "order.catalog.public.ProductBlobTechnicalVolume",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalVolume"
+        },
+        "vrack": {
+          "canBeNull": true,
+          "description": "vRack informations",
+          "fullType": "order.catalog.public.ProductBlobTechnicalNetwork",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalNetwork"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalCPU": {
+      "description": "Describes a CPU for a technical blob",
+      "id": "ProductBlobTechnicalCPU",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "boost": {
+          "canBeNull": true,
+          "description": "CPU Boost",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "brand": {
+          "canBeNull": true,
+          "description": "CPU Brand",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "cores": {
+          "canBeNull": true,
+          "description": "Number of cores",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "customizable": {
+          "canBeNull": true,
+          "description": "Customizable",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "frequency": {
+          "canBeNull": true,
+          "description": "Frequency of CPU in GHz",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "model": {
+          "canBeNull": true,
+          "description": "Displayable name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "number": {
+          "canBeNull": true,
+          "description": "Number of CPU",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "score": {
+          "canBeNull": true,
+          "description": "CPU score",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "threads": {
+          "canBeNull": true,
+          "description": "Number of threads",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalDatacenter": {
+      "description": "Describes a Datacenter for a technical Blob",
+      "id": "ProductBlobTechnicalDatacenter",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "city": {
+          "canBeNull": true,
+          "description": "City",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "country": {
+          "canBeNull": true,
+          "description": "Country",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "countryCode": {
+          "canBeNull": true,
+          "description": "Country code",
+          "fullType": "nichandle.OvhSubsidiaryEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "nichandle.OvhSubsidiaryEnum"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": true,
+          "description": "Region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalDisk": {
+      "description": "Describes a Disk for a technical blob",
+      "id": "ProductBlobTechnicalDisk",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "capacity": {
+          "canBeNull": false,
+          "description": "Disk capacity in Gb",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "interface": {
+          "canBeNull": true,
+          "description": "Disk interface",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "iops": {
+          "canBeNull": true,
+          "description": "Iops",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "number": {
+          "canBeNull": true,
+          "description": "Number of disks",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sizeUnit": {
+          "canBeNull": true,
+          "description": "Size unit",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "specs": {
+          "canBeNull": true,
+          "description": "Disk specs",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "technology": {
+          "canBeNull": true,
+          "description": "Disk technology",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "usage": {
+          "canBeNull": true,
+          "description": "Usage informations",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalEphemeralStorage": {
+      "description": "Describes an Ephemeral Storage for technical blob",
+      "id": "ProductBlobTechnicalEphemeralStorage",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "disks": {
+          "canBeNull": true,
+          "description": "Disk properties",
+          "fullType": "order.catalog.public.ProductBlobTechnicalDisk[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalDisk[]"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalFrame": {
+      "description": "Describes a Frame for a technical blob",
+      "id": "ProductBlobTechnicalFrame",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "dualPowerSupply": {
+          "canBeNull": false,
+          "description": "Dual power supply",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "model": {
+          "canBeNull": false,
+          "description": "Frame model",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Frame size",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalGPU": {
+      "description": "Describes a GPU for a technical blob",
+      "id": "ProductBlobTechnicalGPU",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "brand": {
+          "canBeNull": true,
+          "description": "GPU brand",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "memory": {
+          "canBeNull": false,
+          "description": "GPU memory size",
+          "fullType": "order.catalog.public.ProductBlobTechnicalMemory",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalMemory"
+        },
+        "model": {
+          "canBeNull": true,
+          "description": "GPU model",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "number": {
+          "canBeNull": true,
+          "description": "GPU number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "performance": {
+          "canBeNull": true,
+          "description": "GPU performance",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalLicense": {
+      "description": "Describes a License for a technical Blob",
+      "id": "ProductBlobTechnicalLicense",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "application": {
+          "canBeNull": true,
+          "description": "Application",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "cores": {
+          "canBeNull": true,
+          "description": "Cores informations",
+          "fullType": "order.catalog.public.ProductBlobTechnicalLicenseCores",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalLicenseCores"
+        },
+        "cpu": {
+          "canBeNull": true,
+          "description": "CPU",
+          "fullType": "order.catalog.public.ProductBlobTechnicalCPU",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalCPU"
+        },
+        "distribution": {
+          "canBeNull": true,
+          "description": "Network informations",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "edition": {
+          "canBeNull": true,
+          "description": "Edition informations",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "family": {
+          "canBeNull": true,
+          "description": "Family",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "feature": {
+          "canBeNull": true,
+          "description": "Feature",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "flavor": {
+          "canBeNull": true,
+          "description": "Flavor informations",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "images": {
+          "canBeNull": true,
+          "description": "Images informations",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "nbOfAccount": {
+          "canBeNull": true,
+          "description": "Number of account",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "package": {
+          "canBeNull": true,
+          "description": "Package",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "version": {
+          "canBeNull": true,
+          "description": "Version informations",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalLicenseCores": {
+      "description": "Describes license cores for a technical blob",
+      "id": "ProductBlobTechnicalLicenseCores",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "number": {
+          "canBeNull": false,
+          "description": "Number of cores",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "total": {
+          "canBeNull": true,
+          "description": "Total of cores",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalMemory": {
+      "description": "Describes a Memory technical Blob",
+      "id": "ProductBlobTechnicalMemory",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "customizable": {
+          "canBeNull": true,
+          "description": "Customizable",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "ecc": {
+          "canBeNull": true,
+          "description": "ECC",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "frequency": {
+          "canBeNull": true,
+          "description": "RAM Frequency",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "interface": {
+          "canBeNull": true,
+          "description": "Interface",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "ramType": {
+          "canBeNull": true,
+          "description": "RAM Type (DDRx...)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the RAM in Gb",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "sizeUnit": {
+          "canBeNull": true,
+          "description": "Size unit",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalNetwork": {
+      "description": "Describes a Network technical Blob",
+      "id": "ProductBlobTechnicalNetwork",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "burst": {
+          "canBeNull": true,
+          "description": "Network burst",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "capacity": {
+          "canBeNull": true,
+          "description": "Network capacity",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "guaranteed": {
+          "canBeNull": true,
+          "description": "Guaranteed Network",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "interfaces": {
+          "canBeNull": true,
+          "description": "Network interfaces",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "isMax": {
+          "canBeNull": true,
+          "description": "Is max?",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "level": {
+          "canBeNull": true,
+          "description": "Network level",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "limit": {
+          "canBeNull": true,
+          "description": "Network limit",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "shared": {
+          "canBeNull": true,
+          "description": "Shared",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "traffic": {
+          "canBeNull": true,
+          "description": "Traffic",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "unlimited": {
+          "canBeNull": true,
+          "description": "Unlimited",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalNodes": {
+      "description": "Describes a Node for technical blob",
+      "id": "ProductBlobTechnicalNodes",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "number": {
+          "canBeNull": false,
+          "description": "Number of nodes",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalNvme": {
+      "description": "Describes a NVME for technical blob",
+      "id": "ProductBlobTechnicalNvme",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "disks": {
+          "canBeNull": true,
+          "description": "Disk properties",
+          "fullType": "order.catalog.public.ProductBlobTechnicalDisk[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalDisk[]"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalOS": {
+      "description": "Describes an OS for a technical blob",
+      "id": "ProductBlobTechnicalOS",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "distribution": {
+          "canBeNull": true,
+          "description": "Distribution",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "edition": {
+          "canBeNull": true,
+          "description": "Edition",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "family": {
+          "canBeNull": true,
+          "description": "Family",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "version": {
+          "canBeNull": true,
+          "description": "Version",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalPerSeconds": {
+      "description": "Describes a connection or request per seconds for a technical blob",
+      "id": "ProductBlobTechnicalPerSeconds",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "total": {
+          "canBeNull": false,
+          "description": "Total",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "unit": {
+          "canBeNull": true,
+          "description": "Unit",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalRaid": {
+      "description": "Describes a Raid for a technical blob",
+      "id": "ProductBlobTechnicalRaid",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "cardModel": {
+          "canBeNull": true,
+          "description": "Card size",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "cardSize": {
+          "canBeNull": true,
+          "description": "Card size",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalServer": {
+      "description": "Describes some technicals informations for a technical blob",
+      "id": "ProductBlobTechnicalServer",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "cpu": {
+          "canBeNull": false,
+          "description": "CPU properties",
+          "fullType": "order.catalog.public.ProductBlobTechnicalCPU",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalCPU"
+        },
+        "frame": {
+          "canBeNull": false,
+          "description": "Frame properties",
+          "fullType": "order.catalog.public.ProductBlobTechnicalFrame",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalFrame"
+        },
+        "network": {
+          "canBeNull": true,
+          "description": "Network",
+          "fullType": "order.catalog.public.ProductBlobTechnicalNetwork",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalNetwork"
+        },
+        "range": {
+          "canBeNull": false,
+          "description": "Dedicated server series",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "services": {
+          "canBeNull": false,
+          "description": "Services properties",
+          "fullType": "order.catalog.public.ProductBlobTechnicalServices",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalServices"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalServices": {
+      "description": "Describes some technicals informations",
+      "id": "ProductBlobTechnicalServices",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "antiddos": {
+          "canBeNull": false,
+          "description": "Anti DDOS",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "includedBackup": {
+          "canBeNull": false,
+          "description": "Included backup",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sla": {
+          "canBeNull": false,
+          "description": "SLA",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalStorage": {
+      "description": "Describes a Storage technical Blob",
+      "id": "ProductBlobTechnicalStorage",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "disks": {
+          "canBeNull": true,
+          "description": "Disk properties",
+          "fullType": "order.catalog.public.ProductBlobTechnicalDisk[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalDisk[]"
+        },
+        "hotSwap": {
+          "canBeNull": true,
+          "description": "Hot Swap",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "raid": {
+          "canBeNull": true,
+          "description": "Raid",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "raidDetails": {
+          "canBeNull": true,
+          "description": "Raid details",
+          "fullType": "order.catalog.public.ProductBlobTechnicalRaid",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalRaid"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalThroughput": {
+      "description": "Describes a Throughput for a technical blob",
+      "id": "ProductBlobTechnicalThroughput",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "level": {
+          "canBeNull": false,
+          "description": "Level",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalVirtualization": {
+      "description": "Describes a Virtualization for a Technical Blob",
+      "id": "ProductBlobTechnicalVirtualization",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "hypervisor": {
+          "canBeNull": true,
+          "description": "Hypervisor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalVolume": {
+      "description": "Describes a Volume for a technichal blob",
+      "id": "ProductBlobTechnicalVolume",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "capacity": {
+          "canBeNull": false,
+          "description": "Capacity",
+          "fullType": "order.catalog.public.ProductBlobTechnicalVolumeCapacity",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalVolumeCapacity"
+        },
+        "iops": {
+          "canBeNull": false,
+          "description": "CPU informations",
+          "fullType": "order.catalog.public.ProductBlobTechnicalVolumeIops",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalVolumeIops"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalVolumeCapacity": {
+      "description": "Describes a Capacity for a Volume for a technichal blob",
+      "id": "ProductBlobTechnicalVolumeCapacity",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "max": {
+          "canBeNull": false,
+          "description": "Max",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.public.ProductBlobTechnicalVolumeIops": {
+      "description": "Describes a Iops for a Volume for a technichal blob",
+      "id": "ProductBlobTechnicalVolumeIops",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "guaranteed": {
+          "canBeNull": false,
+          "description": "Guaranteed",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "level": {
+          "canBeNull": false,
+          "description": "Level",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.public.Promotion": {
+      "description": "Describes a Promotion inside a Catalog",
+      "id": "Promotion",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Promotion description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "discount": {
+          "canBeNull": false,
+          "description": "Promotion discount",
+          "fullType": "order.catalog.public.PromotionDiscountTotal",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.PromotionDiscountTotal"
+        },
+        "duration": {
+          "canBeNull": true,
+          "description": "Promotion duration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "Promotion end date using rfc3339",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "isGlobalQuantityLimited": {
+          "canBeNull": false,
+          "description": "Is the global quantity of the promotion limited?",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Promotion name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quantity": {
+          "canBeNull": true,
+          "description": "Promotion quantity",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Promotion start date using rfc3339",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "total": {
+          "canBeNull": false,
+          "description": "Promotion total",
+          "fullType": "order.catalog.public.PromotionDiscountTotal",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.PromotionDiscountTotal"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Promotion type",
+          "fullType": "order.ReductionTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.ReductionTypeEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Promotion value",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.public.PromotionDiscountTotal": {
+      "description": "Describes a Promotion discount or total inside a Catalog",
+      "id": "PromotionDiscountTotal",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "tax": {
+          "canBeNull": false,
+          "description": "Tax",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "order.catalog.public.ProrataUnitEnum": {
       "description": "Enum values for Prorata Unit",
       "enum": [
+        "day",
         "hour",
-        "day"
+        "month"
       ],
       "enumType": "string",
       "id": "ProrataUnitEnum",
@@ -36953,7 +39407,6 @@ export const schema: Schema = {
       "enum": [
         "be",
         "ch",
-        "de",
         "es",
         "fr",
         "gb",
@@ -37031,6 +39484,15 @@ export const schema: Schema = {
       "id": "SecurityDepositAmountsEnum",
       "namespace": "telephony"
     },
+    "telephony.SpecialNumberCountryEnum": {
+      "description": "Special number country",
+      "enum": [
+        "fr"
+      ],
+      "enumType": "string",
+      "id": "SpecialNumberCountryEnum",
+      "namespace": "telephony"
+    },
     "telephony.portability.CountriesAvailable": {
       "description": "Country of number to port",
       "enum": [
@@ -37079,11 +39541,6 @@ export const schema: Schema = {
         "access",
         "adults",
         "announced",
-        "be_adults",
-        "be_content",
-        "be_games",
-        "be_general",
-        "be_relaxing",
         "conferencing",
         "contentsAuto",
         "contentsManual",

@@ -875,6 +875,41 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Get name server status",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your domain",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.DomainNsStatus",
+          "scopes": [
+            "all",
+            "product/domain/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "deletionDate": "2022-03-31T00:00:00+01:00",
+            "deprecatedDate": "2022-01-26T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "GET /domain/{serviceName}/nameServer/{id}/status",
+            "value": "DEPRECATED"
+          },
+          "description": "Get name server status",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -1077,8 +1112,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-03-31T00:00:00+01:00",
+            "deprecatedDate": "2022-01-24T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/domain/{serviceName}/configurations/optin",
+            "value": "DEPRECATED"
           },
           "description": "List of whois obfuscators",
           "httpMethod": "GET",
@@ -1109,8 +1147,10 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-03-31T00:00:00+01:00",
+            "deprecatedDate": "2022-01-24T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Add whois obfuscators",
           "httpMethod": "POST",
@@ -1147,8 +1187,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-03-31T00:00:00+01:00",
+            "deprecatedDate": "2022-01-24T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Delete a whois obfuscator",
           "httpMethod": "DELETE",
@@ -1179,8 +1221,10 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-03-31T00:00:00+01:00",
+            "deprecatedDate": "2022-01-24T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -1784,204 +1828,6 @@ export const schema: Schema = {
       "path": "/domain/contact/{contactId}"
     },
     {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve all association information according to Afnic",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Post a new association information according to Afnic",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Contact ID related to the association contact information",
-              "fullType": "long",
-              "name": "contactId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "date",
-              "description": "Date of the declaration of the association",
-              "fullType": "date",
-              "name": "declarationDate",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "date",
-              "description": "Date of the publication of the declaration of the association",
-              "fullType": "date",
-              "name": "publicationDate",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Number of the publication of the declaration of the association",
-              "fullType": "string",
-              "name": "publicationNumber",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Page number of the publication of the declaration of the association",
-              "fullType": "string",
-              "name": "publicationPageNumber",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "domain.data.AssociationContact",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
-        }
-      ],
-      "path": "/domain/data/afnicAssociationInformation"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve an association information according to Afnic",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Association Information ID",
-              "fullType": "long",
-              "name": "associationInformationId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "domain.data.AssociationContact",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
-        }
-      ],
-      "path": "/domain/data/afnicAssociationInformation/{associationInformationId}"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve all corporation trademark information according to Afnic",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Post a new corporation trademark information according to Afnic",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Contact ID related to the Inpi additional information",
-              "fullType": "long",
-              "name": "contactId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Number of the Inpi declaration",
-              "fullType": "string",
-              "name": "inpiNumber",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Owner of the trademark",
-              "fullType": "string",
-              "name": "inpiTrademarkOwner",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "domain.data.AfnicCorporationTrademarkContact",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
-        }
-      ],
-      "path": "/domain/data/afnicCorporationTrademarkInformation"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve a corporation trademark information according to Afnic",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Corporation Inpi Information ID",
-              "fullType": "long",
-              "name": "afnicCorporationTrademarkId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "domain.data.AfnicCorporationTrademarkContact",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
-        }
-      ],
-      "path": "/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}"
-    },
-    {
       "description": "Retrieve claim notices",
       "operations": [
         {
@@ -2041,8 +1887,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-03-31T00:00:00+01:00",
+            "deprecatedDate": "2022-01-24T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Retrieve all your Pro Contact",
           "httpMethod": "GET",
@@ -2056,8 +1904,10 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-03-31T00:00:00+01:00",
+            "deprecatedDate": "2022-01-24T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Post new information about .pro contact information",
           "httpMethod": "POST",
@@ -2118,8 +1968,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-03-31T00:00:00+01:00",
+            "deprecatedDate": "2022-01-24T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Retrieve information about a Pro Contact",
           "httpMethod": "GET",
@@ -2144,27 +1996,18 @@ export const schema: Schema = {
       "path": "/domain/data/proContact/{proContactId}"
     },
     {
-      "description": "Missing description",
+      "description": "Operations on Signed Marked Definition (SMD) files",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List all your SMD files",
+          "description": "List all SMD files",
           "httpMethod": "GET",
           "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Filter the value of protectedLabels.label property (=)",
-              "fullType": "string",
-              "name": "protectedLabels.label",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "long[]",
+          "parameters": [],
+          "responseType": "domain.data.smd.Smd[]",
           "scopes": [
             "all",
             "product/domain/all"
@@ -2175,20 +2018,19 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post a new SMD file",
+          "description": "Create a SMD files",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "text",
-              "description": "SMD content file",
-              "fullType": "text",
-              "name": "data",
+              "dataType": "domain.data.smd.SmdBody",
+              "description": "Request Body",
+              "fullType": "domain.data.smd.SmdBody",
               "paramType": "body",
               "required": true
             }
           ],
-          "responseType": "domain.data.Smd",
+          "responseType": "domain.data.smd.Smd",
           "scopes": [
             "all",
             "product/domain/all"
@@ -2198,7 +2040,7 @@ export const schema: Schema = {
       "path": "/domain/data/smd"
     },
     {
-      "description": "Missing description",
+      "description": "Operations on Signed Marked Definition (SMD) files",
       "operations": [
         {
           "apiStatus": {
@@ -2210,9 +2052,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "SMD ID",
-              "fullType": "long",
+              "dataType": "uuid",
+              "description": "Smd ID",
+              "fullType": "uuid",
               "name": "smdId",
               "paramType": "path",
               "required": true
@@ -2229,20 +2071,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Retrieve information about a SMD file",
+          "description": "Get details about a SMD file",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "SMD ID",
-              "fullType": "long",
+              "dataType": "uuid",
+              "description": "Smd ID",
+              "fullType": "uuid",
               "name": "smdId",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "domain.data.Smd",
+          "responseType": "domain.data.smd.Smd",
           "scopes": [
             "all",
             "product/domain/all"
@@ -2253,28 +2095,27 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Modify an existing SMD file",
+          "description": "Update a SMD file",
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "text",
-              "description": "SMD content file",
-              "fullType": "text",
-              "name": "data",
+              "dataType": "domain.data.smd.SmdBody",
+              "description": "Request Body",
+              "fullType": "domain.data.smd.SmdBody",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "SMD ID",
-              "fullType": "long",
+              "dataType": "uuid",
+              "description": "Smd ID",
+              "fullType": "uuid",
               "name": "smdId",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "domain.data.Smd",
+          "responseType": "domain.data.smd.Smd",
           "scopes": [
             "all",
             "product/domain/all"
@@ -2486,40 +2327,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/domain/extensions/pricingAttributes"
-    },
-    {
-      "description": "Rules for creating a domain",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "List all the rules for a specific cartId/itemId",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Cart ID concerned for the rules",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Item ID concerned for the rules",
-              "fullType": "long",
-              "name": "itemId",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "domain.Rule"
-        }
-      ],
-      "path": "/domain/rules"
     },
     {
       "description": "Operations about the DNS service",
@@ -4546,9 +4353,9 @@ export const schema: Schema = {
       "description": "An action to execute on a domain name",
       "enum": [
         "create",
+        "trade",
         "transfer",
-        "update",
-        "trade"
+        "update"
       ],
       "enumType": "string",
       "id": "ActionEnum",
@@ -5357,11 +5164,11 @@ export const schema: Schema = {
       "enum": [
         "campaign_website",
         "educational_website",
-        "information_website",
-        "transactional_website",
-        "redirect_page",
         "emails",
-        "other_purpose"
+        "information_website",
+        "other_purpose",
+        "redirect_page",
+        "transactional_website"
       ],
       "enumType": "string",
       "id": "IsForEnum",
@@ -5484,62 +5291,6 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ParentServiceTypeEnum",
       "namespace": "domain"
-    },
-    "domain.Rule": {
-      "description": "Description not available",
-      "id": "Rule",
-      "namespace": "domain",
-      "properties": {
-        "allowedValues": {
-          "canBeNull": true,
-          "fullType": "string[]",
-          "readOnly": false,
-          "required": false,
-          "type": "string[]"
-        },
-        "description": {
-          "canBeNull": false,
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "fields": {
-          "canBeNull": true,
-          "fullType": "string[]",
-          "readOnly": false,
-          "required": false,
-          "type": "string[]"
-        },
-        "innerConfigurations": {
-          "canBeNull": true,
-          "fullType": "domain.Rule[]",
-          "readOnly": false,
-          "required": false,
-          "type": "domain.Rule[]"
-        },
-        "label": {
-          "canBeNull": true,
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "required": {
-          "canBeNull": true,
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "type": {
-          "canBeNull": false,
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
     },
     "domain.ServiceOption": {
       "description": "Data of a domain option",
@@ -5764,16 +5515,16 @@ export const schema: Schema = {
     "domain.configuration.rules.ContextEnum": {
       "description": "Used in rule to tell if rule (or part of the rule) is applicable for a given context",
       "enum": [
-        "update",
-        "create",
-        "transfer",
-        "trade",
-        "order",
-        "premium",
         "accept_conditions",
         "claims",
+        "create",
+        "order",
+        "premium",
+        "protected_code",
         "reason",
-        "protected_code"
+        "trade",
+        "transfer",
+        "update"
       ],
       "enumType": "string",
       "id": "ContextEnum",
@@ -5782,23 +5533,23 @@ export const schema: Schema = {
     "domain.configuration.rules.OperatorEnum": {
       "description": "Operator use in configuration rule to check content of a field",
       "enum": [
+        "between",
+        "contains",
+        "empty",
         "eq",
-        "ne",
         "gt",
         "gte",
         "lt",
         "lte",
+        "match",
         "maxlength",
         "minlength",
-        "between",
-        "contains",
+        "ne",
         "notcontains",
-        "empty",
         "notempty",
-        "match",
-        "shouldbetrue",
+        "readonly",
         "required",
-        "readonly"
+        "shouldbetrue"
       ],
       "enumType": "string",
       "id": "OperatorEnum",
@@ -5964,15 +5715,15 @@ export const schema: Schema = {
     "domain.configuration.rules.TypeEnum": {
       "description": "Type of rule configuration",
       "enum": [
+        "bool",
+        "contact",
+        "date_ISO8601",
+        "domain",
+        "json",
+        "number",
         "string",
         "string[]",
-        "text",
-        "bool",
-        "number",
-        "json",
-        "contact",
-        "domain",
-        "date_ISO8601"
+        "text"
       ],
       "enumType": "string",
       "id": "TypeEnum",
@@ -6076,100 +5827,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "domain.ContactAllTypesEnum"
-        }
-      }
-    },
-    "domain.data.AfnicCorporationTrademarkContact": {
-      "description": "Representation of an Inpi additional information for a corporation",
-      "id": "AfnicCorporationTrademarkContact",
-      "namespace": "domain.data",
-      "properties": {
-        "contactId": {
-          "canBeNull": false,
-          "description": "Contact ID related to the Inpi additional information",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Corporation Inpi additional information ID",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "inpiNumber": {
-          "canBeNull": false,
-          "description": "Number of the Inpi declaration",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "inpiTrademarkOwner": {
-          "canBeNull": false,
-          "description": "Owner of the trademark",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "domain.data.AssociationContact": {
-      "description": "Representation of a Association additional information",
-      "id": "AssociationContact",
-      "namespace": "domain.data",
-      "properties": {
-        "contactId": {
-          "canBeNull": false,
-          "description": "Contact ID related to the association contact information",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "declarationDate": {
-          "canBeNull": false,
-          "description": "Date of the declaration of the association",
-          "fullType": "date",
-          "readOnly": false,
-          "required": false,
-          "type": "date"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Association additional information ID",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "publicationDate": {
-          "canBeNull": false,
-          "description": "Date of the publication of the declaration of the association",
-          "fullType": "date",
-          "readOnly": false,
-          "required": false,
-          "type": "date"
-        },
-        "publicationNumber": {
-          "canBeNull": false,
-          "description": "Number of the publication of the declaration of the association",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "publicationPageNumber": {
-          "canBeNull": false,
-          "description": "Page number of the publication of the declaration of the association",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
         }
       }
     },
@@ -6514,8 +6171,8 @@ export const schema: Schema = {
     "domain.data.claimNotice.ClaimNoticeTypeEnum": {
       "description": "Type of claim notice",
       "enum": [
-        "UK",
-        "TRADEMARK"
+        "TRADEMARK",
+        "UK"
       ],
       "enumType": "string",
       "id": "ClaimNoticeTypeEnum",
@@ -6661,6 +6318,99 @@ export const schema: Schema = {
         }
       }
     },
+    "domain.data.smd.Smd": {
+      "description": "Representation of a SMD file",
+      "id": "Smd",
+      "namespace": "domain.data.smd",
+      "properties": {
+        "data": {
+          "canBeNull": false,
+          "description": "SMD file content",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "UUID of SMD file",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "notAfter": {
+          "canBeNull": false,
+          "description": "Date when information about SMD file aren't valid anymore",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "notBefore": {
+          "canBeNull": false,
+          "description": "Date before when information about SMD file aren't valid yet",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "protectedLabels": {
+          "canBeNull": false,
+          "description": "List of the labels that are protect with that SMD file",
+          "fullType": "domain.data.smd.SmdLabel[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.data.smd.SmdLabel[]"
+        },
+        "smdId": {
+          "canBeNull": false,
+          "description": "TMCH Internal identifier",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "domain.data.smd.SmdBody": {
+      "description": "Representation of a SMD file",
+      "id": "SmdBody",
+      "namespace": "domain.data.smd",
+      "properties": {
+        "data": {
+          "canBeNull": false,
+          "description": "SMD file content in base64",
+          "fullType": "text",
+          "readOnly": false,
+          "required": true,
+          "type": "text"
+        }
+      }
+    },
+    "domain.data.smd.SmdLabel": {
+      "description": "Representation of a protected label",
+      "id": "SmdLabel",
+      "namespace": "domain.data.smd",
+      "properties": {
+        "label": {
+          "canBeNull": false,
+          "description": "Label that is protected",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "trademark": {
+          "canBeNull": false,
+          "description": "Trademark associated to the protected label",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        }
+      }
+    },
     "domain.extensions.CategoryNameWithExtensions": {
       "description": "Result of extensions by category request",
       "id": "CategoryNameWithExtensions",
@@ -6687,8 +6437,8 @@ export const schema: Schema = {
     "domain.extensions.CategoryTypeEnum": {
       "description": "Type of extension category",
       "enum": [
-        "thematic",
-        "geolocalization"
+        "geolocalization",
+        "thematic"
       ],
       "enumType": "string",
       "id": "CategoryTypeEnum",
@@ -6766,8 +6516,8 @@ export const schema: Schema = {
     "domain.extensions.OrderByTypeEnum": {
       "description": "Type used to change the order of extensions results",
       "enum": [
-        "trending",
-        "alphabetical"
+        "alphabetical",
+        "trending"
       ],
       "enumType": "string",
       "id": "OrderByTypeEnum",

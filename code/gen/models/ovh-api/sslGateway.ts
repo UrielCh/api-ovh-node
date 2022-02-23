@@ -1214,7 +1214,7 @@ export const schema: Schema = {
         },
         "ipv6": {
           "canBeNull": true,
-          "description": "The IPv6 you need to put in the AAAA field of your domain name. DEPRECATED",
+          "description": "The IPv6 you need to put in the AAAA field of your domain name",
           "fullType": "ipv6",
           "readOnly": true,
           "required": false,

@@ -154,6 +154,13 @@ export namespace hosting {
                 grantType: hosting.PrivateDatabase.grant.GrantEnum;
             }
         }
+        export namespace WebhostingNetwork {
+            /**
+             * Webhosting network status
+             * type fullname: hosting.PrivateDatabase.WebhostingNetwork.Status
+             */
+            export type Status = "disabled" | "disabling" | "enabled" | "enabling"
+        }
         export namespace Whitelist {
             /**
              * Whitelist status
@@ -173,7 +180,7 @@ export namespace hosting {
              * Task's function
              * type fullname: hosting.PrivateDatabase.task.FunctionEnum
              */
-            export type FunctionEnum = "boot" | "changeFtpPassword" | "changeRam" | "changeRootPassword" | "changeVersion" | "configuration/update" | "create" | "database/create" | "database/delete" | "database/dump" | "database/dump/delete" | "database/extension/create" | "database/extension/delete" | "database/import" | "database/restore" | "database/wizard" | "delete" | "grant/create" | "grant/delete" | "grant/update" | "halt" | "install" | "overquota/in" | "overquota/out" | "quotaRefresh" | "refresh" | "reopen" | "restart" | "restore" | "start" | "stop" | "suspend" | "user/changePassword" | "user/create" | "user/delete" | "whitelist/create" | "whitelist/delete" | "whitelist/update"
+            export type FunctionEnum = "boot" | "changeFtpPassword" | "changeRam" | "changeRootPassword" | "changeVersion" | "configuration/update" | "create" | "database/create" | "database/delete" | "database/dump" | "database/dump/delete" | "database/extension/create" | "database/extension/delete" | "database/import" | "database/restore" | "database/wizard" | "delete" | "grant/create" | "grant/delete" | "grant/update" | "halt" | "install" | "overquota/in" | "overquota/out" | "quotaRefresh" | "refresh" | "reopen" | "restart" | "restore" | "start" | "stop" | "suspend" | "user/changePassword" | "user/create" | "user/delete" | "webhostingNetwork/disable" | "webhostingNetwork/enable" | "whitelist/create" | "whitelist/delete" | "whitelist/update"
             /**
              * Task's status
              * type fullname: hosting.PrivateDatabase.task.StatusEnum
@@ -299,6 +306,13 @@ export namespace hosting {
             creationDate: string;
             databases: hosting.PrivateDatabase.User.Database[];
             userName: string;
+        }
+        /**
+         * Webhosting network for your instance
+         * interface fullName: hosting.privateDatabase.webhostingNetwork.webhostingNetwork
+         */
+        export interface webhostingNetwork {
+            status: hosting.PrivateDatabase.WebhostingNetwork.Status;
         }
         /**
          * IP whitelisting for your instance
@@ -797,6 +811,27 @@ export interface Hosting {
                         };
                     }
                 };
+            }
+            webhostingNetwork: {
+                /**
+                 * Disable Webhosting network
+                 * DELETE /hosting/privateDatabase/{serviceName}/webhostingNetwork
+                 */
+                $delete(): Promise<hosting.privateDatabase.task>;
+                /**
+                 * Get this object properties
+                 * GET /hosting/privateDatabase/{serviceName}/webhostingNetwork
+                 */
+                $get(): Promise<hosting.privateDatabase.webhostingNetwork>;
+                /**
+                 * Enable Webhosting network
+                 * POST /hosting/privateDatabase/{serviceName}/webhostingNetwork
+                 */
+                $post(): Promise<hosting.privateDatabase.task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             webs: {
                 /**

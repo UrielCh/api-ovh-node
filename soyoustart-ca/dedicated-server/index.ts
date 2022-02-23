@@ -632,6 +632,14 @@ export namespace dedicated {
             status: dedicated.server.InstallationProgressStatusEnum;
         }
         /**
+         * Interface or interfaces aggregation
+         * interface fullName: dedicated.server.Interfaces.Interfaces
+         */
+        export interface Interfaces {
+            macs: string[];
+            type: dedicated.server.NetworkingTypeEnum;
+        }
+        /**
          * Intervention made on this server
          * interface fullName: dedicated.server.Intervention.Intervention
          */
@@ -771,6 +779,25 @@ export namespace dedicated {
             vmac: dedicated.server.VmacDetails;
             vrack?: dedicated.server.BandwidthvRackDetails;
         }
+        /**
+         * Network configuration
+         * interface fullName: dedicated.server.Networking.Networking
+         */
+        export interface Networking {
+            description?: string;
+            interfaces: dedicated.server.Interfaces[];
+            status?: dedicated.server.NetworkingOperationEnum;
+        }
+        /**
+         * Network operation states
+         * type fullname: dedicated.server.NetworkingOperationEnum
+         */
+        export type NetworkingOperationEnum = "active" | "deploying"
+        /**
+         * Network type
+         * type fullname: dedicated.server.NetworkingTypeEnum
+         */
+        export type NetworkingTypeEnum = "public" | "vrack"
         /**
          * A structure describing OVH Link Aggregation available modes
          * interface fullName: dedicated.server.OlaAvailableModes.OlaAvailableModes

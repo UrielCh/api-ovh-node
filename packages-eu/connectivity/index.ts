@@ -385,7 +385,7 @@ export interface Connectivity {
                  * Search for available copper line creation or fiber installation meeting time slots
                  * POST /connectivity/eligibility/search/meetings
                  */
-                $post(params: { eligibilityReference: string, productCode: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
+                $post(params: { eligibilityReference: string, planCode?: string, productCode?: string, type?: connectivity.eligibility.OfferProductTypeEnum, unbundlingType?: connectivity.eligibility.OfferProductUnbundlingTypeEnum }): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
             }
             streetNumbers: {
                 /**

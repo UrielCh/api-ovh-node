@@ -88,7 +88,7 @@ export namespace audit {
      * Authentication MFA type
      * type fullname: audit.LogAuthMFATypeEnum
      */
-    export type LogAuthMFATypeEnum = "NONE" | "MAIL" | "SMS" | "TOTP" | "U2F" | "UNKNOWN"
+    export type LogAuthMFATypeEnum = "BACKUP_CODE" | "MAIL" | "NONE" | "SMS" | "TOTP" | "U2F" | "UNKNOWN"
     /**
      * Authenticated user details
      * interface fullName: audit.LogAuthUserDetails.LogAuthUserDetails
@@ -101,7 +101,7 @@ export namespace audit {
      * Authentication type
      * type fullname: audit.LogAuthUserTypeEnum
      */
-    export type LogAuthUserTypeEnum = "ACCOUNT" | "USER" | "PROVIDER"
+    export type LogAuthUserTypeEnum = "ACCOUNT" | "PROVIDER" | "USER"
     /**
      * specific fields for LOGIN_SUCCESS events
      * interface fullName: audit.LogLoginSuccessDetails.LogLoginSuccessDetails
@@ -148,30 +148,6 @@ export namespace billing {
         paypal: boolean;
     }
     /**
-     * SEPA bank account info
-     * interface fullName: billing.BankAccount.BankAccount
-     */
-    export interface BankAccount {
-        bic: string;
-        creationDate: string;
-        defaultPaymentMean: boolean;
-        description?: string;
-        iban: string;
-        icon?: billing.paymentMethod.IconData;
-        id: number;
-        mandateSignatureDate?: string;
-        ownerAddress: string;
-        ownerName: string;
-        state: billing.BankAccountStateEnum;
-        uniqueReference: string;
-        validationDocumentLink?: string;
-    }
-    /**
-     * List of bank account states
-     * type fullname: billing.BankAccountStateEnum
-     */
-    export type BankAccountStateEnum = "blockedForIncidents" | "pendingValidation" | "valid"
-    /**
      * Details about a Bill
      * interface fullName: billing.Bill.Bill
      */
@@ -214,44 +190,6 @@ export namespace billing {
         amount: orderPrice;
         balanceName: string;
     }
-    /**
-     * Credit card informations
-     * interface fullName: billing.CreditCard.CreditCard
-     */
-    export interface CreditCard {
-        defaultPaymentMean: boolean;
-        description?: string;
-        expirationDate: string;
-        icon?: billing.paymentMethod.IconData;
-        id: number;
-        number: string;
-        state: billing.CreditCardStateEnum;
-        threeDsValidated: boolean;
-        type: string;
-    }
-    /**
-     * State of you credit card
-     * type fullname: billing.CreditCardStateEnum
-     */
-    export type CreditCardStateEnum = "expired" | "tooManyFailures" | "valid"
-    /**
-     * Deferred payment account info
-     * interface fullName: billing.DeferredPaymentAccount.DeferredPaymentAccount
-     */
-    export interface DeferredPaymentAccount {
-        creationDate: string;
-        defaultPaymentMean: boolean;
-        description?: string;
-        icon?: billing.paymentMethod.IconData;
-        id: number;
-        label?: string;
-        state: billing.DeferredPaymentAccountStatusEnum;
-    }
-    /**
-     * Status of your deferred invoice payment account
-     * type fullname: billing.DeferredPaymentAccountStatusEnum
-     */
-    export type DeferredPaymentAccountStatusEnum = "valid"
     /**
      * Details about a deposit
      * interface fullName: billing.Deposit.Deposit
@@ -430,55 +368,6 @@ export namespace billing {
      * type fullname: billing.PaymentMeanEnum
      */
     export type PaymentMeanEnum = "cash" | "chargeback" | "cheque" | "creditAccount" | "creditCard" | "debtAccount" | "deposit" | "digitalLaunchPad" | "edinar" | "fidelityPoints" | "free" | "ideal" | "incubatorAccount" | "mandat" | "multibanco" | "none" | "ovhAccount" | "paymentMandate" | "paypal" | "payu" | "platnosci" | "refund" | "transfer" | "withdrawal"
-    /**
-     * A validation required to add a payment mean
-     * interface fullName: billing.PaymentMeanValidation.PaymentMeanValidation
-     */
-    export interface PaymentMeanValidation {
-        id: number;
-        submitUrl?: string;
-        url: string;
-        validationType: billing.PaymentMeanValidationType;
-    }
-    /**
-     * All the validation you may have to do
-     * type fullname: billing.PaymentMeanValidationType
-     */
-    export type PaymentMeanValidationType = "creditAccount" | "documentToSend" | "simpleValidation"
-    /**
-     * Available payment methods
-     * interface fullName: billing.PaymentMethod.PaymentMethod
-     */
-    export interface PaymentMethod {
-        billingContactId: number;
-        creationDate: string;
-        default?: boolean;
-        description: string;
-        id: number;
-        paymentSubType?: billing.paymentMethod.PaymentSubTypeEnum;
-        paymentType: billing.paymentMethod.PaymentTypeEnum;
-        publicLabel: string;
-        status: billing.paymentMethod.StatusEnum;
-    }
-    /**
-     * Paypal account info
-     * interface fullName: billing.Paypal.Paypal
-     */
-    export interface Paypal {
-        agreementId: string;
-        creationDate: string;
-        defaultPaymentMean: boolean;
-        description?: string;
-        email: string;
-        icon?: billing.paymentMethod.IconData;
-        id: number;
-        state: billing.PaypalStateEnum;
-    }
-    /**
-     * State of you paypal account
-     * type fullname: billing.PaypalStateEnum
-     */
-    export type PaypalStateEnum = "tooManyFailures" | "valid"
     /**
      * Details about a Refund
      * interface fullName: billing.Refund.Refund
@@ -848,31 +737,6 @@ export namespace billing {
          */
         export type OperationEnum = "cancel-credit" | "cancel-debit" | "cancel-pre-debit" | "credit" | "debit" | "pre-credit" | "pre-debit"
     }
-    export namespace paymentMethod {
-        /**
-         * Payment method type icon
-         * interface fullName: billing.paymentMethod.IconData.IconData
-         */
-        export interface IconData {
-            data?: string;
-            name?: string;
-        }
-        /**
-         * List of payment sub type enum
-         * type fullname: billing.paymentMethod.PaymentSubTypeEnum
-         */
-        export type PaymentSubTypeEnum = "AMERICAN_EXPRESS" | "CARTE_BANCAIRE" | "MASTERCARD" | "VISA"
-        /**
-         * List of payment type enum
-         * type fullname: billing.paymentMethod.PaymentTypeEnum
-         */
-        export type PaymentTypeEnum = "BANK_ACCOUNT" | "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL"
-        /**
-         * List of payment method status enum
-         * type fullname: billing.paymentMethod.StatusEnum
-         */
-        export type StatusEnum = "BLOCKED" | "BLOCKED_BY_CUSTOMER" | "BROKEN" | "CANCELED" | "CANCELED_BY_CUSTOMER" | "CREATED" | "ERROR" | "EXPIRED" | "PAUSED" | "VALID" | "VALID_FOR_CREDIT"
-    }
     export namespace voucherAccount {
         /**
          * Operations a voucher account movement can represent
@@ -1065,7 +929,7 @@ export namespace dedicated {
      * Filesystems available
      * type fullname: dedicated.TemplateOsFileSystemEnum
      */
-    export type TemplateOsFileSystemEnum = "btrfs" | "ext3" | "ext4" | "ntfs" | "reiserfs" | "swap" | "ufs" | "xfs" | "zfs"
+    export type TemplateOsFileSystemEnum = "btrfs" | "ext3" | "ext4" | "fat16" | "ntfs" | "reiserfs" | "swap" | "ufs" | "vmfs5" | "vmfs6" | "vmfsl" | "xfs" | "zfs"
     /**
      * Hardware RAID enum
      * type fullname: dedicated.TemplateOsHardwareRaidEnum
@@ -1276,6 +1140,13 @@ export namespace http {
      */
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
+export namespace ip {
+    /**
+     * Possible values for IP campuses' names
+     * type fullname: ip.CampusEnum
+     */
+    export type CampusEnum = "BHS" | "ERI" | "GRA" | "HIL" | "LIM" | "RBX" | "SBG" | "SGP" | "SY2" | "SYD" | "VIN" | "WAW"
+}
 export namespace me {
     export namespace SupportLevel {
         /**
@@ -1289,7 +1160,7 @@ export namespace me {
          * Type of level
          * type fullname: me.SupportLevel.LevelTypeEnum
          */
-        export type LevelTypeEnum = "standard" | "premium" | "premium-accredited" | "business" | "enterprise"
+        export type LevelTypeEnum = "business" | "enterprise" | "premium" | "premium-accredited" | "standard"
     }
     export namespace abuse {
         /**
@@ -1352,17 +1223,20 @@ export namespace me {
              * interface fullName: me.billing.purchaseOrder.Creation.Creation
              */
             export interface Creation {
+                active?: boolean;
                 billingGroupId?: number;
                 description?: string;
                 endDate?: string;
                 reference: string;
                 startDate: string;
+                type: me.billing.purchaseOrder.PurchaseOrderTypeEnum;
             }
             /**
              * Purchase Order
              * interface fullName: me.billing.purchaseOrder.PurchaseOrder.PurchaseOrder
              */
             export interface PurchaseOrder {
+                active?: boolean;
                 billingGroupId?: number;
                 creationDate: string;
                 description?: string;
@@ -1372,7 +1246,13 @@ export namespace me {
                 reference: string;
                 startDate: string;
                 status: me.billing.purchaseOrder.StatusEnum;
+                type: me.billing.purchaseOrder.PurchaseOrderTypeEnum;
             }
+            /**
+             * Type of a purchase order
+             * type fullname: me.billing.purchaseOrder.PurchaseOrderTypeEnum
+             */
+            export type PurchaseOrderTypeEnum = "PURCHASE_ORDER" | "REFERENCE_ORDER"
             /**
              * Status of the Purchase Order
              * type fullname: me.billing.purchaseOrder.StatusEnum
@@ -1383,11 +1263,13 @@ export namespace me {
              * interface fullName: me.billing.purchaseOrder.Update.Update
              */
             export interface Update {
+                active?: boolean;
                 billingGroupId?: number;
                 description?: string;
                 endDate?: string;
                 reference?: string;
                 startDate?: string;
+                type?: me.billing.purchaseOrder.PurchaseOrderTypeEnum;
             }
         }
     }
@@ -1585,7 +1467,7 @@ export namespace me {
              * Balance type
              * type fullname: me.credit.balance.TypeEnum
              */
-            export type TypeEnum = "PREPAID_ACCOUNT" | "VOUCHER" | "DEPOSIT" | "BONUS"
+            export type TypeEnum = "BONUS" | "DEPOSIT" | "PREPAID_ACCOUNT" | "VOUCHER"
             export namespace movement {
                 /**
                  * Missing description
@@ -1690,7 +1572,7 @@ export namespace me {
          * Type of level
          * type fullname: me.partnerLevel.LevelTypeEnum
          */
-        export type LevelTypeEnum = "none" | "standard" | "advanced"
+        export type LevelTypeEnum = "advanced" | "none" | "standard"
         /**
          * Level of Support required
          * type fullname: me.partnerLevel.RequirementLoSEnum
@@ -1718,7 +1600,7 @@ export namespace me {
          * Payment method available sub-type enum
          * type fullname: me.payment.AvailableSubTypeEnum
          */
-        export type AvailableSubTypeEnum = "30_DAYS" | "45_DAYS" | "60_DAYS" | "AMERICAN_EXPRESS" | "AURA" | "CARTE_BANCAIRE" | "CARTE_BLEUE" | "DINERS_CLUB" | "DISCOVER" | "JCB" | "MAESTRO" | "MASTERCARD" | "VISA" | "CHORUS" | "NONE"
+        export type AvailableSubTypeEnum = "30_DAYS" | "45_DAYS" | "60_DAYS" | "AMERICAN_EXPRESS" | "AURA" | "CARTE_BANCAIRE" | "CARTE_BLEUE" | "CHORUS" | "DINERS_CLUB" | "DISCOVER" | "JCB" | "MAESTRO" | "MASTERCARD" | "NONE" | "VISA"
         /**
          * Payment method creation sub-type enum
          * type fullname: me.payment.CreationSubTypeEnum
@@ -1737,7 +1619,7 @@ export namespace me {
          * Register integration type enum
          * type fullname: me.payment.IntegrationEnum
          */
-        export type IntegrationEnum = "NONE" | "COMPONENT" | "IFRAME_VANTIV" | "IN_CONTEXT" | "POST_FORM" | "REDIRECT"
+        export type IntegrationEnum = "COMPONENT" | "IFRAME_VANTIV" | "IN_CONTEXT" | "NONE" | "POST_FORM" | "REDIRECT"
         /**
          * Payment method object
          * interface fullName: me.payment.PaymentMethod.PaymentMethod
@@ -1773,20 +1655,6 @@ export namespace me {
         }
         export namespace method {
             /**
-             * Available payment method object
-             * interface fullName: me.payment.method.AvailablePaymentMethod.AvailablePaymentMethod
-             */
-            export interface AvailablePaymentMethod {
-                icon: me.payment.method.Icon;
-                integration: paymentmethodIntegrationType;
-                merchantId?: string;
-                oneshot: boolean;
-                paymentSubType?: string;
-                paymentType: string;
-                registerable: boolean;
-                registerableWithTransaction: boolean;
-            }
-            /**
              * Callback URL's to register a new payment method
              * interface fullName: me.payment.method.CallbackUrl.CallbackUrl
              */
@@ -1809,6 +1677,7 @@ export namespace me {
              * interface fullName: me.payment.method.Creation.Creation
              */
             export interface Creation {
+                billingContactId?: number;
                 callbackUrl: me.payment.method.CallbackUrl;
                 default: boolean;
                 description?: string;
@@ -1837,89 +1706,17 @@ export namespace me {
                 registrationId?: string;
             }
             /**
-             * Icon
-             * interface fullName: me.payment.method.Icon.Icon
-             */
-            export interface Icon {
-                data?: string;
-                name?: string;
-            }
-            /**
-             * Payment method object
-             * interface fullName: me.payment.method.PaymentMethod.PaymentMethod
-             */
-            export interface PaymentMethod {
-                billingContactId?: number;
-                creationDate: string;
-                default: boolean;
-                description?: string;
-                expirationDate?: string;
-                icon: me.payment.method.Icon;
-                label?: string;
-                lastUpdate: string;
-                paymentMeanId?: number;
-                paymentMethodId: number;
-                paymentSubType?: string;
-                paymentType: string;
-                status: me.payment.method.PaymentMethod.Status;
-            }
-            export namespace PaymentMethod {
-                /**
-                 * Payment method status enum
-                 * type fullname: me.payment.method.PaymentMethod.Status
-                 */
-                export type Status = "CANCELED" | "CANCELING" | "CREATED" | "ERROR" | "EXPIRED" | "CREATING" | "MAINTENANCE" | "PAUSED" | "VALID"
-            }
-            export namespace Register {
-                /**
-                 * Register validation payload result
-                 * interface fullName: me.payment.method.Register.ValidationResult.ValidationResult
-                 */
-                export interface ValidationResult {
-                    formSessionId?: string;
-                    merchantId?: string;
-                    organizationId?: string;
-                    paymentMethodId: number;
-                    transactionId: number;
-                    url?: string;
-                    validationType: paymentmethodIntegrationType;
-                }
-            }
-            /**
              * Payment method status
              * type fullname: me.payment.method.StatusEnum
              */
-            export type StatusEnum = "CANCELED" | "CANCELING" | "CREATED" | "ERROR" | "EXPIRED" | "FAILED" | "CREATING" | "MAINTENANCE" | "PAUSED" | "VALID"
-            /**
-             * Payment method transaction object
-             * interface fullName: me.payment.method.Transaction.Transaction
-             */
-            export interface Transaction {
-                amount: orderPrice;
-                creationDate: string;
-                status: me.payment.method.Transaction.Status;
-                transactionId: number;
-                type: me.payment.method.Transaction.Type;
-            }
-            export namespace Transaction {
-                /**
-                 * Payment transaction status enum
-                 * type fullname: me.payment.method.Transaction.Status
-                 */
-                export type Status = "CANCELED" | "CANCELING" | "CONFIRMING" | "CREATED" | "ERROR" | "FAILED" | "READY" | "SUCCESS"
-                /**
-                 * Payment transaction type enum
-                 * type fullname: me.payment.method.Transaction.Type
-                 */
-                export type Type = "CREDIT" | "DEBIT"
-            }
+            export type StatusEnum = "CANCELED" | "CANCELING" | "CREATED" | "CREATING" | "ERROR" | "EXPIRED" | "FAILED" | "MAINTENANCE" | "PAUSED" | "VALID"
             /**
              * Registration response to validate
              * interface fullName: me.payment.method.Validation.Validation
              */
             export interface Validation {
                 formSessionId?: string;
-                merchandId?: string;
+                merchantId?: string;
                 organizationId?: string;
                 paymentMethodId: number;
                 transactionId?: number;
@@ -2854,7 +2651,7 @@ export namespace order {
      * Type of reduction
      * type fullname: order.ReductionTypeEnum
      */
-    export type ReductionTypeEnum = "percentage" | "forced_amount" | "fixed_amount"
+    export type ReductionTypeEnum = "fixed_amount" | "forced_amount" | "percentage"
     export namespace cart {
         /**
          * Representation of a generic product
@@ -2888,17 +2685,17 @@ export namespace order {
          * Capacity of a pricing (type)
          * type fullname: order.cart.GenericProductPricingCapacitiesEnum
          */
-        export type GenericProductPricingCapacitiesEnum = "installation" | "renew" | "upgrade" | "downgrade" | "detach" | "dynamic"
+        export type GenericProductPricingCapacitiesEnum = "consumption" | "detach" | "downgrade" | "dynamic" | "installation" | "renew" | "upgrade"
         /**
          * Type of a pricing
          * type fullname: order.cart.GenericProductPricingTypeEnum
          */
-        export type GenericProductPricingTypeEnum = "rental" | "consumption" | "purchase"
+        export type GenericProductPricingTypeEnum = "consumption" | "purchase" | "rental"
         /**
          * Type of a product
          * type fullname: order.cart.GenericProductTypeEnum
          */
-        export type GenericProductTypeEnum = "delivery" | "deposit" | "shipping" | "cloud_service" | "saas_license" | "storage" | "domain"
+        export type GenericProductTypeEnum = "cloud_service" | "delivery" | "deposit" | "domain" | "saas_license" | "shipping" | "storage"
     }
 }
 export namespace payment {
@@ -2910,7 +2707,7 @@ export namespace payment {
         export interface AvailablePaymentMethod {
             formSessionId?: string;
             icon: payment.method.Icon;
-            integration: paymentmethodIntegrationType;
+            integration: payment.method.IntegrationType;
             merchantId?: string;
             oneshot: boolean;
             organizationId?: string;
@@ -4321,7 +4118,7 @@ export interface Me {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(schemeName: string): {
                     /**
-                     * remove this scheme of partition
+                     * Remove this scheme of partition
                      * DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
                      */
                     $delete(): Promise<void>;
@@ -4393,7 +4190,7 @@ export interface Me {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(mountpoint: string): {
                             /**
-                             * remove this partition
+                             * Remove this partition
                              * DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
                              */
                             $delete(): Promise<void>;
@@ -4481,10 +4278,28 @@ export interface Me {
              */
             $get(): Promise<nichandle.ipxe>;
             /**
+             * Alter this object properties
+             * PUT /me/ipxeScript/{name}
+             */
+            $put(params?: { name?: string, script?: string }): Promise<void>;
+            /**
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         };
+    }
+    logs: {
+        audit: {
+            /**
+             * Get your audit logs
+             * GET /me/logs/audit
+             */
+            $get(): Promise<audit.Log[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
     }
     mailingList: {
         availableLists: {
@@ -4605,17 +4420,6 @@ export interface Me {
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
-            }
-            bill: {
-                /**
-                 * Get this object properties
-                 * GET /me/order/{orderId}/bill
-                 */
-                $get(): Promise<billing.Bill>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             consumption: {
                 details: {
@@ -4772,17 +4576,6 @@ export interface Me {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
-            refund: {
-                /**
-                 * Get this object properties
-                 * GET /me/order/{orderId}/refund
-                 */
-                $get(): Promise<billing.Refund>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
             retraction: {
                 /**
                  * Request retraction of order
@@ -4913,7 +4706,7 @@ export interface Me {
              * Register a new payment method
              * POST /me/payment/method
              */
-            $post(params: { callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, formData?: string, orderId?: number, paymentSubType?: me.payment.CreationSubTypeEnum, paymentType: string, register?: boolean }): Promise<me.payment.method.Validation>;
+            $post(params: { billingContactId?: number, callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, formData?: string, orderId?: number, paymentSubType?: me.payment.CreationSubTypeEnum, paymentType: string, register?: boolean }): Promise<me.payment.method.Validation>;
             /**
              * Controle cache
              */
@@ -5697,4 +5490,3 @@ export interface Me {
  */
 type orderPrice = order.Price;
 type orderOrderDetailTypeEnum = order.OrderDetailTypeEnum;
-type paymentmethodIntegrationType = payment.method.IntegrationType;

@@ -36,7 +36,7 @@ export namespace dbaas {
          * Possible values for ArchiveRetrievalStateEnum
          * type fullname: dbaas.logs.ArchiveRetrievalStateEnum
          */
-        export type ArchiveRetrievalStateEnum = "sealed" | "unsealing" | "unsealed"
+        export type ArchiveRetrievalStateEnum = "sealed" | "unsealed" | "unsealing"
         /**
          * Stream archive url
          * interface fullName: dbaas.logs.ArchiveUrl.ArchiveUrl
@@ -67,12 +67,12 @@ export namespace dbaas {
          * Possible values for ClusterClusterTypeEnum
          * type fullname: dbaas.logs.ClusterClusterTypeEnum
          */
-        export type ClusterClusterTypeEnum = "TRIAL" | "PRO" | "DEDICATED"
+        export type ClusterClusterTypeEnum = "DEDICATED" | "PRO" | "TRIAL"
         /**
          * Possible values for ClusterRegionEnum
          * type fullname: dbaas.logs.ClusterRegionEnum
          */
-        export type ClusterRegionEnum = "GRA" | "RBX" | "BHS" | "SBG" | "P-19"
+        export type ClusterRegionEnum = "BHS" | "GRA" | "P-19" | "RBX" | "SBG"
         /**
          * Cluster retention
          * interface fullName: dbaas.logs.ClusterRetention.ClusterRetention
@@ -107,7 +107,7 @@ export namespace dbaas {
          * Possible values for DeliveryStatusEnum
          * type fullname: dbaas.logs.DeliveryStatusEnum
          */
-        export type DeliveryStatusEnum = "DELIVERING" | "READY" | "DELETING"
+        export type DeliveryStatusEnum = "DELETING" | "DELIVERING" | "READY"
         /**
          * Input engine
          * interface fullName: dbaas.logs.Engine.Engine
@@ -135,12 +135,12 @@ export namespace dbaas {
          * Possible values for FlowggerConfigurationLogFormatEnum
          * type fullname: dbaas.logs.FlowggerConfigurationLogFormatEnum
          */
-        export type FlowggerConfigurationLogFormatEnum = "RFC5424" | "LTSV" | "GELF" | "CAPNP"
+        export type FlowggerConfigurationLogFormatEnum = "CAPNP" | "GELF" | "LTSV" | "RFC5424"
         /**
          * Possible values for FlowggerConfigurationLogFramingEnum
          * type fullname: dbaas.logs.FlowggerConfigurationLogFramingEnum
          */
-        export type FlowggerConfigurationLogFramingEnum = "LINE" | "NUL" | "SYSLEN" | "CAPNP"
+        export type FlowggerConfigurationLogFramingEnum = "CAPNP" | "LINE" | "NUL" | "SYSLEN"
         /**
          * Helper
          * interface fullName: dbaas.logs.Helper.Helper
@@ -164,7 +164,7 @@ export namespace dbaas {
          * Possible values for HelperSectionName
          * type fullname: dbaas.logs.HelperSectionNameEnum
          */
-        export type HelperSectionNameEnum = "LOGSTASH_INPUT" | "LOGSTASH_FILTER" | "LOGSTASH_PATTERN"
+        export type HelperSectionNameEnum = "LOGSTASH_FILTER" | "LOGSTASH_INPUT" | "LOGSTASH_PATTERN"
         /**
          * Elasticsearch index
          * interface fullName: dbaas.logs.Index.Index
@@ -213,7 +213,7 @@ export namespace dbaas {
          * Possible values for InputActionTypeEnum
          * type fullname: dbaas.logs.InputActionTypeEnum
          */
-        export type InputActionTypeEnum = "END" | "LOG" | "START" | "TEST" | "DESTROY" | "RESTART"
+        export type InputActionTypeEnum = "DESTROY" | "END" | "LOG" | "RESTART" | "START" | "TEST"
         /**
          * Missing description
          * interface fullName: dbaas.logs.InputConfigurationFlowggerUpdate.InputConfigurationFlowggerUpdate
@@ -248,7 +248,7 @@ export namespace dbaas {
          * Possible values for InputStatusEnum
          * type fullname: dbaas.logs.InputStatusEnum
          */
-        export type InputStatusEnum = "INIT" | "PENDING" | "RUNNING" | "PROCESSING"
+        export type InputStatusEnum = "INIT" | "PENDING" | "PROCESSING" | "RUNNING"
         /**
          * Missing description
          * interface fullName: dbaas.logs.InputUpdate.InputUpdate
@@ -328,7 +328,7 @@ export namespace dbaas {
          * Possible values for OperationStateEnum
          * type fullname: dbaas.logs.OperationStateEnum
          */
-        export type OperationStateEnum = "PENDING" | "RECEIVED" | "STARTED" | "SUCCESS" | "FAILURE" | "REVOKED" | "RETRY" | "RUNNING"
+        export type OperationStateEnum = "FAILURE" | "PENDING" | "RECEIVED" | "RETRY" | "REVOKED" | "RUNNING" | "STARTED" | "SUCCESS"
         /**
          * Missing description
          * interface fullName: dbaas.logs.OutputElasticsearchAliasCreation.OutputElasticsearchAliasCreation
@@ -611,12 +611,12 @@ export namespace dbaas {
          * Possible values for ServicePlanEnum
          * type fullname: dbaas.logs.ServicePlanEnum
          */
-        export type ServicePlanEnum = "STANDARD" | "ENTERPRISE"
+        export type ServicePlanEnum = "ENTERPRISE" | "STANDARD"
         /**
          * Possible values for ServiceStateEnum
          * type fullname: dbaas.logs.ServiceStateEnum
          */
-        export type ServiceStateEnum = "INIT" | "TO_CONFIG" | "ENABLED" | "DISABLED"
+        export type ServiceStateEnum = "DISABLED" | "ENABLED" | "INIT" | "TO_CONFIG"
         /**
          * Graylog stream
          * interface fullName: dbaas.logs.Stream.Stream
@@ -668,22 +668,22 @@ export namespace dbaas {
          * Possible values for StreamAlertConditionConditionTypeEnum
          * type fullname: dbaas.logs.StreamAlertConditionConditionTypeEnum
          */
-        export type StreamAlertConditionConditionTypeEnum = "MESSAGE_COUNT" | "FIELD_VALUE" | "FIELD_CONTENT_VALUE"
+        export type StreamAlertConditionConditionTypeEnum = "FIELD_CONTENT_VALUE" | "FIELD_VALUE" | "MESSAGE_COUNT"
         /**
          * Possible values for StreamAlertConditionConstraintTypeEnum
          * type fullname: dbaas.logs.StreamAlertConditionConstraintTypeEnum
          */
-        export type StreamAlertConditionConstraintTypeEnum = "MEAN" | "MIN" | "MAX" | "SUM" | "STDDEV"
+        export type StreamAlertConditionConstraintTypeEnum = "MAX" | "MEAN" | "MIN" | "STDDEV" | "SUM"
         /**
          * Possible values for StreamAlertConditionThresholdTypeEnum
          * type fullname: dbaas.logs.StreamAlertConditionThresholdTypeEnum
          */
-        export type StreamAlertConditionThresholdTypeEnum = "MORE" | "LESS" | "LOWER" | "HIGHER"
+        export type StreamAlertConditionThresholdTypeEnum = "HIGHER" | "LESS" | "LOWER" | "MORE"
         /**
          * Possible values for StreamColdStorageCompressionEnum
          * type fullname: dbaas.logs.StreamColdStorageCompressionEnum
          */
-        export type StreamColdStorageCompressionEnum = "LZMA" | "GZIP" | "DEFLATED" | "ZSTD"
+        export type StreamColdStorageCompressionEnum = "DEFLATED" | "GZIP" | "LZMA" | "ZSTD"
         /**
          * Possible values for StreamColdStorageContentEnum
          * type fullname: dbaas.logs.StreamColdStorageContentEnum
@@ -709,7 +709,7 @@ export namespace dbaas {
          * Possible values for StreamRuleOperatorEnum
          * type fullname: dbaas.logs.StreamRuleOperatorEnum
          */
-        export type StreamRuleOperatorEnum = "MATCH_EXACTLY" | "GREATER_THAN" | "SMALLER_THAN" | "FIELD_PRESENCE"
+        export type StreamRuleOperatorEnum = "FIELD_PRESENCE" | "GREATER_THAN" | "MATCH_EXACTLY" | "SMALLER_THAN"
         /**
          * Temporary url informations
          * interface fullName: dbaas.logs.TemporaryLogsLink.TemporaryLogsLink
@@ -766,7 +766,7 @@ export namespace dbaas {
          * Possible values for UrlTypeEnum
          * type fullname: dbaas.logs.UrlTypeEnum
          */
-        export type UrlTypeEnum = "GRAYLOG_WEBUI" | "GRAYLOG_API" | "ELASTICSEARCH_API" | "KIBANA_WEBUI" | "CONSOLE" | "WEB_SOCKET" | "SERVICE_DOMAIN" | "TCP_TLS_GELF" | "TCP_GELF" | "UDP_GELF" | "TCP_TLS_RFC5424" | "TCP_RFC5424" | "UDP_RFC5424" | "TCP_TLS_LTSV_LINE" | "TCP_TLS_LTSV_NUL" | "TCP_LTSV_LINE" | "TCP_LTSV_NUL" | "TCP_TLS_CAP_N_PROTO" | "TCP_CAP_N_PROTO" | "UDP_LTSV_NUL" | "UDP_LTSV_LINE" | "UDP_CAP_N_PROTO" | "HTTP_GELF" | "HTTP_TLS_GELF" | "TCP_BEATS" | "TCP_TLS_BEATS"
+        export type UrlTypeEnum = "CONSOLE" | "ELASTICSEARCH_API" | "GRAYLOG_API" | "GRAYLOG_WEBUI" | "HTTP_GELF" | "HTTP_TLS_GELF" | "KIBANA_WEBUI" | "SERVICE_DOMAIN" | "TCP_BEATS" | "TCP_CAP_N_PROTO" | "TCP_GELF" | "TCP_LTSV_LINE" | "TCP_LTSV_NUL" | "TCP_RFC5424" | "TCP_TLS_BEATS" | "TCP_TLS_CAP_N_PROTO" | "TCP_TLS_GELF" | "TCP_TLS_LTSV_LINE" | "TCP_TLS_LTSV_NUL" | "TCP_TLS_RFC5424" | "UDP_CAP_N_PROTO" | "UDP_GELF" | "UDP_LTSV_LINE" | "UDP_LTSV_NUL" | "UDP_RFC5424" | "WEB_SOCKET"
         /**
          * Missing description
          * interface fullName: dbaas.logs.UserChangePasswordCreation.UserChangePasswordCreation

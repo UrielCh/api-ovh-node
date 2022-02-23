@@ -1981,6 +1981,84 @@ export const schema: Schema = {
       "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update"
     },
     {
+      "description": "Webhosting network for your instance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Disable Webhosting network",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.task",
+          "scopes": [
+            "all",
+            "product/hosting-privateDatabase/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.webhostingNetwork",
+          "scopes": [
+            "all",
+            "product/hosting-privateDatabase/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Enable Webhosting network",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.task",
+          "scopes": [
+            "all",
+            "product/hosting-privateDatabase/all"
+          ]
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/webhostingNetwork"
+    },
+    {
       "description": "webs operations",
       "operations": [
         {
@@ -2685,6 +2763,18 @@ export const schema: Schema = {
         }
       }
     },
+    "hosting.PrivateDatabase.WebhostingNetwork.Status": {
+      "description": "Webhosting network status",
+      "enum": [
+        "disabled",
+        "disabling",
+        "enabled",
+        "enabling"
+      ],
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "hosting.PrivateDatabase.WebhostingNetwork"
+    },
     "hosting.PrivateDatabase.Whitelist.Status": {
       "description": "Whitelist status",
       "enum": [
@@ -2747,6 +2837,8 @@ export const schema: Schema = {
         "user/changePassword",
         "user/create",
         "user/delete",
+        "webhostingNetwork/disable",
+        "webhostingNetwork/enable",
         "whitelist/create",
         "whitelist/delete",
         "whitelist/update"
@@ -3341,6 +3433,21 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "hosting.privateDatabase.webhostingNetwork": {
+      "description": "Webhosting network for your instance",
+      "id": "webhostingNetwork",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "status": {
+          "canBeNull": false,
+          "description": "Webhosting network status",
+          "fullType": "hosting.PrivateDatabase.WebhostingNetwork.Status",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.PrivateDatabase.WebhostingNetwork.Status"
         }
       }
     },

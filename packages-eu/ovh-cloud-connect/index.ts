@@ -153,27 +153,27 @@ export namespace ovhcloudconnect {
          * Enum values for the light status
          * type fullname: ovhcloudconnect.interf.LightStatusEnum
          */
-        export type LightStatusEnum = "up" | "down" | "unknown"
+        export type LightStatusEnum = "down" | "unknown" | "up"
         /**
          * Enum values for the period of the statistics
          * type fullname: ovhcloudconnect.interf.MetricsPeriodEnum
          */
-        export type MetricsPeriodEnum = "hourly" | "daily" | "weekly"
+        export type MetricsPeriodEnum = "daily" | "hourly" | "weekly"
         /**
          * Enum values for the type of the statistics
          * type fullname: ovhcloudconnect.interf.MetricsTypeEnum
          */
-        export type MetricsTypeEnum = "light:in" | "light:out" | "traffic:download" | "traffic:upload" | "error:download" | "error:upload"
+        export type MetricsTypeEnum = "error:download" | "error:upload" | "light:in" | "light:out" | "traffic:download" | "traffic:upload"
         /**
          * Enum values for the unit of the statistics
          * type fullname: ovhcloudconnect.interf.MetricsUnitEnum
          */
-        export type MetricsUnitEnum = "dbm" | "bytes/s" | "error/s"
+        export type MetricsUnitEnum = "bytes/s" | "dbm" | "error/s"
         /**
          * Enum values for interface status
          * type fullname: ovhcloudconnect.interf.StatusEnum
          */
-        export type StatusEnum = "enabled" | "disabled"
+        export type StatusEnum = "disabled" | "enabled" | "reserved"
         /**
          * Enum values for the termination type
          * type fullname: ovhcloudconnect.interf.TerminationTypeEnum
@@ -185,7 +185,7 @@ export namespace ovhcloudconnect {
          * Enum values for service key status
          * type fullname: ovhcloudconnect.key.StatusEnum
          */
-        export type StatusEnum = "doing" | "active" | "cancelled" | "terminated" | "toCheck"
+        export type StatusEnum = "active" | "cancelled" | "doing" | "terminated" | "toCheck"
     }
     export namespace messageCode {
         /**
@@ -199,7 +199,7 @@ export namespace ovhcloudconnect {
          * Enum values for Pop Configuration Status
          * type fullname: ovhcloudconnect.popConfig.StatusEnum
          */
-        export type StatusEnum = "init" | "active" | "toDelete"
+        export type StatusEnum = "active" | "init" | "toDelete"
         /**
          * Enum values for Pop Configuration Type
          * type fullname: ovhcloudconnect.popConfig.TypeEnum
@@ -211,7 +211,7 @@ export namespace ovhcloudconnect {
          * Enum values for bandwidth
          * type fullname: ovhcloudconnect.service.BandwidthEnum
          */
-        export type BandwidthEnum = "200m" | "500m" | "1g" | "2g" | "5g" | "10g"
+        export type BandwidthEnum = "100m" | "10g" | "1g" | "200m" | "2g" | "500m" | "5g"
         /**
          * Enum values for port quantity
          * type fullname: ovhcloudconnect.service.PortEnum
@@ -221,7 +221,7 @@ export namespace ovhcloudconnect {
          * Enum values for service provider
          * type fullname: ovhcloudconnect.service.ProviderEnum
          */
-        export type ProviderEnum = "equinix" | "intercloud" | "internal" | "interxion" | "megaport" | "orange" | "OVHcloud"
+        export type ProviderEnum = "OVHcloud" | "equinix" | "intercloud" | "internal" | "interxion" | "megaport" | "orange"
         /**
          * Enum values for the Service
          * type fullname: ovhcloudconnect.service.StatusEnum
@@ -233,7 +233,7 @@ export namespace ovhcloudconnect {
          * Enum values for Task function
          * type fullname: ovhcloudconnect.task.FunctionEnum
          */
-        export type FunctionEnum = "addVrack" | "removeVrack" | "lockInterface" | "unlockInterface" | "addPopConfiguration" | "delPopConfiguration" | "addDatacenterConfiguration" | "delDatacenterConfiguration" | "addDatacenterExtraConfiguration" | "delDatacenterExtraConfiguration"
+        export type FunctionEnum = "addDatacenterConfiguration" | "addDatacenterExtraConfiguration" | "addPopConfiguration" | "addVrack" | "delDatacenterConfiguration" | "delDatacenterExtraConfiguration" | "delPopConfiguration" | "lockInterface" | "removeVrack" | "unlockInterface"
         /**
          * Enum values for Task status
          * type fullname: ovhcloudconnect.task.StatusEnum

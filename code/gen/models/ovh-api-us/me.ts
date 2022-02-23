@@ -4382,7 +4382,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "remove this scheme of partition",
+          "description": "Remove this scheme of partition",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -4852,7 +4852,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "remove this partition",
+          "description": "Remove this partition",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -5290,9 +5290,57 @@ export const schema: Schema = {
             "all",
             "account/all"
           ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.ipxe",
+              "description": "New object properties",
+              "fullType": "nichandle.ipxe",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name of this script",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
         }
       ],
       "path": "/me/ipxeScript/{name}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get your audit logs",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "audit.Log[]"
+        }
+      ],
+      "path": "/me/logs/audit"
     },
     {
       "description": "Retrieve order list",
@@ -6154,17 +6202,17 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Retrieve available payment method",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "me.payment.method.AvailablePaymentMethod[]",
+          "responseType": "me.payment.AvailablePaymentMethod[]",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         }
       ],
@@ -6175,25 +6223,33 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Retrieve payment method ID list",
+          "description": "Retrieve payment method list",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "boolean",
+              "description": "Filter on 'default' property",
+              "fullType": "boolean",
+              "name": "default",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Payment method type",
+              "description": "Filter on 'paymentType' property",
               "fullType": "string",
               "name": "paymentType",
               "paramType": "query",
               "required": false
             },
             {
-              "dataType": "me.payment.method.PaymentMethod.Status",
-              "description": "Status",
-              "fullType": "me.payment.method.PaymentMethod.Status",
+              "dataType": "me.payment.method.StatusEnum",
+              "description": "Filter on 'status' property",
+              "fullType": "me.payment.method.StatusEnum",
               "name": "status",
               "paramType": "query",
               "required": false
@@ -6201,88 +6257,31 @@ export const schema: Schema = {
           ],
           "responseType": "long[]",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Pay an order and register a new payment method if necessary",
+          "description": "Register a new payment method",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "me.payment.method.CallbackUrl",
-              "description": "URL's necessary to register",
-              "fullType": "me.payment.method.CallbackUrl",
-              "name": "callbackUrl",
+              "dataType": "me.payment.method.Creation",
+              "description": "Request Body",
+              "fullType": "me.payment.method.Creation",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Is this payment method set as the default one",
-              "fullType": "boolean",
-              "name": "default",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Customer personalized description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Additional payment information",
-              "fullType": "string",
-              "name": "formData",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "The ID of one order to pay it",
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Payment sub-type",
-              "fullType": "string",
-              "name": "paymentSubType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Payment type",
-              "fullType": "string",
-              "name": "paymentType",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Register this payment method if it's possible (by default it's false and do a oneshot transaction)",
-              "fullType": "boolean",
-              "name": "register",
-              "paramType": "body",
-              "required": false
             }
           ],
-          "responseType": "me.payment.method.Register.ValidationResult",
+          "responseType": "me.payment.method.Validation",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         }
       ],
@@ -6293,10 +6292,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Cancel one payment method",
+          "description": "Delete a payment method",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -6309,18 +6308,18 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.payment.method.PaymentMethod",
+          "responseType": "me.payment.PaymentMethod",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Get one payment method",
+          "description": "Retrieve a payment method",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -6333,36 +6332,27 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.payment.method.PaymentMethod",
+          "responseType": "me.payment.PaymentMethod",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Edit payment method",
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Set this method like default",
-              "fullType": "boolean",
-              "name": "default",
+              "dataType": "me.payment.PaymentMethod",
+              "description": "Request Body",
+              "fullType": "me.payment.PaymentMethod",
               "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Customer personalized description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "long",
@@ -6373,32 +6363,31 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.PaymentMethod",
+          "responseType": "me.payment.PaymentMethod",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         }
       ],
       "path": "/me/payment/method/{paymentMethodId}"
     },
     {
-      "description": "Challenge your payment method",
+      "description": "Challenge operations",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Challenge one payment method",
+          "description": "Challenge your payment method",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Challenge",
-              "fullType": "string",
-              "name": "challenge",
+              "dataType": "me.payment.method.Challenge",
+              "description": "Request Body",
+              "fullType": "me.payment.method.Challenge",
               "paramType": "body",
               "required": true
             },
@@ -6413,8 +6402,8 @@ export const schema: Schema = {
           ],
           "responseType": "void",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         }
       ],
@@ -6425,26 +6414,17 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Add details to one payment method challenge",
+          "description": "Add details to your payment method challenge",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Details data",
-              "fullType": "string",
-              "name": "details",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Transaction ID",
-              "fullType": "long",
-              "name": "transactionId",
+              "dataType": "me.payment.method.Details",
+              "description": "Request Body",
+              "fullType": "me.payment.method.Details",
               "paramType": "body",
               "required": true
             },
@@ -6457,58 +6437,33 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.payment.method.Register.ValidationResult",
+          "responseType": "me.payment.method.Validation",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         }
       ],
       "path": "/me/payment/method/{paymentMethodId}/details"
     },
     {
-      "description": "Finalize one payment method registration",
+      "description": "Finalize operation",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Finalize one payment method registration",
+          "description": "Finalize a payment method registration",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Expiration month",
-              "fullType": "long",
-              "name": "expirationMonth",
+              "dataType": "me.payment.method.Finalize",
+              "description": "Request Body",
+              "fullType": "me.payment.method.Finalize",
               "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Expiration year",
-              "fullType": "long",
-              "name": "expirationYear",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Form Session ID",
-              "fullType": "string",
-              "name": "formSessionId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Registration ID",
-              "fullType": "string",
-              "name": "registrationId",
-              "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "long",
@@ -6519,24 +6474,24 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.payment.method.PaymentMethod",
+          "responseType": "me.payment.PaymentMethod",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         }
       ],
       "path": "/me/payment/method/{paymentMethodId}/finalize"
     },
     {
-      "description": "Retrieve payment method transaction ID list",
+      "description": "Manage payment transaction",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Retrieve associated payment method transaction ID list",
+          "description": "Retrieve payment transaction list",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -6549,9 +6504,9 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "me.payment.method.Transaction.Status",
-              "description": "Transaction status",
-              "fullType": "me.payment.method.Transaction.Status",
+              "dataType": "me.payment.transaction.StatusEnum",
+              "description": "Status",
+              "fullType": "me.payment.transaction.StatusEnum",
               "name": "status",
               "paramType": "query",
               "required": false
@@ -6559,50 +6514,50 @@ export const schema: Schema = {
           ],
           "responseType": "long[]",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         }
       ],
       "path": "/me/payment/transaction"
     },
     {
-      "description": "Manage payment method transaction",
+      "description": "Manage payment transaction",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Get associated payment method transaction",
+          "description": "Retrieve a transaction",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Payment method transaction ID",
+              "description": "Transaction ID",
               "fullType": "long",
               "name": "transactionId",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "me.payment.method.Transaction",
+          "responseType": "me.payment.Transaction",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         }
       ],
       "path": "/me/payment/transaction/{transactionId}"
     },
     {
-      "description": "Retrieve payment method list",
+      "description": "Manage legacy payment method in US",
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2021-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-01-01T00:00:00+00:00",
+            "deletionDate": "2022-03-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-01T00:00:00+00:00",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -6612,97 +6567,56 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "billing.paymentMethod.PaymentTypeEnum",
-              "description": "Payment type",
-              "fullType": "billing.paymentMethod.PaymentTypeEnum",
+              "dataType": "me.paymentMethod.PaymentTypeEnum",
+              "description": "Filter on 'paymentType' property",
+              "fullType": "me.paymentMethod.PaymentTypeEnum",
               "name": "paymentType",
               "paramType": "query",
               "required": false
             },
             {
-              "dataType": "billing.paymentMethod.StatusEnum",
-              "description": "Status",
-              "fullType": "billing.paymentMethod.StatusEnum",
+              "dataType": "me.paymentMethod.PaymentMethodStatusEnum",
+              "description": "Filter on 'status' property",
+              "fullType": "me.paymentMethod.PaymentMethodStatusEnum",
               "name": "status",
               "paramType": "query",
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
-            "deletionDate": "2021-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-01-01T00:00:00+00:00",
+            "deletionDate": "2022-03-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-01T00:00:00+00:00",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
           },
-          "description": "Create payment method",
+          "description": "Register a new payment method",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Billing contact id",
-              "fullType": "long",
-              "name": "billingContactId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Is this payment method set as the default one",
-              "fullType": "boolean",
-              "name": "default",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Customer personalized description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "billing.paymentMethod.CreatePaymentTypeEnum",
-              "description": "Payment type",
-              "fullType": "billing.paymentMethod.CreatePaymentTypeEnum",
-              "name": "paymentType",
+              "dataType": "me.paymentMethod.Creation",
+              "description": "Request Body",
+              "fullType": "me.paymentMethod.Creation",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Payment url callback",
-              "fullType": "string",
-              "name": "urlCallback",
-              "paramType": "body",
-              "required": false
             }
           ],
-          "responseType": "billing.PaymentMeanValidation",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "me.paymentMethod.Validation"
         }
       ],
       "path": "/me/paymentMethod"
     },
     {
-      "description": "Manage the payment mean.",
+      "description": "Manage legacy payment method in US",
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2021-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-01-01T00:00:00+00:00",
+            "deletionDate": "2022-03-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-01T00:00:00+00:00",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -6713,23 +6627,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Payment mean id",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
-            "deletionDate": "2021-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-01-01T00:00:00+00:00",
+            "deletionDate": "2022-03-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-01T00:00:00+00:00",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -6740,23 +6650,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Payment mean id",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "billing.PaymentMethod",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "me.paymentMethod.PaymentMethod"
         },
         {
           "apiStatus": {
-            "deletionDate": "2021-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-01-01T00:00:00+00:00",
+            "deletionDate": "2022-03-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-01T00:00:00+00:00",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -6766,35 +6672,22 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Is this payment method set as the default one",
-              "fullType": "boolean",
-              "name": "default",
+              "dataType": "me.paymentMethod.PaymentMethod",
+              "description": "Request Body",
+              "fullType": "me.paymentMethod.PaymentMethod",
               "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Customer personalized description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "long",
-              "description": "Payment mean id",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "billing.PaymentMethod",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "me.paymentMethod.PaymentMethod"
         }
       ],
       "path": "/me/paymentMethod/{id}"
@@ -8130,8 +8023,9 @@ export const schema: Schema = {
     "audit.LogAuthMFATypeEnum": {
       "description": "Authentication MFA type",
       "enum": [
-        "NONE",
+        "BACKUP_CODE",
         "MAIL",
+        "NONE",
         "SMS",
         "TOTP",
         "U2F",
@@ -8168,8 +8062,8 @@ export const schema: Schema = {
       "description": "Authentication type",
       "enum": [
         "ACCOUNT",
-        "USER",
-        "PROVIDER"
+        "PROVIDER",
+        "USER"
       ],
       "enumType": "string",
       "id": "LogAuthUserTypeEnum",
@@ -11092,10 +10986,14 @@ export const schema: Schema = {
         "btrfs",
         "ext3",
         "ext4",
+        "fat16",
         "ntfs",
         "reiserfs",
         "swap",
         "ufs",
+        "vmfs5",
+        "vmfs6",
+        "vmfsl",
         "xfs",
         "zfs"
       ],
@@ -12215,6 +12113,26 @@ export const schema: Schema = {
       "id": "MethodEnum",
       "namespace": "http"
     },
+    "ip.CampusEnum": {
+      "description": "Possible values for IP campuses' names",
+      "enum": [
+        "BHS",
+        "ERI",
+        "GRA",
+        "HIL",
+        "LIM",
+        "RBX",
+        "SBG",
+        "SGP",
+        "SY2",
+        "SYD",
+        "VIN",
+        "WAW"
+      ],
+      "enumType": "string",
+      "id": "CampusEnum",
+      "namespace": "ip"
+    },
     "me.abuse.Abuse": {
       "description": "Get report API response",
       "id": "Abuse",
@@ -12394,6 +12312,14 @@ export const schema: Schema = {
       "id": "Creation",
       "namespace": "me.billing.purchaseOrder",
       "properties": {
+        "active": {
+          "canBeNull": true,
+          "description": "Active",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "billingGroupId": {
           "canBeNull": true,
           "description": "Billing Group identifier",
@@ -12433,6 +12359,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "date"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of a purchase order",
+          "fullType": "me.billing.purchaseOrder.PurchaseOrderTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "me.billing.purchaseOrder.PurchaseOrderTypeEnum"
         }
       }
     },
@@ -12441,6 +12375,14 @@ export const schema: Schema = {
       "id": "PurchaseOrder",
       "namespace": "me.billing.purchaseOrder",
       "properties": {
+        "active": {
+          "canBeNull": true,
+          "description": "Active",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "billingGroupId": {
           "canBeNull": true,
           "description": "Billing Group identifier",
@@ -12512,8 +12454,26 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "me.billing.purchaseOrder.StatusEnum"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of a purchase order",
+          "fullType": "me.billing.purchaseOrder.PurchaseOrderTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.billing.purchaseOrder.PurchaseOrderTypeEnum"
         }
       }
+    },
+    "me.billing.purchaseOrder.PurchaseOrderTypeEnum": {
+      "description": "Type of a purchase order",
+      "enum": [
+        "PURCHASE_ORDER",
+        "REFERENCE_ORDER"
+      ],
+      "enumType": "string",
+      "id": "PurchaseOrderTypeEnum",
+      "namespace": "me.billing.purchaseOrder"
     },
     "me.billing.purchaseOrder.StatusEnum": {
       "description": "Status of the Purchase Order",
@@ -12530,6 +12490,14 @@ export const schema: Schema = {
       "id": "Update",
       "namespace": "me.billing.purchaseOrder",
       "properties": {
+        "active": {
+          "canBeNull": true,
+          "description": "Active",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "billingGroupId": {
           "canBeNull": true,
           "description": "Billing group identifier",
@@ -12569,6 +12537,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "date"
+        },
+        "type": {
+          "canBeNull": true,
+          "description": "Type of a purchase order",
+          "fullType": "me.billing.purchaseOrder.PurchaseOrderTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "me.billing.purchaseOrder.PurchaseOrderTypeEnum"
         }
       }
     },
@@ -13391,10 +13367,10 @@ export const schema: Schema = {
     "me.credit.balance.TypeEnum": {
       "description": "Balance type",
       "enum": [
-        "PREPAID_ACCOUNT",
-        "VOUCHER",
+        "BONUS",
         "DEPOSIT",
-        "BONUS"
+        "PREPAID_ACCOUNT",
+        "VOUCHER"
       ],
       "enumType": "string",
       "id": "TypeEnum",
@@ -13465,157 +13441,181 @@ export const schema: Schema = {
         }
       }
     },
-    "me.payment.method.AvailablePaymentMethod": {
+    "me.payment.AvailablePaymentMethod": {
       "description": "Available payment method object",
       "id": "AvailablePaymentMethod",
-      "namespace": "me.payment.method",
+      "namespace": "me.payment",
       "properties": {
+        "formSessionId": {
+          "canBeNull": true,
+          "description": "Form session ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "icon": {
           "canBeNull": false,
           "description": "Payment method type icon",
-          "fullType": "me.payment.method.Icon",
-          "readOnly": false,
+          "fullType": "me.payment.Icon",
+          "readOnly": true,
           "required": false,
-          "type": "me.payment.method.Icon"
+          "type": "me.payment.Icon"
         },
         "integration": {
           "canBeNull": false,
           "description": "Payment method integration type",
-          "fullType": "payment.method.IntegrationType",
-          "readOnly": false,
+          "fullType": "me.payment.IntegrationEnum",
+          "readOnly": true,
           "required": false,
-          "type": "payment.method.IntegrationType"
+          "type": "me.payment.IntegrationEnum"
         },
         "merchantId": {
           "canBeNull": true,
-          "description": "Payment method merchant ID",
+          "description": "Merchant ID",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "oneshot": {
           "canBeNull": false,
-          "description": "Payment method type is possible to pay in oneshot mode ?",
+          "description": "Indicates if payment method type allows to process oneshot payment",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
+        },
+        "organizationId": {
+          "canBeNull": true,
+          "description": "Organization ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "paymentSubType": {
           "canBeNull": true,
           "description": "Payment method sub-type",
-          "fullType": "string",
-          "readOnly": false,
+          "fullType": "me.payment.AvailableSubTypeEnum",
+          "readOnly": true,
           "required": false,
-          "type": "string"
+          "type": "me.payment.AvailableSubTypeEnum"
         },
         "paymentType": {
           "canBeNull": false,
           "description": "Payment method type",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "registerable": {
           "canBeNull": false,
-          "description": "Payment method type is registerable ?",
+          "description": "Indicates if payment method type is registerable ?",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "registerableWithTransaction": {
           "canBeNull": false,
-          "description": "Payment method type is registerable with the possibility to pay in same time an order ?",
+          "description": "Indicates if payment method type allows payment and registration at the same time",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         }
       }
     },
-    "me.payment.method.CallbackUrl": {
-      "description": "Callback URL's to register a new payment method",
-      "id": "CallbackUrl",
-      "namespace": "me.payment.method",
-      "properties": {
-        "cancel": {
-          "canBeNull": false,
-          "description": "URL when customer cancels the action",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "error": {
-          "canBeNull": false,
-          "description": "URL when registration encounters an error",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "failure": {
-          "canBeNull": false,
-          "description": "URL when registration failed",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "pending": {
-          "canBeNull": false,
-          "description": "URL when payment method is in validation",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "success": {
-          "canBeNull": false,
-          "description": "URL when payment method registration success",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
+    "me.payment.AvailableSubTypeEnum": {
+      "description": "Payment method available sub-type enum",
+      "enum": [
+        "30_DAYS",
+        "45_DAYS",
+        "60_DAYS",
+        "AMERICAN_EXPRESS",
+        "AURA",
+        "CARTE_BANCAIRE",
+        "CARTE_BLEUE",
+        "CHORUS",
+        "DINERS_CLUB",
+        "DISCOVER",
+        "JCB",
+        "MAESTRO",
+        "MASTERCARD",
+        "NONE",
+        "VISA"
+      ],
+      "enumType": "string",
+      "id": "AvailableSubTypeEnum",
+      "namespace": "me.payment"
     },
-    "me.payment.method.Icon": {
+    "me.payment.CreationSubTypeEnum": {
+      "description": "Payment method creation sub-type enum",
+      "enum": [
+        "CHORUS",
+        "NONE"
+      ],
+      "enumType": "string",
+      "id": "CreationSubTypeEnum",
+      "namespace": "me.payment"
+    },
+    "me.payment.Icon": {
       "description": "Icon",
       "id": "Icon",
-      "namespace": "me.payment.method",
+      "namespace": "me.payment",
       "properties": {
         "data": {
           "canBeNull": true,
           "description": "Icon in base64",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "name": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Icon name",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Icon URL",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
       }
     },
-    "me.payment.method.PaymentMethod": {
+    "me.payment.IntegrationEnum": {
+      "description": "Register integration type enum",
+      "enum": [
+        "COMPONENT",
+        "IFRAME_VANTIV",
+        "IN_CONTEXT",
+        "NONE",
+        "POST_FORM",
+        "REDIRECT"
+      ],
+      "enumType": "string",
+      "id": "IntegrationEnum",
+      "namespace": "me.payment"
+    },
+    "me.payment.PaymentMethod": {
       "description": "Payment method object",
       "id": "PaymentMethod",
-      "namespace": "me.payment.method",
+      "namespace": "me.payment",
       "properties": {
         "billingContactId": {
           "canBeNull": true,
           "description": "Associated billing contact ID",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -13623,13 +13623,13 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Creation date",
           "fullType": "datetime",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "default": {
           "canBeNull": false,
-          "description": "Creation date",
+          "description": "Indicates if payment method is the default one for this account",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,
@@ -13647,23 +13647,23 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "Expiration date",
           "fullType": "datetime",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "icon": {
           "canBeNull": false,
           "description": "Payment method type icon",
-          "fullType": "me.payment.method.Icon",
-          "readOnly": false,
+          "fullType": "me.payment.Icon",
+          "readOnly": true,
           "required": false,
-          "type": "me.payment.method.Icon"
+          "type": "me.payment.Icon"
         },
         "label": {
           "canBeNull": true,
           "description": "Payment method public label",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -13671,15 +13671,23 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Last update date",
           "fullType": "datetime",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "datetime"
+        },
+        "merchantId": {
+          "canBeNull": true,
+          "description": "Merchant ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "paymentMeanId": {
           "canBeNull": true,
           "description": "Payment mean ID associated to this payment method",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -13687,126 +13695,46 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Payment method ID",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "paymentSubType": {
           "canBeNull": true,
           "description": "Payment method sub-type",
-          "fullType": "string",
-          "readOnly": false,
+          "fullType": "me.payment.AvailableSubTypeEnum",
+          "readOnly": true,
           "required": false,
-          "type": "string"
+          "type": "me.payment.AvailableSubTypeEnum"
         },
         "paymentType": {
           "canBeNull": false,
           "description": "Payment method type",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "status": {
           "canBeNull": false,
           "description": "Payment method status",
-          "fullType": "me.payment.method.PaymentMethod.Status",
-          "readOnly": false,
+          "fullType": "me.payment.method.StatusEnum",
+          "readOnly": true,
           "required": false,
-          "type": "me.payment.method.PaymentMethod.Status"
+          "type": "me.payment.method.StatusEnum"
         }
       }
     },
-    "me.payment.method.PaymentMethod.Status": {
-      "description": "Payment method status enum",
-      "enum": [
-        "CANCELED",
-        "CANCELING",
-        "CREATED",
-        "ERROR",
-        "EXPIRED",
-        "CREATING",
-        "MAINTENANCE",
-        "PAUSED",
-        "VALID"
-      ],
-      "enumType": "string",
-      "id": "Status",
-      "namespace": "me.payment.method.PaymentMethod"
-    },
-    "me.payment.method.Register.ValidationResult": {
-      "description": "Register validation payload result",
-      "id": "ValidationResult",
-      "namespace": "me.payment.method.Register",
-      "properties": {
-        "formSessionId": {
-          "canBeNull": true,
-          "description": "Form session ID",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "merchantId": {
-          "canBeNull": true,
-          "description": "Merchant ID",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "organizationId": {
-          "canBeNull": true,
-          "description": "Organization ID",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "paymentMethodId": {
-          "canBeNull": false,
-          "description": "Register new payment method ID",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "transactionId": {
-          "canBeNull": false,
-          "description": "Linked transaction ID",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "url": {
-          "canBeNull": true,
-          "description": "Register validation URL",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "validationType": {
-          "canBeNull": false,
-          "description": "Register validation type",
-          "fullType": "payment.method.IntegrationType",
-          "readOnly": false,
-          "required": false,
-          "type": "payment.method.IntegrationType"
-        }
-      }
-    },
-    "me.payment.method.Transaction": {
-      "description": "Payment method transaction object",
+    "me.payment.Transaction": {
+      "description": "Transaction object",
       "id": "Transaction",
-      "namespace": "me.payment.method",
+      "namespace": "me.payment",
       "properties": {
         "amount": {
           "canBeNull": false,
           "description": "Transaction amount",
           "fullType": "order.Price",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         },
@@ -13814,17 +13742,205 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Creation date",
           "fullType": "datetime",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "datetime"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "paymentMethodId": {
+          "canBeNull": false,
+          "description": "Associated payment method ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "description": "Transaction status",
-          "fullType": "me.payment.method.Transaction.Status",
+          "fullType": "me.payment.transaction.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.payment.transaction.StatusEnum"
+        },
+        "transactionId": {
+          "canBeNull": false,
+          "description": "Transaction ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Transaction type",
+          "fullType": "me.payment.transaction.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.payment.transaction.TypeEnum"
+        }
+      }
+    },
+    "me.payment.method.CallbackUrl": {
+      "description": "Callback URL's to register a new payment method",
+      "id": "CallbackUrl",
+      "namespace": "me.payment.method",
+      "properties": {
+        "cancel": {
+          "canBeNull": false,
+          "description": "URL when customer cancels the action",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "error": {
+          "canBeNull": false,
+          "description": "URL when registration encounters an error",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "failure": {
+          "canBeNull": false,
+          "description": "URL when registration failed",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "pending": {
+          "canBeNull": false,
+          "description": "URL when payment method is in validation",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "success": {
+          "canBeNull": false,
+          "description": "URL when payment method registration success",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "me.payment.method.Challenge": {
+      "description": "Payment method Challenge",
+      "id": "Challenge",
+      "namespace": "me.payment.method",
+      "properties": {
+        "challenge": {
+          "canBeNull": false,
+          "description": "Challenge",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "me.payment.method.Creation": {
+      "description": "Payment method creation payload",
+      "id": "Creation",
+      "namespace": "me.payment.method",
+      "properties": {
+        "billingContactId": {
+          "canBeNull": true,
+          "description": "Associated billing contact ID",
+          "fullType": "long",
           "readOnly": false,
           "required": false,
-          "type": "me.payment.method.Transaction.Status"
+          "type": "long"
+        },
+        "callbackUrl": {
+          "canBeNull": false,
+          "description": "Callback URL's necessary to register",
+          "fullType": "me.payment.method.CallbackUrl",
+          "readOnly": false,
+          "required": true,
+          "type": "me.payment.method.CallbackUrl"
+        },
+        "default": {
+          "canBeNull": false,
+          "description": "Indicates if this payment method will be set as the default one",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Personalized description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "formData": {
+          "canBeNull": true,
+          "description": "Additional payment information",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "orderId": {
+          "canBeNull": true,
+          "description": "Order ID to pay it if it's possible (in oneshot transaction or while registration)",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "paymentSubType": {
+          "canBeNull": true,
+          "description": "Payment sub-type",
+          "fullType": "me.payment.CreationSubTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "me.payment.CreationSubTypeEnum"
+        },
+        "paymentType": {
+          "canBeNull": false,
+          "description": "Payment type",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "register": {
+          "canBeNull": false,
+          "description": "Register this payment method if it's possible (default value is false and will proceed a oneshot transaction)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "me.payment.method.Details": {
+      "description": "Add details to one payment method challenge",
+      "id": "Details",
+      "namespace": "me.payment.method",
+      "properties": {
+        "details": {
+          "canBeNull": false,
+          "description": "Details data",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "transactionId": {
           "canBeNull": false,
@@ -13833,42 +13949,375 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
-        },
-        "type": {
-          "canBeNull": false,
-          "description": "Transaction type",
-          "fullType": "me.payment.method.Transaction.Type",
-          "readOnly": false,
-          "required": false,
-          "type": "me.payment.method.Transaction.Type"
         }
       }
     },
-    "me.payment.method.Transaction.Status": {
-      "description": "Payment transaction status enum",
+    "me.payment.method.Finalize": {
+      "description": "Payload to finalize payment method registration",
+      "id": "Finalize",
+      "namespace": "me.payment.method",
+      "properties": {
+        "expirationMonth": {
+          "canBeNull": true,
+          "description": "Expiration month",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "expirationYear": {
+          "canBeNull": true,
+          "description": "Expiration year",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "formSessionId": {
+          "canBeNull": true,
+          "description": "Form session ID",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "registrationId": {
+          "canBeNull": true,
+          "description": "Registration ID",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "me.payment.method.StatusEnum": {
+      "description": "Payment method status",
+      "enum": [
+        "CANCELED",
+        "CANCELING",
+        "CREATED",
+        "CREATING",
+        "ERROR",
+        "EXPIRED",
+        "FAILED",
+        "MAINTENANCE",
+        "PAUSED",
+        "VALID"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "me.payment.method"
+    },
+    "me.payment.method.Validation": {
+      "description": "Registration response to validate",
+      "id": "Validation",
+      "namespace": "me.payment.method",
+      "properties": {
+        "formSessionId": {
+          "canBeNull": true,
+          "description": "Form session ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "merchantId": {
+          "canBeNull": true,
+          "description": "Merchant ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "organizationId": {
+          "canBeNull": true,
+          "description": "Organization ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "paymentMethodId": {
+          "canBeNull": false,
+          "description": "Registered new payment method ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "transactionId": {
+          "canBeNull": true,
+          "description": "Registered new transaction ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Registration validation URL to redirect",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "validationType": {
+          "canBeNull": false,
+          "description": "Registration validation type",
+          "fullType": "me.payment.IntegrationEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.payment.IntegrationEnum"
+        }
+      }
+    },
+    "me.payment.transaction.StatusEnum": {
+      "description": "Transaction status",
       "enum": [
         "CANCELED",
         "CANCELING",
         "CONFIRMING",
-        "CREATED",
         "ERROR",
+        "EXPIRED",
         "FAILED",
         "READY",
         "SUCCESS"
       ],
       "enumType": "string",
-      "id": "Status",
-      "namespace": "me.payment.method.Transaction"
+      "id": "StatusEnum",
+      "namespace": "me.payment.transaction"
     },
-    "me.payment.method.Transaction.Type": {
-      "description": "Payment transaction type enum",
+    "me.payment.transaction.TypeEnum": {
+      "description": "Transaction type",
       "enum": [
         "CREDIT",
         "DEBIT"
       ],
       "enumType": "string",
-      "id": "Type",
-      "namespace": "me.payment.method.Transaction"
+      "id": "TypeEnum",
+      "namespace": "me.payment.transaction"
+    },
+    "me.paymentMethod.Creation": {
+      "description": "Create payment method",
+      "id": "Creation",
+      "namespace": "me.paymentMethod",
+      "properties": {
+        "billingContactId": {
+          "canBeNull": true,
+          "description": "Billing contact ID",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "default": {
+          "canBeNull": true,
+          "description": "Is this payment method set as the default one",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Customer personalized description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "paymentType": {
+          "canBeNull": false,
+          "description": "Payment type",
+          "fullType": "me.paymentMethod.PaymentTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "me.paymentMethod.PaymentTypeEnum"
+        },
+        "urlCallback": {
+          "canBeNull": true,
+          "description": "Payment url callback",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "me.paymentMethod.PaymentMethod": {
+      "description": "Available payment methods",
+      "id": "PaymentMethod",
+      "namespace": "me.paymentMethod",
+      "properties": {
+        "billingContactId": {
+          "canBeNull": false,
+          "description": "Billing contact ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of the payment method",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "default": {
+          "canBeNull": true,
+          "description": "Is this payment method set as the default one",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Customer personalized description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "paymentSubType": {
+          "canBeNull": true,
+          "description": "Payment sub type",
+          "fullType": "me.paymentMethod.PaymentSubTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.paymentMethod.PaymentSubTypeEnum"
+        },
+        "paymentType": {
+          "canBeNull": false,
+          "description": "Payment type",
+          "fullType": "me.paymentMethod.PaymentTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.paymentMethod.PaymentTypeEnum"
+        },
+        "publicLabel": {
+          "canBeNull": false,
+          "description": "Public payment method label",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Payment method status",
+          "fullType": "me.paymentMethod.PaymentMethodStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.paymentMethod.PaymentMethodStatusEnum"
+        }
+      }
+    },
+    "me.paymentMethod.PaymentMethodStatusEnum": {
+      "description": "Payment method status enum",
+      "enum": [
+        "BLOCKED",
+        "BLOCKED_BY_CUSTOMER",
+        "BROKEN",
+        "CANCELED",
+        "CANCELED_BY_CUSTOMER",
+        "CREATED",
+        "ERROR",
+        "EXPIRED",
+        "PAUSED",
+        "VALID",
+        "VALID_FOR_CREDIT"
+      ],
+      "enumType": "string",
+      "id": "PaymentMethodStatusEnum",
+      "namespace": "me.paymentMethod"
+    },
+    "me.paymentMethod.PaymentSubTypeEnum": {
+      "description": "List of payment sub type enum",
+      "enum": [
+        "AMERICAN_EXPRESS",
+        "CARTE_BANCAIRE",
+        "MASTERCARD",
+        "VISA"
+      ],
+      "enumType": "string",
+      "id": "PaymentSubTypeEnum",
+      "namespace": "me.paymentMethod"
+    },
+    "me.paymentMethod.PaymentTypeEnum": {
+      "description": "List of payment type enum",
+      "enum": [
+        "BANK_ACCOUNT",
+        "CREDIT_CARD",
+        "CURRENT_ACCOUNT",
+        "DEFERRED_PAYMENT_ACCOUNT",
+        "ENTERPRISE",
+        "INTERNAL_TRUSTED_ACCOUNT",
+        "PAYPAL"
+      ],
+      "enumType": "string",
+      "id": "PaymentTypeEnum",
+      "namespace": "me.paymentMethod"
+    },
+    "me.paymentMethod.Validation": {
+      "description": "A validation required to add a payment mean",
+      "id": "Validation",
+      "namespace": "me.paymentMethod",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Payment Method ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "submitUrl": {
+          "canBeNull": true,
+          "description": "Submit URL",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "Return URL",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "validationType": {
+          "canBeNull": false,
+          "description": "Validation type",
+          "fullType": "me.paymentMethod.ValidationTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.paymentMethod.ValidationTypeEnum"
+        }
+      }
+    },
+    "me.paymentMethod.ValidationTypeEnum": {
+      "description": "All the validation you may have to do",
+      "enum": [
+        "creditAccount",
+        "documentToSend",
+        "simpleValidation"
+      ],
+      "enumType": "string",
+      "id": "ValidationTypeEnum",
+      "namespace": "me.paymentMethod"
     },
     "me.tag.AvailableTag": {
       "description": "Available tag configuration object for creation",
@@ -15779,7 +16228,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Content of your IPXE script",
           "fullType": "text",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "text"
         }

@@ -212,87 +212,6 @@ export const schema: Schema = {
       "path": "/pack/xdsl/{packName}/addressMove/move"
     },
     {
-      "description": "moveFtth operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-11-22T10:00:00+01:00",
-            "deprecatedDate": "2019-10-22T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/pack/xdsl/{packName}/addressMove/moveOffer",
-            "value": "DEPRECATED"
-          },
-          "description": "Move the FTTH access to another address",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Building reference for FTTH and FTTE offers",
-              "fullType": "string",
-              "name": "buildingReference",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Floor identifier, \"null\" if no identifier is available",
-              "fullType": "string",
-              "name": "floor",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "datetime",
-              "description": "The date when the customer is no longer at the current address. Must be between now and +30 days. The default date will be the one in 30 days from now.",
-              "fullType": "datetime",
-              "name": "moveOutDate",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Do you have an Optical Termination Point (Point de Terminaison Optique) at home ?",
-              "fullType": "boolean",
-              "name": "otp",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Reference of the Optical Termination Point",
-              "fullType": "string",
-              "name": "otpReference",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Stair identifier, \"null\" if no identifier is available",
-              "fullType": "string",
-              "name": "stair",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pack",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "pack.xdsl.AsyncTask<long>",
-          "scopes": [
-            "all",
-            "product/pack-xdsl/all"
-          ]
-        }
-      ],
-      "path": "/pack/xdsl/{packName}/addressMove/moveFtth"
-    },
-    {
       "description": "moveOffer operations",
       "operations": [
         {
@@ -1117,85 +1036,15 @@ export const schema: Schema = {
       "path": "/pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable"
     },
     {
-      "description": "List the pack.xdsl.ExchangeIndividual objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Exchange services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your pack",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/pack-xdsl/all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2016-06-30:00:00+01:00",
-            "deprecatedDate": "2016-05-30T08:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/email/exchange/{organizationName}/service/{exchangeService}/account",
-            "value": "DEPRECATED"
-          },
-          "description": "Activate an exchange service",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Email address",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "password",
-              "description": "Password",
-              "fullType": "password",
-              "name": "password",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pack",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "pack.xdsl.Task",
-          "scopes": [
-            "all",
-            "product/pack-xdsl/all"
-          ]
-        }
-      ],
-      "path": "/pack/xdsl/{packName}/exchangeIndividual/services"
-    },
-    {
       "description": "isEmailAvailable operations",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-01-10T10:00:00+01:00",
+            "deprecatedDate": "2021-12-10T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/pack/xdsl/{packName}/emailPro/options/isEmailAvailable",
+            "value": "DEPRECATED"
           },
           "description": "Check if the email address is available for service creation",
           "httpMethod": "GET",
@@ -1232,8 +1081,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-01-10T10:00:00+01:00",
+            "deprecatedDate": "2021-12-10T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/pack/xdsl/{packName}/emailPro/services",
+            "value": "DEPRECATED"
           },
           "description": "Exchange lite services",
           "httpMethod": "GET",
@@ -1256,10 +1108,10 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2016-06-30:00:00+01:00",
-            "deprecatedDate": "2016-05-30T08:00:00+01:00",
+            "deletionDate": "2022-01-10T10:00:00+01:00",
+            "deprecatedDate": "2021-12-10T10:00:00+01:00",
             "description": "Deprecated, will be removed",
-            "replacement": "/email/exchange/{organizationName}/service/{exchangeService}/account",
+            "replacement": "/pack/xdsl/{packName}/emailPro/services",
             "value": "DEPRECATED"
           },
           "description": "Activate a exchange lite service",
@@ -1345,8 +1197,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-01-10T10:00:00+01:00",
+            "deprecatedDate": "2021-12-10T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/xdsl/email/pro/{email}",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -3293,6 +3148,7 @@ export const schema: Schema = {
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",
@@ -3883,9 +3739,12 @@ export const schema: Schema = {
         "billingProblems",
         "cessationOfActivity",
         "changeOfTerms",
+        "changeOperator",
+        "eligibilityFtth",
         "ftth",
         "goToCompetitor",
         "other",
+        "price",
         "technicalProblems"
       ],
       "enumType": "string",
@@ -3900,6 +3759,13 @@ export const schema: Schema = {
         "comment": {
           "canBeNull": true,
           "description": "Comment about this resiliation",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "subsidiary": {
+          "canBeNull": true,
+          "description": "Subsidiary response about this resiliation",
           "readOnly": false,
           "required": false,
           "type": "string"

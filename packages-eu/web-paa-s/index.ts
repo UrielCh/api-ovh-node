@@ -62,12 +62,12 @@ export namespace webPaaS {
      * Valid addon offers faimly
      * type fullname: webPaaS.AddonFamilyEnum
      */
-    export type AddonFamilyEnum = "storage" | "user_license" | "staging_environment"
+    export type AddonFamilyEnum = "staging_environment" | "storage" | "user_license"
     /**
      * Valid addon product name
      * type fullname: webPaaS.AddonProductNameEnum
      */
-    export type AddonProductNameEnum = "additional-storage" | "additional-staging-environment" | "additional-user-license"
+    export type AddonProductNameEnum = "additional-staging-environment" | "additional-storage" | "additional-user-license"
     /**
      * addon status
      * type fullname: webPaaS.AddonStatusEnum
@@ -90,7 +90,7 @@ export namespace webPaaS {
      * Valid offers by Web PaaS
      * type fullname: webPaaS.OfferEnum
      */
-    export type OfferEnum = "start-1" | "start-2" | "start-4" | "start-8" | "start-16" | "develop-1" | "develop-2" | "develop-4" | "develop-8" | "develop-16" | "expand-1" | "expand-2" | "expand-4" | "expand-8" | "expand-16"
+    export type OfferEnum = "develop-1" | "develop-16" | "develop-2" | "develop-4" | "develop-8" | "expand-1" | "expand-16" | "expand-2" | "expand-4" | "expand-8" | "start-1" | "start-16" | "start-2" | "start-4" | "start-8"
     /**
      * Supported regions for deployment
      * type fullname: webPaaS.RegionEnum
@@ -100,7 +100,7 @@ export namespace webPaaS {
      * Valid states of a subscription
      * type fullname: webPaaS.StatusEnum
      */
-    export type StatusEnum = "ACTIVE" | "PENDING" | "CANCELED" | "CANCELING" | "CANCELLATION_REQUESTED" | "TERMINATED" | "SUSPENDED" | "EXPIRED" | "ERROR" | "CLOSED" | "TO_SETTLE" | "SETTLING" | "SETTLED"
+    export type StatusEnum = "ACTIVE" | "CANCELED" | "CANCELING" | "CANCELLATION_REQUESTED" | "CLOSED" | "ERROR" | "EXPIRED" | "PENDING" | "SETTLED" | "SETTLING" | "SUSPENDED" | "TERMINATED" | "TO_SETTLE"
     /**
      * Storage Units
      * type fullname: webPaaS.StorageUnitEnum

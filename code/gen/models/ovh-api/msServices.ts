@@ -108,6 +108,14 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of company property (like)",
+              "fullType": "string",
+              "name": "company",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "long",
               "description": "Filter the value of id property (like)",
               "fullType": "long",
@@ -2220,6 +2228,14 @@ export const schema: Schema = {
         "city": {
           "canBeNull": true,
           "description": "city",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "company": {
+          "canBeNull": true,
+          "description": "Company name",
           "fullType": "string",
           "readOnly": false,
           "required": false,

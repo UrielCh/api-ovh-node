@@ -1,87 +1,60 @@
 import {Schema} from '../../src/schema';
 
-// imported from https://api.us.ovhcloud.com:443/1.0/nutanix.json
+// imported from https://ca.api.ovh.com:443/1.0/veeam/veeamEnterprise.json
 
 export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Manage nutanix clusters",
+      "description": "Operations about the VEEAMENTERPRISE service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get list of owned Nutanix Clusters",
+          "description": "List available services",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
         }
       ],
-      "path": "/nutanix"
+      "path": "/veeam/veeamEnterprise"
     },
     {
-      "description": "Manage nutanix clusters",
+      "description": "Veeeam Enterprise offer",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get nutanix cluster info",
+          "description": "Get this object properties",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "nutanix.state"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Update nutanix cluster info",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nutanix.cluster",
-              "description": "Request Body",
-              "fullType": "nutanix.cluster",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "I am aware that I am going to make changes that will reinstall my cluster",
-              "fullType": "boolean",
-              "name": "redeploycluster",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "nutanix.state"
+          "responseType": "veeam.veeamEnterprise.Account",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
         }
       ],
-      "path": "/nutanix/{serviceName}"
+      "path": "/veeam/veeamEnterprise/{serviceName}"
     },
     {
       "description": "Confirm termination of your service",
@@ -129,7 +102,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cluster name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -139,11 +112,73 @@ export const schema: Schema = {
           "responseType": "string",
           "scopes": [
             "all",
-            "product/nutanix/all"
+            "product/veeam-veeamEnterprise/all"
           ]
         }
       ],
-      "path": "/nutanix/{serviceName}/confirmTermination"
+      "path": "/veeam/veeamEnterprise/{serviceName}/confirmTermination"
+    },
+    {
+      "description": "register operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Register Veeam Backup Server to Veeam Enterprise",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ip",
+              "description": "Your Veeam Backup And Replication Server IP",
+              "fullType": "ip",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": "Your Veeam Backup And Replication associated password",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Your Veeam Backup And Replication Server Port",
+              "fullType": "long",
+              "name": "port",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your Veeam Backup And Replication username",
+              "fullType": "string",
+              "name": "username",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "veeam.veeamEnterprise.Task[]",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
+        }
+      ],
+      "path": "/veeam/veeamEnterprise/{serviceName}/register"
     },
     {
       "description": "Details about a Service",
@@ -159,7 +194,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -169,7 +204,7 @@ export const schema: Schema = {
           "responseType": "services.Service",
           "scopes": [
             "all",
-            "product/nutanix/all"
+            "product/veeam-veeamEnterprise/all"
           ]
         },
         {
@@ -190,7 +225,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cluster name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -200,11 +235,95 @@ export const schema: Schema = {
           "responseType": "void",
           "scopes": [
             "all",
-            "product/nutanix/all"
+            "product/veeam-veeamEnterprise/all"
           ]
         }
       ],
-      "path": "/nutanix/{serviceName}/serviceInfos"
+      "path": "/veeam/veeamEnterprise/{serviceName}/serviceInfos"
+    },
+    {
+      "description": "List the veeam.veeamEnterprise.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Tasks associated with Veeam Enterprise",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of name property (like)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "veeamEnterprise.TaskStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "veeamEnterprise.TaskStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
+        }
+      ],
+      "path": "/veeam/veeamEnterprise/{serviceName}/task"
+    },
+    {
+      "description": "Operation with the Enterprise Account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Task id",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "veeam.veeamEnterprise.Task",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
+        }
+      ],
+      "path": "/veeam/veeamEnterprise/{serviceName}/task/{taskId}"
     },
     {
       "description": "Terminate your service",
@@ -220,7 +339,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -230,347 +349,77 @@ export const schema: Schema = {
           "responseType": "string",
           "scopes": [
             "all",
-            "product/nutanix/all"
+            "product/veeam-veeamEnterprise/all"
           ]
         }
       ],
-      "path": "/nutanix/{serviceName}/terminate"
+      "path": "/veeam/veeamEnterprise/{serviceName}/terminate"
     },
     {
-      "description": "Fetch the requirements for a given cluster configuration",
+      "description": "update operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Fetch the requirements for a given cluster configuration",
-          "httpMethod": "GET",
+          "description": "Update Veeam enterprise configuration",
+          "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "",
-              "fullType": "boolean",
-              "name": "erasureCoding",
-              "paramType": "query",
+              "dataType": "ip",
+              "description": "Your Veeam Backup And Replication Server IP",
+              "fullType": "ip",
+              "name": "ip",
+              "paramType": "body",
               "required": true
             },
             {
-              "dataType": "boolean",
-              "description": "",
-              "fullType": "boolean",
-              "name": "rackAwareness",
-              "paramType": "query",
+              "dataType": "password",
+              "description": "Your Veeam Backup And Replication associated password",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
               "required": true
             },
             {
-              "dataType": "nutanix.RedundancyFactorEnum",
-              "description": "",
-              "fullType": "nutanix.RedundancyFactorEnum",
-              "name": "redundancyFactor",
-              "paramType": "query",
+              "dataType": "long",
+              "description": "Your Veeam Backup And Replication Server Port",
+              "fullType": "long",
+              "name": "port",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your Veeam Backup And Replication username",
+              "fullType": "string",
+              "name": "username",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "nutanix.Requirements"
+          "responseType": "veeam.veeamEnterprise.Task[]",
+          "scopes": [
+            "all",
+            "product/veeam-veeamEnterprise/all"
+          ]
         }
       ],
-      "path": "/nutanix/requirements"
+      "path": "/veeam/veeamEnterprise/{serviceName}/update"
     }
   ],
-  "basePath": "https://api.us.ovhcloud.com/1.0",
+  "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
-    "nutanix.RedundancyFactorEnum": {
-      "description": "Cluster redundancy factor",
-      "enum": [
-        "2",
-        "3"
-      ],
-      "enumType": "long",
-      "id": "RedundancyFactorEnum",
-      "namespace": "nutanix"
-    },
-    "nutanix.Requirements": {
-      "description": "Return the needed requirements for a given cluster configuration",
-      "id": "Requirements",
-      "namespace": "nutanix",
-      "properties": {
-        "maxNodes": {
-          "canBeNull": false,
-          "description": "Maximum number of nodes",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "minNodes": {
-          "canBeNull": false,
-          "description": "Minimum number of nodes",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "scaleFactor": {
-          "canBeNull": false,
-          "description": "Number of added/removed nodes in case of scaling up/down",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        }
-      }
-    },
-    "nutanix.cluster": {
-      "description": "Cluster configuration",
-      "id": "cluster",
-      "namespace": "nutanix",
-      "properties": {
-        "controlPanelURL": {
-          "canBeNull": false,
-          "description": "Control Panel URL",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "erasureCoding": {
-          "canBeNull": false,
-          "description": "Erasure coding activation",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "gatewayCidr": {
-          "canBeNull": false,
-          "description": "Internal Gateway IP, with mask",
-          "fullType": "ipBlock",
-          "readOnly": false,
-          "required": false,
-          "type": "ipBlock"
-        },
-        "ipfo": {
-          "canBeNull": false,
-          "description": "External Gateway IP, with mask",
-          "fullType": "ipBlock",
-          "readOnly": true,
-          "required": false,
-          "type": "ipBlock"
-        },
-        "iplb": {
-          "canBeNull": false,
-          "description": "IPLB ID",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Cluster name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "nodes": {
-          "canBeNull": false,
-          "description": "Cluster node list",
-          "fullType": "nutanix.nodes[]",
-          "readOnly": false,
-          "required": false,
-          "type": "nutanix.nodes[]"
-        },
-        "prismCentral": {
-          "canBeNull": false,
-          "description": "Prism Central Configuration",
-          "fullType": "nutanix.prismcentral",
-          "readOnly": false,
-          "required": false,
-          "type": "nutanix.prismcentral"
-        },
-        "prismElementVip": {
-          "canBeNull": false,
-          "description": "Prism Element IP",
-          "fullType": "ipv4",
-          "readOnly": false,
-          "required": false,
-          "type": "ipv4"
-        },
-        "prismSecretId": {
-          "canBeNull": false,
-          "description": "UUID for secret",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
-        "rackAwareness": {
-          "canBeNull": false,
-          "description": "Rack Awareness activation",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "redundancyFactor": {
-          "canBeNull": false,
-          "description": "Redundancy Factor",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "version": {
-          "canBeNull": false,
-          "description": "AOS Version",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "vrack": {
-          "canBeNull": false,
-          "description": "vRack name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "nutanix.nodes": {
-      "description": "Nodes in nutanix cluster",
-      "id": "nodes",
-      "namespace": "nutanix",
-      "properties": {
-        "ahvIp": {
-          "canBeNull": false,
-          "description": "Hypervisor IP",
-          "fullType": "ipv4",
-          "readOnly": false,
-          "required": false,
-          "type": "ipv4"
-        },
-        "cvmIp": {
-          "canBeNull": false,
-          "description": "Controler VM IP",
-          "fullType": "ipv4",
-          "readOnly": false,
-          "required": false,
-          "type": "ipv4"
-        },
-        "server": {
-          "canBeNull": false,
-          "description": "Name of the associated server",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "nutanix.pctypeEnum": {
-      "description": "Prism Central deployment type",
-      "enum": [
-        "alone",
-        "scale"
-      ],
-      "enumType": "string",
-      "id": "pctypeEnum",
-      "namespace": "nutanix"
-    },
-    "nutanix.prismcentral": {
-      "description": "Prism Central Config",
-      "id": "prismcentral",
-      "namespace": "nutanix",
-      "properties": {
-        "ips": {
-          "canBeNull": false,
-          "description": "Prism Central IPs",
-          "fullType": "ipv4[]",
-          "readOnly": false,
-          "required": false,
-          "type": "ipv4[]"
-        },
-        "type": {
-          "canBeNull": false,
-          "description": "Prism Central type",
-          "fullType": "nutanix.pctypeEnum",
-          "readOnly": false,
-          "required": false,
-          "type": "nutanix.pctypeEnum"
-        },
-        "vip": {
-          "canBeNull": false,
-          "description": "Prism Central IP",
-          "fullType": "ipv4",
-          "readOnly": false,
-          "required": false,
-          "type": "ipv4"
-        }
-      }
-    },
-    "nutanix.state": {
-      "description": "Nutanix Cluster State",
-      "id": "state",
-      "namespace": "nutanix",
-      "properties": {
-        "allowedRedundancyFactor": {
-          "canBeNull": false,
-          "description": "Available redundancy Factor",
-          "fullType": "long[]",
-          "readOnly": true,
-          "required": false,
-          "type": "long[]"
-        },
-        "availableVersions": {
-          "canBeNull": false,
-          "description": "Available versions to install",
-          "fullType": "string[]",
-          "readOnly": true,
-          "required": false,
-          "type": "string[]"
-        },
-        "serviceName": {
-          "canBeNull": false,
-          "description": "Cluster name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "status": {
-          "canBeNull": false,
-          "description": "Current cluster's status",
-          "fullType": "nutanix.statusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "nutanix.statusEnum"
-        },
-        "targetSpec": {
-          "canBeNull": false,
-          "description": "Target Spec after deployment",
-          "fullType": "nutanix.cluster",
-          "readOnly": true,
-          "required": false,
-          "type": "nutanix.cluster"
-        }
-      }
-    },
-    "nutanix.statusEnum": {
-      "description": "Cluster status",
-      "enum": [
-        "Active",
-        "Deploying",
-        "Error"
-      ],
-      "enumType": "string",
-      "id": "statusEnum",
-      "namespace": "nutanix"
-    },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",
       "id": "RenewType",
@@ -775,7 +624,118 @@ export const schema: Schema = {
           "type": "service.StateEnum"
         }
       }
+    },
+    "veeam.veeamEnterprise.Account": {
+      "description": "Veeeam Enterprise offer",
+      "id": "Account",
+      "namespace": "veeam.veeamEnterprise",
+      "properties": {
+        "ip": {
+          "canBeNull": true,
+          "description": "This Backup Server IP",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "port": {
+          "canBeNull": true,
+          "description": "This Backup Server port",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Your Veeam Enterprise Service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "sourceIp": {
+          "canBeNull": false,
+          "description": "OVH Enterprise Manager IP",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        }
+      }
+    },
+    "veeam.veeamEnterprise.Task": {
+      "description": "Operation with the Enterprise Account",
+      "id": "Task",
+      "namespace": "veeam.veeamEnterprise",
+      "properties": {
+        "endDate": {
+          "canBeNull": true,
+          "description": "Task completion date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Task name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "progress": {
+          "canBeNull": false,
+          "description": "Current progress",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "startDate": {
+          "canBeNull": true,
+          "description": "Task creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Current Task state",
+          "fullType": "veeamEnterprise.TaskStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "veeamEnterprise.TaskStateEnum"
+        },
+        "taskId": {
+          "canBeNull": false,
+          "description": "Task id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "veeamEnterprise.TaskStateEnum": {
+      "description": "All possible states for a Veeam Enterprise Task",
+      "enum": [
+        "canceled",
+        "doing",
+        "done",
+        "error",
+        "toCreate",
+        "todo",
+        "unfixed",
+        "waiting",
+        "waitingForChilds"
+      ],
+      "enumType": "string",
+      "id": "TaskStateEnum",
+      "namespace": "veeamEnterprise"
     }
   },
-  "resourcePath": "/nutanix"
+  "resourcePath": "/veeam/veeamEnterprise"
 }

@@ -4077,6 +4077,51 @@ export const schema: Schema = {
       "id": "CountryEnum",
       "namespace": "coreTypes"
     },
+    "dedicated.DatacenterEnum": {
+      "description": "ovh datacenter",
+      "enum": [
+        "bhs1",
+        "bhs2",
+        "bhs3",
+        "bhs4",
+        "bhs5",
+        "bhs6",
+        "bhs7",
+        "bhs8",
+        "dc1",
+        "eri1",
+        "gra1",
+        "gra2",
+        "gra3",
+        "gsw",
+        "hil1",
+        "lim1",
+        "lim3",
+        "p19",
+        "rbx-hz",
+        "rbx1",
+        "rbx2",
+        "rbx3",
+        "rbx4",
+        "rbx5",
+        "rbx6",
+        "rbx7",
+        "rbx8",
+        "sbg1",
+        "sbg2",
+        "sbg3",
+        "sbg4",
+        "sbg5",
+        "sgp1",
+        "syd1",
+        "syd2",
+        "vin1",
+        "waw1"
+      ],
+      "enumType": "string",
+      "id": "DatacenterEnum",
+      "namespace": "dedicated"
+    },
     "ip.Antiphishing": {
       "description": "Phishing URLs hosted on your IP",
       "id": "Antiphishing",
@@ -4248,6 +4293,61 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "BlockedIpStateEnum",
+      "namespace": "ip"
+    },
+    "ip.Campus": {
+      "description": "Campus of an IP address",
+      "id": "Campus",
+      "namespace": "ip",
+      "properties": {
+        "bringYourOwnIpSupportedRirForIp": {
+          "canBeNull": false,
+          "description": "List of RIRs whose IPs can be imported in the campus",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "datacenters": {
+          "canBeNull": false,
+          "description": "List of datacenters in the campus",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.DatacenterEnum[]"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the campus",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Campus name",
+          "readOnly": false,
+          "required": false,
+          "type": "ip.CampusEnum"
+        }
+      }
+    },
+    "ip.CampusEnum": {
+      "description": "Possible values for IP campuses' names",
+      "enum": [
+        "BHS",
+        "ERI",
+        "GRA",
+        "HIL",
+        "LIM",
+        "RBX",
+        "SBG",
+        "SGP",
+        "SY2",
+        "SYD",
+        "VIN",
+        "WAW"
+      ],
+      "enumType": "string",
+      "id": "CampusEnum",
       "namespace": "ip"
     },
     "ip.Destination": {
@@ -4669,6 +4769,22 @@ export const schema: Schema = {
       "id": "Ip",
       "namespace": "ip",
       "properties": {
+        "bringYourOwnIp": {
+          "canBeNull": false,
+          "description": "Is this IP part of the Bring your own IP program (alpha)",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "campus": {
+          "canBeNull": true,
+          "description": "Where is the IP used/usable (alpha)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "canBeTerminated": {
           "canBeNull": false,
           "fullType": "boolean",

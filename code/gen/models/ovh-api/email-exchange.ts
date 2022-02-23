@@ -434,6 +434,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "long",
+              "description": "Send connector id used to send mails when SBR is defined",
+              "fullType": "long",
+              "name": "sendConnectorId",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "email.exchange.spamAndVirusConfiguration",
               "description": "Antispam and Antivirus configuration",
               "fullType": "email.exchange.spamAndVirusConfiguration",
@@ -2399,6 +2407,210 @@ export const schema: Schema = {
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/changeHostname"
     },
     {
+      "description": "List the email.exchange.exchangeCustomIsolation objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "custom isolation for mailbox",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "email.exchange.OvhCustomIsolationFieldEnum",
+              "description": "Filter the value of isolationField property (=)",
+              "fullType": "email.exchange.OvhCustomIsolationFieldEnum",
+              "name": "isolationField",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of isolationValue property (like)",
+              "fullType": "string",
+              "name": "isolationValue",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of name property (like)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create new custom isolation for mailbox",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "email.exchange.OvhCustomIsolationFieldEnum",
+              "description": "field use for isolation",
+              "fullType": "email.exchange.OvhCustomIsolationFieldEnum",
+              "name": "isolationField",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "value used for isolation",
+              "fullType": "string",
+              "name": "isolationValue",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "display name of isolation",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/customIsolation"
+    },
+    {
+      "description": "custom exchange isolation",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete existing custom isolation for mailbox",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name of the custom isolation",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name of the custom isolation",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.exchangeCustomIsolation",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/customIsolation/{name}"
+    },
+    {
       "description": "dcvEmails operations",
       "operations": [
         {
@@ -2754,6 +2966,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "long",
+              "description": "Default Sender Connector id applied on all new created accounts",
+              "fullType": "long",
+              "name": "sendConnectorIdDefault",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "email.exchange.DomainTypeEnum",
               "description": "Type of domain that You want to install",
               "fullType": "email.exchange.DomainTypeEnum",
@@ -2919,6 +3139,68 @@ export const schema: Schema = {
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}"
+    },
+    {
+      "description": "changeDefaultSBR operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change default values of SBR used for all new created account on this domain",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Default Sender base routing destination domain applied on all new created accounts",
+              "fullType": "string",
+              "name": "sbrDefault",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Default Sender Connector id applied on all new created accounts",
+              "fullType": "long",
+              "name": "sendConnectorIdDefault",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/changeDefaultSBR"
     },
     {
       "description": "Exchange organization disclaimer",
@@ -3543,6 +3825,14 @@ export const schema: Schema = {
               "name": "organizationName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of company property (like)",
+              "fullType": "string",
+              "name": "company",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "string",
@@ -5910,6 +6200,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Filter the value of company property (like)",
+              "fullType": "string",
+              "name": "company",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Filter the value of resourceEmailAddress property (like)",
               "fullType": "string",
               "name": "resourceEmailAddress",
@@ -6390,6 +6688,343 @@ export const schema: Schema = {
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}"
+    },
+    {
+      "description": "List the email.exchange.sendConnector objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of your send connectors on this Exchange service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create new send connector",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of your send connector",
+              "fullType": "string",
+              "name": "displayName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Maximum message size allowd on that send connector",
+              "fullType": "long",
+              "name": "maxSendSize",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "password",
+              "description": "Password that will be used to connect to smartHost",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Port adress that will be used to all e-mails send via this send connector",
+              "fullType": "long",
+              "name": "port",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "All messages sent through this connector will be transmitted using TLS",
+              "fullType": "boolean",
+              "name": "requireTLS",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Relay domain address that will be used to all e-mails send via this send connector",
+              "fullType": "string",
+              "name": "smartHost",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "email.exchange.smartHostAuthMechanismEnum",
+              "description": "Authentication mechanism to use for authentication with a smart host",
+              "fullType": "email.exchange.smartHostAuthMechanismEnum",
+              "name": "smartHostAuthMechanism",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "User that will be used to connect to smartHost",
+              "fullType": "string",
+              "name": "user",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sendConnector"
+    },
+    {
+      "description": "Exchange Send Connector",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete existing send connector",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of this send connector",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of this send connector",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.sendConnector",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "email.exchange.sendConnector",
+              "description": "New object properties",
+              "fullType": "email.exchange.sendConnector",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of this send connector",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sendConnector/{id}"
+    },
+    {
+      "description": "changeAuthentication operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change authentication on send connector",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "New password",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "email.exchange.smartHostAuthMechanismEnum",
+              "description": "The SmartHostAuthMechanism parameter specifies the smart host authentication mechanism to use for authentication with a remote server",
+              "fullType": "email.exchange.smartHostAuthMechanismEnum",
+              "name": "smartHostAuthMechanism",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "User that will be used to connect to smartHost",
+              "fullType": "string",
+              "name": "user",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of this send connector",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sendConnector/{id}/changeAuthentication"
     },
     {
       "description": "Exchange server",
@@ -7778,6 +8413,14 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "customIsolationId": {
+          "canBeNull": true,
+          "description": "custom isolation apply on this account",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "deleteAtExpiration": {
           "canBeNull": true,
           "description": "delete at expiration",
@@ -8089,6 +8732,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "sendConnectorId": {
+          "canBeNull": true,
+          "description": "Custom sendConnectorId used to send mails when SBR is configured",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "spamAndVirusConfiguration": {
           "canBeNull": false,
@@ -8598,9 +9249,17 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "Relay domain address that will be used to all newly created accounts",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "sendConnectorIdDefault": {
+          "canBeNull": true,
+          "description": "Send connector id that will be used to all newly created accounts",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "srvIsValid": {
           "canBeNull": false,
@@ -8997,11 +9656,8 @@ export const schema: Schema = {
     "email.exchange.OutlookVersionEnum": {
       "description": "Outlook version",
       "enum": [
-        "mac_x86_2011",
         "mac_x86_2016",
-        "windows_x64_2013",
         "windows_x64_2016",
-        "windows_x86_2013",
         "windows_x86_2016"
       ],
       "enumType": "string",
@@ -9032,6 +9688,16 @@ export const schema: Schema = {
           "type": "boolean"
         }
       }
+    },
+    "email.exchange.OvhCustomIsolationFieldEnum": {
+      "description": "custom exchange isolation field",
+      "enum": [
+        "company",
+        "country"
+      ],
+      "enumType": "string",
+      "id": "OvhCustomIsolationFieldEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.OvhLicenceEnum": {
       "description": "OVH licence account",
@@ -9360,6 +10026,7 @@ export const schema: Schema = {
         "addDistributionGroupSendOnBehalfTo",
         "addDomain",
         "addDomainDisclaimer",
+        "addExchangeCustomIsolation",
         "addExchangeServiceAuthorizedIp",
         "addExportPstRequest",
         "addExternalContact",
@@ -9370,6 +10037,7 @@ export const schema: Schema = {
         "addResourceAccount",
         "addResourceDelegate",
         "addSendAs",
+        "addSendConnector",
         "addSendOnBehalfTo",
         "addSharedAccount",
         "addSharedAccountFullAccess",
@@ -9392,6 +10060,7 @@ export const schema: Schema = {
         "deleteDistributionGroupSendOnBehalfTo",
         "deleteDomain",
         "deleteDomainDisclaimer",
+        "deleteExchangeCustomIsolation",
         "deleteExchangeService",
         "deleteExchangeServiceAuthorizedIp",
         "deleteExportPstRequest",
@@ -9403,6 +10072,7 @@ export const schema: Schema = {
         "deleteResourceAccount",
         "deleteResourceDelegate",
         "deleteSendAs",
+        "deleteSendConnector",
         "deleteSendOnBehalfTo",
         "deleteSharedAccount",
         "deleteSharedAccountFullAccess",
@@ -9440,6 +10110,7 @@ export const schema: Schema = {
         "setPublicFolder",
         "setPublicFolderPermission",
         "setResourceAccount",
+        "setSendConnector",
         "setService",
         "setSharedAccount",
         "suspendAccount",
@@ -9872,6 +10543,53 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "exchangeCommercialVersionEnum",
       "namespace": "email.exchange"
+    },
+    "email.exchange.exchangeCustomIsolation": {
+      "description": "custom exchange isolation",
+      "id": "exchangeCustomIsolation",
+      "namespace": "email.exchange",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "isolationField": {
+          "canBeNull": false,
+          "description": "Field used for isolation",
+          "fullType": "email.exchange.OvhCustomIsolationFieldEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.exchange.OvhCustomIsolationFieldEnum"
+        },
+        "isolationValue": {
+          "canBeNull": false,
+          "description": "Isolation field value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the custom isolation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Custom isolation status",
+          "fullType": "email.exchange.ObjectStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.exchange.ObjectStateEnum"
+        }
+      }
     },
     "email.exchange.exchangeDistributionGroupManager": {
       "description": "Mailing list managers",
@@ -10943,6 +11661,101 @@ export const schema: Schema = {
         }
       }
     },
+    "email.exchange.sendConnector": {
+      "description": "Exchange Send Connector",
+      "id": "sendConnector",
+      "namespace": "email.exchange",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "displayName": {
+          "canBeNull": false,
+          "description": "Name of your send connector",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": true,
+          "description": "Id of this send connector",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "lastUpdateDate": {
+          "canBeNull": true,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "maxSendSize": {
+          "canBeNull": false,
+          "description": "Maximum send size in MB",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "port": {
+          "canBeNull": false,
+          "description": "Port adress that will be used to all e-mails send via this send connector",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "requireTLS": {
+          "canBeNull": false,
+          "description": "All messages sent through this connector will be transmitted using TLS",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "smartHost": {
+          "canBeNull": false,
+          "description": "Relay domain address that will be used to all e-mails send via this send connector",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "smartHostAuthMechanism": {
+          "canBeNull": false,
+          "description": "Authentication mechanism to use for authentication with a smart host",
+          "fullType": "email.exchange.smartHostAuthMechanismEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.exchange.smartHostAuthMechanismEnum"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Send connector state",
+          "fullType": "email.exchange.ObjectStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.exchange.ObjectStateEnum"
+        },
+        "taskPendingId": {
+          "canBeNull": true,
+          "description": "Pending task for this send connector",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "email.exchange.sharedAccount": {
       "description": "Exchange shared mailbox",
       "id": "sharedAccount",
@@ -11085,6 +11898,17 @@ export const schema: Schema = {
           "type": "long"
         }
       }
+    },
+    "email.exchange.smartHostAuthMechanismEnum": {
+      "description": "Smart host authentication mechanism",
+      "enum": [
+        "basicAuth",
+        "basicAuthRequireTLS",
+        "none"
+      ],
+      "enumType": "string",
+      "id": "smartHostAuthMechanismEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.spamAndVirusConfiguration": {
       "description": "Spam and Antyvirus configuration",

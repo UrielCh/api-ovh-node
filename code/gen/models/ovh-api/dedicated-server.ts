@@ -9221,6 +9221,27 @@ export const schema: Schema = {
         }
       }
     },
+    "dedicated.server.Interfaces": {
+      "description": "Interface or interfaces aggregation",
+      "id": "Interfaces",
+      "namespace": "dedicated.server",
+      "properties": {
+        "macs": {
+          "canBeNull": false,
+          "description": "Mac address or list of mac addresses",
+          "readOnly": false,
+          "required": false,
+          "type": "macAddress[]"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Network type",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.NetworkingTypeEnum"
+        }
+      }
+    },
     "dedicated.server.Intervention": {
       "description": "Intervention made on this server",
       "id": "Intervention",
@@ -9672,6 +9693,57 @@ export const schema: Schema = {
           "type": "dedicated.server.BandwidthvRackDetails"
         }
       }
+    },
+    "dedicated.server.Networking": {
+      "description": "Network configuration",
+      "id": "Networking",
+      "namespace": "dedicated.server",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "Operation description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "interfaces": {
+          "canBeNull": false,
+          "description": "Interface or interfaces aggregation",
+          "fullType": "dedicated.server.Interfaces[]",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.server.Interfaces[]"
+        },
+        "status": {
+          "canBeNull": true,
+          "description": "Operation status",
+          "fullType": "dedicated.server.NetworkingOperationEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.server.NetworkingOperationEnum"
+        }
+      }
+    },
+    "dedicated.server.NetworkingOperationEnum": {
+      "description": "Network operation states",
+      "enum": [
+        "active",
+        "deploying"
+      ],
+      "enumType": "string",
+      "id": "NetworkingOperationEnum",
+      "namespace": "dedicated.server"
+    },
+    "dedicated.server.NetworkingTypeEnum": {
+      "description": "Network type",
+      "enum": [
+        "public",
+        "vrack"
+      ],
+      "enumType": "string",
+      "id": "NetworkingTypeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.OlaAvailableModes": {
       "description": "A structure describing OVH Link Aggregation available modes",

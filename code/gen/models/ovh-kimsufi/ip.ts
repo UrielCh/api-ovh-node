@@ -349,6 +349,285 @@ export const schema: Schema = {
       "path": "/ip/{ip}/arp/{ipBlocked}/unblock"
     },
     {
+      "description": "List the ip.GameMitigation objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Ip under game anti-ddos",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipv4[]",
+          "scopes": [
+            "all",
+            "product/ip/all"
+          ]
+        }
+      ],
+      "path": "/ip/{ip}/game"
+    },
+    {
+      "description": "GAME Anti-DDoS",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "",
+              "fullType": "ipv4",
+              "name": "ipOnGame",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.GameMitigation",
+          "scopes": [
+            "all",
+            "product/ip/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ip.GameMitigation",
+              "description": "New object properties",
+              "fullType": "ip.GameMitigation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipBlock",
+              "description": "",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "",
+              "fullType": "ipv4",
+              "name": "ipOnGame",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/ip/all"
+          ]
+        }
+      ],
+      "path": "/ip/{ip}/game/{ipOnGame}"
+    },
+    {
+      "description": "List the ip.GameMitigationRule objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "IDs of rules configured for this IP",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "",
+              "fullType": "ipv4",
+              "name": "ipOnGame",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/ip/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add new rule on your IP",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "complexType.Range<long>",
+              "description": "The UDP port range to apply the rule on",
+              "fullType": "complexType.Range<long>",
+              "name": "ports",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ip.GameMitigationRuleProtocolEnum",
+              "description": "The protocol running behind the given port",
+              "fullType": "ip.GameMitigationRuleProtocolEnum",
+              "name": "protocol",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipBlock",
+              "description": "",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "",
+              "fullType": "ipv4",
+              "name": "ipOnGame",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.GameMitigationRule",
+          "scopes": [
+            "all",
+            "product/ip/all"
+          ]
+        }
+      ],
+      "path": "/ip/{ip}/game/{ipOnGame}/rule"
+    },
+    {
+      "description": "Rule on ip:ports",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete rule",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "ID of the rule",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipBlock",
+              "description": "",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "",
+              "fullType": "ipv4",
+              "name": "ipOnGame",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.GameMitigationRule",
+          "scopes": [
+            "all",
+            "product/ip/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "ID of the rule",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipBlock",
+              "description": "",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "",
+              "fullType": "ipv4",
+              "name": "ipOnGame",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.GameMitigationRule",
+          "scopes": [
+            "all",
+            "product/ip/all"
+          ]
+        }
+      ],
+      "path": "/ip/{ip}/game/{ipOnGame}/rule/{id}"
+    },
+    {
       "description": "List the license.cloudLinux.CloudLinux objects",
       "operations": [
         {
@@ -1168,6 +1447,30 @@ export const schema: Schema = {
   ],
   "basePath": "https://eu.api.kimsufi.com/1.0",
   "models": {
+    "complexType.Range<T>": {
+      "description": "Start and end points (inclusive) of a range",
+      "generics": [
+        "T"
+      ],
+      "id": "Range",
+      "namespace": "complexType",
+      "properties": {
+        "from": {
+          "canBeNull": false,
+          "description": "Start point of the range",
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        },
+        "to": {
+          "canBeNull": false,
+          "description": "End point of the range",
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
     "coreTypes.CountryEnum": {
       "description": "ISO country codes",
       "enum": [
@@ -1609,11 +1912,136 @@ export const schema: Schema = {
       "id": "BlockedIpStateEnum",
       "namespace": "ip"
     },
+    "ip.GameMitigation": {
+      "description": "GAME Anti-DDoS",
+      "id": "GameMitigation",
+      "namespace": "ip",
+      "properties": {
+        "firewallModeEnabled": {
+          "canBeNull": false,
+          "description": "Firewall mode : in UDP, only allow traffic matching your rules (as well as established traffic). If not enabled, traffic to ports not defined in your rules will be permited. TCP traffic is unaffected by this.",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "ipOnGame": {
+          "canBeNull": false,
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4"
+        },
+        "state": {
+          "canBeNull": false,
+          "fullType": "ip.GameMitigationStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ip.GameMitigationStateEnum"
+        }
+      }
+    },
+    "ip.GameMitigationRule": {
+      "description": "Rule on ip:ports",
+      "id": "GameMitigationRule",
+      "namespace": "ip",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the rule",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "ports": {
+          "canBeNull": false,
+          "fullType": "complexType.Range<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.Range<long>"
+        },
+        "protocol": {
+          "canBeNull": false,
+          "fullType": "ip.GameMitigationRuleProtocolEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ip.GameMitigationRuleProtocolEnum"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Current state of your rule",
+          "fullType": "ip.GameMitigationRuleStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ip.GameMitigationRuleStateEnum"
+        }
+      }
+    },
+    "ip.GameMitigationRuleProtocolEnum": {
+      "description": "Possible values for game rule protocol",
+      "enum": [
+        "arkSurvivalEvolved",
+        "arma",
+        "gtaMultiTheftAutoSanAndreas",
+        "gtaSanAndreasMultiplayerMod",
+        "hl2Source",
+        "minecraftPocketEdition",
+        "minecraftQuery",
+        "mumble",
+        "other",
+        "rust",
+        "teamspeak2",
+        "teamspeak3",
+        "trackmaniaShootmania"
+      ],
+      "enumType": "string",
+      "id": "GameMitigationRuleProtocolEnum",
+      "namespace": "ip"
+    },
+    "ip.GameMitigationRuleStateEnum": {
+      "description": "Possible values for game mitigation rule state",
+      "enum": [
+        "createRulePending",
+        "deleteRulePending",
+        "ok"
+      ],
+      "enumType": "string",
+      "id": "GameMitigationRuleStateEnum",
+      "namespace": "ip"
+    },
+    "ip.GameMitigationStateEnum": {
+      "description": "Possible values for udp mitigation rule state",
+      "enum": [
+        "firewallModeDisablePending",
+        "firewallModeEnablePending",
+        "ok"
+      ],
+      "enumType": "string",
+      "id": "GameMitigationStateEnum",
+      "namespace": "ip"
+    },
     "ip.Ip": {
       "description": "Your IP",
       "id": "Ip",
       "namespace": "ip",
       "properties": {
+        "bringYourOwnIp": {
+          "canBeNull": false,
+          "description": "Is this IP part of the Bring your own IP program (alpha)",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "campus": {
+          "canBeNull": true,
+          "description": "Where is the IP used/usable (alpha)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "canBeTerminated": {
           "canBeNull": false,
           "fullType": "boolean",

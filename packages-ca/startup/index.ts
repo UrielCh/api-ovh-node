@@ -16,42 +16,42 @@ export namespace startup {
      * Acceptance status
      * type fullname: startup.acceptanceStatusEnum
      */
-    export type acceptanceStatusEnum = "Open" | "Rejected" | "RegisteredQualified" | "AdvancedQualified" | "Registered" | "Advanced" | "AdvancedHandOperated" | "Banned"
+    export type acceptanceStatusEnum = "Advanced" | "AdvancedHandOperated" | "AdvancedQualified" | "Banned" | "Open" | "Registered" | "RegisteredQualified" | "Rejected"
     /**
      * Where did you hear about OVHcloud
      * type fullname: startup.awarnessEnum
      */
-    export type awarnessEnum = "Twitter" | "LinkedIn" | "Facebook" | "Email" | "WordOfMouth" | "Event" | "InternetSearch" | "OnlineAdvert" | "Partner" | "Website"
+    export type awarnessEnum = "Email" | "Event" | "Facebook" | "InternetSearch" | "LinkedIn" | "OnlineAdvert" | "Partner" | "Twitter" | "Website" | "WordOfMouth"
     /**
      * employeesNumber
      * type fullname: startup.employeesNumberEnum
      */
-    export type employeesNumberEnum = "1Or2" | "3To5" | "6To9" | "10To19" | "20To49" | "50To99" | "100To199" | "200To249" | "250To499"
+    export type employeesNumberEnum = "100To199" | "10To19" | "1Or2" | "200To249" | "20To49" | "250To499" | "3To5" | "50To99" | "6To9"
     /**
      * When do you plan to start using cloud infrastructure ? (months)
      * type fullname: startup.infrastructureUsingEnum
      */
-    export type infrastructureUsingEnum = "Less1" | "1To6" | "6To12" | "Over12" | "DontKnow"
+    export type infrastructureUsingEnum = "1To6" | "6To12" | "DontKnow" | "Less1" | "Over12"
     /**
      * last Fundraising
      * type fullname: startup.lastFundraisingEnum
      */
-    export type lastFundraisingEnum = "DontShare" | "Crowdfunding" | "PreSeed" | "Seed" | "Series_A" | "Series_B" | "Series_C" | "More" | "No"
+    export type lastFundraisingEnum = "Crowdfunding" | "DontShare" | "More" | "No" | "PreSeed" | "Seed" | "Series_A" | "Series_B" | "Series_C"
     /**
      * Planned Fund Raising
      * type fullname: startup.plannedFundRaisingEnum
      */
-    export type plannedFundRaisingEnum = "DontShare" | "Yes" | "No"
+    export type plannedFundRaisingEnum = "DontShare" | "No" | "Yes"
     /**
      * Society Industries
      * type fullname: startup.relatedIndustryEnum
      */
-    export type relatedIndustryEnum = "Accommodation_and_FoodServices" | "Agriculture" | "Agro_industry" | "AI_Wholesale" | "Art_Sport_Entertainment" | "ARTISANAT" | "ASP_SI_ITServices" | "Automotive" | "Banking" | "Construction_and_Architecture" | "Databases_Wholesale" | "DigitalServices" | "E_Retail" | "EducationalServices" | "Energy_and_Water" | "Game_Wholesale" | "HeadOffice" | "Healthcare" | "Host_the_Hoster_Wholesale" | "Human_Resources" | "IAASproviders_WebHosters_Data" | "Life_Sciences" | "Manufacturing_Industry" | "Mining_Industry" | "NonProfit" | "Other_Services_Business" | "Other_Services_Personal" | "Others" | "PublicSector" | "Real_Estate" | "Retail_and_Trade" | "ScienceR&D" | "Software Editors" | "Storage_Wholesale" | "Telecommunication_Internet" | "Transportation_Logistics" | "TV_Media" | "Ventures_for_Good" | "Virtualization_Wholesale" | "WebAgencies"
+    export type relatedIndustryEnum = "AI_Wholesale" | "ARTISANAT" | "ASP_SI_ITServices" | "Accommodation_and_FoodServices" | "Agriculture" | "Agro_industry" | "Art_Sport_Entertainment" | "Automotive" | "Banking" | "Construction_and_Architecture" | "Databases_Wholesale" | "DigitalServices" | "E_Retail" | "EducationalServices" | "Energy_and_Water" | "Game_Wholesale" | "HeadOffice" | "Healthcare" | "Host_the_Hoster_Wholesale" | "Human_Resources" | "IAASproviders_WebHosters_Data" | "Life_Sciences" | "Manufacturing_Industry" | "Mining_Industry" | "NonProfit" | "Other_Services_Business" | "Other_Services_Personal" | "Others" | "PublicSector" | "Real_Estate" | "Retail_and_Trade" | "ScienceR&D" | "Software Editors" | "Storage_Wholesale" | "TV_Media" | "Telecommunication_Internet" | "Transportation_Logistics" | "Ventures_for_Good" | "Virtualization_Wholesale" | "WebAgencies"
     /**
      * Related Technologies
      * type fullname: startup.relatedTechnologyEnum
      */
-    export type relatedTechnologyEnum = "CloudGaming" | "Streaming" | "ScientificComputation" | "IoT" | "API" | "MobileApplications" | "Big_Data" | "Chatbot" | "ArtificialIntelligence" | "MachineLearningDeepLearning" | "PredictiveAnalyticAlgorithms" | "Blockchain" | "CRM_ERP" | "GeoLocalization" | "ContainersDockers" | "VirtualMachines" | "Orchestration" | "Drones" | "AugmentedReality" | "VirtualDesktop" | "VoIP" | "3dPrinting" | "ElearningPlatform" | "Robotics" | "Storage" | "BankingDataInfrastructure" | "Healthcareinfrastructure" | "Marketplace" | "CyberSecurity" | "Other"
+    export type relatedTechnologyEnum = "3dPrinting" | "API" | "ArtificialIntelligence" | "AugmentedReality" | "BankingDataInfrastructure" | "Big_Data" | "Blockchain" | "CRM_ERP" | "Chatbot" | "CloudGaming" | "ContainersDockers" | "CyberSecurity" | "Drones" | "ElearningPlatform" | "GeoLocalization" | "Healthcareinfrastructure" | "IoT" | "MachineLearningDeepLearning" | "Marketplace" | "MobileApplications" | "Orchestration" | "Other" | "PredictiveAnalyticAlgorithms" | "Robotics" | "ScientificComputation" | "Storage" | "Streaming" | "VirtualDesktop" | "VirtualMachines" | "VoIP"
     /**
      * Startup Entity
      * interface fullName: startup.startup.startup

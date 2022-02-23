@@ -59,7 +59,7 @@ export namespace cloud {
      * Enum values for State
      * type fullname: cloud.ExecutionStateEnum
      */
-    export type ExecutionStateEnum = "IDLE" | "RUNNING" | "SUCCESS" | "ERROR" | "PAUSED"
+    export type ExecutionStateEnum = "CANCELED" | "ERROR" | "IDLE" | "PAUSED" | "RUNNING" | "SUCCESS"
     /**
      * Enum values for IpCountry
      * type fullname: cloud.IpCountryEnum
@@ -91,7 +91,7 @@ export namespace cloud {
      * Enum values for Status
      * type fullname: cloud.LabStatusEnum
      */
-    export type LabStatusEnum = "open" | "activating" | "activated" | "closed"
+    export type LabStatusEnum = "activated" | "activating" | "closed" | "open"
     /**
      * An operation is an async process on your Project
      * interface fullName: cloud.Operation.Operation
@@ -115,7 +115,7 @@ export namespace cloud {
      * Enum values for Status
      * type fullname: cloud.OperationStatusEnum
      */
-    export type OperationStatusEnum = "created" | "in-progress" | "completed" | "in-error" | "unknown"
+    export type OperationStatusEnum = "completed" | "created" | "in-error" | "in-progress" | "unknown"
     /**
      * Project
      * interface fullName: cloud.Project.Project
@@ -266,6 +266,7 @@ export namespace cloud {
         minNodes?: number;
         monthlyBilled?: boolean;
         name?: string;
+        template?: cloud.kube.NodePoolTemplate;
     }
     /**
      * Missing description
@@ -305,6 +306,7 @@ export namespace cloud {
         minNodes?: number;
         monthlyBilled?: boolean;
         name?: string;
+        template?: cloud.kube.NodePoolTemplate;
     }
     /**
      * Missing description
@@ -317,6 +319,7 @@ export namespace cloud {
         maxNodes?: number;
         minNodes?: number;
         nodesToRemove?: string[];
+        template?: cloud.kube.NodePoolTemplate;
     }
     /**
      * Creation model for OIDC
@@ -589,7 +592,7 @@ export namespace cloud {
      * Enum values for ContinentCode
      * type fullname: cloud.RegionContinentEnum
      */
-    export type RegionContinentEnum = "EU" | "NA" | "US" | "ASIA"
+    export type RegionContinentEnum = "ASIA" | "EU" | "NA" | "US"
     /**
      * Enum values for Status
      * type fullname: cloud.RegionStatus
@@ -599,7 +602,7 @@ export namespace cloud {
      * Enum values for Status
      * type fullname: cloud.RegionStatusEnum
      */
-    export type RegionStatusEnum = "UP" | "DOWN" | "MAINTENANCE"
+    export type RegionStatusEnum = "DOWN" | "MAINTENANCE" | "UP"
     /**
      * Enum values for Status
      * type fullname: cloud.ServiceStatus
@@ -609,7 +612,7 @@ export namespace cloud {
      * Enum values for Status
      * type fullname: cloud.ServiceStatusEnum
      */
-    export type ServiceStatusEnum = "UP" | "DOWN"
+    export type ServiceStatusEnum = "DOWN" | "UP"
     /**
      * Container
      * interface fullName: cloud.StorageContainer.StorageContainer
@@ -780,7 +783,7 @@ export namespace cloud {
          * Enum values for flavor capabilities names
          * type fullname: cloud.flavor.CapabilityNameEnum
          */
-        export type CapabilityNameEnum = "resize" | "snapshot" | "volume" | "failoverip"
+        export type CapabilityNameEnum = "failoverip" | "resize" | "snapshot" | "volume"
         /**
          * Flavor
          * interface fullName: cloud.flavor.Flavor.Flavor
@@ -835,7 +838,7 @@ export namespace cloud {
          * OSTypeEnum
          * type fullname: cloud.image.OSTypeEnum
          */
-        export type OSTypeEnum = "linux" | "bsd" | "windows" | "baremetal-linux"
+        export type OSTypeEnum = "baremetal-linux" | "bsd" | "linux" | "windows"
     }
     export namespace instance {
         /**
@@ -904,6 +907,7 @@ export namespace cloud {
             operationIds: string[];
             planCode?: string;
             region: string;
+            rescuePassword?: string;
             sshKey?: cloud.sshkey.SshKeyDetail;
             status: cloud.instance.InstanceStatusEnum;
         }
@@ -927,7 +931,7 @@ export namespace cloud {
          * InstanceStatusEnum
          * type fullname: cloud.instance.InstanceStatusEnum
          */
-        export type InstanceStatusEnum = "ACTIVE" | "BUILDING" | "DELETED" | "DELETING" | "ERROR" | "HARD_REBOOT" | "PASSWORD" | "PAUSED" | "REBOOT" | "REBUILD" | "RESCUED" | "RESIZED" | "REVERT_RESIZE" | "SOFT_DELETED" | "STOPPED" | "SUSPENDED" | "UNKNOWN" | "VERIFY_RESIZE" | "MIGRATING" | "RESIZE" | "BUILD" | "SHUTOFF" | "RESCUE" | "SHELVED" | "SHELVED_OFFLOADED" | "RESCUING" | "UNRESCUING" | "SNAPSHOTTING" | "RESUMING" | "SHELVING" | "UNSHELVING"
+        export type InstanceStatusEnum = "ACTIVE" | "BUILD" | "BUILDING" | "DELETED" | "DELETING" | "ERROR" | "HARD_REBOOT" | "MIGRATING" | "PASSWORD" | "PAUSED" | "REBOOT" | "REBUILD" | "RESCUE" | "RESCUED" | "RESCUING" | "RESIZE" | "RESIZED" | "RESUMING" | "REVERT_RESIZE" | "SHELVED" | "SHELVED_OFFLOADED" | "SHELVING" | "SHUTOFF" | "SNAPSHOTTING" | "SOFT_DELETED" | "STOPPED" | "SUSPENDED" | "UNKNOWN" | "UNRESCUING" | "UNSHELVING" | "VERIFY_RESIZE"
         /**
          * InstanceVnc
          * interface fullName: cloud.instance.InstanceVnc.InstanceVnc
@@ -966,7 +970,7 @@ export namespace cloud {
          * MetricsType
          * type fullname: cloud.instance.MetricsTypeEnum
          */
-        export type MetricsTypeEnum = "mem:used" | "mem:max" | "cpu:used" | "cpu:max" | "net:tx" | "net:rx"
+        export type MetricsTypeEnum = "cpu:max" | "cpu:used" | "mem:max" | "mem:used" | "net:rx" | "net:tx"
         /**
          * MonthlyBilling
          * interface fullName: cloud.instance.MonthlyBilling.MonthlyBilling
@@ -1007,7 +1011,7 @@ export namespace cloud {
          * RebootTypeEnum
          * type fullname: cloud.instance.RebootTypeEnum
          */
-        export type RebootTypeEnum = "soft" | "hard"
+        export type RebootTypeEnum = "hard" | "soft"
         /**
          * RescueAdminPassword
          * interface fullName: cloud.instance.RescueAdminPassword.RescueAdminPassword
@@ -1192,6 +1196,7 @@ export namespace cloud {
             projectId: string;
             sizeStatus: cloud.kube.NodePoolSizeStatusEnum;
             status: cloud.kube.NodePoolStatusEnum;
+            template: cloud.kube.NodePoolTemplate;
             upToDateNodes: number;
             updatedAt: string;
         }
@@ -1208,12 +1213,37 @@ export namespace cloud {
          * Enum values for NodePool size Status
          * type fullname: cloud.kube.NodePoolSizeStatusEnum
          */
-        export type NodePoolSizeStatusEnum = "UNDER_CAPACITY" | "CAPACITY_OK" | "OVER_CAPACITY"
+        export type NodePoolSizeStatusEnum = "CAPACITY_OK" | "OVER_CAPACITY" | "UNDER_CAPACITY"
         /**
          * Enum values for NodePool Status
          * type fullname: cloud.kube.NodePoolStatusEnum
          */
         export type NodePoolStatusEnum = "DELETED" | "DELETING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "RESIZING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR"
+        /**
+         * Managed Kubernetes nodepool template
+         * interface fullName: cloud.kube.NodePoolTemplate.NodePoolTemplate
+         */
+        export interface NodePoolTemplate {
+            metadata: cloud.kube.NodePoolTemplateMetadata;
+            spec: cloud.kube.NodePoolTemplateSpec;
+        }
+        /**
+         * Metadata of each nodes in the pool
+         * interface fullName: cloud.kube.NodePoolTemplateMetadata.NodePoolTemplateMetadata
+         */
+        export interface NodePoolTemplateMetadata {
+            annotations: { [key: string]: string };
+            finalizers: string[];
+            labels: { [key: string]: string };
+        }
+        /**
+         * Spec of each nodes in the pool
+         * interface fullName: cloud.kube.NodePoolTemplateSpec.NodePoolTemplateSpec
+         */
+        export interface NodePoolTemplateSpec {
+            taints: cloud.kube.Taint[];
+            unschedulable: boolean;
+        }
         /**
          * Enum values for Status
          * type fullname: cloud.kube.NodeStatusEnum
@@ -1231,12 +1261,26 @@ export namespace cloud {
          * Enum values for available regions
          * type fullname: cloud.kube.RegionEnum
          */
-        export type RegionEnum = "GRA5" | "GRA7" | "GRA9" | "BHS5" | "SBG5" | "WAW1" | "SGP1" | "SYD1" | "US-EAST-VA-1" | "US-WEST-OR-1"
+        export type RegionEnum = "BHS5" | "GRA5" | "GRA7" | "GRA9" | "SBG5" | "DE1" | "SGP1" | "SYD1" | "US-EAST-VA-1" | "US-WEST-OR-1" | "WAW1"
         /**
          * Enum values for worker nodes reset policy
          * type fullname: cloud.kube.ResetWorkerNodesPolicyEnum
          */
-        export type ResetWorkerNodesPolicyEnum = "reinstall" | "delete"
+        export type ResetWorkerNodesPolicyEnum = "delete" | "reinstall"
+        /**
+         * Kubernetes taint object
+         * interface fullName: cloud.kube.Taint.Taint
+         */
+        export interface Taint {
+            effect: cloud.kube.TaintEffectEnum;
+            key: string;
+            value: string;
+        }
+        /**
+         * Enum values for taint effects
+         * type fullname: cloud.kube.TaintEffectEnum
+         */
+        export type TaintEffectEnum = "NoExecute" | "NoSchedule" | "PreferNoSchedule"
         /**
          * Enum values for UpdatePolicy
          * type fullname: cloud.kube.UpdatePolicyEnum
@@ -1292,7 +1336,7 @@ export namespace cloud {
          * Load balancer provisioning status
          * type fullname: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum
          */
-        export type LoadBalancerProvisioningStatusEnum = "active" | "creating" | "updating" | "deleting" | "deleted" | "error"
+        export type LoadBalancerProvisioningStatusEnum = "active" | "creating" | "deleted" | "deleting" | "error" | "updating"
     }
     export namespace migration {
         /**
@@ -1353,17 +1397,17 @@ export namespace cloud {
          * NetworkStatusEnum
          * type fullname: cloud.network.NetworkStatusEnum
          */
-        export type NetworkStatusEnum = "BUILDING" | "ACTIVE" | "DELETING"
+        export type NetworkStatusEnum = "ACTIVE" | "BUILDING" | "DELETING"
         /**
          * NetworkTypeEnum
          * type fullname: cloud.network.NetworkTypeEnum
          */
-        export type NetworkTypeEnum = "public" | "private"
+        export type NetworkTypeEnum = "private" | "public"
         /**
          * NetworkVisibilityEnum
          * type fullname: cloud.network.NetworkVisibilityEnum
          */
-        export type NetworkVisibilityEnum = "public" | "private"
+        export type NetworkVisibilityEnum = "private" | "public"
         /**
          * Subnet
          * interface fullName: cloud.network.Subnet.Subnet
@@ -1373,25 +1417,6 @@ export namespace cloud {
             gatewayIp?: string;
             id: string;
             ipPools: cloud.network.IPPool[];
-        }
-    }
-    export namespace openstackClient {
-        /**
-         * Profile
-         * interface fullName: cloud.openstackClient.Profile.Profile
-         */
-        export interface Profile {
-            name: string;
-        }
-        /**
-         * Session
-         * interface fullName: cloud.openstackClient.Session.Session
-         */
-        export interface Session {
-            expires: string;
-            id: string;
-            profile: cloud.openstackClient.Profile;
-            websocket: string;
         }
     }
     export namespace order {
@@ -1410,7 +1435,7 @@ export namespace cloud {
          * Order status
          * type fullname: cloud.order.StatusEnum
          */
-        export type StatusEnum = "unpaid" | "delivering" | "delivered" | "unknown"
+        export type StatusEnum = "delivered" | "delivering" | "unknown" | "unpaid"
         export namespace rule {
             /**
              * Public Cloud products availability
@@ -1512,7 +1537,7 @@ export namespace cloud {
          * Certificate status
          * type fullname: cloud.project.CertificateStatusEnum
          */
-        export type CertificateStatusEnum = "OK" | "EXPIRED" | "NOT_YET_VALID" | "REVOKED"
+        export type CertificateStatusEnum = "EXPIRED" | "NOT_YET_VALID" | "OK" | "REVOKED"
         /**
          * A load balancer to handle workload
          * interface fullName: cloud.project.LoadBalancer.LoadBalancer
@@ -1627,7 +1652,7 @@ export namespace cloud {
              * SAN kind
              * type fullname: cloud.project.certificate.ServerAlternativeNameKindEnum
              */
-            export type ServerAlternativeNameKindEnum = "EMAIL" | "DNS" | "URI" | "IP"
+            export type ServerAlternativeNameKindEnum = "DNS" | "EMAIL" | "IP" | "URI"
         }
         export namespace loadbalancer {
             /**
@@ -1850,7 +1875,7 @@ export namespace cloud {
              * Size of the load balancer
              * type fullname: cloud.project.loadbalancer.SizeEnum
              */
-            export type SizeEnum = "S" | "M" | "L"
+            export type SizeEnum = "L" | "M" | "S"
             /**
              * Loadbalancer stats
              * interface fullName: cloud.project.loadbalancer.Stats.Stats
@@ -1867,7 +1892,7 @@ export namespace cloud {
              * Status of a load balancer
              * type fullname: cloud.project.loadbalancer.StatusEnum
              */
-            export type StatusEnum = "CREATED" | "APPLYING" | "RUNNING" | "DELETING" | "ERROR" | "FROZEN"
+            export type StatusEnum = "APPLYING" | "CREATED" | "DELETING" | "ERROR" | "FROZEN" | "RUNNING"
             /**
              * A load balancer target
              * interface fullName: cloud.project.loadbalancer.Target.Target
@@ -1896,24 +1921,24 @@ export namespace cloud {
                  * Available load balancer backend balancer algorithm
                  * type fullname: cloud.project.loadbalancer.backend.BalancerAlgorithmEnum
                  */
-                export type BalancerAlgorithmEnum = "roundrobin" | "static-rr" | "leastconn" | "first" | "source"
+                export type BalancerAlgorithmEnum = "first" | "leastconn" | "roundrobin" | "source" | "static-rr"
                 /**
                  * Available load balancer backend proxy-protocol
                  * type fullname: cloud.project.loadbalancer.backend.ProxyProtocolEnum
                  */
-                export type ProxyProtocolEnum = "v1" | "v2" | "v2-ssl" | "v2-cn"
+                export type ProxyProtocolEnum = "v1" | "v2" | "v2-cn" | "v2-ssl"
             }
             export namespace condition {
                 /**
                  * Matching operator
                  * type fullname: cloud.project.loadbalancer.condition.MatchEnum
                  */
-                export type MatchEnum = "is" | "start-with" | "end-with" | "regex" | "exists"
+                export type MatchEnum = "end-with" | "exists" | "is" | "regex" | "start-with"
                 /**
                  * Matching field
                  * type fullname: cloud.project.loadbalancer.condition.TypeEnum
                  */
-                export type TypeEnum = "method" | "cookie" | "path" | "host" | "header" | "source" | "query-param"
+                export type TypeEnum = "cookie" | "header" | "host" | "method" | "path" | "query-param" | "source"
             }
             export namespace configuration {
                 export namespace networking {
@@ -2046,7 +2071,7 @@ export namespace cloud {
                          * Status of target's server
                          * type fullname: cloud.project.loadbalancer.stats.target.server.StatusEnum
                          */
-                        export type StatusEnum = "UNKNOWN" | "INIT" | "HEALTHY" | "L4_TIMEOUT_ERROR" | "L4_CONNECTION_ERROR" | "L7_TIMEOUT" | "L7_PROTOCOL_ERROR" | "L7_RESPONSE_ERROR" | "ERROR"
+                        export type StatusEnum = "ERROR" | "HEALTHY" | "INIT" | "L4_CONNECTION_ERROR" | "L4_TIMEOUT_ERROR" | "L7_PROTOCOL_ERROR" | "L7_RESPONSE_ERROR" | "L7_TIMEOUT" | "UNKNOWN"
                     }
                 }
             }
@@ -2055,12 +2080,12 @@ export namespace cloud {
                  * Available load balancer target balancer algorithm
                  * type fullname: cloud.project.loadbalancer.target.BalancerAlgorithmEnum
                  */
-                export type BalancerAlgorithmEnum = "roundrobin" | "static-rr" | "leastconn" | "first" | "source"
+                export type BalancerAlgorithmEnum = "first" | "leastconn" | "roundrobin" | "source" | "static-rr"
                 /**
                  * Available load balancer target proxy-protocol
                  * type fullname: cloud.project.loadbalancer.target.ProxyProtocolEnum
                  */
-                export type ProxyProtocolEnum = "v1" | "v2" | "v2-ssl" | "v2-cn"
+                export type ProxyProtocolEnum = "v1" | "v2" | "v2-cn" | "v2-ssl"
             }
         }
         export namespace networkloadbalancer {
@@ -2458,7 +2483,7 @@ export namespace cloud {
          * RetrievalStateEnum
          * type fullname: cloud.storage.RetrievalStateEnum
          */
-        export type RetrievalStateEnum = "sealed" | "unsealing" | "unsealed"
+        export type RetrievalStateEnum = "sealed" | "unsealed" | "unsealing"
         /**
          * RightEnum
          * type fullname: cloud.storage.RightEnum
@@ -2468,7 +2493,7 @@ export namespace cloud {
          * TypeEnum
          * type fullname: cloud.storage.TypeEnum
          */
-        export type TypeEnum = "static" | "public" | "private"
+        export type TypeEnum = "private" | "public" | "static"
     }
     export namespace user {
         /**
@@ -2494,7 +2519,7 @@ export namespace cloud {
          * RoleEnum
          * type fullname: cloud.user.RoleEnum
          */
-        export type RoleEnum = "admin" | "authentication" | "administrator" | "compute_operator" | "infrastructure_supervisor" | "network_security_operator" | "network_operator" | "backup_operator" | "image_operator" | "volume_operator" | "objectstore_operator" | "ai_training_operator" | "ai_training_read"
+        export type RoleEnum = "admin" | "administrator" | "ai_training_operator" | "ai_training_read" | "authentication" | "backup_operator" | "compute_operator" | "image_operator" | "infrastructure_supervisor" | "network_operator" | "network_security_operator" | "objectstore_operator" | "volume_operator"
         /**
          * S3CredentialsWithSecret
          * interface fullName: cloud.user.S3CredentialsWithSecret.S3CredentialsWithSecret
@@ -2536,7 +2561,7 @@ export namespace cloud {
          * UserStatusEnum
          * type fullname: cloud.user.UserStatusEnum
          */
-        export type UserStatusEnum = "creating" | "ok" | "deleting" | "deleted"
+        export type UserStatusEnum = "creating" | "deleted" | "deleting" | "ok"
     }
     export namespace volume {
         /**
@@ -2558,7 +2583,7 @@ export namespace cloud {
          * SnapshotStatusEnum
          * type fullname: cloud.volume.SnapshotStatusEnum
          */
-        export type SnapshotStatusEnum = "creating" | "available" | "deleting" | "error" | "error_deleting"
+        export type SnapshotStatusEnum = "available" | "creating" | "deleting" | "error" | "error_deleting"
         /**
          * Volume
          * interface fullName: cloud.volume.Volume.Volume
@@ -2629,7 +2654,7 @@ export namespace nichandle {
      * OVH subsidiaries
      * type fullname: nichandle.OvhSubsidiaryEnum
      */
-    export type OvhSubsidiaryEnum = "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "SN" | "TN" | "ASIA" | "AU" | "CA" | "QC" | "SG" | "WE" | "WS" | "US"
+    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
 }
 export namespace service {
     /**
@@ -3262,7 +3287,7 @@ export interface Cloud {
                          * Create a nodepool on your cluster
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/nodepool
                          */
-                        $post(params: { antiAffinity?: boolean, autoscale?: boolean, autoscaling?: cloud.ProjectKubeNodePoolAutoscalingParams, desiredNodes?: number, flavorName: string, maxNodes?: number, minNodes?: number, monthlyBilled?: boolean, name?: string }): Promise<cloud.kube.NodePool>;
+                        $post(params: { antiAffinity?: boolean, autoscale?: boolean, autoscaling?: cloud.ProjectKubeNodePoolAutoscalingParams, desiredNodes?: number, flavorName: string, maxNodes?: number, minNodes?: number, monthlyBilled?: boolean, name?: string, template?: cloud.kube.NodePoolTemplate }): Promise<cloud.kube.NodePool>;
                         /**
                          * Controle cache
                          */
@@ -3282,7 +3307,7 @@ export interface Cloud {
                              * Update your nodepool (quota or size)
                              * PUT /cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}
                              */
-                            $put(params?: { autoscale?: boolean, autoscaling?: cloud.ProjectKubeNodePoolAutoscalingParams, desiredNodes?: number, maxNodes?: number, minNodes?: number, nodesToRemove?: string[] }): Promise<void>;
+                            $put(params?: { autoscale?: boolean, autoscaling?: cloud.ProjectKubeNodePoolAutoscalingParams, desiredNodes?: number, maxNodes?: number, minNodes?: number, nodesToRemove?: string[], template?: cloud.kube.NodePoolTemplate }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -3577,13 +3602,6 @@ export interface Cloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
-            openstackClient: {
-                /**
-                 * Get OVH playground session to use the openstack terminal
-                 * POST /cloud/project/{serviceName}/openstackClient
-                 */
-                $post(): Promise<cloud.openstackClient.Session>;
-            }
             operation: {
                 /**
                  * List your operations
@@ -3741,7 +3759,7 @@ export interface Cloud {
                          */
                         $get(): Promise<cloud.StorageContainer[]>;
                         /**
-                         * Create storage container
+                         * Create S3 storage container
                          * POST /cloud/project/{serviceName}/region/{regionName}/storage
                          */
                         $post(params: { name: string }): Promise<cloud.StorageContainer>;
@@ -3751,12 +3769,12 @@ export interface Cloud {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(name: string): {
                             /**
-                             * Delete storage container
+                             * Delete S3 storage container
                              * DELETE /cloud/project/{serviceName}/region/{regionName}/storage/{name}
                              */
                             $delete(): Promise<void>;
                             /**
-                             * Get storage container
+                             * Get S3 storage container
                              * GET /cloud/project/{serviceName}/region/{regionName}/storage/{name}
                              */
                             $get(params?: { limit?: number, marker?: string }): Promise<cloud.StorageContainer>;
@@ -3767,7 +3785,7 @@ export interface Cloud {
                             object: {
                                 $(objectKey: string): {
                                     /**
-                                     * Delete storage container object
+                                     * Delete S3 storage container object
                                      * DELETE /cloud/project/{serviceName}/region/{regionName}/storage/{name}/object/{objectKey}
                                      */
                                     $delete(): Promise<void>;
@@ -3776,7 +3794,7 @@ export interface Cloud {
                             policy: {
                                 $(userId: string): {
                                     /**
-                                     * Add storage container policy
+                                     * Add S3 storage container policy
                                      * POST /cloud/project/{serviceName}/region/{regionName}/storage/{name}/policy/{userId}
                                      */
                                     $post(params: { objectKey?: string, roleName: cloud.storage.PolicyRoleEnum }): Promise<void>;
@@ -3944,13 +3962,6 @@ export interface Cloud {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    client: {
-                        /**
-                         * Get OVH playground session with a stack installed to use the openstack terminal
-                         * POST /cloud/project/{serviceName}/stack/{stackId}/client
-                         */
-                        $post(): Promise<cloud.openstackClient.Session>;
-                    }
                 };
             }
             storage: {

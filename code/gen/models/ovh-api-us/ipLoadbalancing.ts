@@ -809,6 +809,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "ipLoadbalancing.OnMarkedDownEnum",
+              "description": "Enable action when backend marked down. (No action if null)",
+              "fullType": "ipLoadbalancing.OnMarkedDownEnum",
+              "name": "onMarkedDown",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "long",
               "description": "Port attached to your server ([1..49151]). Inherited from farm if null",
               "fullType": "long",
@@ -2851,6 +2859,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "ipLoadbalancing.OnMarkedDownEnum",
+              "description": "Enable action when backend marked down. (No action if null)",
+              "fullType": "ipLoadbalancing.OnMarkedDownEnum",
+              "name": "onMarkedDown",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "long",
               "description": "Port attached to your server ([1..49151]). Inherited from farm if null",
               "fullType": "long",
@@ -4708,7 +4724,7 @@ export const schema: Schema = {
         },
         "ipv6": {
           "canBeNull": true,
-          "description": "The IPV6 associated to your IP load balancing. DEPRECATED",
+          "description": "The IPV6 associated to your IP load balancing",
           "fullType": "ipv6",
           "readOnly": true,
           "required": false,
@@ -4820,6 +4836,15 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "ipLoadbalancing.OnMarkedDownEnum": {
+      "description": "Possible values for OnMarkedDown type",
+      "enum": [
+        "shutdown-sessions"
+      ],
+      "enumType": "string",
+      "id": "OnMarkedDownEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.OrderableZone": {
       "description": "Available additional zone to order for a Load Balancer",
@@ -6072,6 +6097,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "onMarkedDown": {
+          "canBeNull": true,
+          "description": "Set action when backend marked down. (No action if null)",
+          "fullType": "ipLoadbalancing.OnMarkedDownEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "ipLoadbalancing.OnMarkedDownEnum"
+        },
         "port": {
           "canBeNull": true,
           "description": "Port attached to your server. Inherited from farm if null",
@@ -6253,6 +6286,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "onMarkedDown": {
+          "canBeNull": true,
+          "description": "Set action when backend marked down. (No action if null)",
+          "fullType": "ipLoadbalancing.OnMarkedDownEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "ipLoadbalancing.OnMarkedDownEnum"
         },
         "port": {
           "canBeNull": true,

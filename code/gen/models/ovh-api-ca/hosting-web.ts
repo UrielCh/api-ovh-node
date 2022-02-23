@@ -6672,8 +6672,8 @@ export const schema: Schema = {
       "description": "Statistics Period",
       "enum": [
         "day",
-        "week",
         "month",
+        "week",
         "year"
       ],
       "enumType": "string",
@@ -6692,14 +6692,14 @@ export const schema: Schema = {
     "cdn.DomainStatusEnum": {
       "description": "Domain status",
       "enum": [
-        "ok",
-        "to_disable",
-        "disabling",
+        "deleting",
         "disabled",
-        "to_refresh",
+        "disabling",
+        "ok",
         "refreshing",
         "to_delete",
-        "deleting"
+        "to_disable",
+        "to_refresh"
       ],
       "enumType": "string",
       "id": "DomainStatusEnum",
@@ -6708,13 +6708,13 @@ export const schema: Schema = {
     "cdn.OperationFunctionEnum": {
       "description": "Operation function",
       "enum": [
-        "service_install",
-        "domain_purge",
-        "domain_refresh",
         "domain_delete",
         "domain_disable",
-        "ssl_install",
-        "ssl_delete"
+        "domain_purge",
+        "domain_refresh",
+        "service_install",
+        "ssl_delete",
+        "ssl_install"
       ],
       "enumType": "string",
       "id": "OperationFunctionEnum",
@@ -6723,9 +6723,9 @@ export const schema: Schema = {
     "cdn.OperationOfferEnum": {
       "description": "Shared CDN offer",
       "enum": [
+        "advanced",
         "basic",
-        "security",
-        "advanced"
+        "security"
       ],
       "enumType": "string",
       "id": "OperationOfferEnum",
@@ -6734,11 +6734,11 @@ export const schema: Schema = {
     "cdn.OperationStatusEnum": {
       "description": "Operation status",
       "enum": [
-        "todo",
+        "cancelled",
         "doing",
         "done",
         "error",
-        "cancelled"
+        "todo"
       ],
       "enumType": "string",
       "id": "OperationStatusEnum",
@@ -6782,8 +6782,8 @@ export const schema: Schema = {
     "cdn.OptionQueryParametersEnum": {
       "description": "Option query parameters",
       "enum": [
-        "sorted",
-        "ignored"
+        "ignored",
+        "sorted"
       ],
       "enumType": "string",
       "id": "OptionQueryParametersEnum",
@@ -6792,19 +6792,19 @@ export const schema: Schema = {
     "cdn.OptionTypeEnum": {
       "description": "Option type",
       "enum": [
-        "devmode",
         "brotli",
         "cache_rule",
-        "https_redirect",
-        "hsts",
-        "mixed_content",
         "cors",
-        "waf",
-        "prefetch",
-        "querystring",
+        "devmode",
         "geo_headers",
+        "hsts",
+        "https_redirect",
+        "mixed_content",
         "mobile_redirect",
-        "prewarm"
+        "prefetch",
+        "prewarm",
+        "querystring",
+        "waf"
       ],
       "enumType": "string",
       "id": "OptionTypeEnum",
@@ -9115,6 +9115,7 @@ export const schema: Schema = {
         "php7.3",
         "php7.4",
         "php8.0",
+        "php8.1",
         "python2",
         "python3",
         "ruby2.5",
@@ -11069,7 +11070,8 @@ export const schema: Schema = {
         "7.2",
         "7.3",
         "7.4",
-        "8.0"
+        "8.0",
+        "8.1"
       ],
       "enumType": "string",
       "id": "AvailableEngineVersionEnum",
@@ -11102,6 +11104,7 @@ export const schema: Schema = {
         "7.3",
         "7.4",
         "8.0",
+        "8.1",
         "AUTO"
       ],
       "enumType": "string",
@@ -11830,6 +11833,7 @@ export const schema: Schema = {
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",

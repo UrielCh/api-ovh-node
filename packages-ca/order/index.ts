@@ -162,7 +162,7 @@ export namespace email {
          * Outlook version
          * type fullname: email.exchange.OutlookVersionEnum
          */
-        export type OutlookVersionEnum = "mac_x86_2011" | "mac_x86_2016" | "windows_x64_2013" | "windows_x64_2016" | "windows_x86_2013" | "windows_x86_2016"
+        export type OutlookVersionEnum = "mac_x86_2016" | "windows_x64_2016" | "windows_x86_2016"
         /**
          * OVH licence account
          * type fullname: email.exchange.OvhLicenceEnum
@@ -422,7 +422,7 @@ export namespace order {
      * Type of reduction
      * type fullname: order.ReductionTypeEnum
      */
-    export type ReductionTypeEnum = "percentage" | "forced_amount" | "fixed_amount"
+    export type ReductionTypeEnum = "fixed_amount" | "forced_amount" | "percentage"
     export namespace cart {
         /**
          * A shopping cart
@@ -482,7 +482,7 @@ export namespace order {
          * Action values for domain product information
          * type fullname: order.cart.DomainActionEnum
          */
-        export type DomainActionEnum = "create" | "transfer" | "update" | "trade"
+        export type DomainActionEnum = "create" | "trade" | "transfer" | "update"
         /**
          * Representation of domain name order properties
          * interface fullName: order.cart.DomainSettings.DomainSettings
@@ -491,10 +491,10 @@ export namespace order {
             domain: string;
         }
         /**
-         * Unit that correspond to a duration range
+         * Unit corresponding to a duration range
          * type fullname: order.cart.DurationUnitEnum
          */
-        export type DurationUnitEnum = "month" | "day" | "none"
+        export type DurationUnitEnum = "day" | "hour" | "month" | "none"
         /**
          * Missing description
          * interface fullName: order.cart.GenericDedicatedCreation.GenericDedicatedCreation
@@ -605,22 +605,22 @@ export namespace order {
          * Capacity of a pricing (type)
          * type fullname: order.cart.GenericProductPricingCapacitiesEnum
          */
-        export type GenericProductPricingCapacitiesEnum = "installation" | "renew" | "upgrade" | "downgrade" | "detach" | "dynamic"
+        export type GenericProductPricingCapacitiesEnum = "consumption" | "detach" | "downgrade" | "dynamic" | "installation" | "renew" | "upgrade"
         /**
          * Strategy of a Pricing
          * type fullname: order.cart.GenericProductPricingStrategyEnum
          */
-        export type GenericProductPricingStrategyEnum = "stairstep" | "volume" | "tiered"
+        export type GenericProductPricingStrategyEnum = "stairstep" | "tiered" | "volume"
         /**
          * Type of a pricing
          * type fullname: order.cart.GenericProductPricingTypeEnum
          */
-        export type GenericProductPricingTypeEnum = "rental" | "consumption" | "purchase"
+        export type GenericProductPricingTypeEnum = "consumption" | "purchase" | "rental"
         /**
          * Type of a product
          * type fullname: order.cart.GenericProductTypeEnum
          */
-        export type GenericProductTypeEnum = "delivery" | "deposit" | "shipping" | "cloud_service" | "saas_license" | "storage" | "domain"
+        export type GenericProductTypeEnum = "cloud_service" | "delivery" | "deposit" | "domain" | "saas_license" | "shipping" | "storage"
         /**
          * Representation of a cart item
          * interface fullName: order.cart.Item.Item
@@ -665,7 +665,7 @@ export namespace order {
          * Label corresponding to different type of price
          * type fullname: order.cart.PriceLabelEnum
          */
-        export type PriceLabelEnum = "PRICE" | "DISCOUNT" | "FEE" | "TOTAL" | "RENEW"
+        export type PriceLabelEnum = "DISCOUNT" | "FEE" | "PRICE" | "RENEW" | "TOTAL"
         /**
          * Information about a product for Order/Cart
          * interface fullName: order.cart.ProductInformation.ProductInformation
@@ -709,7 +709,10 @@ export namespace order {
          * interface fullName: order.catalog.AddonOffer.AddonOffer
          */
         export interface AddonOffer {
+            default?: boolean;
             invoiceName: string;
+            maximumQuantity?: number;
+            minimumQuantity?: number;
             plan: order.catalog.ProductPlan;
         }
         /**
@@ -719,7 +722,7 @@ export namespace order {
         export interface Catalog {
             catalogId: number;
             merchantCode: string;
-            plansFamily: order.catalog.PlansItem[];
+            plans?: order.catalog.ProductPlan[];
         }
         /**
          * Composition of a configuration
@@ -774,15 +777,20 @@ export namespace order {
         export interface Product {
             configurations: order.catalog.ConfigurationItem[];
             description: string;
+            internalType: order.cart.GenericProductTypeEnum;
+            metadatas?: complexType.SafeKeyValue<string>[];
             name: string;
+            subType?: string;
             technicalDetails?: complexType.SafeKeyValue<string>[];
+            type?: string;
         }
         /**
          * Describe the details of a commercial offer
          * interface fullName: order.catalog.ProductOfferDetails.ProductOfferDetails
          */
         export interface ProductOfferDetails {
-            metadatas: complexType.SafeKeyValue<string>[];
+            blobs?: order.catalog.cloud.Blob;
+            metadatas?: complexType.SafeKeyValue<string>[];
             pricings: order.catalog.PricingDefault;
             product: order.catalog.Product;
         }
@@ -794,9 +802,49 @@ export namespace order {
             addonsFamily: order.catalog.AddonItem[];
             consumptionBillingStrategy?: string;
             details: order.catalog.ProductOfferDetails;
+            familyName?: string;
             invoiceName: string;
             planCode: string;
+            prices?: order.catalog.cloud.RegionPrice[];
             pricingType: string;
+        }
+        export namespace cloud {
+            /**
+             * Describe extra informations of product offer
+             * interface fullName: order.catalog.cloud.Blob.Blob
+             */
+            export interface Blob {
+                unit?: order.catalog.cloud.Blob.Unit;
+            }
+            export namespace Blob {
+                /**
+                 * Label of the unit
+                 * interface fullName: order.catalog.cloud.Blob.Unit.Unit
+                 */
+                export interface Unit {
+                    unit: string;
+                }
+            }
+            /**
+             * Describes a region price
+             * interface fullName: order.catalog.cloud.RegionPrice.RegionPrice
+             */
+            export interface RegionPrice {
+                price: order.catalog.cloud.RegionPrice.Price;
+                region: string;
+            }
+            export namespace RegionPrice {
+                /**
+                 * Describes a price
+                 * interface fullName: order.catalog.cloud.RegionPrice.Price.Price
+                 */
+                export interface Price {
+                    currencyCode: order.CurrencyCodeEnum;
+                    priceInUcents: number;
+                    text: string;
+                    value: number;
+                }
+            }
         }
         export namespace pcc {
             /**
@@ -804,7 +852,8 @@ export namespace order {
              * interface fullName: order.catalog.pcc.Catalog.Catalog
              */
             export interface Catalog {
-                catalogId: number;
+                active: boolean;
+                catalogId: string;
                 catalogName: string;
                 commercialRanges: order.catalog.pcc.CommercialRange[];
                 merchantCode: string;
@@ -825,7 +874,7 @@ export namespace order {
              */
             export interface Datacenter {
                 cityCode: string;
-                cityName: string;
+                cityName?: string;
                 countryCode: nichandle.CountryEnum;
                 defaultHypervisor: string;
                 hypervisors: order.catalog.pcc.Hypervisor[];
@@ -848,7 +897,7 @@ export namespace order {
                 onUpgradeOrder: boolean;
                 planCode: string;
                 specifications: order.catalog.pcc.HostSpecifications;
-                storagesPack: string[];
+                storagesPack?: string[];
             }
             /**
              * Describes a Dedicated Cloud Host CPU
@@ -885,6 +934,15 @@ export namespace order {
                 cpu: order.catalog.pcc.HostCpuSpecifications;
                 memory: order.catalog.pcc.HostMemorySpecifications;
                 network: order.catalog.pcc.HostNetworkSpecifications[];
+                storage: order.catalog.pcc.HostStorageSpecifications;
+            }
+            /**
+             * Describes a Dedicated Cloud Host Storage
+             * interface fullName: order.catalog.pcc.HostStorageSpecifications.HostStorageSpecifications
+             */
+            export interface HostStorageSpecifications {
+                size: order.catalog.pcc.PccUnitAndValue;
+                type: string;
             }
             /**
              * Describes a Dedicated Cloud Hypervisor
@@ -911,6 +969,14 @@ export namespace order {
                 onUpgradeOrder: boolean;
                 planCode: string;
                 type: string;
+            }
+            /**
+             * Describes unit and value for a Private Cloud
+             * interface fullName: order.catalog.pcc.PccUnitAndValue.PccUnitAndValue
+             */
+            export interface PccUnitAndValue {
+                unit: string;
+                value: number;
             }
             /**
              * Describes a Dedicated Cloud Service Pack
@@ -1029,17 +1095,17 @@ export namespace order {
              * interface fullName: order.catalog.publik.AddonFamily.AddonFamily
              */
             export interface AddonFamily {
-                addons: string[];
+                addons?: string[];
                 default?: string;
-                exclusive: boolean;
-                mandatory: boolean;
+                exclusive?: boolean;
+                mandatory?: boolean;
                 name: string;
             }
             /**
              * Enum values for Billing Strategy
              * type fullname: order.catalog.publik.BillingStrategyEnum
              */
-            export type BillingStrategyEnum = "max" | "sum" | "max_retain" | "diff" | "ping" | "custom"
+            export type BillingStrategyEnum = "custom" | "diff" | "max" | "max_retain" | "ping" | "sum"
             /**
              * Describes a Catalog inside a Subsidiary
              * interface fullName: order.catalog.publik.Catalog.Catalog
@@ -1060,7 +1126,7 @@ export namespace order {
                 isCustom: boolean;
                 isMandatory: boolean;
                 name: string;
-                values: string[];
+                values?: string[];
             }
             /**
              * Describes consumption configuration for a Plan
@@ -1088,7 +1154,8 @@ export namespace order {
              * interface fullName: order.catalog.publik.DedicatedServerProduct.DedicatedServerProduct
              */
             export interface DedicatedServerProduct {
-                blobs?: order.catalog.publik.DedicatedServerProductBlob;
+                blobs?: order.catalog.publik.ProductBlob;
+                configurations: order.catalog.publik.Configuration[];
                 description: string;
                 name: string;
             }
@@ -1202,7 +1269,7 @@ export namespace order {
                  * Strategy applicable at the end of the Engagement
                  * type fullname: order.catalog.publik.EngagementConfiguration.EndStrategyEnum
                  */
-                export type EndStrategyEnum = "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE" | "REACTIVATE_ENGAGEMENT" | "CANCEL_SERVICE" | "STOP_ENGAGEMENT_KEEP_PRICE"
+                export type EndStrategyEnum = "CANCEL_SERVICE" | "REACTIVATE_ENGAGEMENT" | "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE" | "STOP_ENGAGEMENT_KEEP_PRICE"
                 /**
                  * Engagement's type, either fully pre-paid (upfront) or periodically paid up to engagement duration (periodic)
                  * type fullname: order.catalog.publik.EngagementConfiguration.TypeEnum
@@ -1222,13 +1289,14 @@ export namespace order {
              * Enum values for Ping End Policy
              * type fullname: order.catalog.publik.PingEndPolicyEnum
              */
-            export type PingEndPolicyEnum = "prorata" | "full"
+            export type PingEndPolicyEnum = "full" | "prorata"
             /**
              * Describes a Commercial offer inside a Catalog
              * interface fullName: order.catalog.publik.Plan.Plan
              */
             export interface Plan {
                 addonFamilies: order.catalog.publik.AddonFamily[];
+                blobs?: order.catalog.publik.ProductBlob;
                 configurations: order.catalog.publik.Configuration[];
                 consumptionConfiguration?: order.catalog.publik.ConsumptionConfiguration;
                 family?: string;
@@ -1260,6 +1328,7 @@ export namespace order {
                 mustBeCompleted: boolean;
                 phase: number;
                 price: number;
+                promotions?: order.catalog.publik.Promotion[];
                 quantity: order.catalog.publik.PricingMinMax;
                 repeat: order.catalog.publik.PricingMinMax;
                 strategy: order.cart.GenericProductPricingStrategyEnum;
@@ -1279,14 +1348,402 @@ export namespace order {
              * interface fullName: order.catalog.publik.Product.Product
              */
             export interface Product {
+                blobs?: order.catalog.publik.ProductBlob;
+                configurations?: order.catalog.publik.Configuration[];
                 description: string;
                 name: string;
+            }
+            /**
+             * Describes a Blob
+             * interface fullName: order.catalog.publik.ProductBlob.ProductBlob
+             */
+            export interface ProductBlob {
+                commercial?: order.catalog.publik.ProductBlobCommercial;
+                marketing?: order.catalog.publik.ProductBlobMarketing;
+                meta?: order.catalog.publik.ProductBlobMeta;
+                tags?: string[];
+                technical?: order.catalog.publik.ProductBlobTechnical;
+                value?: string;
+            }
+            /**
+             * Describes a Commercial blob
+             * interface fullName: order.catalog.publik.ProductBlobCommercial.ProductBlobCommercial
+             */
+            export interface ProductBlobCommercial {
+                brick?: string;
+                brickSubtype?: string;
+                connection?: order.catalog.publik.ProductBlobConnection;
+                features?: order.catalog.publik.ProductBlobCommercialFeatures[];
+                line?: string;
+                name?: string;
+                price?: order.catalog.publik.ProductBlobCommercialPrice;
+                range?: string;
+            }
+            /**
+             * Describes Features for a commercial blob
+             * interface fullName: order.catalog.publik.ProductBlobCommercialFeatures.ProductBlobCommercialFeatures
+             */
+            export interface ProductBlobCommercialFeatures {
+                name?: string;
+                value?: string;
+            }
+            /**
+             * Describes a Price for a commercial blob
+             * interface fullName: order.catalog.publik.ProductBlobCommercialPrice.ProductBlobCommercialPrice
+             */
+            export interface ProductBlobCommercialPrice {
+                display?: order.catalog.publik.ProductBlobCommercialPriceDisplay;
+                interval?: string;
+                precision?: number;
+                unit?: string;
+            }
+            /**
+             * Describes a Display a price
+             * interface fullName: order.catalog.publik.ProductBlobCommercialPriceDisplay.ProductBlobCommercialPriceDisplay
+             */
+            export interface ProductBlobCommercialPriceDisplay {
+                value: string;
+            }
+            /**
+             * Describes a Connection for a blob for a Dedicated Server
+             * interface fullName: order.catalog.publik.ProductBlobConnection.ProductBlobConnection
+             */
+            export interface ProductBlobConnection {
+                clients: order.catalog.publik.ProductBlobConnectionClients;
+                total: number;
+            }
+            /**
+             * Describes Clients for a Connection for a blob for a Dedicated Server
+             * interface fullName: order.catalog.publik.ProductBlobConnectionClients.ProductBlobConnectionClients
+             */
+            export interface ProductBlobConnectionClients {
+                concurrency: number;
+                number: number;
+            }
+            /**
+             * Describes a Marketing blob
+             * interface fullName: order.catalog.publik.ProductBlobMarketing.ProductBlobMarketing
+             */
+            export interface ProductBlobMarketing {
+                content: order.catalog.publik.ProductBlobMarketingContent[];
+            }
+            /**
+             * Describes a Content for a Marketing blob
+             * interface fullName: order.catalog.publik.ProductBlobMarketingContent.ProductBlobMarketingContent
+             */
+            export interface ProductBlobMarketingContent {
+                key: string;
+                value: string;
+            }
+            /**
+             * Describes a Meta blob
+             * interface fullName: order.catalog.publik.ProductBlobMeta.ProductBlobMeta
+             */
+            export interface ProductBlobMeta {
+                configurations: order.catalog.publik.ProductBlobMetaConfigurations[];
+            }
+            /**
+             * Describes a Configuration for a meta blob
+             * interface fullName: order.catalog.publik.ProductBlobMetaConfigurations.ProductBlobMetaConfigurations
+             */
+            export interface ProductBlobMetaConfigurations {
+                name: string;
+                values: order.catalog.publik.ProductBlobMetaConfigurationsValues[];
+            }
+            /**
+             * Describes a Values configuration for a meta blob
+             * interface fullName: order.catalog.publik.ProductBlobMetaConfigurationsValues.ProductBlobMetaConfigurationsValues
+             */
+            export interface ProductBlobMetaConfigurationsValues {
+                blobs: order.catalog.publik.ProductBlob;
+                value: string;
+            }
+            /**
+             * Describes a Technical Blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnical.ProductBlobTechnical
+             */
+            export interface ProductBlobTechnical {
+                bandwidth?: order.catalog.publik.ProductBlobTechnicalNetwork;
+                connection?: order.catalog.publik.ProductBlobConnection;
+                connectionPerSeconds?: order.catalog.publik.ProductBlobTechnicalPerSeconds;
+                cpu?: order.catalog.publik.ProductBlobTechnicalCPU;
+                datacenter?: order.catalog.publik.ProductBlobTechnicalDatacenter;
+                ephemeralLocalStorage?: order.catalog.publik.ProductBlobTechnicalEphemeralStorage;
+                gpu?: order.catalog.publik.ProductBlobTechnicalGPU;
+                license?: order.catalog.publik.ProductBlobTechnicalLicense;
+                memory?: order.catalog.publik.ProductBlobTechnicalMemory;
+                name?: string;
+                nodes?: order.catalog.publik.ProductBlobTechnicalNodes;
+                nvme?: order.catalog.publik.ProductBlobTechnicalNvme;
+                os?: order.catalog.publik.ProductBlobTechnicalOS;
+                requestPerSeconds?: order.catalog.publik.ProductBlobTechnicalPerSeconds;
+                server?: order.catalog.publik.ProductBlobTechnicalServer;
+                storage?: order.catalog.publik.ProductBlobTechnicalStorage;
+                throughput?: order.catalog.publik.ProductBlobTechnicalThroughput;
+                virtualization?: order.catalog.publik.ProductBlobTechnicalVirtualization;
+                volume?: order.catalog.publik.ProductBlobTechnicalVolume;
+                vrack?: order.catalog.publik.ProductBlobTechnicalNetwork;
+            }
+            /**
+             * Describes a CPU for a technical blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalCPU.ProductBlobTechnicalCPU
+             */
+            export interface ProductBlobTechnicalCPU {
+                boost?: number;
+                brand?: string;
+                cores?: number;
+                customizable?: boolean;
+                frequency?: number;
+                model?: string;
+                number?: number;
+                score?: number;
+                threads?: number;
+            }
+            /**
+             * Describes a Datacenter for a technical Blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalDatacenter.ProductBlobTechnicalDatacenter
+             */
+            export interface ProductBlobTechnicalDatacenter {
+                city?: string;
+                country?: string;
+                countryCode?: nichandle.OvhSubsidiaryEnum;
+                name?: string;
+                region?: string;
+            }
+            /**
+             * Describes a Disk for a technical blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalDisk.ProductBlobTechnicalDisk
+             */
+            export interface ProductBlobTechnicalDisk {
+                capacity: number;
+                interface?: string;
+                iops?: number;
+                number?: number;
+                sizeUnit?: string;
+                specs?: string;
+                technology?: string;
+                usage?: string;
+            }
+            /**
+             * Describes an Ephemeral Storage for technical blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalEphemeralStorage.ProductBlobTechnicalEphemeralStorage
+             */
+            export interface ProductBlobTechnicalEphemeralStorage {
+                disks?: order.catalog.publik.ProductBlobTechnicalDisk[];
+            }
+            /**
+             * Describes a Frame for a technical blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalFrame.ProductBlobTechnicalFrame
+             */
+            export interface ProductBlobTechnicalFrame {
+                dualPowerSupply: boolean;
+                model: string;
+                size: string;
+            }
+            /**
+             * Describes a GPU for a technical blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalGPU.ProductBlobTechnicalGPU
+             */
+            export interface ProductBlobTechnicalGPU {
+                brand?: string;
+                memory: order.catalog.publik.ProductBlobTechnicalMemory;
+                model?: string;
+                number?: number;
+                performance?: number;
+            }
+            /**
+             * Describes a License for a technical Blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalLicense.ProductBlobTechnicalLicense
+             */
+            export interface ProductBlobTechnicalLicense {
+                application?: string;
+                cores?: order.catalog.publik.ProductBlobTechnicalLicenseCores;
+                cpu?: order.catalog.publik.ProductBlobTechnicalCPU;
+                distribution?: string;
+                edition?: string;
+                family?: string;
+                feature?: string;
+                flavor?: string;
+                images?: string[];
+                nbOfAccount?: number;
+                package?: string;
+                version?: string;
+            }
+            /**
+             * Describes license cores for a technical blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalLicenseCores.ProductBlobTechnicalLicenseCores
+             */
+            export interface ProductBlobTechnicalLicenseCores {
+                number: number;
+                total?: number;
+            }
+            /**
+             * Describes a Memory technical Blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalMemory.ProductBlobTechnicalMemory
+             */
+            export interface ProductBlobTechnicalMemory {
+                customizable?: boolean;
+                ecc?: boolean;
+                frequency?: number;
+                interface?: string;
+                ramType?: string;
+                size: number;
+                sizeUnit?: string;
+            }
+            /**
+             * Describes a Network technical Blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalNetwork.ProductBlobTechnicalNetwork
+             */
+            export interface ProductBlobTechnicalNetwork {
+                burst?: number;
+                capacity?: number;
+                guaranteed?: boolean;
+                interfaces?: number;
+                isMax?: boolean;
+                level?: number;
+                limit?: number;
+                shared?: boolean;
+                traffic?: number;
+                unlimited?: boolean;
+            }
+            /**
+             * Describes a Node for technical blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalNodes.ProductBlobTechnicalNodes
+             */
+            export interface ProductBlobTechnicalNodes {
+                number: number;
+            }
+            /**
+             * Describes a NVME for technical blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalNvme.ProductBlobTechnicalNvme
+             */
+            export interface ProductBlobTechnicalNvme {
+                disks?: order.catalog.publik.ProductBlobTechnicalDisk[];
+            }
+            /**
+             * Describes an OS for a technical blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalOS.ProductBlobTechnicalOS
+             */
+            export interface ProductBlobTechnicalOS {
+                distribution?: string;
+                edition?: string;
+                family?: string;
+                version?: string;
+            }
+            /**
+             * Describes a connection or request per seconds for a technical blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalPerSeconds.ProductBlobTechnicalPerSeconds
+             */
+            export interface ProductBlobTechnicalPerSeconds {
+                total: number;
+                unit?: string;
+            }
+            /**
+             * Describes a Raid for a technical blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalRaid.ProductBlobTechnicalRaid
+             */
+            export interface ProductBlobTechnicalRaid {
+                cardModel?: string;
+                cardSize?: string;
+                type: string;
+            }
+            /**
+             * Describes some technicals informations for a technical blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalServer.ProductBlobTechnicalServer
+             */
+            export interface ProductBlobTechnicalServer {
+                cpu: order.catalog.publik.ProductBlobTechnicalCPU;
+                frame: order.catalog.publik.ProductBlobTechnicalFrame;
+                network?: order.catalog.publik.ProductBlobTechnicalNetwork;
+                range: string;
+                services: order.catalog.publik.ProductBlobTechnicalServices;
+            }
+            /**
+             * Describes some technicals informations
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalServices.ProductBlobTechnicalServices
+             */
+            export interface ProductBlobTechnicalServices {
+                antiddos: string;
+                includedBackup: number;
+                sla: number;
+            }
+            /**
+             * Describes a Storage technical Blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalStorage.ProductBlobTechnicalStorage
+             */
+            export interface ProductBlobTechnicalStorage {
+                disks?: order.catalog.publik.ProductBlobTechnicalDisk[];
+                hotSwap?: boolean;
+                raid?: string;
+                raidDetails?: order.catalog.publik.ProductBlobTechnicalRaid;
+            }
+            /**
+             * Describes a Throughput for a technical blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalThroughput.ProductBlobTechnicalThroughput
+             */
+            export interface ProductBlobTechnicalThroughput {
+                level: number;
+            }
+            /**
+             * Describes a Virtualization for a Technical Blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalVirtualization.ProductBlobTechnicalVirtualization
+             */
+            export interface ProductBlobTechnicalVirtualization {
+                hypervisor?: string;
+            }
+            /**
+             * Describes a Volume for a technichal blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalVolume.ProductBlobTechnicalVolume
+             */
+            export interface ProductBlobTechnicalVolume {
+                capacity: order.catalog.publik.ProductBlobTechnicalVolumeCapacity;
+                iops: order.catalog.publik.ProductBlobTechnicalVolumeIops;
+            }
+            /**
+             * Describes a Capacity for a Volume for a technichal blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalVolumeCapacity.ProductBlobTechnicalVolumeCapacity
+             */
+            export interface ProductBlobTechnicalVolumeCapacity {
+                max: number;
+            }
+            /**
+             * Describes a Iops for a Volume for a technichal blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalVolumeIops.ProductBlobTechnicalVolumeIops
+             */
+            export interface ProductBlobTechnicalVolumeIops {
+                guaranteed: boolean;
+                level: number;
+            }
+            /**
+             * Describes a Promotion inside a Catalog
+             * interface fullName: order.catalog.publik.Promotion.Promotion
+             */
+            export interface Promotion {
+                description: string;
+                discount: order.catalog.publik.PromotionDiscountTotal;
+                duration?: number;
+                endDate?: string;
+                isGlobalQuantityLimited: boolean;
+                name: string;
+                quantity?: number;
+                startDate: string;
+                total: order.catalog.publik.PromotionDiscountTotal;
+                type: order.ReductionTypeEnum;
+                value: number;
+            }
+            /**
+             * Describes a Promotion discount or total inside a Catalog
+             * interface fullName: order.catalog.publik.PromotionDiscountTotal.PromotionDiscountTotal
+             */
+            export interface PromotionDiscountTotal {
+                tax: number;
+                value: number;
             }
             /**
              * Enum values for Prorata Unit
              * type fullname: order.catalog.publik.ProrataUnitEnum
              */
-            export type ProrataUnitEnum = "hour" | "day"
+            export type ProrataUnitEnum = "day" | "hour" | "month"
         }
     }
     export namespace upgrade {
@@ -1415,6 +1872,38 @@ export interface Order {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            anthos: {
+                /**
+                 * Get informations about Anthos offers
+                 * GET /order/cart/{cartId}/anthos
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new Anthos item in your cart
+                 * POST /order/cart/{cartId}/anthos
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get informations about Anthos options
+                     * GET /order/cart/{cartId}/anthos/options
+                     */
+                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new Anthos option in your cart
+                     * POST /order/cart/{cartId}/anthos/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
             assign: {
                 /**
                  * Assign a shopping cart to an loggedin client
@@ -1851,6 +2340,38 @@ export interface Order {
                     /**
                      * Post a new domain name option in your cart
                      * POST /order/cart/{cartId}/domain/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
+            eco: {
+                /**
+                 * Get information about a eco
+                 * GET /order/cart/{cartId}/eco
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new eco item in your cart
+                 * POST /order/cart/{cartId}/eco
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get information about the options of a Eco
+                     * GET /order/cart/{cartId}/eco/options
+                     */
+                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new Eco option in your cart
+                     * POST /order/cart/{cartId}/eco/options
                      */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
                     /**
@@ -2665,6 +3186,38 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            veeamEnterprise: {
+                /**
+                 * Get informations about Veeam Enterprise offers
+                 * GET /order/cart/{cartId}/veeamEnterprise
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new Veeam Enterprise item in your cart
+                 * POST /order/cart/{cartId}/veeamEnterprise
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get informations about Veeam Enterprise options
+                     * GET /order/cart/{cartId}/veeamEnterprise/options
+                     */
+                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new Veeam Enterprise option in your cart
+                     * POST /order/cart/{cartId}/veeamEnterprise/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
             veeamcc: {
                 /**
                  * Get informations about Veeam Cloud Connect offers
@@ -2780,6 +3333,33 @@ export interface Order {
         };
     }
     cartServiceOption: {
+        anthos: {
+            /**
+             * List available services
+             * GET /order/cartServiceOption/anthos
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Get informations about additional anthos offer for your service
+                 * GET /order/cartServiceOption/anthos/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericOptionDefinition[]>;
+                /**
+                 * Post an additional anthos option in your cart
+                 * POST /order/cartServiceOption/anthos/{serviceName}
+                 */
+                $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
         baremetalServers: {
             /**
              * List available services
@@ -3498,6 +4078,17 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            cloudDB: {
+                /**
+                 * Retrieve Cloud DB catalog
+                 * GET /order/catalog/public/cloudDB
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             dns: {
                 /**
                  * Retrieve DNS catalog
@@ -3520,10 +4111,54 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            eco: {
+                /**
+                 * Retrieve Eco catalog
+                 * GET /order/catalog/public/eco
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            emailDomain: {
+                /**
+                 * Retrieve Email Domain catalog
+                 * GET /order/catalog/public/emailDomain
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            emailpro: {
+                /**
+                 * Retrieve emailpro catalog
+                 * GET /order/catalog/public/emailpro
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             enterpriseCloudDatabases: {
                 /**
                  * Retrieve Enterprise Cloud Databases catalog
                  * GET /order/catalog/public/enterpriseCloudDatabases
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            exchange: {
+                /**
+                 * Retrieve exchange catalog
+                 * GET /order/catalog/public/exchange
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
@@ -3564,6 +4199,39 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            netapp: {
+                /**
+                 * Retrieve Netapp catalog
+                 * GET /order/catalog/public/netapp
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            nutanix: {
+                /**
+                 * Retrieve Nutanix clusters catalog
+                 * GET /order/catalog/public/nutanix
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            office365Prepaid: {
+                /**
+                 * Retrieve office365Prepaid catalog
+                 * GET /order/catalog/public/office365Prepaid
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             ovhCloudConnect: {
                 /**
                  * Retrieve OVH Cloud Connect catalog
@@ -3579,6 +4247,17 @@ export interface Order {
                 /**
                  * Retrieve Dedicated Cloud catalog
                  * GET /order/catalog/public/privateCloud
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            privateCloudEnterprise: {
+                /**
+                 * Retrieve Private Cloud Enterprise catalog
+                 * GET /order/catalog/public/privateCloudEnterprise
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**

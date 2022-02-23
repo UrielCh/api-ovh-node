@@ -8,7 +8,7 @@ export namespace order {
     /**
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * Price with it's currency and textual representation
      * interface fullName: order.Price.Price
@@ -168,7 +168,7 @@ export namespace sms {
      * Batch statuses
      * type fullname: sms.BatchStatusEnum
      */
-    export type BatchStatusEnum = "PENDING" | "INSERTING" | "INSERTED" | "COMPLETED" | "TO_CANCEL" | "CANCELING" | "CANCELED" | "FAILED"
+    export type BatchStatusEnum = "CANCELED" | "CANCELING" | "COMPLETED" | "FAILED" | "INSERTED" | "INSERTING" | "PENDING" | "TO_CANCEL"
     /**
      * Params to update a batch
      * interface fullName: sms.BatchUpdateParams.BatchUpdateParams

@@ -335,16 +335,6 @@ export const schema: Schema = {
   ],
   "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
-    "nutanix.LicenseEnum": {
-      "description": "License type",
-      "enum": [
-        "pro",
-        "ultimate"
-      ],
-      "enumType": "string",
-      "id": "LicenseEnum",
-      "namespace": "nutanix"
-    },
     "nutanix.RedundancyFactorEnum": {
       "description": "Cluster redundancy factor",
       "enum": [
@@ -391,14 +381,6 @@ export const schema: Schema = {
       "id": "cluster",
       "namespace": "nutanix",
       "properties": {
-        "allowedRedundancyFactor": {
-          "canBeNull": false,
-          "description": "Redundancy Factor available",
-          "fullType": "long[]",
-          "readOnly": true,
-          "required": false,
-          "type": "long[]"
-        },
         "controlPanelURL": {
           "canBeNull": false,
           "description": "Control Panel URL",
@@ -438,14 +420,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
-        },
-        "license": {
-          "canBeNull": false,
-          "description": "License type",
-          "fullType": "nutanix.LicenseEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "nutanix.LicenseEnum"
         },
         "name": {
           "canBeNull": false,
@@ -538,7 +512,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Controler VM IP",
           "fullType": "ipv4",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "ipv4"
         },
@@ -546,7 +520,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the associated server",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -598,6 +572,22 @@ export const schema: Schema = {
       "id": "state",
       "namespace": "nutanix",
       "properties": {
+        "allowedRedundancyFactor": {
+          "canBeNull": false,
+          "description": "Available redundancy Factor",
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
+        },
+        "availableVersions": {
+          "canBeNull": false,
+          "description": "Available versions to install",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
         "serviceName": {
           "canBeNull": false,
           "description": "Cluster name",

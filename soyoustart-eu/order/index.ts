@@ -4,6 +4,16 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /order Models
  * Source: https://eu.api.soyoustart.com/1.0/order.json
  */
+export namespace complexType {
+    /**
+     * Key and value, with proper key strings
+     * interface fullName: complexType.SafeKeyValue.SafeKeyValue
+     */
+    export interface SafeKeyValue<T> {
+        key: string;
+        value: T;
+    }
+}
 export namespace coreTypes {
     /**
      * ISO country codes
@@ -259,7 +269,7 @@ export namespace order {
      * Type of reduction
      * type fullname: order.ReductionTypeEnum
      */
-    export type ReductionTypeEnum = "percentage" | "forced_amount" | "fixed_amount"
+    export type ReductionTypeEnum = "fixed_amount" | "forced_amount" | "percentage"
     export namespace cart {
         /**
          * Representation of a generic product
@@ -293,17 +303,154 @@ export namespace order {
          * Capacity of a pricing (type)
          * type fullname: order.cart.GenericProductPricingCapacitiesEnum
          */
-        export type GenericProductPricingCapacitiesEnum = "installation" | "renew" | "upgrade" | "downgrade" | "detach" | "dynamic"
+        export type GenericProductPricingCapacitiesEnum = "consumption" | "detach" | "downgrade" | "dynamic" | "installation" | "renew" | "upgrade"
         /**
          * Type of a pricing
          * type fullname: order.cart.GenericProductPricingTypeEnum
          */
-        export type GenericProductPricingTypeEnum = "rental" | "consumption" | "purchase"
+        export type GenericProductPricingTypeEnum = "consumption" | "purchase" | "rental"
         /**
          * Type of a product
          * type fullname: order.cart.GenericProductTypeEnum
          */
-        export type GenericProductTypeEnum = "delivery" | "deposit" | "shipping" | "cloud_service" | "saas_license" | "storage" | "domain"
+        export type GenericProductTypeEnum = "cloud_service" | "delivery" | "deposit" | "domain" | "saas_license" | "shipping" | "storage"
+    }
+    export namespace catalog {
+        /**
+         * Describes an Addon
+         * interface fullName: order.catalog.AddonItem.AddonItem
+         */
+        export interface AddonItem {
+            addons: order.catalog.AddonOffer[];
+            exclusive: boolean;
+            family: string;
+            mandatory: boolean;
+        }
+        /**
+         * Describes of Addon offer
+         * interface fullName: order.catalog.AddonOffer.AddonOffer
+         */
+        export interface AddonOffer {
+            default?: boolean;
+            invoiceName: string;
+            maximumQuantity?: number;
+            minimumQuantity?: number;
+            plan: order.catalog.ProductPlan;
+        }
+        /**
+         * Composition of a configuration
+         * interface fullName: order.catalog.ConfigurationItem.ConfigurationItem
+         */
+        export interface ConfigurationItem {
+            defaultValue?: string;
+            isCustom: boolean;
+            isMandatory: boolean;
+            name: string;
+            values: string[];
+        }
+        /**
+         * Describes a pricing
+         * interface fullName: order.catalog.Pricing.Pricing
+         */
+        export interface Pricing {
+            capacities: string[];
+            commitment: number;
+            description: string;
+            interval: number;
+            intervalUnit: string;
+            maximumQuantity?: number;
+            maximumRepeat?: number;
+            minimumQuantity: number;
+            minimumRepeat: number;
+            mustBeCompleted: boolean;
+            price: order.Price;
+            priceCapInUcents?: number;
+            priceInUcents: number;
+            pricingStrategy: string;
+        }
+        /**
+         * Describe default pricings
+         * interface fullName: order.catalog.PricingDefault.PricingDefault
+         */
+        export interface PricingDefault {
+            default: order.catalog.Pricing[];
+        }
+        /**
+         * Describe a Product in the Catalog
+         * interface fullName: order.catalog.Product.Product
+         */
+        export interface Product {
+            configurations: order.catalog.ConfigurationItem[];
+            description: string;
+            internalType: order.cart.GenericProductTypeEnum;
+            metadatas?: complexType.SafeKeyValue<string>[];
+            name: string;
+            subType?: string;
+            technicalDetails?: complexType.SafeKeyValue<string>[];
+            type?: string;
+        }
+        /**
+         * Describe the details of a commercial offer
+         * interface fullName: order.catalog.ProductOfferDetails.ProductOfferDetails
+         */
+        export interface ProductOfferDetails {
+            blobs?: order.catalog.cloud.Blob;
+            metadatas?: complexType.SafeKeyValue<string>[];
+            pricings: order.catalog.PricingDefault;
+            product: order.catalog.Product;
+        }
+        /**
+         * Describes of commercial offer of a product
+         * interface fullName: order.catalog.ProductPlan.ProductPlan
+         */
+        export interface ProductPlan {
+            addonsFamily: order.catalog.AddonItem[];
+            consumptionBillingStrategy?: string;
+            details: order.catalog.ProductOfferDetails;
+            familyName?: string;
+            invoiceName: string;
+            planCode: string;
+            prices?: order.catalog.cloud.RegionPrice[];
+            pricingType: string;
+        }
+        export namespace cloud {
+            /**
+             * Describe extra informations of product offer
+             * interface fullName: order.catalog.cloud.Blob.Blob
+             */
+            export interface Blob {
+                unit?: order.catalog.cloud.Blob.Unit;
+            }
+            export namespace Blob {
+                /**
+                 * Label of the unit
+                 * interface fullName: order.catalog.cloud.Blob.Unit.Unit
+                 */
+                export interface Unit {
+                    unit: string;
+                }
+            }
+            /**
+             * Describes a region price
+             * interface fullName: order.catalog.cloud.RegionPrice.RegionPrice
+             */
+            export interface RegionPrice {
+                price: order.catalog.cloud.RegionPrice.Price;
+                region: string;
+            }
+            export namespace RegionPrice {
+                /**
+                 * Describes a price
+                 * interface fullName: order.catalog.cloud.RegionPrice.Price.Price
+                 */
+                export interface Price {
+                    currencyCode: order.CurrencyCodeEnum;
+                    priceInUcents: number;
+                    text: string;
+                    value: number;
+                }
+            }
+        }
     }
 }
 export namespace veeamCloudConnect {

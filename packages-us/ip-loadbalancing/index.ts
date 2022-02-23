@@ -137,6 +137,11 @@ export namespace ipLoadbalancing {
         zone: string;
     }
     /**
+     * Possible values for OnMarkedDown type
+     * type fullname: ipLoadbalancing.OnMarkedDownEnum
+     */
+    export type OnMarkedDownEnum = "shutdown-sessions"
+    /**
      * Available additional zone to order for a Load Balancer
      * interface fullName: ipLoadbalancing.OrderableZone.OrderableZone
      */
@@ -491,6 +496,7 @@ export namespace ipLoadbalancing {
             chain?: string;
             cookie?: string;
             displayName?: string;
+            onMarkedDown?: ipLoadbalancing.OnMarkedDownEnum;
             port?: number;
             probe: boolean;
             proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum;
@@ -528,6 +534,7 @@ export namespace ipLoadbalancing {
             backup: boolean;
             chain?: string;
             displayName?: string;
+            onMarkedDown?: ipLoadbalancing.OnMarkedDownEnum;
             port?: number;
             probe: boolean;
             proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum;
@@ -875,7 +882,7 @@ export interface IpLoadbalancing {
                          * Add a server to an HTTP Farm
                          * POST /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server
                          */
-                        $post(params: { address: string, backup?: boolean, chain?: string, cookie?: string, displayName?: string, port?: number, probe?: boolean, proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum, ssl?: boolean, status: ipLoadbalancing.BackendCustomerServerStatusEnum, weight?: number }): Promise<ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer>;
+                        $post(params: { address: string, backup?: boolean, chain?: string, cookie?: string, displayName?: string, onMarkedDown?: ipLoadbalancing.OnMarkedDownEnum, port?: number, probe?: boolean, proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum, ssl?: boolean, status: ipLoadbalancing.BackendCustomerServerStatusEnum, weight?: number }): Promise<ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer>;
                         /**
                          * Controle cache
                          */
@@ -895,7 +902,7 @@ export interface IpLoadbalancing {
                              * Alter this object properties
                              * PUT /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}
                              */
-                            $put(params?: { address?: string, backendId?: number, backup?: boolean, chain?: string, cookie?: string, displayName?: string, port?: number, probe?: boolean, proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum, serverId?: number, serverState?: ipLoadbalancing.ServerState[], ssl?: boolean, status?: ipLoadbalancing.BackendCustomerServerStatusEnum, weight?: number }): Promise<void>;
+                            $put(params?: { address?: string, backendId?: number, backup?: boolean, chain?: string, cookie?: string, displayName?: string, onMarkedDown?: ipLoadbalancing.OnMarkedDownEnum, port?: number, probe?: boolean, proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum, serverId?: number, serverState?: ipLoadbalancing.ServerState[], ssl?: boolean, status?: ipLoadbalancing.BackendCustomerServerStatusEnum, weight?: number }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -1237,7 +1244,7 @@ export interface IpLoadbalancing {
                          * Add a server to a TCP Farm
                          * POST /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server
                          */
-                        $post(params: { address: string, backup?: boolean, chain?: string, displayName?: string, port?: number, probe?: boolean, proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum, ssl?: boolean, status: ipLoadbalancing.BackendCustomerServerStatusEnum, weight?: number }): Promise<ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer>;
+                        $post(params: { address: string, backup?: boolean, chain?: string, displayName?: string, onMarkedDown?: ipLoadbalancing.OnMarkedDownEnum, port?: number, probe?: boolean, proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum, ssl?: boolean, status: ipLoadbalancing.BackendCustomerServerStatusEnum, weight?: number }): Promise<ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer>;
                         /**
                          * Controle cache
                          */
@@ -1257,7 +1264,7 @@ export interface IpLoadbalancing {
                              * Alter this object properties
                              * PUT /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}
                              */
-                            $put(params?: { address?: string, backendId?: number, backup?: boolean, chain?: string, displayName?: string, port?: number, probe?: boolean, proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum, serverId?: number, serverState?: ipLoadbalancing.ServerState[], ssl?: boolean, status?: ipLoadbalancing.BackendCustomerServerStatusEnum, weight?: number }): Promise<void>;
+                            $put(params?: { address?: string, backendId?: number, backup?: boolean, chain?: string, displayName?: string, onMarkedDown?: ipLoadbalancing.OnMarkedDownEnum, port?: number, probe?: boolean, proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum, serverId?: number, serverState?: ipLoadbalancing.ServerState[], ssl?: boolean, status?: ipLoadbalancing.BackendCustomerServerStatusEnum, weight?: number }): Promise<void>;
                             /**
                              * Controle cache
                              */

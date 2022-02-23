@@ -1320,6 +1320,90 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/optimizeProxies"
     },
     {
+      "description": "List the dedicatedCloud.BackupRepository objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Backup repositories associated with this Datacenter",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backupRepository"
+    },
+    {
+      "description": "Backup Repository",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Repository Id",
+              "fullType": "long",
+              "name": "repositoryId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.BackupRepository",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backupRepository/{repositoryId}"
+    },
+    {
       "description": "checkBackupJobs operations",
       "operations": [
         {
@@ -1356,6 +1440,90 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/checkBackupJobs"
+    },
+    {
+      "description": "List the dedicatedCloud.Cluster objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Clusters associated with this Datacenter",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/cluster"
+    },
+    {
+      "description": "Dedicated Cloud Cluster",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the cluster",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Cluster",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/cluster/{id}"
     },
     {
       "description": "disable operations",
@@ -4450,6 +4618,30 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "string",
+              "description": "Active Directory LDAP hostname",
+              "fullType": "string",
+              "name": "ldapHostname",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Active Directory LDAP/LDAPS TCP port (636 for LDAPS or 389 for LDAP)",
+              "fullType": "long",
+              "name": "ldapTcpPort",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Use unsecure LDAP instead of LDAPS",
+              "fullType": "boolean",
+              "name": "noSsl",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "password",
               "description": "Active Directory password",
               "fullType": "password",
@@ -4459,7 +4651,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Active Directory username, e.g. jdoe@example.com",
+              "description": "SSL thumbprint of the remote service, e.g. A7:61:68:...:61:91:2F",
+              "fullType": "string",
+              "name": "sslThumbprint",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Active Directory user name (pre-Windows 2000 name), e.g. jdoe@example.com",
               "fullType": "string",
               "name": "username",
               "paramType": "body",
@@ -4583,7 +4783,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Active Directory username, e.g. jdoe@example.com",
+              "description": "SSL thumbprint of the remote service, e.g. A7:61:68:...:61:91:2F",
+              "fullType": "string",
+              "name": "sslThumbprint",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Active Directory user name (pre-Windows 2000 name), e.g. jdoe@example.com or jdoe",
               "fullType": "string",
               "name": "username",
               "paramType": "body",
@@ -4616,6 +4824,52 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/changeProperties"
     },
     {
+      "description": "grantActiveDirectoryGroup operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Grant Active Directory group",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Active Directory group name (pre-Windows 2000 name), e.g. mygroup",
+              "fullType": "string",
+              "name": "groupName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the Active Directory",
+              "fullType": "long",
+              "name": "activeDirectoryId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/grantActiveDirectoryGroup"
+    },
+    {
       "description": "grantActiveDirectoryUser operations",
       "operations": [
         {
@@ -4629,7 +4883,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Active Directory username, e.g. jdoe@example.com",
+              "description": "Active Directory user name (pre-Windows 2000 name), e.g. jdoe@example.com or jdoe",
               "fullType": "string",
               "name": "username",
               "paramType": "body",
@@ -9129,11 +9383,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/upgrade/privateCloud/{serviceName}/{planCode}",
-            "value": "DEPRECATED"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Check if vRealize Operations option can be disabled",
           "httpMethod": "GET",
@@ -9162,11 +9413,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/upgrade/privateCloud/{serviceName}/{planCode}",
-            "value": "DEPRECATED"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Check if vRealize Operations option can be enabled",
           "httpMethod": "GET",
@@ -9261,11 +9509,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/upgrade/privateCloud/{serviceName}/{planCode}",
-            "value": "DEPRECATED"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Request vRealize Operations Manager upgrade",
           "httpMethod": "POST",
@@ -10310,6 +10555,61 @@ export const schema: Schema = {
         }
       }
     },
+    "dedicatedCloud.BackupRepository": {
+      "description": "Backup Repository",
+      "id": "BackupRepository",
+      "namespace": "dedicatedCloud",
+      "properties": {
+        "lastSuccessfulReplicationDate": {
+          "canBeNull": true,
+          "description": "Replication last successful date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "replication": {
+          "canBeNull": true,
+          "description": "Replication status",
+          "fullType": "dedicatedCloud.option.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicatedCloud.option.StateEnum"
+        },
+        "replicationZone": {
+          "canBeNull": true,
+          "description": "Replication zone",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "repositoryId": {
+          "canBeNull": false,
+          "description": "Repository Id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "repositoryName": {
+          "canBeNull": false,
+          "description": "Repository Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "syncStatus": {
+          "canBeNull": true,
+          "description": "Replication sync status",
+          "fullType": "dedicatedCloud.backup.ReplicationSyncStatus",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicatedCloud.backup.ReplicationSyncStatus"
+        }
+      }
+    },
     "dedicatedCloud.BackupStateEnum": {
       "description": "All states a Dedicated Cloud Backup can be in",
       "enum": [
@@ -10750,6 +11050,14 @@ export const schema: Schema = {
           "required": false,
           "type": "ipv4"
         },
+        "ldapHostname": {
+          "canBeNull": true,
+          "description": "Active Directory LDAP hostname",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "ldapTcpPort": {
           "canBeNull": false,
           "description": "Active Directory LDAP port",
@@ -10757,6 +11065,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "noSsl": {
+          "canBeNull": false,
+          "description": "Use unsecure LDAP instead of LDAPS",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "sslThumbprint": {
           "canBeNull": true,
@@ -10776,7 +11092,7 @@ export const schema: Schema = {
         },
         "username": {
           "canBeNull": false,
-          "description": "Active Directory username",
+          "description": "Active Directory user name",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -10828,6 +11144,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "isManagedByOvh": {
+          "canBeNull": false,
+          "description": "Filer accessibility (if true, customer cannot access it)",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "master": {
           "canBeNull": false,
@@ -11282,6 +11606,7 @@ export const schema: Schema = {
         "6.0",
         "6.5",
         "6.7",
+        "7.0",
         "hv3.1",
         "hvdc3.1",
         "nc1.0"
@@ -12099,6 +12424,22 @@ export const schema: Schema = {
           "required": false,
           "type": "dedicatedCloud.user.ActivationStateEnum"
         },
+        "activeDirectoryId": {
+          "canBeNull": true,
+          "description": "Linked Federation Active Directory (if any)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "activeDirectoryType": {
+          "canBeNull": true,
+          "description": "Federation Active Directory user type (if any)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "canManageIpFailOvers": {
           "canBeNull": false,
           "description": "Defines if the user can manage ip failovers",
@@ -12786,6 +13127,13 @@ export const schema: Schema = {
           "required": false,
           "type": "dedicatedCloud.backup.BackupDaysEnum[]"
         },
+        "backupRepositoryId": {
+          "canBeNull": true,
+          "description": "Associated backup repository Id",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
         "encryption": {
           "canBeNull": true,
           "description": "Backup is encrypted",
@@ -13051,6 +13399,18 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "OptimizeRecommendationEnum",
+      "namespace": "dedicatedCloud.backup"
+    },
+    "dedicatedCloud.backup.ReplicationSyncStatus": {
+      "description": "All possible replication sync status",
+      "enum": [
+        "ok",
+        "out-of-sync",
+        "sync-required",
+        "unknown"
+      ],
+      "enumType": "string",
+      "id": "ReplicationSyncStatus",
       "namespace": "dedicatedCloud.backup"
     },
     "dedicatedCloud.backup.RestorePoint": {
@@ -15032,6 +15392,7 @@ export const schema: Schema = {
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",

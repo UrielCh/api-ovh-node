@@ -8432,6 +8432,36 @@ export const schema: Schema = {
       "path": "/telephony/{billingAccount}/fax/{serviceName}/settings/sendFax"
     },
     {
+      "description": "hasSpecialNumbers operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Check if the billing account contains at least one special number",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "boolean",
+          "scopes": [
+            "all",
+            "product/telephony/all"
+          ]
+        }
+      ],
+      "path": "/telephony/{billingAccount}/hasSpecialNumbers"
+    },
+    {
       "description": "List the telephony.HistoryConsumption objects",
       "operations": [
         {
@@ -26279,6 +26309,27 @@ export const schema: Schema = {
       "path": "/telephony/procedure/{id}/cancel"
     },
     {
+      "description": "Tells wether the procedure is necessary to order telephony products or not",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Tells wether the procedure is necessary to order telephony products or not",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "boolean",
+          "scopes": [
+            "all",
+            "product/telephony/all"
+          ]
+        }
+      ],
+      "path": "/telephony/procedure/required"
+    },
+    {
       "description": "Generate a new password for the reseller panel",
       "operations": [
         {
@@ -27734,6 +27785,7 @@ export const schema: Schema = {
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",
@@ -28193,6 +28245,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "hasSpecialNumbers": {
+          "canBeNull": false,
+          "description": "Check if the billing account contains at least one special number",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "hiddenExternalNumber": {
           "canBeNull": false,
@@ -32574,7 +32634,6 @@ export const schema: Schema = {
       "enum": [
         "be",
         "ch",
-        "de",
         "es",
         "fr",
         "gb",
@@ -35822,6 +35881,21 @@ export const schema: Schema = {
       "id": "ScreenListTypeEnum",
       "namespace": "telephony"
     },
+    "telephony.ServiceNumberCountryEnum": {
+      "description": "Number country",
+      "enum": [
+        "be",
+        "ch",
+        "de",
+        "es",
+        "fr",
+        "gb",
+        "uk"
+      ],
+      "enumType": "string",
+      "id": "ServiceNumberCountryEnum",
+      "namespace": "telephony"
+    },
     "telephony.ServiceVoicemailAudioFormatEnum": {
       "description": "Voicemail audio format",
       "enum": [
@@ -36149,10 +36223,10 @@ export const schema: Schema = {
         "country": {
           "canBeNull": false,
           "description": "The country of the number",
-          "fullType": "telephony.NumberCountryEnum",
+          "fullType": "telephony.ServiceNumberCountryEnum",
           "readOnly": true,
           "required": false,
-          "type": "telephony.NumberCountryEnum"
+          "type": "telephony.ServiceNumberCountryEnum"
         },
         "countryCode": {
           "canBeNull": false,
@@ -37318,11 +37392,6 @@ export const schema: Schema = {
         "access",
         "adults",
         "announced",
-        "be_adults",
-        "be_content",
-        "be_games",
-        "be_general",
-        "be_relaxing",
         "conferencing",
         "contentsAuto",
         "contentsManual",

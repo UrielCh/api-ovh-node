@@ -4916,8 +4916,8 @@ export const schema: Schema = {
       "description": "Possible values for ArchiveRetrievalStateEnum",
       "enum": [
         "sealed",
-        "unsealing",
-        "unsealed"
+        "unsealed",
+        "unsealing"
       ],
       "enumType": "string",
       "id": "ArchiveRetrievalStateEnum",
@@ -5052,9 +5052,9 @@ export const schema: Schema = {
     "dbaas.logs.ClusterClusterTypeEnum": {
       "description": "Possible values for ClusterClusterTypeEnum",
       "enum": [
-        "TRIAL",
+        "DEDICATED",
         "PRO",
-        "DEDICATED"
+        "TRIAL"
       ],
       "enumType": "string",
       "id": "ClusterClusterTypeEnum",
@@ -5063,11 +5063,11 @@ export const schema: Schema = {
     "dbaas.logs.ClusterRegionEnum": {
       "description": "Possible values for ClusterRegionEnum",
       "enum": [
-        "GRA",
-        "RBX",
         "BHS",
-        "SBG",
-        "P-19"
+        "GRA",
+        "P-19",
+        "RBX",
+        "SBG"
       ],
       "enumType": "string",
       "id": "ClusterRegionEnum",
@@ -5193,9 +5193,9 @@ export const schema: Schema = {
     "dbaas.logs.DeliveryStatusEnum": {
       "description": "Possible values for DeliveryStatusEnum",
       "enum": [
+        "DELETING",
         "DELIVERING",
-        "READY",
-        "DELETING"
+        "READY"
       ],
       "enumType": "string",
       "id": "DeliveryStatusEnum",
@@ -5277,10 +5277,10 @@ export const schema: Schema = {
     "dbaas.logs.FlowggerConfigurationLogFormatEnum": {
       "description": "Possible values for FlowggerConfigurationLogFormatEnum",
       "enum": [
-        "RFC5424",
-        "LTSV",
+        "CAPNP",
         "GELF",
-        "CAPNP"
+        "LTSV",
+        "RFC5424"
       ],
       "enumType": "string",
       "id": "FlowggerConfigurationLogFormatEnum",
@@ -5289,10 +5289,10 @@ export const schema: Schema = {
     "dbaas.logs.FlowggerConfigurationLogFramingEnum": {
       "description": "Possible values for FlowggerConfigurationLogFramingEnum",
       "enum": [
+        "CAPNP",
         "LINE",
         "NUL",
-        "SYSLEN",
-        "CAPNP"
+        "SYSLEN"
       ],
       "enumType": "string",
       "id": "FlowggerConfigurationLogFramingEnum",
@@ -5371,8 +5371,8 @@ export const schema: Schema = {
     "dbaas.logs.HelperSectionNameEnum": {
       "description": "Possible values for HelperSectionName",
       "enum": [
-        "LOGSTASH_INPUT",
         "LOGSTASH_FILTER",
+        "LOGSTASH_INPUT",
         "LOGSTASH_PATTERN"
       ],
       "enumType": "string",
@@ -5611,12 +5611,12 @@ export const schema: Schema = {
     "dbaas.logs.InputActionTypeEnum": {
       "description": "Possible values for InputActionTypeEnum",
       "enum": [
+        "DESTROY",
         "END",
         "LOG",
+        "RESTART",
         "START",
-        "TEST",
-        "DESTROY",
-        "RESTART"
+        "TEST"
       ],
       "enumType": "string",
       "id": "InputActionTypeEnum",
@@ -5744,8 +5744,8 @@ export const schema: Schema = {
       "enum": [
         "INIT",
         "PENDING",
-        "RUNNING",
-        "PROCESSING"
+        "PROCESSING",
+        "RUNNING"
       ],
       "enumType": "string",
       "id": "InputStatusEnum",
@@ -6067,14 +6067,14 @@ export const schema: Schema = {
     "dbaas.logs.OperationStateEnum": {
       "description": "Possible values for OperationStateEnum",
       "enum": [
+        "FAILURE",
         "PENDING",
         "RECEIVED",
-        "STARTED",
-        "SUCCESS",
-        "FAILURE",
-        "REVOKED",
         "RETRY",
-        "RUNNING"
+        "REVOKED",
+        "RUNNING",
+        "STARTED",
+        "SUCCESS"
       ],
       "enumType": "string",
       "id": "OperationStateEnum",
@@ -7170,8 +7170,8 @@ export const schema: Schema = {
     "dbaas.logs.ServicePlanEnum": {
       "description": "Possible values for ServicePlanEnum",
       "enum": [
-        "STANDARD",
-        "ENTERPRISE"
+        "ENTERPRISE",
+        "STANDARD"
       ],
       "enumType": "string",
       "id": "ServicePlanEnum",
@@ -7180,10 +7180,10 @@ export const schema: Schema = {
     "dbaas.logs.ServiceStateEnum": {
       "description": "Possible values for ServiceStateEnum",
       "enum": [
-        "INIT",
-        "TO_CONFIG",
+        "DISABLED",
         "ENABLED",
-        "DISABLED"
+        "INIT",
+        "TO_CONFIG"
       ],
       "enumType": "string",
       "id": "ServiceStateEnum",
@@ -7486,9 +7486,9 @@ export const schema: Schema = {
     "dbaas.logs.StreamAlertConditionConditionTypeEnum": {
       "description": "Possible values for StreamAlertConditionConditionTypeEnum",
       "enum": [
-        "MESSAGE_COUNT",
+        "FIELD_CONTENT_VALUE",
         "FIELD_VALUE",
-        "FIELD_CONTENT_VALUE"
+        "MESSAGE_COUNT"
       ],
       "enumType": "string",
       "id": "StreamAlertConditionConditionTypeEnum",
@@ -7497,11 +7497,11 @@ export const schema: Schema = {
     "dbaas.logs.StreamAlertConditionConstraintTypeEnum": {
       "description": "Possible values for StreamAlertConditionConstraintTypeEnum",
       "enum": [
+        "MAX",
         "MEAN",
         "MIN",
-        "MAX",
-        "SUM",
-        "STDDEV"
+        "STDDEV",
+        "SUM"
       ],
       "enumType": "string",
       "id": "StreamAlertConditionConstraintTypeEnum",
@@ -7510,10 +7510,10 @@ export const schema: Schema = {
     "dbaas.logs.StreamAlertConditionThresholdTypeEnum": {
       "description": "Possible values for StreamAlertConditionThresholdTypeEnum",
       "enum": [
-        "MORE",
+        "HIGHER",
         "LESS",
         "LOWER",
-        "HIGHER"
+        "MORE"
       ],
       "enumType": "string",
       "id": "StreamAlertConditionThresholdTypeEnum",
@@ -7522,9 +7522,9 @@ export const schema: Schema = {
     "dbaas.logs.StreamColdStorageCompressionEnum": {
       "description": "Possible values for StreamColdStorageCompressionEnum",
       "enum": [
-        "LZMA",
-        "GZIP",
         "DEFLATED",
+        "GZIP",
+        "LZMA",
         "ZSTD"
       ],
       "enumType": "string",
@@ -7603,10 +7603,10 @@ export const schema: Schema = {
     "dbaas.logs.StreamRuleOperatorEnum": {
       "description": "Possible values for StreamRuleOperatorEnum",
       "enum": [
-        "MATCH_EXACTLY",
+        "FIELD_PRESENCE",
         "GREATER_THAN",
-        "SMALLER_THAN",
-        "FIELD_PRESENCE"
+        "MATCH_EXACTLY",
+        "SMALLER_THAN"
       ],
       "enumType": "string",
       "id": "StreamRuleOperatorEnum",
@@ -7785,32 +7785,32 @@ export const schema: Schema = {
     "dbaas.logs.UrlTypeEnum": {
       "description": "Possible values for UrlTypeEnum",
       "enum": [
-        "GRAYLOG_WEBUI",
-        "GRAYLOG_API",
-        "ELASTICSEARCH_API",
-        "KIBANA_WEBUI",
         "CONSOLE",
-        "WEB_SOCKET",
-        "SERVICE_DOMAIN",
-        "TCP_TLS_GELF",
-        "TCP_GELF",
-        "UDP_GELF",
-        "TCP_TLS_RFC5424",
-        "TCP_RFC5424",
-        "UDP_RFC5424",
-        "TCP_TLS_LTSV_LINE",
-        "TCP_TLS_LTSV_NUL",
-        "TCP_LTSV_LINE",
-        "TCP_LTSV_NUL",
-        "TCP_TLS_CAP_N_PROTO",
-        "TCP_CAP_N_PROTO",
-        "UDP_LTSV_NUL",
-        "UDP_LTSV_LINE",
-        "UDP_CAP_N_PROTO",
+        "ELASTICSEARCH_API",
+        "GRAYLOG_API",
+        "GRAYLOG_WEBUI",
         "HTTP_GELF",
         "HTTP_TLS_GELF",
+        "KIBANA_WEBUI",
+        "SERVICE_DOMAIN",
         "TCP_BEATS",
-        "TCP_TLS_BEATS"
+        "TCP_CAP_N_PROTO",
+        "TCP_GELF",
+        "TCP_LTSV_LINE",
+        "TCP_LTSV_NUL",
+        "TCP_RFC5424",
+        "TCP_TLS_BEATS",
+        "TCP_TLS_CAP_N_PROTO",
+        "TCP_TLS_GELF",
+        "TCP_TLS_LTSV_LINE",
+        "TCP_TLS_LTSV_NUL",
+        "TCP_TLS_RFC5424",
+        "UDP_CAP_N_PROTO",
+        "UDP_GELF",
+        "UDP_LTSV_LINE",
+        "UDP_LTSV_NUL",
+        "UDP_RFC5424",
+        "WEB_SOCKET"
       ],
       "enumType": "string",
       "id": "UrlTypeEnum",

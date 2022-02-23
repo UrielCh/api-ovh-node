@@ -129,6 +129,8 @@ export namespace ip {
      * interface fullName: ip.Ip.Ip
      */
     export interface Ip {
+        bringYourOwnIp: boolean;
+        campus?: string;
         canBeTerminated: boolean;
         country?: coreTypes.CountryEnum;
         description?: string;
@@ -388,7 +390,7 @@ export interface Ip {
          * Alter this object properties
          * PUT /ip/{ip}
          */
-        $put(params?: { canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum }): Promise<void>;
+        $put(params?: { bringYourOwnIp?: boolean, campus?: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum }): Promise<void>;
         /**
          * Controle cache
          */

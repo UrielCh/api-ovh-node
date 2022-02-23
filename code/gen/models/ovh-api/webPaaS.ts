@@ -581,9 +581,9 @@ export const schema: Schema = {
     "webPaaS.AddonFamilyEnum": {
       "description": "Valid addon offers faimly",
       "enum": [
+        "staging_environment",
         "storage",
-        "user_license",
-        "staging_environment"
+        "user_license"
       ],
       "enumType": "string",
       "id": "AddonFamilyEnum",
@@ -592,8 +592,8 @@ export const schema: Schema = {
     "webPaaS.AddonProductNameEnum": {
       "description": "Valid addon product name",
       "enum": [
-        "additional-storage",
         "additional-staging-environment",
+        "additional-storage",
         "additional-user-license"
       ],
       "enumType": "string",
@@ -647,21 +647,21 @@ export const schema: Schema = {
     "webPaaS.OfferEnum": {
       "description": "Valid offers by Web PaaS",
       "enum": [
-        "start-1",
-        "start-2",
-        "start-4",
-        "start-8",
-        "start-16",
         "develop-1",
+        "develop-16",
         "develop-2",
         "develop-4",
         "develop-8",
-        "develop-16",
         "expand-1",
+        "expand-16",
         "expand-2",
         "expand-4",
         "expand-8",
-        "expand-16"
+        "start-1",
+        "start-16",
+        "start-2",
+        "start-4",
+        "start-8"
       ],
       "enumType": "string",
       "id": "OfferEnum",
@@ -680,18 +680,18 @@ export const schema: Schema = {
       "description": "Valid states of a subscription",
       "enum": [
         "ACTIVE",
-        "PENDING",
         "CANCELED",
         "CANCELING",
         "CANCELLATION_REQUESTED",
-        "TERMINATED",
-        "SUSPENDED",
-        "EXPIRED",
-        "ERROR",
         "CLOSED",
-        "TO_SETTLE",
+        "ERROR",
+        "EXPIRED",
+        "PENDING",
+        "SETTLED",
         "SETTLING",
-        "SETTLED"
+        "SUSPENDED",
+        "TERMINATED",
+        "TO_SETTLE"
       ],
       "enumType": "string",
       "id": "StatusEnum",

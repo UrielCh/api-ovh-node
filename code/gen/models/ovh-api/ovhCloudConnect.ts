@@ -10,8 +10,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List available services",
           "httpMethod": "GET",
@@ -31,8 +31,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get service",
           "httpMethod": "GET",
@@ -55,8 +55,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Modify service",
           "httpMethod": "PUT",
@@ -146,8 +146,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get Pop Configuration linked to of a OVHcloud Connect Service",
           "httpMethod": "GET",
@@ -170,8 +170,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a Pop Configuration",
           "httpMethod": "POST",
@@ -207,8 +207,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete a Pop Configuration",
           "httpMethod": "DELETE",
@@ -239,8 +239,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get Pop Configuration of a OVHcloud Connect Service",
           "httpMethod": "GET",
@@ -277,8 +277,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get Datacenter Configuration linked to of a OVHcloud Connect Service",
           "httpMethod": "GET",
@@ -309,8 +309,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a Datacenter Configuration",
           "httpMethod": "POST",
@@ -354,8 +354,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete a Datacenter Configuration",
           "httpMethod": "DELETE",
@@ -394,8 +394,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get Datacenter Configuration of a OVHcloud Connect Service",
           "httpMethod": "GET",
@@ -440,8 +440,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get Datacenter Extra Configuration linked to of a OVHcloud Connect Service",
           "httpMethod": "GET",
@@ -480,8 +480,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a Datacenter Extra Configuration",
           "httpMethod": "POST",
@@ -533,8 +533,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete a Datacenter Extra Configuration",
           "httpMethod": "DELETE",
@@ -581,8 +581,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get Datacenter Extra Configuration of a OVHcloud Connect Service",
           "httpMethod": "GET",
@@ -697,8 +697,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List available Datacenter",
           "httpMethod": "GET",
@@ -727,8 +727,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get Datacenter",
           "httpMethod": "GET",
@@ -765,8 +765,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List interfaces linked to the Service",
           "httpMethod": "GET",
@@ -795,8 +795,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get the Interface information",
           "httpMethod": "GET",
@@ -833,8 +833,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Lock the port",
           "httpMethod": "POST",
@@ -871,8 +871,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Statistics for an OCC interface for a given type",
           "httpMethod": "GET",
@@ -925,8 +925,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Unlock the port",
           "httpMethod": "POST",
@@ -963,8 +963,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Generate a loa for a service",
           "httpMethod": "POST",
@@ -1054,8 +1054,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get Keys linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
@@ -1084,8 +1084,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get Key linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
@@ -1122,8 +1122,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Regenerate Service Key linked to a OVHcloud Connect Service",
           "httpMethod": "POST",
@@ -1160,8 +1160,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Send key value to customer",
           "httpMethod": "POST",
@@ -1205,8 +1205,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get Task linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
@@ -1235,8 +1235,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get Tasks linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
@@ -1867,9 +1867,9 @@ export const schema: Schema = {
     "ovhcloudconnect.interface.LightStatusEnum": {
       "description": "Enum values for the light status",
       "enum": [
-        "up",
         "down",
-        "unknown"
+        "unknown",
+        "up"
       ],
       "enumType": "string",
       "id": "LightStatusEnum",
@@ -1878,8 +1878,8 @@ export const schema: Schema = {
     "ovhcloudconnect.interface.MetricsPeriodEnum": {
       "description": "Enum values for the period of the statistics",
       "enum": [
-        "hourly",
         "daily",
+        "hourly",
         "weekly"
       ],
       "enumType": "string",
@@ -1889,12 +1889,12 @@ export const schema: Schema = {
     "ovhcloudconnect.interface.MetricsTypeEnum": {
       "description": "Enum values for the type of the statistics",
       "enum": [
+        "error:download",
+        "error:upload",
         "light:in",
         "light:out",
         "traffic:download",
-        "traffic:upload",
-        "error:download",
-        "error:upload"
+        "traffic:upload"
       ],
       "enumType": "string",
       "id": "MetricsTypeEnum",
@@ -1903,8 +1903,8 @@ export const schema: Schema = {
     "ovhcloudconnect.interface.MetricsUnitEnum": {
       "description": "Enum values for the unit of the statistics",
       "enum": [
-        "dbm",
         "bytes/s",
+        "dbm",
         "error/s"
       ],
       "enumType": "string",
@@ -1914,8 +1914,9 @@ export const schema: Schema = {
     "ovhcloudconnect.interface.StatusEnum": {
       "description": "Enum values for interface status",
       "enum": [
+        "disabled",
         "enabled",
-        "disabled"
+        "reserved"
       ],
       "enumType": "string",
       "id": "StatusEnum",
@@ -1934,9 +1935,9 @@ export const schema: Schema = {
     "ovhcloudconnect.key.StatusEnum": {
       "description": "Enum values for service key status",
       "enum": [
-        "doing",
         "active",
         "cancelled",
+        "doing",
         "terminated",
         "toCheck"
       ],
@@ -1956,8 +1957,8 @@ export const schema: Schema = {
     "ovhcloudconnect.popConfig.StatusEnum": {
       "description": "Enum values for Pop Configuration Status",
       "enum": [
-        "init",
         "active",
+        "init",
         "toDelete"
       ],
       "enumType": "string",
@@ -1977,12 +1978,13 @@ export const schema: Schema = {
     "ovhcloudconnect.service.BandwidthEnum": {
       "description": "Enum values for bandwidth",
       "enum": [
-        "200m",
-        "500m",
+        "100m",
+        "10g",
         "1g",
+        "200m",
         "2g",
-        "5g",
-        "10g"
+        "500m",
+        "5g"
       ],
       "enumType": "string",
       "id": "BandwidthEnum",
@@ -2001,13 +2003,13 @@ export const schema: Schema = {
     "ovhcloudconnect.service.ProviderEnum": {
       "description": "Enum values for service provider",
       "enum": [
+        "OVHcloud",
         "equinix",
         "intercloud",
         "internal",
         "interxion",
         "megaport",
-        "orange",
-        "OVHcloud"
+        "orange"
       ],
       "enumType": "string",
       "id": "ProviderEnum",
@@ -2026,16 +2028,16 @@ export const schema: Schema = {
     "ovhcloudconnect.task.FunctionEnum": {
       "description": "Enum values for Task function",
       "enum": [
-        "addVrack",
-        "removeVrack",
-        "lockInterface",
-        "unlockInterface",
-        "addPopConfiguration",
-        "delPopConfiguration",
         "addDatacenterConfiguration",
-        "delDatacenterConfiguration",
         "addDatacenterExtraConfiguration",
-        "delDatacenterExtraConfiguration"
+        "addPopConfiguration",
+        "addVrack",
+        "delDatacenterConfiguration",
+        "delDatacenterExtraConfiguration",
+        "delPopConfiguration",
+        "lockInterface",
+        "removeVrack",
+        "unlockInterface"
       ],
       "enumType": "string",
       "id": "FunctionEnum",

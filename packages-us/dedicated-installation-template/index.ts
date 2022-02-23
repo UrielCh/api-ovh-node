@@ -19,7 +19,7 @@ export namespace dedicated {
      * Filesystems available
      * type fullname: dedicated.TemplateOsFileSystemEnum
      */
-    export type TemplateOsFileSystemEnum = "btrfs" | "ext3" | "ext4" | "ntfs" | "reiserfs" | "swap" | "ufs" | "xfs" | "zfs"
+    export type TemplateOsFileSystemEnum = "btrfs" | "ext3" | "ext4" | "fat16" | "ntfs" | "reiserfs" | "swap" | "ufs" | "vmfs5" | "vmfs6" | "vmfsl" | "xfs" | "zfs"
     /**
      * Hardware RAID enum
      * type fullname: dedicated.TemplateOsHardwareRaidEnum

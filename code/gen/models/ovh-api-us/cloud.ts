@@ -4438,36 +4438,6 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/network/public"
     },
     {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get OVH playground session to use the openstack terminal",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "cloud.openstackClient.Session",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
-        }
-      ],
-      "path": "/cloud/project/{serviceName}/openstackClient"
-    },
-    {
       "description": "Manage the operations on your Cloud Project",
       "operations": [
         {
@@ -5073,7 +5043,7 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/region/{regionName}/quota/storage"
     },
     {
-      "description": "Manage your storage containers",
+      "description": "Manage your S3 storage containers",
       "operations": [
         {
           "apiStatus": {
@@ -5112,7 +5082,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Create storage container",
+          "description": "Create S3 storage container",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -5150,14 +5120,14 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/region/{regionName}/storage"
     },
     {
-      "description": "Manage your storage containers",
+      "description": "Manage your S3 storage containers",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Delete storage container",
+          "description": "Delete S3 storage container",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -5197,7 +5167,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get storage container",
+          "description": "Get S3 storage container",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -5252,14 +5222,14 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/region/{regionName}/storage/{name}"
     },
     {
-      "description": "Manage storage container objects",
+      "description": "Manage S3 storage container objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Delete storage container object",
+          "description": "Delete S3 storage container object",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -5306,14 +5276,14 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/region/{regionName}/storage/{name}/object/{objectKey}"
     },
     {
-      "description": "Manage storage container policy",
+      "description": "Manage S3 storage container policy",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Add storage container policy",
+          "description": "Add S3 storage container policy",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6031,44 +6001,6 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get OVH playground session with a stack installed to use the openstack terminal",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Stack ID",
-              "fullType": "string",
-              "name": "stackId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "cloud.openstackClient.Session",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
-        }
-      ],
-      "path": "/cloud/project/{serviceName}/stack/{stackId}/client"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
@@ -6468,11 +6400,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2016-11-25T10:00:00+01:00",
-            "deprecatedDate": "2016-08-25T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/cloud/project/{serviceName}/storage/access",
-            "value": "DEPRECATED"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Access to storage API",
           "httpMethod": "GET",
@@ -8004,11 +7933,12 @@ export const schema: Schema = {
     "cloud.ExecutionStateEnum": {
       "description": "Enum values for State",
       "enum": [
-        "IDLE",
-        "RUNNING",
-        "SUCCESS",
+        "CANCELED",
         "ERROR",
-        "PAUSED"
+        "IDLE",
+        "PAUSED",
+        "RUNNING",
+        "SUCCESS"
       ],
       "enumType": "string",
       "id": "ExecutionStateEnum",
@@ -8108,10 +8038,10 @@ export const schema: Schema = {
     "cloud.LabStatusEnum": {
       "description": "Enum values for Status",
       "enum": [
-        "open",
-        "activating",
         "activated",
-        "closed"
+        "activating",
+        "closed",
+        "open"
       ],
       "enumType": "string",
       "id": "LabStatusEnum",
@@ -8204,10 +8134,10 @@ export const schema: Schema = {
     "cloud.OperationStatusEnum": {
       "description": "Enum values for Status",
       "enum": [
-        "created",
-        "in-progress",
         "completed",
+        "created",
         "in-error",
+        "in-progress",
         "unknown"
       ],
       "enumType": "string",
@@ -8804,6 +8734,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "template": {
+          "canBeNull": true,
+          "description": "NodePool template to apply to each children nodes",
+          "fullType": "cloud.kube.NodePoolTemplate",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.NodePoolTemplate"
         }
       }
     },
@@ -8952,6 +8890,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "template": {
+          "canBeNull": true,
+          "description": "NodePool template to apply to each children nodes",
+          "fullType": "cloud.kube.NodePoolTemplate",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.NodePoolTemplate"
         }
       }
     },
@@ -9007,6 +8953,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "uuid[]"
+        },
+        "template": {
+          "canBeNull": true,
+          "description": "NodePool template to apply to each children nodes",
+          "fullType": "cloud.kube.NodePoolTemplate",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.NodePoolTemplate"
         }
       }
     },
@@ -9809,10 +9763,10 @@ export const schema: Schema = {
     "cloud.RegionContinentEnum": {
       "description": "Enum values for ContinentCode",
       "enum": [
+        "ASIA",
         "EU",
         "NA",
-        "US",
-        "ASIA"
+        "US"
       ],
       "enumType": "string",
       "id": "RegionContinentEnum",
@@ -9832,9 +9786,9 @@ export const schema: Schema = {
     "cloud.RegionStatusEnum": {
       "description": "Enum values for Status",
       "enum": [
-        "UP",
         "DOWN",
-        "MAINTENANCE"
+        "MAINTENANCE",
+        "UP"
       ],
       "enumType": "string",
       "id": "RegionStatusEnum",
@@ -9853,8 +9807,8 @@ export const schema: Schema = {
     "cloud.ServiceStatusEnum": {
       "description": "Enum values for Status",
       "enum": [
-        "UP",
-        "DOWN"
+        "DOWN",
+        "UP"
       ],
       "enumType": "string",
       "id": "ServiceStatusEnum",
@@ -10386,10 +10340,10 @@ export const schema: Schema = {
     "cloud.flavor.CapabilityNameEnum": {
       "description": "Enum values for flavor capabilities names",
       "enum": [
+        "failoverip",
         "resize",
         "snapshot",
-        "volume",
-        "failoverip"
+        "volume"
       ],
       "enumType": "string",
       "id": "CapabilityNameEnum",
@@ -10659,10 +10613,10 @@ export const schema: Schema = {
     "cloud.image.OSTypeEnum": {
       "description": "OSTypeEnum",
       "enum": [
-        "linux",
+        "baremetal-linux",
         "bsd",
-        "windows",
-        "baremetal-linux"
+        "linux",
+        "windows"
       ],
       "enumType": "string",
       "id": "OSTypeEnum",
@@ -10967,6 +10921,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "rescuePassword": {
+          "canBeNull": true,
+          "description": "Rescue password if instance is in RESCUE status",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
         "sshKey": {
           "canBeNull": true,
           "description": "Instance SSH key",
@@ -11031,36 +10993,36 @@ export const schema: Schema = {
       "description": "InstanceStatusEnum",
       "enum": [
         "ACTIVE",
+        "BUILD",
         "BUILDING",
         "DELETED",
         "DELETING",
         "ERROR",
         "HARD_REBOOT",
+        "MIGRATING",
         "PASSWORD",
         "PAUSED",
         "REBOOT",
         "REBUILD",
+        "RESCUE",
         "RESCUED",
+        "RESCUING",
+        "RESIZE",
         "RESIZED",
+        "RESUMING",
         "REVERT_RESIZE",
+        "SHELVED",
+        "SHELVED_OFFLOADED",
+        "SHELVING",
+        "SHUTOFF",
+        "SNAPSHOTTING",
         "SOFT_DELETED",
         "STOPPED",
         "SUSPENDED",
         "UNKNOWN",
-        "VERIFY_RESIZE",
-        "MIGRATING",
-        "RESIZE",
-        "BUILD",
-        "SHUTOFF",
-        "RESCUE",
-        "SHELVED",
-        "SHELVED_OFFLOADED",
-        "RESCUING",
         "UNRESCUING",
-        "SNAPSHOTTING",
-        "RESUMING",
-        "SHELVING",
-        "UNSHELVING"
+        "UNSHELVING",
+        "VERIFY_RESIZE"
       ],
       "enumType": "string",
       "id": "InstanceStatusEnum",
@@ -11179,12 +11141,12 @@ export const schema: Schema = {
     "cloud.instance.MetricsTypeEnum": {
       "description": "MetricsType",
       "enum": [
-        "mem:used",
-        "mem:max",
-        "cpu:used",
         "cpu:max",
-        "net:tx",
-        "net:rx"
+        "cpu:used",
+        "mem:max",
+        "mem:used",
+        "net:rx",
+        "net:tx"
       ],
       "enumType": "string",
       "id": "MetricsTypeEnum",
@@ -11287,8 +11249,8 @@ export const schema: Schema = {
     "cloud.instance.RebootTypeEnum": {
       "description": "RebootTypeEnum",
       "enum": [
-        "soft",
-        "hard"
+        "hard",
+        "soft"
       ],
       "enumType": "string",
       "id": "RebootTypeEnum",
@@ -12056,6 +12018,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.kube.NodePoolStatusEnum"
         },
+        "template": {
+          "canBeNull": false,
+          "description": "Template of nodes metadata and spec to create in the pool",
+          "fullType": "cloud.kube.NodePoolTemplate",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.kube.NodePoolTemplate"
+        },
         "upToDateNodes": {
           "canBeNull": false,
           "description": "Number of nodes with latest version installed in the pool",
@@ -12108,9 +12078,9 @@ export const schema: Schema = {
     "cloud.kube.NodePoolSizeStatusEnum": {
       "description": "Enum values for NodePool size Status",
       "enum": [
-        "UNDER_CAPACITY",
         "CAPACITY_OK",
-        "OVER_CAPACITY"
+        "OVER_CAPACITY",
+        "UNDER_CAPACITY"
       ],
       "enumType": "string",
       "id": "NodePoolSizeStatusEnum",
@@ -12140,6 +12110,83 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "NodePoolStatusEnum",
       "namespace": "cloud.kube"
+    },
+    "cloud.kube.NodePoolTemplate": {
+      "description": "Managed Kubernetes nodepool template",
+      "id": "NodePoolTemplate",
+      "namespace": "cloud.kube",
+      "properties": {
+        "metadata": {
+          "canBeNull": false,
+          "description": "Metadata of each nodes in the pool",
+          "fullType": "cloud.kube.NodePoolTemplateMetadata",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.kube.NodePoolTemplateMetadata"
+        },
+        "spec": {
+          "canBeNull": false,
+          "description": "Spec of each nodes in the pool",
+          "fullType": "cloud.kube.NodePoolTemplateSpec",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.kube.NodePoolTemplateSpec"
+        }
+      }
+    },
+    "cloud.kube.NodePoolTemplateMetadata": {
+      "description": "Metadata of each nodes in the pool",
+      "id": "NodePoolTemplateMetadata",
+      "namespace": "cloud.kube",
+      "properties": {
+        "annotations": {
+          "canBeNull": true,
+          "description": "Annotations to apply to each nodes",
+          "fullType": "map[string]string",
+          "readOnly": false,
+          "required": true,
+          "type": "map[string]string"
+        },
+        "finalizers": {
+          "canBeNull": true,
+          "description": "Finalizers to apply to each nodes",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
+        },
+        "labels": {
+          "canBeNull": true,
+          "description": "Labels to apply to each nodes",
+          "fullType": "map[string]string",
+          "readOnly": false,
+          "required": true,
+          "type": "map[string]string"
+        }
+      }
+    },
+    "cloud.kube.NodePoolTemplateSpec": {
+      "description": "Spec of each nodes in the pool",
+      "id": "NodePoolTemplateSpec",
+      "namespace": "cloud.kube",
+      "properties": {
+        "taints": {
+          "canBeNull": true,
+          "description": "Taints to apply to each nodes",
+          "fullType": "cloud.kube.Taint[]",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.kube.Taint[]"
+        },
+        "unschedulable": {
+          "canBeNull": false,
+          "description": "If true, set nodes as un-schedulable",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        }
+      }
     },
     "cloud.kube.NodeStatusEnum": {
       "description": "Enum values for Status",
@@ -12192,16 +12239,17 @@ export const schema: Schema = {
     "cloud.kube.RegionEnum": {
       "description": "Enum values for available regions",
       "enum": [
+        "BHS5",
         "GRA5",
         "GRA7",
         "GRA9",
-        "BHS5",
         "SBG5",
-        "WAW1",
+        "DE1",
         "SGP1",
         "SYD1",
         "US-EAST-VA-1",
-        "US-WEST-OR-1"
+        "US-WEST-OR-1",
+        "WAW1"
       ],
       "enumType": "string",
       "id": "RegionEnum",
@@ -12210,11 +12258,53 @@ export const schema: Schema = {
     "cloud.kube.ResetWorkerNodesPolicyEnum": {
       "description": "Enum values for worker nodes reset policy",
       "enum": [
-        "reinstall",
-        "delete"
+        "delete",
+        "reinstall"
       ],
       "enumType": "string",
       "id": "ResetWorkerNodesPolicyEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.Taint": {
+      "description": "Kubernetes taint object",
+      "id": "Taint",
+      "namespace": "cloud.kube",
+      "properties": {
+        "effect": {
+          "canBeNull": false,
+          "description": "The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute",
+          "fullType": "cloud.kube.TaintEffectEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.kube.TaintEffectEnum"
+        },
+        "key": {
+          "canBeNull": false,
+          "description": "The taint key to be applied to a node",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "The taint value corresponding to the taint key",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.kube.TaintEffectEnum": {
+      "description": "Enum values for taint effects",
+      "enum": [
+        "NoExecute",
+        "NoSchedule",
+        "PreferNoSchedule"
+      ],
+      "enumType": "string",
+      "id": "TaintEffectEnum",
       "namespace": "cloud.kube"
     },
     "cloud.kube.UpdatePolicyEnum": {
@@ -12394,10 +12484,10 @@ export const schema: Schema = {
       "enum": [
         "active",
         "creating",
-        "updating",
-        "deleting",
         "deleted",
-        "error"
+        "deleting",
+        "error",
+        "updating"
       ],
       "enumType": "string",
       "id": "LoadBalancerProvisioningStatusEnum",
@@ -12597,8 +12687,8 @@ export const schema: Schema = {
     "cloud.network.NetworkStatusEnum": {
       "description": "NetworkStatusEnum",
       "enum": [
-        "BUILDING",
         "ACTIVE",
+        "BUILDING",
         "DELETING"
       ],
       "enumType": "string",
@@ -12608,8 +12698,8 @@ export const schema: Schema = {
     "cloud.network.NetworkTypeEnum": {
       "description": "NetworkTypeEnum",
       "enum": [
-        "public",
-        "private"
+        "private",
+        "public"
       ],
       "enumType": "string",
       "id": "NetworkTypeEnum",
@@ -12618,8 +12708,8 @@ export const schema: Schema = {
     "cloud.network.NetworkVisibilityEnum": {
       "description": "NetworkVisibilityEnum",
       "enum": [
-        "public",
-        "private"
+        "private",
+        "public"
       ],
       "enumType": "string",
       "id": "NetworkVisibilityEnum",
@@ -12661,60 +12751,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "cloud.network.IPPool[]"
-        }
-      }
-    },
-    "cloud.openstackClient.Profile": {
-      "description": "Profile",
-      "id": "Profile",
-      "namespace": "cloud.openstackClient",
-      "properties": {
-        "name": {
-          "canBeNull": false,
-          "description": "Profile name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "cloud.openstackClient.Session": {
-      "description": "Session",
-      "id": "Session",
-      "namespace": "cloud.openstackClient",
-      "properties": {
-        "expires": {
-          "canBeNull": false,
-          "description": "Expiration date",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Session Id",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "profile": {
-          "canBeNull": false,
-          "description": "Profile of the session",
-          "fullType": "cloud.openstackClient.Profile",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.openstackClient.Profile"
-        },
-        "websocket": {
-          "canBeNull": false,
-          "description": "Websocket url to use the terminal",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
         }
       }
     },
@@ -12767,10 +12803,10 @@ export const schema: Schema = {
     "cloud.order.StatusEnum": {
       "description": "Order status",
       "enum": [
-        "unpaid",
-        "delivering",
         "delivered",
-        "unknown"
+        "delivering",
+        "unknown",
+        "unpaid"
       ],
       "enumType": "string",
       "id": "StatusEnum",
@@ -13164,9 +13200,9 @@ export const schema: Schema = {
     "cloud.project.CertificateStatusEnum": {
       "description": "Certificate status",
       "enum": [
-        "OK",
         "EXPIRED",
         "NOT_YET_VALID",
+        "OK",
         "REVOKED"
       ],
       "enumType": "string",
@@ -13666,10 +13702,10 @@ export const schema: Schema = {
     "cloud.project.certificate.ServerAlternativeNameKindEnum": {
       "description": "SAN kind",
       "enum": [
-        "EMAIL",
         "DNS",
-        "URI",
-        "IP"
+        "EMAIL",
+        "IP",
+        "URI"
       ],
       "enumType": "string",
       "id": "ServerAlternativeNameKindEnum",
@@ -14502,9 +14538,9 @@ export const schema: Schema = {
     "cloud.project.loadbalancer.SizeEnum": {
       "description": "Size of the load balancer",
       "enum": [
-        "S",
+        "L",
         "M",
-        "L"
+        "S"
       ],
       "enumType": "string",
       "id": "SizeEnum",
@@ -14568,12 +14604,12 @@ export const schema: Schema = {
     "cloud.project.loadbalancer.StatusEnum": {
       "description": "Status of a load balancer",
       "enum": [
-        "CREATED",
         "APPLYING",
-        "RUNNING",
+        "CREATED",
         "DELETING",
         "ERROR",
-        "FROZEN"
+        "FROZEN",
+        "RUNNING"
       ],
       "enumType": "string",
       "id": "StatusEnum",
@@ -14660,11 +14696,11 @@ export const schema: Schema = {
     "cloud.project.loadbalancer.backend.BalancerAlgorithmEnum": {
       "description": "Available load balancer backend balancer algorithm",
       "enum": [
-        "roundrobin",
-        "static-rr",
-        "leastconn",
         "first",
-        "source"
+        "leastconn",
+        "roundrobin",
+        "source",
+        "static-rr"
       ],
       "enumType": "string",
       "id": "BalancerAlgorithmEnum",
@@ -14675,8 +14711,8 @@ export const schema: Schema = {
       "enum": [
         "v1",
         "v2",
-        "v2-ssl",
-        "v2-cn"
+        "v2-cn",
+        "v2-ssl"
       ],
       "enumType": "string",
       "id": "ProxyProtocolEnum",
@@ -14685,11 +14721,11 @@ export const schema: Schema = {
     "cloud.project.loadbalancer.condition.MatchEnum": {
       "description": "Matching operator",
       "enum": [
-        "is",
-        "start-with",
         "end-with",
+        "exists",
+        "is",
         "regex",
-        "exists"
+        "start-with"
       ],
       "enumType": "string",
       "id": "MatchEnum",
@@ -14698,13 +14734,13 @@ export const schema: Schema = {
     "cloud.project.loadbalancer.condition.TypeEnum": {
       "description": "Matching field",
       "enum": [
-        "method",
         "cookie",
-        "path",
-        "host",
         "header",
-        "source",
-        "query-param"
+        "host",
+        "method",
+        "path",
+        "query-param",
+        "source"
       ],
       "enumType": "string",
       "id": "TypeEnum",
@@ -14995,15 +15031,15 @@ export const schema: Schema = {
     "cloud.project.loadbalancer.stats.target.server.StatusEnum": {
       "description": "Status of target's server",
       "enum": [
-        "UNKNOWN",
-        "INIT",
+        "ERROR",
         "HEALTHY",
-        "L4_TIMEOUT_ERROR",
+        "INIT",
         "L4_CONNECTION_ERROR",
-        "L7_TIMEOUT",
+        "L4_TIMEOUT_ERROR",
         "L7_PROTOCOL_ERROR",
         "L7_RESPONSE_ERROR",
-        "ERROR"
+        "L7_TIMEOUT",
+        "UNKNOWN"
       ],
       "enumType": "string",
       "id": "StatusEnum",
@@ -15012,11 +15048,11 @@ export const schema: Schema = {
     "cloud.project.loadbalancer.target.BalancerAlgorithmEnum": {
       "description": "Available load balancer target balancer algorithm",
       "enum": [
-        "roundrobin",
-        "static-rr",
-        "leastconn",
         "first",
-        "source"
+        "leastconn",
+        "roundrobin",
+        "source",
+        "static-rr"
       ],
       "enumType": "string",
       "id": "BalancerAlgorithmEnum",
@@ -15027,8 +15063,8 @@ export const schema: Schema = {
       "enum": [
         "v1",
         "v2",
-        "v2-ssl",
-        "v2-cn"
+        "v2-cn",
+        "v2-ssl"
       ],
       "enumType": "string",
       "id": "ProxyProtocolEnum",
@@ -16384,8 +16420,8 @@ export const schema: Schema = {
       "description": "RetrievalStateEnum",
       "enum": [
         "sealed",
-        "unsealing",
-        "unsealed"
+        "unsealed",
+        "unsealing"
       ],
       "enumType": "string",
       "id": "RetrievalStateEnum",
@@ -16405,9 +16441,9 @@ export const schema: Schema = {
     "cloud.storage.TypeEnum": {
       "description": "TypeEnum",
       "enum": [
-        "static",
+        "private",
         "public",
-        "private"
+        "static"
       ],
       "enumType": "string",
       "id": "TypeEnum",
@@ -16457,18 +16493,18 @@ export const schema: Schema = {
       "description": "RoleEnum",
       "enum": [
         "admin",
-        "authentication",
         "administrator",
-        "compute_operator",
-        "infrastructure_supervisor",
-        "network_security_operator",
-        "network_operator",
-        "backup_operator",
-        "image_operator",
-        "volume_operator",
-        "objectstore_operator",
         "ai_training_operator",
-        "ai_training_read"
+        "ai_training_read",
+        "authentication",
+        "backup_operator",
+        "compute_operator",
+        "image_operator",
+        "infrastructure_supervisor",
+        "network_operator",
+        "network_security_operator",
+        "objectstore_operator",
+        "volume_operator"
       ],
       "enumType": "string",
       "id": "RoleEnum",
@@ -16651,9 +16687,9 @@ export const schema: Schema = {
       "description": "UserStatusEnum",
       "enum": [
         "creating",
-        "ok",
+        "deleted",
         "deleting",
-        "deleted"
+        "ok"
       ],
       "enumType": "string",
       "id": "UserStatusEnum",
@@ -16741,8 +16777,8 @@ export const schema: Schema = {
     "cloud.volume.SnapshotStatusEnum": {
       "description": "SnapshotStatusEnum",
       "enum": [
-        "creating",
         "available",
+        "creating",
         "deleting",
         "error",
         "error_deleting"
@@ -16981,6 +17017,9 @@ export const schema: Schema = {
     "nichandle.OvhSubsidiaryEnum": {
       "description": "OVH subsidiaries",
       "enum": [
+        "ASIA",
+        "AU",
+        "CA",
         "CZ",
         "DE",
         "ES",
@@ -16995,16 +17034,13 @@ export const schema: Schema = {
         "NL",
         "PL",
         "PT",
-        "SN",
-        "TN",
-        "ASIA",
-        "AU",
-        "CA",
         "QC",
         "SG",
+        "SN",
+        "TN",
+        "US",
         "WE",
-        "WS",
-        "US"
+        "WS"
       ],
       "enumType": "string",
       "id": "OvhSubsidiaryEnum",

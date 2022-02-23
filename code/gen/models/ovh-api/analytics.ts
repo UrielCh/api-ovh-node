@@ -10,8 +10,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2022-03-01T00:00:00+00:00",
+            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Platform capabilities",
           "httpMethod": "GET",
@@ -27,8 +29,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2022-03-01T00:00:00+00:00",
+            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "List available services",
           "httpMethod": "GET",
@@ -48,8 +52,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2022-03-01T00:00:00+00:00",
+            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get details about a service",
           "httpMethod": "GET",
@@ -78,8 +84,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2022-03-01T00:00:00+00:00",
+            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get activity logs",
           "httpMethod": "GET",
@@ -224,8 +232,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2022-03-01T00:00:00+00:00",
+            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Deploy an Analytics Data Platform",
           "httpMethod": "POST",
@@ -261,8 +271,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2022-03-01T00:00:00+00:00",
+            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Destroy an Analytics Data Platform",
           "httpMethod": "POST",
@@ -298,8 +310,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2022-03-01T00:00:00+00:00",
+            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "List available nodes",
           "httpMethod": "GET",
@@ -328,8 +342,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2022-03-01T00:00:00+00:00",
+            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get details about nodes",
           "httpMethod": "GET",
@@ -427,8 +443,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2022-03-01T00:00:00+00:00",
+            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get cluster deployment status",
           "httpMethod": "GET",
@@ -606,21 +624,21 @@ export const schema: Schema = {
     "analytics.StatusEnum": {
       "description": "Status code",
       "enum": [
-        "PENDING",
-        "IN_PROGRESS",
-        "SUCCEEDED",
-        "FAILED",
+        "DEPLOYED",
+        "DEPLOYING",
+        "DESTROYED",
+        "DESTROYING",
         "DONE",
         "ERROR",
-        "UNKNOWN",
+        "FAILED",
+        "INITIALIZED",
+        "IN_PROGRESS",
         "OK",
+        "PENDING",
+        "SUCCEEDED",
         "TO_DEPLOY",
-        "DEPLOYING",
-        "DEPLOYED",
         "TO_DESTROY",
-        "DESTROYING",
-        "DESTROYED",
-        "INITIALIZED"
+        "UNKNOWN"
       ],
       "enumType": "string",
       "id": "StatusEnum",
@@ -982,9 +1000,9 @@ export const schema: Schema = {
     "analytics.node.TypeEnum": {
       "description": "Node type",
       "enum": [
+        "EDGE",
         "MASTER",
         "SLAVE",
-        "EDGE",
         "UTILITY"
       ],
       "enumType": "string",

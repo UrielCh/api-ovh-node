@@ -875,10 +875,10 @@ export const schema: Schema = {
     "metrics.api.ServiceStatusEnum": {
       "description": "Status of of the service",
       "enum": [
-        "new",
         "alive",
+        "dead",
         "disabled",
-        "dead"
+        "new"
       ],
       "enumType": "string",
       "id": "ServiceStatusEnum",

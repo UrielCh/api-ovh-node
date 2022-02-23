@@ -100,7 +100,7 @@ export namespace order {
      * Type of reduction
      * type fullname: order.ReductionTypeEnum
      */
-    export type ReductionTypeEnum = "percentage" | "forced_amount" | "fixed_amount"
+    export type ReductionTypeEnum = "fixed_amount" | "forced_amount" | "percentage"
     export namespace cart {
         /**
          * Representation of a generic product
@@ -134,17 +134,17 @@ export namespace order {
          * Capacity of a pricing (type)
          * type fullname: order.cart.GenericProductPricingCapacitiesEnum
          */
-        export type GenericProductPricingCapacitiesEnum = "installation" | "renew" | "upgrade" | "downgrade" | "detach" | "dynamic"
+        export type GenericProductPricingCapacitiesEnum = "consumption" | "detach" | "downgrade" | "dynamic" | "installation" | "renew" | "upgrade"
         /**
          * Type of a pricing
          * type fullname: order.cart.GenericProductPricingTypeEnum
          */
-        export type GenericProductPricingTypeEnum = "rental" | "consumption" | "purchase"
+        export type GenericProductPricingTypeEnum = "consumption" | "purchase" | "rental"
         /**
          * Type of a product
          * type fullname: order.cart.GenericProductTypeEnum
          */
-        export type GenericProductTypeEnum = "delivery" | "deposit" | "shipping" | "cloud_service" | "saas_license" | "storage" | "domain"
+        export type GenericProductTypeEnum = "cloud_service" | "delivery" | "deposit" | "domain" | "saas_license" | "shipping" | "storage"
     }
 }
 export namespace services {
@@ -220,7 +220,7 @@ export namespace services {
              * Strategy applicable at the end of the Engagement
              * type fullname: services.billing.engagement.EndStrategyEnum
              */
-            export type EndStrategyEnum = "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE" | "REACTIVATE_ENGAGEMENT" | "CANCEL_SERVICE" | "STOP_ENGAGEMENT_KEEP_PRICE"
+            export type EndStrategyEnum = "CANCEL_SERVICE" | "REACTIVATE_ENGAGEMENT" | "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE" | "STOP_ENGAGEMENT_KEEP_PRICE"
             /**
              * Description of an Engagement
              * interface fullName: services.billing.engagement.Engagement.Engagement
@@ -433,7 +433,7 @@ export namespace services {
              * Life cycle action
              * type fullname: services.expanded.Lifecycle.ActionEnum
              */
-            export type ActionEnum = "terminateAtExpirationDate" | "terminateAtEngagementDate" | "terminate" | "earlyRenewal"
+            export type ActionEnum = "earlyRenewal" | "terminate" | "terminateAtEngagementDate" | "terminateAtExpirationDate"
             /**
              * Service life cycle options
              * interface fullName: services.expanded.Lifecycle.Capacities.Capacities
@@ -455,7 +455,7 @@ export namespace services {
              * Life cycle service state
              * type fullname: services.expanded.Lifecycle.StateEnum
              */
-            export type StateEnum = "active" | "toRenew" | "error" | "unpaid" | "unrenewed" | "rupture" | "terminated"
+            export type StateEnum = "active" | "error" | "rupture" | "terminated" | "toRenew" | "unpaid" | "unrenewed"
         }
         /**
          * Plan of the service
@@ -496,13 +496,24 @@ export namespace services {
             export interface Current {
                 mode?: services.expanded.Renew.ModeEnum;
                 nextDate?: string;
+                period?: services.expanded.Renew.PeriodEnum;
             }
             /**
              * Renew mode
              * type fullname: services.expanded.Renew.ModeEnum
              */
             export type ModeEnum = "automatic" | "manual"
+            /**
+             * Renew period durations in ISO 8601 format
+             * type fullname: services.expanded.Renew.PeriodEnum
+             */
+            export type PeriodEnum = "P1M" | "P2M" | "P3M" | "P4M" | "P5M" | "P6M" | "P7M" | "P8M" | "P9M" | "P10M" | "P11M" | "P1Y" | "P2Y" | "P3Y" | "P4Y" | "P5Y" | "P6Y" | "P7Y" | "P8Y" | "P9Y" | "P10Y" | "P11Y" | "P12Y"
         }
+        /**
+         * Reselling providers a service can be provided from
+         * type fullname: services.expanded.ResellingProviderEnum
+         */
+        export type ResellingProviderEnum = "ovh.ca" | "ovh.eu"
         /**
          * Resource of the service
          * interface fullName: services.expanded.Resource.Resource
@@ -511,6 +522,7 @@ export namespace services {
             displayName: string;
             name: string;
             product?: services.expanded.Product;
+            resellingProvider?: services.expanded.ResellingProviderEnum;
             state: services.expanded.Resource.StateEnum;
         }
         export namespace Resource {
@@ -518,7 +530,7 @@ export namespace services {
              * Resource state
              * type fullname: services.expanded.Resource.StateEnum
              */
-            export type StateEnum = "toActivate" | "active" | "toSuspend" | "suspended" | "toDelete" | "deleted"
+            export type StateEnum = "active" | "deleted" | "suspended" | "toActivate" | "toDelete" | "toSuspend"
         }
         /**
          * Route of the service
@@ -548,6 +560,7 @@ export namespace services {
          */
         export interface TechnicalDetails {
             baremetalServers?: services.expanded.technical.BaremetalServer;
+            nutanixCluster?: services.expanded.technical.NutanixCluster;
         }
         export namespace technical {
             /**
@@ -561,6 +574,16 @@ export namespace services {
                 server?: services.expanded.technical.baremetalServer.Server;
                 storage?: services.expanded.technical.baremetalServer.Storage;
                 vrack?: services.expanded.technical.baremetalServer.Vrack;
+            }
+            /**
+             * Technical information on nutanix cluster service
+             * interface fullName: services.expanded.technical.NutanixCluster.NutanixCluster
+             */
+            export interface NutanixCluster {
+                cluster?: services.expanded.technical.nutanixCluster.Cluster;
+                features?: services.expanded.technical.nutanixCluster.Features[];
+                license?: services.expanded.technical.nutanixCluster.License;
+                service?: services.expanded.technical.nutanixCluster.Service;
             }
             export namespace baremetalServer {
                 /**
@@ -731,8 +754,42 @@ export namespace services {
                          * RAID type
                          * type fullname: services.expanded.technical.baremetalServer.storage.Raid.TypeEnum
                          */
-                        export type TypeEnum = "none" | "Soft RAID" | "Hard RAID"
+                        export type TypeEnum = "Hard RAID" | "Soft RAID" | "none"
                     }
+                }
+            }
+            export namespace nutanixCluster {
+                /**
+                 * Technical information on nutanix cluster service
+                 * interface fullName: services.expanded.technical.nutanixCluster.Cluster.Cluster
+                 */
+                export interface Cluster {
+                    range: string;
+                    server: string;
+                }
+                /**
+                 * Nutanix feature
+                 * interface fullName: services.expanded.technical.nutanixCluster.Features.Features
+                 */
+                export interface Features {
+                    name: string;
+                    value: string;
+                }
+                /**
+                 * Nutanix cluster license
+                 * interface fullName: services.expanded.technical.nutanixCluster.License.License
+                 */
+                export interface License {
+                    distribution: string;
+                    edition: string;
+                    features: services.expanded.technical.nutanixCluster.Features[];
+                }
+                /**
+                 * Nutanix cluser services
+                 * interface fullName: services.expanded.technical.nutanixCluster.Service.Service
+                 */
+                export interface Service {
+                    sla: number;
                 }
             }
         }

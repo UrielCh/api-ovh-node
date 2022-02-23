@@ -21,6 +21,7 @@ export namespace msServices {
     export interface Account {
         SAMAccountName?: string;
         city?: string;
+        company?: string;
         countryCode?: email.exchange.CountryCodeEnum;
         creationDate?: string;
         description?: string;
@@ -468,7 +469,7 @@ export interface MsServices {
              * Accounts associated to this Active Directory service
              * GET /msServices/{serviceName}/account
              */
-            $get(params?: { id?: number, userPrincipalName?: string }): Promise<string[]>;
+            $get(params?: { company?: string, id?: number, userPrincipalName?: string }): Promise<string[]>;
             /**
              * Controle cache
              */
@@ -483,7 +484,7 @@ export interface MsServices {
                  * Alter this object properties
                  * PUT /msServices/{serviceName}/account/{userPrincipalName}
                  */
-                $put(params?: { SAMAccountName?: string, city?: string, countryCode?: email.exchange.CountryCodeEnum, creationDate?: string, description?: string, displayName?: string, fax?: string, firstName?: string, guid?: string, id?: number, initials?: string, jobDepartment?: string, jobTitle?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, mobile?: string, office?: string, passwordLastUpdate?: string, phone?: string, postalCode?: string, region?: string, state?: msServices.ObjectStateEnum, streetAddress?: string, taskPendingId?: number, userPrincipalName?: string }): Promise<void>;
+                $put(params?: { SAMAccountName?: string, city?: string, company?: string, countryCode?: email.exchange.CountryCodeEnum, creationDate?: string, description?: string, displayName?: string, fax?: string, firstName?: string, guid?: string, id?: number, initials?: string, jobDepartment?: string, jobTitle?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, mobile?: string, office?: string, passwordLastUpdate?: string, phone?: string, postalCode?: string, region?: string, state?: msServices.ObjectStateEnum, streetAddress?: string, taskPendingId?: number, userPrincipalName?: string }): Promise<void>;
                 /**
                  * Controle cache
                  */

@@ -1489,9 +1489,9 @@ export const schema: Schema = {
     "order.ReductionTypeEnum": {
       "description": "Type of reduction",
       "enum": [
-        "percentage",
+        "fixed_amount",
         "forced_amount",
-        "fixed_amount"
+        "percentage"
       ],
       "enumType": "string",
       "id": "ReductionTypeEnum",
@@ -1642,12 +1642,13 @@ export const schema: Schema = {
     "order.cart.GenericProductPricingCapacitiesEnum": {
       "description": "Capacity of a pricing (type)",
       "enum": [
+        "consumption",
+        "detach",
+        "downgrade",
+        "dynamic",
         "installation",
         "renew",
-        "upgrade",
-        "downgrade",
-        "detach",
-        "dynamic"
+        "upgrade"
       ],
       "enumType": "string",
       "id": "GenericProductPricingCapacitiesEnum",
@@ -1656,9 +1657,9 @@ export const schema: Schema = {
     "order.cart.GenericProductPricingTypeEnum": {
       "description": "Type of a pricing",
       "enum": [
-        "rental",
         "consumption",
-        "purchase"
+        "purchase",
+        "rental"
       ],
       "enumType": "string",
       "id": "GenericProductPricingTypeEnum",
@@ -1667,13 +1668,13 @@ export const schema: Schema = {
     "order.cart.GenericProductTypeEnum": {
       "description": "Type of a product",
       "enum": [
+        "cloud_service",
         "delivery",
         "deposit",
-        "shipping",
-        "cloud_service",
+        "domain",
         "saas_license",
-        "storage",
-        "domain"
+        "shipping",
+        "storage"
       ],
       "enumType": "string",
       "id": "GenericProductTypeEnum",
@@ -1970,9 +1971,9 @@ export const schema: Schema = {
     "services.billing.engagement.EndStrategyEnum": {
       "description": "Strategy applicable at the end of the Engagement",
       "enum": [
-        "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE",
-        "REACTIVATE_ENGAGEMENT",
         "CANCEL_SERVICE",
+        "REACTIVATE_ENGAGEMENT",
+        "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE",
         "STOP_ENGAGEMENT_KEEP_PRICE"
       ],
       "enumType": "string",
@@ -2576,10 +2577,10 @@ export const schema: Schema = {
     "services.expanded.Lifecycle.ActionEnum": {
       "description": "Life cycle action",
       "enum": [
-        "terminateAtExpirationDate",
-        "terminateAtEngagementDate",
+        "earlyRenewal",
         "terminate",
-        "earlyRenewal"
+        "terminateAtEngagementDate",
+        "terminateAtExpirationDate"
       ],
       "enumType": "string",
       "id": "ActionEnum",
@@ -2643,12 +2644,12 @@ export const schema: Schema = {
       "description": "Life cycle service state",
       "enum": [
         "active",
-        "toRenew",
         "error",
-        "unpaid",
-        "unrenewed",
         "rupture",
-        "terminated"
+        "terminated",
+        "toRenew",
+        "unpaid",
+        "unrenewed"
       ],
       "enumType": "string",
       "id": "StateEnum",
@@ -2758,6 +2759,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "datetime"
+        },
+        "period": {
+          "canBeNull": true,
+          "description": "Next renewal duration",
+          "fullType": "services.expanded.Renew.PeriodEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Renew.PeriodEnum"
         }
       }
     },
@@ -2770,6 +2779,47 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ModeEnum",
       "namespace": "services.expanded.Renew"
+    },
+    "services.expanded.Renew.PeriodEnum": {
+      "description": "Renew period durations in ISO 8601 format",
+      "enum": [
+        "P1M",
+        "P2M",
+        "P3M",
+        "P4M",
+        "P5M",
+        "P6M",
+        "P7M",
+        "P8M",
+        "P9M",
+        "P10M",
+        "P11M",
+        "P1Y",
+        "P2Y",
+        "P3Y",
+        "P4Y",
+        "P5Y",
+        "P6Y",
+        "P7Y",
+        "P8Y",
+        "P9Y",
+        "P10Y",
+        "P11Y",
+        "P12Y"
+      ],
+      "enumType": "string",
+      "id": "PeriodEnum",
+      "namespace": "services.expanded.Renew"
+    },
+    "services.expanded.ResellingProviderEnum": {
+      "description": "Reselling providers a service can be provided from",
+      "enum": [
+        "ovh.ca",
+        "ovh.eu"
+      ],
+      "enumType": "string",
+      "id": "ResellingProviderEnum",
+      "namespace": "services.expanded"
     },
     "services.expanded.Resource": {
       "description": "Resource of the service",
@@ -2800,6 +2850,14 @@ export const schema: Schema = {
           "required": false,
           "type": "services.expanded.Product"
         },
+        "resellingProvider": {
+          "canBeNull": true,
+          "description": "Reselling provider providing the service",
+          "fullType": "services.expanded.ResellingProviderEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.ResellingProviderEnum"
+        },
         "state": {
           "canBeNull": false,
           "description": "Resource state",
@@ -2813,12 +2871,12 @@ export const schema: Schema = {
     "services.expanded.Resource.StateEnum": {
       "description": "Resource state",
       "enum": [
-        "toActivate",
         "active",
-        "toSuspend",
+        "deleted",
         "suspended",
+        "toActivate",
         "toDelete",
-        "deleted"
+        "toSuspend"
       ],
       "enumType": "string",
       "id": "StateEnum",
@@ -2929,6 +2987,13 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "services.expanded.technical.BaremetalServer"
+        },
+        "nutanixCluster": {
+          "canBeNull": true,
+          "fullType": "services.expanded.technical.NutanixCluster",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.NutanixCluster"
         }
       }
     },
@@ -2984,6 +3049,45 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "services.expanded.technical.baremetalServer.Vrack"
+        }
+      }
+    },
+    "services.expanded.technical.NutanixCluster": {
+      "description": "Technical information on nutanix cluster service",
+      "id": "NutanixCluster",
+      "namespace": "services.expanded.technical",
+      "properties": {
+        "cluster": {
+          "canBeNull": true,
+          "description": "Technical information on nutanix cluster",
+          "fullType": "services.expanded.technical.nutanixCluster.Cluster",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.nutanixCluster.Cluster"
+        },
+        "features": {
+          "canBeNull": true,
+          "description": "Features of a cluster",
+          "fullType": "services.expanded.technical.nutanixCluster.Features[]",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.nutanixCluster.Features[]"
+        },
+        "license": {
+          "canBeNull": true,
+          "description": "Technical details of the license of a cluster",
+          "fullType": "services.expanded.technical.nutanixCluster.License",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.nutanixCluster.License"
+        },
+        "service": {
+          "canBeNull": true,
+          "description": "Details about the service (SLA, ..)",
+          "fullType": "services.expanded.technical.nutanixCluster.Service",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.nutanixCluster.Service"
         }
       }
     },
@@ -3608,13 +3712,105 @@ export const schema: Schema = {
     "services.expanded.technical.baremetalServer.storage.Raid.TypeEnum": {
       "description": "RAID type",
       "enum": [
-        "none",
+        "Hard RAID",
         "Soft RAID",
-        "Hard RAID"
+        "none"
       ],
       "enumType": "string",
       "id": "TypeEnum",
       "namespace": "services.expanded.technical.baremetalServer.storage.Raid"
+    },
+    "services.expanded.technical.nutanixCluster.Cluster": {
+      "description": "Technical information on nutanix cluster service",
+      "id": "Cluster",
+      "namespace": "services.expanded.technical.nutanixCluster",
+      "properties": {
+        "range": {
+          "canBeNull": false,
+          "description": "Nutanix cluster range",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "server": {
+          "canBeNull": false,
+          "description": "Nutanix cluster server",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "services.expanded.technical.nutanixCluster.Features": {
+      "description": "Nutanix feature",
+      "id": "Features",
+      "namespace": "services.expanded.technical.nutanixCluster",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Feature name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Feature value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "services.expanded.technical.nutanixCluster.License": {
+      "description": "Nutanix cluster license",
+      "id": "License",
+      "namespace": "services.expanded.technical.nutanixCluster",
+      "properties": {
+        "distribution": {
+          "canBeNull": false,
+          "description": "Feature name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "edition": {
+          "canBeNull": false,
+          "description": "Feature value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "features": {
+          "canBeNull": false,
+          "description": "List of license features",
+          "fullType": "services.expanded.technical.nutanixCluster.Features[]",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.nutanixCluster.Features[]"
+        }
+      }
+    },
+    "services.expanded.technical.nutanixCluster.Service": {
+      "description": "Nutanix cluser services",
+      "id": "Service",
+      "namespace": "services.expanded.technical.nutanixCluster",
+      "properties": {
+        "sla": {
+          "canBeNull": false,
+          "description": "Nutanix SLA service",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
     },
     "services.form.Answer": {
       "description": "Answer to a form",

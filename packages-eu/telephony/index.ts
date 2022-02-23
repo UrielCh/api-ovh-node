@@ -62,7 +62,7 @@ export namespace order {
     /**
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * Price with it's currency and textual representation
      * interface fullName: order.Price.Price
@@ -194,6 +194,7 @@ export namespace telephony {
         creditThreshold: order.Price;
         currentOutplan: order.Price;
         description: string;
+        hasSpecialNumbers: boolean;
         hiddenExternalNumber: boolean;
         overrideDisplayedNumber: boolean;
         securityDeposit: order.Price;
@@ -1234,7 +1235,7 @@ export namespace telephony {
      * Number country
      * type fullname: telephony.NumberCountryEnum
      */
-    export type NumberCountryEnum = "be" | "ch" | "de" | "es" | "fr" | "gb" | "uk"
+    export type NumberCountryEnum = "be" | "ch" | "es" | "fr" | "gb" | "uk"
     /**
      * A geographic zone from a country
      * interface fullName: telephony.NumberDetailedZone.NumberDetailedZone
@@ -2102,6 +2103,11 @@ export namespace telephony {
      */
     export type ScreenListTypeEnum = "incomingBlackList" | "incomingWhiteList" | "outgoingBlackList" | "outgoingWhiteList"
     /**
+     * Number country
+     * type fullname: telephony.ServiceNumberCountryEnum
+     */
+    export type ServiceNumberCountryEnum = "be" | "ch" | "de" | "es" | "fr" | "gb" | "uk"
+    /**
      * Voicemail audio format
      * type fullname: telephony.ServiceVoicemailAudioFormatEnum
      */
@@ -2205,7 +2211,7 @@ export namespace telephony {
      */
     export interface TelephonyService {
         associatedDeviceMac?: string;
-        country: telephony.NumberCountryEnum;
+        country: telephony.ServiceNumberCountryEnum;
         countryCode: telephony.NumberCountryCodeEnum;
         currentOutplan: order.Price;
         description: string;
@@ -2525,7 +2531,7 @@ export namespace telephony {
          * Special number category
          * type fullname: telephony.portability.SpecialNumberCategoryEnum
          */
-        export type SpecialNumberCategoryEnum = "access" | "adults" | "announced" | "be_adults" | "be_content" | "be_games" | "be_general" | "be_relaxing" | "conferencing" | "contentsAuto" | "contentsManual" | "directory" | "games" | "linking" | "m2m" | "relationship"
+        export type SpecialNumberCategoryEnum = "access" | "adults" | "announced" | "conferencing" | "contentsAuto" | "contentsManual" | "directory" | "games" | "linking" | "m2m" | "relationship"
     }
     /**
      * Time zones available for scheduled events time definitions
@@ -2813,6 +2819,17 @@ export interface Telephony {
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        required: {
+            /**
+             * Tells wether the procedure is necessary to order telephony products or not
+             * GET /telephony/procedure/required
+             */
+            $get(): Promise<boolean>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
         $(id: number): {
             /**
              * Get this object properties
@@ -3039,7 +3056,7 @@ export interface Telephony {
          * Alter this object properties
          * PUT /telephony/{billingAccount}
          */
-        $put(params?: { allowedOutplan?: order.Price, billingAccount?: string, creditThreshold?: order.Price, currentOutplan?: order.Price, description?: string, hiddenExternalNumber?: boolean, overrideDisplayedNumber?: boolean, securityDeposit?: order.Price, status?: telephony.BillingAccountStatusEnum, trusted?: boolean }): Promise<void>;
+        $put(params?: { allowedOutplan?: order.Price, billingAccount?: string, creditThreshold?: order.Price, currentOutplan?: order.Price, description?: string, hasSpecialNumbers?: boolean, hiddenExternalNumber?: boolean, overrideDisplayedNumber?: boolean, securityDeposit?: order.Price, status?: telephony.BillingAccountStatusEnum, trusted?: boolean }): Promise<void>;
         /**
          * Controle cache
          */
@@ -4514,6 +4531,17 @@ export interface Telephony {
                     }
                 }
             };
+        }
+        hasSpecialNumbers: {
+            /**
+             * Check if the billing account contains at least one special number
+             * GET /telephony/{billingAccount}/hasSpecialNumbers
+             */
+            $get(): Promise<boolean>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         historyConsumption: {
             /**
@@ -6933,7 +6961,7 @@ export interface Telephony {
                  * Alter this object properties
                  * PUT /telephony/{billingAccount}/service/{serviceName}
                  */
-                $put(params?: { associatedDeviceMac?: string, country?: telephony.NumberCountryEnum, countryCode?: telephony.NumberCountryCodeEnum, currentOutplan?: order.Price, description?: string, featureType?: telephony.TypeEnum, getPublicOffer?: telephony.LineOffer, hasFaxCapabilities?: boolean, offers?: string[], properties?: telephony.PropertyEnum[], rio?: string, serviceName?: string, serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number }): Promise<void>;
+                $put(params?: { associatedDeviceMac?: string, country?: telephony.ServiceNumberCountryEnum, countryCode?: telephony.NumberCountryCodeEnum, currentOutplan?: order.Price, description?: string, featureType?: telephony.TypeEnum, getPublicOffer?: telephony.LineOffer, hasFaxCapabilities?: boolean, offers?: string[], properties?: telephony.PropertyEnum[], rio?: string, serviceName?: string, serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number }): Promise<void>;
                 /**
                  * Controle cache
                  */

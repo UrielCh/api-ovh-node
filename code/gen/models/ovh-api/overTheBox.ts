@@ -364,6 +364,1056 @@ export const schema: Schema = {
       "path": "/overTheBox/{serviceName}/changeContact"
     },
     {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Return the list of DHCP configurations",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dhcp.Config[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Create a DHCP configuration",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "overthebox.configuration.dhcp.Config",
+              "description": "Request Body",
+              "fullType": "overthebox.configuration.dhcp.Config",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dhcp.Config"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/configuration/dhcp/config"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Delete a DHCP configuration",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Return the specified DHCP configuration",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dhcp.Config"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Update a DHCP configuration",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "overthebox.configuration.dhcp.Config",
+              "description": "Request Body",
+              "fullType": "overthebox.configuration.dhcp.Config",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dhcp.Config"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/configuration/dhcp/config/{id}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Return the list of DHCP static leases",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dhcp.StaticLease[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Create a DHCP static lease",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "overthebox.configuration.dhcp.StaticLease",
+              "description": "Request Body",
+              "fullType": "overthebox.configuration.dhcp.StaticLease",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dhcp.StaticLease"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/configuration/dhcp/staticLease"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Delete a DHCP static lease",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Return the specified DHCP static lease",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dhcp.StaticLease"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Update a DHCP static lease",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "overthebox.configuration.dhcp.StaticLease",
+              "description": "Request Body",
+              "fullType": "overthebox.configuration.dhcp.StaticLease",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dhcp.StaticLease"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/configuration/dhcp/staticLease/{id}"
+    },
+    {
+      "description": "Local domains",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Return the list of DNS local domains",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dns.LocalDomain[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Create a DNS local domain",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "overthebox.configuration.dns.LocalDomain",
+              "description": "Request Body",
+              "fullType": "overthebox.configuration.dns.LocalDomain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dns.LocalDomain"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/configuration/dns/localDomain"
+    },
+    {
+      "description": "Local domains",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Delete a DNS local domain",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Return the specified DNS local domain",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dns.LocalDomain"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Update a DNS local domain",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "overthebox.configuration.dns.LocalDomain",
+              "description": "Request Body",
+              "fullType": "overthebox.configuration.dns.LocalDomain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dns.LocalDomain"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/configuration/dns/localDomain/{id}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Return the list of DNS nameservers",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dns.Nameserver[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Create a DNS nameserver",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "overthebox.configuration.dns.Nameserver",
+              "description": "Request Body",
+              "fullType": "overthebox.configuration.dns.Nameserver",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dns.Nameserver"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/configuration/dns/nameserver"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Delete a DNS nameserver",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get a DNS nameserver configuration",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dns.Nameserver"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Update a DNS nameserver configuration",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "overthebox.configuration.dns.Nameserver",
+              "description": "Request Body",
+              "fullType": "overthebox.configuration.dns.Nameserver",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.dns.Nameserver"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/configuration/dns/nameserver/{id}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Return the list of firewall redirects",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.firewall.Redirect[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Create a firewall redirect",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "overthebox.configuration.firewall.Redirect",
+              "description": "Request Body",
+              "fullType": "overthebox.configuration.firewall.Redirect",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.firewall.Redirect"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/configuration/firewall/redirect"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Delete a firewall redirect",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get a firewall redirect",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.firewall.Redirect"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Update a firewall redirect",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "overthebox.configuration.firewall.Redirect",
+              "description": "Request Body",
+              "fullType": "overthebox.configuration.firewall.Redirect",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.firewall.Redirect"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/configuration/firewall/redirect/{id}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Return the list of firewall rules",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.firewall.Rule[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Create a firewall rule",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "overthebox.configuration.firewall.Rule",
+              "description": "Request Body",
+              "fullType": "overthebox.configuration.firewall.Rule",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.firewall.Rule"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/configuration/firewall/rule"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Delete a firewall rule",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get a firewall rule",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.firewall.Rule"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Update a firewall rule",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "overthebox.configuration.firewall.Rule",
+              "description": "Request Body",
+              "fullType": "overthebox.configuration.firewall.Rule",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.firewall.Rule"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/configuration/firewall/rule/{id}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Return the list of network interfaces",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.network.Interface[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Create a network interface",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "overthebox.configuration.network.Interface",
+              "description": "Request Body",
+              "fullType": "overthebox.configuration.network.Interface",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.network.Interface"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/configuration/network/interface"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Delete a network interface",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get a network interface",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.network.Interface"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Update a network interface",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "overthebox.configuration.network.Interface",
+              "description": "Request Body",
+              "fullType": "overthebox.configuration.network.Interface",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overthebox.configuration.network.Interface"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/configuration/network/interface/{id}"
+    },
+    {
       "description": "Device",
       "operations": [
         {
@@ -985,6 +2035,48 @@ export const schema: Schema = {
       "path": "/overTheBox/{serviceName}/serviceInfos"
     },
     {
+      "description": "Get statistics for an OTB device",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get statistics for an OTB device",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "otb.DeviceStatisticsTypeEnum",
+              "description": "Type of metrics you want to retrieve",
+              "fullType": "otb.DeviceStatisticsTypeEnum",
+              "name": "metricsType",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "otb.DeviceStatisticsPeriodEnum",
+              "description": "Period (default is daily)",
+              "fullType": "otb.DeviceStatisticsPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "otb.device.statistics[]"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/statistics"
+    },
+    {
       "description": "List the overTheBox.Task objects",
       "operations": [
         {
@@ -1120,6 +2212,7 @@ export const schema: Schema = {
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",
@@ -1156,6 +2249,125 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "double"
+        }
+      }
+    },
+    "otb.DeviceStatisticsPeriodEnum": {
+      "description": "Statistics Period",
+      "enum": [
+        "daily",
+        "hourly",
+        "monthly",
+        "weekly"
+      ],
+      "enumType": "string",
+      "id": "DeviceStatisticsPeriodEnum",
+      "namespace": "otb"
+    },
+    "otb.DeviceStatisticsTypeEnum": {
+      "description": "Serie Name",
+      "enum": [
+        "load",
+        "memory_free",
+        "traffic"
+      ],
+      "enumType": "string",
+      "id": "DeviceStatisticsTypeEnum",
+      "namespace": "otb"
+    },
+    "otb.DeviceStatisticsUnitEnum": {
+      "description": "Serie Unit",
+      "enum": [
+        "bps",
+        "byte",
+        "n/a"
+      ],
+      "enumType": "string",
+      "id": "DeviceStatisticsUnitEnum",
+      "namespace": "otb"
+    },
+    "otb.device.statistics": {
+      "description": "Device Statistics Datapoints",
+      "id": "statistics",
+      "namespace": "otb.device",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the serie",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "points": {
+          "canBeNull": false,
+          "description": "List of point",
+          "fullType": "otb.device.statistics.point[]",
+          "readOnly": true,
+          "required": false,
+          "type": "otb.device.statistics.point[]"
+        },
+        "tags": {
+          "canBeNull": false,
+          "description": "List of tags",
+          "fullType": "otb.device.statistics.tag[]",
+          "readOnly": true,
+          "required": false,
+          "type": "otb.device.statistics.tag[]"
+        },
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit of the serie",
+          "fullType": "otb.DeviceStatisticsUnitEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "otb.DeviceStatisticsUnitEnum"
+        }
+      }
+    },
+    "otb.device.statistics.point": {
+      "description": "Statistics Datapoint",
+      "id": "point",
+      "namespace": "otb.device.statistics",
+      "properties": {
+        "timestamp": {
+          "canBeNull": false,
+          "description": "Timestamp",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "value": {
+          "canBeNull": true,
+          "description": "Datapoint value",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "otb.device.statistics.tag": {
+      "description": "Tags for the metrics",
+      "id": "tag",
+      "namespace": "otb.device.statistics",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of tag",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": true,
+          "description": "Value of tag",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -1702,6 +2914,14 @@ export const schema: Schema = {
           "required": false,
           "type": "overTheBox.AvailableStatusEnum"
         },
+        "configurationMode": {
+          "canBeNull": false,
+          "description": "Configuration mode of the service",
+          "fullType": "overTheBox.ServiceConfigurationModeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "overTheBox.ServiceConfigurationModeEnum"
+        },
         "customerDescription": {
           "canBeNull": true,
           "description": "Editable field for customer",
@@ -1751,6 +2971,16 @@ export const schema: Schema = {
           "type": "overTheBox.TunnelModeEnum"
         }
       }
+    },
+    "overTheBox.ServiceConfigurationModeEnum": {
+      "description": "Configuration mode of the service",
+      "enum": [
+        "autoconfigure",
+        "local"
+      ],
+      "enumType": "string",
+      "id": "ServiceConfigurationModeEnum",
+      "namespace": "overTheBox"
     },
     "overTheBox.ServiceStatusEnum": {
       "description": "Status of the service.",
@@ -1840,6 +3070,805 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "TunnelModeEnum",
       "namespace": "overTheBox"
+    },
+    "overthebox.configuration.StatusEnum": {
+      "description": "Status of the configuration",
+      "enum": [
+        "applying",
+        "ok",
+        "problem",
+        "to_apply"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "overthebox.configuration"
+    },
+    "overthebox.configuration.dhcp.Config": {
+      "description": "DHCP configuration",
+      "id": "Config",
+      "namespace": "overthebox.configuration.dhcp",
+      "properties": {
+        "configuration": {
+          "canBeNull": false,
+          "description": "DHCP configuration",
+          "fullType": "overthebox.configuration.types.dhcp.Config",
+          "readOnly": false,
+          "required": false,
+          "type": "overthebox.configuration.types.dhcp.Config"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Identifier of the configuration",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "priority": {
+          "canBeNull": false,
+          "description": "Priority of application",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the configuration on the device",
+          "fullType": "overthebox.configuration.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "overthebox.configuration.StatusEnum"
+        }
+      }
+    },
+    "overthebox.configuration.dhcp.StaticLease": {
+      "description": "DHCP static lease",
+      "id": "StaticLease",
+      "namespace": "overthebox.configuration.dhcp",
+      "properties": {
+        "configuration": {
+          "canBeNull": false,
+          "description": "DHCP static lease",
+          "fullType": "overthebox.configuration.types.dhcp.StaticLease",
+          "readOnly": false,
+          "required": false,
+          "type": "overthebox.configuration.types.dhcp.StaticLease"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Identifier of the configuration",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "priority": {
+          "canBeNull": false,
+          "description": "Priority of application",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the configuration on the device",
+          "fullType": "overthebox.configuration.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "overthebox.configuration.StatusEnum"
+        }
+      }
+    },
+    "overthebox.configuration.dns.LocalDomain": {
+      "description": "DNS local domain",
+      "id": "LocalDomain",
+      "namespace": "overthebox.configuration.dns",
+      "properties": {
+        "configuration": {
+          "canBeNull": false,
+          "description": "DNS local domain",
+          "fullType": "overthebox.configuration.types.dns.LocalDomain",
+          "readOnly": false,
+          "required": false,
+          "type": "overthebox.configuration.types.dns.LocalDomain"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Identifier of the configuration",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "priority": {
+          "canBeNull": false,
+          "description": "Priority of application",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the configuration on the device",
+          "fullType": "overthebox.configuration.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "overthebox.configuration.StatusEnum"
+        }
+      }
+    },
+    "overthebox.configuration.dns.Nameserver": {
+      "description": "DNS nameserver",
+      "id": "Nameserver",
+      "namespace": "overthebox.configuration.dns",
+      "properties": {
+        "configuration": {
+          "canBeNull": false,
+          "description": "DNS nameserver",
+          "fullType": "overthebox.configuration.types.dns.Nameserver",
+          "readOnly": false,
+          "required": false,
+          "type": "overthebox.configuration.types.dns.Nameserver"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Identifier of the configuration",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "priority": {
+          "canBeNull": false,
+          "description": "Priority of application",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the configuration on the device",
+          "fullType": "overthebox.configuration.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "overthebox.configuration.StatusEnum"
+        }
+      }
+    },
+    "overthebox.configuration.firewall.ProtocolEnum": {
+      "description": "Protocol family to match",
+      "enum": [
+        "ah",
+        "all",
+        "ax.25",
+        "dccp",
+        "ddp",
+        "egp",
+        "eigrp",
+        "encap",
+        "esp",
+        "etherip",
+        "fc",
+        "ggp",
+        "gre",
+        "hmp",
+        "hopopt",
+        "icmp",
+        "idpr-cmtp",
+        "idrp",
+        "igmp",
+        "igp",
+        "ip",
+        "ip-encap",
+        "ipcomp",
+        "ipip",
+        "ipsec-ah",
+        "ipsec-esp",
+        "ipv6",
+        "ipv6-frag",
+        "ipv6-icmp",
+        "ipv6-nonxt",
+        "ipv6-opts",
+        "ipv6-route",
+        "isis",
+        "iso-tp4",
+        "l2tp",
+        "ospfigp",
+        "pim",
+        "pup",
+        "rdp",
+        "rspf",
+        "rsvp",
+        "sctp",
+        "skip",
+        "st",
+        "tcp",
+        "tcpudp",
+        "udp",
+        "udplite",
+        "vmtp",
+        "vrrp",
+        "xns-idp",
+        "xtp"
+      ],
+      "enumType": "string",
+      "id": "ProtocolEnum",
+      "namespace": "overthebox.configuration.firewall"
+    },
+    "overthebox.configuration.firewall.Redirect": {
+      "description": "Firewall rule",
+      "id": "Redirect",
+      "namespace": "overthebox.configuration.firewall",
+      "properties": {
+        "configuration": {
+          "canBeNull": false,
+          "description": "Firewall redirect rule",
+          "fullType": "overthebox.configuration.types.firewall.Redirect",
+          "readOnly": false,
+          "required": false,
+          "type": "overthebox.configuration.types.firewall.Redirect"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Identifier of the configuration",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "priority": {
+          "canBeNull": false,
+          "description": "Priority",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the configuration on the device",
+          "fullType": "overthebox.configuration.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "overthebox.configuration.StatusEnum"
+        }
+      }
+    },
+    "overthebox.configuration.firewall.Rule": {
+      "description": "Firewall rule",
+      "id": "Rule",
+      "namespace": "overthebox.configuration.firewall",
+      "properties": {
+        "configuration": {
+          "canBeNull": false,
+          "description": "Firewall rule",
+          "fullType": "overthebox.configuration.types.firewall.Rule",
+          "readOnly": false,
+          "required": false,
+          "type": "overthebox.configuration.types.firewall.Rule"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Identifier of the configuration",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "priority": {
+          "canBeNull": false,
+          "description": "Priority",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the configuration on the device",
+          "fullType": "overthebox.configuration.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "overthebox.configuration.StatusEnum"
+        }
+      }
+    },
+    "overthebox.configuration.firewall.redirect.TargetEnum": {
+      "description": "Redirection NAT target",
+      "enum": [
+        "DNAT",
+        "SNAT"
+      ],
+      "enumType": "string",
+      "id": "TargetEnum",
+      "namespace": "overthebox.configuration.firewall.redirect"
+    },
+    "overthebox.configuration.firewall.rule.FamilyEnum": {
+      "description": "Protocol family to match",
+      "enum": [
+        "any",
+        "ipv4",
+        "ipv6"
+      ],
+      "enumType": "string",
+      "id": "FamilyEnum",
+      "namespace": "overthebox.configuration.firewall.rule"
+    },
+    "overthebox.configuration.firewall.rule.TargetEnum": {
+      "description": "Target action",
+      "enum": [
+        "ACCEPT",
+        "DROP",
+        "MARK",
+        "NOTRACK",
+        "REJECT"
+      ],
+      "enumType": "string",
+      "id": "TargetEnum",
+      "namespace": "overthebox.configuration.firewall.rule"
+    },
+    "overthebox.configuration.network.Interface": {
+      "description": "Network interface",
+      "id": "Interface",
+      "namespace": "overthebox.configuration.network",
+      "properties": {
+        "configuration": {
+          "canBeNull": false,
+          "description": "Network interface",
+          "fullType": "overthebox.configuration.types.network.Interface",
+          "readOnly": false,
+          "required": true,
+          "type": "overthebox.configuration.types.network.Interface"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Identifier of the configuration",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "priority": {
+          "canBeNull": false,
+          "description": "Priority of application",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the configuration on the device",
+          "fullType": "overthebox.configuration.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "overthebox.configuration.StatusEnum"
+        }
+      }
+    },
+    "overthebox.configuration.network.interface.MultipathEnum": {
+      "description": "Multipath mode",
+      "enum": [
+        "backup",
+        "handover",
+        "master",
+        "off",
+        "on"
+      ],
+      "enumType": "string",
+      "id": "MultipathEnum",
+      "namespace": "overthebox.configuration.network.interface"
+    },
+    "overthebox.configuration.network.interface.ProtoEnum": {
+      "description": "IP allocation protocol of the network interface",
+      "enum": [
+        "dhcp",
+        "dhcpv6",
+        "static"
+      ],
+      "enumType": "string",
+      "id": "ProtoEnum",
+      "namespace": "overthebox.configuration.network.interface"
+    },
+    "overthebox.configuration.network.interface.TypeEnum": {
+      "description": "Type of the network interface",
+      "enum": [
+        "bridge",
+        "inet",
+        "inet6"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "overthebox.configuration.network.interface"
+    },
+    "overthebox.configuration.types.dhcp.Config": {
+      "description": "DHCP configuration",
+      "id": "Config",
+      "namespace": "overthebox.configuration.types.dhcp",
+      "properties": {
+        "interface": {
+          "canBeNull": false,
+          "description": "Name of the interface to apply the DHCP configuration",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "leaseDuration": {
+          "canBeNull": false,
+          "description": "Duration of the lease in seconds",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "offset": {
+          "canBeNull": false,
+          "description": "Offset from the network address for the first IP of the pool",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "poolSize": {
+          "canBeNull": false,
+          "description": "Number of IPs in the pool",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        }
+      }
+    },
+    "overthebox.configuration.types.dhcp.StaticLease": {
+      "description": "DHCP static lease",
+      "id": "StaticLease",
+      "namespace": "overthebox.configuration.types.dhcp",
+      "properties": {
+        "hostname": {
+          "canBeNull": false,
+          "description": "Hostname of the device",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "IP address to associate",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
+        },
+        "mac": {
+          "canBeNull": false,
+          "description": "Mac adddress of the device",
+          "fullType": "macAddress",
+          "readOnly": false,
+          "required": true,
+          "type": "macAddress"
+        }
+      }
+    },
+    "overthebox.configuration.types.dns.LocalDomain": {
+      "description": "DNS local domain",
+      "id": "LocalDomain",
+      "namespace": "overthebox.configuration.types.dns",
+      "properties": {
+        "hostname": {
+          "canBeNull": false,
+          "description": "Hostname",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "IP address associated with the hostname",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
+        }
+      }
+    },
+    "overthebox.configuration.types.dns.Nameserver": {
+      "description": "DNS nameserver",
+      "id": "Nameserver",
+      "namespace": "overthebox.configuration.types.dns",
+      "properties": {
+        "server": {
+          "canBeNull": false,
+          "description": "IP of the DNS nameserver",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
+        }
+      }
+    },
+    "overthebox.configuration.types.firewall.Redirect": {
+      "description": "Firewall redirect",
+      "id": "Redirect",
+      "namespace": "overthebox.configuration.types.firewall",
+      "properties": {
+        "destinationIp": {
+          "canBeNull": true,
+          "description": "Destination IP",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
+        },
+        "destinationPort": {
+          "canBeNull": true,
+          "description": "Destination port(s) (single value or range separated by - )",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "destinationZone": {
+          "canBeNull": true,
+          "description": "Destination zone",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "protocol": {
+          "canBeNull": true,
+          "description": "Protocol",
+          "fullType": "overthebox.configuration.firewall.ProtocolEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "overthebox.configuration.firewall.ProtocolEnum"
+        },
+        "sourceDestinationIp": {
+          "canBeNull": true,
+          "description": "Source destination IP",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
+        },
+        "sourceDestinationPort": {
+          "canBeNull": true,
+          "description": "Source destination port(s) (single value or range separated by - )",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "sourceIp": {
+          "canBeNull": true,
+          "description": "Source IP",
+          "fullType": "ipBlock",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock"
+        },
+        "sourcePort": {
+          "canBeNull": true,
+          "description": "Source port",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "sourceZone": {
+          "canBeNull": false,
+          "description": "Source zone",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "target": {
+          "canBeNull": true,
+          "description": "Target",
+          "fullType": "overthebox.configuration.firewall.redirect.TargetEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "overthebox.configuration.firewall.redirect.TargetEnum"
+        }
+      }
+    },
+    "overthebox.configuration.types.firewall.Rule": {
+      "description": "Firewall rule",
+      "id": "Rule",
+      "namespace": "overthebox.configuration.types.firewall",
+      "properties": {
+        "destinationIp": {
+          "canBeNull": true,
+          "description": "Destination IP",
+          "fullType": "ipBlock",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock"
+        },
+        "destinationPort": {
+          "canBeNull": true,
+          "description": "Destination port(s) (single value or range separated by - )",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "destinationZone": {
+          "canBeNull": true,
+          "description": "Destination zone",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "family": {
+          "canBeNull": true,
+          "description": "IP family",
+          "fullType": "overthebox.configuration.firewall.rule.FamilyEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "overthebox.configuration.firewall.rule.FamilyEnum"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the rule",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "protocol": {
+          "canBeNull": true,
+          "description": "Protocol to match",
+          "fullType": "overthebox.configuration.firewall.ProtocolEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "overthebox.configuration.firewall.ProtocolEnum"
+        },
+        "sourceIp": {
+          "canBeNull": true,
+          "description": "Source IP",
+          "fullType": "ipBlock",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock"
+        },
+        "sourcePort": {
+          "canBeNull": true,
+          "description": "Source port(s) (single value or range separated by - )",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "sourceZone": {
+          "canBeNull": false,
+          "description": "Source zone",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "target": {
+          "canBeNull": false,
+          "description": "Target",
+          "fullType": "overthebox.configuration.firewall.rule.TargetEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "overthebox.configuration.firewall.rule.TargetEnum"
+        }
+      }
+    },
+    "overthebox.configuration.types.network.Interface": {
+      "description": "Network interface",
+      "id": "Interface",
+      "namespace": "overthebox.configuration.types.network",
+      "properties": {
+        "gateway": {
+          "canBeNull": true,
+          "description": "IP address of the gateway",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
+        },
+        "ifname": {
+          "canBeNull": false,
+          "description": "Name of the physical interface",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "interfaceName": {
+          "canBeNull": false,
+          "description": "Name given to the new interface",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "ip": {
+          "canBeNull": true,
+          "description": "IP address of the network",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
+        },
+        "ipv6": {
+          "canBeNull": true,
+          "description": "Is an IPV6 interface",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "mtu": {
+          "canBeNull": true,
+          "description": "MTU of the network",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "multipath": {
+          "canBeNull": true,
+          "description": "Use the interface in multipath",
+          "fullType": "overthebox.configuration.network.interface.MultipathEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "overthebox.configuration.network.interface.MultipathEnum"
+        },
+        "netmask": {
+          "canBeNull": true,
+          "description": "Netmask of the network",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
+        },
+        "protocol": {
+          "canBeNull": true,
+          "description": "Protocol for IP allocation",
+          "fullType": "overthebox.configuration.network.interface.ProtoEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "overthebox.configuration.network.interface.ProtoEnum"
+        },
+        "routingTable": {
+          "canBeNull": true,
+          "description": "Routing table used by the network interface",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": true,
+          "description": "Type of the network interface",
+          "fullType": "overthebox.configuration.network.interface.TypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "overthebox.configuration.network.interface.TypeEnum"
+        }
+      }
     },
     "price.OverTheBox.OfferEnum": {
       "description": "Enum of Offers",

@@ -62,7 +62,7 @@ export namespace order {
     /**
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * Price with it's currency and textual representation
      * interface fullName: order.Price.Price
@@ -239,13 +239,14 @@ export namespace pack {
          * Reason of a resiliation
          * type fullname: pack.xdsl.ResiliationReasonEnum
          */
-        export type ResiliationReasonEnum = "addressMove" | "billingProblems" | "cessationOfActivity" | "changeOfTerms" | "ftth" | "goToCompetitor" | "other" | "technicalProblems"
+        export type ResiliationReasonEnum = "addressMove" | "billingProblems" | "cessationOfActivity" | "changeOfTerms" | "changeOperator" | "eligibilityFtth" | "ftth" | "goToCompetitor" | "other" | "price" | "technicalProblems"
         /**
          * Information about the reason for the resiliation
          * interface fullName: pack.xdsl.ResiliationSurvey.ResiliationSurvey
          */
         export interface ResiliationSurvey {
             comment?: string;
+            subsidiary?: string;
             type: pack.xdsl.ResiliationReasonEnum;
         }
         /**
@@ -779,13 +780,6 @@ export interface Pack {
                      */
                     $post(params: { creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum }): Promise<pack.xdsl.AsyncTask<number>>;
                 }
-                moveFtth: {
-                    /**
-                     * Move the FTTH access to another address
-                     * POST /pack/xdsl/{packName}/addressMove/moveFtth
-                     */
-                    $post(params: { buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string }): Promise<pack.xdsl.AsyncTask<number>>;
-                }
                 moveOffer: {
                     /**
                      * Move the access to another address
@@ -965,22 +959,6 @@ export interface Pack {
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
-                }
-                services: {
-                    /**
-                     * Exchange services
-                     * GET /pack/xdsl/{packName}/exchangeIndividual/services
-                     */
-                    $get(): Promise<string[]>;
-                    /**
-                     * Activate an exchange service
-                     * POST /pack/xdsl/{packName}/exchangeIndividual/services
-                     */
-                    $post(params: { email: string, password: string }): Promise<pack.xdsl.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             exchangeLite: {

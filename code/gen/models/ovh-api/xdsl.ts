@@ -5566,6 +5566,7 @@ export const schema: Schema = {
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",
@@ -10844,10 +10845,10 @@ export const schema: Schema = {
         "currentUsage": {
           "canBeNull": false,
           "description": "Mailbox usage",
-          "fullType": "complexType.UnitAndValue<long>",
+          "fullType": "complexType.UnitAndValue<double>",
           "readOnly": true,
           "required": false,
-          "type": "complexType.UnitAndValue<long>"
+          "type": "complexType.UnitAndValue<double>"
         },
         "displayName": {
           "canBeNull": true,

@@ -25,7 +25,7 @@ export namespace dedicated {
          * Baremetal Status
          * type fullname: dedicated.anthos.BaremetalStatusEnum
          */
-        export type BaremetalStatusEnum = "BAREMETAL_STATUS_UNSPECIFIED" | "BAREMETAL_STATUS_DELIVERING" | "BAREMETAL_STATUS_AVAILABLE" | "BAREMETAL_STATUS_IN_USE" | "BAREMETAL_STATUS_IN_MAINTENANCE" | "BAREMETAL_STATUS_SUPPRESSING" | "BAREMETAL_STATUS_RESTARTING"
+        export type BaremetalStatusEnum = "BAREMETAL_STATUS_AVAILABLE" | "BAREMETAL_STATUS_DELIVERING" | "BAREMETAL_STATUS_IN_MAINTENANCE" | "BAREMETAL_STATUS_IN_USE" | "BAREMETAL_STATUS_RESTARTING" | "BAREMETAL_STATUS_SUPPRESSING" | "BAREMETAL_STATUS_UNSPECIFIED"
         /**
          * Capabilities Response
          * interface fullName: dedicated.anthos.Capabilities.Capabilities
@@ -79,7 +79,7 @@ export namespace dedicated {
          * Storage Cluster Type
          * type fullname: dedicated.anthos.StorageTypeEnum
          */
-        export type StorageTypeEnum = "STORAGE_TYPE_UNSPECIFIED" | "STORAGE_TYPE_NETAPP"
+        export type StorageTypeEnum = "STORAGE_TYPE_NETAPP" | "STORAGE_TYPE_UNSPECIFIED"
         /**
          * Storage Virtual Machine
          * interface fullName: dedicated.anthos.StorageVM.StorageVM
@@ -95,7 +95,7 @@ export namespace dedicated {
          * Storage Virtual Machine state
          * type fullname: dedicated.anthos.StorageVMStateEnum
          */
-        export type StorageVMStateEnum = "STORAGE_VMSTATE_UNSPECIFIED" | "STORAGE_VMSTATE_INITIALIZING" | "STORAGE_VMSTATE_STARTING" | "STORAGE_VMSTATE_RUNNING" | "STORAGE_VMSTATE_STOPPING" | "STORAGE_VMSTATE_STOPPED" | "STORAGE_VMSTATE_DELETING"
+        export type StorageVMStateEnum = "STORAGE_VMSTATE_DELETING" | "STORAGE_VMSTATE_INITIALIZING" | "STORAGE_VMSTATE_RUNNING" | "STORAGE_VMSTATE_STARTING" | "STORAGE_VMSTATE_STOPPED" | "STORAGE_VMSTATE_STOPPING" | "STORAGE_VMSTATE_UNSPECIFIED"
         /**
          * Tenant
          * interface fullName: dedicated.anthos.Tenant.Tenant
@@ -123,7 +123,7 @@ export namespace dedicated {
          * Tenant status
          * type fullname: dedicated.anthos.TenantStatusEnum
          */
-        export type TenantStatusEnum = "TENANT_STATUS_UNSPECIFIED" | "TENANT_STATUS_UPGRADING" | "TENANT_STATUS_READY" | "TENANT_STATUS_ERROR"
+        export type TenantStatusEnum = "TENANT_STATUS_ERROR" | "TENANT_STATUS_READY" | "TENANT_STATUS_UNSPECIFIED" | "TENANT_STATUS_UPGRADING"
         /**
          * Upgrade Anthos version for the tenant
          * interface fullName: dedicated.anthos.UpgradeAnthosRequest.UpgradeAnthosRequest
@@ -253,6 +253,26 @@ export interface Dedicated {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                actions: {
+                    upgrade: {
+                        /**
+                         * Start an upgrade
+                         * POST /dedicated/anthos/tenants/{serviceName}/actions/upgrade
+                         */
+                        $post(params?: { version?: string }): Promise<dedicated.anthos.Tenant>;
+                    }
+                }
+                availableVersions: {
+                    /**
+                     * List available Anthos versions for the tenant
+                     * GET /dedicated/anthos/tenants/{serviceName}/availableVersions
+                     */
+                    $get(): Promise<dedicated.anthos.VersionInfo[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
                 baremetals: {
                     /**
                      * List baremetal servers
@@ -318,6 +338,34 @@ export interface Dedicated {
                          */
                         $post(): Promise<dedicated.anthos.TenantAccess>;
                     }
+                }
+                ipRestrictions: {
+                    /**
+                     * List ip restrictions
+                     * GET /dedicated/anthos/tenants/{serviceName}/ipRestrictions
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Append a list of ip restrictions
+                     * POST /dedicated/anthos/tenants/{serviceName}/ipRestrictions
+                     */
+                    $post(params?: { ips?: string[] }): Promise<string[]>;
+                    /**
+                     * Remove the current list and add a list of ip restrictions
+                     * PUT /dedicated/anthos/tenants/{serviceName}/ipRestrictions
+                     */
+                    $put(params?: { ips?: string[] }): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(ip: string): {
+                        /**
+                         * Delete an ip restriction
+                         * DELETE /dedicated/anthos/tenants/{serviceName}/ipRestrictions/{ip}
+                         */
+                        $delete(): Promise<void>;
+                    };
                 }
                 ips: {
                     private: {

@@ -34,7 +34,7 @@ export namespace analytics {
      * Status code
      * type fullname: analytics.StatusEnum
      */
-    export type StatusEnum = "PENDING" | "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | "DONE" | "ERROR" | "UNKNOWN" | "OK" | "TO_DEPLOY" | "DEPLOYING" | "DEPLOYED" | "TO_DESTROY" | "DESTROYING" | "DESTROYED" | "INITIALIZED"
+    export type StatusEnum = "DEPLOYED" | "DEPLOYING" | "DESTROYED" | "DESTROYING" | "DONE" | "ERROR" | "FAILED" | "INITIALIZED" | "IN_PROGRESS" | "OK" | "PENDING" | "SUCCEEDED" | "TO_DEPLOY" | "TO_DESTROY" | "UNKNOWN"
     export namespace cluster {
         /**
          * Cluster activity
@@ -124,7 +124,7 @@ export namespace analytics {
          * Node type
          * type fullname: analytics.node.TypeEnum
          */
-        export type TypeEnum = "MASTER" | "SLAVE" | "EDGE" | "UTILITY"
+        export type TypeEnum = "EDGE" | "MASTER" | "SLAVE" | "UTILITY"
     }
     export namespace platform {
         /**

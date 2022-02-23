@@ -93,6 +93,65 @@ export const schema: Schema = {
       "path": "/dedicated/anthos/tenants/{serviceName}"
     },
     {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Start an upgrade",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.anthos.UpgradeAnthosRequest",
+              "description": "Request Body",
+              "fullType": "dedicated.anthos.UpgradeAnthosRequest",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.anthos.Tenant"
+        }
+      ],
+      "path": "/dedicated/anthos/tenants/{serviceName}/actions/upgrade"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available Anthos versions for the tenant",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.anthos.VersionInfo[]"
+        }
+      ],
+      "path": "/dedicated/anthos/tenants/{serviceName}/availableVersions"
+    },
+    {
       "description": "Dedicated Anthos Tenant's baremetal servers",
       "operations": [
         {
@@ -396,6 +455,120 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicated/anthos/tenants/{serviceName}/credentials/reset"
+    },
+    {
+      "description": "Manage Anthos ip restrictions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List ip restrictions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipBlock[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Append a list of ip restrictions",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.anthos.IpRestrictionUpsert",
+              "description": "Request Body",
+              "fullType": "dedicated.anthos.IpRestrictionUpsert",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipBlock[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove the current list and add a list of ip restrictions",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.anthos.IpRestrictionUpsert",
+              "description": "Request Body",
+              "fullType": "dedicated.anthos.IpRestrictionUpsert",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipBlock[]"
+        }
+      ],
+      "path": "/dedicated/anthos/tenants/{serviceName}/ipRestrictions"
+    },
+    {
+      "description": "Manage Anthos ip restrictions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete an ip restriction",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "Ip",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/dedicated/anthos/tenants/{serviceName}/ipRestrictions/{ip}"
     },
     {
       "description": "Private IPs management",
@@ -889,13 +1062,13 @@ export const schema: Schema = {
     "dedicated.anthos.BaremetalStatusEnum": {
       "description": "Baremetal Status",
       "enum": [
-        "BAREMETAL_STATUS_UNSPECIFIED",
-        "BAREMETAL_STATUS_DELIVERING",
         "BAREMETAL_STATUS_AVAILABLE",
-        "BAREMETAL_STATUS_IN_USE",
+        "BAREMETAL_STATUS_DELIVERING",
         "BAREMETAL_STATUS_IN_MAINTENANCE",
+        "BAREMETAL_STATUS_IN_USE",
+        "BAREMETAL_STATUS_RESTARTING",
         "BAREMETAL_STATUS_SUPPRESSING",
-        "BAREMETAL_STATUS_RESTARTING"
+        "BAREMETAL_STATUS_UNSPECIFIED"
       ],
       "enumType": "string",
       "id": "BaremetalStatusEnum",
@@ -1050,8 +1223,8 @@ export const schema: Schema = {
     "dedicated.anthos.StorageTypeEnum": {
       "description": "Storage Cluster Type",
       "enum": [
-        "STORAGE_TYPE_UNSPECIFIED",
-        "STORAGE_TYPE_NETAPP"
+        "STORAGE_TYPE_NETAPP",
+        "STORAGE_TYPE_UNSPECIFIED"
       ],
       "enumType": "string",
       "id": "StorageTypeEnum",
@@ -1107,13 +1280,13 @@ export const schema: Schema = {
     "dedicated.anthos.StorageVMStateEnum": {
       "description": "Storage Virtual Machine state",
       "enum": [
-        "STORAGE_VMSTATE_UNSPECIFIED",
+        "STORAGE_VMSTATE_DELETING",
         "STORAGE_VMSTATE_INITIALIZING",
-        "STORAGE_VMSTATE_STARTING",
         "STORAGE_VMSTATE_RUNNING",
-        "STORAGE_VMSTATE_STOPPING",
+        "STORAGE_VMSTATE_STARTING",
         "STORAGE_VMSTATE_STOPPED",
-        "STORAGE_VMSTATE_DELETING"
+        "STORAGE_VMSTATE_STOPPING",
+        "STORAGE_VMSTATE_UNSPECIFIED"
       ],
       "enumType": "string",
       "id": "StorageVMStateEnum",
@@ -1224,10 +1397,10 @@ export const schema: Schema = {
     "dedicated.anthos.TenantStatusEnum": {
       "description": "Tenant status",
       "enum": [
-        "TENANT_STATUS_UNSPECIFIED",
-        "TENANT_STATUS_UPGRADING",
+        "TENANT_STATUS_ERROR",
         "TENANT_STATUS_READY",
-        "TENANT_STATUS_ERROR"
+        "TENANT_STATUS_UNSPECIFIED",
+        "TENANT_STATUS_UPGRADING"
       ],
       "enumType": "string",
       "id": "TenantStatusEnum",

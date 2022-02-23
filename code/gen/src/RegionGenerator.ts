@@ -114,7 +114,7 @@ export class RegionGenerator {
             //
 
             let fn = path.join(dir, 'index.ts');
-            let code = await cg.generate();
+            let code = await cg.generate({dest: fn});
             await fs.promises.writeFile(fn, code);
 
             await this.genPackageReadme(dir, cg);

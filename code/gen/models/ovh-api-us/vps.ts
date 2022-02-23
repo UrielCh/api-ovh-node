@@ -983,72 +983,6 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/ips/{ipAddress}"
     },
     {
-      "description": "migration2014 operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2021-01-08T10:00:00+01:00",
-            "deprecatedDate": "2020-12-08T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "description": "Get information on a possible migration of a VPS Cloud 2014 to VPS Cloud 2020",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "vps.migration.Cloud2014to2020",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2021-01-08T10:00:00+01:00",
-            "deprecatedDate": "2020-12-08T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "description": "Schedule the migration of a VPS Cloud 2014 to VPS Cloud 2020",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "datetime",
-              "description": "When the migration should start",
-              "fullType": "datetime",
-              "name": "date",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
-        }
-      ],
-      "path": "/vps/{serviceName}/migration2014"
-    },
-    {
       "description": "monitoring operations",
       "operations": [
         {
@@ -2536,6 +2470,9 @@ export const schema: Schema = {
     "nichandle.OvhSubsidiaryEnum": {
       "description": "OVH subsidiaries",
       "enum": [
+        "ASIA",
+        "AU",
+        "CA",
         "CZ",
         "DE",
         "ES",
@@ -2550,16 +2487,13 @@ export const schema: Schema = {
         "NL",
         "PL",
         "PT",
-        "SN",
-        "TN",
-        "ASIA",
-        "AU",
-        "CA",
         "QC",
         "SG",
+        "SN",
+        "TN",
+        "US",
         "WE",
-        "WS",
-        "US"
+        "WS"
       ],
       "enumType": "string",
       "id": "OvhSubsidiaryEnum",
@@ -3951,55 +3885,6 @@ export const schema: Schema = {
       "id": "TypeEnum",
       "namespace": "vps.ip"
     },
-    "vps.migration.Cloud2014to2020": {
-      "description": "A structure describing a migration from VPS Cloud 2014 to VPS 2020",
-      "id": "Cloud2014to2020",
-      "namespace": "vps.migration",
-      "properties": {
-        "date": {
-          "canBeNull": true,
-          "description": "Scheduled migration date",
-          "readOnly": false,
-          "required": false,
-          "type": "datetime"
-        },
-        "model": {
-          "canBeNull": true,
-          "description": "VPS 2020 model name and version",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "notAfter": {
-          "canBeNull": true,
-          "description": "Latest migration date possible",
-          "readOnly": false,
-          "required": false,
-          "type": "datetime"
-        },
-        "notBefore": {
-          "canBeNull": true,
-          "description": "Earliest migration date possible",
-          "readOnly": false,
-          "required": false,
-          "type": "datetime"
-        },
-        "options": {
-          "canBeNull": false,
-          "description": "Mapping of VPS options from VPS 2014 to VPS 2020",
-          "readOnly": false,
-          "required": false,
-          "type": "vps.migration.OptionMapping[]"
-        },
-        "status": {
-          "canBeNull": false,
-          "description": "Status of the migration task",
-          "readOnly": false,
-          "required": false,
-          "type": "vps.migration.StatusEnum"
-        }
-      }
-    },
     "vps.migration.Migration": {
       "description": "Description not available",
       "id": "Migration",
@@ -4018,27 +3903,6 @@ export const schema: Schema = {
           "description": "Migration Id",
           "fullType": "string",
           "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "vps.migration.OptionMapping": {
-      "description": "Mapping between a VPS 2014 option code and a VPS 2020 option code",
-      "id": "OptionMapping",
-      "namespace": "vps.migration",
-      "properties": {
-        "vps2014code": {
-          "canBeNull": false,
-          "description": "VPS 2014 option code",
-          "readOnly": false,
-          "required": false,
-          "type": "vps.VpsOptionEnum"
-        },
-        "vps2020code": {
-          "canBeNull": false,
-          "description": "VPS 2020 option code",
-          "readOnly": false,
           "required": false,
           "type": "string"
         }
@@ -4210,9 +4074,9 @@ export const schema: Schema = {
     "vps.order.rule.OSChoiceStatusEnum": {
       "description": "Possible values for OS choice status",
       "enum": [
-        "unavailable",
         "available",
-        "checked-by-default"
+        "checked-by-default",
+        "unavailable"
       ],
       "enumType": "string",
       "id": "OSChoiceStatusEnum",

@@ -64,7 +64,7 @@ export namespace domain {
      * An action to execute on a domain name
      * type fullname: domain.ActionEnum
      */
-    export type ActionEnum = "create" | "transfer" | "update" | "trade"
+    export type ActionEnum = "create" | "trade" | "transfer" | "update"
     /**
      * A contact contains the personal data of a user
      * interface fullName: domain.Contact.Contact
@@ -241,7 +241,7 @@ export namespace domain {
      * Possible purposes of the domain
      * type fullname: domain.IsForEnum
      */
-    export type IsForEnum = "campaign_website" | "educational_website" | "information_website" | "transactional_website" | "redirect_page" | "emails" | "other_purpose"
+    export type IsForEnum = "campaign_website" | "educational_website" | "emails" | "information_website" | "other_purpose" | "redirect_page" | "transactional_website"
     /**
      * Offer
      * type fullname: domain.OfferEnum
@@ -286,19 +286,6 @@ export namespace domain {
      * type fullname: domain.ParentServiceTypeEnum
      */
     export type ParentServiceTypeEnum = "/allDom"
-    /**
-     * Description not available
-     * interface fullName: domain.Rule.Rule
-     */
-    export interface Rule {
-        allowedValues?: string[];
-        description: string;
-        fields?: string[];
-        innerConfigurations?: domain.Rule[];
-        label?: string;
-        required?: boolean;
-        type: string;
-    }
     /**
      * Tasks associated to domain
      * interface fullName: domain.Task.Task
@@ -346,12 +333,12 @@ export namespace domain {
              * Used in rule to tell if rule (or part of the rule) is applicable for a given context
              * type fullname: domain.configuration.rules.ContextEnum
              */
-            export type ContextEnum = "update" | "create" | "transfer" | "trade" | "order" | "premium" | "accept_conditions" | "claims" | "reason" | "protected_code"
+            export type ContextEnum = "accept_conditions" | "claims" | "create" | "order" | "premium" | "protected_code" | "reason" | "trade" | "transfer" | "update"
             /**
              * Operator use in configuration rule to check content of a field
              * type fullname: domain.configuration.rules.OperatorEnum
              */
-            export type OperatorEnum = "eq" | "ne" | "gt" | "gte" | "lt" | "lte" | "maxlength" | "minlength" | "between" | "contains" | "notcontains" | "empty" | "notempty" | "match" | "shouldbetrue" | "required" | "readonly"
+            export type OperatorEnum = "between" | "contains" | "empty" | "eq" | "gt" | "gte" | "lt" | "lte" | "match" | "maxlength" | "minlength" | "ne" | "notcontains" | "notempty" | "readonly" | "required" | "shouldbetrue"
             /**
              * A configuration rule defines validation to launch when executing an action on a domain (create, trade...). Depending on the extension, the rule may be different
              * interface fullName: domain.configuration.rules.Rule.Rule
@@ -391,7 +378,7 @@ export namespace domain {
              * Type of rule configuration
              * type fullname: domain.configuration.rules.TypeEnum
              */
-            export type TypeEnum = "string" | "string[]" | "text" | "bool" | "number" | "json" | "contact" | "domain" | "date_ISO8601"
+            export type TypeEnum = "bool" | "contact" | "date_ISO8601" | "domain" | "json" | "number" | "string" | "string[]" | "text"
         }
     }
     export namespace configurations {
@@ -425,28 +412,6 @@ export namespace domain {
         }
     }
     export namespace data {
-        /**
-         * Representation of an Inpi additional information for a corporation
-         * interface fullName: domain.data.AfnicCorporationTrademarkContact.AfnicCorporationTrademarkContact
-         */
-        export interface AfnicCorporationTrademarkContact {
-            contactId: number;
-            id: number;
-            inpiNumber: string;
-            inpiTrademarkOwner: string;
-        }
-        /**
-         * Representation of a Association additional information
-         * interface fullName: domain.data.AssociationContact.AssociationContact
-         */
-        export interface AssociationContact {
-            contactId: number;
-            declarationDate: string;
-            id: number;
-            publicationDate: string;
-            publicationNumber: string;
-            publicationPageNumber: string;
-        }
         /**
          * Representation of an .pro Contact Resource
          * interface fullName: domain.data.ProContact.ProContact
@@ -525,7 +490,7 @@ export namespace domain {
              * Type of claim notice
              * type fullname: domain.data.claimNotice.ClaimNoticeTypeEnum
              */
-            export type ClaimNoticeTypeEnum = "UK" | "TRADEMARK"
+            export type ClaimNoticeTypeEnum = "TRADEMARK" | "UK"
             /**
              * Definition of a trademark claim notice classification
              * interface fullName: domain.data.claimNotice.Classification.Classification
@@ -579,7 +544,7 @@ export namespace domain {
          * Type of extension category
          * type fullname: domain.extensions.CategoryTypeEnum
          */
-        export type CategoryTypeEnum = "thematic" | "geolocalization"
+        export type CategoryTypeEnum = "geolocalization" | "thematic"
         /**
          * A domain name extension
          * interface fullName: domain.extensions.Extension.Extension
@@ -608,7 +573,7 @@ export namespace domain {
          * Type used to change the order of extensions results
          * type fullname: domain.extensions.OrderByTypeEnum
          */
-        export type OrderByTypeEnum = "trending" | "alphabetical"
+        export type OrderByTypeEnum = "alphabetical" | "trending"
         export namespace registryConfigurations {
             /**
              * The registry configurations applied when creating a domain name
@@ -1063,60 +1028,6 @@ export interface Domain {
         };
     }
     data: {
-        afnicAssociationInformation: {
-            /**
-             * Retrieve all association information according to Afnic
-             * GET /domain/data/afnicAssociationInformation
-             */
-            $get(): Promise<number[]>;
-            /**
-             * Post a new association information according to Afnic
-             * POST /domain/data/afnicAssociationInformation
-             */
-            $post(params: { contactId: number, declarationDate: string, publicationDate: string, publicationNumber: string, publicationPageNumber: string }): Promise<domain.data.AssociationContact>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            $(associationInformationId: number): {
-                /**
-                 * Retrieve an association information according to Afnic
-                 * GET /domain/data/afnicAssociationInformation/{associationInformationId}
-                 */
-                $get(): Promise<domain.data.AssociationContact>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            };
-        }
-        afnicCorporationTrademarkInformation: {
-            /**
-             * Retrieve all corporation trademark information according to Afnic
-             * GET /domain/data/afnicCorporationTrademarkInformation
-             */
-            $get(): Promise<number[]>;
-            /**
-             * Post a new corporation trademark information according to Afnic
-             * POST /domain/data/afnicCorporationTrademarkInformation
-             */
-            $post(params: { contactId: number, inpiNumber: string, inpiTrademarkOwner: string }): Promise<domain.data.AfnicCorporationTrademarkContact>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            $(afnicCorporationTrademarkId: number): {
-                /**
-                 * Retrieve a corporation trademark information according to Afnic
-                 * GET /domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}
-                 */
-                $get(): Promise<domain.data.AfnicCorporationTrademarkContact>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            };
-        }
         claimNotice: {
             /**
              * Retrieve claim notices associated to a domain
@@ -1269,17 +1180,6 @@ export interface Domain {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
-    }
-    rules: {
-        /**
-         * List all the rules for a specific cartId/itemId
-         * GET /domain/rules
-         */
-        $get(params: { cartId: string, itemId: number }): Promise<domain.Rule>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     zone: {
         /**
@@ -1806,9 +1706,18 @@ export interface Domain {
                 status: {
                     /**
                      * Get name server status
+                     * GET /domain/{serviceName}/nameServer/{id}/status
+                     */
+                    $get(): Promise<domain.DomainNsStatus>;
+                    /**
+                     * Get name server status
                      * POST /domain/{serviceName}/nameServer/{id}/status
                      */
                     $post(): Promise<domain.DomainNsStatus>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }

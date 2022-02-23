@@ -189,11 +189,35 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Offer plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Choosen offer product code",
               "fullType": "string",
               "name": "productCode",
               "paramType": "body",
-              "required": true
+              "required": false
+            },
+            {
+              "dataType": "connectivity.eligibility.OfferProductTypeEnum",
+              "description": "Access type",
+              "fullType": "connectivity.eligibility.OfferProductTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "connectivity.eligibility.OfferProductUnbundlingTypeEnum",
+              "description": "Unbundling type",
+              "fullType": "connectivity.eligibility.OfferProductUnbundlingTypeEnum",
+              "name": "unbundlingType",
+              "paramType": "body",
+              "required": false
             }
           ],
           "responseType": "xdsl.AsyncTask<connectivity.eligibility.Meetings>"
