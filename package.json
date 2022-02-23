@@ -27,22 +27,22 @@
         "url": "git+https://github.com/UrielCh/api-ovh-node.git"
     },
     "scripts": {
-        "all": "npm install && npm run gen && git add . && git commit -avm 'regen' && git push && npm run do-publish",
+        "all": "pnpm install && pnpm run gen && git add . && git commit -avm 'regen' && git push && pnpm run do-publish",
         "gen": "cd code && cd gen && npm install && ts-node src/index.ts",
         "regen": "cd code && cd gen && npm install && ts-node src/index.ts",
-        "preparenv": "npm install -g typescript ts-node",
-        "clean": "npm run clean0 && npm run clean1 && npm run clean2 && npm run clean3 && npm run clean-cache && npm run clean5",
+        "preparenv": "pnpm install -g typescript ts-node",
+        "clean": "pnpm run clean0 && pnpm run clean1 && pnpm run clean2 && pnpm run clean3 && pnpm run clean-cache && pnpm run clean5",
         "clean0": "rimraf ./code/*/index.d.ts ./code/*/index.js",
         "clean1": "rimraf ./packages-*/*/index.d.ts   ./packages-*/*/index.js ./code/*/index.d.ts ./code/*/index.js",
         "clean2": "rimraf ./kimsufi-*/*/index.d.ts    ./kimsufi-*/*/index.js",
         "clean3": "rimraf ./soyoustart-*/*/index.d.ts ./soyoustart-*/*/index.js",
         "clean-cache": "rimraf ./*/*/.cache",
         "clean5": "lerna clean -y",
-        "install-all": "lerna exec --stream -- npm i --cache ./.cache",
+        "install-all": "lerna exec --stream -- pnpm i --cache ./.cache",
         "bootstrap": "lerna bootstrap --concurrency=1 --ignore-scripts --force-local",
         "bootstrap2": "lerna bootstrap --mutex file:/tmp/.npm-mutex --force-local",
         "build": "lerna run build",
-        "do-publish": "npm run clean && npm run install-all && npm run bootstrap && npm run clean-cache && git commit -avm 'update package-lock.json'; npm run lerna",
+        "do-publish": "pnpm run clean && pnpm run install-all && pnpm run bootstrap && pnpm run clean-cache && git commit -avm 'update package-lock.json'; pnpm run lerna",
         "lerna": "lerna publish patch --yes"
     },
     "name": "api-ovh-node"
