@@ -98,6 +98,7 @@ async function indexSource(): Promise<{ [key: string]: IPSelection }> {
         country: cloudProjectsIP.geoloc as coreTypes.CountryEnum,
         ip: cloudProjectsIP.ip,
         routedTo: {serviceName: cloudProjectsIP.id,},
+        bringYourOwnIp: false,
         type: 'cloud',
       }
       if (!indexed[routedTo]) {

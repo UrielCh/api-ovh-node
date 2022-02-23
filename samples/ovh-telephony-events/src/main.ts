@@ -46,7 +46,7 @@ function checkUpdate() {
     const { name } = require('../package.json');
     const versionQuery = fetch(`http://registry.npmjs.com/-/v1/search?text=${name}&size=1`);
     versionQuery.then(response => {
-        response.json().then((data) => {
+        response.json().then((data: any) => {
             if (data && data.objects && data.objects.length) {
                 const npmVersion = data.objects[0].package.version as string;
                 const vnpm = npmVersion.split('.')
