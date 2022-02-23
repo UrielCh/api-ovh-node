@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-ca/dedicated-server",
     "description": "Add typing to to ovh api dedicated-server",
-    "version": "3.1.25",
+    "version": "3.1.26",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
