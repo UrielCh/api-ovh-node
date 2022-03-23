@@ -1,4 +1,9 @@
-V 3.2.6
+# changelog
+
+V 3.2.8
+- Improve OVHError adding access to the OvhApi object.
+- Improve NOT_GRANTED_CALL error by listing current allow rules.
+- Rename certCache to certCacheFile.
 V 3.2.7
 - fix autologin regression.
 V 3.2.6

@@ -49,8 +49,13 @@ export interface OvhParamsFull {
     accessRules: string[] | string;
     /**
      * certCache filename used to store generated certificate on disque.
+     * @deprectated replaced by certCacheFile
      */
-    certCache: string;
+     certCache?: string;
+     /**
+     * certCacheFile filename used to store generated certificate on disque.
+     */
+    certCacheFile: string;
     /**
      * if provided enable automatic cert storage
      * All certificat will be stored in ~/.ovh/ of certCache directory.

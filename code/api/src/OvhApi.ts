@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 - 2021 Uriel Chemouni
+ * Copyright (c) 2019 - 2022 Uriel Chemouni
  * Copyright (c) 2013 - 2016 OVH SAS
  * Copyright (c) 2012 - 2013 Vincent Giersch
  *
@@ -72,9 +72,8 @@
       */
      queryCache: Cache | null = null;
  
-     constructor(apiOptions?: OvhParams) {
+     constructor(apiOptions = {} as OvhParams) {
          super();
-         apiOptions = apiOptions || {};
          this.data = {
              // Application Name: api-ovh-node
              // Application Description: api-ovh-node default key
@@ -86,7 +85,7 @@
              port: 0,
              accessRules: [] as string[],
              apiTimeDiff: apiOptions.apiTimeDiff || null,
-             certCache: apiOptions.certCache || '',
+             certCacheFile: apiOptions.certCacheFile || '',
              nichandle: apiOptions.nichandle || '',
              retrySleep: (typeof apiOptions.retrySleep === 'number') ? apiOptions.retrySleep : 100,
              maxRetry: (typeof apiOptions.maxRetry === 'number') ? apiOptions.maxRetry : 10,
@@ -127,33 +126,37 @@
              this.data.accessRules = ['GET /*', 'POST /*', 'PUT /*', 'DELETE /*'];
          }
          this.data.nichandle = this.data.nichandle.toLowerCase();
+         // certCache renamed as certCacheFile, convert old name to new parameter name
+         if (this.data.certCache) {
+            this.data.certCacheFile = this.data.certCache;
+         }
          /**
           * Certificat cache
           */
-         if (this.data.certCache || this.data.nichandle) {
-             if (!this.data.certCache) {
-                 this.data.certCache = path.join(os.homedir(), '.ovh');
+        if (this.data.certCacheFile || this.data.nichandle) {
+             if (!this.data.certCacheFile) {
+                 this.data.certCacheFile = path.join(os.homedir(), '.ovh');
              }
              if (this.data.nichandle) {
                  let stat: fs.Stats | null = null;
                  try {
-                     stat = fs.statSync(this.data.certCache);
+                     stat = fs.statSync(this.data.certCacheFile);
                  } catch (e) {
                  }
                  if (!stat) {
-                     try { fs.mkdirSync(this.data.certCache); } catch (e) {
-                         throw Error(`failed to create missing certCachedirectory: ${this.data.certCache}`);
+                     try { fs.mkdirSync(this.data.certCacheFile); } catch (e) {
+                         throw Error(`failed to create missing certCachedirectory: ${this.data.certCacheFile}`);
                      }
                  } else if (!stat.isDirectory()) {
-                     throw Error(`certCache: ${this.data.certCache} must be a directory`);
+                     throw Error(`certCacheFile: ${this.data.certCacheFile} must be a directory`);
                  }
                  // replace directory by full path
                  const hash = crypto.createHash('md5').update(this.data.accessRules.join('')).digest('hex').substring(0,8);
-                 this.data.certCache = path.join(this.data.certCache, `token-${hash}-${this.data.nichandle}.json`);
+                 this.data.certCacheFile = path.join(this.data.certCacheFile, `token-${hash}-${this.data.nichandle}.json`);
              }
              let cached = '';
              try {
-                 cached = readFileSync(this.data.certCache, { encoding: 'utf-8' })
+                 cached = readFileSync(this.data.certCacheFile, { encoding: 'utf-8' })
                  let data = JSON.parse(cached);
                  let { appKey, appSecret, consumerKey } = data;
                  this.data.appKey = appKey;
@@ -216,8 +219,14 @@
      get launchBrower(): boolean {
          return this.data.launchBrower;
      }
+     /**
+      * @deplecated use certCacheFile
+      */
      get certCache(): string{
-         return this.data.certCache;
+        return this.data.certCacheFile;
+    }
+     get certCacheFile(): string{
+         return this.data.certCacheFile;
      }
      get accessRules(): string[] {
          return this.data.accessRules as string[];
@@ -345,7 +354,7 @@
              return resp as OvhCredentialNew;
          } catch (e) {
              const err = e as Error;
-             throw new OvhError({
+             throw new OvhError(this, {
                  method,
                  path,
                  errorCode: 'HTTP_ERROR',

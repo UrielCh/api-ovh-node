@@ -18,13 +18,15 @@ const handleResponse = async (ctxt: RequestContext, response: IncomingMessage, b
         try {
             responseData = JSON.parse(body);
         } catch (e) {
-            throw new OvhError({
-                method,
-                path,
-                errorCode: 'HTTP_ERROR',
-                httpCode: `${statusCode} ${statusMessage}`,
-                message: `[OVH] Unable to parse ${method} ${path} JSON reponse:${body}`
-            }, e as Error);
+            throw new OvhError(
+                ctxt.api,
+                {
+                    method,
+                    path,
+                    errorCode: 'HTTP_ERROR',
+                    httpCode: `${statusCode} ${statusMessage}`,
+                    message: `[OVH] Unable to parse ${method} ${path} JSON reponse:${body}`
+                }, e as Error);
         }
     } else {
         responseData = {};
@@ -58,7 +60,7 @@ const handleResponse = async (ctxt: RequestContext, response: IncomingMessage, b
      */
     if (error.message === 'You must login first') {
         if (!ctxt.canIssueNewCert())
-            throw new OvhError(error);
+            throw new OvhError(ctxt.api, error);
         await ctxt.renewCert();
         // Restart restart reseting context, so retry count return to 0.
         // certRenew also
@@ -71,7 +73,7 @@ const handleResponse = async (ctxt: RequestContext, response: IncomingMessage, b
     if (error.errorCode === 'INVALID_CREDENTIAL') {
         if (ctxt.path !== '/auth/currentCredential') {
             if (!ctxt.canIssueNewCert())
-                throw new OvhError(error);
+                throw new OvhError(ctxt.api, error);
             await ctxt.renewCert();
             // Restart restart reseting context, so retry count return to 0.
             // certRenew also
@@ -88,7 +90,7 @@ const handleResponse = async (ctxt: RequestContext, response: IncomingMessage, b
     if (ctxt.retryCnt > 1)
         error.message += ` after ${ctxt.retryCnt} retries`;
     error.message += ` in ${((new Date().getTime() - ctxt.t0) / 1000).toFixed(1)} Sec.`;
-    throw new OvhError(error);
+    throw new OvhError(ctxt.api, error);
 }
 
 export const makeRequest = (ctxt: RequestContext) => new Promise((resolve, reject) => {
@@ -136,13 +138,15 @@ export const makeRequest = (ctxt: RequestContext) => new Promise((resolve, rejec
             message += ` after ${ctxt.retryCnt} retries`;
         message += ` in ${((new Date().getTime() - ctxt.t0) / 1000).toFixed(1)} Sec.`;
 
-        reject(new OvhError({
-            method,
-            path: options.path as string,
-            httpCode: '',
-            errorCode: 'NETWORK_ERROR',
-            message
-        }, error))
+        reject(new OvhError(
+            ctxt.api,
+            {
+                method,
+                path: options.path as string,
+                httpCode: '',
+                errorCode: 'NETWORK_ERROR',
+                message
+            }, error))
     });
 
     // mocked socket has no setTimeout

@@ -158,15 +158,17 @@ export class RequestContext {
                 // X-Iplb-Request-Id: string
                 // X-IPLB-Request-ID: string
                 const XOvhQueryid = '';// `${response.headers['X-Ovh-Queryid']}`;
-                throw new OvhError({
-                    method: this.method,
-                    path: this.path,
-                    errorCode: 'INVALID_CREDENTIAL',
-                    httpCode: `Renew Cert failed after failed Query ${this.maxRetry} ${this.path}`,
-                    message: `Renew Cert failed after failed Query ${this.maxRetry} ${this.path}`,
-                    // httpCode: `${statusCode} ${statusMessage}`,
-                    // message: `failed to request a credential with rule ${JSON.stringify(ctxt.api.accessRules)} ${err.message || err}`,
-                }, err, XOvhQueryid);
+                throw new OvhError(
+                    this.api,
+                    {
+                        method: this.method,
+                        path: this.path,
+                        errorCode: 'INVALID_CREDENTIAL',
+                        httpCode: `Renew Cert failed after failed Query ${this.maxRetry} ${this.path}`,
+                        message: `Renew Cert failed after failed Query ${this.maxRetry} ${this.path}`,
+                        // httpCode: `${statusCode} ${statusMessage}`,
+                        // message: `failed to request a credential with rule ${JSON.stringify(ctxt.api.accessRules)} ${err.message || err}`,
+                    }, err, XOvhQueryid);
             }
             for (let i = 0; i < 3; i++) {
                 if (await waitForCertValidation(api, newCert)) {
