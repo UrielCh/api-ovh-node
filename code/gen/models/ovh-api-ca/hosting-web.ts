@@ -8174,24 +8174,31 @@ export const schema: Schema = {
       "properties": {
         "container": {
           "canBeNull": false,
-          "description": "Container image",
+          "description": "Container to run this website",
           "readOnly": false,
           "required": false,
-          "type": "string"
+          "type": "hosting.web.ovhconfig.ContainerEnum"
         },
-        "engine": {
+        "engineName": {
           "canBeNull": false,
           "description": "Engine name",
           "readOnly": false,
           "required": false,
-          "type": "string"
+          "type": "hosting.web.ovhConfig.EngineNameEnum"
+        },
+        "engineVersion": {
+          "canBeNull": false,
+          "description": "PHP version",
+          "readOnly": false,
+          "required": false,
+          "type": "hosting.web.ovhConfig.AvailableEngineVersionEnum"
         },
         "environment": {
           "canBeNull": false,
           "description": "Environment configuration",
           "readOnly": false,
           "required": false,
-          "type": "string"
+          "type": "hosting.web.ovhConfig.EnvironmentEnum"
         },
         "httpFirewall": {
           "canBeNull": false,
@@ -8199,13 +8206,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "hosting.web.ovhConfig.HttpFirewallEnum"
-        },
-        "version": {
-          "canBeNull": false,
-          "description": "PHP version",
-          "readOnly": false,
-          "required": false,
-          "type": "hosting.web.ovhConfig.AvailableEngineVersionEnum"
         }
       }
     },
@@ -8238,7 +8238,8 @@ export const schema: Schema = {
         "phpfpm-7.1",
         "phpfpm-7.2",
         "phpfpm-7.3",
-        "phpfpm-7.4"
+        "phpfpm-7.4",
+        "phpfpm-8.0"
       ],
       "enumType": "string",
       "id": "PhpVersionAvailableEnum",
@@ -9100,6 +9101,7 @@ export const schema: Schema = {
         "node10",
         "node11",
         "node12",
+        "node14",
         "node8",
         "node9",
         "other",
@@ -11352,6 +11354,7 @@ export const schema: Schema = {
         "nodejs-10",
         "nodejs-11",
         "nodejs-12",
+        "nodejs-14",
         "nodejs-8",
         "nodejs-9",
         "phpfpm-5.6",
@@ -11360,6 +11363,7 @@ export const schema: Schema = {
         "phpfpm-7.2",
         "phpfpm-7.3",
         "phpfpm-7.4",
+        "phpfpm-8.0",
         "python-2",
         "python-3",
         "ruby-2.5",

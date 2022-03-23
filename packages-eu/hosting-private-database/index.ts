@@ -80,6 +80,14 @@ export namespace hosting {
              */
             export type Status = "applied" | "updating"
         }
+        /**
+         * CPU throttle informations
+         * interface fullName: hosting.PrivateDatabase.CpuThrottle.CpuThrottle
+         */
+        export interface CpuThrottle {
+            endDate?: string;
+            startDate: string;
+        }
         export namespace Database {
             export namespace Extension {
                 /**
@@ -180,7 +188,7 @@ export namespace hosting {
              * Task's function
              * type fullname: hosting.PrivateDatabase.task.FunctionEnum
              */
-            export type FunctionEnum = "boot" | "changeFtpPassword" | "changeRam" | "changeRootPassword" | "changeVersion" | "configuration/update" | "create" | "database/create" | "database/delete" | "database/dump" | "database/dump/delete" | "database/extension/create" | "database/extension/delete" | "database/import" | "database/restore" | "database/wizard" | "delete" | "grant/create" | "grant/delete" | "grant/update" | "halt" | "install" | "overquota/in" | "overquota/out" | "quotaRefresh" | "refresh" | "reopen" | "restart" | "restore" | "start" | "stop" | "suspend" | "user/changePassword" | "user/create" | "user/delete" | "webhostingNetwork/disable" | "webhostingNetwork/enable" | "whitelist/create" | "whitelist/delete" | "whitelist/update"
+            export type FunctionEnum = "abuse" | "boot" | "changeFtpPassword" | "changeRam" | "changeRootPassword" | "changeVersion" | "configuration/update" | "create" | "database/create" | "database/delete" | "database/dump" | "database/dump/delete" | "database/extension/create" | "database/extension/delete" | "database/import" | "database/restore" | "database/wizard" | "delete" | "grant/create" | "grant/delete" | "grant/update" | "halt" | "install" | "overquota/in" | "overquota/out" | "quotaRefresh" | "refresh" | "reopen" | "restart" | "restore" | "start" | "stop" | "suspend" | "user/changePassword" | "user/create" | "user/delete" | "webhostingNetwork/disable" | "webhostingNetwork/enable" | "whitelist/create" | "whitelist/delete" | "whitelist/update"
             /**
              * Task's status
              * type fullname: hosting.PrivateDatabase.task.StatusEnum
@@ -487,6 +495,17 @@ export interface Hosting {
                  * POST /hosting/privateDatabase/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
+            }
+            cpuThrottle: {
+                /**
+                 * List of privatesql CPU throttle
+                 * GET /hosting/privateDatabase/{serviceName}/cpuThrottle
+                 */
+                $get(): Promise<hosting.PrivateDatabase.CpuThrottle[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             database: {
                 /**

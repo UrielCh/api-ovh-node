@@ -7674,6 +7674,13 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "xdsl.xdslModemConfig.MTUSizeEnum"
+        },
+        "serialNumber": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },

@@ -441,9 +441,10 @@ export class CodeGenerator {
                     const { schema } = this;
                     if (schema && schema.models) {
                         let modelsProp = schema.models[body[0].fullType];
-                        if (!modelsProp || !modelsProp.properties)
-                            console.error(`ERROR1 in model Body Type ${body[0].fullType} do not exists dest:${ctxt.dest}`)
-                        else {
+                        if (!modelsProp || !modelsProp.properties) {
+                            if (!rawRemapNode[body[0].fullType])
+                                console.error(`ERROR1 in model Body Type ${body[0].fullType} do not exists dest:${ctxt.dest} Method:${op.httpMethod} ${api._path}`)
+                        } else {
                             for (let propName of Object.keys(modelsProp.properties).sort()) {
                                 let p = modelsProp.properties[propName];
                                 if (done.has(propName))

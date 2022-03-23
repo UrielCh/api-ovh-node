@@ -619,6 +619,7 @@ export namespace xdsl {
         managedByOvh: boolean;
         model: string;
         mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum;
+        serialNumber: string;
     }
     /**
      * Describe the capabilities of the Modem
@@ -2095,7 +2096,7 @@ export interface Xdsl {
              * Alter this object properties
              * PUT /xdsl/{serviceName}/modem
              */
-            $put(params?: { acsBackend?: xdsl.xdslModemConfig.ACSBackendEnum, acsVersion?: string, brandName?: string, capabilities?: xdsl.ModemCapabilities, dmzIP?: string, easyFirewallLevel?: xdsl.xdslModemConfig.EasyFirewallLevelEnum, ipv6Support?: boolean, isBridged?: boolean, lastCwmpRequestDate?: string, macAddress?: string, managedByOvh?: boolean, model?: string, mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum }): Promise<void>;
+            $put(params?: { acsBackend?: xdsl.xdslModemConfig.ACSBackendEnum, acsVersion?: string, brandName?: string, capabilities?: xdsl.ModemCapabilities, dmzIP?: string, easyFirewallLevel?: xdsl.xdslModemConfig.EasyFirewallLevelEnum, ipv6Support?: boolean, isBridged?: boolean, lastCwmpRequestDate?: string, macAddress?: string, managedByOvh?: boolean, model?: string, mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum, serialNumber?: string }): Promise<void>;
             /**
              * Controle cache
              */

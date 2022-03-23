@@ -449,18 +449,13 @@ export namespace services {
             export interface Current {
                 mode?: services.expanded.Renew.ModeEnum;
                 nextDate?: string;
-                period?: services.expanded.Renew.PeriodEnum;
+                period?: string;
             }
             /**
              * Renew mode
              * type fullname: services.expanded.Renew.ModeEnum
              */
             export type ModeEnum = "automatic" | "manual"
-            /**
-             * Renew period durations in ISO 8601 format
-             * type fullname: services.expanded.Renew.PeriodEnum
-             */
-            export type PeriodEnum = "P1M" | "P2M" | "P3M" | "P4M" | "P5M" | "P6M" | "P7M" | "P8M" | "P9M" | "P10M" | "P11M" | "P1Y" | "P2Y" | "P3Y" | "P4Y" | "P5Y" | "P6Y" | "P7Y" | "P8Y" | "P9Y" | "P10Y" | "P11Y" | "P12Y"
         }
         /**
          * Reselling providers a service can be provided from
@@ -746,6 +741,11 @@ export namespace services {
                 }
             }
         }
+        /**
+         * Termination policies
+         * type fullname: services.expanded.terminationPolicyEnum
+         */
+        export type terminationPolicyEnum = "empty" | "terminateAtEngagementDate" | "terminateAtExpirationDate"
     }
     export namespace form {
         /**
@@ -866,6 +866,27 @@ export namespace services {
             message: string;
         }
     }
+    export namespace update {
+        /**
+         * Update of a service
+         * interface fullName: services.update.Service.Service
+         */
+        export interface Service {
+            displayName?: string;
+            renew?: services.update.Service.Renew;
+            terminationPolicy?: services.expanded.terminationPolicyEnum;
+        }
+        export namespace Service {
+            /**
+             * Update renew information of a service
+             * interface fullName: services.update.Service.Renew.Renew
+             */
+            export interface Renew {
+                mode: services.expanded.Renew.ModeEnum;
+                period: string;
+            }
+        }
+    }
 }
 
 /**
@@ -894,6 +915,11 @@ export interface Services {
          * GET /services/{serviceId}
          */
         $get(): Promise<services.expanded.Service>;
+        /**
+         * Update service information
+         * PUT /services/{serviceId}
+         */
+        $put(params?: { displayName?: string, renew?: services.update.Service.Renew, terminationPolicy?: services.expanded.terminationPolicyEnum }): Promise<void>;
         /**
          * Controle cache
          */
@@ -1116,6 +1142,17 @@ export interface Services {
              * GET /services/{serviceId}/options
              */
             $get(): Promise<services.expanded.Service[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        renewPeriodCapacities: {
+            /**
+             * Get possible renew periods of a service
+             * GET /services/{serviceId}/renewPeriodCapacities
+             */
+            $get(): Promise<string[]>;
             /**
              * Controle cache
              */

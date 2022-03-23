@@ -2586,6 +2586,36 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/ola/ungroup"
     },
     {
+      "description": "ongoing operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "What is ongoing on this server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.ExposedTask[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/ongoing"
+    },
+    {
       "description": "List the dedicated.server.Option objects",
       "operations": [
         {
@@ -6324,8 +6354,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get public logs for servers",
           "httpMethod": "GET",
@@ -6948,11 +6978,16 @@ export const schema: Schema = {
       "description": "The datacenter",
       "enum": [
         "bhs",
+        "ca",
+        "de",
         "default",
+        "fr",
         "fra",
+        "gb",
         "gra",
         "hil",
         "lon",
+        "pl",
         "rbx",
         "rbx-hz",
         "sbg",
@@ -7257,6 +7292,41 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "dedicated.ExposedTask": {
+      "description": "A task for a dedicated server",
+      "id": "ExposedTask",
+      "namespace": "dedicated",
+      "properties": {
+        "datacenter": {
+          "canBeNull": false,
+          "description": "Location of the server",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.DatacenterEnum"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Short text describing the entry",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "server": {
+          "canBeNull": false,
+          "description": "Name of the dedicated server",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "todoDate": {
+          "canBeNull": false,
+          "description": "Timestamp for processing",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
@@ -12168,6 +12238,7 @@ export const schema: Schema = {
         "FR",
         "GB",
         "IE",
+        "IN",
         "IT",
         "LT",
         "MA",

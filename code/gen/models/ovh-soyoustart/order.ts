@@ -6103,6 +6103,7 @@ export const schema: Schema = {
         "PLESK_ONYX_WEB_HOST_CLNX",
         "PLESK_ONYX_WEB_PRO",
         "PLESK_ONYX_WEB_PRO_CLNX",
+        "plesk-12-webadmin",
         "plesk-12-webadmin-for-vps",
         "plesk-12-webhost",
         "plesk-12-webhost-for-vps",

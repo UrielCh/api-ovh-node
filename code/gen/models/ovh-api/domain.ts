@@ -138,7 +138,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/activateZone"
     },
     {
-      "description": "authInfo operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -222,7 +222,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/changeContact"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -258,10 +258,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "domain.ContactAllTypesEnum[]",
-              "description": "Contact types where obfuscated emails can be activated",
-              "fullType": "domain.ContactAllTypesEnum[]",
-              "name": "contacts",
+              "dataType": "domain.configurations.ObfuscatedEmailUpdatePayload",
+              "description": "Request Body",
+              "fullType": "domain.configurations.ObfuscatedEmailUpdatePayload",
               "paramType": "body",
               "required": true
             },
@@ -284,7 +283,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/configurations/obfuscatedEmails"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -296,10 +295,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "domain.ContactAllTypesEnum[]",
-              "description": "Contact types where obfuscated emails will be refreshed",
-              "fullType": "domain.ContactAllTypesEnum[]",
-              "name": "contacts",
+              "dataType": "domain.configurations.ObfuscatedEmailRefreshPayload",
+              "description": "Request Body",
+              "fullType": "domain.configurations.ObfuscatedEmailRefreshPayload",
               "paramType": "body",
               "required": true
             },
@@ -322,7 +320,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/configurations/obfuscatedEmails/refresh"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -358,10 +356,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "domain.configurations.Optin[]",
-              "description": "New configuration about optin",
-              "fullType": "domain.configurations.Optin[]",
-              "name": "optin",
+              "dataType": "domain.configurations.OptinUpdatePayload",
+              "description": "Request Body",
+              "fullType": "domain.configurations.OptinUpdatePayload",
               "paramType": "body",
               "required": true
             },
@@ -1078,7 +1075,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/option/{option}"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1257,7 +1254,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/owo/{field}"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1277,7 +1274,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.ContactAllTypesEnum[]",
+          "responseType": "domain.configurations.ContactTypeEnum[]",
           "scopes": [
             "all",
             "product/domain/all"
@@ -1287,7 +1284,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/rules/emailsObfuscation"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1576,7 +1573,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/task/{id}/relaunch"
     },
     {
-      "description": "ukOutgoingTransfer operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1588,10 +1585,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Tag of the new registrar",
-              "fullType": "string",
-              "name": "tag",
+              "dataType": "domain.UkRegistrar",
+              "description": "Request Body",
+              "fullType": "domain.UkRegistrar",
               "paramType": "body",
               "required": true
             },
@@ -1614,7 +1610,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/ukOutgoingTransfer"
     },
     {
-      "description": "ukRegistrars operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -5294,8 +5290,8 @@ export const schema: Schema = {
     },
     "domain.ServiceOption": {
       "description": "Data of a domain option",
-      "id": "Option",
-      "namespace": "domain.services.options",
+      "id": "ServiceOption",
+      "namespace": "domain",
       "properties": {
         "serviceName": {
           "canBeNull": false,
@@ -5309,8 +5305,8 @@ export const schema: Schema = {
     },
     "domain.ServiceOptions": {
       "description": "Representation of the domain options",
-      "id": "Options",
-      "namespace": "domain.services.options",
+      "id": "ServiceOptions",
+      "namespace": "domain",
       "properties": {
         "hosting": {
           "canBeNull": true,
@@ -5441,15 +5437,17 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "Registrar name",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "tag": {
           "canBeNull": false,
           "description": "Registrar tag",
+          "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -5729,6 +5727,19 @@ export const schema: Schema = {
       "id": "TypeEnum",
       "namespace": "domain.configuration.rules"
     },
+    "domain.configurations.ContactTypeEnum": {
+      "description": "The possible types of contacts associated to a domain name",
+      "enum": [
+        "admin",
+        "all",
+        "billing",
+        "owner",
+        "tech"
+      ],
+      "enumType": "string",
+      "id": "ContactTypeEnum",
+      "namespace": "domain.configurations"
+    },
     "domain.configurations.CustomFields": {
       "description": "Representation of the domain custom fields",
       "id": "CustomFields",
@@ -5768,7 +5779,7 @@ export const schema: Schema = {
         },
         "reason": {
           "canBeNull": true,
-          "description": "Why you want to buy this domain",
+          "description": "Reason of the purchase of this domain",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -5784,22 +5795,45 @@ export const schema: Schema = {
         }
       }
     },
-    "domain.configurations.ObfuscatedEmail": {
-      "description": "Representation of the obfuscated emails configuration",
-      "id": "ObfuscatedEmails",
+    "domain.configurations.CustomFieldsUpdatePayload": {
+      "description": "Payload used to update the custom fields of a domain name",
+      "id": "CustomFieldsUpdatePayload",
       "namespace": "domain.configurations",
       "properties": {
-        "type": {
+        "customFields": {
           "canBeNull": false,
-          "description": "Contact's type associated to the obfuscated email",
-          "fullType": "domain.ContactAllTypesEnum",
+          "description": "New domain custom fields",
+          "fullType": "domain.configurations.CustomFields",
+          "readOnly": false,
+          "required": false,
+          "type": "domain.configurations.CustomFields"
+        }
+      }
+    },
+    "domain.configurations.ObfuscatedEmail": {
+      "description": "Configuration of the email obfuscations for contacts related to a domain name",
+      "id": "ObfuscatedEmail",
+      "namespace": "domain.configurations",
+      "properties": {
+        "status": {
+          "canBeNull": true,
+          "description": "Status of the email obfuscation",
+          "fullType": "domain.configurations.ObfuscationStatusEnum",
           "readOnly": true,
           "required": false,
-          "type": "domain.ContactAllTypesEnum"
+          "type": "domain.configurations.ObfuscationStatusEnum"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of the contact whose email is obfuscated by this configuration",
+          "fullType": "domain.configurations.ContactTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.configurations.ContactTypeEnum"
         },
         "value": {
           "canBeNull": false,
-          "description": "Obfuscated email value",
+          "description": "Obfuscated email address",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -5807,26 +5841,99 @@ export const schema: Schema = {
         }
       }
     },
+    "domain.configurations.ObfuscatedEmailRefreshPayload": {
+      "description": "Payload used to request the regeneration of obfuscated email redirections for the provided contacts of a domain name",
+      "id": "ObfuscatedEmailRefreshPayload",
+      "namespace": "domain.configurations",
+      "properties": {
+        "contacts": {
+          "canBeNull": false,
+          "description": "Type of the contacts to refresh email obfuscation for",
+          "fullType": "domain.configurations.ContactTypeEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "domain.configurations.ContactTypeEnum[]"
+        }
+      }
+    },
+    "domain.configurations.ObfuscatedEmailUpdatePayload": {
+      "description": "Payload used to request the email obfuscation of contacts related to a domain name",
+      "id": "ObfuscatedEmailUpdatePayload",
+      "namespace": "domain.configurations",
+      "properties": {
+        "contacts": {
+          "canBeNull": false,
+          "description": "Type of the contacts to request email obfuscation for",
+          "fullType": "domain.configurations.ContactTypeEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "domain.configurations.ContactTypeEnum[]"
+        }
+      }
+    },
+    "domain.configurations.ObfuscationStatusEnum": {
+      "description": "The possible statuses of an email obfuscation",
+      "enum": [
+        "done",
+        "todo"
+      ],
+      "enumType": "string",
+      "id": "ObfuscationStatusEnum",
+      "namespace": "domain.configurations"
+    },
     "domain.configurations.Optin": {
-      "description": "Representation of the optin configuration",
+      "description": "Configuration of the optin fields for contacts related to a domain name",
       "id": "Optin",
       "namespace": "domain.configurations",
       "properties": {
         "fields": {
           "canBeNull": false,
-          "description": "Displayed fields",
-          "fullType": "domain.OptinFieldsEnum[]",
+          "description": "Fields to display publicly on the Whois",
+          "fullType": "domain.configurations.OptinFieldsEnum[]",
           "readOnly": false,
           "required": false,
-          "type": "domain.OptinFieldsEnum[]"
+          "type": "domain.configurations.OptinFieldsEnum[]"
         },
         "type": {
           "canBeNull": false,
-          "description": "Contact's type associated to the optin configuration",
-          "fullType": "domain.ContactAllTypesEnum",
+          "description": "Type of the contact associated to the optin configuration",
+          "fullType": "domain.configurations.ContactTypeEnum",
           "readOnly": false,
           "required": false,
-          "type": "domain.ContactAllTypesEnum"
+          "type": "domain.configurations.ContactTypeEnum"
+        }
+      }
+    },
+    "domain.configurations.OptinFieldsEnum": {
+      "description": "Whois optin fields",
+      "enum": [
+        "address",
+        "city",
+        "country",
+        "email",
+        "fax",
+        "name",
+        "organisation",
+        "phone",
+        "province",
+        "zip"
+      ],
+      "enumType": "string",
+      "id": "OptinFieldsEnum",
+      "namespace": "domain.configurations"
+    },
+    "domain.configurations.OptinUpdatePayload": {
+      "description": "Payload used to optin the fields of contacts related to a domain name",
+      "id": "OptinUpdatePayload",
+      "namespace": "domain.configurations",
+      "properties": {
+        "optin": {
+          "canBeNull": false,
+          "description": "New optin configuration",
+          "fullType": "domain.configurations.Optin[]",
+          "readOnly": false,
+          "required": false,
+          "type": "domain.configurations.Optin[]"
         }
       }
     },
@@ -6784,19 +6891,19 @@ export const schema: Schema = {
       "properties": {
         "fields": {
           "canBeNull": false,
-          "description": "Displayed fields",
-          "fullType": "domain.OptinFieldsEnum[]",
+          "description": "Fields to display publicly on the Whois",
+          "fullType": "domain.configurations.OptinFieldsEnum[]",
           "readOnly": true,
           "required": false,
-          "type": "domain.OptinFieldsEnum[]"
+          "type": "domain.configurations.OptinFieldsEnum[]"
         },
         "type": {
           "canBeNull": false,
-          "description": "Contact's type associated to the optin rule",
-          "fullType": "domain.ContactAllTypesEnum",
+          "description": "Type of the contact associated to the optin rule",
+          "fullType": "domain.configurations.ContactTypeEnum",
           "readOnly": true,
           "required": false,
-          "type": "domain.ContactAllTypesEnum"
+          "type": "domain.configurations.ContactTypeEnum"
         }
       }
     },

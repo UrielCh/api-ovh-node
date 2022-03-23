@@ -23,12 +23,52 @@ export namespace api {
 }
 export namespace auth {
     /**
-     * Access rule required for the application
+     * Access rule allowed to an application
      * interface fullName: auth.AccessRule.AccessRule
      */
     export interface AccessRule {
-        method: http.MethodEnum;
+        method: auth.HTTPMethodEnum;
         path: string;
+    }
+    /**
+     * Access rule requested for the application
+     * interface fullName: auth.AccessRuleRequest.AccessRuleRequest
+     */
+    export interface AccessRuleRequest {
+        method: auth.HTTPMethodEnum;
+        path: string;
+    }
+    /**
+     * API Credential
+     * interface fullName: auth.ApiCredential.ApiCredential
+     */
+    export interface ApiCredential {
+        allowedIPs?: string[];
+        applicationId: number;
+        creation: string;
+        credentialId: number;
+        expiration?: string;
+        lastUse?: string;
+        ovhSupport: boolean;
+        rules: auth.AccessRule[];
+        status: auth.CredentialStateEnum;
+    }
+    /**
+     * Credential request to get access to the API
+     * interface fullName: auth.ApiCredentialRequest.ApiCredentialRequest
+     */
+    export interface ApiCredentialRequest {
+        consumerKey: string;
+        state: auth.CredentialStateEnum;
+        validationUrl: string;
+    }
+    /**
+     * Credential request to get access to the API
+     * interface fullName: auth.ApiCredentialRequestParams.ApiCredentialRequestParams
+     */
+    export interface ApiCredentialRequestParams {
+        accessRules: auth.AccessRuleRequest[];
+        redirection?: string;
     }
     /**
      * Credential request to get access to the API
@@ -49,13 +89,19 @@ export namespace auth {
      * interface fullName: auth.Details.Details
      */
     export interface Details {
+        allowedRoutes?: auth.AccessRule[];
         description?: string;
         method: auth.MethodEnum;
         roles?: string[];
         user?: string;
     }
     /**
-     * All Authentication methods available
+     * All HTTP methods available
+     * type fullname: auth.HTTPMethodEnum
+     */
+    export type HTTPMethodEnum = "DELETE" | "GET" | "POST" | "PUT"
+    /**
+     * All authentication methods available
      * type fullname: auth.MethodEnum
      */
     export type MethodEnum = "account" | "provider" | "user"
@@ -84,14 +130,14 @@ export interface Auth {
          * Request a new credential for your application
          * POST /auth/credential
          */
-        $post(params: { accessRules: auth.AccessRule[], redirection?: string }): Promise<auth.Credential>;
+        $post(params: { accessRules: auth.AccessRuleRequest[], redirection?: string }): Promise<auth.ApiCredentialRequest>;
     }
     currentCredential: {
         /**
          * Get the current credential details
          * GET /auth/currentCredential
          */
-        $get(): Promise<api.Credential>;
+        $get(): Promise<auth.ApiCredential>;
         /**
          * Controle cache
          */

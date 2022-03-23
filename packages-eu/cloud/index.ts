@@ -1853,7 +1853,7 @@ export namespace cloud {
          * Enum values for available regions
          * type fullname: cloud.kube.RegionEnum
          */
-        export type RegionEnum = "BHS5" | "GRA5" | "GRA7" | "GRA9" | "SBG5" | "DE1" | "SGP1" | "SYD1" | "US-EAST-VA-1" | "US-WEST-OR-1" | "WAW1"
+        export type RegionEnum = "BHS5" | "DE1" | "GRA5" | "GRA7" | "GRA9" | "SBG5" | "SGP1" | "SYD1" | "US-EAST-VA-1" | "US-WEST-OR-1" | "WAW1"
         /**
          * Enum values for worker nodes reset policy
          * type fullname: cloud.kube.ResetWorkerNodesPolicy
@@ -2589,6 +2589,7 @@ export namespace cloud {
                     labels?: { [key: string]: string };
                     name: string;
                     partnerId?: string;
+                    probe?: cloud.project.ai.app.Probe;
                     region: string;
                     resources: cloud.project.ai.Resources;
                     scalingStrategy?: cloud.project.ai.app.ScalingStrategy;
@@ -2607,6 +2608,7 @@ export namespace cloud {
                     labels?: { [key: string]: string };
                     name: string;
                     partnerId?: string;
+                    probe?: cloud.project.ai.app.ProbeInput;
                     region: string;
                     resources: cloud.project.ai.ResourcesInput;
                     scalingStrategy?: cloud.project.ai.app.ScalingStrategyInput;
@@ -2640,6 +2642,22 @@ export namespace cloud {
                     monitoringUrl?: string;
                     state?: cloud.project.ai.app.AppStateEnum;
                     url?: string;
+                }
+                /**
+                 * AI Solutions App Probe Object
+                 * interface fullName: cloud.project.ai.app.Probe.Probe
+                 */
+                export interface Probe {
+                    path?: string;
+                    port?: number;
+                }
+                /**
+                 * AI Solutions App Probe Object
+                 * interface fullName: cloud.project.ai.app.ProbeInput.ProbeInput
+                 */
+                export interface ProbeInput {
+                    path?: string;
+                    port?: number;
                 }
                 /**
                  * AI Solutions App Status Object
@@ -3314,6 +3332,7 @@ export namespace cloud {
                  */
                 export interface PrivateSwift {
                     container: string;
+                    internal: boolean;
                     prefix?: string;
                     region: string;
                 }
@@ -3847,7 +3866,7 @@ export namespace cloud {
                      * Possible state of connector
                      * type fullname: cloud.project.database.kafkaConnect.connector.StatusEnum
                      */
-                    export type StatusEnum = "RUNNING" | "PAUSED"
+                    export type StatusEnum = "CREATING" | "FAILED" | "PAUSED" | "RUNNING"
                     /**
                      * KafkaConnect connector definition
                      * interface fullName: cloud.project.database.kafkaConnect.connector.Task.Task
@@ -3869,7 +3888,7 @@ export namespace cloud {
                          * Possible state of connector task
                          * type fullname: cloud.project.database.kafkaConnect.connector.task.StatusEnum
                          */
-                        export type StatusEnum = "RUNNING" | "FAILED"
+                        export type StatusEnum = "FAILED" | "PAUSED" | "RUNNING"
                     }
                 }
             }
@@ -4240,6 +4259,7 @@ export namespace cloud {
                     region: string;
                     size: complexType.UnitAndValue<number>;
                     status: cloud.project.database.StatusEnum;
+                    type: cloud.project.database.BackupTypeEnum;
                 }
                 /**
                  * Certificates definition for cloud project databases
@@ -4484,8 +4504,8 @@ export namespace cloud {
                         backendXid?: number;
                         backendXmin?: number;
                         clientHostname?: string;
-                        clientIp: string;
-                        clientPort: number;
+                        clientIp?: string;
+                        clientPort?: number;
                         databaseId?: number;
                         databaseName: string;
                         leaderPid?: number;
@@ -4534,7 +4554,7 @@ export namespace cloud {
                      * Defines all the values for the component in the service endpoints
                      * type fullname: cloud.project.database.service.endpoint.ComponentEnum
                      */
-                    export type ComponentEnum = "cassandra" | "grafana" | "graphite" | "influxdb" | "kafka" | "kafkaConnect" | "kafkaRestApi" | "kibana" | "m3coordinator" | "mongodb" | "mysql" | "mysqlx" | "opensearch" | "postgresql" | "postgresqlReadReplica" | "prometheusRead" | "prometheusWrite" | "redis"
+                    export type ComponentEnum = "cassandra" | "grafana" | "graphite" | "influxdb" | "kafka" | "kafkaConnect" | "kafkaRestApi" | "kafkaSASL" | "kibana" | "m3coordinator" | "mongodb" | "mysql" | "mysqlRead" | "mysqlx" | "opensearch" | "postgresql" | "postgresqlRead" | "postgresqlReadReplica" | "prometheusRead" | "prometheusWrite" | "redis"
                 }
                 export namespace integration {
                     /**
@@ -6013,7 +6033,7 @@ export interface Cloud {
                      * Create a new app
                      * POST /cloud/project/{serviceName}/ai/app
                      */
-                    $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, region: string, resources: cloud.project.ai.ResourcesInput, scalingStrategy?: cloud.project.ai.app.ScalingStrategyInput, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.app.App>;
+                    $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, probe?: cloud.project.ai.app.ProbeInput, region: string, resources: cloud.project.ai.ResourcesInput, scalingStrategy?: cloud.project.ai.app.ScalingStrategyInput, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.app.App>;
                     /**
                      * Controle cache
                      */
@@ -6023,7 +6043,7 @@ export interface Cloud {
                          * Generate an app spec corresponding CLI command
                          * POST /cloud/project/{serviceName}/ai/app/command
                          */
-                        $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, region: string, resources: cloud.project.ai.ResourcesInput, scalingStrategy?: cloud.project.ai.app.ScalingStrategyInput, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
+                        $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, probe?: cloud.project.ai.app.ProbeInput, region: string, resources: cloud.project.ai.ResourcesInput, scalingStrategy?: cloud.project.ai.app.ScalingStrategyInput, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
                     }
                     $(appId: string): {
                         /**
@@ -6046,6 +6066,17 @@ export interface Cloud {
                              * PUT /cloud/project/{serviceName}/ai/app/{appId}/label
                              */
                             $put(params: { name: string, value?: string }): Promise<void>;
+                        }
+                        log: {
+                            /**
+                             * Get the logs of an app
+                             * GET /cloud/project/{serviceName}/ai/app/{appId}/log
+                             */
+                            $get(params?: { replica?: string }): Promise<cloud.project.ai.Logs>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         scalingstrategy: {
                             /**
@@ -7391,7 +7422,34 @@ export interface Cloud {
                 }
                 kafkaConnect: {
                     $(clusterId: string | number): {
+                        advancedConfiguration: {
+                            /**
+                             * Get kafkaConnect advanced configuration
+                             * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/advancedConfiguration
+                             */
+                            $get(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Update kafkaConnect advanced configuration
+                             * PUT /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/advancedConfiguration
+                             */
+                            $put(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         capabilities: {
+                            advancedConfiguration: {
+                                /**
+                                 * Get kafkaConnect advanced configuration fields
+                                 * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/capabilities/advancedConfiguration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.advancedConfiguration.Property[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
                             connector: {
                                 /**
                                  * List Kafka Connect connectors
@@ -7597,6 +7655,39 @@ export interface Cloud {
                                  */
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
+                        }
+                    };
+                }
+                m3db: {
+                    $(clusterId: string | number): {
+                        advancedConfiguration: {
+                            /**
+                             * Get m3db advanced configuration
+                             * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/advancedConfiguration
+                             */
+                            $get(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Update m3db advanced configuration
+                             * PUT /cloud/project/{serviceName}/database/m3db/{clusterId}/advancedConfiguration
+                             */
+                            $put(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        capabilities: {
+                            advancedConfiguration: {
+                                /**
+                                 * Get m3db advanced configuration fields
+                                 * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/capabilities/advancedConfiguration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.advancedConfiguration.Property[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
                         }
                     };
                 }

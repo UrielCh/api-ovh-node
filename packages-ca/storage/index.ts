@@ -285,7 +285,7 @@ export namespace storage {
      * Region of customer's service
      * type fullname: storage.RegionEnum
      */
-    export type RegionEnum = "RBX"
+    export type RegionEnum = "BHS" | "LIM" | "RBX" | "SBG"
 }
 
 /**

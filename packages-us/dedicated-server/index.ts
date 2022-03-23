@@ -93,7 +93,7 @@ export namespace dedicated {
      * The datacenter
      * type fullname: dedicated.AvailabilityDatacenterEnum
      */
-    export type AvailabilityDatacenterEnum = "bhs" | "default" | "fra" | "gra" | "hil" | "lon" | "rbx" | "rbx-hz" | "sbg" | "sgp" | "syd" | "vin" | "waw"
+    export type AvailabilityDatacenterEnum = "bhs" | "ca" | "de" | "default" | "fr" | "fra" | "gb" | "gra" | "hil" | "lon" | "pl" | "rbx" | "rbx-hz" | "sbg" | "sgp" | "syd" | "vin" | "waw"
     /**
      * The availability
      * type fullname: dedicated.AvailabilityEnum
@@ -168,6 +168,16 @@ export namespace dedicated {
         server: string;
         storage?: string;
         systemStorage?: string;
+    }
+    /**
+     * A task for a dedicated server
+     * interface fullName: dedicated.ExposedTask.ExposedTask
+     */
+    export interface ExposedTask {
+        datacenter: dedicated.DatacenterEnum;
+        description: string;
+        server: string;
+        todoDate: string;
     }
     /**
      * Type of your image
@@ -1507,7 +1517,7 @@ export namespace nichandle {
      * OVH subsidiaries
      * type fullname: nichandle.OvhSubsidiaryEnum
      */
-    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
+    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IN" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
 }
 export namespace secondaryDns {
     /**
@@ -2269,6 +2279,17 @@ export interface Dedicated {
                      */
                     $post(params: { virtualNetworkInterface: string }): Promise<dedicated.server.Task[]>;
                 }
+            }
+            ongoing: {
+                /**
+                 * What is ongoing on this server
+                 * GET /dedicated/server/{serviceName}/ongoing
+                 */
+                $get(): Promise<dedicated.ExposedTask[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             option: {
                 /**

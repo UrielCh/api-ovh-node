@@ -58,6 +58,16 @@ export namespace dedicated {
      */
     export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "bhs8" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sbg5" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1"
     /**
+     * A task for a dedicated server
+     * interface fullName: dedicated.ExposedTask.ExposedTask
+     */
+    export interface ExposedTask {
+        datacenter: dedicated.DatacenterEnum;
+        description: string;
+        server: string;
+        todoDate: string;
+    }
+    /**
      * Type of your image
      * type fullname: dedicated.ImageTypesEnum
      */
@@ -1396,6 +1406,17 @@ export interface Dedicated {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
+            }
+            ongoing: {
+                /**
+                 * What is ongoing on this server
+                 * GET /dedicated/server/{serviceName}/ongoing
+                 */
+                $get(): Promise<dedicated.ExposedTask[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             option: {
                 /**

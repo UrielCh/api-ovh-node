@@ -12658,8 +12658,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-17T10:00:00+01:00",
+            "deprecatedDate": "2022-03-17T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get statistics of the current line",
           "httpMethod": "GET",

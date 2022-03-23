@@ -77,6 +77,37 @@ export const schema: Schema = {
             "all",
             "services/all"
           ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Update service information",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.update.Service",
+              "description": "Request Body",
+              "fullType": "services.update.Service",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "services/all"
+          ]
         }
       ],
       "path": "/services/{serviceId}"
@@ -928,6 +959,36 @@ export const schema: Schema = {
         }
       ],
       "path": "/services/{serviceId}/options"
+    },
+    {
+      "description": "Get possible renew periods of your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get possible renew periods of a service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "duration[]",
+          "scopes": [
+            "all",
+            "services/all"
+          ]
+        }
+      ],
+      "path": "/services/{serviceId}/renewPeriodCapacities"
     },
     {
       "description": "View the technical details of the service",
@@ -2817,10 +2878,10 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "Next renewal duration",
-          "fullType": "services.expanded.Renew.PeriodEnum",
+          "fullType": "duration",
           "readOnly": true,
           "required": false,
-          "type": "services.expanded.Renew.PeriodEnum"
+          "type": "duration"
         }
       }
     },
@@ -2832,37 +2893,6 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "ModeEnum",
-      "namespace": "services.expanded.Renew"
-    },
-    "services.expanded.Renew.PeriodEnum": {
-      "description": "Renew period durations in ISO 8601 format",
-      "enum": [
-        "P1M",
-        "P2M",
-        "P3M",
-        "P4M",
-        "P5M",
-        "P6M",
-        "P7M",
-        "P8M",
-        "P9M",
-        "P10M",
-        "P11M",
-        "P1Y",
-        "P2Y",
-        "P3Y",
-        "P4Y",
-        "P5Y",
-        "P6Y",
-        "P7Y",
-        "P8Y",
-        "P9Y",
-        "P10Y",
-        "P11Y",
-        "P12Y"
-      ],
-      "enumType": "string",
-      "id": "PeriodEnum",
       "namespace": "services.expanded.Renew"
     },
     "services.expanded.ResellingProviderEnum": {
@@ -3866,6 +3896,17 @@ export const schema: Schema = {
         }
       }
     },
+    "services.expanded.terminationPolicyEnum": {
+      "description": "Termination policies",
+      "enum": [
+        "empty",
+        "terminateAtEngagementDate",
+        "terminateAtExpirationDate"
+      ],
+      "enumType": "string",
+      "id": "terminationPolicyEnum",
+      "namespace": "services.expanded"
+    },
     "services.form.Answer": {
       "description": "Answer to a form",
       "id": "Answer",
@@ -4210,6 +4251,60 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "services.update.Service": {
+      "description": "Update of a service",
+      "id": "Service",
+      "namespace": "services.update",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Display name for the service",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "renew": {
+          "canBeNull": true,
+          "description": "Renew information",
+          "fullType": "services.update.Service.Renew",
+          "readOnly": false,
+          "required": false,
+          "type": "services.update.Service.Renew"
+        },
+        "terminationPolicy": {
+          "canBeNull": true,
+          "description": "Termination policy",
+          "fullType": "services.expanded.terminationPolicyEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "services.expanded.terminationPolicyEnum"
+        }
+      }
+    },
+    "services.update.Service.Renew": {
+      "description": "Update renew information of a service",
+      "id": "Renew",
+      "namespace": "services.update.Service",
+      "properties": {
+        "mode": {
+          "canBeNull": false,
+          "description": "Renew mode for next renewal",
+          "fullType": "services.expanded.Renew.ModeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "services.expanded.Renew.ModeEnum"
+        },
+        "period": {
+          "canBeNull": false,
+          "description": "Renew period for next renewal",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
         }
       }
     }

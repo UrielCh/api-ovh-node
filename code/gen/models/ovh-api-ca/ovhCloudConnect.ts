@@ -1978,6 +1978,7 @@ export const schema: Schema = {
     "ovhcloudconnect.service.BandwidthEnum": {
       "description": "Enum values for bandwidth",
       "enum": [
+        "100g",
         "100m",
         "10g",
         "1g",
@@ -2005,11 +2006,13 @@ export const schema: Schema = {
       "enum": [
         "OVHcloud",
         "equinix",
+        "fibrenoire",
         "intercloud",
         "internal",
         "interxion",
         "megaport",
-        "orange"
+        "orange",
+        "risq"
       ],
       "enumType": "string",
       "id": "ProviderEnum",

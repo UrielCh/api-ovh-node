@@ -287,6 +287,22 @@ export namespace domain {
      */
     export type ParentServiceTypeEnum = "/allDom"
     /**
+     * Data of a domain option
+     * interface fullName: domain.ServiceOption.ServiceOption
+     */
+    export interface ServiceOption {
+        serviceName: string;
+    }
+    /**
+     * Representation of the domain options
+     * interface fullName: domain.ServiceOptions.ServiceOptions
+     */
+    export interface ServiceOptions {
+        hosting?: domain.ServiceOption;
+        offer?: domain.ServiceOption;
+        zone?: domain.ServiceOption;
+    }
+    /**
      * Tasks associated to domain
      * interface fullName: domain.Task.Task
      */
@@ -383,6 +399,11 @@ export namespace domain {
     }
     export namespace configurations {
         /**
+         * The possible types of contacts associated to a domain name
+         * type fullname: domain.configurations.ContactTypeEnum
+         */
+        export type ContactTypeEnum = "admin" | "all" | "billing" | "owner" | "tech"
+        /**
          * Representation of the domain custom fields
          * interface fullName: domain.configurations.CustomFields.CustomFields
          */
@@ -395,20 +416,59 @@ export namespace domain {
             represent?: string;
         }
         /**
-         * Representation of the obfuscated emails configuration
-         * interface fullName: domain.configurations.ObfuscatedEmails.ObfuscatedEmails
+         * Payload used to update the custom fields of a domain name
+         * interface fullName: domain.configurations.CustomFieldsUpdatePayload.CustomFieldsUpdatePayload
          */
-        export interface ObfuscatedEmails {
-            type: domain.ContactAllTypesEnum;
+        export interface CustomFieldsUpdatePayload {
+            customFields: domain.configurations.CustomFields;
+        }
+        /**
+         * Configuration of the email obfuscations for contacts related to a domain name
+         * interface fullName: domain.configurations.ObfuscatedEmail.ObfuscatedEmail
+         */
+        export interface ObfuscatedEmail {
+            status?: domain.configurations.ObfuscationStatusEnum;
+            type: domain.configurations.ContactTypeEnum;
             value: string;
         }
         /**
-         * Representation of the optin configuration
+         * Payload used to request the regeneration of obfuscated email redirections for the provided contacts of a domain name
+         * interface fullName: domain.configurations.ObfuscatedEmailRefreshPayload.ObfuscatedEmailRefreshPayload
+         */
+        export interface ObfuscatedEmailRefreshPayload {
+            contacts: domain.configurations.ContactTypeEnum[];
+        }
+        /**
+         * Payload used to request the email obfuscation of contacts related to a domain name
+         * interface fullName: domain.configurations.ObfuscatedEmailUpdatePayload.ObfuscatedEmailUpdatePayload
+         */
+        export interface ObfuscatedEmailUpdatePayload {
+            contacts: domain.configurations.ContactTypeEnum[];
+        }
+        /**
+         * The possible statuses of an email obfuscation
+         * type fullname: domain.configurations.ObfuscationStatusEnum
+         */
+        export type ObfuscationStatusEnum = "done" | "todo"
+        /**
+         * Configuration of the optin fields for contacts related to a domain name
          * interface fullName: domain.configurations.Optin.Optin
          */
         export interface Optin {
-            fields: domain.OptinFieldsEnum[];
-            type: domain.ContactAllTypesEnum;
+            fields: domain.configurations.OptinFieldsEnum[];
+            type: domain.configurations.ContactTypeEnum;
+        }
+        /**
+         * Whois optin fields
+         * type fullname: domain.configurations.OptinFieldsEnum
+         */
+        export type OptinFieldsEnum = "address" | "city" | "country" | "email" | "fax" | "name" | "organisation" | "phone" | "province" | "zip"
+        /**
+         * Payload used to optin the fields of contacts related to a domain name
+         * interface fullName: domain.configurations.OptinUpdatePayload.OptinUpdatePayload
+         */
+        export interface OptinUpdatePayload {
+            optin: domain.configurations.Optin[];
         }
     }
     export namespace data {
@@ -695,28 +755,8 @@ export namespace domain {
          * interface fullName: domain.rules.Optin.Optin
          */
         export interface Optin {
-            fields: domain.OptinFieldsEnum[];
-            type: domain.ContactAllTypesEnum;
-        }
-    }
-    export namespace services {
-        export namespace options {
-            /**
-             * Data of a domain option
-             * interface fullName: domain.services.options.Option.Option
-             */
-            export interface Option {
-                serviceName: string;
-            }
-            /**
-             * Representation of the domain options
-             * interface fullName: domain.services.options.Options.Options
-             */
-            export interface Options {
-                hosting?: domain.services.options.Option;
-                offer?: domain.services.options.Option;
-                zone?: domain.services.options.Option;
-            }
+            fields: domain.configurations.OptinFieldsEnum[];
+            type: domain.configurations.ContactTypeEnum;
         }
     }
     export namespace zone {
@@ -1693,12 +1733,12 @@ export interface Domain {
                  * Retrieve obfuscated emails configuration
                  * GET /domain/{serviceName}/configurations/obfuscatedEmails
                  */
-                $get(): Promise<domain.configurations.ObfuscatedEmails[]>;
+                $get(): Promise<domain.configurations.ObfuscatedEmail[]>;
                 /**
                  * Save a new obfuscated emails configuration
                  * PUT /domain/{serviceName}/configurations/obfuscatedEmails
                  */
-                $put(params: { contacts: domain.ContactAllTypesEnum[] }): Promise<domain.configurations.ObfuscatedEmails[]>;
+                $put(params: { contacts: domain.configurations.ContactTypeEnum[] }): Promise<domain.configurations.ObfuscatedEmail[]>;
                 /**
                  * Controle cache
                  */
@@ -1708,7 +1748,7 @@ export interface Domain {
                      * Refresh an obfuscated emails configuration
                      * POST /domain/{serviceName}/configurations/obfuscatedEmails/refresh
                      */
-                    $post(params: { contacts: domain.ContactAllTypesEnum[] }): Promise<void>;
+                    $post(params: { contacts: domain.configurations.ContactTypeEnum[] }): Promise<void>;
                 }
             }
             optin: {
@@ -1721,7 +1761,7 @@ export interface Domain {
                  * Save a new optin configuration
                  * PUT /domain/{serviceName}/configurations/optin
                  */
-                $put(params: { optin: domain.configurations.Optin[] }): Promise<domain.configurations.Optin[]>;
+                $put(params?: { optin?: domain.configurations.Optin[] }): Promise<domain.configurations.Optin[]>;
                 /**
                  * Controle cache
                  */
@@ -1894,7 +1934,7 @@ export interface Domain {
              * Retrieve data about the options associated to a domain
              * GET /domain/{serviceName}/options
              */
-            $get(): Promise<domain.services.options.Options>;
+            $get(): Promise<domain.ServiceOptions>;
             /**
              * Controle cache
              */
@@ -1938,7 +1978,7 @@ export interface Domain {
                  * Retrieve emails obfuscation rule
                  * GET /domain/{serviceName}/rules/emailsObfuscation
                  */
-                $get(): Promise<domain.ContactAllTypesEnum[]>;
+                $get(): Promise<domain.configurations.ContactTypeEnum[]>;
                 /**
                  * Controle cache
                  */
@@ -2020,7 +2060,7 @@ export interface Domain {
              * Schedule an outgoing transfer task for this domain (.uk only)
              * POST /domain/{serviceName}/ukOutgoingTransfer
              */
-            $post(params: { tag: string }): Promise<domain.Task>;
+            $post(params: { name?: string, tag: string }): Promise<domain.Task>;
         }
         ukRegistrars: {
             /**

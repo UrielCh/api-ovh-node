@@ -6,7 +6,7 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Operations with credentials",
+      "description": "Request a new credential for your application",
       "operations": [
         {
           "apiStatus": {
@@ -18,23 +18,14 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "auth.AccessRule[]",
-              "description": "Access required for your application",
-              "fullType": "auth.AccessRule[]",
-              "name": "accessRules",
+              "dataType": "auth.ApiCredentialRequestParams",
+              "description": "Request Body",
+              "fullType": "auth.ApiCredentialRequestParams",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Where you want to redirect the user after sucessfull authentication",
-              "fullType": "string",
-              "name": "redirection",
-              "paramType": "body",
-              "required": false
             }
           ],
-          "responseType": "auth.Credential"
+          "responseType": "auth.ApiCredentialRequest"
         }
       ],
       "path": "/auth/credential"
@@ -51,7 +42,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "api.Credential"
+          "responseType": "auth.ApiCredential"
         }
       ],
       "path": "/auth/currentCredential"
@@ -183,18 +174,178 @@ export const schema: Schema = {
       }
     },
     "auth.AccessRule": {
-      "description": "Access rule required for the application",
+      "description": "Access rule allowed to an application",
       "id": "AccessRule",
       "namespace": "auth",
       "properties": {
         "method": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Allowed Method",
+          "fullType": "auth.HTTPMethodEnum",
+          "readOnly": true,
           "required": false,
-          "type": "http.MethodEnum"
+          "type": "auth.HTTPMethodEnum"
         },
         "path": {
           "canBeNull": false,
+          "description": "Allowed path",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "auth.AccessRuleRequest": {
+      "description": "Access rule requested for the application",
+      "id": "AccessRuleRequest",
+      "namespace": "auth",
+      "properties": {
+        "method": {
+          "canBeNull": false,
+          "description": "Allowed Method",
+          "fullType": "auth.HTTPMethodEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "auth.HTTPMethodEnum"
+        },
+        "path": {
+          "canBeNull": false,
+          "description": "Allowed path",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "auth.ApiCredential": {
+      "description": "API Credential",
+      "id": "ApiCredential",
+      "namespace": "auth",
+      "properties": {
+        "allowedIPs": {
+          "canBeNull": true,
+          "description": "If defined, list of ip blocks which are allowed to call API with this credential",
+          "fullType": "ipBlock[]",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock[]"
+        },
+        "applicationId": {
+          "canBeNull": false,
+          "description": "ID of associated API Application",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "creation": {
+          "canBeNull": false,
+          "description": "Creation date of this credential",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "credentialId": {
+          "canBeNull": false,
+          "description": "ID of this credential",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "expiration": {
+          "canBeNull": true,
+          "description": "Expiration date of this credential",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lastUse": {
+          "canBeNull": true,
+          "description": "Last use date of this credential",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "ovhSupport": {
+          "canBeNull": false,
+          "description": "States whether this credential has been created by yourself or by the OVH support team",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "rules": {
+          "canBeNull": false,
+          "description": "API routes allowed to this credential",
+          "fullType": "auth.AccessRule[]",
+          "readOnly": true,
+          "required": false,
+          "type": "auth.AccessRule[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "State of to this credential",
+          "fullType": "auth.CredentialStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "auth.CredentialStateEnum"
+        }
+      }
+    },
+    "auth.ApiCredentialRequest": {
+      "description": "Credential request to get access to the API",
+      "id": "ApiCredentialRequest",
+      "namespace": "auth",
+      "properties": {
+        "consumerKey": {
+          "canBeNull": false,
+          "description": "Consumer Key to use for further authenticated calls",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "State of the credential",
+          "fullType": "auth.CredentialStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "auth.CredentialStateEnum"
+        },
+        "validationUrl": {
+          "canBeNull": false,
+          "description": "Address where to redirect the client to validate the access",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "auth.ApiCredentialRequestParams": {
+      "description": "Credential request to get access to the API",
+      "id": "ApiCredentialRequestParams",
+      "namespace": "auth",
+      "properties": {
+        "accessRules": {
+          "canBeNull": false,
+          "description": "Wanted API routes",
+          "fullType": "auth.AccessRuleRequest[]",
+          "readOnly": false,
+          "required": true,
+          "type": "auth.AccessRuleRequest[]"
+        },
+        "redirection": {
+          "canBeNull": true,
+          "description": "Address where the customer will be redirected after authentication",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -243,38 +394,62 @@ export const schema: Schema = {
       "id": "Details",
       "namespace": "auth",
       "properties": {
+        "allowedRoutes": {
+          "canBeNull": true,
+          "description": "Allowed API routes, null means everything",
+          "fullType": "auth.AccessRule[]",
+          "readOnly": true,
+          "required": false,
+          "type": "auth.AccessRule[]"
+        },
         "description": {
           "canBeNull": true,
-          "description": "Description",
-          "readOnly": false,
+          "description": "Description of the connected user",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "method": {
           "canBeNull": false,
           "description": "Authentication method",
-          "readOnly": false,
+          "fullType": "auth.MethodEnum",
+          "readOnly": true,
           "required": false,
           "type": "auth.MethodEnum"
         },
         "roles": {
           "canBeNull": true,
-          "description": "Roles",
-          "readOnly": false,
+          "description": "Roles of the authenticated user",
+          "fullType": "string[]",
+          "readOnly": true,
           "required": false,
           "type": "string[]"
         },
         "user": {
           "canBeNull": true,
-          "description": "Username",
-          "readOnly": false,
+          "description": "Connected username",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
       }
     },
+    "auth.HTTPMethodEnum": {
+      "description": "All HTTP methods available",
+      "enum": [
+        "DELETE",
+        "GET",
+        "POST",
+        "PUT"
+      ],
+      "enumType": "string",
+      "id": "HTTPMethodEnum",
+      "namespace": "auth"
+    },
     "auth.MethodEnum": {
-      "description": "All Authentication methods available",
+      "description": "All authentication methods available",
       "enum": [
         "account",
         "provider",

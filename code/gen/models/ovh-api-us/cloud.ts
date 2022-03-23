@@ -12240,11 +12240,11 @@ export const schema: Schema = {
       "description": "Enum values for available regions",
       "enum": [
         "BHS5",
+        "DE1",
         "GRA5",
         "GRA7",
         "GRA9",
         "SBG5",
-        "DE1",
         "SGP1",
         "SYD1",
         "US-EAST-VA-1",

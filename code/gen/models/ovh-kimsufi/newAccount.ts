@@ -1228,6 +1228,7 @@ export const schema: Schema = {
         "FR",
         "GB",
         "IE",
+        "IN",
         "IT",
         "LT",
         "MA",

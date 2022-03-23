@@ -378,6 +378,36 @@ export const schema: Schema = {
       "path": "/hosting/privateDatabase/{serviceName}/confirmTermination"
     },
     {
+      "description": "cpuThrottle operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of privatesql CPU throttle",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.PrivateDatabase.CpuThrottle[]",
+          "scopes": [
+            "all",
+            "product/hosting-privateDatabase/all"
+          ]
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/cpuThrottle"
+    },
+    {
       "description": "List the hosting.privateDatabase.database objects",
       "operations": [
         {
@@ -2575,6 +2605,27 @@ export const schema: Schema = {
       "id": "Status",
       "namespace": "hosting.PrivateDatabase.Configuration"
     },
+    "hosting.PrivateDatabase.CpuThrottle": {
+      "description": "CPU throttle informations",
+      "id": "CpuThrottle",
+      "namespace": "hosting.PrivateDatabase",
+      "properties": {
+        "endDate": {
+          "canBeNull": true,
+          "description": "End date of the CPU throttle",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Start date of the CPU throttle",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
     "hosting.PrivateDatabase.Database.Extension.Status": {
       "description": "Extension status",
       "enum": [
@@ -2802,6 +2853,7 @@ export const schema: Schema = {
     "hosting.PrivateDatabase.task.FunctionEnum": {
       "description": "Task's function",
       "enum": [
+        "abuse",
         "boot",
         "changeFtpPassword",
         "changeRam",

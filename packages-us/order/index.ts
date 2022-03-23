@@ -2580,6 +2580,17 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            officePrepaid: {
+                /**
+                 * Retrieve officePrepaid catalog
+                 * GET /order/catalog/public/officePrepaid
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             privateCloud: {
                 /**
                  * Retrieve Dedicated Cloud catalog

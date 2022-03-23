@@ -211,7 +211,7 @@ export namespace ovhcloudconnect {
          * Enum values for bandwidth
          * type fullname: ovhcloudconnect.service.BandwidthEnum
          */
-        export type BandwidthEnum = "100m" | "10g" | "1g" | "200m" | "2g" | "500m" | "5g"
+        export type BandwidthEnum = "100g" | "100m" | "10g" | "1g" | "200m" | "2g" | "500m" | "5g"
         /**
          * Enum values for port quantity
          * type fullname: ovhcloudconnect.service.PortEnum
@@ -221,7 +221,7 @@ export namespace ovhcloudconnect {
          * Enum values for service provider
          * type fullname: ovhcloudconnect.service.ProviderEnum
          */
-        export type ProviderEnum = "OVHcloud" | "equinix" | "intercloud" | "internal" | "interxion" | "megaport" | "orange"
+        export type ProviderEnum = "OVHcloud" | "equinix" | "fibrenoire" | "intercloud" | "internal" | "interxion" | "megaport" | "orange" | "risq"
         /**
          * Enum values for the Service
          * type fullname: ovhcloudconnect.service.StatusEnum

@@ -1261,7 +1261,7 @@ export namespace cloud {
          * Enum values for available regions
          * type fullname: cloud.kube.RegionEnum
          */
-        export type RegionEnum = "BHS5" | "GRA5" | "GRA7" | "GRA9" | "SBG5" | "DE1" | "SGP1" | "SYD1" | "US-EAST-VA-1" | "US-WEST-OR-1" | "WAW1"
+        export type RegionEnum = "BHS5" | "DE1" | "GRA5" | "GRA7" | "GRA9" | "SBG5" | "SGP1" | "SYD1" | "US-EAST-VA-1" | "US-WEST-OR-1" | "WAW1"
         /**
          * Enum values for worker nodes reset policy
          * type fullname: cloud.kube.ResetWorkerNodesPolicyEnum

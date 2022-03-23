@@ -96,7 +96,7 @@ export namespace license {
      * All versions available for Plesk products
      * type fullname: license.PleskVersionEnum
      */
-    export type PleskVersionEnum = "plesk-12-webadmin-for-vps" | "plesk-12-webhost" | "plesk-12-webhost-for-vps" | "plesk-12-webpro" | "plesk-12-webpro-for-vps"
+    export type PleskVersionEnum = "plesk-12-webadmin" | "plesk-12-webadmin-for-vps" | "plesk-12-webhost" | "plesk-12-webhost-for-vps" | "plesk-12-webpro" | "plesk-12-webpro-for-vps"
     /**
      * Tests that have failed for Plesk products
      * type fullname: license.PotentialProblemPleskEnum

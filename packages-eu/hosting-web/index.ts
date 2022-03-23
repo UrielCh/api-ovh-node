@@ -425,11 +425,11 @@ export namespace hosting {
          * interface fullName: hosting.web.OvhConfigRecommendedValues.OvhConfigRecommendedValues
          */
         export interface OvhConfigRecommendedValues {
-            container: string;
-            engine: string;
-            environment: string;
+            container: hosting.web.ovhconfig.ContainerEnum;
+            engineName: hosting.web.ovhConfig.EngineNameEnum;
+            engineVersion: hosting.web.ovhConfig.AvailableEngineVersionEnum;
+            environment: hosting.web.ovhConfig.EnvironmentEnum;
             httpFirewall: hosting.web.ovhConfig.HttpFirewallEnum;
-            version: hosting.web.ovhConfig.AvailableEngineVersionEnum;
         }
         /**
          * State of available php versions for this account
@@ -443,7 +443,7 @@ export namespace hosting {
          * Different PHP versions available
          * type fullname: hosting.web.PhpVersionAvailableEnum
          */
-        export type PhpVersionAvailableEnum = "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4"
+        export type PhpVersionAvailableEnum = "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4" | "phpfpm-8.0"
         /**
          * Different support of PHP versions
          * type fullname: hosting.web.PhpVersionStateEnum
@@ -669,7 +669,7 @@ export namespace hosting {
              * Cron's language
              * type fullname: hosting.web.cron.LanguageEnum
              */
-            export type LanguageEnum = "node10" | "node11" | "node12" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "php8.1" | "python2" | "python3" | "ruby2.5" | "ruby2.6"
+            export type LanguageEnum = "node10" | "node11" | "node12" | "node14" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "php8.1" | "python2" | "python3" | "ruby2.5" | "ruby2.6"
             /**
              * Cron state
              * type fullname: hosting.web.cron.StateEnum
@@ -1286,7 +1286,7 @@ export namespace hosting {
              * Runtime backend type enum
              * type fullname: hosting.web.runtime.TypeEnum
              */
-            export type TypeEnum = "nodejs-10" | "nodejs-11" | "nodejs-12" | "nodejs-8" | "nodejs-9" | "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4" | "python-2" | "python-3" | "ruby-2.5" | "ruby-2.6"
+            export type TypeEnum = "nodejs-10" | "nodejs-11" | "nodejs-12" | "nodejs-14" | "nodejs-8" | "nodejs-9" | "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4" | "phpfpm-8.0" | "python-2" | "python-3" | "ruby-2.5" | "ruby-2.6"
         }
         /**
          * Hostedssl

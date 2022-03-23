@@ -2063,8 +2063,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get information about a eco",
           "httpMethod": "GET",
@@ -2083,8 +2083,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Post a new eco item in your cart",
           "httpMethod": "POST",
@@ -2116,8 +2116,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get information about the options of a Eco",
           "httpMethod": "GET",
@@ -2144,8 +2144,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Post a new Eco option in your cart",
           "httpMethod": "POST",
@@ -3740,6 +3740,234 @@ export const schema: Schema = {
       "path": "/order/cart/{cartId}/nasha/options"
     },
     {
+      "description": "Order a NetApp offer",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about NetApp offers",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new NetApp offer item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/netapp"
+    },
+    {
+      "description": "NetApp Options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about NetApp options",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the NetApp offer you want to consult options",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new NetApp option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/netapp/options"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get information about a Nutanix",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post a new Nutanix item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/nutanix"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get information about the options of a Nutanix",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of a Nutanix offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post a new Nutanix option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/nutanix/options"
+    },
+    {
       "description": "Missing description",
       "operations": [
         {
@@ -3852,6 +4080,120 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/cart/{cartId}/office365/options"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get informations about a officePrepaid",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post a new officePrepaid item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/officePrepaid"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get informations about officePrepaid options",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of a officePrepaid offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post a new officePrepaid option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/officePrepaid/options"
     },
     {
       "description": "Missing description",
@@ -7671,7 +8013,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog"
+          "responseType": "order.catalog.dedicated.Catalog"
         }
       ],
       "path": "/order/catalog/formatted/dedicated"
@@ -7723,7 +8065,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog"
+          "responseType": "order.catalog.dedicated.Catalog"
         }
       ],
       "path": "/order/catalog/formatted/discover"
@@ -8711,6 +9053,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/catalog/public/office365Prepaid"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve Office Prepaid catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/officePrepaid"
     },
     {
       "description": "Missing description",
@@ -23121,6 +23489,7 @@ export const schema: Schema = {
         "PLESK_ONYX_WEB_HOST_CLNX",
         "PLESK_ONYX_WEB_PRO",
         "PLESK_ONYX_WEB_PRO_CLNX",
+        "plesk-12-webadmin",
         "plesk-12-webadmin-for-vps",
         "plesk-12-webhost",
         "plesk-12-webhost-for-vps",
@@ -24034,6 +24403,7 @@ export const schema: Schema = {
         "ASIA",
         "AU",
         "CA",
+        "IN",
         "QC",
         "SG",
         "WE",
@@ -26034,6 +26404,902 @@ export const schema: Schema = {
         "value": {
           "canBeNull": false,
           "description": "Price in currency",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "order.catalog.dedicated.Catalog": {
+      "description": "Describes a dedicated Catalog",
+      "id": "Catalog",
+      "namespace": "order.catalog.dedicated",
+      "properties": {
+        "families": {
+          "canBeNull": false,
+          "description": "Families of the catalog",
+          "fullType": "order.catalog.dedicated.Family[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Family[]"
+        },
+        "metadatas": {
+          "canBeNull": false,
+          "description": "Metadata of the catalog",
+          "fullType": "order.catalog.dedicated.Metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Metadata"
+        },
+        "products": {
+          "canBeNull": false,
+          "description": "Products of the catalog",
+          "fullType": "order.catalog.dedicated.Product[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product[]"
+        },
+        "techDetails": {
+          "canBeNull": false,
+          "description": "Technical details",
+          "fullType": "order.catalog.dedicated.TechDetails[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.TechDetails[]"
+        }
+      }
+    },
+    "order.catalog.dedicated.Family": {
+      "description": "Describes a Family",
+      "id": "Family",
+      "namespace": "order.catalog.dedicated",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Family name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "products": {
+          "canBeNull": false,
+          "description": "Family products",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "order.catalog.dedicated.Metadata": {
+      "description": "Describes a Metadata",
+      "id": "Metadata",
+      "namespace": "order.catalog.dedicated",
+      "properties": {
+        "catalog": {
+          "canBeNull": false,
+          "description": "Identifier of the catalog",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "core": {
+          "canBeNull": false,
+          "description": "Core",
+          "fullType": "order.catalog.dedicated.Metadata.Capacities",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Metadata.Capacities"
+        },
+        "currency": {
+          "canBeNull": false,
+          "description": "Currency",
+          "fullType": "order.catalog.dedicated.Metadata.Currency",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Metadata.Currency"
+        },
+        "datacenters": {
+          "canBeNull": false,
+          "description": "List of datacenters",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "frequency": {
+          "canBeNull": false,
+          "description": "Frequency",
+          "fullType": "order.catalog.dedicated.Metadata.Frequency",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Metadata.Frequency"
+        },
+        "merchant": {
+          "canBeNull": false,
+          "description": "Merchant",
+          "fullType": "nichandle.OvhSubsidiaryEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "nichandle.OvhSubsidiaryEnum"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Price",
+          "fullType": "order.catalog.dedicated.Metadata.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Metadata.Price"
+        },
+        "ram": {
+          "canBeNull": false,
+          "description": "RAM",
+          "fullType": "order.catalog.dedicated.Metadata.Capacities",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Metadata.Capacities"
+        },
+        "thread": {
+          "canBeNull": false,
+          "description": "Thread",
+          "fullType": "order.catalog.dedicated.Metadata.Capacities",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Metadata.Capacities"
+        },
+        "timestamp": {
+          "canBeNull": false,
+          "description": "Timestamp",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.dedicated.Metadata.Capacities": {
+      "description": "Describes a Capacity",
+      "id": "Capacities",
+      "namespace": "order.catalog.dedicated.Metadata",
+      "properties": {
+        "max": {
+          "canBeNull": false,
+          "description": "Max",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "min": {
+          "canBeNull": false,
+          "description": "Min",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.dedicated.Metadata.Currency": {
+      "description": "Describes a Currency",
+      "id": "Currency",
+      "namespace": "order.catalog.dedicated.Metadata",
+      "properties": {
+        "code": {
+          "canBeNull": false,
+          "description": "Currency code",
+          "fullType": "order.CurrencyCodeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.CurrencyCodeEnum"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Currency description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "symbol": {
+          "canBeNull": false,
+          "description": "Currency symbol",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.Metadata.Frequency": {
+      "description": "Describes a Frequency",
+      "id": "Frequency",
+      "namespace": "order.catalog.dedicated.Metadata",
+      "properties": {
+        "max": {
+          "canBeNull": false,
+          "description": "Max",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "min": {
+          "canBeNull": false,
+          "description": "Min",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "order.catalog.dedicated.Metadata.Price": {
+      "description": "Describes a Price",
+      "id": "Price",
+      "namespace": "order.catalog.dedicated.Metadata",
+      "properties": {
+        "max": {
+          "canBeNull": false,
+          "description": "Max",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "min": {
+          "canBeNull": false,
+          "description": "Min",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product": {
+      "description": "Describes a product",
+      "id": "Product",
+      "namespace": "order.catalog.dedicated",
+      "properties": {
+        "addonsFamily": {
+          "canBeNull": false,
+          "description": "List of addon family",
+          "fullType": "order.catalog.dedicated.Product.AddonFamily[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.AddonFamily[]"
+        },
+        "code": {
+          "canBeNull": false,
+          "description": "Code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "compatibilities": {
+          "canBeNull": true,
+          "description": "List of compatibility",
+          "fullType": "order.catalog.dedicated.Product.Compatibility[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Compatibility[]"
+        },
+        "datacenters": {
+          "canBeNull": false,
+          "description": "Datacenters",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "derivatives": {
+          "canBeNull": true,
+          "description": "List of derivative",
+          "fullType": "order.catalog.dedicated.Product.AddonItem[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.AddonItem[]"
+        },
+        "family": {
+          "canBeNull": false,
+          "description": "Family",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "invoiceName": {
+          "canBeNull": false,
+          "description": "Name that appears on invoice",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "isChildOf": {
+          "canBeNull": true,
+          "description": "Name of the parent",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "isParentOf": {
+          "canBeNull": true,
+          "description": "Name of the children",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "prices": {
+          "canBeNull": false,
+          "description": "Prices",
+          "fullType": "order.catalog.dedicated.Product.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Price"
+        },
+        "specifications": {
+          "canBeNull": false,
+          "description": "Specifications",
+          "fullType": "order.catalog.dedicated.Product.Specification",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Specification"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.AddonFamily": {
+      "description": "Describes an addon family",
+      "id": "AddonFamily",
+      "namespace": "order.catalog.dedicated.Product",
+      "properties": {
+        "addons": {
+          "canBeNull": false,
+          "description": "List of addon",
+          "fullType": "order.catalog.dedicated.Product.AddonItem[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.AddonItem[]"
+        },
+        "family": {
+          "canBeNull": false,
+          "description": "Family name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.AddonItem": {
+      "description": "Describes an addon",
+      "id": "AddonItem",
+      "namespace": "order.catalog.dedicated.Product",
+      "properties": {
+        "code": {
+          "canBeNull": false,
+          "description": "Addon code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "datacenters": {
+          "canBeNull": true,
+          "description": "List of datacenter",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Addon name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "options": {
+          "canBeNull": true,
+          "description": "Options",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Addon price",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Compatibility": {
+      "description": "Describes a Compatibility",
+      "id": "Compatibility",
+      "namespace": "order.catalog.dedicated.Product",
+      "properties": {
+        "plan": {
+          "canBeNull": false,
+          "description": "Plan name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "restrictions": {
+          "canBeNull": true,
+          "description": "List of restriction",
+          "fullType": "order.catalog.dedicated.Product.Compatibility.Restriction[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Compatibility.Restriction[]"
+        },
+        "specificities": {
+          "canBeNull": true,
+          "description": "List of restriction",
+          "fullType": "order.catalog.dedicated.TechDetails.Plan.Specificity[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.TechDetails.Plan.Specificity[]"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Compatibility.Restriction": {
+      "description": "Describes a Restriction",
+      "id": "Restriction",
+      "namespace": "order.catalog.dedicated.Product.Compatibility",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "sections": {
+          "canBeNull": false,
+          "description": "List of section",
+          "fullType": "order.catalog.dedicated.Product.Compatibility.Restriction.Section[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Compatibility.Restriction.Section[]"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Compatibility.Restriction.Section": {
+      "description": "Describes a Section",
+      "id": "Section",
+      "namespace": "order.catalog.dedicated.Product.Compatibility.Restriction",
+      "properties": {
+        "comment": {
+          "canBeNull": false,
+          "description": "Comment",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "plans": {
+          "canBeNull": false,
+          "description": "List of plan",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Price": {
+      "description": "Describes a Prices",
+      "id": "Price",
+      "namespace": "order.catalog.dedicated.Product",
+      "properties": {
+        "default": {
+          "canBeNull": false,
+          "description": "Default price",
+          "fullType": "order.catalog.dedicated.Product.Price.Default",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Price.Default"
+        },
+        "hardzone": {
+          "canBeNull": true,
+          "description": "Hardzone",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "week": {
+          "canBeNull": true,
+          "description": "Week",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Price.Default": {
+      "description": "Describes a Default price",
+      "id": "Default",
+      "namespace": "order.catalog.dedicated.Product.Price",
+      "properties": {
+        "installation": {
+          "canBeNull": true,
+          "description": "Installation price",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "renew": {
+          "canBeNull": true,
+          "description": "Renew price",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Specification": {
+      "description": "Describes a Specification for a product",
+      "id": "Specification",
+      "namespace": "order.catalog.dedicated.Product",
+      "properties": {
+        "cpu": {
+          "canBeNull": true,
+          "description": "CPU",
+          "fullType": "order.catalog.dedicated.Product.Specification.CPU",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Specification.CPU"
+        },
+        "disks": {
+          "canBeNull": true,
+          "description": "List of disk",
+          "fullType": "order.catalog.dedicated.Product.Specification.Disk[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Specification.Disk[]"
+        },
+        "gpu": {
+          "canBeNull": true,
+          "description": "GPU",
+          "fullType": "order.catalog.dedicated.Product.Specification.GPU",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Specification.GPU"
+        },
+        "memory": {
+          "canBeNull": true,
+          "description": "Memory",
+          "fullType": "order.catalog.dedicated.Product.Specification.Memory",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Specification.Memory"
+        },
+        "network": {
+          "canBeNull": false,
+          "description": "Network",
+          "fullType": "order.catalog.dedicated.Product.Specification.Network",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Specification.Network"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Specification.CPU": {
+      "description": "Describes a CPU",
+      "id": "CPU",
+      "namespace": "order.catalog.dedicated.Product.Specification",
+      "properties": {
+        "boost": {
+          "canBeNull": true,
+          "description": "CPU Boost",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "brand": {
+          "canBeNull": true,
+          "description": "CPU Brand",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "cores": {
+          "canBeNull": true,
+          "description": "Number of cores",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "frequency": {
+          "canBeNull": true,
+          "description": "Frequency of CPU in GHz",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "model": {
+          "canBeNull": true,
+          "description": "Displayable name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "planCode": {
+          "canBeNull": true,
+          "description": "Plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "threads": {
+          "canBeNull": true,
+          "description": "Number of threads",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Specification.Disk": {
+      "description": "Describes a Disk",
+      "id": "Disk",
+      "namespace": "order.catalog.dedicated.Product.Specification",
+      "properties": {
+        "number": {
+          "canBeNull": false,
+          "description": "Disk number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "planCode": {
+          "canBeNull": false,
+          "description": "Plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "raid": {
+          "canBeNull": false,
+          "description": "Disk raid",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Disk size",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Disk type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Specification.GPU": {
+      "description": "Describes a GPU",
+      "id": "GPU",
+      "namespace": "order.catalog.dedicated.Product.Specification",
+      "properties": {
+        "model": {
+          "canBeNull": true,
+          "description": "Displayable name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "number": {
+          "canBeNull": true,
+          "description": "GPU number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "planCode": {
+          "canBeNull": true,
+          "description": "Plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Specification.Memory": {
+      "description": "Describes a Memory",
+      "id": "Memory",
+      "namespace": "order.catalog.dedicated.Product.Specification",
+      "properties": {
+        "planCode": {
+          "canBeNull": true,
+          "description": "Plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": true,
+          "description": "Memory size",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": true,
+          "description": "Memory type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Specification.Network": {
+      "description": "Describes a Network",
+      "id": "Network",
+      "namespace": "order.catalog.dedicated.Product.Specification",
+      "properties": {
+        "failover": {
+          "canBeNull": false,
+          "description": "Failover",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "internal": {
+          "canBeNull": false,
+          "description": "Internal",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "IP",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "outgoing": {
+          "canBeNull": false,
+          "description": "Outgoing",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "private": {
+          "canBeNull": false,
+          "description": "Private",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "privateBandwidth": {
+          "canBeNull": false,
+          "description": "Private bandwidth",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.dedicated.TechDetails": {
+      "description": "Describes technical details",
+      "id": "TechDetails",
+      "namespace": "order.catalog.dedicated",
+      "properties": {
+        "plans": {
+          "canBeNull": false,
+          "description": "List of plan",
+          "fullType": "order.catalog.dedicated.TechDetails.Plan[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.TechDetails.Plan[]"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Technical type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.TechDetails.Plan": {
+      "description": "Describes a Plan",
+      "id": "Plan",
+      "namespace": "order.catalog.dedicated.TechDetails",
+      "properties": {
+        "code": {
+          "canBeNull": false,
+          "description": "Plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "specificities": {
+          "canBeNull": false,
+          "description": "List of specificity",
+          "fullType": "order.catalog.dedicated.TechDetails.Plan.Specificity[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.TechDetails.Plan.Specificity[]"
+        }
+      }
+    },
+    "order.catalog.dedicated.TechDetails.Plan.Specificity": {
+      "description": "Describes a Specificity for a plan",
+      "id": "Specificity",
+      "namespace": "order.catalog.dedicated.TechDetails.Plan",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "description": "Key",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
           "fullType": "double",
           "readOnly": true,
           "required": false,

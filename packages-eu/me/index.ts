@@ -855,18 +855,6 @@ export namespace contact {
         readOnly: boolean;
     }
 }
-export namespace coreTypes {
-    /**
-     * Continents
-     * type fullname: coreTypes.ContinentEnum
-     */
-    export type ContinentEnum = "africa" | "antartica" | "asia" | "europe" | "north-america" | "oceania" | "south-america"
-    /**
-     * ISO country codes
-     * type fullname: coreTypes.CountryEnum
-     */
-    export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
-}
 export namespace debt {
     /**
      * Debt balance of the account
@@ -1147,17 +1135,6 @@ export namespace domain {
         description: string;
         executionDuration: number;
         step: string;
-    }
-}
-export namespace geolocation {
-    /**
-     * Representation of country and continent from visitor IP
-     * interface fullName: geolocation.ContinentCountryLocation.ContinentCountryLocation
-     */
-    export interface ContinentCountryLocation {
-        continent: coreTypes.ContinentEnum;
-        countryCode: coreTypes.CountryEnum;
-        ip: string;
     }
 }
 export namespace http {
@@ -1592,6 +1569,27 @@ export namespace me {
             }
         }
     }
+    export namespace geolocation {
+        /**
+         * Representation of country and continent from visitor IP
+         * interface fullName: me.geolocation.ContinentCountryLocation.ContinentCountryLocation
+         */
+        export interface ContinentCountryLocation {
+            continent?: me.geolocation.ContinentEnum;
+            countryCode?: me.geolocation.CountryEnum;
+            ip: string;
+        }
+        /**
+         * Continent
+         * type fullname: me.geolocation.ContinentEnum
+         */
+        export type ContinentEnum = "africa" | "antartica" | "asia" | "europe" | "north-america" | "oceania" | "south-america"
+        /**
+         * Country iso code
+         * type fullname: me.geolocation.CountryEnum
+         */
+        export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
+    }
     export namespace incident {
         /**
          * Original service that can be migrated
@@ -1793,10 +1791,13 @@ export namespace me {
             default: boolean;
             description?: string;
             expirationDate?: string;
+            formSessionId?: string;
             icon: me.payment.Icon;
+            integration?: me.payment.IntegrationEnum;
             label?: string;
             lastUpdate: string;
             merchantId?: string;
+            oneclick?: boolean;
             paymentMeanId?: number;
             paymentMethodId: number;
             paymentSubType?: me.payment.AvailableSubTypeEnum;
@@ -4263,7 +4264,7 @@ export interface Me {
          * Fetch visitor country & region
          * POST /me/geolocation
          */
-        $post(): Promise<geolocation.ContinentCountryLocation>;
+        $post(): Promise<me.geolocation.ContinentCountryLocation>;
     }
     identity: {
         group: {
@@ -5115,7 +5116,7 @@ export interface Me {
                  * Edit payment method
                  * PUT /me/payment/method/{paymentMethodId}
                  */
-                $put(params?: { billingContactId?: number, creationDate?: string, default_?: boolean, description?: string, expirationDate?: string, icon?: me.payment.Icon, label?: string, lastUpdate?: string, merchantId?: string, paymentMeanId?: number, paymentMethodId?: number, paymentSubType?: me.payment.AvailableSubTypeEnum, paymentType?: string, status?: me.payment.method.StatusEnum }): Promise<me.payment.PaymentMethod>;
+                $put(params?: { billingContactId?: number, creationDate?: string, default_?: boolean, description?: string, expirationDate?: string, formSessionId?: string, icon?: me.payment.Icon, integration?: me.payment.IntegrationEnum, label?: string, lastUpdate?: string, merchantId?: string, oneclick?: boolean, paymentMeanId?: number, paymentMethodId?: number, paymentSubType?: me.payment.AvailableSubTypeEnum, paymentType?: string, status?: me.payment.method.StatusEnum }): Promise<me.payment.PaymentMethod>;
                 /**
                  * Controle cache
                  */

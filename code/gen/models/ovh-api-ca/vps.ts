@@ -3892,6 +3892,7 @@ export const schema: Schema = {
         "ASIA",
         "AU",
         "CA",
+        "IN",
         "QC",
         "SG",
         "WE",

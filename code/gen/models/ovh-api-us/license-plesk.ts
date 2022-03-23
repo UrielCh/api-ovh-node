@@ -845,6 +845,7 @@ export const schema: Schema = {
     "license.PleskVersionEnum": {
       "description": "All versions available for Plesk products",
       "enum": [
+        "plesk-12-webadmin",
         "plesk-12-webadmin-for-vps",
         "plesk-12-webhost",
         "plesk-12-webhost-for-vps",

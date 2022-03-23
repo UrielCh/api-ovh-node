@@ -302,7 +302,7 @@ export namespace license {
      * All versions available for Plesk products
      * type fullname: license.PleskVersionEnum
      */
-    export type PleskVersionEnum = "PLESK_10_AND_LATER" | "PLESK_10_AND_LATER_FOR_KVM" | "PLESK_10_AND_LATER_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN_FOR_XEN" | "PLESK_10_AND_LATER_FOR_XEN" | "PLESK_12_VPS_WEB_ADMIN" | "PLESK_12_VPS_WEB_APP" | "PLESK_12_VPS_WEB_HOST" | "PLESK_12_VPS_WEB_HOST_CLNX" | "PLESK_12_VPS_WEB_PRO" | "PLESK_12_VPS_WEB_PRO_CLNX" | "PLESK_12_WEB_ADMIN" | "PLESK_12_WEB_APP" | "PLESK_12_WEB_HOST" | "PLESK_12_WEB_HOST_CLNX" | "PLESK_12_WEB_PRO" | "PLESK_12_WEB_PRO_CLNX" | "PLESK_75_RELOADED" | "PLESK_80" | "PLESK_80_FOR_VZ" | "PLESK_81_FOR_WIN" | "PLESK_9" | "PLESK_95" | "PLESK_95_FOR_VZ" | "PLESK_95_FOR_WIN" | "PLESK_9_FOR_VZ" | "PLESK_9_FOR_WIN" | "PLESK_ONYX_VPS_WEB_ADMIN" | "PLESK_ONYX_VPS_WEB_APP" | "PLESK_ONYX_VPS_WEB_HOST" | "PLESK_ONYX_VPS_WEB_HOST_CLNX" | "PLESK_ONYX_VPS_WEB_PRO" | "PLESK_ONYX_VPS_WEB_PRO_CLNX" | "PLESK_ONYX_WEB_ADMIN" | "PLESK_ONYX_WEB_APP" | "PLESK_ONYX_WEB_HOST" | "PLESK_ONYX_WEB_HOST_CLNX" | "PLESK_ONYX_WEB_PRO" | "PLESK_ONYX_WEB_PRO_CLNX" | "plesk-12-webadmin-for-vps" | "plesk-12-webhost" | "plesk-12-webhost-for-vps" | "plesk-12-webpro" | "plesk-12-webpro-for-vps"
+    export type PleskVersionEnum = "PLESK_10_AND_LATER" | "PLESK_10_AND_LATER_FOR_KVM" | "PLESK_10_AND_LATER_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN_FOR_XEN" | "PLESK_10_AND_LATER_FOR_XEN" | "PLESK_12_VPS_WEB_ADMIN" | "PLESK_12_VPS_WEB_APP" | "PLESK_12_VPS_WEB_HOST" | "PLESK_12_VPS_WEB_HOST_CLNX" | "PLESK_12_VPS_WEB_PRO" | "PLESK_12_VPS_WEB_PRO_CLNX" | "PLESK_12_WEB_ADMIN" | "PLESK_12_WEB_APP" | "PLESK_12_WEB_HOST" | "PLESK_12_WEB_HOST_CLNX" | "PLESK_12_WEB_PRO" | "PLESK_12_WEB_PRO_CLNX" | "PLESK_75_RELOADED" | "PLESK_80" | "PLESK_80_FOR_VZ" | "PLESK_81_FOR_WIN" | "PLESK_9" | "PLESK_95" | "PLESK_95_FOR_VZ" | "PLESK_95_FOR_WIN" | "PLESK_9_FOR_VZ" | "PLESK_9_FOR_WIN" | "PLESK_ONYX_VPS_WEB_ADMIN" | "PLESK_ONYX_VPS_WEB_APP" | "PLESK_ONYX_VPS_WEB_HOST" | "PLESK_ONYX_VPS_WEB_HOST_CLNX" | "PLESK_ONYX_VPS_WEB_PRO" | "PLESK_ONYX_VPS_WEB_PRO_CLNX" | "PLESK_ONYX_WEB_ADMIN" | "PLESK_ONYX_WEB_APP" | "PLESK_ONYX_WEB_HOST" | "PLESK_ONYX_WEB_HOST_CLNX" | "PLESK_ONYX_WEB_PRO" | "PLESK_ONYX_WEB_PRO_CLNX" | "plesk-12-webadmin" | "plesk-12-webadmin-for-vps" | "plesk-12-webhost" | "plesk-12-webhost-for-vps" | "plesk-12-webpro" | "plesk-12-webpro-for-vps"
     /**
      * All versions for SQL Server product
      * type fullname: license.SqlServerVersionEnum
@@ -334,7 +334,7 @@ export namespace nichandle {
      * OVH subsidiaries
      * type fullname: nichandle.OvhSubsidiaryEnum
      */
-    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "QC" | "SG" | "WE" | "WS"
+    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "IN" | "QC" | "SG" | "WE" | "WS"
 }
 export namespace order {
     /**
@@ -843,6 +843,259 @@ export namespace order {
                     priceInUcents: number;
                     text: string;
                     value: number;
+                }
+            }
+        }
+        export namespace dedicated {
+            /**
+             * Describes a dedicated Catalog
+             * interface fullName: order.catalog.dedicated.Catalog.Catalog
+             */
+            export interface Catalog {
+                families: order.catalog.dedicated.Family[];
+                metadatas: order.catalog.dedicated.Metadata;
+                products: order.catalog.dedicated.Product[];
+                techDetails: order.catalog.dedicated.TechDetails[];
+            }
+            /**
+             * Describes a Family
+             * interface fullName: order.catalog.dedicated.Family.Family
+             */
+            export interface Family {
+                name: string;
+                products: string[];
+            }
+            /**
+             * Describes a Metadata
+             * interface fullName: order.catalog.dedicated.Metadata.Metadata
+             */
+            export interface Metadata {
+                catalog: number;
+                core: order.catalog.dedicated.Metadata.Capacities;
+                currency: order.catalog.dedicated.Metadata.Currency;
+                datacenters: string[];
+                frequency: order.catalog.dedicated.Metadata.Frequency;
+                merchant: nichandle.OvhSubsidiaryEnum;
+                price: order.catalog.dedicated.Metadata.Price;
+                ram: order.catalog.dedicated.Metadata.Capacities;
+                thread: order.catalog.dedicated.Metadata.Capacities;
+                timestamp: number;
+            }
+            export namespace Metadata {
+                /**
+                 * Describes a Capacity
+                 * interface fullName: order.catalog.dedicated.Metadata.Capacities.Capacities
+                 */
+                export interface Capacities {
+                    max: number;
+                    min: number;
+                }
+                /**
+                 * Describes a Currency
+                 * interface fullName: order.catalog.dedicated.Metadata.Currency.Currency
+                 */
+                export interface Currency {
+                    code: order.CurrencyCodeEnum;
+                    description: string;
+                    symbol: string;
+                }
+                /**
+                 * Describes a Frequency
+                 * interface fullName: order.catalog.dedicated.Metadata.Frequency.Frequency
+                 */
+                export interface Frequency {
+                    max: number;
+                    min: number;
+                }
+                /**
+                 * Describes a Price
+                 * interface fullName: order.catalog.dedicated.Metadata.Price.Price
+                 */
+                export interface Price {
+                    max: number;
+                    min: number;
+                }
+            }
+            /**
+             * Describes a product
+             * interface fullName: order.catalog.dedicated.Product.Product
+             */
+            export interface Product {
+                addonsFamily: order.catalog.dedicated.Product.AddonFamily[];
+                code: string;
+                compatibilities?: order.catalog.dedicated.Product.Compatibility[];
+                datacenters: string[];
+                derivatives?: order.catalog.dedicated.Product.AddonItem[];
+                family: string;
+                invoiceName: string;
+                isChildOf?: string;
+                isParentOf?: string[];
+                prices: order.catalog.dedicated.Product.Price;
+                specifications: order.catalog.dedicated.Product.Specification;
+            }
+            export namespace Product {
+                /**
+                 * Describes an addon family
+                 * interface fullName: order.catalog.dedicated.Product.AddonFamily.AddonFamily
+                 */
+                export interface AddonFamily {
+                    addons: order.catalog.dedicated.Product.AddonItem[];
+                    family: string;
+                }
+                /**
+                 * Describes an addon
+                 * interface fullName: order.catalog.dedicated.Product.AddonItem.AddonItem
+                 */
+                export interface AddonItem {
+                    code: string;
+                    datacenters?: string[];
+                    name: string;
+                    options?: string;
+                    price: order.Price;
+                }
+                /**
+                 * Describes a Compatibility
+                 * interface fullName: order.catalog.dedicated.Product.Compatibility.Compatibility
+                 */
+                export interface Compatibility {
+                    plan: string;
+                    restrictions?: order.catalog.dedicated.Product.Compatibility.Restriction[];
+                    specificities?: order.catalog.dedicated.TechDetails.Plan.Specificity[];
+                }
+                export namespace Compatibility {
+                    /**
+                     * Describes a Restriction
+                     * interface fullName: order.catalog.dedicated.Product.Compatibility.Restriction.Restriction
+                     */
+                    export interface Restriction {
+                        name: string;
+                        sections: order.catalog.dedicated.Product.Compatibility.Restriction.Section[];
+                    }
+                    export namespace Restriction {
+                        /**
+                         * Describes a Section
+                         * interface fullName: order.catalog.dedicated.Product.Compatibility.Restriction.Section.Section
+                         */
+                        export interface Section {
+                            comment: string;
+                            plans: string[];
+                            type: string;
+                        }
+                    }
+                }
+                /**
+                 * Describes a Prices
+                 * interface fullName: order.catalog.dedicated.Product.Price.Price
+                 */
+                export interface Price {
+                    default: order.catalog.dedicated.Product.Price.Default;
+                    hardzone?: string;
+                    week?: string;
+                }
+                export namespace Price {
+                    /**
+                     * Describes a Default price
+                     * interface fullName: order.catalog.dedicated.Product.Price.Default.Default
+                     */
+                    export interface Default {
+                        installation?: order.Price;
+                        renew?: order.Price;
+                    }
+                }
+                /**
+                 * Describes a Specification for a product
+                 * interface fullName: order.catalog.dedicated.Product.Specification.Specification
+                 */
+                export interface Specification {
+                    cpu?: order.catalog.dedicated.Product.Specification.CPU;
+                    disks?: order.catalog.dedicated.Product.Specification.Disk[];
+                    gpu?: order.catalog.dedicated.Product.Specification.GPU;
+                    memory?: order.catalog.dedicated.Product.Specification.Memory;
+                    network: order.catalog.dedicated.Product.Specification.Network;
+                }
+                export namespace Specification {
+                    /**
+                     * Describes a CPU
+                     * interface fullName: order.catalog.dedicated.Product.Specification.CPU.CPU
+                     */
+                    export interface CPU {
+                        boost?: number;
+                        brand?: string;
+                        cores?: number;
+                        frequency?: number;
+                        model?: string;
+                        planCode?: string;
+                        threads?: number;
+                    }
+                    /**
+                     * Describes a Disk
+                     * interface fullName: order.catalog.dedicated.Product.Specification.Disk.Disk
+                     */
+                    export interface Disk {
+                        number: number;
+                        planCode: string;
+                        raid: string;
+                        size: number;
+                        type: string;
+                    }
+                    /**
+                     * Describes a GPU
+                     * interface fullName: order.catalog.dedicated.Product.Specification.GPU.GPU
+                     */
+                    export interface GPU {
+                        model?: string;
+                        number?: number;
+                        planCode?: string;
+                    }
+                    /**
+                     * Describes a Memory
+                     * interface fullName: order.catalog.dedicated.Product.Specification.Memory.Memory
+                     */
+                    export interface Memory {
+                        planCode?: string;
+                        size?: string;
+                        type?: string;
+                    }
+                    /**
+                     * Describes a Network
+                     * interface fullName: order.catalog.dedicated.Product.Specification.Network.Network
+                     */
+                    export interface Network {
+                        failover: number;
+                        internal: number;
+                        ip: number;
+                        outgoing: number;
+                        private: number;
+                        privateBandwidth: number;
+                    }
+                }
+            }
+            /**
+             * Describes technical details
+             * interface fullName: order.catalog.dedicated.TechDetails.TechDetails
+             */
+            export interface TechDetails {
+                plans: order.catalog.dedicated.TechDetails.Plan[];
+                type: string;
+            }
+            export namespace TechDetails {
+                /**
+                 * Describes a Plan
+                 * interface fullName: order.catalog.dedicated.TechDetails.Plan.Plan
+                 */
+                export interface Plan {
+                    code: string;
+                    specificities: order.catalog.dedicated.TechDetails.Plan.Specificity[];
+                }
+                export namespace Plan {
+                    /**
+                     * Describes a Specificity for a plan
+                     * interface fullName: order.catalog.dedicated.TechDetails.Plan.Specificity.Specificity
+                     */
+                    export interface Specificity {
+                        key: string;
+                        value: number;
+                    }
                 }
             }
         }
@@ -2807,6 +3060,70 @@ export interface Order {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
+            netapp: {
+                /**
+                 * Get informations about NetApp offers
+                 * GET /order/cart/{cartId}/netapp
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new NetApp offer item in your cart
+                 * POST /order/cart/{cartId}/netapp
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get informations about NetApp options
+                     * GET /order/cart/{cartId}/netapp/options
+                     */
+                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new NetApp option in your cart
+                     * POST /order/cart/{cartId}/netapp/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
+            nutanix: {
+                /**
+                 * Get information about a Nutanix
+                 * GET /order/cart/{cartId}/nutanix
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new Nutanix item in your cart
+                 * POST /order/cart/{cartId}/nutanix
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get information about the options of a Nutanix
+                     * GET /order/cart/{cartId}/nutanix/options
+                     */
+                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new Nutanix option in your cart
+                     * POST /order/cart/{cartId}/nutanix/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
             office365: {
                 /**
                  * Get informations about Office 365 licenses
@@ -2831,6 +3148,38 @@ export interface Order {
                     /**
                      * Post a new Office 365 option in your cart
                      * POST /order/cart/{cartId}/office365/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
+            officePrepaid: {
+                /**
+                 * Get informations about a officePrepaid
+                 * GET /order/cart/{cartId}/officePrepaid
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new officePrepaid item in your cart
+                 * POST /order/cart/{cartId}/officePrepaid
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get informations about officePrepaid options
+                     * GET /order/cart/{cartId}/officePrepaid/options
+                     */
+                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new officePrepaid option in your cart
+                     * POST /order/cart/{cartId}/officePrepaid/options
                      */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
                     /**
@@ -3793,7 +4142,7 @@ export interface Order {
                  * Retrieve information of dedicated server catalog
                  * GET /order/catalog/formatted/dedicated
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.dedicated.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -3815,7 +4164,7 @@ export interface Order {
                  * Retrieve information of dedicated discover offer server catalog
                  * GET /order/catalog/formatted/discover
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.dedicated.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -4225,6 +4574,17 @@ export interface Order {
                 /**
                  * Retrieve office365Prepaid catalog
                  * GET /order/catalog/public/office365Prepaid
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            officePrepaid: {
+                /**
+                 * Retrieve Office Prepaid catalog
+                 * GET /order/catalog/public/officePrepaid
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
