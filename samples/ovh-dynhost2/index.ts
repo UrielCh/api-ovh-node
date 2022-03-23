@@ -2,15 +2,15 @@ import ApiDomain, { Domain, domain } from "@ovh-api/domain";
 import Ovh from "@ovh-api/api";
 import http from 'http';
 import https from 'https';
-import chalk from 'chalk';
+import pc from "picocolors"
 import { networkInterfaces, EOL } from 'os';
 import fs from 'fs';
 import { Command, Option } from "commander";
 import pMap from 'p-map';
 import child_process from 'child_process';
+// import * as internalIP from 'internal-ip';
 
 const program = new Command();
-
 
 interface MyOption {
     /**
@@ -130,7 +130,7 @@ class DynHost {
                 // discard it
                 urls.splice(index, 1);
                 // download it
-                console.log(`Detecting IP using ${chalk.green(url)} ${this.options.curl ? 'With CURL' : ''}`);
+                console.log(`Detecting IP using ${pc.green(url)} ${this.options.curl ? 'With CURL' : ''}`);
                 let text = '';
                 if (!this.options.curl) {
                     text = await this.doGet(url, ipVersion);
@@ -162,7 +162,7 @@ class DynHost {
 
         if (!token) {
             token = "token.json";
-            console.error(`Token file path ${chalk.redBright('not')} provided using ${chalk.green(token)}`);
+            console.error(`Token file path ${pc.red(pc.bold('not'))} provided using ${pc.green(token)}`);
         }
 
         if (this.options.credential) {
@@ -231,7 +231,7 @@ class DynHost {
 
     async removeEntrys(service: string, entrys: domain.zone.Record[]): Promise<void> {
         for (const rec of entrys) {
-            console.log(`Removing old ${chalk.green(rec.subDomain)}.${chalk.yellow(service)} Type ${chalk.yellow(rec.fieldType)} TTL: ${chalk.yellow(rec.ttl)}`);
+            console.log(`Removing old ${pc.green(rec.subDomain)}.${pc.yellow(service)} Type ${pc.yellow(rec.fieldType)} TTL: ${pc.yellow(rec.ttl)}`);
             const api = await this.getApiDomain();
             await api.zone.$(service).record.$(rec.id).$delete();
         }
@@ -259,7 +259,7 @@ class DynHost {
         if (this.options.standard || !this.options.dynhost) {
             // droping old created dynhost
             for (const subId of subidDyn) {
-                console.log(`Removing dynHost ${chalk.green(subDomain)}.${chalk.yellow(service)} id: ${chalk.yellow(subId)}`);
+                console.log(`Removing dynHost ${pc.green(subDomain)}.${pc.yellow(service)} id: ${pc.yellow(subId)}`);
                 await recordApiDyn.$(subId).$delete();
             }
 
@@ -275,21 +275,21 @@ class DynHost {
                 /**
                  * A entry is missing creating one
                  */
-                console.error(`${chalk.whiteBright(fieldType)} ${chalk.green(subDomain)}.${chalk.yellow(service)} do not exists, creating it ${chalk.redBright('now')}!`);
+                console.error(`${pc.bold(pc.white(fieldType))} ${pc.green(subDomain)}.${pc.yellow(service)} do not exists, creating it ${pc.bold(pc.red('now'))}!`);
                 await api.zone.$(service).record.$post({ fieldType, subDomain, target: ip, ttl: 60 });
-                console.log(`${chalk.greenBright('Success')} ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('have IP')}: ${chalk.yellow(ip)}`);
+                console.log(`${pc.bold(pc.green('Success'))} ${pc.green(subDomain)}.${pc.yellow(service)} ${pc.bold(pc.white('have IP'))}: ${pc.yellow(ip)}`);
                 this.refreshSet.add(service);
             } else {
                 /**
                  * check and update current A entry if needed
                  */
                 if (entry.target != ip || entry.ttl != 60) {
-                    console.log(`Updating ${chalk.whiteBright(fieldType)}  ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('from')} ${chalk.yellow(entry.target)} TTL:${entry.ttl} ${chalk.whiteBright('to')} ${chalk.yellow(ip)} TTL:60`);
+                    console.log(`Updating ${pc.bold(pc.white(fieldType))}  ${pc.green(subDomain)}.${pc.yellow(service)} ${pc.bold(pc.white('from'))} ${pc.yellow(entry.target)} TTL:${entry.ttl} ${pc.bold(pc.white('to'))} ${pc.yellow(ip)} TTL:60`);
                     await api.zone.$(service).record.$(entrys[0].id).$put({ target: ip, ttl: 60 });
-                    console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.green('done')}.`);
+                    console.log(`Updating ${pc.green(subDomain)}.${pc.yellow(service)} ${pc.green('done')}.`);
                     this.refreshSet.add(service);
                 } else {
-                    console.log(`No change ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('Keep IP')} ${chalk.yellow(entry.target)}`);
+                    console.log(`No change ${pc.green(subDomain)}.${pc.yellow(service)} ${pc.bold(pc.white('Keep IP'))} ${pc.yellow(entry.target)}`);
                 }
             }
         } else {
@@ -306,9 +306,9 @@ class DynHost {
                 /**
                  * create a new dynHost entry
                  */
-                console.error(`${chalk.green(subDomain)}.${chalk.yellow(service)} do not exists creating it now.`);
+                console.error(`${pc.green(subDomain)}.${pc.yellow(service)} do not exists creating it now.`);
                 await recordApiDyn.$post({ ip, subDomain });
-                console.log(`${chalk.greenBright('Success')} ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('have IP')}: ${chalk.yellow(ip)}`);
+                console.log(`${pc.bold(pc.green('Success'))} ${pc.green(subDomain)}.${pc.yellow(service)} ${pc.bold(pc.white('have IP'))}: ${pc.yellow(ip)}`);
                 this.refreshSet.add(service);
             } else {
                 /**
@@ -316,12 +316,12 @@ class DynHost {
                  */
                 const old = await recordApiDyn.$(subidDyn[0]).$get();
                 if (old.ip != ip) {
-                    console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('from')} ${chalk.yellow(old.ip)} ${chalk.whiteBright('to')} ${chalk.yellow(ip)}`);
+                    console.log(`Updating ${pc.green(subDomain)}.${pc.yellow(service)} ${pc.bold(pc.white('from'))} ${pc.yellow(old.ip)} ${pc.bold(pc.white('to'))} ${pc.yellow(ip)}`);
                     await recordApiDyn.$(subidDyn[0]).$put({ ip });
-                    console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.green('done')}.`);
+                    console.log(`Updating ${pc.green(subDomain)}.${pc.yellow(service)} ${pc.green('done')}.`);
                     this.refreshSet.add(service);
                 } else {
-                    console.log(`No change ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('Keep IP')} ${chalk.yellow(old.ip)}`);
+                    console.log(`No change ${pc.green(subDomain)}.${pc.yellow(service)} ${pc.bold(pc.white('Keep IP'))} ${pc.yellow(old.ip)}`);
                 }
             }
         }
@@ -341,13 +341,13 @@ class DynHost {
             let nets = netss[local];
             if (nets) {
                 nets = nets.filter(net => net.address)
-                console.log(`Replacing local ${chalk.green(local)} by ${chalk.yellow(nets[0].address)}`);
+                console.log(`Replacing local ${pc.green(local)} by ${pc.yellow(nets[0].address)}`);
                 local = nets[0].address;
             }
         }
 
         if (!domain || domain.length === 0) {
-            console.error(`${chalk.redBright('warning')}: you should provide at least one dyn domain, use -d parameter`);
+            console.error(`${pc.bold(pc.red('warning'))}: you should provide at least one dyn domain, use -d parameter`);
         }
 
 
@@ -369,7 +369,7 @@ class DynHost {
                 url.push("https://myexternalip.com/raw"); // V4
             }
             const ip = await this.detectPublicIpFrom(url, 4);
-            console.log(`Your IP is ${chalk.yellow(ip)}`);
+            console.log(`Your IP is ${pc.yellow(ip)}`);
             for (const dom of domain) {
                 await this.updateIP(dom, ip);
             }
@@ -392,7 +392,7 @@ class DynHost {
                 url.push("https://www.showmyip.com/");
             }
             const ip = await this.detectPublicIpFrom(url, 6);
-            console.log(`Your IP is ${chalk.yellow(ip)}`);
+            console.log(`Your IP is ${pc.yellow(ip)}`);
             for (const dom of domain) {
                 await this.updateIP(dom, ip);
             }
@@ -405,12 +405,15 @@ class DynHost {
         const api = await this.getApiDomain();
         for (const service of this.refreshSet) {
             await api.zone.$(service).refresh.$post();
-            console.log(`Refresh ${chalk.yellow(service)} Done`);
+            console.log(`Refresh ${pc.yellow(service)} Done`);
         }
 
     }
 }
-const { version } = require('./package.json');
+const packageData = fs.readFileSync('./package.json', {encoding: 'utf8'})
+const { version } = JSON.parse(packageData);
+
+// import { version } from './package.json';
 
 const append = (value: string, previous: string[]) => { previous.push(value); return previous };
 program.version(version)
@@ -455,5 +458,6 @@ program.command('dump')
         new DynHost().dump();
     });
 
+// const ipV6 = internalIP.v6.sync();
 program.parse();
 

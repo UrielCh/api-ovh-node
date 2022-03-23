@@ -30,9 +30,10 @@
     "dependencies": {
         "@ovh-api/api": "^3.2.7",
         "@ovh-api/domain": "^3.1.26",
-        "chalk": "^4.1.2",
-        "commander": "^8.1.0",
-        "p-map": "4.0.0"
+        "commander": "^9.0.0",
+        "internal-ip": "6.2.0",
+        "p-map": "4.0.0",
+        "picocolors": "^1.0.0"
     },
     "devDependencies": {
         "@types/node": "^17.0.20",
