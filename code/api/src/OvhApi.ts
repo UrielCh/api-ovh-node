@@ -95,6 +95,7 @@
              slotClass: apiOptions.slotClass || undefined,
              endpoint: apiOptions.endpoint || 'ovh-eu',
              keepUnexpectedCredential: apiOptions.keepUnexpectedCredential || false,
+             redirectUrl: apiOptions.redirectUrl || 'http://localhost/',
          };
          this.querySet = apiOptions.saveQuerys ? new Set() : null;
          /**
@@ -243,6 +244,9 @@
      get keepUnexpectedCredential(): boolean {
          return this.data.keepUnexpectedCredential;
      }
+     get redirectUrl(): string {
+         return this.data.redirectUrl;
+     }
      /**
       * emited before each request
       */
@@ -340,7 +344,7 @@
       * stat credential authentification
       * @param redirection optional redirecton for auth page.
       */
-     public async queryForCredencial(redirection?: string): Promise<OvhCredentialNew> {
+     public async queryForCredencial(redirection: string): Promise<OvhCredentialNew> {
          const method = 'POST';
          const path = '/auth/credential';
          try {

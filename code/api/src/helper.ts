@@ -151,7 +151,7 @@ export class RequestContext {
             api.updatingCert = new Promise((resolve) => { api.updatingCertResolve = resolve });
             let newCert: OvhCredentialNew;
             try {
-                newCert = await api.queryForCredencial()
+                newCert = await api.queryForCredencial(this.api.redirectUrl)
             } catch (e) {
                 const err = e as Error;
                 // other unised headers: X-IPLB-Instance: number

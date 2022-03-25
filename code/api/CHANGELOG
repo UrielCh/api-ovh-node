@@ -1,5 +1,7 @@
 # changelog
 
+V 3.2.9
+- redirectUrl is now mandatory in ovh new certificat request.
 V 3.2.8
 - Improve OVHError adding access to the OvhApi object.
 - Improve NOT_GRANTED_CALL error by listing current allow rules.

@@ -51,7 +51,7 @@ export interface OvhParamsFull {
      * certCache filename used to store generated certificate on disque.
      * @deprectated replaced by certCacheFile
      */
-     certCache?: string;
+    certCache?: string;
      /**
      * certCacheFile filename used to store generated certificate on disque.
      */
@@ -67,8 +67,8 @@ export interface OvhParamsFull {
      * work with nichandle param, if enabled any unexpected certificat will be stored, instead of logged out.
      * @since V3.2.0
      */
-     keepUnexpectedCredential: boolean;
-     /**
+    keepUnexpectedCredential: boolean;
+    /**
      * time to wait in ms before a retry
      * default is 100 ms, the time to wait is multiplyed by the numbers of retries
      */
@@ -96,4 +96,10 @@ export interface OvhParamsFull {
      * overwrite cache Slot implementation.
      */
     slotClass: SlotConstructor | undefined;
+    /**
+     * Redirection url to use confirme cert validation
+     * 
+     * since march 2020, Ovh requiere to use a redirect url to confirm a cert validation
+     */
+    redirectUrl: string;
 }
