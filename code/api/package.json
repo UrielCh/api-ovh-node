@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/api",
   "description": "Ovh api connector implementation",
-  "version": "3.2.8",
+  "version": "3.2.9",
   "keywords": [
     "ovh",
     "ovhCloud",
