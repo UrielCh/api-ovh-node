@@ -50,9 +50,9 @@ async function createovhIni(dest: string) {
   if (dest.startsWith(home)) {
     destShort = '~' + dest.substring(home.length);
   }
-  const AUTO = `Let me create the file ${destShort}.`;
+  const AUTO = `Let this script create the file ${destShort}.`;
   const SHELL = 'Print a bash conmmands to create the file.';
-  const MANUAL = 'Just print the file.';
+  const MANUAL = 'Just print the configuration file.';
 
   const resp = await inquirer.prompt<{ write: string }>([{
     type: 'list', name: 'write', message: 'How to process the certificat ?',
@@ -92,7 +92,7 @@ async function createovhIni(dest: string) {
 }
 
 async function main() {
-  const dest = path.resolve(os.homedir(), '.secrets', 'ovh.ini');
+  const dest = path.resolve(os.homedir(), '.secrets', 'certbot', 'ovh.ini');
   try {
     await fs.promises.stat(dest)
     console.log(`${dest} exists on this system, skip generation`);
