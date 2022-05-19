@@ -7,6 +7,7 @@ import Bluebird from 'bluebird';
 import rimraf from 'rimraf'
 import { IEndpoint } from './endpoints';
 import { formatUpperCamlCase, formatLowerCamlCase } from './utils';
+import { EOL } from 'os';
 
 const pathToApiName = (api: string) => api.substring(1).replace(/\//g, '-').replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`).replace(/^-/, '');
 
@@ -186,9 +187,7 @@ export class RegionGenerator {
         content.push('}');
         content.push('```');
         content.push('');
-        // import { EOL } from 'os';
-        await fs.promises.writeFile(fn, content.join('\n'));
-
+        await fs.promises.writeFile(fn, content.join(EOL));
     }
 
 
