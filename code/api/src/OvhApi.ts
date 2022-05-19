@@ -95,7 +95,7 @@
              slotClass: apiOptions.slotClass || undefined,
              endpoint: apiOptions.endpoint || 'ovh-eu',
              keepUnexpectedCredential: apiOptions.keepUnexpectedCredential || false,
-             redirectUrl: apiOptions.redirectUrl || 'http://localhost/',
+             redirectUrl: apiOptions.redirectUrl || 'https://www.ovhcloud.com/',
          };
          this.querySet = apiOptions.saveQuerys ? new Set() : null;
          /**
