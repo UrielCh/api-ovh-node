@@ -1402,41 +1402,41 @@ export const schema: Schema = {
       "path": "/me/agreements/{id}/contract"
     },
     {
-      "description": "List the api.Application objects",
+      "description": "Manage your API Applications",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "List of your Api Application",
+          "description": "Retrieve all applications",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
           "responseType": "long[]",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         }
       ],
       "path": "/me/api/application"
     },
     {
-      "description": "API Application",
+      "description": "Manage your API Applications",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Remove this application. It will revoke all credential belonging to this application.",
+          "description": "Delete an application. It will revoke all credential belonging to this application",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "",
+              "description": "Application ID",
               "fullType": "long",
               "name": "applicationId",
               "paramType": "path",
@@ -1445,52 +1445,52 @@ export const schema: Schema = {
           ],
           "responseType": "void",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Get this object properties",
+          "description": "Retrieve information about an application",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "",
+              "description": "Application ID",
               "fullType": "long",
               "name": "applicationId",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "api.Application",
+          "responseType": "auth.ApiApplication",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         }
       ],
       "path": "/me/api/application/{applicationId}"
     },
     {
-      "description": "List the api.Credential objects",
+      "description": "Manage your API Credentials",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "List of your Api Credentials",
+          "description": "Retrieve all credentials",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Filter the value of applicationId property (like)",
+              "description": "Filter by applicationId",
               "fullType": "long",
               "name": "applicationId",
               "paramType": "query",
@@ -1498,7 +1498,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "auth.CredentialStateEnum",
-              "description": "Filter the value of status property (=)",
+              "description": "Filter by status",
               "fullType": "auth.CredentialStateEnum",
               "name": "status",
               "paramType": "query",
@@ -1507,28 +1507,28 @@ export const schema: Schema = {
           ],
           "responseType": "long[]",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         }
       ],
       "path": "/me/api/credential"
     },
     {
-      "description": "API Credential",
+      "description": "Manage your API Credentials",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Remove this credential",
+          "description": "Delete a credential",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "",
+              "description": "Credential ID",
               "fullType": "long",
               "name": "credentialId",
               "paramType": "path",
@@ -1537,53 +1537,53 @@ export const schema: Schema = {
           ],
           "responseType": "void",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Get this object properties",
+          "description": "Retrieve information about a credential",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "",
+              "description": "Credential ID",
               "fullType": "long",
               "name": "credentialId",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "api.Credential",
+          "responseType": "auth.ApiCredential",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Alter this object properties",
+          "description": "Edit a credential",
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "api.Credential",
-              "description": "New object properties",
-              "fullType": "api.Credential",
+              "dataType": "auth.ApiCredential",
+              "description": "Request Body",
+              "fullType": "auth.ApiCredential",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "",
+              "description": "Credential ID",
               "fullType": "long",
               "name": "credentialId",
               "paramType": "path",
@@ -1592,38 +1592,38 @@ export const schema: Schema = {
           ],
           "responseType": "void",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         }
       ],
       "path": "/me/api/credential/{credentialId}"
     },
     {
-      "description": "API Application",
+      "description": "Get associated application",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Get this object properties",
+          "description": "Get associated application",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "",
+              "description": "Credential ID",
               "fullType": "long",
               "name": "credentialId",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "api.Application",
+          "responseType": "auth.ApiApplication",
           "scopes": [
-            "all",
-            "account/all"
+            "account/all",
+            "all"
           ]
         }
       ],
@@ -2551,6 +2551,36 @@ export const schema: Schema = {
         }
       ],
       "path": "/me/billing/invoicesByPostalMail"
+    },
+    {
+      "description": "Get your Bring your own IP token",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get your Bring your own IP token",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ip.CampusEnum",
+              "description": "Campus where you plan to bring your own IP range in. See /ip/campus to get more details.",
+              "fullType": "ip.CampusEnum",
+              "name": "campus",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
+        }
+      ],
+      "path": "/me/bringYourOwnIp/token"
     },
     {
       "description": "Get all certificates of the account",
@@ -10972,23 +11002,165 @@ export const schema: Schema = {
       "namespace": "audit"
     },
     "auth.AccessRule": {
-      "description": "Access rule required for the application",
+      "description": "Access rule allowed to an application",
       "id": "AccessRule",
       "namespace": "auth",
       "properties": {
         "method": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Allowed Method",
+          "fullType": "auth.HTTPMethodEnum",
+          "readOnly": true,
           "required": false,
-          "type": "http.MethodEnum"
+          "type": "auth.HTTPMethodEnum"
         },
         "path": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Allowed path",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
       }
+    },
+    "auth.ApiApplication": {
+      "description": "API Application",
+      "id": "ApiApplication",
+      "namespace": "auth",
+      "properties": {
+        "applicationId": {
+          "canBeNull": false,
+          "description": "ID of this Application",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "applicationKey": {
+          "canBeNull": false,
+          "description": "Key of this application",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of this application",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of this application",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of this application",
+          "fullType": "auth.ApplicationStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "auth.ApplicationStatusEnum"
+        }
+      }
+    },
+    "auth.ApiCredential": {
+      "description": "API Credential",
+      "id": "ApiCredential",
+      "namespace": "auth",
+      "properties": {
+        "allowedIPs": {
+          "canBeNull": true,
+          "description": "If defined, list of ip blocks which are allowed to call API with this credential",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
+        },
+        "applicationId": {
+          "canBeNull": false,
+          "description": "ID of associated API Application",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "creation": {
+          "canBeNull": false,
+          "description": "Creation date of this credential",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "credentialId": {
+          "canBeNull": false,
+          "description": "ID of this credential",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "expiration": {
+          "canBeNull": true,
+          "description": "Expiration date of this credential",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lastUse": {
+          "canBeNull": true,
+          "description": "Last use date of this credential",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "ovhSupport": {
+          "canBeNull": false,
+          "description": "States whether this credential has been created by yourself or by the OVH support team",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "rules": {
+          "canBeNull": false,
+          "description": "API routes allowed to this credential",
+          "fullType": "auth.AccessRule[]",
+          "readOnly": true,
+          "required": false,
+          "type": "auth.AccessRule[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "State of to this credential",
+          "fullType": "auth.CredentialStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "auth.CredentialStateEnum"
+        }
+      }
+    },
+    "auth.ApplicationStatusEnum": {
+      "description": "All states an API Application can be in",
+      "enum": [
+        "active",
+        "blocked",
+        "inactive",
+        "trusted"
+      ],
+      "enumType": "string",
+      "id": "ApplicationStatusEnum",
+      "namespace": "auth"
     },
     "auth.CredentialStateEnum": {
       "description": "All states a Credential can be in",
@@ -11000,6 +11172,18 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "CredentialStateEnum",
+      "namespace": "auth"
+    },
+    "auth.HTTPMethodEnum": {
+      "description": "All HTTP methods available",
+      "enum": [
+        "DELETE",
+        "GET",
+        "POST",
+        "PUT"
+      ],
+      "enumType": "string",
+      "id": "HTTPMethodEnum",
       "namespace": "auth"
     },
     "billing.ArchiveTypeEnum": {
@@ -15009,7 +15193,8 @@ export const schema: Schema = {
         "1",
         "10",
         "5",
-        "6"
+        "6",
+        "7"
       ],
       "enumType": "string",
       "id": "PartitionRaidEnum",

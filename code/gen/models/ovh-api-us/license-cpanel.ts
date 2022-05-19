@@ -541,6 +541,7 @@ export const schema: Schema = {
         "cpanel-license-version-11-for-virtuozzo",
         "cpanel-license-version-11-for-vps",
         "version-admin-cloud",
+        "version-plus-cloud",
         "version-premier-cloud-100",
         "version-premier-cloud-1000",
         "version-premier-cloud-10000",
@@ -790,6 +791,8 @@ export const schema: Schema = {
       "enum": [
         "cpanel-license-admin-cloud-accounts",
         "cpanel-license-admin-cloud_agora-accounts",
+        "cpanel-license-plus-cloud-accounts",
+        "cpanel-license-plus-cloud_agora-accounts",
         "cpanel-license-premier-cloud-100-accounts",
         "cpanel-license-premier-cloud-1000-accounts",
         "cpanel-license-premier-cloud-10000-accounts",

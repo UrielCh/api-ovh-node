@@ -616,6 +616,17 @@ export interface Ip {
      * Controle cache
      */
     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    campus: {
+        /**
+         * Get IP campuses
+         * GET /ip/campus
+         */
+        $get(): Promise<ip.Campus[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    }
     loadBalancing: {
         /**
          * List available services

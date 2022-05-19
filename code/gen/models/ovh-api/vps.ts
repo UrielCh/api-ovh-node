@@ -1454,8 +1454,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-05-01T10:00:00+01:00",
+            "deprecatedDate": "2022-04-01T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/vps/{serviceName}/migration2018",
+            "value": "DEPRECATED"
           },
           "description": "Get information on a possible migration of a VPS 2016 to VPS 2020",
           "httpMethod": "GET",
@@ -1478,8 +1481,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-05-01T10:00:00+01:00",
+            "deprecatedDate": "2022-04-01T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/vps/{serviceName}/migration2018",
+            "value": "DEPRECATED"
           },
           "description": "Schedule the migration of a VPS 2016 to VPS 2020",
           "httpMethod": "POST",
@@ -1502,6 +1508,68 @@ export const schema: Schema = {
         }
       ],
       "path": "/vps/{serviceName}/migration2016"
+    },
+    {
+      "description": "migration2018 operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get information on a possible migration of a VPS 2016/2018 to VPS 2020",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.migration.VPS2018to2020",
+          "scopes": [
+            "all",
+            "product/vps/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Schedule the migration of a VPS 2016/2018 to VPS 2020",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Choosen plan for migration",
+              "fullType": "string",
+              "name": "newPlan",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.Task",
+          "scopes": [
+            "all",
+            "product/vps/all"
+          ]
+        }
+      ],
+      "path": "/vps/{serviceName}/migration2018"
     },
     {
       "description": "models operations",
@@ -5296,6 +5364,21 @@ export const schema: Schema = {
       "id": "TypeEnum",
       "namespace": "vps.ip"
     },
+    "vps.migration.DatacenterEnum": {
+      "description": "All datacenter of vps migration",
+      "enum": [
+        "BHS",
+        "GRA",
+        "SBG",
+        "SGP",
+        "SYD",
+        "UK",
+        "WAW"
+      ],
+      "enumType": "string",
+      "id": "DatacenterEnum",
+      "namespace": "vps.migration"
+    },
     "vps.migration.Migration": {
       "description": "Description not available",
       "id": "Migration",
@@ -5322,6 +5405,41 @@ export const schema: Schema = {
     "vps.migration.OptionMapping2016": {
       "description": "Mapping between a VPS 2016 option code and a VPS 2020 option code",
       "id": "OptionMapping2016",
+      "namespace": "vps.migration",
+      "properties": {
+        "currentPlan": {
+          "canBeNull": false,
+          "description": "VPS option current plan code",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "newPlan": {
+          "canBeNull": false,
+          "description": "New VPS option plan code after migration",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "options": {
+          "canBeNull": false,
+          "description": "Mapping of VPS options of option from VPS 2016 to VPS 2020",
+          "readOnly": false,
+          "required": false,
+          "type": "vps.migration.OptionOptionMapping2016[]"
+        },
+        "product": {
+          "canBeNull": false,
+          "description": "VPS option product",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "vps.migration.OptionOptionMapping2016": {
+      "description": "Mapping between a VPS 2016 option code and a VPS 2020 option code",
+      "id": "OptionOptionMapping2016",
       "namespace": "vps.migration",
       "properties": {
         "currentPlan": {
@@ -5377,7 +5495,7 @@ export const schema: Schema = {
           "description": "Datacenter of the migration",
           "readOnly": false,
           "required": false,
-          "type": "string"
+          "type": "vps.migration.DatacenterEnum"
         },
         "date": {
           "canBeNull": true,
@@ -5413,6 +5531,76 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "vps.migration.StatusEnum"
+        }
+      }
+    },
+    "vps.migration.VPS2018to2020": {
+      "description": "A structure describing a migration from VPS 2016/2018 to VPS 2020",
+      "id": "VPS2018to2020",
+      "namespace": "vps.migration",
+      "properties": {
+        "datacenter": {
+          "canBeNull": false,
+          "description": "Datacenter of the migration",
+          "readOnly": false,
+          "required": false,
+          "type": "vps.migration.DatacenterEnum"
+        },
+        "date": {
+          "canBeNull": true,
+          "description": "Migration start date",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "plans": {
+          "canBeNull": false,
+          "description": "List of available plans to migrate",
+          "readOnly": false,
+          "required": false,
+          "type": "vps.migration.VPS2018to2020Plan[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the migration task",
+          "readOnly": false,
+          "required": false,
+          "type": "vps.migration.StatusEnum"
+        }
+      }
+    },
+    "vps.migration.VPS2018to2020Plan": {
+      "description": "A structure describing a migration plan from VPS 2016/2018 to VPS 2020",
+      "id": "VPS2018to2020Plan",
+      "namespace": "vps.migration",
+      "properties": {
+        "currentPlan": {
+          "canBeNull": false,
+          "description": "VPS current plan code",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "newPlan": {
+          "canBeNull": false,
+          "description": "New VPS plan code after migration",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "options": {
+          "canBeNull": false,
+          "description": "Mapping of VPS options from VPS 2016 to VPS 2020",
+          "readOnly": false,
+          "required": false,
+          "type": "vps.migration.OptionMapping2016[]"
+        },
+        "product": {
+          "canBeNull": false,
+          "description": "VPS product",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },

@@ -97,47 +97,6 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}"
     },
     {
-      "description": "activateZone operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15T00:00:00+01:00",
-            "deprecatedDate": "2019-12-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/dns",
-            "value": "DEPRECATED"
-          },
-          "description": "Activate the DNS zone for this domain",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "boolean",
-              "description": "Create only mandatory records",
-              "fullType": "boolean",
-              "name": "minimized",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your domain",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
-        }
-      ],
-      "path": "/domain/{serviceName}/activateZone"
-    },
-    {
       "description": "",
       "operations": [
         {
@@ -497,55 +456,14 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/dsRecord/{id}"
     },
     {
-      "description": "refresh operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-02-01T00:00:00+01:00",
-            "deprecatedDate": "2018-11-19T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/domain/{serviceName}/configurations/obfuscatedEmails/refresh",
-            "value": "DEPRECATED"
-          },
-          "description": "Regenerate the obfuscated email address",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "domain.DomainContactTypeEnum[]",
-              "description": "Contact type",
-              "fullType": "domain.DomainContactTypeEnum[]",
-              "name": "contactType",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your domain",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
-        }
-      ],
-      "path": "/domain/{serviceName}/email/obfuscated/refresh"
-    },
-    {
-      "description": "List the domain.GlueRecord objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List of glue record",
+          "description": "List of glue records",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -559,7 +477,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of host property (like)",
+              "description": "Filter the value of host property",
               "fullType": "string",
               "name": "host",
               "paramType": "query",
@@ -582,18 +500,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Host of the glue record",
-              "fullType": "string",
-              "name": "host",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "ip[]",
-              "description": "Ips of the glue record",
-              "fullType": "ip[]",
-              "name": "ips",
+              "dataType": "domain.glueRecord.CreatePayload",
+              "description": "Request Body",
+              "fullType": "domain.glueRecord.CreatePayload",
               "paramType": "body",
               "required": true
             },
@@ -616,7 +525,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/glueRecord"
     },
     {
-      "description": "Glue record",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -629,7 +538,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Host of the glue record",
+              "description": "Host",
               "fullType": "string",
               "name": "host",
               "paramType": "path",
@@ -655,13 +564,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get this glue record",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Host of the glue record",
+              "description": "Host",
               "fullType": "string",
               "name": "host",
               "paramType": "path",
@@ -676,7 +585,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.GlueRecord",
+          "responseType": "domain.glueRecord.GlueRecord",
           "scopes": [
             "all",
             "product/domain/all"
@@ -686,7 +595,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/glueRecord/{host}"
     },
     {
-      "description": "update operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -698,16 +607,15 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip[]",
-              "description": "Ips of the glue record",
-              "fullType": "ip[]",
-              "name": "ips",
+              "dataType": "domain.glueRecord.GlueRecord",
+              "description": "Request Body",
+              "fullType": "domain.glueRecord.GlueRecord",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Host of the glue record",
+              "description": "Host",
               "fullType": "string",
               "name": "host",
               "paramType": "path",
@@ -732,7 +640,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/glueRecord/{host}/update"
     },
     {
-      "description": "List the domain.CurrentNameServer objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -768,10 +676,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "domain.DomainNs[]",
-              "description": "New name server",
-              "fullType": "domain.DomainNs[]",
-              "name": "nameServer",
+              "dataType": "domain.nameServer.CreatePayload",
+              "description": "Request Body",
+              "fullType": "domain.nameServer.CreatePayload",
               "paramType": "body",
               "required": true
             },
@@ -794,7 +701,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/nameServer"
     },
     {
-      "description": "CurrentNameServer",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -807,7 +714,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -833,13 +740,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get this name server configuration",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -854,7 +761,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.CurrentNameServer",
+          "responseType": "domain.nameServer.FullNameServer",
           "scopes": [
             "all",
             "product/domain/all"
@@ -864,7 +771,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/nameServer/{id}"
     },
     {
-      "description": "status operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -877,7 +784,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -892,7 +799,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.DomainNsStatus",
+          "responseType": "domain.nameServer.NameServerStatus",
           "scopes": [
             "all",
             "product/domain/all"
@@ -912,7 +819,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -927,7 +834,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.DomainNsStatus",
+          "responseType": "domain.nameServer.NameServerStatus",
           "scopes": [
             "all",
             "product/domain/all"
@@ -937,7 +844,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/nameServer/{id}/status"
     },
     {
-      "description": "update operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -949,10 +856,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "domain.DomainNs[]",
-              "description": "New name servers",
-              "fullType": "domain.DomainNs[]",
-              "name": "nameServers",
+              "dataType": "domain.nameServer.UpdatePayload",
+              "description": "Request Body",
+              "fullType": "domain.nameServer.UpdatePayload",
               "paramType": "body",
               "required": true
             },
@@ -975,14 +881,14 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/nameServers/update"
     },
     {
-      "description": "List the domain.Option objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List of domain options",
+          "description": "List domain options",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1005,20 +911,20 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/option"
     },
     {
-      "description": "Information about the options of a domain",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Release a given option",
+          "description": "Remove a given option",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "domain.DomainOptionEnum",
-              "description": "The option name",
+              "description": "Option",
               "fullType": "domain.DomainOptionEnum",
               "name": "option",
               "paramType": "path",
@@ -1044,13 +950,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get details on this domain option",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "domain.DomainOptionEnum",
-              "description": "The option name",
+              "description": "Option",
               "fullType": "domain.DomainOptionEnum",
               "name": "option",
               "paramType": "path",
@@ -1103,6 +1009,43 @@ export const schema: Schema = {
         }
       ],
       "path": "/domain/{serviceName}/options"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Approve Outgoing Transfer for a domain",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "domain.outgoingTransfer.Approve",
+              "description": "Request Body",
+              "fullType": "domain.outgoingTransfer.Approve",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your domain",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/domain/all"
+          ]
+        }
+      ],
+      "path": "/domain/{serviceName}/outgoingTransfer/approve"
     },
     {
       "description": "List the domain.Owo objects",
@@ -1877,119 +1820,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/domain/data/extension"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-03-31T00:00:00+01:00",
-            "deprecatedDate": "2022-01-24T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "description": "Retrieve all your Pro Contact",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-03-31T00:00:00+01:00",
-            "deprecatedDate": "2022-01-24T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "description": "Post new information about .pro contact information",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Authority that certify your profesional status",
-              "fullType": "string",
-              "name": "authority",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Website of the authority that certify your profesional status",
-              "fullType": "string",
-              "name": "authorityWebsite",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Contact ID that refer to that .pro information",
-              "fullType": "long",
-              "name": "contactId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Description of your job",
-              "fullType": "string",
-              "name": "jobDescription",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "License number given by the authority",
-              "fullType": "string",
-              "name": "licenseNumber",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "domain.data.ProContact",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
-        }
-      ],
-      "path": "/domain/data/proContact"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-03-31T00:00:00+01:00",
-            "deprecatedDate": "2022-01-24T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "description": "Retrieve information about a Pro Contact",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "ProContact ID",
-              "fullType": "long",
-              "name": "proContactId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "domain.data.ProContact",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
-        }
-      ],
-      "path": "/domain/data/proContact/{proContactId}"
     },
     {
       "description": "Operations on Signed Marked Definition (SMD) files",
@@ -4357,6 +4187,16 @@ export const schema: Schema = {
       "id": "ActionEnum",
       "namespace": "domain"
     },
+    "domain.ApproveTypeEnum": {
+      "description": "Type of claim notice",
+      "enum": [
+        "accept",
+        "reject"
+      ],
+      "enumType": "string",
+      "id": "ApproveTypeEnum",
+      "namespace": "domain"
+    },
     "domain.Contact": {
       "description": "A contact contains the personal data of a user",
       "id": "Contact",
@@ -4754,66 +4594,6 @@ export const schema: Schema = {
         }
       }
     },
-    "domain.ContactAllTypesEnum": {
-      "description": "Contact type fields",
-      "enum": [
-        "admin",
-        "all",
-        "billing",
-        "owner",
-        "tech"
-      ],
-      "enumType": "string",
-      "id": "ContactAllTypesEnum",
-      "namespace": "domain"
-    },
-    "domain.CurrentNameServer": {
-      "description": "CurrentNameServer",
-      "id": "CurrentNameServer",
-      "namespace": "domain",
-      "properties": {
-        "host": {
-          "canBeNull": false,
-          "description": "Host of the name server",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Id of the name server",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "ip": {
-          "canBeNull": true,
-          "description": "Ip of the name server",
-          "fullType": "ip",
-          "readOnly": true,
-          "required": false,
-          "type": "ip"
-        },
-        "isUsed": {
-          "canBeNull": false,
-          "description": "isUsed flag of the name server",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "toDelete": {
-          "canBeNull": false,
-          "description": "toDelete flag of the name server",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        }
-      }
-    },
     "domain.Data": {
       "description": "A domain data",
       "id": "Data",
@@ -4961,6 +4741,14 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
+        "hostSupported": {
+          "canBeNull": false,
+          "description": "Does the registry support hosts as independent entities",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "lastUpdate": {
           "canBeNull": false,
           "description": "Last update date",
@@ -5019,18 +4807,6 @@ export const schema: Schema = {
         }
       }
     },
-    "domain.DomainContactTypeEnum": {
-      "description": "All contact type for a domain",
-      "enum": [
-        "admin",
-        "billing",
-        "owner",
-        "tech"
-      ],
-      "enumType": "string",
-      "id": "DomainContactTypeEnum",
-      "namespace": "domain"
-    },
     "domain.DomainLockStatusEnum": {
       "description": "Domain lock status",
       "enum": [
@@ -5043,65 +4819,6 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "DomainLockStatusEnum",
       "namespace": "domain"
-    },
-    "domain.DomainNs": {
-      "description": "Name server",
-      "id": "DomainNs",
-      "namespace": "domain",
-      "properties": {
-        "host": {
-          "canBeNull": false,
-          "description": "Host",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "ip": {
-          "canBeNull": true,
-          "description": "Ip",
-          "readOnly": false,
-          "required": false,
-          "type": "ip"
-        }
-      }
-    },
-    "domain.DomainNsStateEnum": {
-      "description": "DNS server state",
-      "enum": [
-        "ko",
-        "ok"
-      ],
-      "enumType": "string",
-      "id": "DomainNsStateEnum",
-      "namespace": "domain"
-    },
-    "domain.DomainNsStatus": {
-      "description": "DNS server status",
-      "id": "DomainNsStatus",
-      "namespace": "domain",
-      "properties": {
-        "state": {
-          "canBeNull": false,
-          "description": "Whether or not the DNS server is working",
-          "readOnly": false,
-          "required": false,
-          "type": "domain.DomainNsStateEnum"
-        },
-        "type": {
-          "canBeNull": false,
-          "description": "Whether or not the DNS server is managed by OVH",
-          "readOnly": false,
-          "required": false,
-          "type": "domain.DomainNsTypeEnum"
-        },
-        "usedSince": {
-          "canBeNull": true,
-          "description": "Date from which the DNS server is used by the domain",
-          "readOnly": false,
-          "required": false,
-          "type": "datetime"
-        }
-      }
     },
     "domain.DomainNsTypeEnum": {
       "description": "DomainNS Type",
@@ -5131,29 +4848,6 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "DomainOptionStateEnum",
       "namespace": "domain"
-    },
-    "domain.GlueRecord": {
-      "description": "Glue record",
-      "id": "GlueRecord",
-      "namespace": "domain",
-      "properties": {
-        "host": {
-          "canBeNull": false,
-          "description": "Host of the glue record",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "ips": {
-          "canBeNull": false,
-          "description": "Ips of the glue record",
-          "fullType": "ip[]",
-          "readOnly": true,
-          "required": false,
-          "type": "ip[]"
-        }
-      }
     },
     "domain.IsForEnum": {
       "description": "Possible purposes of the domain",
@@ -5889,10 +5583,10 @@ export const schema: Schema = {
         "fields": {
           "canBeNull": false,
           "description": "Fields to display publicly on the Whois",
-          "fullType": "domain.configurations.OptinFieldsEnum[]",
+          "fullType": "domain.OptinFieldsEnum[]",
           "readOnly": false,
           "required": false,
-          "type": "domain.configurations.OptinFieldsEnum[]"
+          "type": "domain.OptinFieldsEnum[]"
         },
         "type": {
           "canBeNull": false,
@@ -5903,24 +5597,6 @@ export const schema: Schema = {
           "type": "domain.configurations.ContactTypeEnum"
         }
       }
-    },
-    "domain.configurations.OptinFieldsEnum": {
-      "description": "Whois optin fields",
-      "enum": [
-        "address",
-        "city",
-        "country",
-        "email",
-        "fax",
-        "name",
-        "organisation",
-        "phone",
-        "province",
-        "zip"
-      ],
-      "enumType": "string",
-      "id": "OptinFieldsEnum",
-      "namespace": "domain.configurations"
     },
     "domain.configurations.OptinUpdatePayload": {
       "description": "Payload used to optin the fields of contacts related to a domain name",
@@ -5934,131 +5610,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "domain.configurations.Optin[]"
-        }
-      }
-    },
-    "domain.data.ProContact": {
-      "description": "Representation of an .pro Contact Resource",
-      "id": "ProContact",
-      "namespace": "domain.data",
-      "properties": {
-        "authority": {
-          "canBeNull": false,
-          "description": "Authority that certify your profesional status",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "authorityWebsite": {
-          "canBeNull": false,
-          "description": "Website of the authority that certify your profesional status",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": ".pro Contact ID",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "jobDescription": {
-          "canBeNull": false,
-          "description": "Description of your job",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "licenseNumber": {
-          "canBeNull": false,
-          "description": "License number given by the authority",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "domain.data.Smd": {
-      "description": "Representation of a SMD Resource file",
-      "id": "Smd",
-      "namespace": "domain.data",
-      "properties": {
-        "data": {
-          "canBeNull": false,
-          "description": "SMD file content",
-          "fullType": "text",
-          "readOnly": false,
-          "required": false,
-          "type": "text"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "SMD file ID",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "notAfter": {
-          "canBeNull": true,
-          "description": "Date when information about SMD file aren't valid anymore",
-          "fullType": "datetime",
-          "readOnly": false,
-          "required": false,
-          "type": "datetime"
-        },
-        "notBefore": {
-          "canBeNull": true,
-          "description": "Date before when information about SMD file aren't valid yet",
-          "fullType": "datetime",
-          "readOnly": false,
-          "required": false,
-          "type": "datetime"
-        },
-        "protectedLabels": {
-          "canBeNull": false,
-          "description": "List of the labels that are protected with that SMD file",
-          "fullType": "domain.data.SmdLabel[]",
-          "readOnly": false,
-          "required": false,
-          "type": "domain.data.SmdLabel[]"
-        },
-        "smdId": {
-          "canBeNull": true,
-          "description": "TMCH Internal identifier",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "domain.data.SmdLabel": {
-      "description": "Representation of a protected label",
-      "id": "SmdLabel",
-      "namespace": "domain.data",
-      "properties": {
-        "label": {
-          "canBeNull": false,
-          "description": "Label that is protected",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "trademark": {
-          "canBeNull": false,
-          "description": "Trademark associated to the protected label",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
         }
       }
     },
@@ -6782,6 +6333,14 @@ export const schema: Schema = {
       "id": "OrderLifecycleRegistryConfiguration",
       "namespace": "domain.extensions.registryConfigurations",
       "properties": {
+        "active": {
+          "canBeNull": false,
+          "description": "True if the extension can be ordered from the website",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "maxMonths": {
           "canBeNull": true,
           "description": "The maximum number of months a domain can be ordered for",
@@ -6884,6 +6443,226 @@ export const schema: Schema = {
         }
       }
     },
+    "domain.glueRecord.CreatePayload": {
+      "description": "Payload used to create the glue records of a domain name",
+      "id": "CreatePayload",
+      "namespace": "domain.glueRecord",
+      "properties": {
+        "host": {
+          "canBeNull": false,
+          "description": "Host of the glue record",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "ips": {
+          "canBeNull": false,
+          "description": "IP addresses of the glue record",
+          "fullType": "ip[]",
+          "readOnly": false,
+          "required": true,
+          "type": "ip[]"
+        }
+      }
+    },
+    "domain.glueRecord.GlueRecord": {
+      "description": "Glue record",
+      "id": "GlueRecord",
+      "namespace": "domain.glueRecord",
+      "properties": {
+        "host": {
+          "canBeNull": false,
+          "description": "Host of the glue record",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "ips": {
+          "canBeNull": false,
+          "description": "IP address",
+          "fullType": "ip[]",
+          "readOnly": false,
+          "required": true,
+          "type": "ip[]"
+        }
+      }
+    },
+    "domain.nameServer.CreatePayload": {
+      "description": "Payload used to update the DNS of a domain name",
+      "id": "CreatePayload",
+      "namespace": "domain.nameServer",
+      "properties": {
+        "nameServer": {
+          "canBeNull": false,
+          "description": "Name servers to create",
+          "fullType": "domain.nameServer.NameServer[]",
+          "readOnly": false,
+          "required": true,
+          "type": "domain.nameServer.NameServer[]"
+        }
+      }
+    },
+    "domain.nameServer.FullNameServer": {
+      "description": "Full name server configuration",
+      "id": "FullNameServer",
+      "namespace": "domain.nameServer",
+      "properties": {
+        "host": {
+          "canBeNull": false,
+          "description": "Host of the name server",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the name server",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "ip": {
+          "canBeNull": true,
+          "description": "IP address of the name server",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "isUsed": {
+          "canBeNull": false,
+          "description": "isUsed flag of the name server",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "toDelete": {
+          "canBeNull": false,
+          "description": "toDelete flag of the name server",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "domain.nameServer.NameServer": {
+      "description": "Name server",
+      "id": "NameServer",
+      "namespace": "domain.nameServer",
+      "properties": {
+        "host": {
+          "canBeNull": false,
+          "description": "Host",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "ip": {
+          "canBeNull": true,
+          "description": "IP address",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
+        }
+      }
+    },
+    "domain.nameServer.NameServerStateEnum": {
+      "description": "DNS server state",
+      "enum": [
+        "ko",
+        "ok"
+      ],
+      "enumType": "string",
+      "id": "NameServerStateEnum",
+      "namespace": "domain.nameServer"
+    },
+    "domain.nameServer.NameServerStatus": {
+      "description": "DNS server status",
+      "id": "NameServerStatus",
+      "namespace": "domain.nameServer",
+      "properties": {
+        "state": {
+          "canBeNull": false,
+          "description": "Whether or not the DNS server is working",
+          "fullType": "domain.nameServer.NameServerStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.nameServer.NameServerStateEnum"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Whether or not the DNS server is managed by OVHcloud",
+          "fullType": "domain.nameServer.NameServerTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.nameServer.NameServerTypeEnum"
+        },
+        "usedSince": {
+          "canBeNull": true,
+          "description": "Date from which the DNS server is used by the domain",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "domain.nameServer.NameServerTypeEnum": {
+      "description": "DNS server type",
+      "enum": [
+        "external",
+        "hosted"
+      ],
+      "enumType": "string",
+      "id": "NameServerTypeEnum",
+      "namespace": "domain.nameServer"
+    },
+    "domain.nameServer.UpdatePayload": {
+      "description": "Payload used to update the DNS of a domain name",
+      "id": "UpdatePayload",
+      "namespace": "domain.nameServer",
+      "properties": {
+        "nameServers": {
+          "canBeNull": false,
+          "description": "Name servers to update",
+          "fullType": "domain.nameServer.NameServer[]",
+          "readOnly": false,
+          "required": true,
+          "type": "domain.nameServer.NameServer[]"
+        }
+      }
+    },
+    "domain.outgoingTransfer.Approve": {
+      "description": "Definition of Outgoing Transfer applying to a domain name",
+      "id": "Approve",
+      "namespace": "domain.outgoingTransfer",
+      "properties": {
+        "approveType": {
+          "canBeNull": false,
+          "description": "Approve type for outgoing transfer",
+          "fullType": "domain.ApproveTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "domain.ApproveTypeEnum"
+        },
+        "ident": {
+          "canBeNull": false,
+          "description": "Token given by email to validate identity",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "domain.rules.Optin": {
       "description": "Representation of the optin rule",
       "id": "Optin",
@@ -6892,10 +6671,10 @@ export const schema: Schema = {
         "fields": {
           "canBeNull": false,
           "description": "Fields to display publicly on the Whois",
-          "fullType": "domain.configurations.OptinFieldsEnum[]",
+          "fullType": "domain.OptinFieldsEnum[]",
           "readOnly": true,
           "required": false,
-          "type": "domain.configurations.OptinFieldsEnum[]"
+          "type": "domain.OptinFieldsEnum[]"
         },
         "type": {
           "canBeNull": false,

@@ -1653,6 +1653,44 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/enable"
     },
     {
+      "description": "endMigration operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Finish migrating Zerto option to this datacenter",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/endMigration"
+    },
+    {
       "description": "generateZsspPassword operations",
       "operations": [
         {
@@ -1691,6 +1729,44 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/generateZsspPassword"
+    },
+    {
+      "description": "startMigration operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Start migrating Zerto option to this datacenter",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/startMigration"
     },
     {
       "description": "state operations",
@@ -11177,6 +11253,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "resourceName": {
+          "canBeNull": true,
+          "description": "Resource name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "size": {
           "canBeNull": false,
           "description": "Filer capacity",
@@ -11446,6 +11530,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
+        },
+        "resourceName": {
+          "canBeNull": true,
+          "description": "Resource name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "state": {
           "canBeNull": false,

@@ -513,6 +513,11 @@ export namespace vps {
     }
     export namespace migration {
         /**
+         * All datacenter of vps migration
+         * type fullname: vps.migration.DatacenterEnum
+         */
+        export type DatacenterEnum = "BHS" | "GRA" | "SBG" | "SGP" | "SYD" | "UK" | "WAW"
+        /**
          * Description not available
          * interface fullName: vps.migration.Migration.Migration
          */
@@ -525,6 +530,16 @@ export namespace vps {
          * interface fullName: vps.migration.OptionMapping2016.OptionMapping2016
          */
         export interface OptionMapping2016 {
+            currentPlan: string;
+            newPlan: string;
+            options: vps.migration.OptionOptionMapping2016[];
+            product: string;
+        }
+        /**
+         * Mapping between a VPS 2016 option code and a VPS 2020 option code
+         * interface fullName: vps.migration.OptionOptionMapping2016.OptionOptionMapping2016
+         */
+        export interface OptionOptionMapping2016 {
             currentPlan: string;
             newPlan: string;
             product: string;
@@ -540,12 +555,32 @@ export namespace vps {
          */
         export interface VPS2016to2020 {
             currentPlan: string;
-            datacenter: string;
+            datacenter: vps.migration.DatacenterEnum;
             date?: string;
             newPlan: string;
             options: vps.migration.OptionMapping2016[];
             product: string;
             status: vps.migration.StatusEnum;
+        }
+        /**
+         * A structure describing a migration from VPS 2016/2018 to VPS 2020
+         * interface fullName: vps.migration.VPS2018to2020.VPS2018to2020
+         */
+        export interface VPS2018to2020 {
+            datacenter: vps.migration.DatacenterEnum;
+            date?: string;
+            plans: vps.migration.VPS2018to2020Plan[];
+            status: vps.migration.StatusEnum;
+        }
+        /**
+         * A structure describing a migration plan from VPS 2016/2018 to VPS 2020
+         * interface fullName: vps.migration.VPS2018to2020Plan.VPS2018to2020Plan
+         */
+        export interface VPS2018to2020Plan {
+            currentPlan: string;
+            newPlan: string;
+            options: vps.migration.OptionMapping2016[];
+            product: string;
         }
     }
     export namespace order {

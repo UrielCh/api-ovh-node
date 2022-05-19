@@ -247,11 +247,11 @@ export namespace cloud {
      * interface fullName: cloud.ProjectKubeCreation.ProjectKubeCreation
      */
     export interface ProjectKubeCreation {
-        name?: string;
-        nodepool?: cloud.ProjectKubeCreationNodePool;
-        privateNetworkId?: string;
+        name: string;
+        nodepool: cloud.ProjectKubeCreationNodePool;
+        privateNetworkId: string;
         region: string;
-        version?: cloud.kube.VersionEnum;
+        version: cloud.kube.VersionEnum;
     }
     /**
      * Missing description
@@ -260,20 +260,20 @@ export namespace cloud {
     export interface ProjectKubeCreationNodePool {
         antiAffinity?: boolean;
         autoscale?: boolean;
-        desiredNodes?: number;
-        flavorName?: string;
-        maxNodes?: number;
-        minNodes?: number;
+        desiredNodes: number;
+        flavorName: string;
+        maxNodes: number;
+        minNodes: number;
         monthlyBilled?: boolean;
-        name?: string;
-        template?: cloud.kube.NodePoolTemplate;
+        name: string;
+        template: cloud.kube.NodePoolTemplate;
     }
     /**
      * Missing description
      * interface fullName: cloud.ProjectKubeIpRestrictionUpsert.ProjectKubeIpRestrictionUpsert
      */
     export interface ProjectKubeIpRestrictionUpsert {
-        ips?: string[];
+        ips: string[];
     }
     /**
      * Missing description
@@ -281,16 +281,16 @@ export namespace cloud {
      */
     export interface ProjectKubeNodeCreation {
         flavorName: string;
-        name?: string;
+        name: string;
     }
     /**
      * Missing description
      * interface fullName: cloud.ProjectKubeNodePoolAutoscalingParams.ProjectKubeNodePoolAutoscalingParams
      */
     export interface ProjectKubeNodePoolAutoscalingParams {
-        scaleDownUnneededTimeSeconds?: number;
-        scaleDownUnreadyTimeSeconds?: number;
-        scaleDownUtilizationThreshold?: number;
+        scaleDownUnneededTimeSeconds: number;
+        scaleDownUnreadyTimeSeconds: number;
+        scaleDownUtilizationThreshold: number;
     }
     /**
      * Missing description
@@ -299,14 +299,14 @@ export namespace cloud {
     export interface ProjectKubeNodePoolCreation {
         antiAffinity?: boolean;
         autoscale?: boolean;
-        autoscaling?: cloud.ProjectKubeNodePoolAutoscalingParams;
-        desiredNodes?: number;
+        autoscaling: cloud.ProjectKubeNodePoolAutoscalingParams;
+        desiredNodes: number;
         flavorName: string;
-        maxNodes?: number;
-        minNodes?: number;
+        maxNodes: number;
+        minNodes: number;
         monthlyBilled?: boolean;
-        name?: string;
-        template?: cloud.kube.NodePoolTemplate;
+        name: string;
+        template: cloud.kube.NodePoolTemplate;
     }
     /**
      * Missing description
@@ -314,12 +314,12 @@ export namespace cloud {
      */
     export interface ProjectKubeNodePoolUpdate {
         autoscale?: boolean;
-        autoscaling?: cloud.ProjectKubeNodePoolAutoscalingParams;
-        desiredNodes?: number;
-        maxNodes?: number;
-        minNodes?: number;
-        nodesToRemove?: string[];
-        template?: cloud.kube.NodePoolTemplate;
+        autoscaling: cloud.ProjectKubeNodePoolAutoscalingParams;
+        desiredNodes: number;
+        maxNodes: number;
+        minNodes: number;
+        nodesToRemove: string[];
+        template: cloud.kube.NodePoolTemplate;
     }
     /**
      * Creation model for OIDC
@@ -342,9 +342,9 @@ export namespace cloud {
      * interface fullName: cloud.ProjectKubeResetCreation.ProjectKubeResetCreation
      */
     export interface ProjectKubeResetCreation {
-        privateNetworkId?: string;
-        version?: cloud.kube.VersionEnum;
-        workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum;
+        privateNetworkId: string;
+        version: cloud.kube.VersionEnum;
+        workerNodesPolicy: cloud.kube.ResetWorkerNodesPolicyEnum;
     }
     /**
      * Missing description
@@ -365,7 +365,8 @@ export namespace cloud {
      * interface fullName: cloud.ProjectKubeUpdateCreation.ProjectKubeUpdateCreation
      */
     export interface ProjectKubeUpdateCreation {
-        strategy?: cloud.kube.UpdateStrategyEnum;
+        force?: boolean;
+        strategy: cloud.kube.UpdateStrategyEnum;
     }
     /**
      * Missing description
@@ -865,12 +866,29 @@ export namespace cloud {
          */
         export type ApplicationAccessStateEnum = "installing" | "ok"
         /**
+         * Parameters to associate an existing floating ip to an instance
+         * interface fullName: cloud.instance.AssociateFloatingip.AssociateFloatingip
+         */
+        export interface AssociateFloatingip {
+            floatingipId: string;
+            gateway?: cloud.network.CreateGatewaySummary;
+            ip: string;
+        }
+        /**
          * Autobackup params at instance creation
          * interface fullName: cloud.instance.AutoBackup.AutoBackup
          */
         export interface AutoBackup {
             cron: string;
             rotation: number;
+        }
+        /**
+         * Parameters to create a floating ip for an instance
+         * interface fullName: cloud.instance.CreateFloatingip.CreateFloatingip
+         */
+        export interface CreateFloatingip {
+            gateway?: cloud.network.CreateGatewaySummary;
+            ip: string;
         }
         /**
          * Instance
@@ -932,6 +950,14 @@ export namespace cloud {
          * type fullname: cloud.instance.InstanceStatusEnum
          */
         export type InstanceStatusEnum = "ACTIVE" | "BUILD" | "BUILDING" | "DELETED" | "DELETING" | "ERROR" | "HARD_REBOOT" | "MIGRATING" | "PASSWORD" | "PAUSED" | "REBOOT" | "REBUILD" | "RESCUE" | "RESCUED" | "RESCUING" | "RESIZE" | "RESIZED" | "RESUMING" | "REVERT_RESIZE" | "SHELVED" | "SHELVED_OFFLOADED" | "SHELVING" | "SHUTOFF" | "SNAPSHOTTING" | "SOFT_DELETED" | "STOPPED" | "SUSPENDED" | "UNKNOWN" | "UNRESCUING" | "UNSHELVING" | "VERIFY_RESIZE"
+        /**
+         * Instance
+         * interface fullName: cloud.instance.InstanceSummary.InstanceSummary
+         */
+        export interface InstanceSummary {
+            id: string;
+            name: string;
+        }
         /**
          * InstanceVnc
          * interface fullName: cloud.instance.InstanceVnc.InstanceVnc
@@ -1137,8 +1163,11 @@ export namespace cloud {
          */
         export interface Flavor {
             category: cloud.kube.FlavorCategoryEnum;
+            gpus: number;
             name: string;
+            ram: number;
             state: cloud.kube.FlavorStateEnum;
+            vCPUs: number;
         }
         /**
          * Enum values for category
@@ -1168,7 +1197,7 @@ export namespace cloud {
             id: string;
             instanceId?: string;
             isUpToDate: boolean;
-            name?: string;
+            name: string;
             nodePoolId: string;
             projectId: string;
             status: cloud.kube.NodeStatusEnum;
@@ -1261,7 +1290,7 @@ export namespace cloud {
          * Enum values for available regions
          * type fullname: cloud.kube.RegionEnum
          */
-        export type RegionEnum = "BHS5" | "DE1" | "GRA5" | "GRA7" | "GRA9" | "SBG5" | "SGP1" | "SYD1" | "US-EAST-VA-1" | "US-WEST-OR-1" | "WAW1"
+        export type RegionEnum = "BHS5" | "DE1" | "GRA5" | "GRA7" | "GRA9" | "SBG5" | "SGP1" | "SYD1" | "UK1" | "US-EAST-VA-1" | "US-WEST-OR-1" | "WAW1"
         /**
          * Enum values for worker nodes reset policy
          * type fullname: cloud.kube.ResetWorkerNodesPolicyEnum
@@ -1295,12 +1324,12 @@ export namespace cloud {
          * List of available versions for upgrade
          * type fullname: cloud.kube.UpgradeVersionEnum
          */
-        export type UpgradeVersionEnum = "1.17" | "1.18" | "1.19" | "1.20" | "1.21" | "1.22"
+        export type UpgradeVersionEnum = "1.19" | "1.20" | "1.21" | "1.22"
         /**
          * List of available versions for installation
          * type fullname: cloud.kube.VersionEnum
          */
-        export type VersionEnum = "1.18" | "1.19" | "1.20" | "1.21" | "1.22"
+        export type VersionEnum = "1.19" | "1.20" | "1.21" | "1.22"
     }
     export namespace loadbalancing {
         /**
@@ -1356,6 +1385,64 @@ export namespace cloud {
         export type ResourceTypeEnum = "instance"
     }
     export namespace network {
+        /**
+         * Input to create a gateway
+         * interface fullName: cloud.network.CreateGateway.CreateGateway
+         */
+        export interface CreateGateway {
+            name: string;
+            network: cloud.network.CreateNetworkSummary;
+        }
+        /**
+         * Parameters to create a gateway from another resource creation
+         * interface fullName: cloud.network.CreateGatewaySummary.CreateGatewaySummary
+         */
+        export interface CreateGatewaySummary {
+            name: string;
+        }
+        /**
+         * Parameters to create a network with a gateway
+         * interface fullName: cloud.network.CreateNetwork.CreateNetwork
+         */
+        export interface CreateNetwork {
+            gateway?: cloud.network.CreateGatewaySummary;
+            name: string;
+            subnet: cloud.network.CreateSubnetSummary;
+            vlanId: number;
+        }
+        /**
+         * Parameters to create a network from another resource creation
+         * interface fullName: cloud.network.CreateNetworkSummary.CreateNetworkSummary
+         */
+        export interface CreateNetworkSummary {
+            name: string;
+            subnet: cloud.network.CreateSubnetSummary;
+            vlanId: number;
+        }
+        /**
+         * Parameters to create a subnet from another resource creation
+         * interface fullName: cloud.network.CreateSubnetSummary.CreateSubnetSummary
+         */
+        export interface CreateSubnetSummary {
+            cidr: string;
+            ipVersion: number;
+        }
+        /**
+         * Gateway
+         * interface fullName: cloud.network.Gateway.Gateway
+         */
+        export interface Gateway {
+            externalInformation?: cloud.network.gateway.ExternalInformation;
+            id: string;
+            interfaces: cloud.network.gateway.Interface[];
+            name: string;
+            status: cloud.network.GatewayStatusEnum;
+        }
+        /**
+         * GatewayStatusEnum
+         * type fullname: cloud.network.GatewayStatusEnum
+         */
+        export type GatewayStatusEnum = "active" | "building" | "down" | "error"
         /**
          * IPPool
          * interface fullName: cloud.network.IPPool.IPPool
@@ -1417,6 +1504,40 @@ export namespace cloud {
             gatewayIp?: string;
             id: string;
             ipPools: cloud.network.IPPool[];
+        }
+        /**
+         * Input to update a gateway
+         * interface fullName: cloud.network.UpdateGateway.UpdateGateway
+         */
+        export interface UpdateGateway {
+            name: string;
+        }
+        export namespace gateway {
+            /**
+             * External information of the gateway
+             * interface fullName: cloud.network.gateway.ExternalInformation.ExternalInformation
+             */
+            export interface ExternalInformation {
+                ips: cloud.network.gateway.IpSubnet[];
+                networkId: string;
+            }
+            /**
+             * Interface of the gateway
+             * interface fullName: cloud.network.gateway.Interface.Interface
+             */
+            export interface Interface {
+                ip: string;
+                networkId: string;
+                subnetId: string;
+            }
+            /**
+             * IP and subnet information
+             * interface fullName: cloud.network.gateway.IpSubnet.IpSubnet
+             */
+            export interface IpSubnet {
+                ip: string;
+                subnetId: string;
+            }
         }
     }
     export namespace order {
@@ -1539,6 +1660,17 @@ export namespace cloud {
          */
         export type CertificateStatusEnum = "EXPIRED" | "NOT_YET_VALID" | "OK" | "REVOKED"
         /**
+         * A floating ip
+         * interface fullName: cloud.project.FloatingIp.FloatingIp
+         */
+        export interface FloatingIp {
+            associatedEntity?: cloud.project.floatingIp.AssociatedEntity;
+            id: string;
+            ip: string;
+            networkId: string;
+            status: cloud.project.floatingIp.StatusEnum;
+        }
+        /**
          * A load balancer to handle workload
          * interface fullName: cloud.project.LoadBalancer.LoadBalancer
          */
@@ -1653,6 +1785,30 @@ export namespace cloud {
              * type fullname: cloud.project.certificate.ServerAlternativeNameKindEnum
              */
             export type ServerAlternativeNameKindEnum = "DNS" | "EMAIL" | "IP" | "URI"
+        }
+        export namespace floatingIp {
+            /**
+             * Associated entity with a floating ip
+             * interface fullName: cloud.project.floatingIp.AssociatedEntity.AssociatedEntity
+             */
+            export interface AssociatedEntity {
+                gatewayId: string;
+                id: string;
+                ip: string;
+                type: cloud.project.floatingIp.associatedEntity.TypeEnum;
+            }
+            /**
+             * Status of a floating ip
+             * type fullname: cloud.project.floatingIp.StatusEnum
+             */
+            export type StatusEnum = "active" | "down" | "error"
+            export namespace associatedEntity {
+                /**
+                 * Type of the associated entity
+                 * type fullname: cloud.project.floatingIp.associatedEntity.TypeEnum
+                 */
+                export type TypeEnum = "dhcp" | "instance" | "routerInterface" | "unknown"
+            }
         }
         export namespace loadbalancer {
             /**
@@ -2509,6 +2665,11 @@ export namespace cloud {
          */
         export type OpenrcVersionEnum = "v2.0" | "v3"
         /**
+         * RCloneServiceEnum
+         * type fullname: cloud.user.RCloneServiceEnum
+         */
+        export type RCloneServiceEnum = "storage" | "storage-s3"
+        /**
          * Rclone
          * interface fullName: cloud.user.Rclone.Rclone
          */
@@ -3304,7 +3465,7 @@ export interface Cloud {
                              */
                             $get(): Promise<cloud.kube.NodePool>;
                             /**
-                             * Update your nodepool (quota or size)
+                             * Update your nodepool information
                              * PUT /cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}
                              */
                             $put(params?: { autoscale?: boolean, autoscaling?: cloud.ProjectKubeNodePoolAutoscalingParams, desiredNodes?: number, maxNodes?: number, minNodes?: number, nodesToRemove?: string[], template?: cloud.kube.NodePoolTemplate }): Promise<void>;
@@ -3370,7 +3531,7 @@ export interface Cloud {
                          * Force cluster and node update to the latest patch within minor version or next minor version
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/update
                          */
-                        $post(params?: { strategy?: cloud.kube.UpdateStrategyEnum }): Promise<void>;
+                        $post(params?: { force?: boolean, strategy?: cloud.kube.UpdateStrategyEnum }): Promise<void>;
                     }
                     updatePolicy: {
                         /**
@@ -3700,6 +3861,13 @@ export interface Cloud {
                                      * Controle cache
                                      */
                                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    gateway: {
+                                        /**
+                                         * Create a gateway from subnet
+                                         * POST /cloud/project/{serviceName}/region/{regionName}/network/{networkId}/subnet/{subnetId}/gateway
+                                         */
+                                        $post(params: { name: string }): Promise<cloud.Operation>;
+                                    }
                                 };
                             }
                         };
@@ -3754,7 +3922,7 @@ export interface Cloud {
                     }
                     storage: {
                         /**
-                         * Get storage containers
+                         * Get S3 storage containers
                          * GET /cloud/project/{serviceName}/region/{regionName}/storage
                          */
                         $get(): Promise<cloud.StorageContainer[]>;
@@ -3802,7 +3970,7 @@ export interface Cloud {
                             }
                             presign: {
                                 /**
-                                 * Generate presigned URLs to download or upload objects
+                                 * Generate S3 presigned URLs to download or upload objects
                                  * POST /cloud/project/{serviceName}/region/{regionName}/storage/{name}/presign
                                  */
                                 $post(params?: { expire?: number, method?: cloud.storage.PresignedURLMethodEnum, object?: string }): Promise<cloud.storage.PresignedURL>;
@@ -4119,7 +4287,7 @@ export interface Cloud {
                          * Get rclone configuration file
                          * GET /cloud/project/{serviceName}/user/{userId}/rclone
                          */
-                        $get(params: { region: string }): Promise<cloud.user.Rclone>;
+                        $get(params: { region: string, service?: cloud.user.RCloneServiceEnum }): Promise<cloud.user.Rclone>;
                         /**
                          * Controle cache
                          */

@@ -9648,8 +9648,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "The active calls of your line as a call center agent",
           "httpMethod": "GET",
@@ -9686,8 +9688,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -9732,8 +9736,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Eavesdrop on a call",
           "httpMethod": "POST",
@@ -9786,8 +9792,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Hangup a call",
           "httpMethod": "POST",
@@ -9832,8 +9840,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Toogle hold on call",
           "httpMethod": "POST",
@@ -9878,8 +9888,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Intercept a non answered call",
           "httpMethod": "POST",
@@ -9932,8 +9944,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Transfer an answered call",
           "httpMethod": "POST",
@@ -9986,8 +10000,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Whisper on a call",
           "httpMethod": "POST",
@@ -25475,9 +25491,9 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "telephony.NumberCountryEnum",
+              "dataType": "telephony.ServiceNumberCountryEnum",
               "description": "The country",
-              "fullType": "telephony.NumberCountryEnum",
+              "fullType": "telephony.ServiceNumberCountryEnum",
               "name": "country",
               "paramType": "query",
               "required": true
@@ -25722,9 +25738,9 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "telephony.NumberCountryEnum",
+              "dataType": "telephony.ServiceNumberCountryEnum",
               "description": "The country of the city",
-              "fullType": "telephony.NumberCountryEnum",
+              "fullType": "telephony.ServiceNumberCountryEnum",
               "name": "country",
               "paramType": "query",
               "required": true
@@ -25756,9 +25772,9 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "telephony.NumberCountryEnum",
+              "dataType": "telephony.ServiceNumberCountryEnum",
               "description": "The country of the city",
-              "fullType": "telephony.NumberCountryEnum",
+              "fullType": "telephony.ServiceNumberCountryEnum",
               "name": "country",
               "paramType": "query",
               "required": true
@@ -25816,9 +25832,9 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "telephony.NumberCountryEnum",
+              "dataType": "telephony.ServiceNumberCountryEnum",
               "description": "The country",
-              "fullType": "telephony.NumberCountryEnum",
+              "fullType": "telephony.ServiceNumberCountryEnum",
               "name": "country",
               "paramType": "query",
               "required": true
@@ -26416,9 +26432,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "telephony.NumberCountryEnum",
+              "dataType": "telephony.ServiceNumberCountryEnum",
               "description": "Country",
-              "fullType": "telephony.NumberCountryEnum",
+              "fullType": "telephony.ServiceNumberCountryEnum",
               "name": "country",
               "paramType": "body",
               "required": true
@@ -29850,7 +29866,7 @@ export const schema: Schema = {
           "description": "Country",
           "readOnly": false,
           "required": false,
-          "type": "telephony.NumberCountryEnum"
+          "type": "telephony.ServiceNumberCountryEnum"
         },
         "currentDomain": {
           "canBeNull": false,

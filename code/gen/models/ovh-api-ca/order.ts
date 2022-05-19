@@ -394,6 +394,59 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get information about bring your own IP addresses offers",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post a new bring your own IP addresses item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/bringYourOwnIp"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
@@ -6559,6 +6612,121 @@ export const schema: Schema = {
       "path": "/order/cartServiceOption/dedicated/{serviceName}"
     },
     {
+      "description": "Operations about the DNS service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
+        }
+      ],
+      "path": "/order/cartServiceOption/dns"
+    },
+    {
+      "description": "Listing offers /order/cartServiceOptions/dns/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about additional Domain offer for your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal ID of DNS service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post an additional Domain option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the additional Domain offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of DNS service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
+        }
+      ],
+      "path": "/order/cartServiceOption/dns/{serviceName}"
+    },
+    {
       "description": "Operations about the DOMAIN service",
       "operations": [
         {
@@ -7965,6 +8133,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/catalog/formatted"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve information of bring your own IP addresses catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.Catalog"
+        }
+      ],
+      "path": "/order/catalog/formatted/bringYourOwnIp"
     },
     {
       "description": "Missing description",
@@ -22758,7 +22952,6 @@ export const schema: Schema = {
     "hosting.PrivateDatabase.OrderableVersionEnum": {
       "description": "Private database orderable versions",
       "enum": [
-        "mariadb_10.2",
         "mariadb_10.3",
         "mariadb_10.4",
         "mariadb_10.5",
@@ -22938,6 +23131,7 @@ export const schema: Schema = {
         "VERSION_11_FOR_VIRTUOZZO",
         "VERSION_11_FOR_VPS",
         "cpanel-license-admin-cloud-accounts",
+        "cpanel-license-plus-cloud-accounts",
         "cpanel-license-premier-cloud-100-accounts",
         "cpanel-license-premier-cloud-1000-accounts",
         "cpanel-license-premier-cloud-10000-accounts",
@@ -23149,6 +23343,7 @@ export const schema: Schema = {
         "cpanel-license-version-11-for-virtuozzo",
         "cpanel-license-version-11-for-vps",
         "version-admin-cloud",
+        "version-plus-cloud",
         "version-premier-cloud-100",
         "version-premier-cloud-1000",
         "version-premier-cloud-10000",

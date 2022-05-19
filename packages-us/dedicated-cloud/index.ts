@@ -225,6 +225,7 @@ export namespace dedicatedCloud {
         master: string;
         name: string;
         profile: string;
+        resourceName?: string;
         size: complexType.UnitAndValue<number>;
         slave?: string;
         spaceFree?: number;
@@ -283,6 +284,7 @@ export namespace dedicatedCloud {
         profileCode: string;
         rack: string;
         ram: complexType.UnitAndValue<number>;
+        resourceName?: string;
         state: dedicatedCloudhostStateEnum;
         uptime?: number;
         vmTotal?: number;
@@ -1859,10 +1861,24 @@ export interface DedicatedCloud {
                              */
                             $post(params: { primaryEndpointIp: string, secondaryDatacenterId: number, secondaryEndpointIp: string, secondaryServiceName: string }): Promise<dedicatedCloud.Task>;
                         }
+                        endMigration: {
+                            /**
+                             * Finish migrating Zerto option to this datacenter
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/endMigration
+                             */
+                            $post(): Promise<dedicatedCloud.Task>;
+                        }
                         generateZsspPassword: {
                             /**
                              * Generate a new password for Zerto Self Service Portal and receive it by email.
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/generateZsspPassword
+                             */
+                            $post(): Promise<dedicatedCloud.Task>;
+                        }
+                        startMigration: {
+                            /**
+                             * Start migrating Zerto option to this datacenter
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/startMigration
                              */
                             $post(): Promise<dedicatedCloud.Task>;
                         }

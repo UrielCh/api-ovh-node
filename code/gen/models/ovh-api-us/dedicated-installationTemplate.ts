@@ -1462,7 +1462,8 @@ export const schema: Schema = {
         "1",
         "10",
         "5",
-        "6"
+        "6",
+        "7"
       ],
       "enumType": "string",
       "id": "PartitionRaidEnum",

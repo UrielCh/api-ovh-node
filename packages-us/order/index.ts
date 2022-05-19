@@ -1321,6 +1321,22 @@ export interface Order {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
+            cephaas: {
+                /**
+                 * Get informations about Ceph as a Service offers
+                 * GET /order/cart/{cartId}/cephaas
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new Ceph as a Service item in your cart
+                 * POST /order/cart/{cartId}/cephaas
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             checkout: {
                 /**
                  * Get prices and contracts information for your cart
@@ -2591,6 +2607,17 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            ovhCloudConnect: {
+                /**
+                 * Retrieve OVH Cloud Connect catalog
+                 * GET /order/catalog/public/ovhCloudConnect
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             privateCloud: {
                 /**
                  * Retrieve Dedicated Cloud catalog
@@ -2727,6 +2754,44 @@ export interface Order {
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}
+                     */
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            };
+        }
+        cephaas: {
+            /**
+             * List available services
+             * GET /order/upgrade/cephaas
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Retrieve available offers to upgrade your service to
+                 * GET /order/upgrade/cephaas/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(planCode: string): {
+                    /**
+                     * Get a provisional order for the selected upgrade of your service
+                     * GET /order/upgrade/cephaas/{serviceName}/{planCode}
+                     */
+                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Perform the requested upgrade of your service
+                     * POST /order/upgrade/cephaas/{serviceName}/{planCode}
                      */
                     $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     /**

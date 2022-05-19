@@ -2723,6 +2723,23 @@ export const schema: Schema = {
       "path": "/ip/{ip}/terminate"
     },
     {
+      "description": "Get IP campuses",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get IP campuses",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [],
+          "responseType": "ip.Campus[]"
+        }
+      ],
+      "path": "/ip/campus"
+    },
+    {
       "description": "Operations about the IP service",
       "operations": [
         {

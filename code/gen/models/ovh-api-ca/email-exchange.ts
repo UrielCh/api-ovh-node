@@ -3438,6 +3438,364 @@ export const schema: Schema = {
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimerAttribute"
     },
     {
+      "description": "List the email.exchange.dkim objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "dkim associated to this domain",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create DKIM selector on this domain",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "If you host domain in OVH we can configure dkim dns record automatically",
+              "fullType": "boolean",
+              "name": "configureDkim",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "selector name for DKIM",
+              "fullType": "string",
+              "name": "selectorName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/dkim"
+    },
+    {
+      "description": "DKIM for a domain",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete DKIM selector on this domain",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "selectorName",
+              "fullType": "string",
+              "name": "selectorName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "selectorName",
+              "fullType": "string",
+              "name": "selectorName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.dkim",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/dkim/{selectorName}"
+    },
+    {
+      "description": "disable operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "disable dkim signing",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "selectorName",
+              "fullType": "string",
+              "name": "selectorName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/dkim/{selectorName}/disable"
+    },
+    {
+      "description": "enable operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "enable dkim signing or switch selector used",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "selectorName",
+              "fullType": "string",
+              "name": "selectorName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/dkim/{selectorName}/enable"
+    },
+    {
+      "description": "dkimSelector operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get dkim selector list",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/dkimSelector"
+    },
+    {
       "description": "List the email.exchange.exchangeExternalContact objects",
       "operations": [
         {
@@ -9318,6 +9676,14 @@ export const schema: Schema = {
       "id": "ExchangeService",
       "namespace": "email.exchange",
       "properties": {
+        "adfsChangePassword": {
+          "canBeNull": false,
+          "description": "Enable or disable password change via ADFS",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "complexityEnabled": {
           "canBeNull": false,
           "description": "enable policy for strong and secure passwords",
@@ -10027,6 +10393,7 @@ export const schema: Schema = {
         "addDomain",
         "addDomainDisclaimer",
         "addExchangeCustomIsolation",
+        "addExchangeDomainDKIM",
         "addExchangeServiceAuthorizedIp",
         "addExportPstRequest",
         "addExternalContact",
@@ -10061,6 +10428,7 @@ export const schema: Schema = {
         "deleteDomain",
         "deleteDomainDisclaimer",
         "deleteExchangeCustomIsolation",
+        "deleteExchangeDomainDKIM",
         "deleteExchangeService",
         "deleteExchangeServiceAuthorizedIp",
         "deleteExportPstRequest",
@@ -10080,6 +10448,8 @@ export const schema: Schema = {
         "deleteSharedAccountSendOnBehalfTo",
         "destroyPrivateVm",
         "diagnoseAccount",
+        "disableExchangeDKIM",
+        "enableExchangeDKIM",
         "expandDrive",
         "generateOutlookUrl",
         "generatePstUrl",
@@ -10210,6 +10580,92 @@ export const schema: Schema = {
           "type": "long"
         }
       }
+    },
+    "email.exchange.dkim": {
+      "description": "DKIM for a domain",
+      "id": "dkim",
+      "namespace": "email.exchange",
+      "properties": {
+        "customerRecord": {
+          "canBeNull": false,
+          "description": "customer dns record",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "header": {
+          "canBeNull": false,
+          "description": "header used for dkim signature",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lastUpdate": {
+          "canBeNull": true,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "recordType": {
+          "canBeNull": false,
+          "description": "Record type of the customer record",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "selectorName": {
+          "canBeNull": false,
+          "description": "selectorName",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "dkim status",
+          "fullType": "email.exchange.dkimStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.exchange.dkimStatusEnum"
+        },
+        "targetRecord": {
+          "canBeNull": true,
+          "description": "Target of the customer record",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "taskPendingId": {
+          "canBeNull": true,
+          "description": "Pending task for this DKIM",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "email.exchange.dkimStatusEnum": {
+      "description": "dkim status",
+      "enum": [
+        "deleting",
+        "disabling",
+        "enabling",
+        "inProduction",
+        "ready",
+        "todo",
+        "waitingRecord"
+      ],
+      "enumType": "string",
+      "id": "dkimStatusEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.exchangeAccountAlias": {
       "description": "Aliases on this mailbox",

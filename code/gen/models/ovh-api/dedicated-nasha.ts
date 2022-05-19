@@ -1895,6 +1895,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "diskType": {
+          "canBeNull": false,
+          "description": "the disk type of the nasHa",
+          "fullType": "dedicated.storage.DiskTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.storage.DiskTypeEnum"
+        },
         "ip": {
           "canBeNull": true,
           "description": "Access ip of nas",
@@ -2056,6 +2064,17 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "AtimeEnum",
+      "namespace": "dedicated.storage"
+    },
+    "dedicated.storage.DiskTypeEnum": {
+      "description": "the disk type of the nasHa",
+      "enum": [
+        "hdd",
+        "nvme",
+        "ssd"
+      ],
+      "enumType": "string",
+      "id": "DiskTypeEnum",
       "namespace": "dedicated.storage"
     },
     "dedicated.storage.NasUsageTypeEnum": {

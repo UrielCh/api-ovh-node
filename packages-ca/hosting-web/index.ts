@@ -275,7 +275,7 @@ export namespace hosting {
          * Private database orderable versions
          * type fullname: hosting.PrivateDatabase.OrderableVersionEnum
          */
-        export type OrderableVersionEnum = "mariadb_10.2" | "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mysql_5.7" | "mysql_8.0" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_9.6" | "redis_4.0" | "redis_6.0"
+        export type OrderableVersionEnum = "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mysql_5.7" | "mysql_8.0" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_9.6" | "redis_4.0" | "redis_6.0"
     }
     export namespace web {
         /**

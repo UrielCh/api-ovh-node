@@ -7,7 +7,7 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
 export namespace dbaas {
     export namespace logs {
         /**
-         * Elasticsearch alias
+         * Alias
          * interface fullName: dbaas.logs.Alias.Alias
          */
         export interface Alias {
@@ -83,7 +83,7 @@ export namespace dbaas {
             retentionId: string;
         }
         /**
-         * Missing description
+         * Cluster network acls
          * interface fullName: dbaas.logs.ClusterUpdate.ClusterUpdate
          */
         export interface ClusterUpdate {
@@ -166,7 +166,7 @@ export namespace dbaas {
          */
         export type HelperSectionNameEnum = "LOGSTASH_FILTER" | "LOGSTASH_INPUT" | "LOGSTASH_PATTERN"
         /**
-         * Elasticsearch index
+         * Index
          * interface fullName: dbaas.logs.Index.Index
          */
         export interface Index {
@@ -215,7 +215,7 @@ export namespace dbaas {
          */
         export type InputActionTypeEnum = "DESTROY" | "END" | "LOG" | "RESTART" | "START" | "TEST"
         /**
-         * Missing description
+         * Flowgger configuration
          * interface fullName: dbaas.logs.InputConfigurationFlowggerUpdate.InputConfigurationFlowggerUpdate
          */
         export interface InputConfigurationFlowggerUpdate {
@@ -223,7 +223,7 @@ export namespace dbaas {
             logFraming: dbaas.logs.FlowggerConfigurationLogFramingEnum;
         }
         /**
-         * Missing description
+         * Logstash configuration
          * interface fullName: dbaas.logs.InputConfigurationLogstashUpdate.InputConfigurationLogstashUpdate
          */
         export interface InputConfigurationLogstashUpdate {
@@ -232,7 +232,7 @@ export namespace dbaas {
             patternSection?: string;
         }
         /**
-         * Missing description
+         * Input configuration
          * interface fullName: dbaas.logs.InputCreation.InputCreation
          */
         export interface InputCreation {
@@ -250,7 +250,7 @@ export namespace dbaas {
          */
         export type InputStatusEnum = "INIT" | "PENDING" | "PROCESSING" | "RUNNING"
         /**
-         * Missing description
+         * Input configuration update
          * interface fullName: dbaas.logs.InputUpdate.InputUpdate
          */
         export interface InputUpdate {
@@ -276,14 +276,14 @@ export namespace dbaas {
             updatedAt?: string;
         }
         /**
-         * Missing description
+         * New Kibana instance
          * interface fullName: dbaas.logs.KibanaCreation.KibanaCreation
          */
         export interface KibanaCreation {
             description: string;
         }
         /**
-         * Missing description
+         * Kibana update
          * interface fullName: dbaas.logs.KibanaUpdate.KibanaUpdate
          */
         export interface KibanaUpdate {
@@ -319,6 +319,7 @@ export namespace dbaas {
             inputId?: string;
             kibanaId?: string;
             operationId: string;
+            osdId?: string;
             roleId?: string;
             state: dbaas.logs.OperationStateEnum;
             streamId?: string;
@@ -330,7 +331,34 @@ export namespace dbaas {
          */
         export type OperationStateEnum = "FAILURE" | "PENDING" | "RECEIVED" | "RETRY" | "REVOKED" | "RUNNING" | "STARTED" | "SUCCESS"
         /**
-         * Missing description
+         * OpenSearch Dashboards instance
+         * interface fullName: dbaas.logs.Osd.Osd
+         */
+        export interface Osd {
+            createdAt: string;
+            deliveryStatus: dbaas.logs.DeliveryStatusEnum;
+            description: string;
+            isEditable: boolean;
+            name: string;
+            osdId: string;
+            updatedAt?: string;
+        }
+        /**
+         * Osd creation body
+         * interface fullName: dbaas.logs.OsdCreation.OsdCreation
+         */
+        export interface OsdCreation {
+            description: string;
+        }
+        /**
+         * OpenSearch Dashboards update
+         * interface fullName: dbaas.logs.OsdUpdate.OsdUpdate
+         */
+        export interface OsdUpdate {
+            description: string;
+        }
+        /**
+         * New Elasticsearch alias
          * interface fullName: dbaas.logs.OutputElasticsearchAliasCreation.OutputElasticsearchAliasCreation
          */
         export interface OutputElasticsearchAliasCreation {
@@ -338,28 +366,28 @@ export namespace dbaas {
             suffix: string;
         }
         /**
-         * Missing description
+         * Link given Elasticsearch index to alias
          * interface fullName: dbaas.logs.OutputElasticsearchAliasIndexCreation.OutputElasticsearchAliasIndexCreation
          */
         export interface OutputElasticsearchAliasIndexCreation {
             indexId: string;
         }
         /**
-         * Missing description
+         * Link given Graylog stream to Elasticsearch alias
          * interface fullName: dbaas.logs.OutputElasticsearchAliasStreamCreation.OutputElasticsearchAliasStreamCreation
          */
         export interface OutputElasticsearchAliasStreamCreation {
             streamId: string;
         }
         /**
-         * Missing description
+         * Elasticsearch alias update
          * interface fullName: dbaas.logs.OutputElasticsearchAliasUpdate.OutputElasticsearchAliasUpdate
          */
         export interface OutputElasticsearchAliasUpdate {
             description: string;
         }
         /**
-         * Missing description
+         * New Elasticsearch index
          * interface fullName: dbaas.logs.OutputElasticsearchIndexCreation.OutputElasticsearchIndexCreation
          */
         export interface OutputElasticsearchIndexCreation {
@@ -369,7 +397,7 @@ export namespace dbaas {
             suffix: string;
         }
         /**
-         * Missing description
+         * Elasticsearch index update
          * interface fullName: dbaas.logs.OutputElasticsearchIndexUpdate.OutputElasticsearchIndexUpdate
          */
         export interface OutputElasticsearchIndexUpdate {
@@ -377,7 +405,7 @@ export namespace dbaas {
             description: string;
         }
         /**
-         * Missing description
+         * New Graylog dashboard
          * interface fullName: dbaas.logs.OutputGraylogDashboardCreation.OutputGraylogDashboardCreation
          */
         export interface OutputGraylogDashboardCreation {
@@ -385,7 +413,7 @@ export namespace dbaas {
             title: string;
         }
         /**
-         * Missing description
+         * Clone given Graylog dashboard
          * interface fullName: dbaas.logs.OutputGraylogDashboardDuplicateCreation.OutputGraylogDashboardDuplicateCreation
          */
         export interface OutputGraylogDashboardDuplicateCreation {
@@ -394,7 +422,7 @@ export namespace dbaas {
             title: string;
         }
         /**
-         * Missing description
+         * Graylog dahsboard update
          * interface fullName: dbaas.logs.OutputGraylogDashboardUpdate.OutputGraylogDashboardUpdate
          */
         export interface OutputGraylogDashboardUpdate {
@@ -402,7 +430,7 @@ export namespace dbaas {
             title: string;
         }
         /**
-         * Missing description
+         * New Graylog alert
          * interface fullName: dbaas.logs.OutputGraylogStreamAlertCreation.OutputGraylogStreamAlertCreation
          */
         export interface OutputGraylogStreamAlertCreation {
@@ -420,7 +448,7 @@ export namespace dbaas {
             value?: string;
         }
         /**
-         * Missing description
+         * Graylog alert update
          * interface fullName: dbaas.logs.OutputGraylogStreamAlertUpdate.OutputGraylogStreamAlertUpdate
          */
         export interface OutputGraylogStreamAlertUpdate {
@@ -438,7 +466,7 @@ export namespace dbaas {
             value?: string;
         }
         /**
-         * Missing description
+         * New Graylog stream
          * interface fullName: dbaas.logs.OutputGraylogStreamCreation.OutputGraylogStreamCreation
          */
         export interface OutputGraylogStreamCreation {
@@ -459,7 +487,7 @@ export namespace dbaas {
             webSocketEnabled?: boolean;
         }
         /**
-         * Missing description
+         * New rule on Graylog stream
          * interface fullName: dbaas.logs.OutputGraylogStreamRuleCreation.OutputGraylogStreamRuleCreation
          */
         export interface OutputGraylogStreamRuleCreation {
@@ -469,7 +497,7 @@ export namespace dbaas {
             value: string;
         }
         /**
-         * Missing description
+         * Graylog stream update
          * interface fullName: dbaas.logs.OutputGraylogStreamUpdate.OutputGraylogStreamUpdate
          */
         export interface OutputGraylogStreamUpdate {
@@ -488,6 +516,53 @@ export namespace dbaas {
             webSocketEnabled?: boolean;
         }
         /**
+         * New OpenSearch alias
+         * interface fullName: dbaas.logs.OutputOpenSearchAliasCreation.OutputOpenSearchAliasCreation
+         */
+        export interface OutputOpenSearchAliasCreation {
+            description: string;
+            suffix: string;
+        }
+        /**
+         * Link given OpenSearch index to alias
+         * interface fullName: dbaas.logs.OutputOpenSearchAliasIndexCreation.OutputOpenSearchAliasIndexCreation
+         */
+        export interface OutputOpenSearchAliasIndexCreation {
+            indexId: string;
+        }
+        /**
+         * Link given Graylog stream to alias
+         * interface fullName: dbaas.logs.OutputOpenSearchAliasStreamCreation.OutputOpenSearchAliasStreamCreation
+         */
+        export interface OutputOpenSearchAliasStreamCreation {
+            streamId: string;
+        }
+        /**
+         * OpenSearch alias update
+         * interface fullName: dbaas.logs.OutputOpenSearchAliasUpdate.OutputOpenSearchAliasUpdate
+         */
+        export interface OutputOpenSearchAliasUpdate {
+            description: string;
+        }
+        /**
+         * OpenSearch index update
+         * interface fullName: dbaas.logs.OutputOpenSearchIndexCreation.OutputOpenSearchIndexCreation
+         */
+        export interface OutputOpenSearchIndexCreation {
+            alertNotifyEnabled?: boolean;
+            description: string;
+            nbShard?: number;
+            suffix: string;
+        }
+        /**
+         * OpenSearch index update
+         * interface fullName: dbaas.logs.OutputOpenSearchIndexUpdate.OutputOpenSearchIndexUpdate
+         */
+        export interface OutputOpenSearchIndexUpdate {
+            alertNotifyEnabled?: boolean;
+            description: string;
+        }
+        /**
          * Role permission
          * interface fullName: dbaas.logs.Permission.Permission
          */
@@ -496,6 +571,7 @@ export namespace dbaas {
             dashboardId?: string;
             indexId?: string;
             kibanaId?: string;
+            osdId?: string;
             permissionId: string;
             permissionType?: dbaas.logs.PermissionTypeEnum;
             streamId?: string;
@@ -517,7 +593,7 @@ export namespace dbaas {
             updatedAt?: string;
         }
         /**
-         * Missing description
+         * New role
          * interface fullName: dbaas.logs.RoleCreation.RoleCreation
          */
         export interface RoleCreation {
@@ -525,7 +601,7 @@ export namespace dbaas {
             name: string;
         }
         /**
-         * Missing description
+         * Add given LDP account to role
          * interface fullName: dbaas.logs.RoleMemberCreation.RoleMemberCreation
          */
         export interface RoleMemberCreation {
@@ -533,21 +609,21 @@ export namespace dbaas {
             username: string;
         }
         /**
-         * Missing description
+         * Update given role member
          * interface fullName: dbaas.logs.RoleMemberUpdate.RoleMemberUpdate
          */
         export interface RoleMemberUpdate {
             note?: string;
         }
         /**
-         * Missing description
+         * Attach given alias to role
          * interface fullName: dbaas.logs.RolePermissionAliasCreation.RolePermissionAliasCreation
          */
         export interface RolePermissionAliasCreation {
             aliasId: string;
         }
         /**
-         * Missing description
+         * Attach given Graylog dashboard to role
          * interface fullName: dbaas.logs.RolePermissionDashboardCreation.RolePermissionDashboardCreation
          */
         export interface RolePermissionDashboardCreation {
@@ -555,7 +631,7 @@ export namespace dbaas {
             permissionType?: dbaas.logs.PermissionTypeEnum;
         }
         /**
-         * Missing description
+         * Attach given index to role
          * interface fullName: dbaas.logs.RolePermissionIndexCreation.RolePermissionIndexCreation
          */
         export interface RolePermissionIndexCreation {
@@ -563,7 +639,7 @@ export namespace dbaas {
             permissionType?: dbaas.logs.PermissionTypeEnum;
         }
         /**
-         * Missing description
+         * Attach given Kibana instance to role
          * interface fullName: dbaas.logs.RolePermissionKibanaCreation.RolePermissionKibanaCreation
          */
         export interface RolePermissionKibanaCreation {
@@ -571,14 +647,22 @@ export namespace dbaas {
             permissionType?: dbaas.logs.PermissionTypeEnum;
         }
         /**
-         * Missing description
+         * Attach given OpenSearch Dashboards to role
+         * interface fullName: dbaas.logs.RolePermissionOsdCreation.RolePermissionOsdCreation
+         */
+        export interface RolePermissionOsdCreation {
+            osdId: string;
+            permissionType?: dbaas.logs.PermissionTypeEnum;
+        }
+        /**
+         * Attach given Graylog stream to role
          * interface fullName: dbaas.logs.RolePermissionStreamCreation.RolePermissionStreamCreation
          */
         export interface RolePermissionStreamCreation {
             streamId: string;
         }
         /**
-         * Missing description
+         * Role update
          * interface fullName: dbaas.logs.RoleUpdate.RoleUpdate
          */
         export interface RoleUpdate {
@@ -673,7 +757,7 @@ export namespace dbaas {
          * Possible values for StreamAlertConditionConstraintTypeEnum
          * type fullname: dbaas.logs.StreamAlertConditionConstraintTypeEnum
          */
-        export type StreamAlertConditionConstraintTypeEnum = "MAX" | "MEAN" | "MIN" | "STDDEV" | "SUM"
+        export type StreamAlertConditionConstraintTypeEnum = "MAX" | "MEAN" | "MIN" | "STDLABEU" | "SUM"
         /**
          * Possible values for StreamAlertConditionThresholdTypeEnum
          * type fullname: dbaas.logs.StreamAlertConditionThresholdTypeEnum
@@ -740,7 +824,7 @@ export namespace dbaas {
             value: string;
         }
         /**
-         * Missing description
+         * New token
          * interface fullName: dbaas.logs.TokenCreation.TokenCreation
          */
         export interface TokenCreation {
@@ -748,7 +832,7 @@ export namespace dbaas {
             name: string;
         }
         /**
-         * Missing description
+         * Service update
          * interface fullName: dbaas.logs.Update.Update
          */
         export interface Update {
@@ -766,9 +850,9 @@ export namespace dbaas {
          * Possible values for UrlTypeEnum
          * type fullname: dbaas.logs.UrlTypeEnum
          */
-        export type UrlTypeEnum = "CONSOLE" | "ELASTICSEARCH_API" | "GRAYLOG_API" | "GRAYLOG_WEBUI" | "HTTP_GELF" | "HTTP_TLS_GELF" | "KIBANA_WEBUI" | "SERVICE_DOMAIN" | "TCP_BEATS" | "TCP_CAP_N_PROTO" | "TCP_GELF" | "TCP_LTSV_LINE" | "TCP_LTSV_NUL" | "TCP_RFC5424" | "TCP_TLS_BEATS" | "TCP_TLS_CAP_N_PROTO" | "TCP_TLS_GELF" | "TCP_TLS_LTSV_LINE" | "TCP_TLS_LTSV_NUL" | "TCP_TLS_RFC5424" | "UDP_CAP_N_PROTO" | "UDP_GELF" | "UDP_LTSV_LINE" | "UDP_LTSV_NUL" | "UDP_RFC5424" | "WEB_SOCKET"
+        export type UrlTypeEnum = "CONSOLE" | "ELASTICSEARCH_API" | "GRAYLOG_API" | "GRAYLOG_WEBUI" | "HTTP_GELF" | "HTTP_TLS_GELF" | "KIBANA_WEBUI" | "OPENSEARCH_API" | "OSD_WEBUI" | "SERVICE_DOMAIN" | "TCP_BEATS" | "TCP_CAP_N_PROTO" | "TCP_GELF" | "TCP_LTSV_LINE" | "TCP_LTSV_NUL" | "TCP_RFC5424" | "TCP_TLS_BEATS" | "TCP_TLS_CAP_N_PROTO" | "TCP_TLS_GELF" | "TCP_TLS_LTSV_LINE" | "TCP_TLS_LTSV_NUL" | "TCP_TLS_RFC5424" | "UDP_CAP_N_PROTO" | "UDP_GELF" | "UDP_LTSV_LINE" | "UDP_LTSV_NUL" | "UDP_RFC5424" | "WEB_SOCKET"
         /**
-         * Missing description
+         * Reset service password
          * interface fullName: dbaas.logs.UserChangePasswordCreation.UserChangePasswordCreation
          */
         export interface UserChangePasswordCreation {
@@ -973,6 +1057,50 @@ export interface Dbaas {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                engine: {
+                    /**
+                     * Returns the list of available input engines
+                     * GET /dbaas/logs/{serviceName}/input/engine
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(engineId: string): {
+                        /**
+                         * Returns details of specified input engine
+                         * GET /dbaas/logs/{serviceName}/input/engine/{engineId}
+                         */
+                        $get(): Promise<dbaas.logs.Engine>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        helper: {
+                            /**
+                             * Return the list of available helpers for the given input engine
+                             * GET /dbaas/logs/{serviceName}/input/engine/{engineId}/helper
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(helperId: string): {
+                                /**
+                                 * Returns details of specified input engine helper
+                                 * GET /dbaas/logs/{serviceName}/input/engine/{engineId}/helper/{helperId}
+                                 */
+                                $get(): Promise<dbaas.logs.Helper>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    };
+                }
                 $(inputId: string): {
                     /**
                      * Remove the specified input object
@@ -1171,8 +1299,7 @@ export interface Dbaas {
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             index: {
                                 /**
-                                 * Returns the list of elasticsearch indexes attached to specified
-        elasticsearch alias
+                                 * Returns the list of Elasticsearch indexes attached to specified Elasticsearch alias
                                  * GET /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index
                                  */
                                 $get(): Promise<string[]>;
@@ -1195,8 +1322,7 @@ export interface Dbaas {
                             }
                             stream: {
                                 /**
-                                 * Returns the list of graylog streams attached to specified
-        elasticsearch alias
+                                 * Returns the list of Graylog streams attached to specified Elasticsearch alias
                                  * GET /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream
                                  */
                                 $get(): Promise<string[]>;
@@ -1530,6 +1656,198 @@ export interface Dbaas {
                         };
                     }
                 }
+                opensearch: {
+                    alias: {
+                        /**
+                         * Returns the list of alias for connected user
+                         * GET /dbaas/logs/{serviceName}/output/opensearch/alias
+                         */
+                        $get(): Promise<string[]>;
+                        /**
+                         * Register a new OpenSearch alias
+                         * POST /dbaas/logs/{serviceName}/output/opensearch/alias
+                         */
+                        $post(params: { description: string, suffix: string }): Promise<dbaas.logs.Operation>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(aliasId: string): {
+                            /**
+                             * Remove specified OpenSearch alias
+                             * DELETE /dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}
+                             */
+                            $delete(): Promise<dbaas.logs.Operation>;
+                            /**
+                             * Returns specified OpenSearch alias
+                             * GET /dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}
+                             */
+                            $get(): Promise<dbaas.logs.Alias>;
+                            /**
+                             * Update specified OpenSearch alias
+                             * PUT /dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}
+                             */
+                            $put(params: { description: string }): Promise<dbaas.logs.Operation>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            index: {
+                                /**
+                                 * Returns the list of OpenSearch indexes attached to specified OpenSearch alias
+                                 * GET /dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/index
+                                 */
+                                $get(): Promise<string[]>;
+                                /**
+                                 * Attach a OpenSearch index to specified OpenSearch alias
+                                 * POST /dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/index
+                                 */
+                                $post(params: { indexId: string }): Promise<dbaas.logs.Operation>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(indexId: string): {
+                                    /**
+                                     * Detach a OpenSearch index from specified OpenSearch alias
+                                     * DELETE /dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/index/{indexId}
+                                     */
+                                    $delete(): Promise<dbaas.logs.Operation>;
+                                };
+                            }
+                            stream: {
+                                /**
+                                 * Returns the list of Graylog streams attached to specified OpenSearch alias
+                                 * GET /dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/stream
+                                 */
+                                $get(): Promise<string[]>;
+                                /**
+                                 * Attach a Graylog stream to specified OpenSearch alias
+                                 * POST /dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/stream
+                                 */
+                                $post(params: { streamId: string }): Promise<dbaas.logs.Operation>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(streamId: string): {
+                                    /**
+                                     * Detach a Graylog stream from specified OpenSearch alias
+                                     * DELETE /dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/stream/{streamId}
+                                     */
+                                    $delete(): Promise<dbaas.logs.Operation>;
+                                };
+                            }
+                            url: {
+                                /**
+                                 * Returns the list of urls of specified alias
+                                 * GET /dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/url
+                                 */
+                                $get(): Promise<dbaas.logs.Url[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        };
+                    }
+                    index: {
+                        /**
+                         * Returns the list of OpenSearch indexes
+                         * GET /dbaas/logs/{serviceName}/output/opensearch/index
+                         */
+                        $get(): Promise<string[]>;
+                        /**
+                         * Register a new OpenSearch index
+                         * POST /dbaas/logs/{serviceName}/output/opensearch/index
+                         */
+                        $post(params: { alertNotifyEnabled?: boolean, description: string, nbShard?: number, suffix: string }): Promise<dbaas.logs.Operation>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(indexId: string): {
+                            /**
+                             * Remove specified OpenSearch index
+                             * DELETE /dbaas/logs/{serviceName}/output/opensearch/index/{indexId}
+                             */
+                            $delete(): Promise<dbaas.logs.Operation>;
+                            /**
+                             * Returns specified OpenSearch index
+                             * GET /dbaas/logs/{serviceName}/output/opensearch/index/{indexId}
+                             */
+                            $get(): Promise<dbaas.logs.Index>;
+                            /**
+                             * Update specified OpenSearch index
+                             * PUT /dbaas/logs/{serviceName}/output/opensearch/index/{indexId}
+                             */
+                            $put(params: { alertNotifyEnabled?: boolean, description: string }): Promise<dbaas.logs.Operation>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            url: {
+                                /**
+                                 * Returns the list of urls of specified index
+                                 * GET /dbaas/logs/{serviceName}/output/opensearch/index/{indexId}/url
+                                 */
+                                $get(): Promise<dbaas.logs.Url[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        };
+                    }
+                    osd: {
+                        /**
+                         * Returns the list of OpenSearch Dashboards instances
+                         * GET /dbaas/logs/{serviceName}/output/opensearch/osd
+                         */
+                        $get(): Promise<string[]>;
+                        /**
+                         * Register a new OpenSearch Dashboards instance
+                         * POST /dbaas/logs/{serviceName}/output/opensearch/osd
+                         */
+                        $post(params: { description: string }): Promise<dbaas.logs.Operation>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(osdId: string): {
+                            /**
+                             * Remove specified OpenSearch Dashboards instance
+                             * DELETE /dbaas/logs/{serviceName}/output/opensearch/osd/{osdId}
+                             */
+                            $delete(): Promise<dbaas.logs.Operation>;
+                            /**
+                             * Returns specified OpenSearch Dashboards instance
+                             * GET /dbaas/logs/{serviceName}/output/opensearch/osd/{osdId}
+                             */
+                            $get(): Promise<dbaas.logs.Osd>;
+                            /**
+                             * Update specified OpenSearch Dashboards instance
+                             * PUT /dbaas/logs/{serviceName}/output/opensearch/osd/{osdId}
+                             */
+                            $put(params: { description: string }): Promise<dbaas.logs.Operation>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            url: {
+                                /**
+                                 * Returns the list of urls of specified OpenSearch Dashboards
+                                 * GET /dbaas/logs/{serviceName}/output/opensearch/osd/{osdId}/url
+                                 */
+                                $get(): Promise<dbaas.logs.Url[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        };
+                    }
+                }
             }
             role: {
                 /**
@@ -1640,6 +1958,13 @@ export interface Dbaas {
                              * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/kibana
                              */
                             $post(params: { kibanaId: string, permissionType?: dbaas.logs.PermissionTypeEnum }): Promise<dbaas.logs.Operation>;
+                        }
+                        osd: {
+                            /**
+                             * Append a OpenSearch Dashboards permission to role
+                             * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/osd
+                             */
+                            $post(params: { osdId: string, permissionType?: dbaas.logs.PermissionTypeEnum }): Promise<dbaas.logs.Operation>;
                         }
                         stream: {
                             /**

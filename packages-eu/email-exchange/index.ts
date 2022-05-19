@@ -138,6 +138,7 @@ export namespace email {
          * interface fullName: email.exchange.ExchangeService.ExchangeService
          */
         export interface ExchangeService {
+            adfsChangePassword: boolean;
             complexityEnabled: boolean;
             displayName?: string;
             domain: string;
@@ -322,7 +323,7 @@ export namespace email {
          * function enumeration for exchange task
          * type fullname: email.exchange.TaskFunctionEnum
          */
-        export type TaskFunctionEnum = "activateSharepoint" | "addAccount" | "addAccountArchive" | "addActiveSyncMailNotification" | "addAlias" | "addDistributionGroup" | "addDistributionGroupManager" | "addDistributionGroupMember" | "addDistributionGroupSendAs" | "addDistributionGroupSendOnBehalfTo" | "addDomain" | "addDomainDisclaimer" | "addExchangeCustomIsolation" | "addExchangeServiceAuthorizedIp" | "addExportPstRequest" | "addExternalContact" | "addFullAccess" | "addOutlookLicense" | "addPublicFolder" | "addPublicFolderPermission" | "addResourceAccount" | "addResourceDelegate" | "addSendAs" | "addSendConnector" | "addSendOnBehalfTo" | "addSharedAccount" | "addSharedAccountFullAccess" | "addSharedAccountSendAs" | "addSharedAccountSendOnBehalfTo" | "changeHostname" | "changePassword" | "clearDataOnDevice" | "cloneTemplateExchangePrivate" | "configureExchangeCustomer" | "configureExchangeOwaMfa" | "deleteAccount" | "deleteAccountArchive" | "deleteActiveSyncMailNotification" | "deleteAlias" | "deleteDistributionGroup" | "deleteDistributionGroupManager" | "deleteDistributionGroupMember" | "deleteDistributionGroupSendAs" | "deleteDistributionGroupSendOnBehalfTo" | "deleteDomain" | "deleteDomainDisclaimer" | "deleteExchangeCustomIsolation" | "deleteExchangeService" | "deleteExchangeServiceAuthorizedIp" | "deleteExportPstRequest" | "deleteExternalContact" | "deleteFullAccess" | "deleteOutlookLicense" | "deletePublicFolder" | "deletePublicFolderPermission" | "deleteResourceAccount" | "deleteResourceDelegate" | "deleteSendAs" | "deleteSendConnector" | "deleteSendOnBehalfTo" | "deleteSharedAccount" | "deleteSharedAccountFullAccess" | "deleteSharedAccountSendAs" | "deleteSharedAccountSendOnBehalfTo" | "destroyPrivateVm" | "diagnoseAccount" | "expandDrive" | "generateOutlookUrl" | "generatePstUrl" | "installExchange" | "installSSL" | "maintenance" | "migrationAccount" | "migrationDisclaimer" | "migrationExternalContact" | "migrationHistory" | "migrationMailingList" | "migrationResourceAccount" | "migrationService" | "reOpenHostedAccount" | "reOpenOutlookLicense" | "reOpenPrivateAccount" | "reOpenPrivateVm" | "setAccount" | "setAccountArchive" | "setAlias" | "setDistributionGroup" | "setDns" | "setDomain" | "setDomainDisclaimer" | "setExchangeAccountProtocol" | "setExchangeServiceDevice" | "setExternalContact" | "setPublicFolder" | "setPublicFolderPermission" | "setResourceAccount" | "setSendConnector" | "setService" | "setSharedAccount" | "suspendAccount" | "suspendExchangeService" | "suspendHostedAccount" | "suspendOutlookLicense" | "suspendPrivateAccount" | "suspendPrivateVm" | "unsuspendAccount" | "unsuspendExchangeService" | "unsuspendHostedAccount" | "updateExchangeServiceDevice" | "upgrade2016"
+        export type TaskFunctionEnum = "activateSharepoint" | "addAccount" | "addAccountArchive" | "addActiveSyncMailNotification" | "addAlias" | "addDistributionGroup" | "addDistributionGroupManager" | "addDistributionGroupMember" | "addDistributionGroupSendAs" | "addDistributionGroupSendOnBehalfTo" | "addDomain" | "addDomainDisclaimer" | "addExchangeCustomIsolation" | "addExchangeDomainDKIM" | "addExchangeServiceAuthorizedIp" | "addExportPstRequest" | "addExternalContact" | "addFullAccess" | "addOutlookLicense" | "addPublicFolder" | "addPublicFolderPermission" | "addResourceAccount" | "addResourceDelegate" | "addSendAs" | "addSendConnector" | "addSendOnBehalfTo" | "addSharedAccount" | "addSharedAccountFullAccess" | "addSharedAccountSendAs" | "addSharedAccountSendOnBehalfTo" | "changeHostname" | "changePassword" | "clearDataOnDevice" | "cloneTemplateExchangePrivate" | "configureExchangeCustomer" | "configureExchangeOwaMfa" | "deleteAccount" | "deleteAccountArchive" | "deleteActiveSyncMailNotification" | "deleteAlias" | "deleteDistributionGroup" | "deleteDistributionGroupManager" | "deleteDistributionGroupMember" | "deleteDistributionGroupSendAs" | "deleteDistributionGroupSendOnBehalfTo" | "deleteDomain" | "deleteDomainDisclaimer" | "deleteExchangeCustomIsolation" | "deleteExchangeDomainDKIM" | "deleteExchangeService" | "deleteExchangeServiceAuthorizedIp" | "deleteExportPstRequest" | "deleteExternalContact" | "deleteFullAccess" | "deleteOutlookLicense" | "deletePublicFolder" | "deletePublicFolderPermission" | "deleteResourceAccount" | "deleteResourceDelegate" | "deleteSendAs" | "deleteSendConnector" | "deleteSendOnBehalfTo" | "deleteSharedAccount" | "deleteSharedAccountFullAccess" | "deleteSharedAccountSendAs" | "deleteSharedAccountSendOnBehalfTo" | "destroyPrivateVm" | "diagnoseAccount" | "disableExchangeDKIM" | "enableExchangeDKIM" | "expandDrive" | "generateOutlookUrl" | "generatePstUrl" | "installExchange" | "installSSL" | "maintenance" | "migrationAccount" | "migrationDisclaimer" | "migrationExternalContact" | "migrationHistory" | "migrationMailingList" | "migrationResourceAccount" | "migrationService" | "reOpenHostedAccount" | "reOpenOutlookLicense" | "reOpenPrivateAccount" | "reOpenPrivateVm" | "setAccount" | "setAccountArchive" | "setAlias" | "setDistributionGroup" | "setDns" | "setDomain" | "setDomainDisclaimer" | "setExchangeAccountProtocol" | "setExchangeServiceDevice" | "setExternalContact" | "setPublicFolder" | "setPublicFolderPermission" | "setResourceAccount" | "setSendConnector" | "setService" | "setSharedAccount" | "suspendAccount" | "suspendExchangeService" | "suspendHostedAccount" | "suspendOutlookLicense" | "suspendPrivateAccount" | "suspendPrivateVm" | "unsuspendAccount" | "unsuspendExchangeService" | "unsuspendHostedAccount" | "updateExchangeServiceDevice" | "upgrade2016"
         /**
          * Exchange task status
          * type fullname: email.exchange.TaskStatusEnum
@@ -349,6 +350,25 @@ export namespace email {
             outsideOnly: boolean;
             taskPendingId: number;
         }
+        /**
+         * DKIM for a domain
+         * interface fullName: email.exchange.dkim.dkim
+         */
+        export interface dkim {
+            customerRecord: string;
+            header: string;
+            lastUpdate?: string;
+            recordType: string;
+            selectorName: string;
+            status: email.exchange.dkimStatusEnum;
+            targetRecord?: string;
+            taskPendingId?: number;
+        }
+        /**
+         * dkim status
+         * type fullname: email.exchange.dkimStatusEnum
+         */
+        export type dkimStatusEnum = "deleting" | "disabling" | "enabling" | "inProduction" | "ready" | "todo" | "waitingRecord"
         /**
          * Aliases on this mailbox
          * interface fullName: email.exchange.exchangeAccountAlias.exchangeAccountAlias
@@ -817,7 +837,7 @@ export interface Email {
                      * Alter this object properties
                      * PUT /email/exchange/{organizationName}/service/{exchangeService}
                      */
-                    $put(params?: { complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: email.exchange.ServiceOfferEnum, passwordHistoryCount?: number, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, sslExpirationDate?: string, state?: email.exchange.ServiceStateEnum, taskPendingId?: number, webUrl?: string }): Promise<void>;
+                    $put(params?: { adfsChangePassword?: boolean, complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: email.exchange.ServiceOfferEnum, passwordHistoryCount?: number, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, sslExpirationDate?: string, state?: email.exchange.ServiceStateEnum, taskPendingId?: number, webUrl?: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -1299,6 +1319,63 @@ export interface Email {
                                  * GET /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimerAttribute
                                  */
                                 $get(): Promise<email.exchange.DisclaimerAttributeEnum[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            dkim: {
+                                /**
+                                 * dkim associated to this domain
+                                 * GET /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/dkim
+                                 */
+                                $get(): Promise<string[]>;
+                                /**
+                                 * Create DKIM selector on this domain
+                                 * POST /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/dkim
+                                 */
+                                $post(params: { configureDkim?: boolean, selectorName: string }): Promise<email.exchange.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(selectorName: string): {
+                                    /**
+                                     * Delete DKIM selector on this domain
+                                     * DELETE /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/dkim/{selectorName}
+                                     */
+                                    $delete(): Promise<email.exchange.Task>;
+                                    /**
+                                     * Get this object properties
+                                     * GET /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/dkim/{selectorName}
+                                     */
+                                    $get(): Promise<email.exchange.dkim>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    disable: {
+                                        /**
+                                         * disable dkim signing
+                                         * POST /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/dkim/{selectorName}/disable
+                                         */
+                                        $post(): Promise<email.exchange.Task>;
+                                    }
+                                    enable: {
+                                        /**
+                                         * enable dkim signing or switch selector used
+                                         * POST /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/dkim/{selectorName}/enable
+                                         */
+                                        $post(): Promise<email.exchange.Task>;
+                                    }
+                                };
+                            }
+                            dkimSelector: {
+                                /**
+                                 * Get dkim selector list
+                                 * GET /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/dkimSelector
+                                 */
+                                $get(): Promise<string[]>;
                                 /**
                                  * Controle cache
                                  */

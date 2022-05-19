@@ -187,7 +187,7 @@ export namespace dedicated {
          * partition raid type
          * type fullname: dedicated.server.PartitionRaidEnum
          */
-        export type PartitionRaidEnum = "0" | "1" | "10" | "5" | "6"
+        export type PartitionRaidEnum = "0" | "1" | "10" | "5" | "6" | "7"
         /**
          * supports UEFI setup
          * type fullname: dedicated.server.SupportsUEFIEnum

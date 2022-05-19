@@ -1,6 +1,6 @@
 import {Schema} from '../../src/schema';
 
-// imported from https://eu.api.ovh.com:443/1.0/ovhCloudConnect.json
+// imported from https://api.us.ovhcloud.com:443/1.0/ovhCloudConnect.json
 
 export const schema: Schema = {
   "apiVersion": "1.0",
@@ -86,60 +86,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/ovhCloudConnect/{serviceName}"
-    },
-    {
-      "description": "Change the contacts of this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Launch a contact change procedure",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The contact to set as admin contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactAdmin",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The contact to set as billing contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The contact to set as tech contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Your OVHcloud Connect service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/ovhcloudconnect/all"
-          ]
-        }
-      ],
-      "path": "/ovhCloudConnect/{serviceName}/changeContact"
     },
     {
       "description": "",
@@ -1299,7 +1245,7 @@ export const schema: Schema = {
       "path": "/ovhCloudConnect/{serviceName}/terminate"
     }
   ],
-  "basePath": "https://eu.api.ovh.com/1.0",
+  "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
     "ovhcloudconnect.Datacenter": {
       "description": "OVHcloud Connect Datacenter",

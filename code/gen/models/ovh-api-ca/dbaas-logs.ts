@@ -1152,6 +1152,169 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/input/{inputId}/url"
     },
     {
+      "description": "Engines",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns the list of available input engines",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/input/engine"
+    },
+    {
+      "description": "Engines",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns details of specified input engine",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::InputEngineDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Engine ID",
+              "fullType": "uuid",
+              "name": "engineId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Engine",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/input/engine/{engineId}"
+    },
+    {
+      "description": "Input engine helpers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return the list of available helpers for the given input engine",
+          "errors": [
+            "Client::ValidationError::InvalidUUID"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Engine ID",
+              "fullType": "uuid",
+              "name": "engineId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/input/engine/{engineId}/helper"
+    },
+    {
+      "description": "Input engine helpers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns details of specified input engine helper",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::HelperDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Engine ID",
+              "fullType": "uuid",
+              "name": "engineId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Helper ID",
+              "fullType": "uuid",
+              "name": "helperId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Helper",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/input/engine/{engineId}/helper/{helperId}"
+    },
+    {
       "description": "Service Metrics",
       "operations": [
         {
@@ -1265,8 +1428,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias",
+            "value": "DEPRECATED"
           },
           "description": "Returns the list of alias for connected user",
           "errors": [
@@ -1292,8 +1458,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias",
+            "value": "DEPRECATED"
           },
           "description": "Register a new elasticsearch alias",
           "errors": [
@@ -1343,8 +1512,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias",
+            "value": "DEPRECATED"
           },
           "description": "Remove specified elasticsearch alias",
           "errors": [
@@ -1382,8 +1554,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias",
+            "value": "DEPRECATED"
           },
           "description": "Returns specified elasticsearch alias",
           "errors": [
@@ -1419,8 +1594,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias",
+            "value": "DEPRECATED"
           },
           "description": "Update specified elasticsearch alias",
           "errors": [
@@ -1473,10 +1651,13 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/index",
+            "value": "DEPRECATED"
           },
-          "description": "Returns the list of elasticsearch indexes attached to specified\n        elasticsearch alias",
+          "description": "Returns the list of Elasticsearch indexes attached to specified Elasticsearch alias",
           "errors": [
             "Client::ValidationError::InvalidUUID",
             "Client::NotFound::AliasDoesNotExists",
@@ -1510,8 +1691,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/index",
+            "value": "DEPRECATED"
           },
           "description": "Attach a elasticsearch index to specified elasticsearch alias",
           "errors": [
@@ -1566,8 +1750,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/index",
+            "value": "DEPRECATED"
           },
           "description": "Detach a elasticsearch index from specified elasticsearch alias",
           "errors": [
@@ -1621,10 +1808,13 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/stream",
+            "value": "DEPRECATED"
           },
-          "description": "Returns the list of graylog streams attached to specified\n        elasticsearch alias",
+          "description": "Returns the list of Graylog streams attached to specified Elasticsearch alias",
           "errors": [
             "Client::ValidationError::InvalidUUID",
             "Client::NotFound::AliasDoesNotExists",
@@ -1658,8 +1848,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/stream",
+            "value": "DEPRECATED"
           },
           "description": "Attach a graylog stream to specified elasticsearch alias",
           "errors": [
@@ -1715,8 +1908,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/stream",
+            "value": "DEPRECATED"
           },
           "description": "Detach a graylog stream from specified elasticsearch alias",
           "errors": [
@@ -1770,8 +1966,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/url",
+            "value": "DEPRECATED"
           },
           "description": "Returns the list of urls of specified alias",
           "errors": [
@@ -1813,8 +2012,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index",
+            "value": "DEPRECATED"
           },
           "description": "Returns the list of elasticsearch indexes",
           "errors": [
@@ -1840,8 +2042,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index",
+            "value": "DEPRECATED"
           },
           "description": "Register a new elasticsearch index",
           "errors": [
@@ -1892,8 +2097,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index",
+            "value": "DEPRECATED"
           },
           "description": "Remove specified elasticsearch index",
           "errors": [
@@ -1932,8 +2140,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index",
+            "value": "DEPRECATED"
           },
           "description": "Returns specified elasticsearch index",
           "errors": [
@@ -1969,8 +2180,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index",
+            "value": "DEPRECATED"
           },
           "description": "Update specified elasticsearch index",
           "errors": [
@@ -2023,8 +2237,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index/{indexId}/url",
+            "value": "DEPRECATED"
           },
           "description": "Returns the list of urls of specified index",
           "errors": [
@@ -2067,8 +2284,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd",
+            "value": "DEPRECATED"
           },
           "description": "Returns the list of Kibana instances",
           "errors": [
@@ -2094,8 +2314,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd",
+            "value": "DEPRECATED"
           },
           "description": "Register a new Kibana instance",
           "errors": [
@@ -2140,8 +2363,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd",
+            "value": "DEPRECATED"
           },
           "description": "Remove specified Kibana instance",
           "errors": [
@@ -2180,8 +2406,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd",
+            "value": "DEPRECATED"
           },
           "description": "Returns specified Kibana instance",
           "errors": [
@@ -2218,8 +2447,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd",
+            "value": "DEPRECATED"
           },
           "description": "Update specified Kibana instance",
           "errors": [
@@ -2271,8 +2503,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd/{osdId}/url",
+            "value": "DEPRECATED"
           },
           "description": "Returns the list of urls of specified Kibana",
           "errors": [
@@ -2887,6 +3122,7 @@ export const schema: Schema = {
           "description": "Register a new alert on specified graylog stream",
           "errors": [
             "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidAlertFieldValue",
             "Client::ValidationError::InvalidConditionType",
             "Client::ValidationError::InvalidUUID",
             "Client::ValidationError::RequiredField",
@@ -3484,6 +3720,1055 @@ export const schema: Schema = {
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/url"
+    },
+    {
+      "description": "Aliases",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns the list of alias for connected user",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Register a new OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidNameContain",
+            "Client::ValidationError::InvalidNameLenght",
+            "Client::ValidationError::InvalidNameLowercase",
+            "Client::ValidationError::InvalidNameMatch",
+            "Client::ValidationError::InvalidNameStart",
+            "Client::ValidationError::InvalidNameWhitespace",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::NotFound::ClusterDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::AlreadyExists"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dbaas.logs.OutputOpenSearchAliasCreation",
+              "description": "Request Body",
+              "fullType": "dbaas.logs.OutputOpenSearchAliasCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/opensearch/alias"
+    },
+    {
+      "description": "Aliases",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::AliasHasLinkedStreams",
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Alias ID",
+              "fullType": "uuid",
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Alias ID",
+              "fullType": "uuid",
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Alias",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::PaymentRequired::QuotaReached",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dbaas.logs.OutputOpenSearchAliasUpdate",
+              "description": "Request Body",
+              "fullType": "dbaas.logs.OutputOpenSearchAliasUpdate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Alias ID",
+              "fullType": "uuid",
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}"
+    },
+    {
+      "description": "AliasStreams",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns the list of OpenSearch indexes attached to specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Alias ID",
+              "fullType": "uuid",
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Attach a OpenSearch index to specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::CannotMixStreamAndIndex",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::IndexAlreadyLinked",
+            "Client::Forbidden::NotOnSameCluster",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dbaas.logs.OutputOpenSearchAliasIndexCreation",
+              "description": "Request Body",
+              "fullType": "dbaas.logs.OutputOpenSearchAliasIndexCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Alias ID",
+              "fullType": "uuid",
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/index"
+    },
+    {
+      "description": "AliasStreams",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Detach a OpenSearch index from specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::IndexNotLinked",
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Alias ID",
+              "fullType": "uuid",
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Index ID",
+              "fullType": "uuid",
+              "name": "indexId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/index/{indexId}"
+    },
+    {
+      "description": "AliasStreams",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns the list of Graylog streams attached to specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Alias ID",
+              "fullType": "uuid",
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Attach a Graylog stream to specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::CannotMixStreamAndIndex",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotStreamOwner",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::NotOnSameCluster",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::StreamAlreadyLinked",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dbaas.logs.OutputOpenSearchAliasStreamCreation",
+              "description": "Request Body",
+              "fullType": "dbaas.logs.OutputOpenSearchAliasStreamCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Alias ID",
+              "fullType": "uuid",
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/stream"
+    },
+    {
+      "description": "AliasStreams",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Detach a Graylog stream from specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::StreamNotLinked",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Alias ID",
+              "fullType": "uuid",
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/stream/{streamId}"
+    },
+    {
+      "description": "AliasUrls",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns the list of urls of specified alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Alias ID",
+              "fullType": "uuid",
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Url[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/url"
+    },
+    {
+      "description": "Indexes",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns the list of OpenSearch indexes",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Register a new OpenSearch index",
+          "errors": [
+            "Client::ValidationError::InvalidNameContain",
+            "Client::ValidationError::InvalidNameLenght",
+            "Client::ValidationError::InvalidNameLowercase",
+            "Client::ValidationError::InvalidNameMatch",
+            "Client::ValidationError::InvalidNameStart",
+            "Client::ValidationError::InvalidNameWhitespace",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::AlreadyExists"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dbaas.logs.OutputOpenSearchIndexCreation",
+              "description": "Request Body",
+              "fullType": "dbaas.logs.OutputOpenSearchIndexCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/opensearch/index"
+    },
+    {
+      "description": "Indexes",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove specified OpenSearch index",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotOwner",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Index ID",
+              "fullType": "uuid",
+              "name": "indexId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns specified OpenSearch index",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Index ID",
+              "fullType": "uuid",
+              "name": "indexId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Index",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update specified OpenSearch index",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dbaas.logs.OutputOpenSearchIndexUpdate",
+              "description": "Request Body",
+              "fullType": "dbaas.logs.OutputOpenSearchIndexUpdate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Index ID",
+              "fullType": "uuid",
+              "name": "indexId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/opensearch/index/{indexId}"
+    },
+    {
+      "description": "IndexUrls",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns the list of urls of specified index",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotOwner",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Index ID",
+              "fullType": "uuid",
+              "name": "indexId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Url[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/opensearch/index/{indexId}/url"
+    },
+    {
+      "description": "OpenSearch Dashboards instances",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns the list of OpenSearch Dashboards instances",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Register a new OpenSearch Dashboards instance",
+          "errors": [
+            "Client::ValidationError::ClusterWithoutFrontend",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::Forbidden::OsdStillInDelivery",
+            "Client::Forbidden::PCIDSSInputDeny",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dbaas.logs.OsdCreation",
+              "description": "Request Body",
+              "fullType": "dbaas.logs.OsdCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/opensearch/osd"
+    },
+    {
+      "description": "OpenSearch Dashboards instances",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove specified OpenSearch Dashboards instance",
+          "errors": [
+            "Client::ValidationError::InvalidDeliveryStatus",
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::OsdDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Osd ID",
+              "fullType": "uuid",
+              "name": "osdId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns specified OpenSearch Dashboards instance",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::NotFound::OsdDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Osd ID",
+              "fullType": "uuid",
+              "name": "osdId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Osd",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update specified OpenSearch Dashboards instance",
+          "errors": [
+            "Client::ValidationError::InvalidDeliveryStatus",
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::OsdDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dbaas.logs.OsdUpdate",
+              "description": "Request Body",
+              "fullType": "dbaas.logs.OsdUpdate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Osd ID",
+              "fullType": "uuid",
+              "name": "osdId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/opensearch/osd/{osdId}"
+    },
+    {
+      "description": "OsdUrls",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns the list of urls of specified OpenSearch Dashboards",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::OsdDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Osd ID",
+              "fullType": "uuid",
+              "name": "osdId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Url[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/opensearch/osd/{osdId}/url"
     },
     {
       "description": "Roles",
@@ -4253,8 +5538,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/role/{roleId}/permission/osd",
+            "value": "DEPRECATED"
           },
           "description": "Append a kibana permission to role",
           "errors": [
@@ -4302,6 +5590,61 @@ export const schema: Schema = {
         }
       ],
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/kibana"
+    },
+    {
+      "description": "RolePermissionOsd",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Append a OpenSearch Dashboards permission to role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::OsdDoesNotExists",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::PermissionAlreadySet"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dbaas.logs.RolePermissionOsdCreation",
+              "description": "Request Body",
+              "fullType": "dbaas.logs.RolePermissionOsdCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Role ID",
+              "fullType": "uuid",
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/osd"
     },
     {
       "description": "RolePermissionIndex",
@@ -4658,8 +6001,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-05-17T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/input/engine",
+            "value": "DEPRECATED"
           },
           "description": "Returns the list of available input engines",
           "httpMethod": "GET",
@@ -4679,8 +6025,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-05-17T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/input/engine",
+            "value": "DEPRECATED"
           },
           "description": "Returns details of specified input engine",
           "errors": [
@@ -4713,8 +6062,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-05-17T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/input/engine/{engineId}/helper",
+            "value": "DEPRECATED"
           },
           "description": "Return the list of available helpers for the given input engine",
           "errors": [
@@ -4746,8 +6098,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-09-30T00:00:00+00:00",
+            "deprecatedDate": "2022-05-17T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}/input/engine/{engineId}/helper",
+            "value": "DEPRECATED"
           },
           "description": "Returns details of specified input engine helper",
           "errors": [
@@ -4787,7 +6142,7 @@ export const schema: Schema = {
   "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
     "dbaas.logs.Alias": {
-      "description": "Elasticsearch alias",
+      "description": "Alias",
       "id": "Alias",
       "namespace": "dbaas.logs",
       "properties": {
@@ -5105,7 +6460,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.ClusterUpdate": {
-      "description": "Missing description",
+      "description": "Cluster network acls",
       "id": "ClusterUpdate",
       "namespace": "dbaas.logs",
       "properties": {
@@ -5380,7 +6735,7 @@ export const schema: Schema = {
       "namespace": "dbaas.logs"
     },
     "dbaas.logs.Index": {
-      "description": "Elasticsearch index",
+      "description": "Index",
       "id": "Index",
       "namespace": "dbaas.logs",
       "properties": {
@@ -5623,7 +6978,7 @@ export const schema: Schema = {
       "namespace": "dbaas.logs"
     },
     "dbaas.logs.InputConfigurationFlowggerUpdate": {
-      "description": "Missing description",
+      "description": "Flowgger configuration",
       "id": "InputConfigurationFlowggerUpdate",
       "namespace": "dbaas.logs",
       "properties": {
@@ -5646,7 +7001,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.InputConfigurationLogstashUpdate": {
-      "description": "Missing description",
+      "description": "Logstash configuration",
       "id": "InputConfigurationLogstashUpdate",
       "namespace": "dbaas.logs",
       "properties": {
@@ -5677,7 +7032,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.InputCreation": {
-      "description": "Missing description",
+      "description": "Input configuration",
       "id": "InputCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -5752,7 +7107,7 @@ export const schema: Schema = {
       "namespace": "dbaas.logs"
     },
     "dbaas.logs.InputUpdate": {
-      "description": "Missing description",
+      "description": "Input configuration update",
       "id": "InputUpdate",
       "namespace": "dbaas.logs",
       "properties": {
@@ -5878,7 +7233,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.KibanaCreation": {
-      "description": "Missing description",
+      "description": "New Kibana instance",
       "id": "KibanaCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -5893,7 +7248,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.KibanaUpdate": {
-      "description": "Missing description",
+      "description": "Kibana update",
       "id": "KibanaUpdate",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6016,7 +7371,7 @@ export const schema: Schema = {
         },
         "kibanaId": {
           "canBeNull": true,
-          "description": "Kibana used",
+          "description": "Kibana used (DEPRECATED: use osdId)",
           "fullType": "uuid",
           "readOnly": true,
           "required": false,
@@ -6025,6 +7380,14 @@ export const schema: Schema = {
         "operationId": {
           "canBeNull": false,
           "description": "Operation ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "osdId": {
+          "canBeNull": true,
+          "description": "OpenSearch Dashboards used",
           "fullType": "uuid",
           "readOnly": true,
           "required": false,
@@ -6080,8 +7443,101 @@ export const schema: Schema = {
       "id": "OperationStateEnum",
       "namespace": "dbaas.logs"
     },
+    "dbaas.logs.Osd": {
+      "description": "OpenSearch Dashboards instance",
+      "id": "Osd",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "OpenSearch Dashboards creation",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "deliveryStatus": {
+          "canBeNull": false,
+          "description": "Status of the delivering process",
+          "fullType": "dbaas.logs.DeliveryStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.DeliveryStatusEnum"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "OpenSearch Dashboards description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "isEditable": {
+          "canBeNull": false,
+          "description": "Indicates if you are allowed to edit entry",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "OpenSearch Dashboards name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "osdId": {
+          "canBeNull": false,
+          "description": "OpenSearch Dashboards ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "updatedAt": {
+          "canBeNull": true,
+          "description": "OpenSearch Dashboards last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "dbaas.logs.OsdCreation": {
+      "description": "Osd creation body",
+      "id": "OsdCreation",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "dbaas.logs.OsdUpdate": {
+      "description": "OpenSearch Dashboards update",
+      "id": "OsdUpdate",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
     "dbaas.logs.OutputElasticsearchAliasCreation": {
-      "description": "Missing description",
+      "description": "New Elasticsearch alias",
       "id": "OutputElasticsearchAliasCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6104,7 +7560,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.OutputElasticsearchAliasIndexCreation": {
-      "description": "Missing description",
+      "description": "Link given Elasticsearch index to alias",
       "id": "OutputElasticsearchAliasIndexCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6119,7 +7575,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.OutputElasticsearchAliasStreamCreation": {
-      "description": "Missing description",
+      "description": "Link given Graylog stream to Elasticsearch alias",
       "id": "OutputElasticsearchAliasStreamCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6134,7 +7590,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.OutputElasticsearchAliasUpdate": {
-      "description": "Missing description",
+      "description": "Elasticsearch alias update",
       "id": "OutputElasticsearchAliasUpdate",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6149,7 +7605,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.OutputElasticsearchIndexCreation": {
-      "description": "Missing description",
+      "description": "New Elasticsearch index",
       "id": "OutputElasticsearchIndexCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6188,7 +7644,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.OutputElasticsearchIndexUpdate": {
-      "description": "Missing description",
+      "description": "Elasticsearch index update",
       "id": "OutputElasticsearchIndexUpdate",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6211,7 +7667,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.OutputGraylogDashboardCreation": {
-      "description": "Missing description",
+      "description": "New Graylog dashboard",
       "id": "OutputGraylogDashboardCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6234,7 +7690,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.OutputGraylogDashboardDuplicateCreation": {
-      "description": "Missing description",
+      "description": "Clone given Graylog dashboard",
       "id": "OutputGraylogDashboardDuplicateCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6265,7 +7721,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.OutputGraylogDashboardUpdate": {
-      "description": "Missing description",
+      "description": "Graylog dahsboard update",
       "id": "OutputGraylogDashboardUpdate",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6288,7 +7744,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.OutputGraylogStreamAlertCreation": {
-      "description": "Missing description",
+      "description": "New Graylog alert",
       "id": "OutputGraylogStreamAlertCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6391,7 +7847,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.OutputGraylogStreamAlertUpdate": {
-      "description": "Missing description",
+      "description": "Graylog alert update",
       "id": "OutputGraylogStreamAlertUpdate",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6494,7 +7950,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.OutputGraylogStreamCreation": {
-      "description": "Missing description",
+      "description": "New Graylog stream",
       "id": "OutputGraylogStreamCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6621,7 +8077,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.OutputGraylogStreamRuleCreation": {
-      "description": "Missing description",
+      "description": "New rule on Graylog stream",
       "id": "OutputGraylogStreamRuleCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6660,7 +8116,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.OutputGraylogStreamUpdate": {
-      "description": "Missing description",
+      "description": "Graylog stream update",
       "id": "OutputGraylogStreamUpdate",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6770,6 +8226,136 @@ export const schema: Schema = {
         }
       }
     },
+    "dbaas.logs.OutputOpenSearchAliasCreation": {
+      "description": "New OpenSearch alias",
+      "id": "OutputOpenSearchAliasCreation",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "suffix": {
+          "canBeNull": false,
+          "description": "Suffix",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "dbaas.logs.OutputOpenSearchAliasIndexCreation": {
+      "description": "Link given OpenSearch index to alias",
+      "id": "OutputOpenSearchAliasIndexCreation",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "indexId": {
+          "canBeNull": false,
+          "description": "Index ID",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        }
+      }
+    },
+    "dbaas.logs.OutputOpenSearchAliasStreamCreation": {
+      "description": "Link given Graylog stream to alias",
+      "id": "OutputOpenSearchAliasStreamCreation",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "streamId": {
+          "canBeNull": false,
+          "description": "Stream ID",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        }
+      }
+    },
+    "dbaas.logs.OutputOpenSearchAliasUpdate": {
+      "description": "OpenSearch alias update",
+      "id": "OutputOpenSearchAliasUpdate",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "dbaas.logs.OutputOpenSearchIndexCreation": {
+      "description": "OpenSearch index update",
+      "id": "OutputOpenSearchIndexCreation",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "alertNotifyEnabled": {
+          "canBeNull": true,
+          "description": "If set, notify when size is near 80, 90 or 100 % of its maximum capacity",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "nbShard": {
+          "canBeNull": true,
+          "description": "Number of shard",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "suffix": {
+          "canBeNull": false,
+          "description": "Suffix",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "dbaas.logs.OutputOpenSearchIndexUpdate": {
+      "description": "OpenSearch index update",
+      "id": "OutputOpenSearchIndexUpdate",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "alertNotifyEnabled": {
+          "canBeNull": true,
+          "description": "If set, notify when size is near 80, 90 or 100 % of its maximum capacity",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
     "dbaas.logs.Permission": {
       "description": "Role permission",
       "id": "Permission",
@@ -6801,7 +8387,15 @@ export const schema: Schema = {
         },
         "kibanaId": {
           "canBeNull": true,
-          "description": "Associated Kibana instance",
+          "description": "Associated Kibana instance (DEPRECATED: use osdId)",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "osdId": {
+          "canBeNull": true,
+          "description": "Associated OpenSearch Dashboards instance",
           "fullType": "uuid",
           "readOnly": true,
           "required": false,
@@ -6891,7 +8485,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.RoleCreation": {
-      "description": "Missing description",
+      "description": "New role",
       "id": "RoleCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6914,7 +8508,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.RoleMemberCreation": {
-      "description": "Missing description",
+      "description": "Add given LDP account to role",
       "id": "RoleMemberCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6937,7 +8531,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.RoleMemberUpdate": {
-      "description": "Missing description",
+      "description": "Update given role member",
       "id": "RoleMemberUpdate",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6952,7 +8546,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.RolePermissionAliasCreation": {
-      "description": "Missing description",
+      "description": "Attach given alias to role",
       "id": "RolePermissionAliasCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6967,7 +8561,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.RolePermissionDashboardCreation": {
-      "description": "Missing description",
+      "description": "Attach given Graylog dashboard to role",
       "id": "RolePermissionDashboardCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -6990,7 +8584,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.RolePermissionIndexCreation": {
-      "description": "Missing description",
+      "description": "Attach given index to role",
       "id": "RolePermissionIndexCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -7013,7 +8607,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.RolePermissionKibanaCreation": {
-      "description": "Missing description",
+      "description": "Attach given Kibana instance to role",
       "id": "RolePermissionKibanaCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -7035,8 +8629,31 @@ export const schema: Schema = {
         }
       }
     },
+    "dbaas.logs.RolePermissionOsdCreation": {
+      "description": "Attach given OpenSearch Dashboards to role",
+      "id": "RolePermissionOsdCreation",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "osdId": {
+          "canBeNull": false,
+          "description": "Osd ID",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "permissionType": {
+          "canBeNull": true,
+          "description": "Permission type",
+          "fullType": "dbaas.logs.PermissionTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.PermissionTypeEnum"
+        }
+      }
+    },
     "dbaas.logs.RolePermissionStreamCreation": {
-      "description": "Missing description",
+      "description": "Attach given Graylog stream to role",
       "id": "RolePermissionStreamCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -7051,7 +8668,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.RoleUpdate": {
-      "description": "Missing description",
+      "description": "Role update",
       "id": "RoleUpdate",
       "namespace": "dbaas.logs",
       "properties": {
@@ -7500,7 +9117,7 @@ export const schema: Schema = {
         "MAX",
         "MEAN",
         "MIN",
-        "STDDEV",
+        "STDLABEU",
         "SUM"
       ],
       "enumType": "string",
@@ -7722,7 +9339,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.TokenCreation": {
-      "description": "Missing description",
+      "description": "New token",
       "id": "TokenCreation",
       "namespace": "dbaas.logs",
       "properties": {
@@ -7745,7 +9362,7 @@ export const schema: Schema = {
       }
     },
     "dbaas.logs.Update": {
-      "description": "Missing description",
+      "description": "Service update",
       "id": "Update",
       "namespace": "dbaas.logs",
       "properties": {
@@ -7792,6 +9409,8 @@ export const schema: Schema = {
         "HTTP_GELF",
         "HTTP_TLS_GELF",
         "KIBANA_WEBUI",
+        "OPENSEARCH_API",
+        "OSD_WEBUI",
         "SERVICE_DOMAIN",
         "TCP_BEATS",
         "TCP_CAP_N_PROTO",
@@ -7817,7 +9436,7 @@ export const schema: Schema = {
       "namespace": "dbaas.logs"
     },
     "dbaas.logs.UserChangePasswordCreation": {
-      "description": "Missing description",
+      "description": "Reset service password",
       "id": "UserChangePasswordCreation",
       "namespace": "dbaas.logs",
       "properties": {

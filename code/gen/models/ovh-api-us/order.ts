@@ -367,6 +367,84 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about Ceph as a Service offers",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new Ceph as a Service item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the Ceph as a Service offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/cephaas"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "Get prices and contracts information for your cart",
           "httpMethod": "GET",
           "noAuthentication": false,
@@ -2542,8 +2620,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get informations about OVHcloud Connect offers",
           "httpMethod": "GET",
@@ -2562,8 +2640,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Post a new OVHcloud Connect item in your cart",
           "httpMethod": "POST",
@@ -5637,6 +5715,32 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve OVH Cloud Connect catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/ovhCloudConnect"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "Retrieve Dedicated Cloud catalog",
           "httpMethod": "GET",
           "noAuthentication": true,
@@ -6074,6 +6178,151 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}"
+    },
+    {
+      "description": "Operations about the CEPH service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
+        }
+      ],
+      "path": "/order/upgrade/cephaas"
+    },
+    {
+      "description": "Listing offers /order/upgrade/cephaas",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve available offers to upgrade your service to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal ID of Ceph service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
+        }
+      ],
+      "path": "/order/upgrade/cephaas/{serviceName}"
+    },
+    {
+      "description": "Listing offers /order/upgrade/cephaas/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a provisional order for the selected upgrade of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of Ceph service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Perform the requested upgrade of your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Indicates that order will be automatically paid with preferred payment method",
+              "fullType": "boolean",
+              "name": "autoPayWithPreferredPaymentMethod",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of Ceph service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.upgrade.OperationAndOrder",
+          "scopes": [
+            "all",
+            "order/all"
+          ]
+        }
+      ],
+      "path": "/order/upgrade/cephaas/{serviceName}/{planCode}"
     },
     {
       "description": "Operations about the LICENSE service",

@@ -2702,7 +2702,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Update your nodepool (quota or size)",
+          "description": "Update your nodepool information",
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -4819,6 +4819,67 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/region/{regionName}/network/{networkId}/subnet/{subnetId}"
     },
     {
+      "description": "Create a gateway from subnet",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a gateway from subnet",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.network.CreateGatewaySummary",
+              "description": "Request Body",
+              "fullType": "cloud.network.CreateGatewaySummary",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Network ID",
+              "fullType": "string",
+              "name": "networkId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Subnet ID",
+              "fullType": "string",
+              "name": "subnetId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.Operation",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/network/{networkId}/subnet/{subnetId}/gateway"
+    },
+    {
       "description": "Consult quotas",
       "operations": [
         {
@@ -5050,7 +5111,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get storage containers",
+          "description": "Get S3 storage containers",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -5197,7 +5258,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Limits the number of objects in the result",
+              "description": "Limits the number of objects in the result (1000 maximum, defaults to 1000)",
               "fullType": "long",
               "name": "limit",
               "paramType": "query",
@@ -5337,14 +5398,14 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/region/{regionName}/storage/{name}/policy/{userId}"
     },
     {
-      "description": "Generate presigned URLs to download or upload objects",
+      "description": "Generate S3 presigned URLs to download or upload objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Generate presigned URLs to download or upload objects",
+          "description": "Generate S3 presigned URLs to download or upload objects",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6776,6 +6837,14 @@ export const schema: Schema = {
               "name": "region",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "cloud.user.RCloneServiceEnum",
+              "description": "Service",
+              "fullType": "cloud.user.RCloneServiceEnum",
+              "name": "service",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "cloud.user.Rclone",
@@ -8625,7 +8694,7 @@ export const schema: Schema = {
       "namespace": "cloud",
       "properties": {
         "name": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Kubernetes cluster name",
           "fullType": "string",
           "readOnly": false,
@@ -8633,7 +8702,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "nodepool": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Nodepool to init with cluster creation",
           "fullType": "cloud.ProjectKubeCreationNodePool",
           "readOnly": false,
@@ -8641,7 +8710,7 @@ export const schema: Schema = {
           "type": "cloud.ProjectKubeCreationNodePool"
         },
         "privateNetworkId": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "OpenStack private network (or vrack) ID to bind to cluster",
           "fullType": "string",
           "readOnly": false,
@@ -8657,7 +8726,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "version": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Kubernetes version to install",
           "fullType": "cloud.kube.VersionEnum",
           "readOnly": false,
@@ -8688,7 +8757,7 @@ export const schema: Schema = {
           "type": "boolean"
         },
         "desiredNodes": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Number of nodes to instantiate (1 by default)",
           "fullType": "long",
           "readOnly": false,
@@ -8696,7 +8765,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "flavorName": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Nodes flavor",
           "fullType": "string",
           "readOnly": false,
@@ -8704,7 +8773,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "maxNodes": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Higher limit you accept for the desiredNodes value (100 by default)",
           "fullType": "long",
           "readOnly": false,
@@ -8712,7 +8781,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "minNodes": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Lower limit you accept for the desiredNodes value (0 by default)",
           "fullType": "long",
           "readOnly": false,
@@ -8728,7 +8797,7 @@ export const schema: Schema = {
           "type": "boolean"
         },
         "name": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "NodePool name",
           "fullType": "string",
           "readOnly": false,
@@ -8736,7 +8805,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "template": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "NodePool template to apply to each children nodes",
           "fullType": "cloud.kube.NodePoolTemplate",
           "readOnly": false,
@@ -8751,7 +8820,7 @@ export const schema: Schema = {
       "namespace": "cloud",
       "properties": {
         "ips": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "List of ips to add to the cluster api-server restrictions (format with /subnet available)",
           "fullType": "ipBlock[]",
           "readOnly": false,
@@ -8774,7 +8843,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "name": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Node name",
           "fullType": "string",
           "readOnly": false,
@@ -8789,7 +8858,7 @@ export const schema: Schema = {
       "namespace": "cloud",
       "properties": {
         "scaleDownUnneededTimeSeconds": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "How long a node should be unneeded before it is eligible for scale down",
           "fullType": "long",
           "readOnly": false,
@@ -8797,7 +8866,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "scaleDownUnreadyTimeSeconds": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "How long an unready node should be unneeded before it is eligible for scale down",
           "fullType": "long",
           "readOnly": false,
@@ -8805,7 +8874,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "scaleDownUtilizationThreshold": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Sum of cpu or memory of all pods running on the node divided by node's corresponding allocatable resource, below which a node can be considered for scale down",
           "fullType": "double",
           "readOnly": false,
@@ -8836,7 +8905,7 @@ export const schema: Schema = {
           "type": "boolean"
         },
         "autoscaling": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Autoscaling customization parameters",
           "fullType": "cloud.ProjectKubeNodePoolAutoscalingParams",
           "readOnly": false,
@@ -8844,7 +8913,7 @@ export const schema: Schema = {
           "type": "cloud.ProjectKubeNodePoolAutoscalingParams"
         },
         "desiredNodes": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Number of nodes to instantiate (1 by default)",
           "fullType": "long",
           "readOnly": false,
@@ -8860,7 +8929,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "maxNodes": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Higher limit you accept for the desiredNodes value (100 by default)",
           "fullType": "long",
           "readOnly": false,
@@ -8868,7 +8937,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "minNodes": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Lower limit you accept for the desiredNodes value (0 by default)",
           "fullType": "long",
           "readOnly": false,
@@ -8884,7 +8953,7 @@ export const schema: Schema = {
           "type": "boolean"
         },
         "name": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "NodePool name",
           "fullType": "string",
           "readOnly": false,
@@ -8892,7 +8961,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "template": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "NodePool template to apply to each children nodes",
           "fullType": "cloud.kube.NodePoolTemplate",
           "readOnly": false,
@@ -8915,7 +8984,7 @@ export const schema: Schema = {
           "type": "boolean"
         },
         "autoscaling": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Autoscaling customization parameters",
           "fullType": "cloud.ProjectKubeNodePoolAutoscalingParams",
           "readOnly": false,
@@ -8923,7 +8992,7 @@ export const schema: Schema = {
           "type": "cloud.ProjectKubeNodePoolAutoscalingParams"
         },
         "desiredNodes": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "New number of nodes wanted in the nodepool",
           "fullType": "long",
           "readOnly": false,
@@ -8931,7 +9000,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "maxNodes": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "New maximal number of nodes wanted in the nodepool",
           "fullType": "long",
           "readOnly": false,
@@ -8939,7 +9008,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "minNodes": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "New minimal number of nodes wanted in the nodepool",
           "fullType": "long",
           "readOnly": false,
@@ -8947,15 +9016,15 @@ export const schema: Schema = {
           "type": "long"
         },
         "nodesToRemove": {
-          "canBeNull": true,
-          "description": "Nodes to delete during downscale",
-          "fullType": "uuid[]",
+          "canBeNull": false,
+          "description": "List of specific node IDs, openstack instance IDs or Node.Spec.providerIDs to delete during downscale",
+          "fullType": "string[]",
           "readOnly": false,
           "required": false,
-          "type": "uuid[]"
+          "type": "string[]"
         },
         "template": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "NodePool template to apply to each children nodes",
           "fullType": "cloud.kube.NodePoolTemplate",
           "readOnly": false,
@@ -9016,7 +9085,7 @@ export const schema: Schema = {
       "namespace": "cloud",
       "properties": {
         "privateNetworkId": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "OpenStack private network (or vrack) ID to bind to cluster",
           "fullType": "string",
           "readOnly": false,
@@ -9024,7 +9093,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "version": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Kubernetes version to use after reset, by default it keeps the current version",
           "fullType": "cloud.kube.VersionEnum",
           "readOnly": false,
@@ -9032,7 +9101,7 @@ export const schema: Schema = {
           "type": "cloud.kube.VersionEnum"
         },
         "workerNodesPolicy": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Worker nodes reset policy, default is delete",
           "fullType": "cloud.kube.ResetWorkerNodesPolicyEnum",
           "readOnly": false,
@@ -9076,8 +9145,16 @@ export const schema: Schema = {
       "id": "ProjectKubeUpdateCreation",
       "namespace": "cloud",
       "properties": {
-        "strategy": {
+        "force": {
           "canBeNull": true,
+          "description": "Force redeploying the control plane / reinstalling the nodes regardless of their current version",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "strategy": {
+          "canBeNull": false,
           "description": "The update strategy to apply on your service (next patch or minor version)",
           "fullType": "cloud.kube.UpdateStrategyEnum",
           "readOnly": false,
@@ -10694,6 +10771,37 @@ export const schema: Schema = {
       "id": "ApplicationAccessStateEnum",
       "namespace": "cloud.instance"
     },
+    "cloud.instance.AssociateFloatingip": {
+      "description": "Parameters to associate an existing floating ip to an instance",
+      "id": "AssociateFloatingip",
+      "namespace": "cloud.instance",
+      "properties": {
+        "floatingipId": {
+          "canBeNull": false,
+          "description": "Floating ip id",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "gateway": {
+          "canBeNull": true,
+          "description": "Parameters to create a gateway if required",
+          "fullType": "cloud.network.CreateGatewaySummary",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.network.CreateGatewaySummary"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "Private instance ip to associate the floating ip with",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
+        }
+      }
+    },
     "cloud.instance.AutoBackup": {
       "description": "Autobackup params at instance creation",
       "id": "AutoBackup",
@@ -10714,6 +10822,29 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
+        }
+      }
+    },
+    "cloud.instance.CreateFloatingip": {
+      "description": "Parameters to create a floating ip for an instance",
+      "id": "CreateFloatingip",
+      "namespace": "cloud.instance",
+      "properties": {
+        "gateway": {
+          "canBeNull": true,
+          "description": "Parameters to create a gateway if required",
+          "fullType": "cloud.network.CreateGatewaySummary",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.network.CreateGatewaySummary"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "Private instance ip to associate the floating ip with",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         }
       }
     },
@@ -11027,6 +11158,29 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "InstanceStatusEnum",
       "namespace": "cloud.instance"
+    },
+    "cloud.instance.InstanceSummary": {
+      "description": "Instance",
+      "id": "InstanceSummary",
+      "namespace": "cloud.instance",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Instance id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Instance name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "cloud.instance.InstanceVnc": {
       "description": "InstanceVnc",
@@ -11724,6 +11878,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.kube.FlavorCategoryEnum"
         },
+        "gpus": {
+          "canBeNull": false,
+          "description": "Number of GPUs",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "name": {
           "canBeNull": false,
           "description": "Flavor name",
@@ -11732,6 +11894,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "ram": {
+          "canBeNull": false,
+          "description": "Ram quantity (GB)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "state": {
           "canBeNull": false,
           "description": "Flavor state",
@@ -11739,6 +11909,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "cloud.kube.FlavorStateEnum"
+        },
+        "vCPUs": {
+          "canBeNull": false,
+          "description": "Number of VCPUs",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
@@ -11836,7 +12014,7 @@ export const schema: Schema = {
           "type": "boolean"
         },
         "name": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Node name",
           "fullType": "string",
           "readOnly": true,
@@ -12140,7 +12318,7 @@ export const schema: Schema = {
       "namespace": "cloud.kube",
       "properties": {
         "annotations": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Annotations to apply to each nodes",
           "fullType": "map[string]string",
           "readOnly": false,
@@ -12148,7 +12326,7 @@ export const schema: Schema = {
           "type": "map[string]string"
         },
         "finalizers": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Finalizers to apply to each nodes",
           "fullType": "string[]",
           "readOnly": false,
@@ -12156,7 +12334,7 @@ export const schema: Schema = {
           "type": "string[]"
         },
         "labels": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Labels to apply to each nodes",
           "fullType": "map[string]string",
           "readOnly": false,
@@ -12171,7 +12349,7 @@ export const schema: Schema = {
       "namespace": "cloud.kube",
       "properties": {
         "taints": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Taints to apply to each nodes",
           "fullType": "cloud.kube.Taint[]",
           "readOnly": false,
@@ -12247,6 +12425,7 @@ export const schema: Schema = {
         "SBG5",
         "SGP1",
         "SYD1",
+        "UK1",
         "US-EAST-VA-1",
         "US-WEST-OR-1",
         "WAW1"
@@ -12331,8 +12510,6 @@ export const schema: Schema = {
     "cloud.kube.UpgradeVersionEnum": {
       "description": "List of available versions for upgrade",
       "enum": [
-        "1.17",
-        "1.18",
         "1.19",
         "1.20",
         "1.21",
@@ -12345,7 +12522,6 @@ export const schema: Schema = {
     "cloud.kube.VersionEnum": {
       "description": "List of available versions for installation",
       "enum": [
-        "1.18",
         "1.19",
         "1.20",
         "1.21",
@@ -12540,6 +12716,194 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ResourceTypeEnum",
       "namespace": "cloud.migration"
+    },
+    "cloud.network.CreateGateway": {
+      "description": "Input to create a gateway",
+      "id": "CreateGateway",
+      "namespace": "cloud.network",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the gateway",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "network": {
+          "canBeNull": false,
+          "description": "Information to create the network for the gateway",
+          "fullType": "cloud.network.CreateNetworkSummary",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.network.CreateNetworkSummary"
+        }
+      }
+    },
+    "cloud.network.CreateGatewaySummary": {
+      "description": "Parameters to create a gateway from another resource creation",
+      "id": "CreateGatewaySummary",
+      "namespace": "cloud.network",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Gateway name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.network.CreateNetwork": {
+      "description": "Parameters to create a network with a gateway",
+      "id": "CreateNetwork",
+      "namespace": "cloud.network",
+      "properties": {
+        "gateway": {
+          "canBeNull": true,
+          "fullType": "cloud.network.CreateGatewaySummary",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.network.CreateGatewaySummary"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Network name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "subnet": {
+          "canBeNull": false,
+          "fullType": "cloud.network.CreateSubnetSummary",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.network.CreateSubnetSummary"
+        },
+        "vlanId": {
+          "canBeNull": false,
+          "description": "Network vlan ID",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.network.CreateNetworkSummary": {
+      "description": "Parameters to create a network from another resource creation",
+      "id": "CreateNetworkSummary",
+      "namespace": "cloud.network",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the network",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "subnet": {
+          "canBeNull": false,
+          "description": "Subnet of the network",
+          "fullType": "cloud.network.CreateSubnetSummary",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.network.CreateSubnetSummary"
+        },
+        "vlanId": {
+          "canBeNull": false,
+          "description": "Vland id, between 1 and 4000.",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.network.CreateSubnetSummary": {
+      "description": "Parameters to create a subnet from another resource creation",
+      "id": "CreateSubnetSummary",
+      "namespace": "cloud.network",
+      "properties": {
+        "cidr": {
+          "canBeNull": false,
+          "description": "Subnet range in CIDR notation",
+          "fullType": "ipBlock",
+          "readOnly": false,
+          "required": true,
+          "type": "ipBlock"
+        },
+        "ipVersion": {
+          "canBeNull": false,
+          "description": "IP version",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.network.Gateway": {
+      "description": "Gateway",
+      "id": "Gateway",
+      "namespace": "cloud.network",
+      "properties": {
+        "externalInformation": {
+          "canBeNull": true,
+          "description": "External information",
+          "fullType": "cloud.network.gateway.ExternalInformation",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.network.gateway.ExternalInformation"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the gateway",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "interfaces": {
+          "canBeNull": false,
+          "description": "Interfaces list of the gateway",
+          "fullType": "cloud.network.gateway.Interface[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.network.gateway.Interface[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the gateway",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the gateway",
+          "fullType": "cloud.network.GatewayStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.network.GatewayStatusEnum"
+        }
+      }
+    },
+    "cloud.network.GatewayStatusEnum": {
+      "description": "GatewayStatusEnum",
+      "enum": [
+        "active",
+        "building",
+        "down",
+        "error"
+      ],
+      "enumType": "string",
+      "id": "GatewayStatusEnum",
+      "namespace": "cloud.network"
     },
     "cloud.network.IPPool": {
       "description": "IPPool",
@@ -12751,6 +13115,98 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "cloud.network.IPPool[]"
+        }
+      }
+    },
+    "cloud.network.UpdateGateway": {
+      "description": "Input to update a gateway",
+      "id": "UpdateGateway",
+      "namespace": "cloud.network",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the gateway",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.network.gateway.ExternalInformation": {
+      "description": "External information of the gateway",
+      "id": "ExternalInformation",
+      "namespace": "cloud.network.gateway",
+      "properties": {
+        "ips": {
+          "canBeNull": false,
+          "description": "External ips of the gateway",
+          "fullType": "cloud.network.gateway.IpSubnet[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.network.gateway.IpSubnet[]"
+        },
+        "networkId": {
+          "canBeNull": false,
+          "description": "External network ID of the gateway",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.network.gateway.Interface": {
+      "description": "Interface of the gateway",
+      "id": "Interface",
+      "namespace": "cloud.network.gateway",
+      "properties": {
+        "ip": {
+          "canBeNull": false,
+          "description": "IP of the interface",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "networkId": {
+          "canBeNull": false,
+          "description": "Network ID of the interface",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "subnetId": {
+          "canBeNull": false,
+          "description": "Subnet ID of the interface",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.network.gateway.IpSubnet": {
+      "description": "IP and subnet information",
+      "id": "IpSubnet",
+      "namespace": "cloud.network.gateway",
+      "properties": {
+        "ip": {
+          "canBeNull": false,
+          "description": "External IP of the gateway",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "subnetId": {
+          "canBeNull": false,
+          "description": "Subnet ID of the ip",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
@@ -13208,6 +13664,53 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "CertificateStatusEnum",
       "namespace": "cloud.project"
+    },
+    "cloud.project.FloatingIp": {
+      "description": "A floating ip",
+      "id": "FloatingIp",
+      "namespace": "cloud.project",
+      "properties": {
+        "associatedEntity": {
+          "canBeNull": true,
+          "description": "Associated entity with the floating ip",
+          "fullType": "cloud.project.floatingIp.AssociatedEntity",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.floatingIp.AssociatedEntity"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the floating ip",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "Value of the floating ip",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "networkId": {
+          "canBeNull": false,
+          "description": "ID of the network",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the floating ip",
+          "fullType": "cloud.project.floatingIp.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.floatingIp.StatusEnum"
+        }
+      }
     },
     "cloud.project.LoadBalancer": {
       "description": "A load balancer to handle workload",
@@ -13710,6 +14213,68 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ServerAlternativeNameKindEnum",
       "namespace": "cloud.project.certificate"
+    },
+    "cloud.project.floatingIp.AssociatedEntity": {
+      "description": "Associated entity with a floating ip",
+      "id": "AssociatedEntity",
+      "namespace": "cloud.project.floatingIp",
+      "properties": {
+        "gatewayId": {
+          "canBeNull": false,
+          "description": "ID of the gateway",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the port",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "IP of the port",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of the port",
+          "fullType": "cloud.project.floatingIp.associatedEntity.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.floatingIp.associatedEntity.TypeEnum"
+        }
+      }
+    },
+    "cloud.project.floatingIp.StatusEnum": {
+      "description": "Status of a floating ip",
+      "enum": [
+        "active",
+        "down",
+        "error"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloud.project.floatingIp"
+    },
+    "cloud.project.floatingIp.associatedEntity.TypeEnum": {
+      "description": "Type of the associated entity",
+      "enum": [
+        "dhcp",
+        "instance",
+        "routerInterface",
+        "unknown"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "cloud.project.floatingIp.associatedEntity"
     },
     "cloud.project.loadbalancer.ActionDispatch": {
       "description": "HTTP load balancer dispatch action",
@@ -16472,6 +17037,16 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "OpenrcVersionEnum",
+      "namespace": "cloud.user"
+    },
+    "cloud.user.RCloneServiceEnum": {
+      "description": "RCloneServiceEnum",
+      "enum": [
+        "storage",
+        "storage-s3"
+      ],
+      "enumType": "string",
+      "id": "RCloneServiceEnum",
       "namespace": "cloud.user"
     },
     "cloud.user.Rclone": {

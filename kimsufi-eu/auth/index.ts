@@ -39,6 +39,17 @@ export namespace auth {
         path: string;
     }
     /**
+     * API Application
+     * interface fullName: auth.ApiApplication.ApiApplication
+     */
+    export interface ApiApplication {
+        applicationId: number;
+        applicationKey: string;
+        description: string;
+        name: string;
+        status: auth.ApplicationStatusEnum;
+    }
+    /**
      * API Credential
      * interface fullName: auth.ApiCredential.ApiCredential
      */
@@ -70,6 +81,11 @@ export namespace auth {
         accessRules: auth.AccessRuleRequest[];
         redirection?: string;
     }
+    /**
+     * All states an API Application can be in
+     * type fullname: auth.ApplicationStatusEnum
+     */
+    export type ApplicationStatusEnum = "active" | "blocked" | "inactive" | "trusted"
     /**
      * Credential request to get access to the API
      * interface fullName: auth.Credential.Credential

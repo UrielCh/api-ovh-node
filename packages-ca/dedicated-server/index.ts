@@ -93,7 +93,7 @@ export namespace dedicated {
      * The datacenter
      * type fullname: dedicated.AvailabilityDatacenterEnum
      */
-    export type AvailabilityDatacenterEnum = "bhs" | "ca" | "de" | "default" | "fr" | "fra" | "gb" | "gra" | "hil" | "lon" | "pl" | "rbx" | "rbx-hz" | "sbg" | "sgp" | "syd" | "vin" | "waw"
+    export type AvailabilityDatacenterEnum = "bhs" | "ca" | "de" | "default" | "fr" | "fra" | "gb" | "gra" | "hil" | "lon" | "pl" | "rbx" | "rbx-hz" | "sbg" | "sgp" | "syd" | "us" | "vin" | "waw"
     /**
      * The availability
      * type fullname: dedicated.AvailabilityEnum

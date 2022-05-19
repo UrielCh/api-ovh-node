@@ -6993,6 +6993,7 @@ export const schema: Schema = {
         "sbg",
         "sgp",
         "syd",
+        "us",
         "vin",
         "waw"
       ],

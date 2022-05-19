@@ -66,6 +66,11 @@ export namespace domain {
      */
     export type ActionEnum = "create" | "trade" | "transfer" | "update"
     /**
+     * Type of claim notice
+     * type fullname: domain.ApproveTypeEnum
+     */
+    export type ApproveTypeEnum = "accept" | "reject"
+    /**
      * A contact contains the personal data of a user
      * interface fullName: domain.Contact.Contact
      */
@@ -126,22 +131,6 @@ export namespace domain {
         zip?: string;
     }
     /**
-     * Contact type fields
-     * type fullname: domain.ContactAllTypesEnum
-     */
-    export type ContactAllTypesEnum = "admin" | "all" | "billing" | "owner" | "tech"
-    /**
-     * CurrentNameServer
-     * interface fullName: domain.CurrentNameServer.CurrentNameServer
-     */
-    export interface CurrentNameServer {
-        host: string;
-        id: number;
-        ip?: string;
-        isUsed: boolean;
-        toDelete: boolean;
-    }
-    /**
      * A domain data
      * interface fullName: domain.Data.Data
      */
@@ -174,6 +163,7 @@ export namespace domain {
         domain: string;
         glueRecordIpv6Supported: boolean;
         glueRecordMultiIpSupported: boolean;
+        hostSupported: boolean;
         lastUpdate: string;
         nameServerType: domain.DomainNsTypeEnum;
         offer: domain.OfferEnum;
@@ -183,37 +173,10 @@ export namespace domain {
         whoisOwner: string;
     }
     /**
-     * All contact type for a domain
-     * type fullname: domain.DomainContactTypeEnum
-     */
-    export type DomainContactTypeEnum = "admin" | "billing" | "owner" | "tech"
-    /**
      * Domain lock status
      * type fullname: domain.DomainLockStatusEnum
      */
     export type DomainLockStatusEnum = "locked" | "locking" | "unavailable" | "unlocked" | "unlocking"
-    /**
-     * Name server
-     * interface fullName: domain.DomainNs.DomainNs
-     */
-    export interface DomainNs {
-        host: string;
-        ip?: string;
-    }
-    /**
-     * DNS server state
-     * type fullname: domain.DomainNsStateEnum
-     */
-    export type DomainNsStateEnum = "ko" | "ok"
-    /**
-     * DNS server status
-     * interface fullName: domain.DomainNsStatus.DomainNsStatus
-     */
-    export interface DomainNsStatus {
-        state: domain.DomainNsStateEnum;
-        type: domain.DomainNsTypeEnum;
-        usedSince?: string;
-    }
     /**
      * DomainNS Type
      * type fullname: domain.DomainNsTypeEnum
@@ -229,14 +192,6 @@ export namespace domain {
      * type fullname: domain.DomainOptionStateEnum
      */
     export type DomainOptionStateEnum = "released" | "subscribed"
-    /**
-     * Glue record
-     * interface fullName: domain.GlueRecord.GlueRecord
-     */
-    export interface GlueRecord {
-        host: string;
-        ips: string[];
-    }
     /**
      * Possible purposes of the domain
      * type fullname: domain.IsForEnum
@@ -455,14 +410,9 @@ export namespace domain {
          * interface fullName: domain.configurations.Optin.Optin
          */
         export interface Optin {
-            fields: domain.configurations.OptinFieldsEnum[];
+            fields: domain.OptinFieldsEnum[];
             type: domain.configurations.ContactTypeEnum;
         }
-        /**
-         * Whois optin fields
-         * type fullname: domain.configurations.OptinFieldsEnum
-         */
-        export type OptinFieldsEnum = "address" | "city" | "country" | "email" | "fax" | "name" | "organisation" | "phone" | "province" | "zip"
         /**
          * Payload used to optin the fields of contacts related to a domain name
          * interface fullName: domain.configurations.OptinUpdatePayload.OptinUpdatePayload
@@ -472,37 +422,6 @@ export namespace domain {
         }
     }
     export namespace data {
-        /**
-         * Representation of an .pro Contact Resource
-         * interface fullName: domain.data.ProContact.ProContact
-         */
-        export interface ProContact {
-            authority: string;
-            authorityWebsite: string;
-            id: number;
-            jobDescription: string;
-            licenseNumber: string;
-        }
-        /**
-         * Representation of a SMD Resource file
-         * interface fullName: domain.data.Smd.Smd
-         */
-        export interface Smd {
-            data: string;
-            id: number;
-            notAfter?: string;
-            notBefore?: string;
-            protectedLabels: domain.data.SmdLabel[];
-            smdId?: string;
-        }
-        /**
-         * Representation of a protected label
-         * interface fullName: domain.data.SmdLabel.SmdLabel
-         */
-        export interface SmdLabel {
-            label: string;
-            trademark: string;
-        }
         export namespace claimNotice {
             /**
              * Address for a claim notice holder
@@ -713,6 +632,7 @@ export namespace domain {
              * interface fullName: domain.extensions.registryConfigurations.OrderLifecycleRegistryConfiguration.OrderLifecycleRegistryConfiguration
              */
             export interface OrderLifecycleRegistryConfiguration {
+                active: boolean;
                 maxMonths?: number;
                 minMonths?: number;
             }
@@ -749,13 +669,95 @@ export namespace domain {
             }
         }
     }
+    export namespace glueRecord {
+        /**
+         * Payload used to create the glue records of a domain name
+         * interface fullName: domain.glueRecord.CreatePayload.CreatePayload
+         */
+        export interface CreatePayload {
+            host: string;
+            ips: string[];
+        }
+        /**
+         * Glue record
+         * interface fullName: domain.glueRecord.GlueRecord.GlueRecord
+         */
+        export interface GlueRecord {
+            host: string;
+            ips: string[];
+        }
+    }
+    export namespace nameServer {
+        /**
+         * Payload used to update the DNS of a domain name
+         * interface fullName: domain.nameServer.CreatePayload.CreatePayload
+         */
+        export interface CreatePayload {
+            nameServer: domain.nameServer.NameServer[];
+        }
+        /**
+         * Full name server configuration
+         * interface fullName: domain.nameServer.FullNameServer.FullNameServer
+         */
+        export interface FullNameServer {
+            host: string;
+            id: number;
+            ip?: string;
+            isUsed: boolean;
+            toDelete: boolean;
+        }
+        /**
+         * Name server
+         * interface fullName: domain.nameServer.NameServer.NameServer
+         */
+        export interface NameServer {
+            host: string;
+            ip?: string;
+        }
+        /**
+         * DNS server state
+         * type fullname: domain.nameServer.NameServerStateEnum
+         */
+        export type NameServerStateEnum = "ko" | "ok"
+        /**
+         * DNS server status
+         * interface fullName: domain.nameServer.NameServerStatus.NameServerStatus
+         */
+        export interface NameServerStatus {
+            state: domain.nameServer.NameServerStateEnum;
+            type: domain.nameServer.NameServerTypeEnum;
+            usedSince?: string;
+        }
+        /**
+         * DNS server type
+         * type fullname: domain.nameServer.NameServerTypeEnum
+         */
+        export type NameServerTypeEnum = "external" | "hosted"
+        /**
+         * Payload used to update the DNS of a domain name
+         * interface fullName: domain.nameServer.UpdatePayload.UpdatePayload
+         */
+        export interface UpdatePayload {
+            nameServers: domain.nameServer.NameServer[];
+        }
+    }
+    export namespace outgoingTransfer {
+        /**
+         * Definition of Outgoing Transfer applying to a domain name
+         * interface fullName: domain.outgoingTransfer.Approve.Approve
+         */
+        export interface Approve {
+            approveType: domain.ApproveTypeEnum;
+            ident: string;
+        }
+    }
     export namespace rules {
         /**
          * Representation of the optin rule
          * interface fullName: domain.rules.Optin.Optin
          */
         export interface Optin {
-            fields: domain.configurations.OptinFieldsEnum[];
+            fields: domain.OptinFieldsEnum[];
             type: domain.configurations.ContactTypeEnum;
         }
     }
@@ -1138,33 +1140,6 @@ export interface Domain {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-        }
-        proContact: {
-            /**
-             * Retrieve all your Pro Contact
-             * GET /domain/data/proContact
-             */
-            $get(): Promise<number[]>;
-            /**
-             * Post new information about .pro contact information
-             * POST /domain/data/proContact
-             */
-            $post(params: { authority: string, authorityWebsite: string, contactId?: number, jobDescription: string, licenseNumber: string }): Promise<domain.data.ProContact>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            $(proContactId: number): {
-                /**
-                 * Retrieve information about a Pro Contact
-                 * GET /domain/data/proContact/{proContactId}
-                 */
-                $get(): Promise<domain.data.ProContact>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            };
         }
         smd: {
             /**
@@ -1697,18 +1672,11 @@ export interface Domain {
          * Alter this object properties
          * PUT /domain/{serviceName}
          */
-        $put(params?: { dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, lastUpdate?: string, nameServerType?: domain.DomainNsTypeEnum, offer?: domain.OfferEnum, owoSupported?: boolean, parentService?: domain.ParentService, transferLockStatus?: domain.DomainLockStatusEnum, whoisOwner?: string }): Promise<void>;
+        $put(params?: { dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, hostSupported?: boolean, lastUpdate?: string, nameServerType?: domain.DomainNsTypeEnum, offer?: domain.OfferEnum, owoSupported?: boolean, parentService?: domain.ParentService, transferLockStatus?: domain.DomainLockStatusEnum, whoisOwner?: string }): Promise<void>;
         /**
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-        activateZone: {
-            /**
-             * Activate the DNS zone for this domain
-             * POST /domain/{serviceName}/activateZone
-             */
-            $post(params?: { minimized?: boolean }): Promise<void>;
-        }
         authInfo: {
             /**
              * Return authInfo code if the domain is unlocked
@@ -1795,20 +1763,9 @@ export interface Domain {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
-        email: {
-            obfuscated: {
-                refresh: {
-                    /**
-                     * Regenerate the obfuscated email address
-                     * POST /domain/{serviceName}/email/obfuscated/refresh
-                     */
-                    $post(params: { contactType: domain.DomainContactTypeEnum[] }): Promise<void>;
-                }
-            }
-        }
         glueRecord: {
             /**
-             * List of glue record
+             * List of glue records
              * GET /domain/{serviceName}/glueRecord
              */
             $get(params?: { host?: string }): Promise<string[]>;
@@ -1828,10 +1785,10 @@ export interface Domain {
                  */
                 $delete(): Promise<domain.Task>;
                 /**
-                 * Get this object properties
+                 * Get this glue record
                  * GET /domain/{serviceName}/glueRecord/{host}
                  */
-                $get(): Promise<domain.GlueRecord>;
+                $get(): Promise<domain.glueRecord.GlueRecord>;
                 /**
                  * Controle cache
                  */
@@ -1841,7 +1798,7 @@ export interface Domain {
                      * Update the glue record
                      * POST /domain/{serviceName}/glueRecord/{host}/update
                      */
-                    $post(params: { ips: string[] }): Promise<domain.Task>;
+                    $post(params: { host?: string, ips: string[] }): Promise<domain.Task>;
                 }
             };
         }
@@ -1855,7 +1812,7 @@ export interface Domain {
              * Add new name server
              * POST /domain/{serviceName}/nameServer
              */
-            $post(params: { nameServer: domain.DomainNs[] }): Promise<domain.Task>;
+            $post(params: { nameServer: domain.nameServer.NameServer[] }): Promise<domain.Task>;
             /**
              * Controle cache
              */
@@ -1867,10 +1824,10 @@ export interface Domain {
                  */
                 $delete(): Promise<domain.Task>;
                 /**
-                 * Get this object properties
+                 * Get this name server configuration
                  * GET /domain/{serviceName}/nameServer/{id}
                  */
-                $get(): Promise<domain.CurrentNameServer>;
+                $get(): Promise<domain.nameServer.FullNameServer>;
                 /**
                  * Controle cache
                  */
@@ -1880,12 +1837,12 @@ export interface Domain {
                      * Get name server status
                      * GET /domain/{serviceName}/nameServer/{id}/status
                      */
-                    $get(): Promise<domain.DomainNsStatus>;
+                    $get(): Promise<domain.nameServer.NameServerStatus>;
                     /**
                      * Get name server status
                      * POST /domain/{serviceName}/nameServer/{id}/status
                      */
-                    $post(): Promise<domain.DomainNsStatus>;
+                    $post(): Promise<domain.nameServer.NameServerStatus>;
                     /**
                      * Controle cache
                      */
@@ -1899,12 +1856,12 @@ export interface Domain {
                  * Update DNS servers
                  * POST /domain/{serviceName}/nameServers/update
                  */
-                $post(params: { nameServers: domain.DomainNs[] }): Promise<domain.Task>;
+                $post(params: { nameServers: domain.nameServer.NameServer[] }): Promise<domain.Task>;
             }
         }
         option: {
             /**
-             * List of domain options
+             * List domain options
              * GET /domain/{serviceName}/option
              */
             $get(): Promise<domain.DomainOptionEnum[]>;
@@ -1914,12 +1871,12 @@ export interface Domain {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(option: domain.DomainOptionEnum): {
                 /**
-                 * Release a given option
+                 * Remove a given option
                  * DELETE /domain/{serviceName}/option/{option}
                  */
                 $delete(): Promise<void>;
                 /**
-                 * Get this object properties
+                 * Get details on this domain option
                  * GET /domain/{serviceName}/option/{option}
                  */
                 $get(): Promise<domain.Option>;
@@ -1939,6 +1896,15 @@ export interface Domain {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        outgoingTransfer: {
+            approve: {
+                /**
+                 * Approve Outgoing Transfer for a domain
+                 * POST /domain/{serviceName}/outgoingTransfer/approve
+                 */
+                $post(params?: { approveType?: domain.ApproveTypeEnum, ident?: string }): Promise<void>;
+            }
         }
         owo: {
             /**

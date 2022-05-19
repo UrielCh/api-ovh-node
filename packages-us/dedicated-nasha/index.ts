@@ -81,6 +81,7 @@ export namespace dedicated {
             canCreatePartition: boolean;
             customName?: string;
             datacenter?: string;
+            diskType: dedicated.storage.DiskTypeEnum;
             ip?: string;
             monitored: boolean;
             serviceName: string;
@@ -127,6 +128,11 @@ export namespace dedicated {
          * type fullname: dedicated.storage.AtimeEnum
          */
         export type AtimeEnum = "off" | "on"
+        /**
+         * the disk type of the nasHa
+         * type fullname: dedicated.storage.DiskTypeEnum
+         */
+        export type DiskTypeEnum = "hdd" | "nvme" | "ssd"
         /**
          * Available types for NAS usage
          * type fullname: dedicated.storage.NasUsageTypeEnum
@@ -249,7 +255,7 @@ export interface Dedicated {
              * Alter this object properties
              * PUT /dedicated/nasha/{serviceName}
              */
-            $put(params?: { canCreatePartition?: boolean, customName?: string, datacenter?: string, ip?: string, monitored?: boolean, serviceName?: string, zpoolCapacity?: number, zpoolSize?: number }): Promise<void>;
+            $put(params?: { canCreatePartition?: boolean, customName?: string, datacenter?: string, diskType?: dedicated.storage.DiskTypeEnum, ip?: string, monitored?: boolean, serviceName?: string, zpoolCapacity?: number, zpoolSize?: number }): Promise<void>;
             /**
              * Controle cache
              */

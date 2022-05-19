@@ -219,6 +219,53 @@ export const schema: Schema = {
         }
       }
     },
+    "auth.ApiApplication": {
+      "description": "API Application",
+      "id": "ApiApplication",
+      "namespace": "auth",
+      "properties": {
+        "applicationId": {
+          "canBeNull": false,
+          "description": "ID of this Application",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "applicationKey": {
+          "canBeNull": false,
+          "description": "Key of this application",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of this application",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of this application",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of this application",
+          "fullType": "auth.ApplicationStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "auth.ApplicationStatusEnum"
+        }
+      }
+    },
     "auth.ApiCredential": {
       "description": "API Credential",
       "id": "ApiCredential",
@@ -228,7 +275,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "If defined, list of ip blocks which are allowed to call API with this credential",
           "fullType": "ipBlock[]",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "ipBlock[]"
         },
@@ -351,6 +398,18 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "auth.ApplicationStatusEnum": {
+      "description": "All states an API Application can be in",
+      "enum": [
+        "active",
+        "blocked",
+        "inactive",
+        "trusted"
+      ],
+      "enumType": "string",
+      "id": "ApplicationStatusEnum",
+      "namespace": "auth"
     },
     "auth.Credential": {
       "description": "Credential request to get access to the API",

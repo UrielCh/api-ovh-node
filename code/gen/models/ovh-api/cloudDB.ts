@@ -10,8 +10,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "List available services",
           "httpMethod": "GET",
@@ -31,8 +34,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -55,8 +61,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
@@ -92,8 +101,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Backups of this cluster",
           "httpMethod": "GET",
@@ -116,8 +128,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Create a cluster backup",
           "httpMethod": "POST",
@@ -154,8 +169,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Delete a cluster backup",
           "httpMethod": "DELETE",
@@ -186,8 +204,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -224,8 +245,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
@@ -286,8 +310,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Cluster endpoints",
           "httpMethod": "GET",
@@ -316,8 +343,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -354,8 +384,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Hosts of this cluster",
           "httpMethod": "GET",
@@ -384,8 +417,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -422,8 +458,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Logs access for this cluster",
           "httpMethod": "GET",
@@ -446,8 +485,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Grant access to cluster logs",
           "httpMethod": "POST",
@@ -492,8 +534,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Revoke access to cluster's logs",
           "httpMethod": "DELETE",
@@ -524,8 +569,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -562,8 +610,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Cluster maintenances",
           "httpMethod": "GET",
@@ -592,8 +643,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Delete the maintenance",
           "httpMethod": "DELETE",
@@ -624,8 +678,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -662,8 +719,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Delete the maintenance window",
           "httpMethod": "DELETE",
@@ -686,8 +746,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -710,8 +773,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Add a maintenance window to this cluster",
           "httpMethod": "POST",
@@ -758,8 +824,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
@@ -795,8 +864,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Restores of this cluster",
           "httpMethod": "GET",
@@ -819,8 +891,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Create a cluster restore at a given point in time",
           "httpMethod": "POST",
@@ -865,8 +940,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Delete a restore",
           "httpMethod": "DELETE",
@@ -897,8 +975,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -935,8 +1016,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -967,8 +1051,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Create a user on this restored instance",
           "httpMethod": "POST",
@@ -1013,8 +1100,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Scale a cluster",
           "httpMethod": "POST",
@@ -1051,8 +1141,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Cluster security groups",
           "httpMethod": "GET",
@@ -1075,8 +1168,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Add a security group to this cluster",
           "httpMethod": "POST",
@@ -1113,8 +1209,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Delete a security group from this cluster",
           "httpMethod": "DELETE",
@@ -1145,8 +1244,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -1177,8 +1279,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
@@ -1222,8 +1327,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Security group rules",
           "httpMethod": "GET",
@@ -1254,8 +1362,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Add a rule to this security group",
           "httpMethod": "POST",
@@ -1300,8 +1411,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Delete a rule from this security group",
           "httpMethod": "DELETE",
@@ -1340,8 +1454,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -1386,8 +1503,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -1410,8 +1530,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
@@ -1447,8 +1570,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Cluster tasks",
           "httpMethod": "GET",
@@ -1493,8 +1619,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -1531,8 +1660,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
@@ -1561,8 +1693,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -1585,8 +1720,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Create a user on this cluster",
           "httpMethod": "POST",
@@ -1623,8 +1761,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Offers with their capabilities",
           "httpMethod": "GET",
@@ -1644,8 +1785,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -1674,8 +1818,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Regions of this offer",
           "httpMethod": "GET",
@@ -1704,8 +1851,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -1742,8 +1892,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Regions with their capabilities",
           "httpMethod": "GET",
@@ -1763,8 +1916,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-06-13T10:00:00+01:00",
+            "deprecatedDate": "2021-12-20T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",

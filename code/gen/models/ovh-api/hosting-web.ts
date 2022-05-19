@@ -7558,7 +7558,6 @@ export const schema: Schema = {
     "hosting.PrivateDatabase.OrderableVersionEnum": {
       "description": "Private database orderable versions",
       "enum": [
-        "mariadb_10.2",
         "mariadb_10.3",
         "mariadb_10.4",
         "mariadb_10.5",

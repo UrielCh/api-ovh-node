@@ -1920,8 +1920,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -2830,18 +2830,18 @@ export const schema: Schema = {
         "ip": {
           "canBeNull": false,
           "description": "ipV4",
-          "fullType": "string",
+          "fullType": "ipv4",
           "readOnly": true,
           "required": false,
-          "type": "string"
+          "type": "ipv4"
         },
         "ipV6": {
           "canBeNull": true,
           "description": "ipV6",
-          "fullType": "string",
+          "fullType": "ipv6",
           "readOnly": true,
           "required": false,
-          "type": "string"
+          "type": "ipv6"
         },
         "isAValid": {
           "canBeNull": false,

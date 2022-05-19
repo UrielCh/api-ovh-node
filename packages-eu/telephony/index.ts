@@ -572,7 +572,7 @@ export namespace telephony {
      * interface fullName: telephony.DefaultSipDomains.DefaultSipDomains
      */
     export interface DefaultSipDomains {
-        country: telephony.NumberCountryEnum;
+        country: telephony.ServiceNumberCountryEnum;
         currentDomain: string;
         list: string[];
         productType: telephony.SipDomainProductTypeEnum;
@@ -2577,7 +2577,7 @@ export interface Telephony {
          * Get all available accessories
          * GET /telephony/accessories
          */
-        $get(params: { brand?: string, country: telephony.NumberCountryEnum }): Promise<telephony.AccessoryOffer[]>;
+        $get(params: { brand?: string, country: telephony.ServiceNumberCountryEnum }): Promise<telephony.AccessoryOffer[]>;
         /**
          * Controle cache
          */
@@ -2656,7 +2656,7 @@ export interface Telephony {
              * Get all zip codes compatible for a number
              * GET /telephony/directories/availableZipCodes
              */
-            $get(params: { country: telephony.NumberCountryEnum, number: string }): Promise<string[]>;
+            $get(params: { country: telephony.ServiceNumberCountryEnum, number: string }): Promise<string[]>;
             /**
              * Controle cache
              */
@@ -2667,7 +2667,7 @@ export interface Telephony {
              * Get city informations from a zip code
              * GET /telephony/directories/cities
              */
-            $get(params: { country: telephony.NumberCountryEnum, zipCode: string }): Promise<telephony.City[]>;
+            $get(params: { country: telephony.ServiceNumberCountryEnum, zipCode: string }): Promise<telephony.City[]>;
             /**
              * Controle cache
              */
@@ -2694,7 +2694,7 @@ export interface Telephony {
                  * Get all available phone brands compatible with lines
                  * GET /telephony/line/offer/phones
                  */
-                $get(params: { country: telephony.NumberCountryEnum, offer: string }): Promise<telephony.LinePhone[]>;
+                $get(params: { country: telephony.ServiceNumberCountryEnum, offer: string }): Promise<telephony.LinePhone[]>;
                 /**
                  * Controle cache
                  */
@@ -2885,7 +2885,7 @@ export interface Telephony {
          * Get all available SIP domains by country
          * POST /telephony/setDefaultSipDomain
          */
-        $post(params: { country: telephony.NumberCountryEnum, domain: string, type: telephony.SipDomainProductTypeEnum }): Promise<void>;
+        $post(params: { country: telephony.ServiceNumberCountryEnum, domain: string, type: telephony.SipDomainProductTypeEnum }): Promise<void>;
     }
     sounds: {
         /**

@@ -300,7 +300,7 @@ export const schema: Schema = {
           },
           "description": "Fetch the requirements for a given cluster configuration",
           "httpMethod": "GET",
-          "noAuthentication": false,
+          "noAuthentication": true,
           "parameters": [
             {
               "dataType": "boolean",

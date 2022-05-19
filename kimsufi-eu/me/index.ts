@@ -80,18 +80,54 @@ export namespace api {
 }
 export namespace auth {
     /**
-     * Access rule required for the application
+     * Access rule allowed to an application
      * interface fullName: auth.AccessRule.AccessRule
      */
     export interface AccessRule {
-        method: http.MethodEnum;
+        method: auth.HTTPMethodEnum;
         path: string;
     }
+    /**
+     * API Application
+     * interface fullName: auth.ApiApplication.ApiApplication
+     */
+    export interface ApiApplication {
+        applicationId: number;
+        applicationKey: string;
+        description: string;
+        name: string;
+        status: auth.ApplicationStatusEnum;
+    }
+    /**
+     * API Credential
+     * interface fullName: auth.ApiCredential.ApiCredential
+     */
+    export interface ApiCredential {
+        allowedIPs?: string[];
+        applicationId: number;
+        creation: string;
+        credentialId: number;
+        expiration?: string;
+        lastUse?: string;
+        ovhSupport: boolean;
+        rules: auth.AccessRule[];
+        status: auth.CredentialStateEnum;
+    }
+    /**
+     * All states an API Application can be in
+     * type fullname: auth.ApplicationStatusEnum
+     */
+    export type ApplicationStatusEnum = "active" | "blocked" | "inactive" | "trusted"
     /**
      * All states a Credential can be in
      * type fullname: auth.CredentialStateEnum
      */
     export type CredentialStateEnum = "expired" | "pendingValidation" | "refused" | "validated"
+    /**
+     * All HTTP methods available
+     * type fullname: auth.HTTPMethodEnum
+     */
+    export type HTTPMethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
 export namespace billing {
     /**
@@ -1047,7 +1083,7 @@ export namespace dedicated {
          * partition raid type
          * type fullname: dedicated.server.PartitionRaidEnum
          */
-        export type PartitionRaidEnum = "0" | "1" | "10" | "5" | "6"
+        export type PartitionRaidEnum = "0" | "1" | "10" | "5" | "6" | "7"
         /**
          * supports UEFI setup
          * type fullname: dedicated.server.SupportsUEFIEnum
@@ -2780,7 +2816,7 @@ export interface Me {
     api: {
         application: {
             /**
-             * List of your Api Application
+             * Retrieve all applications
              * GET /me/api/application
              */
             $get(): Promise<number[]>;
@@ -2790,15 +2826,15 @@ export interface Me {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(applicationId: number): {
                 /**
-                 * Remove this application. It will revoke all credential belonging to this application.
+                 * Delete an application. It will revoke all credential belonging to this application
                  * DELETE /me/api/application/{applicationId}
                  */
                 $delete(): Promise<void>;
                 /**
-                 * Get this object properties
+                 * Retrieve information about an application
                  * GET /me/api/application/{applicationId}
                  */
-                $get(): Promise<api.Application>;
+                $get(): Promise<auth.ApiApplication>;
                 /**
                  * Controle cache
                  */
@@ -2807,7 +2843,7 @@ export interface Me {
         }
         credential: {
             /**
-             * List of your Api Credentials
+             * Retrieve all credentials
              * GET /me/api/credential
              */
             $get(params?: { applicationId?: number, status?: auth.CredentialStateEnum }): Promise<number[]>;
@@ -2817,17 +2853,17 @@ export interface Me {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(credentialId: number): {
                 /**
-                 * Remove this credential
+                 * Delete a credential
                  * DELETE /me/api/credential/{credentialId}
                  */
                 $delete(): Promise<void>;
                 /**
-                 * Get this object properties
+                 * Retrieve information about a credential
                  * GET /me/api/credential/{credentialId}
                  */
-                $get(): Promise<api.Credential>;
+                $get(): Promise<auth.ApiCredential>;
                 /**
-                 * Alter this object properties
+                 * Edit a credential
                  * PUT /me/api/credential/{credentialId}
                  */
                 $put(params?: { allowedIPs?: string[], applicationId?: number, creation?: string, credentialId?: number, expiration?: string, lastUse?: string, ovhSupport?: boolean, rules?: auth.AccessRule[], status?: auth.CredentialStateEnum }): Promise<void>;
@@ -2837,10 +2873,10 @@ export interface Me {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 application: {
                     /**
-                     * Get this object properties
+                     * Get associated application
                      * GET /me/api/credential/{credentialId}/application
                      */
-                    $get(): Promise<api.Application>;
+                    $get(): Promise<auth.ApiApplication>;
                     /**
                      * Controle cache
                      */

@@ -1074,6 +1074,22 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "mpnId": {
+          "canBeNull": true,
+          "description": "Microsoft Partner Network identifier linked to this tenant",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "mpnIssueFlag": {
+          "canBeNull": true,
+          "description": "Code of any detected issue regarding the MPN Id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "phone": {
           "canBeNull": false,
           "description": "Primary phone number",
