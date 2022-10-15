@@ -1,5 +1,5 @@
 import GenApiTypes, { CacheApi, CacheModel, filterReservedKw, OvhParams } from './GenApiTypes';
-import { indentGen, protectModelField, className, protectJsonKey, rawRemapNode, formatUpperCamlCase, protectHarmonyField } from './utils';
+import { indentGen, protectModelField, className, protectJsonKey, formatUpperCamlCase, protectHarmonyField, doRawRemapNode } from './utils';
 import { Parameter, Schema, FieldProp, API } from './schema';
 
 let eol = '\n';
@@ -217,8 +217,7 @@ export class CodeGenerator {
         if (rawType.endsWith(">")) {
             let p = rawType.indexOf("<");
             generic = rawType.substring(p + 1, rawType.length - 1);
-            if (rawRemapNode[generic])
-                generic = rawRemapNode[generic];
+            generic = doRawRemapNode(generic)
             rawType = rawType.substring(0, p);
         }
         if (this.gen.alias[rawType])
@@ -228,9 +227,7 @@ export class CodeGenerator {
         if (~rawType.indexOf(':')) {
             rawType = rawType.substring(rawType.indexOf(':') + 1);
         }
-
-        if (rawRemapNode[rawType])
-            rawType = rawRemapNode[rawType];
+        rawType = doRawRemapNode(rawType)
         if (generic)
             rawType += '<' + generic + '>';
         if (isArray)
@@ -442,7 +439,8 @@ export class CodeGenerator {
                     if (schema && schema.models) {
                         let modelsProp = schema.models[body[0].fullType];
                         if (!modelsProp || !modelsProp.properties) {
-                            if (!rawRemapNode[body[0].fullType])
+                            let fullType = doRawRemapNode(body[0].fullType)
+                            if (fullType == body[0].fullType)
                                 console.error(`ERROR1 in model Body Type ${body[0].fullType} do not exists dest:${ctxt.dest} Method:${op.httpMethod} ${api._path}`)
                         } else {
                             for (let propName of Object.keys(modelsProp.properties).sort()) {

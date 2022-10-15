@@ -2843,7 +2843,7 @@ export namespace recommendations {
      */
     export interface Recommendation {
         advices: recommendations.RecommendationAdvice[];
-        localizedDescription: map[recommendations.supportedLocalesEnum]string;
+        localizedDescription: { [key in recommendations.supportedLocalesEnum]: string };
         rank: number;
     }
     /**
