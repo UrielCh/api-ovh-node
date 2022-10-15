@@ -434,7 +434,7 @@ export namespace billing {
      * All payment means you might have use on an OVH order
      * type fullname: billing.PaymentMeanEnum
      */
-    export type PaymentMeanEnum = "cash" | "chargeback" | "cheque" | "creditAccount" | "creditCard" | "debtAccount" | "deposit" | "digitalLaunchPad" | "edinar" | "fidelityPoints" | "free" | "ideal" | "incubatorAccount" | "mandat" | "multibanco" | "none" | "ovhAccount" | "paymentMandate" | "paypal" | "payu" | "platnosci" | "refund" | "transfer" | "withdrawal"
+    export type PaymentMeanEnum = "cash" | "chargeback" | "check" | "cheque" | "creditAccount" | "creditCard" | "debtAccount" | "deposit" | "digitalLaunchPad" | "edinar" | "fidelityPoints" | "free" | "ideal" | "incubatorAccount" | "mandat" | "multibanco" | "none" | "ovhAccount" | "paymentMandate" | "paypal" | "payu" | "platnosci" | "refund" | "rupay" | "transfer" | "withdrawal"
     /**
      * A validation required to add a payment mean
      * interface fullName: billing.PaymentMeanValidation.PaymentMeanValidation
@@ -469,7 +469,7 @@ export namespace billing {
      * Reusable payment mean type
      * type fullname: billing.ReusablePaymentMeanEnum
      */
-    export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "bankAccount" | "creditCard" | "deferredPaymentAccount" | "fidelityAccount" | "ovhAccount" | "paypal"
+    export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "DOMESTIC_CARD" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "RUPAY" | "SEPA_DIRECT_DEBIT" | "bankAccount" | "creditCard" | "deferredPaymentAccount" | "fidelityAccount" | "ovhAccount" | "paypal"
     /**
      * SLA properties
      * interface fullName: billing.SlaOperation.SlaOperation
@@ -660,6 +660,7 @@ export namespace billing {
          */
         export interface PaymentMethods {
             available: payment.method.AvailablePaymentMethod[];
+            paymentMethods: payment.method.PaymentMethod[];
             registered: number[];
         }
         /**
@@ -742,7 +743,7 @@ export namespace billing {
          * List of payment type enum
          * type fullname: billing.paymentMethod.PaymentTypeEnum
          */
-        export type PaymentTypeEnum = "BANK_ACCOUNT" | "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL"
+        export type PaymentTypeEnum = "BANK_ACCOUNT" | "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "DOMESTIC_CARD" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "RUPAY" | "SEPA_DIRECT_DEBIT"
         /**
          * List of payment method status enum
          * type fullname: billing.paymentMethod.StatusEnum
@@ -852,7 +853,7 @@ export namespace debt {
          * All operations a debt entry can represent
          * type fullname: debt.entry.OperationEnum
          */
-        export type OperationEnum = "CANCEL" | "CASH_MANUAL" | "CHECK_MANUAL" | "CREDITCARD" | "CREDITCARD_AUTOMATIC" | "CREDITCARD_MANUAL" | "CREDIT_ACCOUNT_AUTOMATIC" | "EDINAR_MANUAL" | "IDEAL_AUTOMATIC" | "IDEAL_MANUAL" | "MULTIBANCO_AUTOMATIC" | "MULTIBANCO_MANUAL" | "ORDER" | "PAYPAL_AUTOMATIC" | "PAYPAL_MANUAL" | "PAYU_AUTOMATIC" | "PAYU_MANUAL" | "RECOVERY_TRANSFER_AUTOMATIC" | "REFUND" | "REFUND_CHECK" | "REFUND_CREDITCARD" | "REFUND_CREDIT_ACCOUNT" | "REFUND_IDEAL" | "REFUND_LOSS" | "REFUND_MULTIBANCO" | "REFUND_PAYPAL" | "REFUND_PAYU" | "REFUND_SEPA" | "REFUND_TRANSFER" | "REFUND_UNKNOWN" | "SEPA_AUTOMATIC" | "TRANSFER_MANUAL" | "UNPAID_CHECK" | "UNPAID_CREDITCARD" | "UNPAID_CREDIT_ACCOUNT" | "UNPAID_IDEAL" | "UNPAID_MULTIBANCO" | "UNPAID_PAYPAL" | "UNPAID_PAYU" | "UNPAID_SEPA" | "UNPAID_WITHDRAW" | "WARRANT_MANUAL" | "WITHDRAW_AUTOMATIC"
+        export type OperationEnum = "CANCEL" | "CASH_MANUAL" | "CHECK_MANUAL" | "CREDITCARD" | "CREDITCARD_AUTOMATIC" | "CREDITCARD_MANUAL" | "CREDIT_ACCOUNT_AUTOMATIC" | "CREDIT_CARD_AUTOMATIC" | "CREDIT_CARD_MANUAL" | "CURRENT_ACCOUNT_AUTOMATIC" | "CURRENT_ACCOUNT_MANUAL" | "DOMESTIC_CARD_AUTOMATIC" | "DOMESTIC_CARD_MANUAL" | "EDINAR_MANUAL" | "ENTERPRISE_AUTOMATIC" | "ENTERPRISE_MANUAL" | "IDEAL_AUTOMATIC" | "IDEAL_MANUAL" | "INCOMING_AUTOMATIC" | "INCOMING_MANUAL" | "INTERNAL_TRUSTED_ACCOUNT_AUTOMATIC" | "INTERNAL_TRUSTED_ACCOUNT_MANUAL" | "MULTIBANCO_AUTOMATIC" | "MULTIBANCO_MANUAL" | "ORDER" | "PAYPAL_AUTOMATIC" | "PAYPAL_MANUAL" | "PAYU_AUTOMATIC" | "PAYU_MANUAL" | "RECOVERY_TRANSFER_AUTOMATIC" | "REFUND" | "REFUND_CHECK" | "REFUND_CREDITCARD" | "REFUND_CREDIT_ACCOUNT" | "REFUND_CREDIT_CARD" | "REFUND_CURRENT_ACCOUNT" | "REFUND_DOMESTIC_CARD" | "REFUND_ENTERPRISE" | "REFUND_IDEAL" | "REFUND_INCOMING" | "REFUND_INTERNAL_TRUSTED_ACCOUNT" | "REFUND_LOSS" | "REFUND_MULTIBANCO" | "REFUND_PAYPAL" | "REFUND_PAYU" | "REFUND_RUPAY" | "REFUND_SEPA" | "REFUND_SEPA_DIRECT_DEBIT" | "REFUND_TRANSFER" | "REFUND_UNKNOWN" | "RUPAY_AUTOMATIC" | "RUPAY_MANUAL" | "SEPA_AUTOMATIC" | "SEPA_DIRECT_DEBIT_AUTOMATIC" | "SEPA_DIRECT_DEBIT_MANUAL" | "TRANSFER_MANUAL" | "UNPAID_CHECK" | "UNPAID_CREDITCARD" | "UNPAID_CREDIT_ACCOUNT" | "UNPAID_CREDIT_CARD" | "UNPAID_CURRENT_ACCOUNT" | "UNPAID_DOMESTIC_CARD" | "UNPAID_ENTERPRISE" | "UNPAID_IDEAL" | "UNPAID_INCOMING" | "UNPAID_INTERNAL_TRUSTED_ACCOUNT" | "UNPAID_MULTIBANCO" | "UNPAID_PAYPAL" | "UNPAID_PAYU" | "UNPAID_RUPAY" | "UNPAID_SEPA" | "UNPAID_SEPA_DIRECT_DEBIT" | "UNPAID_WITHDRAW" | "WARRANT_MANUAL" | "WIRE_TRANSFER_MANUAL" | "WITHDRAW_AUTOMATIC"
         /**
          * All status a debt entry can be in
          * type fullname: debt.entry.StatusEnum
@@ -930,7 +931,7 @@ export namespace dedicated {
      * Os subfamily definition
      * type fullname: dedicated.TemplateOsSubfamilyEnum
      */
-    export type TemplateOsSubfamilyEnum = "aos" | "arch" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "slackware" | "smartos" | "solusvm" | "suse" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
+    export type TemplateOsSubfamilyEnum = "alma" | "aos" | "arch" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "rocky" | "slackware" | "sles-sap" | "smartos" | "solusvm" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
     /**
      * Os type
      * type fullname: dedicated.TemplateOsTypeEnum
@@ -1529,7 +1530,7 @@ export namespace me {
              * Payment method status
              * type fullname: me.payment.method.StatusEnum
              */
-            export type StatusEnum = "CANCELED" | "CANCELING" | "CREATED" | "CREATING" | "ERROR" | "EXPIRED" | "FAILED" | "MAINTENANCE" | "PAUSED" | "VALID"
+            export type StatusEnum = "CANCELED" | "CANCELING" | "CREATED" | "CREATING" | "ERROR" | "EXPIRED" | "FAILED" | "MAINTENANCE" | "PAUSED" | "REJECTED" | "REPLACED" | "VALID" | "VALIDATING"
             /**
              * Registration response to validate
              * interface fullName: me.payment.method.Validation.Validation
@@ -1588,7 +1589,7 @@ export namespace me {
          * Payment method status enum
          * type fullname: me.paymentMethod.PaymentMethodStatusEnum
          */
-        export type PaymentMethodStatusEnum = "BLOCKED" | "BLOCKED_BY_CUSTOMER" | "BROKEN" | "CANCELED" | "CANCELED_BY_CUSTOMER" | "CREATED" | "ERROR" | "EXPIRED" | "PAUSED" | "VALID" | "VALID_FOR_CREDIT"
+        export type PaymentMethodStatusEnum = "BLOCKED" | "BLOCKED_BY_CUSTOMER" | "BROKEN" | "CANCELED" | "CANCELED_BY_CUSTOMER" | "CREATED" | "ERROR" | "EXPIRED" | "PAUSED" | "REPLACED" | "VALID" | "VALID_FOR_CREDIT"
         /**
          * List of payment sub type enum
          * type fullname: me.paymentMethod.PaymentSubTypeEnum
@@ -1614,6 +1615,29 @@ export namespace me {
          * type fullname: me.paymentMethod.ValidationTypeEnum
          */
         export type ValidationTypeEnum = "creditAccount" | "documentToSend" | "simpleValidation"
+    }
+    export namespace repricing {
+        /**
+         * Description of a service being repricing
+         * interface fullName: me.repricing.Service.Service
+         */
+        export interface Service {
+            addons: me.repricing.Service[];
+            description: string;
+            displayName: string;
+            duration: string;
+            priceAfterWithTax: orderPrice;
+            priceAfterWithoutTax: orderPrice;
+            priceBeforeWithTax: orderPrice;
+            priceBeforeWithoutTax: orderPrice;
+            route?: services.expanded.Route;
+            serviceId: number;
+            serviceName: string;
+            totalPriceAfterWithTax: orderPrice;
+            totalPriceAfterWithoutTax: orderPrice;
+            totalPriceBeforeWithTax: orderPrice;
+            totalPriceBeforeWithoutTax: orderPrice;
+        }
     }
     export namespace tag {
         /**
@@ -1791,7 +1815,7 @@ export namespace nichandle {
      * Languages a nichandle can choose
      * type fullname: nichandle.LanguageEnum
      */
-    export type LanguageEnum = "de_DE" | "en_AU" | "en_CA" | "en_GB" | "en_IE" | "en_US" | "es_ES" | "fr_CA" | "fr_FR" | "fr_MA" | "fr_SN" | "fr_TN" | "it_IT" | "nl_NL" | "pl_PL" | "pt_PT"
+    export type LanguageEnum = "cs_CZ" | "de_DE" | "en_AU" | "en_CA" | "en_GB" | "en_IE" | "en_US" | "es_ES" | "fi_FI" | "fr_CA" | "fr_FR" | "fr_MA" | "fr_SN" | "fr_TN" | "it_IT" | "lt_LT" | "nl_NL" | "pl_PL" | "pt_PT"
     /**
      * Legal forms a nichandle can be registered as
      * type fullname: nichandle.LegalFormEnum
@@ -2196,7 +2220,40 @@ export namespace payment {
          * Payment method integration type
          * type fullname: payment.method.IntegrationType
          */
-        export type IntegrationType = "COMPONENT" | "DONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "POST_FORM" | "REDIRECT"
+        export type IntegrationType = "COMPONENT" | "DONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "NONE" | "POST_FORM" | "REDIRECT"
+        /**
+         * payment method
+         * interface fullName: payment.method.PaymentMethod.PaymentMethod
+         */
+        export interface PaymentMethod {
+            billingContactId?: number;
+            creationDate: string;
+            default: boolean;
+            description?: string;
+            expirationDate?: string;
+            formSessionId?: string;
+            icon: payment.method.Icon;
+            integration?: payment.method.IntegrationType;
+            label?: string;
+            lastUpdate?: string;
+            merchantId?: string;
+            oneclick?: boolean;
+            paymentMeanId?: number;
+            paymentMethodId: number;
+            paymentSubType?: payment.method.SubTypeEnum;
+            paymentType: string;
+            status: payment.method.StatusEnum;
+        }
+        /**
+         * Payment method status
+         * type fullname: payment.method.StatusEnum
+         */
+        export type StatusEnum = "CANCELED" | "CANCELING" | "CREATED" | "CREATING" | "ERROR" | "EXPIRED" | "FAILED" | "MAINTENANCE" | "PAUSED" | "REJECTED" | "REPLACED" | "VALID" | "VALIDATING"
+        /**
+         * Payment method sub-type
+         * type fullname: payment.method.SubTypeEnum
+         */
+        export type SubTypeEnum = "30_DAYS" | "45_DAYS" | "60_DAYS" | "AMERICAN_EXPRESS" | "AURA" | "CARTE_BANCAIRE" | "CARTE_BLEUE" | "CHORUS" | "DINERS_CLUB" | "DISCOVER" | "JCB" | "MAESTRO" | "MASTERCARD" | "NONE" | "VISA"
     }
 }
 export namespace service {
@@ -2235,6 +2292,19 @@ export namespace service {
      * type fullname: service.ResourceStateEnum
      */
     export type ResourceStateEnum = "deleted" | "deleting" | "ok" | "opening" | "suspended" | "suspending" | "toDelete" | "toOpen" | "toSuspend"
+}
+export namespace services {
+    export namespace expanded {
+        /**
+         * Route of the service
+         * interface fullName: services.expanded.Route.Route
+         */
+        export interface Route {
+            path?: string;
+            url?: string;
+            vars: complexType.SafeKeyValue<string>[];
+        }
+    }
 }
 
 /**
@@ -2876,6 +2946,56 @@ export interface Me {
                     };
                 }
             };
+        }
+        purchaseOrder: {
+            /**
+             * Retrieve all purchase orders
+             * GET /me/billing/purchaseOrder
+             */
+            $get(params?: { billingGroupId?: number }): Promise<number[]>;
+            /**
+             * Create a purchase order
+             * POST /me/billing/purchaseOrder
+             */
+            $post(params: { active?: boolean, billingGroupId?: number, description?: string, endDate?: string, reference: string, startDate: string, type: me.billing.purchaseOrder.PurchaseOrderTypeEnum }): Promise<me.billing.purchaseOrder.PurchaseOrder>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(id: number): {
+                /**
+                 * Delete a purchase order
+                 * DELETE /me/billing/purchaseOrder/{id}
+                 */
+                $delete(): Promise<void>;
+                /**
+                 * Retrieve information about a purchase order
+                 * GET /me/billing/purchaseOrder/{id}
+                 */
+                $get(): Promise<me.billing.purchaseOrder.PurchaseOrder>;
+                /**
+                 * Update a purchase order
+                 * PUT /me/billing/purchaseOrder/{id}
+                 */
+                $put(params?: { active?: boolean, billingGroupId?: number, description?: string, endDate?: string, reference?: string, startDate?: string, type?: me.billing.purchaseOrder.PurchaseOrderTypeEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
+    }
+    bringYourOwnIp: {
+        token: {
+            /**
+             * Get your Bring your own IP token
+             * GET /me/bringYourOwnIp/token
+             */
+            $get(params: { campus: ip.CampusEnum }): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     }
     certificates: {

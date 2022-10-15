@@ -237,6 +237,32 @@ export const schema: Schema = {
       "path": "/nutanix/{serviceName}/terminate"
     },
     {
+      "description": "Fetch the available Nutanix versions to install",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Fetch the available Nutanix versions to install",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Fully qualified name and unique name of the hardware",
+              "fullType": "string",
+              "name": "fqn",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/nutanix/availableVersions"
+    },
+    {
       "description": "Fetch the requirements for a given cluster configuration",
       "operations": [
         {
@@ -281,6 +307,53 @@ export const schema: Schema = {
   ],
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
+    "nutanix.AvailabilityEnum": {
+      "description": "Cluster availability",
+      "enum": [
+        "1440H",
+        "240H",
+        "2880H",
+        "480H",
+        "720H",
+        "72H",
+        "unavailable"
+      ],
+      "enumType": "string",
+      "id": "AvailabilityEnum",
+      "namespace": "nutanix"
+    },
+    "nutanix.DatacenterAvailability": {
+      "description": "Cluster datacenter availability",
+      "id": "DatacenterAvailability",
+      "namespace": "nutanix",
+      "properties": {
+        "availability": {
+          "canBeNull": false,
+          "description": "Availability status",
+          "fullType": "nutanix.AvailabilityEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "nutanix.AvailabilityEnum"
+        },
+        "datacenter": {
+          "canBeNull": false,
+          "description": "Datacenter code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "nutanix.DeploymentTypeEnum": {
+      "description": "Cluster deployment type",
+      "enum": [
+        "NodeAwareness"
+      ],
+      "enumType": "string",
+      "id": "DeploymentTypeEnum",
+      "namespace": "nutanix"
+    },
     "nutanix.RedundancyFactorEnum": {
       "description": "Cluster redundancy factor",
       "enum": [
@@ -319,6 +392,93 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        }
+      }
+    },
+    "nutanix.availability": {
+      "description": "Cluster availability",
+      "id": "availability",
+      "namespace": "nutanix",
+      "properties": {
+        "datacenters": {
+          "canBeNull": false,
+          "description": "A structure describing the hardware availability for each datacenter",
+          "fullType": "nutanix.DatacenterAvailability[]",
+          "readOnly": true,
+          "required": false,
+          "type": "nutanix.DatacenterAvailability[]"
+        },
+        "deploymentType": {
+          "canBeNull": true,
+          "description": "Deployment type",
+          "fullType": "nutanix.DeploymentTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "nutanix.DeploymentTypeEnum"
+        },
+        "erasureCoding": {
+          "canBeNull": true,
+          "description": "Erasure coding activation",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "fqn": {
+          "canBeNull": false,
+          "description": "Fully qualified name and unique name of the hardware",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "memory": {
+          "canBeNull": false,
+          "description": "Name of the memory hardware part",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "planCode": {
+          "canBeNull": false,
+          "description": "Plan code in which the hardware is involved",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "redundancyFactor": {
+          "canBeNull": true,
+          "description": "Redundancy factor",
+          "fullType": "nutanix.RedundancyFactorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "nutanix.RedundancyFactorEnum"
+        },
+        "server": {
+          "canBeNull": false,
+          "description": "Name of the base hardware",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "storage": {
+          "canBeNull": false,
+          "description": "Name of the storage hardware part",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "systemStorage": {
+          "canBeNull": true,
+          "description": "Name of the system storage hardware part",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },

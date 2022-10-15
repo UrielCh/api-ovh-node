@@ -2254,6 +2254,174 @@ export const schema: Schema = {
       "path": "/me/billing/group/{groupId}/service/{serviceId}"
     },
     {
+      "description": "Manage purchase orders",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve all purchase orders",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Billing Group Identifier",
+              "fullType": "long",
+              "name": "billingGroupId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a purchase order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "me.billing.purchaseOrder.Creation",
+              "description": "Request Body",
+              "fullType": "me.billing.purchaseOrder.Creation",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "me.billing.purchaseOrder.PurchaseOrder",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
+        }
+      ],
+      "path": "/me/billing/purchaseOrder"
+    },
+    {
+      "description": "Manage purchase orders",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a purchase order",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve information about a purchase order",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "me.billing.purchaseOrder.PurchaseOrder",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Update a purchase order",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "me.billing.purchaseOrder.Update",
+              "description": "Request Body",
+              "fullType": "me.billing.purchaseOrder.Update",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
+        }
+      ],
+      "path": "/me/billing/purchaseOrder/{id}"
+    },
+    {
+      "description": "Get your Bring your own IP token",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get your Bring your own IP token",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ip.CampusEnum",
+              "description": "Campus where you plan to bring your own IP range in. See /ip/campus to get more details.",
+              "fullType": "ip.CampusEnum",
+              "name": "campus",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
+        }
+      ],
+      "path": "/me/bringYourOwnIp/token"
+    },
+    {
       "description": "Get all certificates of the account",
       "operations": [
         {
@@ -4788,7 +4956,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Partition size in MiB, 0 => rest of the space",
+              "description": "Partition size in MB, 0 => rest of the space",
               "fullType": "long",
               "name": "size",
               "paramType": "body",
@@ -9346,6 +9514,7 @@ export const schema: Schema = {
       "enum": [
         "cash",
         "chargeback",
+        "check",
         "cheque",
         "creditAccount",
         "creditCard",
@@ -9366,6 +9535,7 @@ export const schema: Schema = {
         "payu",
         "platnosci",
         "refund",
+        "rupay",
         "transfer",
         "withdrawal"
       ],
@@ -9491,9 +9661,12 @@ export const schema: Schema = {
         "CREDIT_CARD",
         "CURRENT_ACCOUNT",
         "DEFERRED_PAYMENT_ACCOUNT",
+        "DOMESTIC_CARD",
         "ENTERPRISE",
         "INTERNAL_TRUSTED_ACCOUNT",
         "PAYPAL",
+        "RUPAY",
+        "SEPA_DIRECT_DEBIT",
         "bankAccount",
         "creditCard",
         "deferredPaymentAccount",
@@ -10160,6 +10333,13 @@ export const schema: Schema = {
           "required": false,
           "type": "payment.method.AvailablePaymentMethod[]"
         },
+        "paymentMethods": {
+          "canBeNull": false,
+          "description": "List of registered Payment methods usable on this order",
+          "readOnly": false,
+          "required": false,
+          "type": "payment.method.PaymentMethod[]"
+        },
         "registered": {
           "canBeNull": false,
           "description": "IDs of registered payment method usable on this order",
@@ -10363,9 +10543,12 @@ export const schema: Schema = {
         "CREDIT_CARD",
         "CURRENT_ACCOUNT",
         "DEFERRED_PAYMENT_ACCOUNT",
+        "DOMESTIC_CARD",
         "ENTERPRISE",
         "INTERNAL_TRUSTED_ACCOUNT",
-        "PAYPAL"
+        "PAYPAL",
+        "RUPAY",
+        "SEPA_DIRECT_DEBIT"
       ],
       "enumType": "string",
       "id": "PaymentTypeEnum",
@@ -10796,9 +10979,21 @@ export const schema: Schema = {
         "CREDITCARD_AUTOMATIC",
         "CREDITCARD_MANUAL",
         "CREDIT_ACCOUNT_AUTOMATIC",
+        "CREDIT_CARD_AUTOMATIC",
+        "CREDIT_CARD_MANUAL",
+        "CURRENT_ACCOUNT_AUTOMATIC",
+        "CURRENT_ACCOUNT_MANUAL",
+        "DOMESTIC_CARD_AUTOMATIC",
+        "DOMESTIC_CARD_MANUAL",
         "EDINAR_MANUAL",
+        "ENTERPRISE_AUTOMATIC",
+        "ENTERPRISE_MANUAL",
         "IDEAL_AUTOMATIC",
         "IDEAL_MANUAL",
+        "INCOMING_AUTOMATIC",
+        "INCOMING_MANUAL",
+        "INTERNAL_TRUSTED_ACCOUNT_AUTOMATIC",
+        "INTERNAL_TRUSTED_ACCOUNT_MANUAL",
         "MULTIBANCO_AUTOMATIC",
         "MULTIBANCO_MANUAL",
         "ORDER",
@@ -10811,26 +11006,47 @@ export const schema: Schema = {
         "REFUND_CHECK",
         "REFUND_CREDITCARD",
         "REFUND_CREDIT_ACCOUNT",
+        "REFUND_CREDIT_CARD",
+        "REFUND_CURRENT_ACCOUNT",
+        "REFUND_DOMESTIC_CARD",
+        "REFUND_ENTERPRISE",
         "REFUND_IDEAL",
+        "REFUND_INCOMING",
+        "REFUND_INTERNAL_TRUSTED_ACCOUNT",
         "REFUND_LOSS",
         "REFUND_MULTIBANCO",
         "REFUND_PAYPAL",
         "REFUND_PAYU",
+        "REFUND_RUPAY",
         "REFUND_SEPA",
+        "REFUND_SEPA_DIRECT_DEBIT",
         "REFUND_TRANSFER",
         "REFUND_UNKNOWN",
+        "RUPAY_AUTOMATIC",
+        "RUPAY_MANUAL",
         "SEPA_AUTOMATIC",
+        "SEPA_DIRECT_DEBIT_AUTOMATIC",
+        "SEPA_DIRECT_DEBIT_MANUAL",
         "TRANSFER_MANUAL",
         "UNPAID_CHECK",
         "UNPAID_CREDITCARD",
         "UNPAID_CREDIT_ACCOUNT",
+        "UNPAID_CREDIT_CARD",
+        "UNPAID_CURRENT_ACCOUNT",
+        "UNPAID_DOMESTIC_CARD",
+        "UNPAID_ENTERPRISE",
         "UNPAID_IDEAL",
+        "UNPAID_INCOMING",
+        "UNPAID_INTERNAL_TRUSTED_ACCOUNT",
         "UNPAID_MULTIBANCO",
         "UNPAID_PAYPAL",
         "UNPAID_PAYU",
+        "UNPAID_RUPAY",
         "UNPAID_SEPA",
+        "UNPAID_SEPA_DIRECT_DEBIT",
         "UNPAID_WITHDRAW",
         "WARRANT_MANUAL",
+        "WIRE_TRANSFER_MANUAL",
         "WITHDRAW_AUTOMATIC"
       ],
       "enumType": "string",
@@ -11506,6 +11722,7 @@ export const schema: Schema = {
     "dedicated.TemplateOsSubfamilyEnum": {
       "description": "Os subfamily definition",
       "enum": [
+        "alma",
         "aos",
         "arch",
         "centos",
@@ -11527,10 +11744,11 @@ export const schema: Schema = {
         "power",
         "proxmox",
         "rhel",
+        "rocky",
         "slackware",
+        "sles-sap",
         "smartos",
         "solusvm",
-        "suse",
         "ubuntu",
         "windows-server-core",
         "windows-server-desktop-exp",
@@ -11883,7 +12101,7 @@ export const schema: Schema = {
         },
         "size": {
           "canBeNull": false,
-          "description": "Partition size in MiB, 0 => rest of the space",
+          "description": "Partition size (unit: MB GB TB, MB by default), 0 => rest of the space",
           "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
@@ -14182,7 +14400,10 @@ export const schema: Schema = {
         "FAILED",
         "MAINTENANCE",
         "PAUSED",
-        "VALID"
+        "REJECTED",
+        "REPLACED",
+        "VALID",
+        "VALIDATING"
       ],
       "enumType": "string",
       "id": "StatusEnum",
@@ -14414,6 +14635,7 @@ export const schema: Schema = {
         "ERROR",
         "EXPIRED",
         "PAUSED",
+        "REPLACED",
         "VALID",
         "VALID_FOR_CREDIT"
       ],
@@ -14497,6 +14719,133 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ValidationTypeEnum",
       "namespace": "me.paymentMethod"
+    },
+    "me.repricing.Service": {
+      "description": "Description of a service being repricing",
+      "id": "Service",
+      "namespace": "me.repricing",
+      "properties": {
+        "addons": {
+          "canBeNull": false,
+          "description": "Addons of the Service",
+          "fullType": "me.repricing.Service[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.repricing.Service[]"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the Service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "displayName": {
+          "canBeNull": false,
+          "description": "Custom name for the Service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "duration": {
+          "canBeNull": false,
+          "description": "Duration for the price described in the payload (ISO8601)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "priceAfterWithTax": {
+          "canBeNull": false,
+          "description": "Price after repricing, tax included",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "priceAfterWithoutTax": {
+          "canBeNull": false,
+          "description": "Price after repricing, tax excluded",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "priceBeforeWithTax": {
+          "canBeNull": false,
+          "description": "Price before repricing, tax included",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "priceBeforeWithoutTax": {
+          "canBeNull": false,
+          "description": "Price before repricing, tax excluded",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "route": {
+          "canBeNull": true,
+          "description": "Route",
+          "fullType": "services.expanded.Route",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Route"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": "Service ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Identifier of the service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "totalPriceAfterWithTax": {
+          "canBeNull": false,
+          "description": "Total price (addons included) after repricing, tax included",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "totalPriceAfterWithoutTax": {
+          "canBeNull": false,
+          "description": "Total price (addons included) after repricing, tax excluded",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "totalPriceBeforeWithTax": {
+          "canBeNull": false,
+          "description": "Total price (addons included) before repricing, tax included",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "totalPriceBeforeWithoutTax": {
+          "canBeNull": false,
+          "description": "Total price (addons included) before repricing, tax excluded",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
     },
     "me.tag.AvailableTag": {
       "description": "Available tag configuration object for creation",
@@ -15349,6 +15698,7 @@ export const schema: Schema = {
     "nichandle.LanguageEnum": {
       "description": "Languages a nichandle can choose",
       "enum": [
+        "cs_CZ",
         "de_DE",
         "en_AU",
         "en_CA",
@@ -15356,12 +15706,14 @@ export const schema: Schema = {
         "en_IE",
         "en_US",
         "es_ES",
+        "fi_FI",
         "fr_CA",
         "fr_FR",
         "fr_MA",
         "fr_SN",
         "fr_TN",
         "it_IT",
+        "lt_LT",
         "nl_NL",
         "pl_PL",
         "pt_PT"
@@ -16739,11 +17091,182 @@ export const schema: Schema = {
         "DONE",
         "IFRAME_VANTIV",
         "IN_CONTEXT",
+        "NONE",
         "POST_FORM",
         "REDIRECT"
       ],
       "enumType": "string",
       "id": "IntegrationType",
+      "namespace": "payment.method"
+    },
+    "payment.method.PaymentMethod": {
+      "description": "payment method",
+      "id": "PaymentMethod",
+      "namespace": "payment.method",
+      "properties": {
+        "billingContactId": {
+          "canBeNull": true,
+          "description": "Associated billing contact ID",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "default": {
+          "canBeNull": false,
+          "description": "Indicates if payment method is the default one for this account",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Custom customer description",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "expirationDate": {
+          "canBeNull": true,
+          "description": "Expiration date",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "formSessionId": {
+          "canBeNull": true,
+          "description": "Form session ID",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "icon": {
+          "canBeNull": false,
+          "description": "Payment method type icon",
+          "readOnly": false,
+          "required": false,
+          "type": "payment.method.Icon"
+        },
+        "integration": {
+          "canBeNull": true,
+          "description": "Payment method integration type",
+          "readOnly": false,
+          "required": false,
+          "type": "payment.method.IntegrationType"
+        },
+        "label": {
+          "canBeNull": true,
+          "description": "Payment method public label",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "lastUpdate": {
+          "canBeNull": true,
+          "description": "Last update date",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "merchantId": {
+          "canBeNull": true,
+          "description": "Merchant ID",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "oneclick": {
+          "canBeNull": true,
+          "description": "Indicates if payment method support the oneclick functionality",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "paymentMeanId": {
+          "canBeNull": true,
+          "description": "Payment mean ID associated to this payment method",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "paymentMethodId": {
+          "canBeNull": false,
+          "description": "Payment method ID",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "paymentSubType": {
+          "canBeNull": true,
+          "description": "Payment method sub type",
+          "readOnly": false,
+          "required": false,
+          "type": "payment.method.SubTypeEnum"
+        },
+        "paymentType": {
+          "canBeNull": false,
+          "description": "Payment method type",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Payment method status",
+          "readOnly": false,
+          "required": false,
+          "type": "payment.method.StatusEnum"
+        }
+      }
+    },
+    "payment.method.StatusEnum": {
+      "description": "Payment method status",
+      "enum": [
+        "CANCELED",
+        "CANCELING",
+        "CREATED",
+        "CREATING",
+        "ERROR",
+        "EXPIRED",
+        "FAILED",
+        "MAINTENANCE",
+        "PAUSED",
+        "REJECTED",
+        "REPLACED",
+        "VALID",
+        "VALIDATING"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "payment.method"
+    },
+    "payment.method.SubTypeEnum": {
+      "description": "Payment method sub-type",
+      "enum": [
+        "30_DAYS",
+        "45_DAYS",
+        "60_DAYS",
+        "AMERICAN_EXPRESS",
+        "AURA",
+        "CARTE_BANCAIRE",
+        "CARTE_BLEUE",
+        "CHORUS",
+        "DINERS_CLUB",
+        "DISCOVER",
+        "JCB",
+        "MAESTRO",
+        "MASTERCARD",
+        "NONE",
+        "VISA"
+      ],
+      "enumType": "string",
+      "id": "SubTypeEnum",
       "namespace": "payment.method"
     },
     "service.Operation": {
@@ -16863,6 +17386,37 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ResourceStateEnum",
       "namespace": "service"
+    },
+    "services.expanded.Route": {
+      "description": "Route of the service",
+      "id": "Route",
+      "namespace": "services.expanded",
+      "properties": {
+        "path": {
+          "canBeNull": true,
+          "description": "Path to use in API",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Path with variables applied",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "vars": {
+          "canBeNull": false,
+          "description": "Variables to use in the path",
+          "fullType": "complexType.SafeKeyValue<string>[]",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.SafeKeyValue<string>[]"
+        }
+      }
     }
   },
   "resourcePath": "/me"

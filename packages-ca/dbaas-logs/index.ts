@@ -109,6 +109,26 @@ export namespace dbaas {
          */
         export type DeliveryStatusEnum = "DELETING" | "DELIVERING" | "READY"
         /**
+         * Encryption key
+         * interface fullName: dbaas.logs.EncryptionKey.EncryptionKey
+         */
+        export interface EncryptionKey {
+            algorithm: dbaas.logs.EncryptionKeyAlgorithmEnum;
+            content: string;
+            createdAt: string;
+            encryptionKeyId: string;
+            fingerprint: string;
+            isEditable: boolean;
+            nbArchive?: number;
+            title: string;
+            uid: string;
+        }
+        /**
+         * Possible values for EncryptionKeyAlgorithmEnum
+         * type fullname: dbaas.logs.EncryptionKeyAlgorithmEnum
+         */
+        export type EncryptionKeyAlgorithmEnum = "ECC25519" | "RSA4096"
+        /**
          * Input engine
          * interface fullName: dbaas.logs.Engine.Engine
          */
@@ -477,6 +497,7 @@ export namespace dbaas {
             coldStorageRetention?: number;
             coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum;
             description: string;
+            encryptionKeysIds?: string[];
             indexingEnabled?: boolean;
             indexingMaxSize?: number;
             indexingNotifyEnabled?: boolean;
@@ -508,6 +529,7 @@ export namespace dbaas {
             coldStorageRetention?: number;
             coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum;
             description: string;
+            encryptionKeysIds?: string[];
             indexingEnabled?: boolean;
             indexingMaxSize?: number;
             indexingNotifyEnabled?: boolean;
@@ -715,6 +737,7 @@ export namespace dbaas {
             coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum;
             createdAt: string;
             description: string;
+            encryptionKeysIds?: string[];
             indexingEnabled?: boolean;
             indexingMaxSize?: number;
             indexingNotifyEnabled?: boolean;
@@ -1519,7 +1542,7 @@ export interface Dbaas {
                          * Register a new graylog stream
                          * POST /dbaas/logs/{serviceName}/output/graylog/stream
                          */
-                        $post(params: { coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, indexingMaxSize?: number, indexingNotifyEnabled?: boolean, parentStreamId?: string, pauseIndexingOnMaxSize?: boolean, retentionId?: string, title: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
+                        $post(params: { coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, encryptionKeysIds?: string[], indexingEnabled?: boolean, indexingMaxSize?: number, indexingNotifyEnabled?: boolean, parentStreamId?: string, pauseIndexingOnMaxSize?: boolean, retentionId?: string, title: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
                         /**
                          * Controle cache
                          */
@@ -1539,7 +1562,7 @@ export interface Dbaas {
                              * Update information of specified graylog stream
                              * PUT /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}
                              */
-                            $put(params: { coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, indexingMaxSize?: number, indexingNotifyEnabled?: boolean, pauseIndexingOnMaxSize?: boolean, title: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
+                            $put(params: { coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, encryptionKeysIds?: string[], indexingEnabled?: boolean, indexingMaxSize?: number, indexingNotifyEnabled?: boolean, pauseIndexingOnMaxSize?: boolean, title: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */

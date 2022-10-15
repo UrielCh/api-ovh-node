@@ -30,6 +30,7 @@ export namespace connectivity {
          */
         export interface MeetingSlot {
             endDate: string;
+            slotId?: string;
             startDate: string;
             uiCode?: string;
         }
@@ -499,12 +500,12 @@ export namespace xdsl {
      * Maximum time needed to repair a landline
      * type fullname: xdsl.FaultRepairTimeEnum
      */
-    export type FaultRepairTimeEnum = "4HNO" | "4HO" | "NORMAL"
+    export type FaultRepairTimeEnum = "10HO" | "4HNO" | "4HO" | "DPLUS1" | "NORMAL"
     /**
      * Gtr of the line.
      * type fullname: xdsl.GtrEnum
      */
-    export type GtrEnum = "4hno" | "4ho" | "none"
+    export type GtrEnum = "10ho" | "4hno" | "4ho" | "dplus1" | "none"
     /**
      * Informations about an IP address
      * interface fullName: xdsl.IP.IP
@@ -529,6 +530,7 @@ export namespace xdsl {
         nra: string[];
         operators: xdsl.OperatorTypeEnum[];
         taskId?: number;
+        taskReference?: string;
     }
     /**
      * Status of an IP.
@@ -1039,6 +1041,7 @@ export namespace xdsl {
          */
         export interface MeetingSlot {
             endDate: string;
+            slotId?: string;
             startDate: string;
             uiCode: string;
         }

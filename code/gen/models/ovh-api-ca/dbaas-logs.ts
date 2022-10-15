@@ -2889,15 +2889,21 @@ export const schema: Schema = {
           "errors": [
             "Client::ValidationError::InvalidSubStreamParent",
             "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::MaxEncryptionKeysPerStreamReached",
+            "Client::ValidationError::OptionDisabled",
             "Client::ValidationError::RequiredField",
+            "Client::ValidationError::StreamArchivesCantBeEncryptedithAdminKeyOnly",
             "Client::ValidationError::StreamRetentionMismatch",
+            "Client::ValidationError::TrialErrorColdstorage",
             "Client::Forbidden::Busy",
             "Client::Forbidden::ItemQuotaReached",
             "Client::Forbidden::PCIDSSColdStorageDeny",
+            "Client::Forbidden::PCIDSSSettingOnly",
             "Client::Forbidden::ParentStreamLocked",
             "Client::Forbidden::ServiceUnavailable",
             "Client::Forbidden::SubStreamColdstorageAddRules",
             "Client::Forbidden::SubStreamColdstorageIndexingMaxSize",
+            "Client::NotFound::EncryptionKeyDoesNotExists",
             "Client::NotFound::ServiceDoesNotExists",
             "Client::NotFound::StreamDoesNotExists",
             "Client::Conflict::TitleAlreadyUsed",
@@ -3026,7 +3032,10 @@ export const schema: Schema = {
             "Client::ValidationError::EmptyValue",
             "Client::ValidationError::InvalidColdStorageRetention",
             "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::MaxEncryptionKeysPerStreamReached",
             "Client::ValidationError::RequiredField",
+            "Client::ValidationError::StreamArchivesCantBeEncryptedithAdminKeyOnly",
+            "Client::ValidationError::TrialErrorColdstorage",
             "Client::ValidationError::ValueNotInList",
             "Client::ValidationError::ValueNotInRange",
             "Client::Forbidden::Busy",
@@ -3034,6 +3043,8 @@ export const schema: Schema = {
             "Client::Forbidden::NoRuleSet",
             "Client::Forbidden::OnlyOwnerCanPerformAction",
             "Client::Forbidden::PCIDSSColdStorageDeny",
+            "Client::Forbidden::PCIDSSSettingOnly",
+            "Client::NotFound::EncryptionKeyDoesNotExists",
             "Client::NotFound::ServiceDoesNotExists",
             "Client::NotFound::StreamDoesNotExists",
             "Client::Conflict::TitleAlreadyUsed"
@@ -6556,6 +6567,95 @@ export const schema: Schema = {
       "id": "DeliveryStatusEnum",
       "namespace": "dbaas.logs"
     },
+    "dbaas.logs.EncryptionKey": {
+      "description": "Encryption key",
+      "id": "EncryptionKey",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "algorithm": {
+          "canBeNull": false,
+          "description": "Encryption Key algorithm",
+          "fullType": "dbaas.logs.EncryptionKeyAlgorithmEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.EncryptionKeyAlgorithmEnum"
+        },
+        "content": {
+          "canBeNull": false,
+          "description": "Encryption Key content",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Encryption Key creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "encryptionKeyId": {
+          "canBeNull": false,
+          "description": "Encryption Key ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "fingerprint": {
+          "canBeNull": false,
+          "description": "Encryption Key fingerprint",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "isEditable": {
+          "canBeNull": false,
+          "description": "Indicates if you are allowed to edit entry",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "nbArchive": {
+          "canBeNull": true,
+          "description": "Number of archives encrypted with this Encryption Key",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "title": {
+          "canBeNull": false,
+          "description": "Encryption Key title",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "uid": {
+          "canBeNull": false,
+          "description": "Encryption Key user ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "dbaas.logs.EncryptionKeyAlgorithmEnum": {
+      "description": "Possible values for EncryptionKeyAlgorithmEnum",
+      "enum": [
+        "ECC25519",
+        "RSA4096"
+      ],
+      "enumType": "string",
+      "id": "EncryptionKeyAlgorithmEnum",
+      "namespace": "dbaas.logs"
+    },
     "dbaas.logs.Engine": {
       "description": "Input engine",
       "id": "Engine",
@@ -8010,6 +8110,14 @@ export const schema: Schema = {
           "required": true,
           "type": "string"
         },
+        "encryptionKeysIds": {
+          "canBeNull": true,
+          "description": "Encryption keys used to encrypt stream archives",
+          "fullType": "uuid[]",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid[]"
+        },
         "indexingEnabled": {
           "canBeNull": true,
           "description": "ES indexing enabled",
@@ -8175,6 +8283,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "string"
+        },
+        "encryptionKeysIds": {
+          "canBeNull": true,
+          "description": "Encryption keys used to encrypt stream archives",
+          "fullType": "uuid[]",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid[]"
         },
         "indexingEnabled": {
           "canBeNull": true,
@@ -8882,6 +8998,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "encryptionKeysIds": {
+          "canBeNull": true,
+          "description": "Encryption keys used to encrypt stream archives",
+          "fullType": "uuid[]",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid[]"
         },
         "indexingEnabled": {
           "canBeNull": true,

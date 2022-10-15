@@ -283,7 +283,7 @@ export namespace pack {
          * Service name
          * type fullname: pack.xdsl.ServiceNameEnum
          */
-        export type ServiceNameEnum = "domain" | "emailPro" | "exchangeAccount" | "exchangeIndividual" | "exchangeLite" | "exchangeOrganization" | "hostedEmail" | "hubic" | "modem" | "overTheBoxHardware" | "overTheBoxService" | "voipAlias" | "voipBillingAccount" | "voipEcoFax" | "voipLine" | "voipTrunk" | "xdslAccess"
+        export type ServiceNameEnum = "domain" | "emailPro" | "exchangeAccount" | "exchangeIndividual" | "exchangeLite" | "exchangeOrganization" | "grt10ho" | "grt20m10ho" | "grt20m4ho" | "grt4ho" | "grt5m10ho" | "grt5m4ho" | "grtOvh" | "hostedEmail" | "hubic" | "modem" | "overTheBoxHardware" | "overTheBoxService" | "voipAlias" | "voipBillingAccount" | "voipEcoFax" | "voipLine" | "voipTrunk" | "xdslAccess"
         /**
          * Shipping address
          * interface fullName: pack.xdsl.ShippingAddress.ShippingAddress
@@ -450,10 +450,13 @@ export namespace pack {
                 currentOfferPrice: pack.xdsl.addressMove.Price;
                 due: pack.xdsl.addressMove.Price;
                 firstYearPromo: pack.xdsl.addressMove.Price;
+                gtrComfortFees?: pack.xdsl.addressMove.Price;
                 installFees: pack.xdsl.addressMove.Price;
                 modemRental: pack.xdsl.addressMove.Price;
                 price: pack.xdsl.addressMove.Price;
                 promotion?: pack.xdsl.migrationAndAddressMove.Promotion;
+                providerAI?: pack.xdsl.addressMove.Price;
+                providerOrange?: pack.xdsl.addressMove.Price;
             }
         }
         export namespace migration {
@@ -470,6 +473,7 @@ export namespace pack {
                 engageMonths?: number;
                 engagementMonths: number[];
                 firstYearPromo?: order.Price;
+                gtrComfortFees?: order.Price;
                 installFees?: order.Price;
                 modemMacToReturn?: string;
                 modemRental?: order.Price;
@@ -479,6 +483,8 @@ export namespace pack {
                 options: pack.xdsl.migration.OfferAvailableOption[];
                 price: order.Price;
                 promotion?: pack.xdsl.migrationAndAddressMove.Promotion;
+                providerAI?: order.Price;
+                providerOrange?: order.Price;
                 subServicesToDelete: pack.xdsl.migration.SubServiceToDelete[];
                 url: string;
             }
@@ -518,12 +524,40 @@ export namespace pack {
                 type: pack.xdsl.ServiceNameEnum;
             }
             /**
+             * Option of Offer
+             * interface fullName: pack.xdsl.migration.OfferServiceToKeep.OfferServiceToKeep
+             */
+            export interface OfferServiceToKeep {
+                service: string;
+                type: pack.xdsl.ServiceNameEnum;
+            }
+            /**
+             * Sub service with unpack terms details
+             * interface fullName: pack.xdsl.migration.SubServiceDetails.SubServiceDetails
+             */
+            export interface SubServiceDetails {
+                isAllowed: boolean;
+                price: order.Price;
+                renewPeriod: number;
+                renewPrice: order.Price;
+                service: string;
+            }
+            /**
              * Sub service to delete
              * interface fullName: pack.xdsl.migration.SubServiceToDelete.SubServiceToDelete
              */
             export interface SubServiceToDelete {
                 numberToDelete: number;
                 services: string[];
+                type: pack.xdsl.ServiceNameEnum;
+            }
+            /**
+             * Sub services to delete with unpack terms
+             * interface fullName: pack.xdsl.migration.SubServicesDetailsToDelete.SubServicesDetailsToDelete
+             */
+            export interface SubServicesDetailsToDelete {
+                numberToDelete: number;
+                services: pack.xdsl.migration.SubServiceDetails[];
                 type: pack.xdsl.ServiceNameEnum;
             }
         }
@@ -683,6 +717,7 @@ export namespace xdsl {
          */
         export interface MeetingSlot {
             endDate: string;
+            slotId?: string;
             startDate: string;
             uiCode: string;
         }
@@ -785,7 +820,7 @@ export interface Pack {
                      * Move the access to another address
                      * POST /pack/xdsl/{packName}/addressMove/moveOffer
                      */
-                    $post(params: { acceptContracts: boolean, building?: string, buildingReference?: string, contactPhone?: string, door?: string, eligibilityReference: string, engageMonths?: number, floor?: string, keepCurrentNumber: boolean, meeting?: xdsleligibilityBookMeetingSlot, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, residence?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[] }): Promise<pack.xdsl.AsyncTask<number>>;
+                    $post(params: { acceptContracts: boolean, building?: string, buildingReference?: string, contactPhone?: string, door?: string, eligibilityReference: string, engageMonths?: number, floor?: string, keepCurrentNumber: boolean, meeting?: xdsleligibilityBookMeetingSlot, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, residence?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.AsyncTask<number>>;
                 }
                 offers: {
                     /**
@@ -800,6 +835,13 @@ export interface Pack {
                      * POST /pack/xdsl/{packName}/addressMove/servicesToDelete
                      */
                     $post(params: { eligibilityReference: string, offerName: string, options?: pack.xdsl.migration.OfferOption[] }): Promise<pack.xdsl.migration.SubServiceToDelete[]>;
+                }
+                servicesToDeleteUnpackTerms: {
+                    /**
+                     * Calculate services to delete with unpack terms for new offer and options
+                     * POST /pack/xdsl/{packName}/addressMove/servicesToDeleteUnpackTerms
+                     */
+                    $post(params: { eligibilityReference: string, offerName: string, options?: pack.xdsl.migration.OfferOption[] }): Promise<pack.xdsl.migration.SubServicesDetailsToDelete[]>;
                 }
             }
             canCancelResiliation: {
@@ -1133,7 +1175,7 @@ export interface Pack {
                      * Migrate to the selected offer
                      * POST /pack/xdsl/{packName}/migration/migrate
                      */
-                    $post(params: { acceptContracts: boolean, buildingReference?: string, contactPhone?: string, engageMonths?: number, floor?: string, meeting?: xdsleligibilityBookMeetingSlot, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, productCode?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[] }): Promise<pack.xdsl.Task>;
+                    $post(params: { acceptContracts: boolean, buildingReference?: string, contactPhone?: string, engageMonths?: number, floor?: string, meeting?: xdsleligibilityBookMeetingSlot, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, productCode?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.Task>;
                 }
                 offers: {
                     /**
@@ -1148,6 +1190,13 @@ export interface Pack {
                      * POST /pack/xdsl/{packName}/migration/servicesToDelete
                      */
                     $post(params: { offerName: string, options?: pack.xdsl.migration.OfferOption[] }): Promise<pack.xdsl.migration.SubServiceToDelete[]>;
+                }
+                servicesToDeleteUnpackTerms: {
+                    /**
+                     * Calculate services to delete with unpack terms for an offer and options
+                     * POST /pack/xdsl/{packName}/migration/servicesToDeleteUnpackTerms
+                     */
+                    $post(params: { offerName: string, options?: pack.xdsl.migration.OfferOption[] }): Promise<pack.xdsl.migration.SubServicesDetailsToDelete[]>;
                 }
             }
             promotionCode: {

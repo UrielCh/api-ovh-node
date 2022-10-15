@@ -139,6 +139,7 @@ export namespace connectivity {
          */
         export interface MeetingSlot {
             endDate: string;
+            slotId?: string;
             startDate: string;
             uiCode?: string;
         }
@@ -298,6 +299,7 @@ export namespace connectivity {
             operators: connectivity.OperatorEnum[];
             status: connectivity.monitoring.GenericIncidentStatusEnum;
             taskId?: number;
+            taskReference?: string;
         }
         /**
          * Generic incident status

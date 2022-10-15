@@ -2475,7 +2475,6 @@ export const schema: Schema = {
         "postgresql_10",
         "postgresql_11",
         "postgresql_12",
-        "postgresql_9.5",
         "postgresql_9.6",
         "redis_4.0",
         "redis_6.0"

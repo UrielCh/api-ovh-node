@@ -1106,6 +1106,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "long",
+              "description": "Filter the value of defaultSslId property (=)",
+              "fullType": "long",
+              "name": "defaultSslId",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "string",
               "description": "Filter the value of port property (like)",
               "fullType": "string",
@@ -3152,6 +3160,14 @@ export const schema: Schema = {
               "description": "Filter the value of defaultFarmId property (=)",
               "fullType": "long",
               "name": "defaultFarmId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of defaultSslId property (=)",
+              "fullType": "long",
+              "name": "defaultSslId",
               "paramType": "query",
               "required": false
             },

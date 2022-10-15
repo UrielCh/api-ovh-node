@@ -74,6 +74,40 @@ export namespace email {
             taskPendingId: number;
         }
         /**
+         * Mailbox
+         * interface fullName: email.pro.AccountNative.AccountNative
+         */
+        export interface AccountNative {
+            SAMAccountName?: string;
+            configured: boolean;
+            creationDate?: string;
+            currentUsage?: number;
+            deleteAtExpiration?: boolean;
+            displayName?: string;
+            domain: string;
+            expirationDate?: string;
+            expirationOutlookDate?: string;
+            firstName?: string;
+            hiddenFromGAL: boolean;
+            id: number;
+            initial?: string;
+            lastLogoffDate?: string;
+            lastLogonDate?: string;
+            lastName?: string;
+            lastUpdateDate?: string;
+            login: string;
+            mailingFilter?: email.pro.MailingFilterEnum[];
+            passwordLastUpdate?: string;
+            primaryEmailAddress: string;
+            quota: number;
+            renewPeriod?: email.pro.renewPeriodEnum;
+            spamAndVirusConfiguration: email.pro.spamAndVirusConfiguration;
+            spamDetected: boolean;
+            spamTicketNumber?: number;
+            state: email.pro.ObjectStateEnum;
+            taskPendingId?: number;
+        }
+        /**
          * Users authorized to send mails from this mailbox
          * interface fullName: email.pro.AccountSendAs.AccountSendAs
          */
@@ -116,6 +150,25 @@ export namespace email {
             type: email.pro.DomainTypeEnum;
         }
         /**
+         * Domain
+         * interface fullName: email.pro.DomainNative.DomainNative
+         */
+        export interface DomainNative {
+            cnameToCheck?: string;
+            domainAliases: string[];
+            domainValidated: boolean;
+            isAliasDomain: boolean;
+            mxIsValid: boolean;
+            mxRecord?: string[];
+            mxRelay?: string;
+            name: string;
+            srvIsValid: boolean;
+            srvRecord?: string[];
+            state: email.pro.ObjectStateEnum;
+            taskPendingId: number;
+            type: email.pro.DomainTypeEnum;
+        }
+        /**
          * Domain type
          * type fullname: email.pro.DomainTypeEnum
          */
@@ -125,6 +178,22 @@ export namespace email {
          * interface fullName: email.pro.ExternalContact.ExternalContact
          */
         export interface ExternalContact {
+            creationDate: string;
+            displayName: string;
+            externalEmailAddress: string;
+            firstName?: string;
+            hiddenFromGAL: boolean;
+            id: number;
+            initials?: string;
+            lastName?: string;
+            state: email.pro.ObjectStateEnum;
+            taskPendingId: number;
+        }
+        /**
+         * External contact for this pro service
+         * interface fullName: email.pro.ExternalContactNative.ExternalContactNative
+         */
+        export interface ExternalContactNative {
             creationDate: string;
             displayName: string;
             externalEmailAddress: string;
@@ -193,6 +262,30 @@ export namespace email {
             webUrl?: string;
         }
         /**
+         * Email pro service
+         * interface fullName: email.pro.ServiceNative.ServiceNative
+         */
+        export interface ServiceNative {
+            complexityEnabled: boolean;
+            displayName?: string;
+            domain: string;
+            hostname?: string;
+            lastUpdateDate?: string;
+            lockoutDuration: number;
+            lockoutObservationWindow: number;
+            lockoutThreshold?: number;
+            maxPasswordAge?: number;
+            maxReceiveSize: number;
+            maxSendSize: number;
+            minPasswordAge?: number;
+            minPasswordLength?: number;
+            offer: email.pro.ServiceOfferEnum;
+            spamAndVirusConfiguration: email.pro.spamAndVirusConfiguration;
+            state: email.pro.ServiceStateEnum;
+            taskPendingId: number;
+            webUrl?: string;
+        }
+        /**
          * Service Offer name
          * type fullname: email.pro.ServiceOfferEnum
          */
@@ -228,6 +321,17 @@ export namespace email {
          * interface fullName: email.pro.disclaimer.disclaimer
          */
         export interface disclaimer {
+            content: string;
+            creationDate: string;
+            name: string;
+            outsideOnly: boolean;
+            taskPendingId: number;
+        }
+        /**
+         * disclaimer
+         * interface fullName: email.pro.disclaimerNative.disclaimerNative
+         */
+        export interface disclaimerNative {
             content: string;
             creationDate: string;
             name: string;
@@ -324,7 +428,7 @@ export interface Email {
              * Get this object properties
              * GET /email/pro/{service}
              */
-            $get(): Promise<email.pro.Service>;
+            $get(): Promise<email.pro.ServiceNative>;
             /**
              * Alter this object properties
              * PUT /email/pro/{service}
@@ -354,7 +458,7 @@ export interface Email {
                      * Get this object properties
                      * GET /email/pro/{service}/account/{email}
                      */
-                    $get(): Promise<email.pro.Account>;
+                    $get(): Promise<email.pro.AccountNative>;
                     /**
                      * Alter this object properties
                      * PUT /email/pro/{service}/account/{email}
@@ -600,7 +704,7 @@ export interface Email {
                      * Get this object properties
                      * GET /email/pro/{service}/domain/{domainName}
                      */
-                    $get(): Promise<email.pro.Domain>;
+                    $get(): Promise<email.pro.DomainNative>;
                     /**
                      * Alter this object properties
                      * PUT /email/pro/{service}/domain/{domainName}
@@ -620,7 +724,7 @@ export interface Email {
                          * Get this object properties
                          * GET /email/pro/{service}/domain/{domainName}/disclaimer
                          */
-                        $get(): Promise<email.pro.disclaimer>;
+                        $get(): Promise<email.pro.disclaimerNative>;
                         /**
                          * Create organization disclaimer of each email
                          * POST /email/pro/{service}/domain/{domainName}/disclaimer
@@ -674,7 +778,7 @@ export interface Email {
                      * Get this object properties
                      * GET /email/pro/{service}/externalContact/{externalEmailAddress}
                      */
-                    $get(): Promise<email.pro.ExternalContact>;
+                    $get(): Promise<email.pro.ExternalContactNative>;
                     /**
                      * Alter this object properties
                      * PUT /email/pro/{service}/externalContact/{externalEmailAddress}

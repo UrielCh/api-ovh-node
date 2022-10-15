@@ -469,6 +469,3092 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/confirmTermination"
     },
     {
+      "description": "Query operations on cassandra cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List maintenances for the cassandra cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/maintenance"
+    },
+    {
+      "description": "Query operations on cassandra cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the maintenance for the cassandra cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/maintenance/{maintenanceId}"
+    },
+    {
+      "description": "Operations about the cloud project cassandra maintenance apply",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Apply the maintenance",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/maintenance/{maintenanceId}/apply"
+    },
+    {
+      "description": "Query operations on grafana cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List maintenances for the grafana cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/maintenance"
+    },
+    {
+      "description": "Query operations on grafana cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the maintenance for the grafana cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/maintenance/{maintenanceId}"
+    },
+    {
+      "description": "Operations about the cloud project grafana maintenance apply",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Apply the maintenance",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/maintenance/{maintenanceId}/apply"
+    },
+    {
+      "description": "Query operations on kafka cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List maintenances for the kafka cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/maintenance"
+    },
+    {
+      "description": "Query operations on kafka cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the maintenance for the kafka cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/maintenance/{maintenanceId}"
+    },
+    {
+      "description": "Operations about the cloud project kafka maintenance apply",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Apply the maintenance",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/maintenance/{maintenanceId}/apply"
+    },
+    {
+      "description": "Operations about the cloud project kafka connect connector capabilities",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List Kafka Connect connectors",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/capabilities/connector"
+    },
+    {
+      "description": "Operations about the cloud project kafka connect connector capabilities",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get Kafka Connect connector capability",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Connector ID",
+              "fullType": "uuid",
+              "name": "connectorId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.kafkaConnect.capabilities.Connector",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/capabilities/connector/{connectorId}"
+    },
+    {
+      "description": "Operations about the cloud project kafka connect connector configuration",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get Kafka Connect connector configuration",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Connector ID",
+              "fullType": "uuid",
+              "name": "connectorId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.kafkaConnect.capabilities.connector.configuration.Property[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/capabilities/connector/{connectorId}/configuration"
+    },
+    {
+      "description": "Operations about the cloud project kafka connect connector transforms",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get Kafka Connect connector transforms",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Connector ID",
+              "fullType": "uuid",
+              "name": "connectorId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.kafkaConnect.capabilities.connector.Transform[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/capabilities/connector/{connectorId}/transforms"
+    },
+    {
+      "description": "Query operations on kafka connect cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List maintenances for the kafka connect cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/maintenance"
+    },
+    {
+      "description": "Query operations on kafka connect cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the maintenance for the kafka connect cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/maintenance/{maintenanceId}"
+    },
+    {
+      "description": "Operations about the cloud project kafka connect maintenance apply",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Apply the maintenance",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/maintenance/{maintenanceId}/apply"
+    },
+    {
+      "description": "Query operations on kafka mirror maker cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List maintenances for the kafka mirror maker cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/maintenance"
+    },
+    {
+      "description": "Query operations on kafka mirror maker cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the maintenance for the kafka mirror maker cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/maintenance/{maintenanceId}"
+    },
+    {
+      "description": "Operations about the cloud project kafka mirror maker maintenance apply",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Apply the maintenance",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/maintenance/{maintenanceId}/apply"
+    },
+    {
+      "description": "Query operations on m3aggregator cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List maintenances for the m3aggregator cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/m3aggregator/{clusterId}/maintenance"
+    },
+    {
+      "description": "Query operations on m3aggregator cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the maintenance for the m3aggregator cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/m3aggregator/{clusterId}/maintenance/{maintenanceId}"
+    },
+    {
+      "description": "Operations about the cloud project m3aggregator maintenance apply",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Apply the maintenance",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/m3aggregator/{clusterId}/maintenance/{maintenanceId}/apply"
+    },
+    {
+      "description": "Query operations on m3db cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List maintenances for the m3db cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/maintenance"
+    },
+    {
+      "description": "Query operations on m3db cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the maintenance for the m3db cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/maintenance/{maintenanceId}"
+    },
+    {
+      "description": "Operations about the cloud project m3db maintenance apply",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Apply the maintenance",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/maintenance/{maintenanceId}/apply"
+    },
+    {
+      "description": "Query operations on mysql cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List maintenances for the mysql cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/maintenance"
+    },
+    {
+      "description": "Query operations on mysql cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the maintenance for the mysql cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/maintenance/{maintenanceId}"
+    },
+    {
+      "description": "Operations about the cloud project mysql maintenance apply",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Apply the maintenance",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/maintenance/{maintenanceId}/apply"
+    },
+    {
+      "description": "Query operations on opensearch cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List maintenances for the opensearch cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/maintenance"
+    },
+    {
+      "description": "Query operations on opensearch cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the maintenance for the opensearch cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/maintenance/{maintenanceId}"
+    },
+    {
+      "description": "Operations about the cloud project opensearch maintenance apply",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Apply the maintenance",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/maintenance/{maintenanceId}/apply"
+    },
+    {
+      "description": "Query operations on postgresql cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List maintenances for the postgresql cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/maintenance"
+    },
+    {
+      "description": "Query operations on postgresql cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the maintenance for the postgresql cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/maintenance/{maintenanceId}"
+    },
+    {
+      "description": "Operations about the cloud project postgresql maintenance apply",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Apply the maintenance",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/maintenance/{maintenanceId}/apply"
+    },
+    {
+      "description": "Query operations on redis cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List maintenances for the redis cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/maintenance"
+    },
+    {
+      "description": "Query operations on redis cluster maintenance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the maintenance for the redis cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/maintenance/{maintenanceId}"
+    },
+    {
+      "description": "Operations about the cloud project redis maintenance apply",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Apply the maintenance",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Maintenance ID",
+              "fullType": "uuid",
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.service.Maintenance",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/maintenance/{maintenanceId}/apply"
+    },
+    {
       "description": "Missing description",
       "operations": [
         {
@@ -2096,6 +5182,83 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/auditLogs"
     },
     {
+      "description": "Cluster customization",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get cluster customization",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.ProjectKubeCustomization",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update cluster customization",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeCustomization",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeCustomization",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.ResponseMessage",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/customization"
+    },
+    {
       "description": "List all flavors available",
       "operations": [
         {
@@ -2940,6 +6103,83 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/openIdConnect"
+    },
+    {
+      "description": "Manage the private network configuration",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get private network configuration",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.PrivateNetworkConfiguration",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update private network configuration",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.kube.PrivateNetworkConfiguration",
+              "description": "Request Body",
+              "fullType": "cloud.kube.PrivateNetworkConfiguration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.ResponseMessage",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/privateNetworkConfiguration"
     },
     {
       "description": "Reset your cluster",
@@ -4635,6 +7875,2634 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/region/{regionName}"
     },
     {
+      "description": "Manage your floating ips",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get floating ips",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.FloatingIp[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/floatingip"
+    },
+    {
+      "description": "Manage your floating ips",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a floating ip",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Floating ip ID",
+              "fullType": "uuid",
+              "name": "floatingIpId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a floating ip",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Floating ip ID",
+              "fullType": "uuid",
+              "name": "floatingIpId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.FloatingIp",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/floatingip/{floatingIpId}"
+    },
+    {
+      "description": "Manage your gateways",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List gateways",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Attached interface's subnet id",
+              "fullType": "string",
+              "name": "subnetId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cloud.network.Gateway[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create new Gateway and new Private Network with new Subnet",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.network.CreateGateway",
+              "description": "Request Body",
+              "fullType": "cloud.network.CreateGateway",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.Operation",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/gateway"
+    },
+    {
+      "description": "Manage your gateways",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete gateway",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.Operation",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get gateway",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.network.Gateway",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Update a gateway",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.network.UpdateGateway",
+              "description": "Request Body",
+              "fullType": "cloud.network.UpdateGateway",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.network.Gateway",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/gateway/{id}"
+    },
+    {
+      "description": "Expose gateway to public network by adding a public port on it.",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Expose gateway to public network by adding a public port on it.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.network.Gateway",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/gateway/{id}/expose"
+    },
+    {
+      "description": "Manage your gateway interfaces",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List interfaces",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.network.gateway.Interface[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create gateway interface",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.network.gateway.CreateInterface",
+              "description": "Request Body",
+              "fullType": "cloud.network.gateway.CreateInterface",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.network.gateway.Interface",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/gateway/{id}/interface"
+    },
+    {
+      "description": "Manage your gateway interfaces",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete gateway interface",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Interface ID",
+              "fullType": "uuid",
+              "name": "interfaceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get interface",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Interface ID",
+              "fullType": "uuid",
+              "name": "interfaceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.network.gateway.Interface",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/gateway/{id}/interface/{interfaceId}"
+    },
+    {
+      "description": "Associate an existing floating IP to an instance",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Associate an existing floating IP to an instance",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.instance.AssociateFloatingIp",
+              "description": "Request Body",
+              "fullType": "cloud.instance.AssociateFloatingIp",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Instance ID",
+              "fullType": "uuid",
+              "name": "instanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.Operation",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/instance/{instanceId}/associateFloatingIp"
+    },
+    {
+      "description": "Create a floating IP and attach it to an instance ",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a floating IP and attach it to an instance",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.instance.CreateFloatingIp",
+              "description": "Request Body",
+              "fullType": "cloud.instance.CreateFloatingIp",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Instance ID",
+              "fullType": "uuid",
+              "name": "instanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.Operation",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/instance/{instanceId}/floatingIp"
+    },
+    {
+      "description": "Manage your certificates",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List certificates",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.keymanager.Certificate[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a new certificate",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.keymanager.CertificateCreate",
+              "description": "Request Body",
+              "fullType": "cloud.keymanager.CertificateCreate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.keymanager.Certificate",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/keymanager/certificate"
+    },
+    {
+      "description": "Manage your certificates",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a certificate",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Certificate ID",
+              "fullType": "uuid",
+              "name": "certificateId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get details about a certificate",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Certificate ID",
+              "fullType": "uuid",
+              "name": "certificateId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.keymanager.Certificate",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/keymanager/certificate/{certificateId}"
+    },
+    {
+      "description": "Manage your secrets",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List secrets",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.keymanager.Secret[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/keymanager/secret"
+    },
+    {
+      "description": "Manage your secrets",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a secret",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Secret ID",
+              "fullType": "uuid",
+              "name": "secretId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get details about a secret",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Secret ID",
+              "fullType": "uuid",
+              "name": "secretId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.keymanager.Secret",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/keymanager/secret/{secretId}"
+    },
+    {
+      "description": "Consult load balancing flavors",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List flavors",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.Flavor[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/flavor"
+    },
+    {
+      "description": "Consult load balancing flavors",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get details about a load balancing flavor",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Flavor ID",
+              "fullType": "uuid",
+              "name": "flavorId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.Flavor",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/flavor/{flavorId}"
+    },
+    {
+      "description": "Manage your loadbalancers health monitoring",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List health monitors",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.HealthMonitor[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create health monitor",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.loadbalancing.HealthMonitor",
+              "description": "Request Body",
+              "fullType": "cloud.loadbalancing.HealthMonitor",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.HealthMonitor",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/healthMonitor"
+    },
+    {
+      "description": "Manage your loadbalancers health monitoring",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete health monitor",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Health monitor ID",
+              "fullType": "uuid",
+              "name": "healthMonitorId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get details about a loadbalancer health monitor",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Health monitor ID",
+              "fullType": "uuid",
+              "name": "healthMonitorId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.HealthMonitor",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Update a health monitor",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.loadbalancing.UpdateHealthMonitor",
+              "description": "Request Body",
+              "fullType": "cloud.loadbalancing.UpdateHealthMonitor",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Health monitor ID",
+              "fullType": "uuid",
+              "name": "healthMonitorId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.HealthMonitor",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/healthMonitor/{healthMonitorId}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.L7Policy[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.loadbalancing.L7Policy",
+              "description": "Request Body",
+              "fullType": "cloud.loadbalancing.L7Policy",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.L7Policy",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/l7Policy"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "L7 policy ID",
+              "fullType": "uuid",
+              "name": "l7PolicyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "L7 policy ID",
+              "fullType": "uuid",
+              "name": "l7PolicyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.L7Policy",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.loadbalancing.L7PolicyUpdate",
+              "description": "Request Body",
+              "fullType": "cloud.loadbalancing.L7PolicyUpdate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "L7 policy ID",
+              "fullType": "uuid",
+              "name": "l7PolicyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.L7Policy",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/l7Policy/{l7PolicyId}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "L7 policy ID",
+              "fullType": "uuid",
+              "name": "l7PolicyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.L7Rule[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.loadbalancing.L7Rule",
+              "description": "Request Body",
+              "fullType": "cloud.loadbalancing.L7Rule",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "L7 policy ID",
+              "fullType": "uuid",
+              "name": "l7PolicyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.L7Rule",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/l7Policy/{l7PolicyId}/l7Rule"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "L7 policy ID",
+              "fullType": "uuid",
+              "name": "l7PolicyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "L7 rule ID",
+              "fullType": "uuid",
+              "name": "l7RuleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "L7 policy ID",
+              "fullType": "uuid",
+              "name": "l7PolicyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "L7 rule ID",
+              "fullType": "uuid",
+              "name": "l7RuleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.L7Rule",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.loadbalancing.L7Rule",
+              "description": "Request Body",
+              "fullType": "cloud.loadbalancing.L7Rule",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "L7 policy ID",
+              "fullType": "uuid",
+              "name": "l7PolicyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "L7 rule ID",
+              "fullType": "uuid",
+              "name": "l7RuleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.L7Rule",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/l7Policy/{l7PolicyId}/l7Rule/{l7RuleId}"
+    },
+    {
+      "description": "Manage your loadbalancer listeners",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List your loadbalancer listeners",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Filter by loadbalancer",
+              "fullType": "uuid",
+              "name": "loadbalancerId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cloud.loadbalancing.Listener[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a loadbalancer listerner",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.loadbalancing.CreateListener",
+              "description": "Request Body",
+              "fullType": "cloud.loadbalancing.CreateListener",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.Listener",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/listener"
+    },
+    {
+      "description": "Manage your loadbalancer listeners",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete loadbalancer listener",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Listener ID",
+              "fullType": "uuid",
+              "name": "listenerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get details about a loadbalancer listener",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Listener ID",
+              "fullType": "uuid",
+              "name": "listenerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.Listener",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/listener/{listenerId}"
+    },
+    {
+      "description": "Manage your load balancers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List your load balancers",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.LoadBalancer[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a loadbalancer",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.loadbalancing.LoadbalancerCreate",
+              "description": "Request Body",
+              "fullType": "cloud.loadbalancing.LoadbalancerCreate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.Operation",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer"
+    },
+    {
+      "description": "Manage your load balancers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete loadbalancer",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Load balancer ID",
+              "fullType": "uuid",
+              "name": "loadBalancerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get details about a load balancer",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Load balancer ID",
+              "fullType": "uuid",
+              "name": "loadBalancerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.LoadBalancer",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}"
+    },
+    {
+      "description": "Associate an existing floating IP to a loadbalancer",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Associate an existing floating IP to a loadbalancer",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.loadbalancing.AssociateFloatingIp",
+              "description": "Request Body",
+              "fullType": "cloud.loadbalancing.AssociateFloatingIp",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Load balancer ID",
+              "fullType": "uuid",
+              "name": "loadBalancerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.Operation",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}/associateFloatingIp"
+    },
+    {
+      "description": "Create a floating IP and attach it to a loadbalancer ",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a floating IP and attach it to a loadbalancer",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.loadbalancing.CreateFloatingIp",
+              "description": "Request Body",
+              "fullType": "cloud.loadbalancing.CreateFloatingIp",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Load balancer ID",
+              "fullType": "uuid",
+              "name": "loadBalancerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.Operation",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}/floatingIp"
+    },
+    {
+      "description": "Manage your loadbalancer pools",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List your loadbalancer pools",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Filter by loadbalancer",
+              "fullType": "uuid",
+              "name": "loadbalancerId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cloud.loadbalancing.Pool[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a loadbalancer pool",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.loadbalancing.PoolCreate",
+              "description": "Request Body",
+              "fullType": "cloud.loadbalancing.PoolCreate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.Pool",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/pool"
+    },
+    {
+      "description": "Manage your loadbalancer pools",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a loadbalancer pool",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Pool ID",
+              "fullType": "uuid",
+              "name": "poolId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get details about a loadbalancer pool",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Pool ID",
+              "fullType": "uuid",
+              "name": "poolId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.Pool",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Update a loadbalancer pool",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.loadbalancing.PoolUpdate",
+              "description": "Request Body",
+              "fullType": "cloud.loadbalancing.PoolUpdate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Pool ID",
+              "fullType": "uuid",
+              "name": "poolId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.Pool",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/pool/{poolId}"
+    },
+    {
+      "description": "Manage your pool members",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List your pool members",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Pool ID",
+              "fullType": "uuid",
+              "name": "poolId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.pool.Member[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a pool member",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.loadbalancing.pool.Member",
+              "description": "Request Body",
+              "fullType": "cloud.loadbalancing.pool.Member",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Pool ID",
+              "fullType": "uuid",
+              "name": "poolId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.pool.Member",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/pool/{poolId}/member"
+    },
+    {
+      "description": "Manage your pool members",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a pool member",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Member ID",
+              "fullType": "uuid",
+              "name": "memberId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Pool ID",
+              "fullType": "uuid",
+              "name": "poolId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get details about a pool member",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Member ID",
+              "fullType": "uuid",
+              "name": "memberId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Pool ID",
+              "fullType": "uuid",
+              "name": "poolId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.pool.Member",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Update a pool member",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.loadbalancing.pool.MemberUpdate",
+              "description": "Request Body",
+              "fullType": "cloud.loadbalancing.pool.MemberUpdate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Member ID",
+              "fullType": "uuid",
+              "name": "memberId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Pool ID",
+              "fullType": "uuid",
+              "name": "poolId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.loadbalancing.pool.Member",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/pool/{poolId}/member/{memberId}"
+    },
+    {
       "description": "Manage your networks",
       "operations": [
         {
@@ -4668,6 +10536,45 @@ export const schema: Schema = {
             "all",
             "product/cloud/all"
           ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a network with a gateway",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.network.CreateNetwork",
+              "description": "Request Body",
+              "fullType": "cloud.network.CreateNetwork",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.Operation",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/network"
@@ -4675,6 +10582,46 @@ export const schema: Schema = {
     {
       "description": "Manage your networks",
       "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete network",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Network ID",
+              "fullType": "string",
+              "name": "networkId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
         {
           "apiStatus": {
             "description": "Beta version",
@@ -4772,6 +10719,54 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete subnet",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Network ID",
+              "fullType": "string",
+              "name": "networkId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Subnet ID",
+              "fullType": "string",
+              "name": "subnetId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
           "description": "Get subnet",
           "httpMethod": "GET",
           "noAuthentication": false,
@@ -4819,14 +10814,14 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/region/{regionName}/network/{networkId}/subnet/{subnetId}"
     },
     {
-      "description": "Create a gateway from subnet",
+      "description": "Create Gateway for existing subnet",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Create a gateway from subnet",
+          "description": "Create Gateway for existing subnet",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -5104,7 +11099,7 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/region/{regionName}/quota/storage"
     },
     {
-      "description": "Manage your S3 storage containers",
+      "description": "Manage S3 storage containers",
       "operations": [
         {
           "apiStatus": {
@@ -5181,7 +11176,7 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/region/{regionName}/storage"
     },
     {
-      "description": "Manage your S3 storage containers",
+      "description": "Manage S3 storage containers",
       "operations": [
         {
           "apiStatus": {
@@ -5258,7 +11253,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Limits the number of objects in the result (1000 maximum, defaults to 1000)",
+              "description": "Limit the number of objects returned (1000 maximum, defaults to 1000)",
               "fullType": "long",
               "name": "limit",
               "paramType": "query",
@@ -5266,7 +11261,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Constrains the list to objects whose names are greater than the marker",
+              "description": "List objects whose names are greater than marker",
               "fullType": "string",
               "name": "marker",
               "paramType": "query",
@@ -6058,14 +12053,14 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/stack/{stackId}"
     },
     {
-      "description": "Missing description",
+      "description": "Manage SWIFT containers",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get storage containers",
+          "description": "Get SWIFT storage containers",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -6089,7 +12084,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Create container",
+          "description": "Create SWIFT container",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6119,14 +12114,14 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/storage"
     },
     {
-      "description": "Missing description",
+      "description": "Manage SWIFT containers",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Delete container",
+          "description": "Delete SWIFT container",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -6166,7 +12161,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get storage container",
+          "description": "Get SWIFT storage container",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -6206,7 +12201,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Update your storage container",
+          "description": "Update SWIFT storage container",
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -6244,14 +12239,14 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/storage/{containerId}"
     },
     {
-      "description": "Missing description",
+      "description": "Manage SWIFT containers CORS settings",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Delete CORS support on your container",
+          "description": "Delete CORS support on SWIFT container",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -6291,7 +12286,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Add CORS support on your container",
+          "description": "Add CORS support on SWIFT container",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6329,14 +12324,14 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/storage/{containerId}/cors"
     },
     {
-      "description": "Missing description",
+      "description": "Manage SWIFT temporary URLs",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get a public temporary URL to access to one of your object",
+          "description": "Get a public temporary URL to access one of your SWIFT object",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6374,14 +12369,14 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/storage/{containerId}/publicUrl"
     },
     {
-      "description": "Missing description",
+      "description": "Manage SWIFT container static files",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Deploy your container files as a static web site",
+          "description": "Deploy your SWIFT container files as a static web site",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6412,14 +12407,14 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/storage/{containerId}/static"
     },
     {
-      "description": "Missing description",
+      "description": "Manage SWIFT containers users",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Create openstack user with only access to this container",
+          "description": "Create openstack user with only access to this SWIFT container",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6457,14 +12452,14 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/storage/{containerId}/user"
     },
     {
-      "description": "Missing description",
+      "description": "Manage SWIFT container access",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Access to storage API",
+          "description": "Access to SWIFT storage API",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -6488,7 +12483,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Access to storage API",
+          "description": "Access to SWIFT storage API",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -7924,6 +13919,86 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.ColdArchiveContainer": {
+      "description": "Container",
+      "id": "ColdArchiveContainer",
+      "namespace": "cloud",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Container name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "objects": {
+          "canBeNull": false,
+          "description": "Container objects",
+          "fullType": "cloud.StorageObject[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.StorageObject[]"
+        },
+        "objectsCount": {
+          "canBeNull": false,
+          "description": "Container total objects count",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "objectsSize": {
+          "canBeNull": false,
+          "description": "Container total objects size (bytes)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "ownerId": {
+          "canBeNull": false,
+          "description": "Container owner user ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "ColdArchive status",
+          "fullType": "cloud.ColdArchiveContainerStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.ColdArchiveContainerStatusEnum"
+        },
+        "virtualHost": {
+          "canBeNull": false,
+          "description": "Container virtual host",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.ColdArchiveContainerStatusEnum": {
+      "description": "Enum values for Status",
+      "enum": [
+        "archived",
+        "archiving",
+        "deleting",
+        "draining",
+        "flushed",
+        "locked",
+        "none",
+        "restored",
+        "restoring"
+      ],
+      "enumType": "string",
+      "id": "ColdArchiveContainerStatusEnum",
+      "namespace": "cloud"
+    },
     "cloud.Component": {
       "description": "Information about the different components available in the region",
       "id": "Component",
@@ -8168,6 +14243,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string[]"
+        },
+        "resourceId": {
+          "canBeNull": true,
+          "description": "Affected resource of the operation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "startedAt": {
           "canBeNull": true,
@@ -8693,6 +14776,14 @@ export const schema: Schema = {
       "id": "ProjectKubeCreation",
       "namespace": "cloud",
       "properties": {
+        "customization": {
+          "canBeNull": true,
+          "description": "Kubernetes cluster customization",
+          "fullType": "cloud.ProjectKubeCustomization",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.ProjectKubeCustomization"
+        },
         "name": {
           "canBeNull": false,
           "description": "Kubernetes cluster name",
@@ -8709,6 +14800,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.ProjectKubeCreationNodePool"
         },
+        "privateNetworkConfiguration": {
+          "canBeNull": false,
+          "description": "The private network configuration.",
+          "fullType": "cloud.kube.PrivateNetworkConfiguration",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.PrivateNetworkConfiguration"
+        },
         "privateNetworkId": {
           "canBeNull": false,
           "description": "OpenStack private network (or vrack) ID to bind to cluster",
@@ -8724,6 +14823,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "string"
+        },
+        "updatePolicy": {
+          "canBeNull": true,
+          "description": "Enum values for UpdatePolicy",
+          "fullType": "cloud.kube.UpdatePolicyEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.UpdatePolicyEnum"
         },
         "version": {
           "canBeNull": false,
@@ -8813,6 +14920,69 @@ export const schema: Schema = {
           "type": "cloud.kube.NodePoolTemplate"
         }
       }
+    },
+    "cloud.ProjectKubeCustomization": {
+      "description": "Cluster customization",
+      "id": "ProjectKubeCustomization",
+      "namespace": "cloud",
+      "properties": {
+        "apiServer": {
+          "canBeNull": true,
+          "description": "Kubernetes cluster api server customization",
+          "fullType": "cloud.ProjectKubeCustomizationAPIServer",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.ProjectKubeCustomizationAPIServer"
+        }
+      }
+    },
+    "cloud.ProjectKubeCustomizationAPIServer": {
+      "description": "Cluster API server customization",
+      "id": "ProjectKubeCustomizationAPIServer",
+      "namespace": "cloud",
+      "properties": {
+        "admissionPlugins": {
+          "canBeNull": true,
+          "description": "Kubernetes cluster api server admission plugins customization",
+          "fullType": "cloud.ProjectKubeCustomizationAPIServerAdmissionPlugins",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.ProjectKubeCustomizationAPIServerAdmissionPlugins"
+        }
+      }
+    },
+    "cloud.ProjectKubeCustomizationAPIServerAdmissionPlugins": {
+      "description": "Cluster API server admission plugins customization",
+      "id": "ProjectKubeCustomizationAPIServerAdmissionPlugins",
+      "namespace": "cloud",
+      "properties": {
+        "disabled": {
+          "canBeNull": true,
+          "description": "Array of disabled admission plugins",
+          "fullType": "cloud.ProjectKubeCustomizationAPIServerAdmissionPluginsEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.ProjectKubeCustomizationAPIServerAdmissionPluginsEnum[]"
+        },
+        "enabled": {
+          "canBeNull": true,
+          "description": "Array of enabled admission plugins",
+          "fullType": "cloud.ProjectKubeCustomizationAPIServerAdmissionPluginsEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.ProjectKubeCustomizationAPIServerAdmissionPluginsEnum[]"
+        }
+      }
+    },
+    "cloud.ProjectKubeCustomizationAPIServerAdmissionPluginsEnum": {
+      "description": "Enum admission plugins",
+      "enum": [
+        "AlwaysPullImages",
+        "NodeRestriction"
+      ],
+      "enumType": "string",
+      "id": "ProjectKubeCustomizationAPIServerAdmissionPluginsEnum",
+      "namespace": "cloud"
     },
     "cloud.ProjectKubeIpRestrictionUpsert": {
       "description": "Missing description",
@@ -9080,10 +15250,34 @@ export const schema: Schema = {
       }
     },
     "cloud.ProjectKubeResetCreation": {
-      "description": "Missing description",
+      "description": "Model object to reset kube cluster",
       "id": "ProjectKubeResetCreation",
       "namespace": "cloud",
       "properties": {
+        "customization": {
+          "canBeNull": false,
+          "description": "Kubernetes cluster customization",
+          "fullType": "cloud.ProjectKubeCustomization",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.ProjectKubeCustomization"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "New cluster name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "privateNetworkConfiguration": {
+          "canBeNull": false,
+          "description": "The private network configuration.",
+          "fullType": "cloud.kube.PrivateNetworkConfiguration",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.PrivateNetworkConfiguration"
+        },
         "privateNetworkId": {
           "canBeNull": false,
           "description": "OpenStack private network (or vrack) ID to bind to cluster",
@@ -9091,6 +15285,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "updatePolicy": {
+          "canBeNull": false,
+          "description": "Enum values for UpdatePolicy",
+          "fullType": "cloud.kube.UpdatePolicyEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.UpdatePolicyEnum"
         },
         "version": {
           "canBeNull": false,
@@ -9135,8 +15337,16 @@ export const schema: Schema = {
           "description": "Cluster new name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
+        },
+        "updatePolicy": {
+          "canBeNull": false,
+          "description": "Enum values for UpdatePolicy",
+          "fullType": "cloud.kube.UpdatePolicyEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.UpdatePolicyEnum"
         }
       }
     },
@@ -9927,6 +16137,30 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "ownerId": {
+          "canBeNull": false,
+          "description": "Container owner user ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Container region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "virtualHost": {
+          "canBeNull": false,
+          "description": "Container virtual host",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -9942,6 +16176,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "string"
+        },
+        "ownerId": {
+          "canBeNull": true,
+          "description": "Container owner user ID",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
@@ -10771,14 +17013,14 @@ export const schema: Schema = {
       "id": "ApplicationAccessStateEnum",
       "namespace": "cloud.instance"
     },
-    "cloud.instance.AssociateFloatingip": {
-      "description": "Parameters to associate an existing floating ip to an instance",
-      "id": "AssociateFloatingip",
+    "cloud.instance.AssociateFloatingIp": {
+      "description": "Parameters to associate an existing floating IP to an instance",
+      "id": "AssociateFloatingIp",
       "namespace": "cloud.instance",
       "properties": {
-        "floatingipId": {
+        "floatingIpId": {
           "canBeNull": false,
-          "description": "Floating ip id",
+          "description": "Floating IP ID",
           "fullType": "uuid",
           "readOnly": false,
           "required": true,
@@ -10794,7 +17036,7 @@ export const schema: Schema = {
         },
         "ip": {
           "canBeNull": false,
-          "description": "Private instance ip to associate the floating ip with",
+          "description": "Private instance IP to associate the floating IP with",
           "fullType": "ip",
           "readOnly": false,
           "required": true,
@@ -10825,9 +17067,9 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.instance.CreateFloatingip": {
-      "description": "Parameters to create a floating ip for an instance",
-      "id": "CreateFloatingip",
+    "cloud.instance.CreateFloatingIp": {
+      "description": "Parameters to create a floating IP for an instance",
+      "id": "CreateFloatingIp",
       "namespace": "cloud.instance",
       "properties": {
         "gateway": {
@@ -10840,7 +17082,7 @@ export const schema: Schema = {
         },
         "ip": {
           "canBeNull": false,
-          "description": "Private instance ip to associate the floating ip with",
+          "description": "Private instance IP to associate the floating IP with",
           "fullType": "ip",
           "readOnly": false,
           "required": true,
@@ -11698,6 +17940,146 @@ export const schema: Schema = {
       "id": "IpSubTypeEnum",
       "namespace": "cloud.ip"
     },
+    "cloud.keymanager.Certificate": {
+      "description": "Key-manager certificate secret container",
+      "id": "Certificate",
+      "namespace": "cloud.keymanager",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the certificate",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the certificate",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Certificate region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "secrets": {
+          "canBeNull": false,
+          "description": "List of secrets in certificate container",
+          "fullType": "cloud.keymanager.SecretRef[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.keymanager.SecretRef[]"
+        }
+      }
+    },
+    "cloud.keymanager.CertificateCreate": {
+      "description": "Input to create a certificate",
+      "id": "CertificateCreate",
+      "namespace": "cloud.keymanager",
+      "properties": {
+        "certificate": {
+          "canBeNull": false,
+          "description": "Content of the certificate",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        },
+        "intermediates": {
+          "canBeNull": false,
+          "description": "Content of the intermediates certificates if any",
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the certificate",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "privateKey": {
+          "canBeNull": false,
+          "description": "Private key",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        },
+        "privateKeyPassphrase": {
+          "canBeNull": false,
+          "description": "Private key passphrase if any",
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
+        }
+      }
+    },
+    "cloud.keymanager.Secret": {
+      "description": "secret",
+      "id": "Secret",
+      "namespace": "cloud.keymanager",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the secret",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the secret",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Secret region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.keymanager.SecretRef": {
+      "description": "Secret reference",
+      "id": "SecretRef",
+      "namespace": "cloud.keymanager",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the secret",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the secret",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "cloud.kube.AuditLogs": {
       "description": "Managed Kubernetes Audit Logs",
       "id": "AuditLogs",
@@ -11742,6 +18124,14 @@ export const schema: Schema = {
           "required": false,
           "type": "datetime"
         },
+        "customization": {
+          "canBeNull": true,
+          "description": "Kubernetes cluster customization",
+          "fullType": "cloud.ProjectKubeCustomization",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.ProjectKubeCustomization"
+        },
         "id": {
           "canBeNull": false,
           "description": "Cluster ID",
@@ -11769,10 +18159,10 @@ export const schema: Schema = {
         "nextUpgradeVersions": {
           "canBeNull": true,
           "description": "Kubernetes versions available for upgrade",
-          "fullType": "cloud.kube.UpgradeVersionEnum[]",
+          "fullType": "cloud.kube.VersionEnum[]",
           "readOnly": true,
           "required": false,
-          "type": "cloud.kube.UpgradeVersionEnum[]"
+          "type": "cloud.kube.VersionEnum[]"
         },
         "nodesUrl": {
           "canBeNull": false,
@@ -11782,9 +18172,17 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "privateNetworkConfiguration": {
+          "canBeNull": true,
+          "description": "The private network configuration. This field is optional.",
+          "fullType": "cloud.kube.PrivateNetworkConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.kube.PrivateNetworkConfiguration"
+        },
         "privateNetworkId": {
           "canBeNull": true,
-          "description": "OpenStack private network (or vrack) ID to bind to cluster",
+          "description": "OpenStack private network (or vrack) ID to bind to the cluster, this property is optional. This property cannot be updated afterwards, except through a cluster reset.",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -12414,6 +18812,29 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.kube.PrivateNetworkConfiguration": {
+      "description": "Managed Kubernetes cluster private networking configuration",
+      "id": "PrivateNetworkConfiguration",
+      "namespace": "cloud.kube",
+      "properties": {
+        "defaultVrackGateway": {
+          "canBeNull": false,
+          "description": "If defined, all egress traffic will be routed towards this IP address, which should belong to the private network. Empty string means disabled.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "privateNetworkRoutingAsDefault": {
+          "canBeNull": true,
+          "description": "Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
     "cloud.kube.RegionEnum": {
       "description": "Enum values for available regions",
       "enum": [
@@ -12443,6 +18864,21 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ResetWorkerNodesPolicyEnum",
       "namespace": "cloud.kube"
+    },
+    "cloud.kube.ResponseMessage": {
+      "description": "A generic object for response message",
+      "id": "ResponseMessage",
+      "namespace": "cloud.kube",
+      "properties": {
+        "message": {
+          "canBeNull": false,
+          "description": "The response message.",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "cloud.kube.Taint": {
       "description": "Kubernetes taint object",
@@ -12507,29 +18943,127 @@ export const schema: Schema = {
       "id": "UpdateStrategyEnum",
       "namespace": "cloud.kube"
     },
-    "cloud.kube.UpgradeVersionEnum": {
-      "description": "List of available versions for upgrade",
-      "enum": [
-        "1.19",
-        "1.20",
-        "1.21",
-        "1.22"
-      ],
-      "enumType": "string",
-      "id": "UpgradeVersionEnum",
-      "namespace": "cloud.kube"
-    },
     "cloud.kube.VersionEnum": {
       "description": "List of available versions for installation",
       "enum": [
-        "1.19",
         "1.20",
         "1.21",
-        "1.22"
+        "1.22",
+        "1.23",
+        "1.24"
       ],
       "enumType": "string",
       "id": "VersionEnum",
       "namespace": "cloud.kube"
+    },
+    "cloud.loadbalancing.AssociateFloatingIp": {
+      "description": "Parameters to associate an existing floating IP to a loadbalancer",
+      "id": "AssociateFloatingIp",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "floatingIpId": {
+          "canBeNull": false,
+          "description": "Floating IP ID",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "gateway": {
+          "canBeNull": true,
+          "description": "Parameters to create a gateway if required",
+          "fullType": "cloud.network.CreateGatewaySummary",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.network.CreateGatewaySummary"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "Private loadbalancer IP to associate the floating IP with",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
+        }
+      }
+    },
+    "cloud.loadbalancing.CreateFloatingIp": {
+      "description": "Parameters to create a floating IP for a loadbalancer",
+      "id": "CreateFloatingIp",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "gateway": {
+          "canBeNull": true,
+          "description": "Parameters to create a gateway if required",
+          "fullType": "cloud.network.CreateGatewaySummary",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.network.CreateGatewaySummary"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "Private loadbalancer IP to associate the floating IP with",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
+        }
+      }
+    },
+    "cloud.loadbalancing.CreateListener": {
+      "description": "Input to create a loadbalancer listener",
+      "id": "CreateListener",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "certificateId": {
+          "canBeNull": false,
+          "description": "The ID of the secret containing the certificate",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "defaultPoolId": {
+          "canBeNull": false,
+          "description": "The ID of the default pool",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "loadbalancerId": {
+          "canBeNull": false,
+          "description": "The ID of the loadbalancer",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The name of the listener",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "port": {
+          "canBeNull": false,
+          "description": "Port to listen on",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "protocol": {
+          "canBeNull": false,
+          "description": "Protocol of the listener",
+          "fullType": "cloud.loadbalancing.ListenerProtocolEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.loadbalancing.ListenerProtocolEnum"
+        }
+      }
     },
     "cloud.loadbalancing.Flavor": {
       "description": "Flavor",
@@ -12554,6 +19088,534 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.loadbalancing.HealthMonitor": {
+      "description": "HealthMonitor",
+      "id": "HealthMonitor",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "httpConfiguration": {
+          "canBeNull": true,
+          "description": "Monitor HTTP configuration",
+          "fullType": "cloud.loadbalancing.HealthMonitorHTTPConfiguration",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.loadbalancing.HealthMonitorHTTPConfiguration"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "The ID of the pool",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "maxRetries": {
+          "canBeNull": false,
+          "description": "Number of successful checks before changing the operating status of the member to ONLINE",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "maxRetriesDown": {
+          "canBeNull": false,
+          "description": "Number of allowed check failures before changing the operating status of the member to ERROR",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "monitorType": {
+          "canBeNull": false,
+          "description": "Type of the monitor",
+          "fullType": "cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The name of the resource",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "operatingStatus": {
+          "canBeNull": false,
+          "description": "The operating status of the resource",
+          "fullType": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum"
+        },
+        "periodicity": {
+          "canBeNull": false,
+          "description": "Time between sending probes to members, in seconds",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "poolId": {
+          "canBeNull": false,
+          "description": "The ID of the pool",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "provisioningStatus": {
+          "canBeNull": false,
+          "description": "The provisioning status of the resource",
+          "fullType": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum"
+        },
+        "timeout": {
+          "canBeNull": false,
+          "description": "Maximum time, in seconds, that a monitor waits to connect before it times out. This value must be less than the periodicity value",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.loadbalancing.HealthMonitorHTTPConfiguration": {
+      "description": "HTTP configuration for loadbalancer health monitor",
+      "id": "HealthMonitorHTTPConfiguration",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "domainName": {
+          "canBeNull": false,
+          "description": "Domain name, which be injected into the HTTP Host Header to the backend server for HTTP health check",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "expectedCodes": {
+          "canBeNull": false,
+          "description": "List of HTTP status codes expected in response from the member to declare it healthy",
+          "fullType": "long[]",
+          "readOnly": false,
+          "required": false,
+          "type": "long[]"
+        },
+        "httpMethod": {
+          "canBeNull": false,
+          "description": "HTTP method that the health monitor uses for requests",
+          "fullType": "cloud.loadbalancing.LoadBalancerHealthMonitorHTTPMethodEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerHealthMonitorHTTPMethodEnum"
+        },
+        "httpVersion": {
+          "canBeNull": false,
+          "description": "HTTP version that the health monitor uses for requests",
+          "fullType": "cloud.loadbalancing.LoadBalancerHealthMonitorHTTPVersionEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerHealthMonitorHTTPVersionEnum"
+        },
+        "urlPath": {
+          "canBeNull": false,
+          "description": "HTTP URL path of the request sent by the monitor to test the health of a backend member",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.loadbalancing.L7Policy": {
+      "description": "L7 policy",
+      "id": "L7Policy",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "action": {
+          "canBeNull": false,
+          "description": "The L7 policy action",
+          "fullType": "cloud.loadbalancing.L7PolicyActionEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.loadbalancing.L7PolicyActionEnum"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "A human-readable description for the resource",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "listenerId": {
+          "canBeNull": false,
+          "description": "The ID of the listener.",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Human-readable name of the resource",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "operatingStatus": {
+          "canBeNull": false,
+          "description": "Operating status of the resource",
+          "fullType": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum"
+        },
+        "position": {
+          "canBeNull": false,
+          "description": "The position of this policy on the listener. Positions start at 1",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "provisioningStatus": {
+          "canBeNull": false,
+          "description": "provisioning status of the resource",
+          "fullType": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum"
+        },
+        "redirectHttpCode": {
+          "canBeNull": true,
+          "description": "Requests matching this policy will be redirected to the specified URL or Prefix URL with the HTTP response code. Valid if action is \"redirect_to\" or \"redirect_prefix\"",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "redirectPoolId": {
+          "canBeNull": true,
+          "description": "Requests matching this policy will be redirected to the pool with this ID. Only valid if action is \"redirect_to_pool\"",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "redirectPrefix": {
+          "canBeNull": true,
+          "description": "Requests matching this policy will be redirected to this Prefix URL. Only valid if action is \"redirect_prefix\"",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "redirectUrl": {
+          "canBeNull": true,
+          "description": "Requests matching this policy will be redirected to this URL. Only valid if action is \"redirect_to_url\"",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.loadbalancing.L7PolicyActionEnum": {
+      "description": "Loadbalancer L7 policy",
+      "enum": [
+        "redirectPrefix",
+        "redirectToPool",
+        "redirectToURL",
+        "reject"
+      ],
+      "enumType": "string",
+      "id": "L7PolicyActionEnum",
+      "namespace": "cloud.loadbalancing"
+    },
+    "cloud.loadbalancing.L7PolicyUpdate": {
+      "description": "L7 policy",
+      "id": "L7PolicyUpdate",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "action": {
+          "canBeNull": false,
+          "description": "The L7 policy action",
+          "fullType": "cloud.loadbalancing.L7PolicyActionEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.loadbalancing.L7PolicyActionEnum"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "A human-readable description for the resource",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "listenerId": {
+          "canBeNull": false,
+          "description": "The ID of the listener.",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Human-readable name of the resource",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "position": {
+          "canBeNull": false,
+          "description": "The position of this policy on the listener. Positions start at 1",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "redirectHttpCode": {
+          "canBeNull": true,
+          "description": "Requests matching this policy will be redirected to the specified URL or Prefix URL with the HTTP response code. Valid if action is \"redirect_to\" or \"redirect_prefix\"",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "redirectPoolId": {
+          "canBeNull": true,
+          "description": "Requests matching this policy will be redirected to the pool with this ID. Only valid if action is \"redirect_to_pool\"",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "redirectPrefix": {
+          "canBeNull": true,
+          "description": "Requests matching this policy will be redirected to this Prefix URL. Only valid if action is \"redirect_prefix\"",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "redirectUrl": {
+          "canBeNull": true,
+          "description": "Requests matching this policy will be redirected to this URL. Only valid if action is \"redirect_to_url\"",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.loadbalancing.L7Rule": {
+      "description": "L7 rule",
+      "id": "L7Rule",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "compareType": {
+          "canBeNull": false,
+          "description": "The comparison type for the L7 rule",
+          "fullType": "cloud.loadbalancing.L7RuleCompareTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.loadbalancing.L7RuleCompareTypeEnum"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "The ID of the L7 rule",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "invert": {
+          "canBeNull": false,
+          "description": "When true the logic of the rule is inverted. For example, with invert set to true, equal to would become not equal to",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "key": {
+          "canBeNull": false,
+          "description": "The key to use for the comparison. For example, the name of the cookie to evaluate",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "operatingStatus": {
+          "canBeNull": false,
+          "description": "Operating status of the resource",
+          "fullType": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum"
+        },
+        "provisioningStatus": {
+          "canBeNull": false,
+          "description": "provisioning status of the resource",
+          "fullType": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum"
+        },
+        "ruleType": {
+          "canBeNull": false,
+          "description": "The L7 rule type",
+          "fullType": "cloud.loadbalancing.L7RuleTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.loadbalancing.L7RuleTypeEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "The value to use for the comparison. For example, the file type to compare",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.loadbalancing.L7RuleCompareTypeEnum": {
+      "description": "Loadbalancer L7 rule compare type",
+      "enum": [
+        "contains",
+        "endsWith",
+        "equalTo",
+        "regex",
+        "startsWith"
+      ],
+      "enumType": "string",
+      "id": "L7RuleCompareTypeEnum",
+      "namespace": "cloud.loadbalancing"
+    },
+    "cloud.loadbalancing.L7RuleTypeEnum": {
+      "description": "Loadbalancer L7 rule type",
+      "enum": [
+        "cookie",
+        "fileType",
+        "header",
+        "hostName",
+        "path",
+        "sslConnHasCert",
+        "sslDNField",
+        "sslVerifyResult"
+      ],
+      "enumType": "string",
+      "id": "L7RuleTypeEnum",
+      "namespace": "cloud.loadbalancing"
+    },
+    "cloud.loadbalancing.Listener": {
+      "description": "Listener",
+      "id": "Listener",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "certificateId": {
+          "canBeNull": true,
+          "description": "The ID of the secret containing the certificate",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "defaultPoolId": {
+          "canBeNull": true,
+          "description": "The ID of the default pool",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "loadBalancerIds": {
+          "canBeNull": false,
+          "description": "A list of load balancer IDs",
+          "fullType": "uuid[]",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the resource",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "operatingStatus": {
+          "canBeNull": false,
+          "description": "Operating status of the listener",
+          "fullType": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum"
+        },
+        "port": {
+          "canBeNull": false,
+          "description": "Port to listen on",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "protocol": {
+          "canBeNull": false,
+          "description": "Protocol of the listener",
+          "fullType": "cloud.loadbalancing.ListenerProtocolEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.ListenerProtocolEnum"
+        },
+        "provisioningStatus": {
+          "canBeNull": false,
+          "description": "Provisioning status of the listener",
+          "fullType": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum"
+        }
+      }
+    },
+    "cloud.loadbalancing.ListenerProtocolEnum": {
+      "description": "Loadbalancer listener protocol",
+      "enum": [
+        "http",
+        "https",
+        "sctp",
+        "tcp",
+        "terminatedHTTPS",
+        "udp"
+      ],
+      "enumType": "string",
+      "id": "ListenerProtocolEnum",
+      "namespace": "cloud.loadbalancing"
+    },
     "cloud.loadbalancing.LoadBalancer": {
       "description": "LoadBalancer",
       "id": "LoadBalancer",
@@ -12567,7 +19629,7 @@ export const schema: Schema = {
           "required": false,
           "type": "datetime"
         },
-        "flavorID": {
+        "flavorId": {
           "canBeNull": false,
           "description": "ID of the flavor",
           "fullType": "uuid",
@@ -12623,7 +19685,7 @@ export const schema: Schema = {
           "required": false,
           "type": "ip"
         },
-        "vipNetworkID": {
+        "vipNetworkId": {
           "canBeNull": false,
           "description": "Openstack ID of the network for the Virtual IP",
           "fullType": "uuid",
@@ -12631,7 +19693,7 @@ export const schema: Schema = {
           "required": false,
           "type": "uuid"
         },
-        "vipSubnetID": {
+        "vipSubnetId": {
           "canBeNull": false,
           "description": "ID of the subnet for the Virtual IP",
           "fullType": "uuid",
@@ -12640,6 +19702,48 @@ export const schema: Schema = {
           "type": "uuid"
         }
       }
+    },
+    "cloud.loadbalancing.LoadBalancerHealthMonitorHTTPMethodEnum": {
+      "description": "Load balancer Healthmonitor HTTP Method",
+      "enum": [
+        "CONNECT",
+        "DELETE",
+        "GET",
+        "HEAD",
+        "OPTIONS",
+        "PATCH",
+        "POST",
+        "PUT",
+        "TRACE"
+      ],
+      "enumType": "string",
+      "id": "LoadBalancerHealthMonitorHTTPMethodEnum",
+      "namespace": "cloud.loadbalancing"
+    },
+    "cloud.loadbalancing.LoadBalancerHealthMonitorHTTPVersionEnum": {
+      "description": "Load balancer Healthmonitor HTTP Version",
+      "enum": [
+        "1.0",
+        "1.1"
+      ],
+      "enumType": "double",
+      "id": "LoadBalancerHealthMonitorHTTPVersionEnum",
+      "namespace": "cloud.loadbalancing"
+    },
+    "cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum": {
+      "description": "Load balancer Healthmonitor type",
+      "enum": [
+        "http",
+        "https",
+        "ping",
+        "sctp",
+        "tcp",
+        "tls-hello",
+        "udp-connect"
+      ],
+      "enumType": "string",
+      "id": "LoadBalancerHealthMonitorTypeEnum",
+      "namespace": "cloud.loadbalancing"
     },
     "cloud.loadbalancing.LoadBalancerOperatingStatusEnum": {
       "description": "Load balancer operating status",
@@ -12668,6 +19772,582 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "LoadBalancerProvisioningStatusEnum",
       "namespace": "cloud.loadbalancing"
+    },
+    "cloud.loadbalancing.LoadbalancerCreate": {
+      "description": "Create a loadbalancer",
+      "id": "LoadbalancerCreate",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "flavorId": {
+          "canBeNull": false,
+          "description": "Loadbalancer flavor id",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "listeners": {
+          "canBeNull": false,
+          "description": "Listeners to create with the loadbalancer",
+          "fullType": "cloud.loadbalancing.loadbalancer.ListenerCreate[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.loadbalancing.loadbalancer.ListenerCreate[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the member",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "networkInformation": {
+          "canBeNull": false,
+          "description": "Network information to create the loadbalancer",
+          "fullType": "cloud.loadbalancing.loadbalancer.NetworkInformationCreate",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.loadbalancing.loadbalancer.NetworkInformationCreate"
+        }
+      }
+    },
+    "cloud.loadbalancing.Pool": {
+      "description": "Pool",
+      "id": "Pool",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "algorithm": {
+          "canBeNull": false,
+          "description": "Algorithm of the pool",
+          "fullType": "cloud.loadbalancing.PoolAlgorithmEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.PoolAlgorithmEnum"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "listenerId": {
+          "canBeNull": true,
+          "description": "ID of the listener",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "loadbalancerId": {
+          "canBeNull": false,
+          "description": "ID of the loadbalancer",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the resource",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "operatingStatus": {
+          "canBeNull": false,
+          "description": "Operating status of the resource",
+          "fullType": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum"
+        },
+        "protocol": {
+          "canBeNull": false,
+          "description": "Protocol of the pool",
+          "fullType": "cloud.loadbalancing.PoolProtocolEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.PoolProtocolEnum"
+        },
+        "provisioningStatus": {
+          "canBeNull": false,
+          "description": "Provisioning status of the resource",
+          "fullType": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum"
+        },
+        "sessionPersistence": {
+          "canBeNull": true,
+          "description": "Information about session persistence",
+          "fullType": "cloud.loadbalancing.PoolSessionPersistence",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.PoolSessionPersistence"
+        }
+      }
+    },
+    "cloud.loadbalancing.PoolAlgorithmEnum": {
+      "description": "Pool algorithm",
+      "enum": [
+        "leastConnections",
+        "roundRobin",
+        "sourceIP"
+      ],
+      "enumType": "string",
+      "id": "PoolAlgorithmEnum",
+      "namespace": "cloud.loadbalancing"
+    },
+    "cloud.loadbalancing.PoolCreate": {
+      "description": "Pool",
+      "id": "PoolCreate",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "algorithm": {
+          "canBeNull": false,
+          "description": "Algorithm of the pool",
+          "fullType": "cloud.loadbalancing.PoolAlgorithmEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.loadbalancing.PoolAlgorithmEnum"
+        },
+        "listenerId": {
+          "canBeNull": false,
+          "description": "ID of the listener",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "loadbalancerId": {
+          "canBeNull": false,
+          "description": "ID of the loadbalancer",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the resource",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "protocol": {
+          "canBeNull": false,
+          "description": "Protocol of the pool",
+          "fullType": "cloud.loadbalancing.PoolProtocolEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.loadbalancing.PoolProtocolEnum"
+        },
+        "sessionPersistence": {
+          "canBeNull": true,
+          "description": "Information about session persistence",
+          "fullType": "cloud.loadbalancing.PoolSessionPersistence",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.loadbalancing.PoolSessionPersistence"
+        }
+      }
+    },
+    "cloud.loadbalancing.PoolProtocolEnum": {
+      "description": "Pool protocol",
+      "enum": [
+        "http",
+        "https",
+        "proxy",
+        "sctp",
+        "tcp",
+        "udp"
+      ],
+      "enumType": "string",
+      "id": "PoolProtocolEnum",
+      "namespace": "cloud.loadbalancing"
+    },
+    "cloud.loadbalancing.PoolSessionPersistence": {
+      "description": "PoolSessionPersistence",
+      "id": "PoolSessionPersistence",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "cookieName": {
+          "canBeNull": false,
+          "description": "Cookie name, only applicable to session persistence through cookie",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of session persistence",
+          "fullType": "cloud.loadbalancing.PoolSessionPersistenceTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.loadbalancing.PoolSessionPersistenceTypeEnum"
+        }
+      }
+    },
+    "cloud.loadbalancing.PoolSessionPersistenceTypeEnum": {
+      "description": "Pool session persistence type",
+      "enum": [
+        "appCookie",
+        "disabled",
+        "httpCookie",
+        "sourceIP"
+      ],
+      "enumType": "string",
+      "id": "PoolSessionPersistenceTypeEnum",
+      "namespace": "cloud.loadbalancing"
+    },
+    "cloud.loadbalancing.PoolUpdate": {
+      "description": "Parameters to update a load balancer pool",
+      "id": "PoolUpdate",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "algorithm": {
+          "canBeNull": true,
+          "description": "Algorithm of the pool",
+          "fullType": "cloud.loadbalancing.PoolAlgorithmEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.loadbalancing.PoolAlgorithmEnum"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the resource",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "sessionPersistence": {
+          "canBeNull": true,
+          "fullType": "cloud.loadbalancing.PoolSessionPersistence",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.loadbalancing.PoolSessionPersistence"
+        }
+      }
+    },
+    "cloud.loadbalancing.UpdateHealthMonitor": {
+      "description": "Health monitor for LoadBalancer",
+      "id": "UpdateHealthMonitor",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "httpConfiguration": {
+          "canBeNull": false,
+          "description": "Monitor HTTP configuration",
+          "fullType": "cloud.loadbalancing.HealthMonitorHTTPConfiguration",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.loadbalancing.HealthMonitorHTTPConfiguration"
+        },
+        "maxRetries": {
+          "canBeNull": false,
+          "description": "Number of successful checks before changing the operating status of the member to ONLINE",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "maxRetriesDown": {
+          "canBeNull": false,
+          "description": "Number of allowed check failures before changing the operating status of the member to ERROR",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The name of the resource",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "periodicity": {
+          "canBeNull": false,
+          "description": "Time between sending probes to members, in seconds",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "timeout": {
+          "canBeNull": false,
+          "description": "Maximum time, in seconds, that a monitor waits to connect before it times out. This value must be less than the periodicity value",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.loadbalancing.loadbalancer.ListenerCreate": {
+      "description": "Create a listener on loadbalancer creation",
+      "id": "ListenerCreate",
+      "namespace": "cloud.loadbalancing.loadbalancer",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the listener",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "pools": {
+          "canBeNull": false,
+          "description": "Listener pools",
+          "fullType": "cloud.loadbalancing.loadbalancer.PoolCreate[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.loadbalancing.loadbalancer.PoolCreate[]"
+        },
+        "port": {
+          "canBeNull": false,
+          "description": "Listener port",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "protocol": {
+          "canBeNull": false,
+          "description": "Protocol for the listener",
+          "fullType": "cloud.loadbalancing.ListenerProtocolEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.loadbalancing.ListenerProtocolEnum"
+        },
+        "secretId": {
+          "canBeNull": false,
+          "description": "Secret ID to get certificate for SSL listener creation",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.loadbalancing.loadbalancer.MemberCreate": {
+      "description": "Create a member on loadbalancer creation",
+      "id": "MemberCreate",
+      "namespace": "cloud.loadbalancing.loadbalancer",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": "IP address of the resource",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the member",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "protocolPort": {
+          "canBeNull": false,
+          "description": "Protocol port number for the resource",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "weight": {
+          "canBeNull": false,
+          "description": "Weight of a member determines the portion of requests or connections it services compared to the other members of the pool. Between 1 and 256.",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.loadbalancing.loadbalancer.NetworkInformationCreate": {
+      "description": "Network information to create a loadbalancer",
+      "id": "NetworkInformationCreate",
+      "namespace": "cloud.loadbalancing.loadbalancer",
+      "properties": {
+        "gateway": {
+          "canBeNull": false,
+          "description": "Create a new gateway for the given network",
+          "fullType": "cloud.network.CreateGatewaySummary",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.network.CreateGatewaySummary"
+        },
+        "networkId": {
+          "canBeNull": false,
+          "description": "Private network ID to create the loadbalancer",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "subnetId": {
+          "canBeNull": false,
+          "description": "Private subnet ID to create the loadbalancer",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.loadbalancing.loadbalancer.PoolCreate": {
+      "description": "Create a pool on loadbalancer creation",
+      "id": "PoolCreate",
+      "namespace": "cloud.loadbalancing.loadbalancer",
+      "properties": {
+        "algorithm": {
+          "canBeNull": false,
+          "description": "Pool algorithm to split traffic between members",
+          "fullType": "cloud.loadbalancing.PoolAlgorithmEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.loadbalancing.PoolAlgorithmEnum"
+        },
+        "default": {
+          "canBeNull": false,
+          "description": "Is pool default pool for the listener",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "members": {
+          "canBeNull": false,
+          "description": "Pool members",
+          "fullType": "cloud.loadbalancing.loadbalancer.MemberCreate[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.loadbalancing.loadbalancer.MemberCreate[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the pool",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "protocol": {
+          "canBeNull": false,
+          "description": "Protocol for the pool",
+          "fullType": "cloud.loadbalancing.PoolProtocolEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.loadbalancing.PoolProtocolEnum"
+        },
+        "sessionPersistence": {
+          "canBeNull": false,
+          "description": "Pool session persistence",
+          "fullType": "cloud.loadbalancing.PoolSessionPersistence",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.loadbalancing.PoolSessionPersistence"
+        }
+      }
+    },
+    "cloud.loadbalancing.pool.Member": {
+      "description": "Member",
+      "id": "Member",
+      "namespace": "cloud.loadbalancing.pool",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": "IP address of the resource",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the resource",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "operatingStatus": {
+          "canBeNull": false,
+          "description": "Operating status of the resource",
+          "fullType": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum"
+        },
+        "protocolPort": {
+          "canBeNull": false,
+          "description": "Protocol port number for the resource",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "provisioningStatus": {
+          "canBeNull": false,
+          "description": "Provisioning status of the resource",
+          "fullType": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum"
+        },
+        "weight": {
+          "canBeNull": false,
+          "description": "Weight of a member determines the portion of requests or connections it services compared to the other members of the pool",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.loadbalancing.pool.MemberUpdate": {
+      "description": "Parameters to update a pool member",
+      "id": "MemberUpdate",
+      "namespace": "cloud.loadbalancing.pool",
+      "properties": {
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the resource",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "weight": {
+          "canBeNull": true,
+          "description": "Weight of a member determines the portion of requests or connections it services compared to the other members of the pool",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
     },
     "cloud.migration.Migration": {
       "description": "Migration",
@@ -12722,6 +20402,14 @@ export const schema: Schema = {
       "id": "CreateGateway",
       "namespace": "cloud.network",
       "properties": {
+        "model": {
+          "canBeNull": false,
+          "description": "Model of the gateway",
+          "fullType": "cloud.network.GatewayModelEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.network.GatewayModelEnum"
+        },
         "name": {
           "canBeNull": false,
           "description": "Name of the gateway",
@@ -12733,10 +20421,10 @@ export const schema: Schema = {
         "network": {
           "canBeNull": false,
           "description": "Information to create the network for the gateway",
-          "fullType": "cloud.network.CreateNetworkSummary",
+          "fullType": "cloud.network.CreateNetworkForGatewaySummary",
           "readOnly": false,
           "required": true,
-          "type": "cloud.network.CreateNetworkSummary"
+          "type": "cloud.network.CreateNetworkForGatewaySummary"
         }
       }
     },
@@ -12745,6 +20433,14 @@ export const schema: Schema = {
       "id": "CreateGatewaySummary",
       "namespace": "cloud.network",
       "properties": {
+        "model": {
+          "canBeNull": false,
+          "description": "Model of the gateway",
+          "fullType": "cloud.network.GatewayModelEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.network.GatewayModelEnum"
+        },
         "name": {
           "canBeNull": false,
           "description": "Gateway name",
@@ -12784,17 +20480,17 @@ export const schema: Schema = {
         },
         "vlanId": {
           "canBeNull": false,
-          "description": "Network vlan ID",
+          "description": "VLAN id, between 1 and 4000",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
     },
-    "cloud.network.CreateNetworkSummary": {
+    "cloud.network.CreateNetworkForGatewaySummary": {
       "description": "Parameters to create a network from another resource creation",
-      "id": "CreateNetworkSummary",
+      "id": "CreateNetworkForGatewaySummary",
       "namespace": "cloud.network",
       "properties": {
         "name": {
@@ -12808,17 +20504,48 @@ export const schema: Schema = {
         "subnet": {
           "canBeNull": false,
           "description": "Subnet of the network",
-          "fullType": "cloud.network.CreateSubnetSummary",
+          "fullType": "cloud.network.CreateSubnetForGatewaySummary",
           "readOnly": false,
           "required": true,
-          "type": "cloud.network.CreateSubnetSummary"
+          "type": "cloud.network.CreateSubnetForGatewaySummary"
         },
         "vlanId": {
           "canBeNull": false,
-          "description": "Vland id, between 1 and 4000.",
+          "description": "VLAN id, between 1 and 4000",
           "fullType": "long",
           "readOnly": false,
           "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.network.CreateSubnetForGatewaySummary": {
+      "description": "Parameters to create a subnet from another resource creation",
+      "id": "CreateSubnetForGatewaySummary",
+      "namespace": "cloud.network",
+      "properties": {
+        "cidr": {
+          "canBeNull": false,
+          "description": "Subnet range in CIDR notation",
+          "fullType": "ipBlock",
+          "readOnly": false,
+          "required": true,
+          "type": "ipBlock"
+        },
+        "enableDhcp": {
+          "canBeNull": false,
+          "description": "Enable DHCP for the subnet",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "ipVersion": {
+          "canBeNull": false,
+          "description": "IP version",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
           "type": "long"
         }
       }
@@ -12835,6 +20562,22 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "ipBlock"
+        },
+        "enableDhcp": {
+          "canBeNull": false,
+          "description": "Enable DHCP for the subnet",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "enableGatewayIp": {
+          "canBeNull": false,
+          "description": "Set a gateway ip for the subnet",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "ipVersion": {
           "canBeNull": false,
@@ -12875,9 +20618,25 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.network.gateway.Interface[]"
         },
+        "model": {
+          "canBeNull": false,
+          "description": "Model of the gateway",
+          "fullType": "cloud.network.GatewayModelEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.network.GatewayModelEnum"
+        },
         "name": {
           "canBeNull": false,
           "description": "Name of the gateway",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Gateway region",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -12892,6 +20651,17 @@ export const schema: Schema = {
           "type": "cloud.network.GatewayStatusEnum"
         }
       }
+    },
+    "cloud.network.GatewayModelEnum": {
+      "description": "GatewayModelEnum",
+      "enum": [
+        "l",
+        "m",
+        "s"
+      ],
+      "enumType": "string",
+      "id": "GatewayModelEnum",
+      "namespace": "cloud.network"
     },
     "cloud.network.GatewayStatusEnum": {
       "description": "GatewayStatusEnum",
@@ -13092,6 +20862,14 @@ export const schema: Schema = {
           "required": false,
           "type": "ipBlock"
         },
+        "dhcpEnabled": {
+          "canBeNull": false,
+          "description": "Is DHCP enabled for the subnet",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "gatewayIp": {
           "canBeNull": true,
           "description": "Gateway IP in the subnet",
@@ -13123,6 +20901,14 @@ export const schema: Schema = {
       "id": "UpdateGateway",
       "namespace": "cloud.network",
       "properties": {
+        "model": {
+          "canBeNull": false,
+          "description": "Model of the gateway",
+          "fullType": "cloud.network.GatewayModelEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.network.GatewayModelEnum"
+        },
         "name": {
           "canBeNull": false,
           "description": "Name of the gateway",
@@ -13130,6 +20916,21 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "string"
+        }
+      }
+    },
+    "cloud.network.gateway.CreateInterface": {
+      "description": "Input to create a new interface for a gateway",
+      "id": "CreateInterface",
+      "namespace": "cloud.network.gateway",
+      "properties": {
+        "subnetId": {
+          "canBeNull": false,
+          "description": "Subnet id to add",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
         }
       }
     },
@@ -13161,6 +20962,14 @@ export const schema: Schema = {
       "id": "Interface",
       "namespace": "cloud.network.gateway",
       "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the interface",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
         "ip": {
           "canBeNull": false,
           "description": "IP of the interface",
@@ -13702,6 +21511,14 @@ export const schema: Schema = {
           "required": false,
           "type": "uuid"
         },
+        "region": {
+          "canBeNull": true,
+          "description": "Floating ip region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "status": {
           "canBeNull": false,
           "description": "Status of the floating ip",
@@ -13894,6 +21711,14 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "Network name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": true,
+          "description": "Network region",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -14122,6 +21947,22 @@ export const schema: Schema = {
           "required": false,
           "type": "ipBlock"
         },
+        "dhcpEnabled": {
+          "canBeNull": false,
+          "description": "If DHCP is enabled on subnet",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "gatewayIp": {
+          "canBeNull": true,
+          "description": "Gateway IP",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
         "id": {
           "canBeNull": false,
           "description": "Subnet id",
@@ -14214,6 +22055,4633 @@ export const schema: Schema = {
       "id": "ServerAlternativeNameKindEnum",
       "namespace": "cloud.project.certificate"
     },
+    "cloud.project.database.Availability": {
+      "description": "Availability of databases engines on cloud projects",
+      "id": "Availability",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "backup": {
+          "canBeNull": false,
+          "description": "Defines the type of backup",
+          "fullType": "cloud.project.database.BackupTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.BackupTypeEnum"
+        },
+        "default": {
+          "canBeNull": false,
+          "description": "Whether this availability can be used by default",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "endOfLife": {
+          "canBeNull": true,
+          "description": "End of life of the product",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "engine": {
+          "canBeNull": false,
+          "description": "Database engine name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "flavor": {
+          "canBeNull": false,
+          "description": "Flavor name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "maxDiskSize": {
+          "canBeNull": false,
+          "description": "Maximum possible disk size in GB",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxNodeNumber": {
+          "canBeNull": false,
+          "description": "Maximum nodes of the cluster",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minDiskSize": {
+          "canBeNull": false,
+          "description": "Minimum possible disk size in GB",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minNodeNumber": {
+          "canBeNull": false,
+          "description": "Minimum nodes of the cluster",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "network": {
+          "canBeNull": false,
+          "description": "Type of network",
+          "fullType": "cloud.project.database.NetworkTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.NetworkTypeEnum"
+        },
+        "plan": {
+          "canBeNull": false,
+          "description": "Plan name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Date of the release of the product",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the availability",
+          "fullType": "cloud.project.database.availability.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.availability.StatusEnum"
+        },
+        "stepDiskSize": {
+          "canBeNull": false,
+          "description": "Flex disk size step in GB",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "upstreamEndOfLife": {
+          "canBeNull": true,
+          "description": "End of life of the upstream product",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.BackupTypeEnum": {
+      "description": "Type of backup for the cluster",
+      "enum": [
+        "automatic",
+        "manual"
+      ],
+      "enumType": "string",
+      "id": "BackupTypeEnum",
+      "namespace": "cloud.project.database"
+    },
+    "cloud.project.database.Capabilities": {
+      "description": "Capabilities available for the databases engines on cloud projects",
+      "id": "Capabilities",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "engines": {
+          "canBeNull": false,
+          "description": "Database engines available",
+          "fullType": "cloud.project.database.capabilities.Engine[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.capabilities.Engine[]"
+        },
+        "flavors": {
+          "canBeNull": false,
+          "description": "Flavors available",
+          "fullType": "cloud.project.database.capabilities.Flavor[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.capabilities.Flavor[]"
+        },
+        "options": {
+          "canBeNull": false,
+          "description": "Options available",
+          "fullType": "cloud.project.database.capabilities.Option[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.capabilities.Option[]"
+        },
+        "plans": {
+          "canBeNull": false,
+          "description": "Plans available",
+          "fullType": "cloud.project.database.capabilities.Plan[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.capabilities.Plan[]"
+        }
+      }
+    },
+    "cloud.project.database.EngineEnum": {
+      "description": "Possible names of the engines",
+      "enum": [
+        "cassandra",
+        "grafana",
+        "kafka",
+        "kafkaConnect",
+        "kafkaMirrorMaker",
+        "m3aggregator",
+        "m3db",
+        "mongodb",
+        "mysql",
+        "opensearch",
+        "postgresql",
+        "redis"
+      ],
+      "enumType": "string",
+      "id": "EngineEnum",
+      "namespace": "cloud.project.database"
+    },
+    "cloud.project.database.IpRestriction": {
+      "description": "Ip Restriction definition for cloud project databases",
+      "id": "IpRestriction",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the ip restriction",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "Whitelisted IP",
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the ip restriction",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        }
+      }
+    },
+    "cloud.project.database.IpRestrictionCreation": {
+      "description": "Ip Restriction creation definition for cloud project databases",
+      "id": "IpRestrictionCreation",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the ip restriction",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "Whitelisted IP",
+          "fullType": "ipBlock",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock"
+        }
+      }
+    },
+    "cloud.project.database.NetworkTypeEnum": {
+      "description": "Type of network in which the databases cluster are",
+      "enum": [
+        "private",
+        "public"
+      ],
+      "enumType": "string",
+      "id": "NetworkTypeEnum",
+      "namespace": "cloud.project.database"
+    },
+    "cloud.project.database.Service": {
+      "description": "Cloud database service definition",
+      "id": "Service",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "backupTime": {
+          "canBeNull": false,
+          "description": "Time on which backups start every day",
+          "fullType": "time",
+          "readOnly": false,
+          "required": false,
+          "type": "time"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the cluster",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Domain of the cluster (DEPRECATED: use endpoints)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "endpoints": {
+          "canBeNull": false,
+          "description": "List of all endpoints of the service",
+          "fullType": "cloud.project.database.service.Endpoint[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.Endpoint[]"
+        },
+        "engine": {
+          "canBeNull": false,
+          "description": "Name of the engine of the service",
+          "fullType": "cloud.project.database.EngineEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.EngineEnum"
+        },
+        "flavor": {
+          "canBeNull": false,
+          "description": "The VM flavor used for this cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Service ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "maintenanceTime": {
+          "canBeNull": false,
+          "description": "Time on which maintenances can start every day",
+          "fullType": "time",
+          "readOnly": false,
+          "required": false,
+          "type": "time"
+        },
+        "maintenanceWindow": {
+          "canBeNull": false,
+          "description": "Window during which the maintenance can occur, (DEPRECATED: use maintenanceTime)",
+          "fullType": "cloud.project.database.service.MaintenanceWindow",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.MaintenanceWindow"
+        },
+        "networkId": {
+          "canBeNull": true,
+          "description": "Private network ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "networkType": {
+          "canBeNull": false,
+          "description": "Type of network of the cluster",
+          "fullType": "cloud.project.database.NetworkTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.NetworkTypeEnum"
+        },
+        "nodeNumber": {
+          "canBeNull": false,
+          "description": "Number of nodes in the cluster",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "plan": {
+          "canBeNull": false,
+          "description": "Plan of the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "port": {
+          "canBeNull": false,
+          "description": "Connection port for the cluster (DEPRECATED: use endpoints)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sslMode": {
+          "canBeNull": false,
+          "description": "Ssl connection mode for the cluster (DEPRECATED: use endpoints)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the cluster",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "subnetId": {
+          "canBeNull": true,
+          "description": "Private subnet ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "uri": {
+          "canBeNull": false,
+          "description": "Connection string for the cluster (DEPRECATED: use endpoints)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version of the engine deployed on the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.ServiceCreation": {
+      "description": "Cloud databases cluster definition",
+      "id": "ServiceCreation",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "backup": {
+          "canBeNull": true,
+          "description": "Backup from which the new service is created",
+          "fullType": "cloud.project.database.service.creation.BackupFork",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.creation.BackupFork"
+        },
+        "backupTime": {
+          "canBeNull": true,
+          "description": "Time on which backups start every day",
+          "fullType": "time",
+          "readOnly": false,
+          "required": false,
+          "type": "time"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "maintenanceTime": {
+          "canBeNull": true,
+          "description": "Time on which maintenances can start every day",
+          "fullType": "time",
+          "readOnly": false,
+          "required": false,
+          "type": "time"
+        },
+        "networkId": {
+          "canBeNull": true,
+          "description": "Private network ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "nodesList": {
+          "canBeNull": true,
+          "description": "List of nodes in the cluster, not compatible with nodesPattern",
+          "fullType": "cloud.project.database.service.NodeCreation[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.NodeCreation[]"
+        },
+        "nodesPattern": {
+          "canBeNull": true,
+          "description": "Pattern definition of the nodes in the cluster, not compatible with nodesList",
+          "fullType": "cloud.project.database.service.NodePattern",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.NodePattern"
+        },
+        "plan": {
+          "canBeNull": false,
+          "description": "Plan of the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "subnetId": {
+          "canBeNull": true,
+          "description": "Private subnet ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version of the engine deployed on the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.StatusEnum": {
+      "description": "Possible state of the job",
+      "enum": [
+        "CREATING",
+        "DELETING",
+        "ERROR",
+        "ERROR_INCONSISTENT_SPEC",
+        "LOCKED",
+        "LOCKED_PENDING",
+        "LOCKED_UPDATING",
+        "PENDING",
+        "READY",
+        "UPDATING"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloud.project.database"
+    },
+    "cloud.project.database.TypeEnum": {
+      "description": "Type of data returned in the capabilities options",
+      "enum": [
+        "boolean",
+        "double",
+        "duration",
+        "long",
+        "string"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "cloud.project.database"
+    },
+    "cloud.project.database.availability.StatusEnum": {
+      "description": "Possible status for the availability",
+      "enum": [
+        "BETA",
+        "DEPRECATED",
+        "STABLE"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloud.project.database.availability"
+    },
+    "cloud.project.database.capabilities.Engine": {
+      "description": "Specific database engine capability",
+      "id": "Engine",
+      "namespace": "cloud.project.database.capabilities",
+      "properties": {
+        "defaultVersion": {
+          "canBeNull": false,
+          "description": "Default version used for the engine",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the engine",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Engine name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "sslModes": {
+          "canBeNull": false,
+          "description": "SSL modes for this engine",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "versions": {
+          "canBeNull": false,
+          "description": "Versions available for this engine",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.database.capabilities.Flavor": {
+      "description": "Cloud Database flavor definition",
+      "id": "Flavor",
+      "namespace": "cloud.project.database.capabilities",
+      "properties": {
+        "core": {
+          "canBeNull": false,
+          "description": "Flavor core number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "memory": {
+          "canBeNull": false,
+          "description": "Flavor ram size in GB",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the flavor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "storage": {
+          "canBeNull": false,
+          "description": "Flavor disk size in GB",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.database.capabilities.Integration": {
+      "description": "Integration capability between database engines",
+      "id": "Integration",
+      "namespace": "cloud.project.database.capabilities",
+      "properties": {
+        "destinationEngine": {
+          "canBeNull": false,
+          "description": "Destination engine for the integration",
+          "fullType": "cloud.project.database.EngineEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.EngineEnum"
+        },
+        "parameters": {
+          "canBeNull": true,
+          "description": "Parameters for the integration capability",
+          "fullType": "cloud.project.database.capabilities.integration.Parameter[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.capabilities.integration.Parameter[]"
+        },
+        "sourceEngine": {
+          "canBeNull": false,
+          "description": "Source engine for the integration",
+          "fullType": "cloud.project.database.EngineEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.EngineEnum"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of the integration",
+          "fullType": "cloud.project.database.service.integration.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.integration.TypeEnum"
+        }
+      }
+    },
+    "cloud.project.database.capabilities.Option": {
+      "description": "Cloud Database option definition",
+      "id": "Option",
+      "namespace": "cloud.project.database.capabilities",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the option",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of the option",
+          "fullType": "cloud.project.database.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.TypeEnum"
+        }
+      }
+    },
+    "cloud.project.database.capabilities.Plan": {
+      "description": "Cloud Database plan definition",
+      "id": "Plan",
+      "namespace": "cloud.project.database.capabilities",
+      "properties": {
+        "backupRetention": {
+          "canBeNull": false,
+          "description": "Automatic backup retention duration",
+          "fullType": "duration",
+          "readOnly": true,
+          "required": false,
+          "type": "duration"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the plan",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the plan",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.capabilities.advancedConfiguration.Property": {
+      "description": "Specific database engine capability",
+      "id": "Property",
+      "namespace": "cloud.project.database.capabilities.advancedConfiguration",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the property",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "maximum": {
+          "canBeNull": true,
+          "description": "Maximum value for the property if numeric and applicable",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "minimum": {
+          "canBeNull": true,
+          "description": "Minimum value for the property if numeric and applicable",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Property name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Data type of the property",
+          "fullType": "cloud.project.database.capabilities.advancedConfiguration.property.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.capabilities.advancedConfiguration.property.TypeEnum"
+        },
+        "values": {
+          "canBeNull": true,
+          "description": "Possible values for the property if string and applicable",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.database.capabilities.advancedConfiguration.property.TypeEnum": {
+      "description": "Possible type of the advanced configuration properties",
+      "enum": [
+        "boolean",
+        "double",
+        "long",
+        "string"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "cloud.project.database.capabilities.advancedConfiguration.property"
+    },
+    "cloud.project.database.capabilities.integration.Parameter": {
+      "description": "Integration capability parameter",
+      "id": "Parameter",
+      "namespace": "cloud.project.database.capabilities.integration",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the integration parameter",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of the integration parameter",
+          "fullType": "cloud.project.database.capabilities.integration.parameter.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.capabilities.integration.parameter.TypeEnum"
+        }
+      }
+    },
+    "cloud.project.database.capabilities.integration.parameter.TypeEnum": {
+      "description": "Possible type of an integration capability parameter",
+      "enum": [
+        "integer",
+        "string"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "cloud.project.database.capabilities.integration.parameter"
+    },
+    "cloud.project.database.kafka.Acl": {
+      "description": "Cloud databases kafka acl definition",
+      "id": "Acl",
+      "namespace": "cloud.project.database.kafka",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Acl ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "permission": {
+          "canBeNull": false,
+          "description": "Permission to give to this username on this topic",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "topic": {
+          "canBeNull": false,
+          "description": "Topic affected by this acl",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Username affected by this acl",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.kafka.Permissions": {
+      "description": "Cloud databases kafka permissions definition",
+      "id": "Permissions",
+      "namespace": "cloud.project.database.kafka",
+      "properties": {
+        "names": {
+          "canBeNull": false,
+          "description": "Names of the permissions",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.database.kafka.Service": {
+      "description": "Cloud database kafka service definition",
+      "id": "Service",
+      "namespace": "cloud.project.database.kafka",
+      "properties": {
+        "backupTime": {
+          "canBeNull": false,
+          "description": "Time on which backups start every day",
+          "fullType": "time",
+          "readOnly": false,
+          "required": false,
+          "type": "time"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the cluster",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Domain of the cluster (DEPRECATED: use endpoints)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "endpoints": {
+          "canBeNull": false,
+          "description": "List of all endpoints of the service",
+          "fullType": "cloud.project.database.service.Endpoint[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.Endpoint[]"
+        },
+        "engine": {
+          "canBeNull": false,
+          "description": "Name of the engine of the service",
+          "fullType": "cloud.project.database.EngineEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.EngineEnum"
+        },
+        "flavor": {
+          "canBeNull": false,
+          "description": "The VM flavor used for this cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Service ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "maintenanceTime": {
+          "canBeNull": false,
+          "description": "Time on which maintenances can start every day",
+          "fullType": "time",
+          "readOnly": false,
+          "required": false,
+          "type": "time"
+        },
+        "maintenanceWindow": {
+          "canBeNull": false,
+          "description": "Window during which the maintenance can occur, (DEPRECATED: user maintenance time)",
+          "fullType": "cloud.project.database.service.MaintenanceWindow",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.MaintenanceWindow"
+        },
+        "networkId": {
+          "canBeNull": true,
+          "description": "Private network ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "networkType": {
+          "canBeNull": false,
+          "description": "Type of network of the cluster",
+          "fullType": "cloud.project.database.NetworkTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.NetworkTypeEnum"
+        },
+        "nodeNumber": {
+          "canBeNull": false,
+          "description": "Number of nodes in the cluster",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "plan": {
+          "canBeNull": false,
+          "description": "Plan of the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "port": {
+          "canBeNull": false,
+          "description": "Connection port for the cluster (DEPRECATED: use endpoints)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "restApi": {
+          "canBeNull": false,
+          "description": "Defines whether the REST API is enabled on the cluster",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "sslMode": {
+          "canBeNull": false,
+          "description": "Ssl connection mode for the cluster (DEPRECATED: use endpoints)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the cluster",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "subnetId": {
+          "canBeNull": true,
+          "description": "Private subnet ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "uri": {
+          "canBeNull": false,
+          "description": "Connection string for the cluster (DEPRECATED: use endpoints)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version of the engine deployed on the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.kafka.Topic": {
+      "description": "Cloud database kafka topic definition",
+      "id": "Topic",
+      "namespace": "cloud.project.database.kafka",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Topic ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "minInsyncReplicas": {
+          "canBeNull": false,
+          "description": "Minimum insync replica accepted for this topic",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the topic",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "partitions": {
+          "canBeNull": false,
+          "description": "Number of partitions for this topic",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "replication": {
+          "canBeNull": false,
+          "description": "Number of replication for this topic",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "retentionBytes": {
+          "canBeNull": false,
+          "description": "Number of bytes for the retention of the data for this topic",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "retentionHours": {
+          "canBeNull": false,
+          "description": "Number of hours for the retention of the data for this topic",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.database.kafka.user.Access": {
+      "description": "Cloud databases kafka user access definition",
+      "id": "Access",
+      "namespace": "cloud.project.database.kafka.user",
+      "properties": {
+        "cert": {
+          "canBeNull": false,
+          "description": "User cert",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "key": {
+          "canBeNull": false,
+          "description": "User key for the cert",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        }
+      }
+    },
+    "cloud.project.database.kafkaConnect.Connector": {
+      "description": "KafkaConnect connector definition",
+      "id": "Connector",
+      "namespace": "cloud.project.database.kafkaConnect",
+      "properties": {
+        "configuration": {
+          "canBeNull": false,
+          "description": "Configuration of the connector",
+          "fullType": "map[string]string",
+          "readOnly": false,
+          "required": true,
+          "type": "map[string]string"
+        },
+        "connectorId": {
+          "canBeNull": false,
+          "description": "Connector capability ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Connector ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the connector",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the connector",
+          "fullType": "cloud.project.database.kafkaConnect.connector.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.kafkaConnect.connector.StatusEnum"
+        }
+      }
+    },
+    "cloud.project.database.kafkaConnect.ConnectorCreation": {
+      "description": "KafkaConnect connector definition",
+      "id": "ConnectorCreation",
+      "namespace": "cloud.project.database.kafkaConnect",
+      "properties": {
+        "configuration": {
+          "canBeNull": false,
+          "description": "Configuration of the connector",
+          "fullType": "map[string]string",
+          "readOnly": false,
+          "required": true,
+          "type": "map[string]string"
+        },
+        "connectorId": {
+          "canBeNull": false,
+          "description": "Connector capability ID",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the connector",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.kafkaConnect.capabilities.Connector": {
+      "description": "KafkaConnect connector capability definition",
+      "id": "Connector",
+      "namespace": "cloud.project.database.kafkaConnect.capabilities",
+      "properties": {
+        "author": {
+          "canBeNull": false,
+          "description": "Name of the connector's author",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "documentationUrl": {
+          "canBeNull": false,
+          "description": "URL of the official documentation of the connector",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Connector ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "latest": {
+          "canBeNull": false,
+          "description": "Defines whether this connector and version is the latest available",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the connector",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "preview": {
+          "canBeNull": false,
+          "description": "Defines whether the connector is in preview",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of connector",
+          "fullType": "cloud.project.database.kafkaConnect.capabilities.connector.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.kafkaConnect.capabilities.connector.TypeEnum"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version of the connector",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.kafkaConnect.capabilities.connector.Transform": {
+      "description": "KafkaConnect connector transform definition",
+      "id": "Transform",
+      "namespace": "cloud.project.database.kafkaConnect.capabilities.connector",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the transform",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "displayName": {
+          "canBeNull": false,
+          "description": "Pretty name of the transform",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the transform",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "required": {
+          "canBeNull": false,
+          "description": "Defines whether the transform is required",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "transformType": {
+          "canBeNull": false,
+          "description": "Transform type this transform relates to",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of data of the transform",
+          "fullType": "cloud.project.database.kafkaConnect.connector.property.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.kafkaConnect.connector.property.TypeEnum"
+        },
+        "values": {
+          "canBeNull": true,
+          "description": "Possible values for the transform if applicable",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.database.kafkaConnect.capabilities.connector.TypeEnum": {
+      "description": "Possible types for the kafka connectors",
+      "enum": [
+        "sink",
+        "source"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "cloud.project.database.kafkaConnect.capabilities.connector"
+    },
+    "cloud.project.database.kafkaConnect.capabilities.connector.configuration.Property": {
+      "description": "KafkaConnect connector config property definition",
+      "id": "Property",
+      "namespace": "cloud.project.database.kafkaConnect.capabilities.connector.configuration",
+      "properties": {
+        "defaultValue": {
+          "canBeNull": true,
+          "description": "Defines the default value is exists",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the property",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "displayName": {
+          "canBeNull": false,
+          "description": "Pretty name of the property",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "group": {
+          "canBeNull": false,
+          "description": "Group to which belongs the property",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "importance": {
+          "canBeNull": false,
+          "description": "Importance of the property",
+          "fullType": "cloud.project.database.kafkaConnect.capabilities.connector.property.ImportanceEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.kafkaConnect.capabilities.connector.property.ImportanceEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the property",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "required": {
+          "canBeNull": false,
+          "description": "Defines whether the property is required",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of data of the property",
+          "fullType": "cloud.project.database.kafkaConnect.connector.property.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.kafkaConnect.connector.property.TypeEnum"
+        },
+        "values": {
+          "canBeNull": true,
+          "description": "Possible values for the property if string and applicable",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.database.kafkaConnect.capabilities.connector.property.ImportanceEnum": {
+      "description": "Possible importance for the kafka connectors properties",
+      "enum": [
+        "high",
+        "low",
+        "medium"
+      ],
+      "enumType": "string",
+      "id": "ImportanceEnum",
+      "namespace": "cloud.project.database.kafkaConnect.capabilities.connector.property"
+    },
+    "cloud.project.database.kafkaConnect.connector.StatusEnum": {
+      "description": "Possible state of connector",
+      "enum": [
+        "CREATING",
+        "FAILED",
+        "PAUSED",
+        "RUNNING",
+        "UNASSIGNED"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloud.project.database.kafkaConnect.connector"
+    },
+    "cloud.project.database.kafkaConnect.connector.Task": {
+      "description": "KafkaConnect connector definition",
+      "id": "Task",
+      "namespace": "cloud.project.database.kafkaConnect.connector",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Task ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the task",
+          "fullType": "cloud.project.database.kafkaConnect.connector.task.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.kafkaConnect.connector.task.StatusEnum"
+        },
+        "trace": {
+          "canBeNull": false,
+          "description": "Trace of the task",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        }
+      }
+    },
+    "cloud.project.database.kafkaConnect.connector.property.TypeEnum": {
+      "description": "Possible types for the kafka connectors properties",
+      "enum": [
+        "boolean",
+        "class",
+        "double",
+        "int16",
+        "int32",
+        "int64",
+        "list",
+        "password",
+        "string",
+        "transform"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "cloud.project.database.kafkaConnect.connector.property"
+    },
+    "cloud.project.database.kafkaConnect.connector.task.StatusEnum": {
+      "description": "Possible state of connector task",
+      "enum": [
+        "FAILED",
+        "PAUSED",
+        "RUNNING"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloud.project.database.kafkaConnect.connector.task"
+    },
+    "cloud.project.database.m3db.Namespace": {
+      "description": "M3db Namespace definition",
+      "id": "Namespace",
+      "namespace": "cloud.project.database.m3db",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Namespace ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the namespace",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "resolution": {
+          "canBeNull": true,
+          "description": "Resolution for an aggregated namespace",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
+        },
+        "retention": {
+          "canBeNull": false,
+          "description": "Retention configuration",
+          "fullType": "cloud.project.database.m3db.namespace.Retention",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.m3db.namespace.Retention"
+        },
+        "snapshotEnabled": {
+          "canBeNull": false,
+          "description": "Defines whether M3db will create snapshot files for this namespace",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of namespace",
+          "fullType": "cloud.project.database.m3db.namespace.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.m3db.namespace.TypeEnum"
+        },
+        "writesToCommitLogEnabled": {
+          "canBeNull": false,
+          "description": "Defines whether M3db will include writes to this namespace in the commit log",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cloud.project.database.m3db.NamespaceCreation": {
+      "description": "M3db Namespace creation definition",
+      "id": "NamespaceCreation",
+      "namespace": "cloud.project.database.m3db",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Namespace ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the namespace",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "resolution": {
+          "canBeNull": false,
+          "description": "Resolution for an aggregated namespace",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
+        },
+        "retention": {
+          "canBeNull": false,
+          "description": "Retention configuration",
+          "fullType": "cloud.project.database.m3db.namespace.Retention",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.m3db.namespace.Retention"
+        },
+        "snapshotEnabled": {
+          "canBeNull": false,
+          "description": "Defines whether M3db will create snapshot files for this namespace",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of namespace",
+          "fullType": "cloud.project.database.m3db.namespace.TypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.database.m3db.namespace.TypeEnum"
+        },
+        "writesToCommitLogEnabled": {
+          "canBeNull": false,
+          "description": "Defines whether M3db will include writes to this namespace in the commit log",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cloud.project.database.m3db.User": {
+      "description": "M3db User definition",
+      "id": "User",
+      "namespace": "cloud.project.database.m3db",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "group": {
+          "canBeNull": false,
+          "description": "Group of the user",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "User ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the user",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.m3db.UserCreation": {
+      "description": "User creation definition",
+      "id": "UserCreation",
+      "namespace": "cloud.project.database.m3db",
+      "properties": {
+        "group": {
+          "canBeNull": false,
+          "description": "Group of the user",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.m3db.UserWithPassword": {
+      "description": "M3db User definition",
+      "id": "UserWithPassword",
+      "namespace": "cloud.project.database.m3db",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "group": {
+          "canBeNull": false,
+          "description": "Group of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "User ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "password": {
+          "canBeNull": false,
+          "description": "Password of the user",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the user",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.m3db.namespace.Retention": {
+      "description": "M3db namespace retention definition",
+      "id": "Retention",
+      "namespace": "cloud.project.database.m3db.namespace",
+      "properties": {
+        "blockDataExpirationDuration": {
+          "canBeNull": true,
+          "description": "Controls how long we wait before expiring stale data",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
+        },
+        "blockSizeDuration": {
+          "canBeNull": true,
+          "description": "Controls how long to keep a block in memory before flushing to a fileset on disk",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
+        },
+        "bufferFutureDuration": {
+          "canBeNull": true,
+          "description": "Controls how far into the future writes to the namespace will be accepted",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
+        },
+        "bufferPastDuration": {
+          "canBeNull": true,
+          "description": "Controls how far into the past writes to the namespace will be accepted",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
+        },
+        "periodDuration": {
+          "canBeNull": false,
+          "description": "Controls the duration of time that M3DB will retain data for the namespace",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": true,
+          "type": "duration"
+        }
+      }
+    },
+    "cloud.project.database.m3db.namespace.TypeEnum": {
+      "description": "Possible type of the service integration",
+      "enum": [
+        "aggregated",
+        "unaggregated"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "cloud.project.database.m3db.namespace"
+    },
+    "cloud.project.database.mysql.QueryStatistics": {
+      "description": "Cloud database mysql query statistics response body definition",
+      "id": "QueryStatistics",
+      "namespace": "cloud.project.database.mysql",
+      "properties": {
+        "queries": {
+          "canBeNull": false,
+          "description": "Statistics of the queries",
+          "fullType": "cloud.project.database.mysql.querystatistics.Query[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.mysql.querystatistics.Query[]"
+        }
+      }
+    },
+    "cloud.project.database.mysql.querystatistics.Query": {
+      "description": "Cloud database mysql single query statistic definition",
+      "id": "Query",
+      "namespace": "cloud.project.database.mysql.querystatistics",
+      "properties": {
+        "avgTimerWait": {
+          "canBeNull": false,
+          "description": "Average wait time of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "countStar": {
+          "canBeNull": false,
+          "description": "Number of summarized events. This value includes all events, whether timed or nontimed",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "digest": {
+          "canBeNull": false,
+          "description": "Digest of the summarized events",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "digestText": {
+          "canBeNull": false,
+          "description": "Text of the summarized digest events",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "firstSeen": {
+          "canBeNull": false,
+          "description": "First appearance of the events",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lastSeen": {
+          "canBeNull": false,
+          "description": "Last appearance of the events",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "maxTimerWait": {
+          "canBeNull": false,
+          "description": "Maximum wait time of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minTimerWait": {
+          "canBeNull": false,
+          "description": "Mininum wait time of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "quantile95": {
+          "canBeNull": false,
+          "description": "95th percentile of the statement latency, in picoseconds",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "quantile99": {
+          "canBeNull": false,
+          "description": "99th percentile of the statement latency, in picoseconds",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "quantile999": {
+          "canBeNull": false,
+          "description": "99.9th percentile of the statement latency, in picoseconds",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "querySampleSeen": {
+          "canBeNull": false,
+          "description": "Datetime when the querySampleText column was seen",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "querySampleText": {
+          "canBeNull": false,
+          "description": "Sample SQL statement that produces the digest value in the row",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "querySampleTimerWait": {
+          "canBeNull": false,
+          "description": "Wait time for the sample statement in the querySampleText column",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "schemaName": {
+          "canBeNull": false,
+          "description": "SchemaName of the summarized events",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "sumCreatedTmpDiskTables": {
+          "canBeNull": false,
+          "description": "Number of internal on-disk temporary tables created",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumCreatedTmpTables": {
+          "canBeNull": false,
+          "description": "Number of internal temporary tables created",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumErrors": {
+          "canBeNull": false,
+          "description": "Number of errors",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumLockTime": {
+          "canBeNull": false,
+          "description": "Sum of lock time of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumNoGoodIndexUsed": {
+          "canBeNull": false,
+          "description": "Sum of not good indexes of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumNoIndexUsed": {
+          "canBeNull": false,
+          "description": "Sum of no indexes of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumRowsAffected": {
+          "canBeNull": false,
+          "description": "Sum of rows affected of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumRowsExamined": {
+          "canBeNull": false,
+          "description": "Sum of rows examined of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumRowsSent": {
+          "canBeNull": false,
+          "description": "Sum of rows sent of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSelectFullJoin": {
+          "canBeNull": false,
+          "description": "Sum of select full join of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSelectFullRangeJoin": {
+          "canBeNull": false,
+          "description": "Sum of select full range join of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSelectRange": {
+          "canBeNull": false,
+          "description": "Sum of select range of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSelectRangeCheck": {
+          "canBeNull": false,
+          "description": "Sum of select range check of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSelectScan": {
+          "canBeNull": false,
+          "description": "Sum of select scan of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSortMergePasses": {
+          "canBeNull": false,
+          "description": "Sum of sorted merge passes of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSortRange": {
+          "canBeNull": false,
+          "description": "Sum of sorted range of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSortRows": {
+          "canBeNull": false,
+          "description": "Sum of sorted rows of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumSortScan": {
+          "canBeNull": false,
+          "description": "Sum of sort scan of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumTimerWait": {
+          "canBeNull": false,
+          "description": "Sum of wait time of the summarized timed events",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sumWarnings": {
+          "canBeNull": false,
+          "description": "Number of warnings",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.Index": {
+      "description": "Cloud database opensearch index definition",
+      "id": "Index",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the index",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "documents": {
+          "canBeNull": false,
+          "description": "Number of documents hold by the index",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Index ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the index",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "replicasNumber": {
+          "canBeNull": false,
+          "description": "Number of replicas of the index",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "shardsNumber": {
+          "canBeNull": false,
+          "description": "Number of shards of the index",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the index",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.Pattern": {
+      "description": "Cloud database opensearch pattern definition",
+      "id": "Pattern",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Pattern ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "maxIndexCount": {
+          "canBeNull": false,
+          "description": "Maximum number of index for this pattern",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "pattern": {
+          "canBeNull": false,
+          "description": "Pattern format",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.Permissions": {
+      "description": "Cloud database opensearch permissions definition",
+      "id": "Permissions",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "names": {
+          "canBeNull": false,
+          "description": "Possible values for the permissions",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.Service": {
+      "description": "Cloud database opensearch service definition",
+      "id": "Service",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "aclsEnabled": {
+          "canBeNull": false,
+          "description": "Defines whether the acls are enabled on the cluster",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "additionalUris": {
+          "canBeNull": false,
+          "description": "Defines the additionnal uris available on the cluster (DEPRECATED: use endpoints)",
+          "fullType": "cloud.project.database.opensearch.service.AdditionalUris",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.opensearch.service.AdditionalUris"
+        },
+        "backupTime": {
+          "canBeNull": false,
+          "description": "Time on which backups start every day",
+          "fullType": "time",
+          "readOnly": false,
+          "required": false,
+          "type": "time"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the cluster",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Domain of the cluster (DEPRECATED: use endpoints)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "endpoints": {
+          "canBeNull": false,
+          "description": "List of all endpoints of the service",
+          "fullType": "cloud.project.database.service.Endpoint[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.Endpoint[]"
+        },
+        "engine": {
+          "canBeNull": false,
+          "description": "Name of the engine of the service",
+          "fullType": "cloud.project.database.EngineEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.EngineEnum"
+        },
+        "flavor": {
+          "canBeNull": false,
+          "description": "The VM flavor used for this cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Service ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "maintenanceTime": {
+          "canBeNull": false,
+          "description": "Time on which maintenances can start every day",
+          "fullType": "time",
+          "readOnly": false,
+          "required": false,
+          "type": "time"
+        },
+        "maintenanceWindow": {
+          "canBeNull": false,
+          "description": "Window during which the maintenance can occur, (DEPRECATED: use maintenanceTime)",
+          "fullType": "cloud.project.database.service.MaintenanceWindow",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.MaintenanceWindow"
+        },
+        "networkId": {
+          "canBeNull": true,
+          "description": "Private network ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "networkType": {
+          "canBeNull": false,
+          "description": "Type of network of the cluster",
+          "fullType": "cloud.project.database.NetworkTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.NetworkTypeEnum"
+        },
+        "nodeNumber": {
+          "canBeNull": false,
+          "description": "Number of nodes in the cluster",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "plan": {
+          "canBeNull": false,
+          "description": "Plan of the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "port": {
+          "canBeNull": false,
+          "description": "Connection port for the cluster (DEPRECATED: use endpoints)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sslMode": {
+          "canBeNull": false,
+          "description": "Ssl connection mode for the cluster (DEPRECATED: use endpoints)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the cluster",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "subnetId": {
+          "canBeNull": true,
+          "description": "Private subnet ID in which the cluster is",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "uri": {
+          "canBeNull": false,
+          "description": "Connection string for the cluster (DEPRECATED: use endpoints)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version of the engine deployed on the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.User": {
+      "description": "Opensearch user definition",
+      "id": "User",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "acls": {
+          "canBeNull": false,
+          "description": "Acls of the user",
+          "fullType": "cloud.project.database.opensearch.UserAcl[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.opensearch.UserAcl[]"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "User ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the user",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.UserAcl": {
+      "description": "Opensearch user acl definition",
+      "id": "UserAcl",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "pattern": {
+          "canBeNull": false,
+          "description": "Pattern of the ACL",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "permission": {
+          "canBeNull": false,
+          "description": "Permission of the ACL",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.UserCreation": {
+      "description": "Opensearch user creation definition",
+      "id": "UserCreation",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "acls": {
+          "canBeNull": false,
+          "description": "Acls of the user",
+          "fullType": "cloud.project.database.opensearch.UserAcl[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.opensearch.UserAcl[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.UserWithPassword": {
+      "description": "Opensearch user definition",
+      "id": "UserWithPassword",
+      "namespace": "cloud.project.database.opensearch",
+      "properties": {
+        "acls": {
+          "canBeNull": false,
+          "description": "Acls of the user",
+          "fullType": "cloud.project.database.opensearch.UserAcl[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.opensearch.UserAcl[]"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "User ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "password": {
+          "canBeNull": false,
+          "description": "Password of the user",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the user",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.opensearch.service.AdditionalUris": {
+      "description": "Cloud database opensearch service additional uri definition",
+      "id": "AdditionalUris",
+      "namespace": "cloud.project.database.opensearch.service",
+      "properties": {
+        "kibana": {
+          "canBeNull": false,
+          "description": "URI to access the kibana",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.postgresql.ConnectionPool": {
+      "description": "Cloud database postgresql connection pool response body definition",
+      "id": "ConnectionPool",
+      "namespace": "cloud.project.database.postgresql",
+      "properties": {
+        "databaseId": {
+          "canBeNull": false,
+          "description": "Database used for the connection pool",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the connection pool",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "mode": {
+          "canBeNull": false,
+          "description": "Connection mode to the connection pool",
+          "fullType": "cloud.project.database.postgresql.connectionpool.ModeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.postgresql.connectionpool.ModeEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the connection pool",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "port": {
+          "canBeNull": false,
+          "description": "Port of the connection pool",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the connection pool",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "sslMode": {
+          "canBeNull": true,
+          "description": "Ssl connection mode for the pool",
+          "fullType": "cloud.project.database.postgresql.connectionpool.SslModeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.postgresql.connectionpool.SslModeEnum"
+        },
+        "uri": {
+          "canBeNull": false,
+          "description": "Connection URI to the pool",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "userId": {
+          "canBeNull": true,
+          "description": "User authorized to connect to the pool, if none all the users are allowed",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.project.database.postgresql.ConnectionPoolCreation": {
+      "description": "Cloud database postgresql connection pool creation body definition",
+      "id": "ConnectionPoolCreation",
+      "namespace": "cloud.project.database.postgresql",
+      "properties": {
+        "databaseId": {
+          "canBeNull": false,
+          "description": "Database used for the connection pool",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "mode": {
+          "canBeNull": false,
+          "description": "Connection mode to the connection pool",
+          "fullType": "cloud.project.database.postgresql.connectionpool.ModeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.database.postgresql.connectionpool.ModeEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the connection pool",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the connection pool",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "userId": {
+          "canBeNull": true,
+          "description": "User authorized to connect to the pool, if none all the users are allowed",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.project.database.postgresql.QueryStatistics": {
+      "description": "Cloud database postgresql query statistics response body definition",
+      "id": "QueryStatistics",
+      "namespace": "cloud.project.database.postgresql",
+      "properties": {
+        "queries": {
+          "canBeNull": false,
+          "description": "Statistics of the queries",
+          "fullType": "cloud.project.database.postgresql.querystatistics.Query[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.postgresql.querystatistics.Query[]"
+        }
+      }
+    },
+    "cloud.project.database.postgresql.connectionpool.ModeEnum": {
+      "description": "Possible modes for the connection pools",
+      "enum": [
+        "session",
+        "statement",
+        "transaction"
+      ],
+      "enumType": "string",
+      "id": "ModeEnum",
+      "namespace": "cloud.project.database.postgresql.connectionpool"
+    },
+    "cloud.project.database.postgresql.connectionpool.SslModeEnum": {
+      "description": "Possible ssl modes for the connection pools",
+      "enum": [
+        "require"
+      ],
+      "enumType": "string",
+      "id": "SslModeEnum",
+      "namespace": "cloud.project.database.postgresql.connectionpool"
+    },
+    "cloud.project.database.postgresql.querystatistics.Query": {
+      "description": "Cloud database postgresql single query statistic definition",
+      "id": "Query",
+      "namespace": "cloud.project.database.postgresql.querystatistics",
+      "properties": {
+        "blkReadTime": {
+          "canBeNull": false,
+          "description": "Time spent reading data file blocks by backends in this database, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "blkWriteTime": {
+          "canBeNull": false,
+          "description": "Time spent writing data file blocks by backends in this database, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "calls": {
+          "canBeNull": false,
+          "description": "Number of times this function has been called",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "databaseName": {
+          "canBeNull": false,
+          "description": "Name of the database",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "localBlksDirtied": {
+          "canBeNull": false,
+          "description": "Total number of local blocks dirtied by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "localBlksHit": {
+          "canBeNull": false,
+          "description": "Total number of local block cache hits by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "localBlksRead": {
+          "canBeNull": false,
+          "description": "Total number of local blocks read by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "localBlksWritten": {
+          "canBeNull": false,
+          "description": "Total number of local blocks written by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxPlanTime": {
+          "canBeNull": false,
+          "description": "Maximum time spent planning the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "maxTime": {
+          "canBeNull": false,
+          "description": "Maximum time spent for the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "meanPlanTime": {
+          "canBeNull": false,
+          "description": "Mean time spent planning the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "meanTime": {
+          "canBeNull": false,
+          "description": "Mean time spent for the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "minPlanTime": {
+          "canBeNull": false,
+          "description": "Minimum time spent planning the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "minTime": {
+          "canBeNull": false,
+          "description": "Minimum time spent for the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "query": {
+          "canBeNull": false,
+          "description": "Text of a representative statement",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "rows": {
+          "canBeNull": false,
+          "description": "Total number of rows retrieved or affected by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sharedBlksDirtied": {
+          "canBeNull": false,
+          "description": "Total number of shared blocks dirtied by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sharedBlksHit": {
+          "canBeNull": false,
+          "description": "Total number of shared block cache hits by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sharedBlksRead": {
+          "canBeNull": false,
+          "description": "Total number of shared blocks read by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sharedBlksWritten": {
+          "canBeNull": false,
+          "description": "Total number of shared blocks written by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "stddevPlanTime": {
+          "canBeNull": false,
+          "description": "Population standard deviation of time spent planning the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "stddevTime": {
+          "canBeNull": false,
+          "description": "Population standard deviation of time spent for the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "tempBlksRead": {
+          "canBeNull": false,
+          "description": "Total number of temp blocks read by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "tempBlksWritten": {
+          "canBeNull": false,
+          "description": "Total number of temp blocks written by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "totalPlanTime": {
+          "canBeNull": false,
+          "description": "Total time spent planning the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "totalTime": {
+          "canBeNull": false,
+          "description": "Total time spent for the statement, in milliseconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user who executed the statement",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "walBytes": {
+          "canBeNull": false,
+          "description": "Total amount of WAL generated by the statement in bytes",
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "walFpi": {
+          "canBeNull": false,
+          "description": "Total number of WAL full page images generated by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "walRecords": {
+          "canBeNull": false,
+          "description": "Total number of WAL records generated by the statement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.database.redis.User": {
+      "description": "Redis user definition",
+      "id": "User",
+      "namespace": "cloud.project.database.redis",
+      "properties": {
+        "categories": {
+          "canBeNull": false,
+          "description": "Categories of the user",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "channels": {
+          "canBeNull": false,
+          "description": "Channels of the user",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "commands": {
+          "canBeNull": false,
+          "description": "Commands of the user",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "User ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "keys": {
+          "canBeNull": false,
+          "description": "Keys of the user",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the user",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.redis.UserCreation": {
+      "description": "Redis user definition",
+      "id": "UserCreation",
+      "namespace": "cloud.project.database.redis",
+      "properties": {
+        "categories": {
+          "canBeNull": false,
+          "description": "Categories of the user",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "channels": {
+          "canBeNull": false,
+          "description": "Channels of the user",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "commands": {
+          "canBeNull": false,
+          "description": "Commands of the user",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "keys": {
+          "canBeNull": false,
+          "description": "Keys of the user",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.redis.UserWithPassword": {
+      "description": "Redis user with password definition",
+      "id": "UserWithPassword",
+      "namespace": "cloud.project.database.redis",
+      "properties": {
+        "categories": {
+          "canBeNull": false,
+          "description": "Categories of the user",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "channels": {
+          "canBeNull": false,
+          "description": "Channels of the user",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "commands": {
+          "canBeNull": false,
+          "description": "Commands of the user",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "User ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "keys": {
+          "canBeNull": false,
+          "description": "Keys of the user",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "password": {
+          "canBeNull": false,
+          "description": "Password of the user",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the user",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.service.Backup": {
+      "description": "Cloud database backup definition",
+      "id": "Backup",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the backup",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the backup",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Backup ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region where the backup is stored",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the backup",
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the backup",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of backup",
+          "fullType": "cloud.project.database.BackupTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.BackupTypeEnum"
+        }
+      }
+    },
+    "cloud.project.database.service.Certificates": {
+      "description": "Certificates definition for cloud project databases",
+      "id": "Certificates",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "ca": {
+          "canBeNull": false,
+          "description": "CA certificate used for the service",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        }
+      }
+    },
+    "cloud.project.database.service.CurrentQueries": {
+      "description": "Cloud database current queries",
+      "id": "CurrentQueries",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "queries": {
+          "canBeNull": false,
+          "description": "Current queries list",
+          "fullType": "cloud.project.database.service.currentqueries.Query[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.currentqueries.Query[]"
+        }
+      }
+    },
+    "cloud.project.database.service.DataPoint": {
+      "description": "A single value from a metric",
+      "id": "DataPoint",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "timestamp": {
+          "canBeNull": false,
+          "description": "Timestamp in seconds since epoch time",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value of this datapoint",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.project.database.service.Database": {
+      "description": "Defines the database object in a cluster",
+      "id": "Database",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "default": {
+          "canBeNull": false,
+          "description": "Defines if the database has been created by default",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Database ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Database name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.service.Endpoint": {
+      "description": "Defines the endpoint object in a cluster",
+      "id": "Endpoint",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "component": {
+          "canBeNull": false,
+          "description": "Type of component the URI relates to",
+          "fullType": "cloud.project.database.service.endpoint.ComponentEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.endpoint.ComponentEnum"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Domain of the cluster",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "path": {
+          "canBeNull": true,
+          "description": "Path of the endpoint",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "port": {
+          "canBeNull": true,
+          "description": "Connection port for the endpoint",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "scheme": {
+          "canBeNull": true,
+          "description": "Scheme used to generate the URI",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "ssl": {
+          "canBeNull": false,
+          "description": "Defines whether the endpoint uses SSL",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "sslMode": {
+          "canBeNull": true,
+          "description": "SSL mode used to connect to the service if the SSL is enabled",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "uri": {
+          "canBeNull": true,
+          "description": "URI of the endpoint",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.service.HostMetric": {
+      "description": "Metrics datapoints from a specific host",
+      "id": "HostMetric",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "dataPoints": {
+          "canBeNull": false,
+          "description": "List of metric's samples",
+          "fullType": "cloud.project.database.service.DataPoint[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.DataPoint[]"
+        },
+        "hostname": {
+          "canBeNull": false,
+          "description": "Name of the originating host",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.service.Integration": {
+      "description": "Cloud database service integration definition",
+      "id": "Integration",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "destinationServiceId": {
+          "canBeNull": false,
+          "description": "ID of the destination service",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Service ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "parameters": {
+          "canBeNull": true,
+          "description": "Parameters for the integration",
+          "fullType": "map[string]string",
+          "readOnly": false,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "sourceServiceId": {
+          "canBeNull": false,
+          "description": "ID of the source service",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the integration",
+          "fullType": "cloud.project.database.service.integration.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.integration.StatusEnum"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of the integration",
+          "fullType": "cloud.project.database.service.integration.TypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.integration.TypeEnum"
+        }
+      }
+    },
+    "cloud.project.database.service.LogEntry": {
+      "description": "A single log entry",
+      "id": "LogEntry",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "hostname": {
+          "canBeNull": false,
+          "description": "Host from which the log is coming from",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "message": {
+          "canBeNull": false,
+          "description": "The log message",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "timestamp": {
+          "canBeNull": false,
+          "description": "Timestamp in seconds since epoch time",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.database.service.Maintenance": {
+      "description": "Cloud database service maintenance definition",
+      "id": "Maintenance",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "appliedAt": {
+          "canBeNull": true,
+          "description": "Date of the application of the maintenance",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the maintenance",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the maintenance",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "scheduledAt": {
+          "canBeNull": true,
+          "description": "Date of the planification of the maintenance",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the maintenance",
+          "fullType": "cloud.project.database.service.maintenance.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.maintenance.StatusEnum"
+        }
+      }
+    },
+    "cloud.project.database.service.MaintenanceWindow": {
+      "description": "Cloud database maintenance window definition",
+      "id": "MaintenanceWindow",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "end": {
+          "canBeNull": false,
+          "description": "End time of the maintenance",
+          "fullType": "time",
+          "readOnly": true,
+          "required": false,
+          "type": "time"
+        },
+        "start": {
+          "canBeNull": false,
+          "description": "Start time of the maintenance",
+          "fullType": "time",
+          "readOnly": true,
+          "required": false,
+          "type": "time"
+        }
+      }
+    },
+    "cloud.project.database.service.Metric": {
+      "description": "Metric definition for cloud project databases",
+      "id": "Metric",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "metrics": {
+          "canBeNull": false,
+          "description": "Metric values for each cluster's host",
+          "fullType": "cloud.project.database.service.HostMetric[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.HostMetric[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the metric",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "units": {
+          "canBeNull": false,
+          "description": "Unit of the metric",
+          "fullType": "cloud.project.database.service.MetricUnitEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.MetricUnitEnum"
+        }
+      }
+    },
+    "cloud.project.database.service.MetricPeriodEnum": {
+      "description": "Supported metrics query period",
+      "enum": [
+        "lastDay",
+        "lastHour",
+        "lastMonth",
+        "lastWeek",
+        "lastYear"
+      ],
+      "enumType": "string",
+      "id": "MetricPeriodEnum",
+      "namespace": "cloud.project.database.service"
+    },
+    "cloud.project.database.service.MetricUnitEnum": {
+      "description": "Supported unit types for metrics",
+      "enum": [
+        "BYTES",
+        "BYTES_PER_SECOND",
+        "GIGABYTES",
+        "GIGABYTES_PER_HOUR",
+        "MEGABYTES_PER_SECOND",
+        "MILLISECONDS",
+        "PERCENT",
+        "SCALAR",
+        "SCALAR_PER_SECOND",
+        "SECONDS",
+        "UNKNOWN"
+      ],
+      "enumType": "string",
+      "id": "MetricUnitEnum",
+      "namespace": "cloud.project.database.service"
+    },
+    "cloud.project.database.service.Node": {
+      "description": "Cloud databases cluster node definition",
+      "id": "Node",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the node",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "flavor": {
+          "canBeNull": false,
+          "description": "Flavor of the node",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Node ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the node",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "port": {
+          "canBeNull": false,
+          "description": "Connection port for the node",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region of the node",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "role": {
+          "canBeNull": true,
+          "description": "Role of the node",
+          "fullType": "cloud.project.database.service.node.RoleEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.node.RoleEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the node",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        }
+      }
+    },
+    "cloud.project.database.service.NodeCreation": {
+      "description": "Cloud databases cluster new node definition",
+      "id": "NodeCreation",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the node",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "flavor": {
+          "canBeNull": false,
+          "description": "Flavor of the node",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Node ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the node",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "port": {
+          "canBeNull": false,
+          "description": "Connection port for the node",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region of the node",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "role": {
+          "canBeNull": true,
+          "description": "Role of the node",
+          "fullType": "cloud.project.database.service.node.RoleEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.node.RoleEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the node",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        }
+      }
+    },
+    "cloud.project.database.service.NodePattern": {
+      "description": "Node pattern definition",
+      "id": "NodePattern",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "flavor": {
+          "canBeNull": false,
+          "description": "Flavor of the nodes",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "number": {
+          "canBeNull": false,
+          "description": "Number of nodes to create",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region of the nodes",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.service.Replication": {
+      "description": "Cloud database service replication definition",
+      "id": "Replication",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "emitHeartbeats": {
+          "canBeNull": false,
+          "description": "Defines whether heartbeats are emitted",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "enabled": {
+          "canBeNull": false,
+          "description": "Defines whether the replication is actived",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Service ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "replicationPolicyClass": {
+          "canBeNull": false,
+          "description": "ReplicationPolicyClass used for the replication",
+          "fullType": "cloud.project.database.service.replication.PolicyClassEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.replication.PolicyClassEnum"
+        },
+        "sourceIntegration": {
+          "canBeNull": false,
+          "description": "ID of the integration source",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "syncGroupOffsets": {
+          "canBeNull": false,
+          "description": "Defines whether the group offsets must be sync",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "syncInterval": {
+          "canBeNull": false,
+          "description": "Defines the interval in second between 2 sync",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "targetIntegration": {
+          "canBeNull": false,
+          "description": "ID of the integration target",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "topicExcludeList": {
+          "canBeNull": false,
+          "description": "Patterns of the topics to exclude from the replication",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "topics": {
+          "canBeNull": false,
+          "description": "Patterns of the topics to replicate",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.database.service.ReplicationCreation": {
+      "description": "Cloud database service replication definition",
+      "id": "ReplicationCreation",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "emitHeartbeats": {
+          "canBeNull": false,
+          "description": "Defines whether heartbeats are emitted",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "enabled": {
+          "canBeNull": false,
+          "description": "Defines whether the replication is actived",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "replicationPolicyClass": {
+          "canBeNull": false,
+          "description": "ReplicationPolicyClass used for the replication",
+          "fullType": "cloud.project.database.service.replication.PolicyClassEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.replication.PolicyClassEnum"
+        },
+        "sourceIntegration": {
+          "canBeNull": false,
+          "description": "ID of the integration source",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "syncGroupOffsets": {
+          "canBeNull": false,
+          "description": "Defines whether the group offsets must be sync",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "syncInterval": {
+          "canBeNull": false,
+          "description": "Defines the interval in second between 2 sync",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "targetIntegration": {
+          "canBeNull": false,
+          "description": "ID of the integration target",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "topicExcludeList": {
+          "canBeNull": false,
+          "description": "Patterns of the topics to exclude from the replication",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "topics": {
+          "canBeNull": false,
+          "description": "Patterns of the topics to replicate",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.database.service.User": {
+      "description": "User definition",
+      "id": "User",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "User ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the user",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.service.UserCreation": {
+      "description": "User creation definition",
+      "id": "UserCreation",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.service.UserWithPassword": {
+      "description": "User with password definition",
+      "id": "UserWithPassword",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "User ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "password": {
+          "canBeNull": false,
+          "description": "Password of the user",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the user",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.service.UserWithPasswordAndRoles": {
+      "description": "User with password definition",
+      "id": "UserWithPasswordAndRoles",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "User ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "password": {
+          "canBeNull": false,
+          "description": "Password of the user",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "roles": {
+          "canBeNull": false,
+          "description": "Roles the user belongs to",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the user",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.service.UserWithRoles": {
+      "description": "User definition",
+      "id": "UserWithRoles",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "User ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "roles": {
+          "canBeNull": false,
+          "description": "Roles the user belongs to",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the user",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.service.UserWithRolesCreation": {
+      "description": "User creation definition",
+      "id": "UserWithRolesCreation",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the user",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "password": {
+          "canBeNull": false,
+          "description": "Password of the user (deprecated, the password is now auto generated)",
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
+        },
+        "roles": {
+          "canBeNull": false,
+          "description": "Roles the user belongs to",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.database.service.creation.BackupFork": {
+      "description": "Defines the variable to fork a cluster from a backup",
+      "id": "BackupFork",
+      "namespace": "cloud.project.database.service.creation",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Backup ID (not compatible with pointInTime)",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "pointInTime": {
+          "canBeNull": false,
+          "description": "Point in time to restore from (not compatible with id)",
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": "Service ID to which the backups belong to",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.project.database.service.currentqueries.Query": {
+      "description": "Cloud database service current queries query definition",
+      "id": "Query",
+      "namespace": "cloud.project.database.service.currentqueries",
+      "properties": {
+        "applicationName": {
+          "canBeNull": false,
+          "description": "Application name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "backendStart": {
+          "canBeNull": true,
+          "description": "Backend start timestamp",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "backendType": {
+          "canBeNull": true,
+          "description": "Backend type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "backendXid": {
+          "canBeNull": true,
+          "description": "XID for current backend",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "backendXmin": {
+          "canBeNull": true,
+          "description": "Xmin for current backend",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "clientHostname": {
+          "canBeNull": true,
+          "description": "Client hostname",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "clientIp": {
+          "canBeNull": true,
+          "description": "Client ip address",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "clientPort": {
+          "canBeNull": true,
+          "description": "Client port",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "databaseId": {
+          "canBeNull": true,
+          "description": "Database ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "databaseName": {
+          "canBeNull": false,
+          "description": "Database name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "leaderPid": {
+          "canBeNull": true,
+          "description": "Leader process ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "pid": {
+          "canBeNull": false,
+          "description": "Connection process ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "query": {
+          "canBeNull": false,
+          "description": "Current query running on this connection",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "queryDuration": {
+          "canBeNull": false,
+          "description": "Duration of the query in seconds",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "queryStart": {
+          "canBeNull": true,
+          "description": "Query start timestamp",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Connection state",
+          "fullType": "cloud.project.database.service.currentqueries.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.currentqueries.StateEnum"
+        },
+        "stateChange": {
+          "canBeNull": true,
+          "description": "Connection state change timestamp",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "transactionStart": {
+          "canBeNull": true,
+          "description": "Transaction start timestamp",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "userId": {
+          "canBeNull": true,
+          "description": "User ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "userName": {
+          "canBeNull": false,
+          "description": "User name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "waitEvent": {
+          "canBeNull": true,
+          "description": "Connection wait event",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "waitEventType": {
+          "canBeNull": true,
+          "description": "Connection wait event type",
+          "fullType": "cloud.project.database.service.currentqueries.WaitEventTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.currentqueries.WaitEventTypeEnum"
+        }
+      }
+    },
+    "cloud.project.database.service.currentqueries.StateEnum": {
+      "description": "Possible state of a query",
+      "enum": [
+        "ACTIVE",
+        "DISABLED",
+        "FASTPATH_FUNCTION_CALL",
+        "IDLE",
+        "IDLE_IN_TRANSACTION",
+        "IDLE_IN_TRANSACTION_ABORTED"
+      ],
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "cloud.project.database.service.currentqueries"
+    },
+    "cloud.project.database.service.currentqueries.WaitEventTypeEnum": {
+      "description": "Possible event type on which the backend is waiting",
+      "enum": [
+        "ACTIVITY",
+        "BUFFER_PIN",
+        "CLIENT",
+        "EXTENSION",
+        "IO",
+        "IPC",
+        "LOCK",
+        "LWLOCK",
+        "TIMEOUT"
+      ],
+      "enumType": "string",
+      "id": "WaitEventTypeEnum",
+      "namespace": "cloud.project.database.service.currentqueries"
+    },
+    "cloud.project.database.service.currentqueries.query.CancelRequest": {
+      "description": "Cloud database service current queries query cancel request",
+      "id": "CancelRequest",
+      "namespace": "cloud.project.database.service.currentqueries.query",
+      "properties": {
+        "pid": {
+          "canBeNull": false,
+          "description": "Database server connection ID",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "terminate": {
+          "canBeNull": false,
+          "description": "Request immediate termination instead of soft cancel",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cloud.project.database.service.currentqueries.query.CancelResponse": {
+      "description": "Cloud database service current queries query cancel response",
+      "id": "CancelResponse",
+      "namespace": "cloud.project.database.service.currentqueries.query",
+      "properties": {
+        "success": {
+          "canBeNull": false,
+          "description": "Status reported by the database server",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cloud.project.database.service.endpoint.ComponentEnum": {
+      "description": "Defines all the values for the component in the service endpoints",
+      "enum": [
+        "cassandra",
+        "grafana",
+        "graphite",
+        "influxdb",
+        "kafka",
+        "kafkaConnect",
+        "kafkaRestApi",
+        "kafkaSASL",
+        "kibana",
+        "m3coordinator",
+        "mongodb",
+        "mongodbAnalytics",
+        "mongodbSrv",
+        "mongodbSrvAnalytics",
+        "mysql",
+        "mysqlRead",
+        "mysqlx",
+        "opensearch",
+        "postgresql",
+        "postgresqlRead",
+        "postgresqlReadReplica",
+        "prometheusRead",
+        "prometheusWrite",
+        "redis"
+      ],
+      "enumType": "string",
+      "id": "ComponentEnum",
+      "namespace": "cloud.project.database.service.endpoint"
+    },
+    "cloud.project.database.service.integration.StatusEnum": {
+      "description": "Possible state of the integration",
+      "enum": [
+        "READY"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloud.project.database.service.integration"
+    },
+    "cloud.project.database.service.integration.TypeEnum": {
+      "description": "Possible type of the service integration",
+      "enum": [
+        "grafanaDashboard",
+        "grafanaDatasource",
+        "kafkaConnect",
+        "kafkaLogs",
+        "kafkaMirrorMaker",
+        "m3aggregator",
+        "m3dbMetrics",
+        "opensearchLogs",
+        "postgresqlMetrics"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "cloud.project.database.service.integration"
+    },
+    "cloud.project.database.service.maintenance.StatusEnum": {
+      "description": "Possible status of a service maintenance",
+      "enum": [
+        "APPLIED",
+        "APPLYING",
+        "ERROR",
+        "SCHEDULED"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloud.project.database.service.maintenance"
+    },
+    "cloud.project.database.service.node.RoleEnum": {
+      "description": "Node role values",
+      "enum": [
+        "ANALYTICS",
+        "STANDARD"
+      ],
+      "enumType": "string",
+      "id": "RoleEnum",
+      "namespace": "cloud.project.database.service.node"
+    },
+    "cloud.project.database.service.replication.PolicyClassEnum": {
+      "description": "Possible type of the service integration",
+      "enum": [
+        "org.apache.kafka.connect.mirror.DefaultReplicationPolicy",
+        "org.apache.kafka.connect.mirror.IdentityReplicationPolicy"
+      ],
+      "enumType": "string",
+      "id": "PolicyClassEnum",
+      "namespace": "cloud.project.database.service.replication"
+    },
     "cloud.project.floatingIp.AssociatedEntity": {
       "description": "Associated entity with a floating ip",
       "id": "AssociatedEntity",
@@ -14269,6 +26737,7 @@ export const schema: Schema = {
       "enum": [
         "dhcp",
         "instance",
+        "loadbalancer",
         "routerInterface",
         "unknown"
       ],
@@ -17586,6 +30055,32 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "complexType.UnitAndValue<T>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
+      ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit of the value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
+          "fullType": "T",
+          "readOnly": true,
+          "required": false,
+          "type": "T"
         }
       }
     },

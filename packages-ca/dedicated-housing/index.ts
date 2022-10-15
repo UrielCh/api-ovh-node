@@ -6,6 +6,14 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  */
 export namespace complexType {
     /**
+     * Key and value, with proper key strings
+     * interface fullName: complexType.SafeKeyValueCanBeNull.SafeKeyValueCanBeNull
+     */
+    export interface SafeKeyValueCanBeNull<T> {
+        key?: string;
+        value?: T;
+    }
+    /**
      * A numeric value tagged with its unit
      * interface fullName: complexType.UnitAndValue.UnitAndValue
      */
@@ -161,6 +169,7 @@ export namespace dedicated {
             plannedInterventionId?: number;
             startDate: string;
             status: dedicated.TaskStatusEnum;
+            tags?: complexType.SafeKeyValueCanBeNull<string>[];
             taskId: number;
             ticketReference?: string;
         }

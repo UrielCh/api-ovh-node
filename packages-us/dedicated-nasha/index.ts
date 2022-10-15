@@ -53,6 +53,7 @@ export namespace dedicated {
          */
         export interface Partition {
             partitionCapacity?: number;
+            partitionDescription?: string;
             partitionName: string;
             protocol: dedicated.storage.ProtocolEnum;
             size: number;
@@ -277,7 +278,7 @@ export interface Dedicated {
                  * Create a new partition
                  * POST /dedicated/nasha/{serviceName}/partition
                  */
-                $post(params: { partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number }): Promise<dedicated.nasTask.Task>;
+                $post(params: { partitionDescription?: string, partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number }): Promise<dedicated.nasTask.Task>;
                 /**
                  * Controle cache
                  */
@@ -297,7 +298,7 @@ export interface Dedicated {
                      * Alter this object properties
                      * PUT /dedicated/nasha/{serviceName}/partition/{partitionName}
                      */
-                    $put(params?: { partitionCapacity?: number, partitionName?: string, protocol?: dedicated.storage.ProtocolEnum, size?: number, usedBySnapshots?: number }): Promise<void>;
+                    $put(params?: { partitionCapacity?: number, partitionDescription?: string, partitionName?: string, protocol?: dedicated.storage.ProtocolEnum, size?: number, usedBySnapshots?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */

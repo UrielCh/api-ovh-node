@@ -6,45 +6,37 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Details about your OVH identifier",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get details about your nichandle",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "nichandle.Nichandle",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "nichandle.Nichandle"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update details of your nichandle",
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "nichandle.Nichandle",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "nichandle.Nichandle",
               "paramType": "body",
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/me"
@@ -2404,6 +2396,144 @@ export const schema: Schema = {
         }
       ],
       "path": "/me/billing/group/{groupId}/service/{serviceId}"
+    },
+    {
+      "description": "Manage purchase orders",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve all purchase orders",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Billing Group Identifier",
+              "fullType": "long",
+              "name": "billingGroupId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a purchase order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "me.billing.purchaseOrder.Creation",
+              "description": "Request Body",
+              "fullType": "me.billing.purchaseOrder.Creation",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "me.billing.purchaseOrder.PurchaseOrder",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
+        }
+      ],
+      "path": "/me/billing/purchaseOrder"
+    },
+    {
+      "description": "Manage purchase orders",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a purchase order",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve information about a purchase order",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "me.billing.purchaseOrder.PurchaseOrder",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Update a purchase order",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "me.billing.purchaseOrder.Update",
+              "description": "Request Body",
+              "fullType": "me.billing.purchaseOrder.Update",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "account/all",
+            "all"
+          ]
+        }
+      ],
+      "path": "/me/billing/purchaseOrder/{id}"
     },
     {
       "description": "Get your Bring your own IP token",
@@ -5225,7 +5355,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Partition size in MiB, 0 => rest of the space",
+              "description": "Partition size in MB, 0 => rest of the space",
               "fullType": "long",
               "name": "size",
               "paramType": "body",
@@ -5839,52 +5969,44 @@ export const schema: Schema = {
       "path": "/me/mailingList/subscribe"
     },
     {
-      "description": "List the nichandle.emailNotification objects",
+      "description": "Email history",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List of all your email notifications",
+          "description": "Retrieve every email sent to you",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/me/notification/email/history"
     },
     {
-      "description": "Email notification",
+      "description": "Email history",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Retrieve information about an email",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "nichandle.emailNotification",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "nichandle.EmailNotification"
         }
       ],
       "path": "/me/notification/email/history/{id}"
@@ -7453,7 +7575,7 @@ export const schema: Schema = {
       "path": "/me/payment/transaction/{transactionId}"
     },
     {
-      "description": "List the payment mean credit cards",
+      "description": "Manage bank accounts",
       "operations": [
         {
           "apiStatus": {
@@ -7506,7 +7628,7 @@ export const schema: Schema = {
       "path": "/me/paymentMean/bankAccount"
     },
     {
-      "description": "List the payment mean credit cards",
+      "description": "Manage bank accounts",
       "operations": [
         {
           "apiStatus": {
@@ -9239,14 +9361,14 @@ export const schema: Schema = {
       "path": "/me/task/contactChange/{id}/resendEmail"
     },
     {
-      "description": "List the nichandle.DomainTask objects",
+      "description": "Get information about domain related tasks",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List of domain task",
+          "description": "List of domain tasks",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -9259,9 +9381,9 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "domain.NicOperationFunctionEnum",
+              "dataType": "domain.OperationFunctionEnum",
               "description": "Filter the value of function property (like)",
-              "fullType": "domain.NicOperationFunctionEnum",
+              "fullType": "domain.OperationFunctionEnum",
               "name": "function",
               "paramType": "query",
               "required": false
@@ -9277,15 +9399,16 @@ export const schema: Schema = {
           ],
           "responseType": "long[]",
           "scopes": [
+            "account/all",
             "all",
-            "account/all"
+            "product/domain/all"
           ]
         }
       ],
       "path": "/me/task/domain"
     },
     {
-      "description": "Domain tasks",
+      "description": "Get information about domain related tasks",
       "operations": [
         {
           "apiStatus": {
@@ -9298,24 +9421,25 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the task",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "nichandle.DomainTask",
+          "responseType": "domain.Task",
           "scopes": [
+            "account/all",
             "all",
-            "account/all"
+            "product/domain/all"
           ]
         }
       ],
       "path": "/me/task/domain/{id}"
     },
     {
-      "description": "accelerate operations",
+      "description": "Accelerate the task",
       "operations": [
         {
           "apiStatus": {
@@ -9328,7 +9452,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the task",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -9337,15 +9461,16 @@ export const schema: Schema = {
           ],
           "responseType": "void",
           "scopes": [
+            "account/all",
             "all",
-            "account/all"
+            "product/domain/all"
           ]
         }
       ],
       "path": "/me/task/domain/{id}/accelerate"
     },
     {
-      "description": "List the nichandle.DomainTaskArgument objects",
+      "description": "Get information about arguments of domain tasks",
       "operations": [
         {
           "apiStatus": {
@@ -9358,7 +9483,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the task",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -9367,15 +9492,16 @@ export const schema: Schema = {
           ],
           "responseType": "string[]",
           "scopes": [
+            "account/all",
             "all",
-            "account/all"
+            "product/domain/all"
           ]
         }
       ],
       "path": "/me/task/domain/{id}/argument"
     },
     {
-      "description": "Domain operation argument",
+      "description": "Get information about arguments of domain tasks",
       "operations": [
         {
           "apiStatus": {
@@ -9388,7 +9514,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the task",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -9396,7 +9522,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Key of the argument",
+              "description": "Key",
               "fullType": "string",
               "name": "key",
               "paramType": "path",
@@ -9405,8 +9531,9 @@ export const schema: Schema = {
           ],
           "responseType": "nichandle.DomainTaskArgument",
           "scopes": [
+            "account/all",
             "all",
-            "account/all"
+            "product/domain/all"
           ]
         },
         {
@@ -9420,14 +9547,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "nichandle.DomainTaskArgument",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "nichandle.DomainTaskArgument",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id of the task",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -9435,7 +9562,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Key of the argument",
+              "description": "Key",
               "fullType": "string",
               "name": "key",
               "paramType": "path",
@@ -9444,15 +9571,16 @@ export const schema: Schema = {
           ],
           "responseType": "void",
           "scopes": [
+            "account/all",
             "all",
-            "account/all"
+            "product/domain/all"
           ]
         }
       ],
       "path": "/me/task/domain/{id}/argument/{key}"
     },
     {
-      "description": "cancel operations",
+      "description": "Cancel the task",
       "operations": [
         {
           "apiStatus": {
@@ -9465,7 +9593,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the task",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -9474,28 +9602,29 @@ export const schema: Schema = {
           ],
           "responseType": "void",
           "scopes": [
+            "account/all",
             "all",
-            "account/all"
+            "product/domain/all"
           ]
         }
       ],
       "path": "/me/task/domain/{id}/cancel"
     },
     {
-      "description": "Domain operation progress",
+      "description": "Show progress of a task",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Show progress of a task",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the task",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -9504,15 +9633,16 @@ export const schema: Schema = {
           ],
           "responseType": "nichandle.DomainTaskProgressBar",
           "scopes": [
+            "account/all",
             "all",
-            "account/all"
+            "product/domain/all"
           ]
         }
       ],
       "path": "/me/task/domain/{id}/progressbar"
     },
     {
-      "description": "relaunch operations",
+      "description": "Relaunch the task",
       "operations": [
         {
           "apiStatus": {
@@ -9525,7 +9655,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the task",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -9534,8 +9664,9 @@ export const schema: Schema = {
           ],
           "responseType": "void",
           "scopes": [
+            "account/all",
             "all",
-            "account/all"
+            "product/domain/all"
           ]
         }
       ],
@@ -11346,6 +11477,7 @@ export const schema: Schema = {
       "enum": [
         "cash",
         "chargeback",
+        "check",
         "cheque",
         "creditAccount",
         "creditCard",
@@ -11366,6 +11498,7 @@ export const schema: Schema = {
         "payu",
         "platnosci",
         "refund",
+        "rupay",
         "transfer",
         "withdrawal"
       ],
@@ -11519,9 +11652,12 @@ export const schema: Schema = {
         "CREDIT_CARD",
         "CURRENT_ACCOUNT",
         "DEFERRED_PAYMENT_ACCOUNT",
+        "DOMESTIC_CARD",
         "ENTERPRISE",
         "INTERNAL_TRUSTED_ACCOUNT",
         "PAYPAL",
+        "RUPAY",
+        "SEPA_DIRECT_DEBIT",
         "bankAccount",
         "creditCard",
         "deferredPaymentAccount",
@@ -12463,6 +12599,13 @@ export const schema: Schema = {
           "required": false,
           "type": "payment.method.AvailablePaymentMethod[]"
         },
+        "paymentMethods": {
+          "canBeNull": false,
+          "description": "List of registered Payment methods usable on this order",
+          "readOnly": false,
+          "required": false,
+          "type": "payment.method.PaymentMethod[]"
+        },
         "registered": {
           "canBeNull": false,
           "description": "IDs of registered payment method usable on this order",
@@ -13281,9 +13424,21 @@ export const schema: Schema = {
         "CREDITCARD_AUTOMATIC",
         "CREDITCARD_MANUAL",
         "CREDIT_ACCOUNT_AUTOMATIC",
+        "CREDIT_CARD_AUTOMATIC",
+        "CREDIT_CARD_MANUAL",
+        "CURRENT_ACCOUNT_AUTOMATIC",
+        "CURRENT_ACCOUNT_MANUAL",
+        "DOMESTIC_CARD_AUTOMATIC",
+        "DOMESTIC_CARD_MANUAL",
         "EDINAR_MANUAL",
+        "ENTERPRISE_AUTOMATIC",
+        "ENTERPRISE_MANUAL",
         "IDEAL_AUTOMATIC",
         "IDEAL_MANUAL",
+        "INCOMING_AUTOMATIC",
+        "INCOMING_MANUAL",
+        "INTERNAL_TRUSTED_ACCOUNT_AUTOMATIC",
+        "INTERNAL_TRUSTED_ACCOUNT_MANUAL",
         "MULTIBANCO_AUTOMATIC",
         "MULTIBANCO_MANUAL",
         "ORDER",
@@ -13296,26 +13451,47 @@ export const schema: Schema = {
         "REFUND_CHECK",
         "REFUND_CREDITCARD",
         "REFUND_CREDIT_ACCOUNT",
+        "REFUND_CREDIT_CARD",
+        "REFUND_CURRENT_ACCOUNT",
+        "REFUND_DOMESTIC_CARD",
+        "REFUND_ENTERPRISE",
         "REFUND_IDEAL",
+        "REFUND_INCOMING",
+        "REFUND_INTERNAL_TRUSTED_ACCOUNT",
         "REFUND_LOSS",
         "REFUND_MULTIBANCO",
         "REFUND_PAYPAL",
         "REFUND_PAYU",
+        "REFUND_RUPAY",
         "REFUND_SEPA",
+        "REFUND_SEPA_DIRECT_DEBIT",
         "REFUND_TRANSFER",
         "REFUND_UNKNOWN",
+        "RUPAY_AUTOMATIC",
+        "RUPAY_MANUAL",
         "SEPA_AUTOMATIC",
+        "SEPA_DIRECT_DEBIT_AUTOMATIC",
+        "SEPA_DIRECT_DEBIT_MANUAL",
         "TRANSFER_MANUAL",
         "UNPAID_CHECK",
         "UNPAID_CREDITCARD",
         "UNPAID_CREDIT_ACCOUNT",
+        "UNPAID_CREDIT_CARD",
+        "UNPAID_CURRENT_ACCOUNT",
+        "UNPAID_DOMESTIC_CARD",
+        "UNPAID_ENTERPRISE",
         "UNPAID_IDEAL",
+        "UNPAID_INCOMING",
+        "UNPAID_INTERNAL_TRUSTED_ACCOUNT",
         "UNPAID_MULTIBANCO",
         "UNPAID_PAYPAL",
         "UNPAID_PAYU",
+        "UNPAID_RUPAY",
         "UNPAID_SEPA",
+        "UNPAID_SEPA_DIRECT_DEBIT",
         "UNPAID_WITHDRAW",
         "WARRANT_MANUAL",
+        "WIRE_TRANSFER_MANUAL",
         "WITHDRAW_AUTOMATIC"
       ],
       "enumType": "string",
@@ -14004,6 +14180,7 @@ export const schema: Schema = {
     "dedicated.TemplateOsSubfamilyEnum": {
       "description": "Os subfamily definition",
       "enum": [
+        "alma",
         "aos",
         "arch",
         "centos",
@@ -14025,10 +14202,11 @@ export const schema: Schema = {
         "power",
         "proxmox",
         "rhel",
+        "rocky",
         "slackware",
+        "sles-sap",
         "smartos",
         "solusvm",
-        "suse",
         "ubuntu",
         "windows-server-core",
         "windows-server-desktop-exp",
@@ -14381,7 +14559,7 @@ export const schema: Schema = {
         },
         "size": {
           "canBeNull": false,
-          "description": "Partition size in MiB, 0 => rest of the space",
+          "description": "Partition size (unit: MB GB TB, MB by default), 0 => rest of the space",
           "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
@@ -14453,7 +14631,19 @@ export const schema: Schema = {
       "id": "DocumentFormatsEnum",
       "namespace": "domain"
     },
-    "domain.NicOperationFunctionEnum": {
+    "domain.OperationActionEnum": {
+      "description": "Operation actions",
+      "enum": [
+        "canCancel",
+        "canCorrect",
+        "canRelaunch",
+        "canReset"
+      ],
+      "enumType": "string",
+      "id": "OperationActionEnum",
+      "namespace": "domain"
+    },
+    "domain.OperationFunctionEnum": {
       "description": "Operation functions",
       "enum": [
         "ContactControl",
@@ -14491,19 +14681,7 @@ export const schema: Schema = {
         "ZoneImport"
       ],
       "enumType": "string",
-      "id": "NicOperationFunctionEnum",
-      "namespace": "domain"
-    },
-    "domain.OperationActionEnum": {
-      "description": "operation Action",
-      "enum": [
-        "canCancel",
-        "canCorrect",
-        "canRelaunch",
-        "canReset"
-      ],
-      "enumType": "string",
-      "id": "OperationActionEnum",
+      "id": "OperationFunctionEnum",
       "namespace": "domain"
     },
     "domain.OperationStatusEnum": {
@@ -14527,23 +14705,129 @@ export const schema: Schema = {
         "description": {
           "canBeNull": false,
           "description": "Description of the step",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "executionDuration": {
           "canBeNull": false,
           "description": "Execution time of the step",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "step": {
           "canBeNull": false,
           "description": "Name of the step",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "domain.Task": {
+      "description": "Tasks associated to domain",
+      "id": "Task",
+      "namespace": "domain",
+      "properties": {
+        "canAccelerate": {
+          "canBeNull": false,
+          "description": "Can accelerate the task",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "canCancel": {
+          "canBeNull": false,
+          "description": "Can cancel the task",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "canRelaunch": {
+          "canBeNull": false,
+          "description": "Can relaunch the task",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "comment": {
+          "canBeNull": true,
+          "description": "Comment about the task",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of the task",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "domain": {
+          "canBeNull": true,
+          "description": "Domain of the task",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "doneDate": {
+          "canBeNull": true,
+          "description": "Done date of the task",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "function": {
+          "canBeNull": false,
+          "description": "Function of the task",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Id of the task",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update date of the task",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the task",
+          "fullType": "domain.OperationStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.OperationStatusEnum"
+        },
+        "todoDate": {
+          "canBeNull": false,
+          "description": "Todo date of the task",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
@@ -17069,7 +17353,10 @@ export const schema: Schema = {
         "FAILED",
         "MAINTENANCE",
         "PAUSED",
-        "VALID"
+        "REJECTED",
+        "REPLACED",
+        "VALID",
+        "VALIDATING"
       ],
       "enumType": "string",
       "id": "StatusEnum",
@@ -17343,6 +17630,7 @@ export const schema: Schema = {
       "enum": [
         "blockedForIncidents",
         "pendingValidation",
+        "replaced",
         "valid"
       ],
       "enumType": "string",
@@ -17834,6 +18122,133 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ValidationTypeEnum",
       "namespace": "me.paymentMean"
+    },
+    "me.repricing.Service": {
+      "description": "Description of a service being repricing",
+      "id": "Service",
+      "namespace": "me.repricing",
+      "properties": {
+        "addons": {
+          "canBeNull": false,
+          "description": "Addons of the Service",
+          "fullType": "me.repricing.Service[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.repricing.Service[]"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the Service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "displayName": {
+          "canBeNull": false,
+          "description": "Custom name for the Service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "duration": {
+          "canBeNull": false,
+          "description": "Duration for the price described in the payload (ISO8601)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "priceAfterWithTax": {
+          "canBeNull": false,
+          "description": "Price after repricing, tax included",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "priceAfterWithoutTax": {
+          "canBeNull": false,
+          "description": "Price after repricing, tax excluded",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "priceBeforeWithTax": {
+          "canBeNull": false,
+          "description": "Price before repricing, tax included",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "priceBeforeWithoutTax": {
+          "canBeNull": false,
+          "description": "Price before repricing, tax excluded",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "route": {
+          "canBeNull": true,
+          "description": "Route",
+          "fullType": "services.expanded.Route",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Route"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": "Service ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Identifier of the service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "totalPriceAfterWithTax": {
+          "canBeNull": false,
+          "description": "Total price (addons included) after repricing, tax included",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "totalPriceAfterWithoutTax": {
+          "canBeNull": false,
+          "description": "Total price (addons included) after repricing, tax excluded",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "totalPriceBeforeWithTax": {
+          "canBeNull": false,
+          "description": "Total price (addons included) before repricing, tax included",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "totalPriceBeforeWithoutTax": {
+          "canBeNull": false,
+          "description": "Total price (addons included) before repricing, tax excluded",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
     },
     "me.tag.AvailableTag": {
       "description": "Available tag configuration object for creation",
@@ -18519,109 +18934,6 @@ export const schema: Schema = {
         }
       }
     },
-    "nichandle.DomainTask": {
-      "description": "Domain tasks",
-      "id": "DomainTask",
-      "namespace": "nichandle",
-      "properties": {
-        "canAccelerate": {
-          "canBeNull": false,
-          "description": "Can accelerate the task",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "canCancel": {
-          "canBeNull": false,
-          "description": "Can cancel the task",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "canRelaunch": {
-          "canBeNull": false,
-          "description": "Can relaunch the task",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "comment": {
-          "canBeNull": true,
-          "description": "Comment about the task",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "creationDate": {
-          "canBeNull": false,
-          "description": "Creation date of the task",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "domain": {
-          "canBeNull": false,
-          "description": "Domain of the task",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "doneDate": {
-          "canBeNull": true,
-          "description": "Done date of the task",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "function": {
-          "canBeNull": false,
-          "description": "Function of the task",
-          "fullType": "domain.NicOperationFunctionEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "domain.NicOperationFunctionEnum"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Id of the task",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "lastUpdate": {
-          "canBeNull": false,
-          "description": "Last update date of the task",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "status": {
-          "canBeNull": false,
-          "description": "Status of the task",
-          "fullType": "domain.OperationStatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "domain.OperationStatusEnum"
-        },
-        "todoDate": {
-          "canBeNull": false,
-          "description": "Todo date of the task",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        }
-      }
-    },
     "nichandle.DomainTaskArgument": {
       "description": "Domain operation argument",
       "id": "DomainTaskArgument",
@@ -18740,7 +19052,7 @@ export const schema: Schema = {
         },
         "followUpSteps": {
           "canBeNull": true,
-          "description": "all the steps of operation",
+          "description": "All the steps of the operation",
           "fullType": "domain.OperationStep[]",
           "readOnly": true,
           "required": false,
@@ -18777,6 +19089,45 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "domain.OperationStatusEnum"
+        }
+      }
+    },
+    "nichandle.EmailNotification": {
+      "description": "Email notification received",
+      "id": "EmailNotification",
+      "namespace": "nichandle",
+      "properties": {
+        "body": {
+          "canBeNull": false,
+          "description": "Content of the email",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "date": {
+          "canBeNull": false,
+          "description": "Date at which the email was sent",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the email notification",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "subject": {
+          "canBeNull": false,
+          "description": "Subject of the email",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -18949,6 +19300,7 @@ export const schema: Schema = {
     "nichandle.LanguageEnum": {
       "description": "Languages a nichandle can choose",
       "enum": [
+        "cs_CZ",
         "de_DE",
         "en_AU",
         "en_CA",
@@ -18956,12 +19308,14 @@ export const schema: Schema = {
         "en_IE",
         "en_US",
         "es_ES",
+        "fi_FI",
         "fr_CA",
         "fr_FR",
         "fr_MA",
         "fr_SN",
         "fr_TN",
         "it_IT",
+        "lt_LT",
         "nl_NL",
         "pl_PL",
         "pt_PT"
@@ -21081,12 +21435,299 @@ export const schema: Schema = {
         "DONE",
         "IFRAME_VANTIV",
         "IN_CONTEXT",
+        "NONE",
         "POST_FORM",
         "REDIRECT"
       ],
       "enumType": "string",
       "id": "IntegrationType",
       "namespace": "payment.method"
+    },
+    "payment.method.PaymentMethod": {
+      "description": "payment method",
+      "id": "PaymentMethod",
+      "namespace": "payment.method",
+      "properties": {
+        "billingContactId": {
+          "canBeNull": true,
+          "description": "Associated billing contact ID",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "default": {
+          "canBeNull": false,
+          "description": "Indicates if payment method is the default one for this account",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Custom customer description",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "expirationDate": {
+          "canBeNull": true,
+          "description": "Expiration date",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "formSessionId": {
+          "canBeNull": true,
+          "description": "Form session ID",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "icon": {
+          "canBeNull": false,
+          "description": "Payment method type icon",
+          "readOnly": false,
+          "required": false,
+          "type": "payment.method.Icon"
+        },
+        "integration": {
+          "canBeNull": true,
+          "description": "Payment method integration type",
+          "readOnly": false,
+          "required": false,
+          "type": "payment.method.IntegrationType"
+        },
+        "label": {
+          "canBeNull": true,
+          "description": "Payment method public label",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "lastUpdate": {
+          "canBeNull": true,
+          "description": "Last update date",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "merchantId": {
+          "canBeNull": true,
+          "description": "Merchant ID",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "oneclick": {
+          "canBeNull": true,
+          "description": "Indicates if payment method support the oneclick functionality",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "paymentMeanId": {
+          "canBeNull": true,
+          "description": "Payment mean ID associated to this payment method",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "paymentMethodId": {
+          "canBeNull": false,
+          "description": "Payment method ID",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "paymentSubType": {
+          "canBeNull": true,
+          "description": "Payment method sub type",
+          "readOnly": false,
+          "required": false,
+          "type": "payment.method.SubTypeEnum"
+        },
+        "paymentType": {
+          "canBeNull": false,
+          "description": "Payment method type",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Payment method status",
+          "readOnly": false,
+          "required": false,
+          "type": "payment.method.StatusEnum"
+        }
+      }
+    },
+    "payment.method.StatusEnum": {
+      "description": "Payment method status",
+      "enum": [
+        "CANCELED",
+        "CANCELING",
+        "CREATED",
+        "CREATING",
+        "ERROR",
+        "EXPIRED",
+        "FAILED",
+        "MAINTENANCE",
+        "PAUSED",
+        "REJECTED",
+        "REPLACED",
+        "VALID",
+        "VALIDATING"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "payment.method"
+    },
+    "payment.method.SubTypeEnum": {
+      "description": "Payment method sub-type",
+      "enum": [
+        "30_DAYS",
+        "45_DAYS",
+        "60_DAYS",
+        "AMERICAN_EXPRESS",
+        "AURA",
+        "CARTE_BANCAIRE",
+        "CARTE_BLEUE",
+        "CHORUS",
+        "DINERS_CLUB",
+        "DISCOVER",
+        "JCB",
+        "MAESTRO",
+        "MASTERCARD",
+        "NONE",
+        "VISA"
+      ],
+      "enumType": "string",
+      "id": "SubTypeEnum",
+      "namespace": "payment.method"
+    },
+    "recommendations.Recommendation": {
+      "description": "Recommendation struct",
+      "id": "Recommendation",
+      "namespace": "recommendations",
+      "properties": {
+        "advices": {
+          "canBeNull": false,
+          "fullType": "recommendations.RecommendationAdvice[]",
+          "readOnly": true,
+          "required": false,
+          "type": "recommendations.RecommendationAdvice[]"
+        },
+        "localizedDescription": {
+          "canBeNull": false,
+          "description": "Recommendation advices introduction and description sentences, indexed by supported locales",
+          "fullType": "map[recommendations.supportedLocalesEnum]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[recommendations.supportedLocalesEnum]string"
+        },
+        "rank": {
+          "canBeNull": false,
+          "description": "Recommendation rank",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "recommendations.RecommendationAdvice": {
+      "description": "Recommendation advice struct",
+      "id": "RecommendationAdvice",
+      "namespace": "recommendations",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Product identifier, usually range>line>category>subCategory>marketingName",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "score": {
+          "canBeNull": false,
+          "description": "Recommendation score",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "Product page url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "recommendations.Recommendations": {
+      "description": "Array of Recommendation objects",
+      "id": "Recommendations",
+      "namespace": "recommendations",
+      "properties": {
+        "recommendations": {
+          "canBeNull": false,
+          "fullType": "recommendations.Recommendation[]",
+          "readOnly": true,
+          "required": false,
+          "type": "recommendations.Recommendation[]"
+        }
+      }
+    },
+    "recommendations.supportedLocalesEnum": {
+      "description": "Supported locales for recommendations",
+      "enum": [
+        "en_GB",
+        "fr_FR"
+      ],
+      "enumType": "string",
+      "id": "supportedLocalesEnum",
+      "namespace": "recommendations"
+    },
+    "services.expanded.Route": {
+      "description": "Route of the service",
+      "id": "Route",
+      "namespace": "services.expanded",
+      "properties": {
+        "path": {
+          "canBeNull": true,
+          "description": "Path to use in API",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Path with variables applied",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "vars": {
+          "canBeNull": false,
+          "description": "Variables to use in the path",
+          "fullType": "complexType.SafeKeyValue<string>[]",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.SafeKeyValue<string>[]"
+        }
+      }
     },
     "xander.ContactFieldEnum": {
       "description": "Available contact fields",
