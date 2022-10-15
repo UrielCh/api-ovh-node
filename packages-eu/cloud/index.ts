@@ -3385,7 +3385,7 @@ export namespace cloud {
                  * interface fullName: cloud.project.ai.capabilities.ProjectQuotas.ProjectQuotas
                  */
                 export interface ProjectQuotas {
-                    resources: map[string]long;
+                    resources: { [key: string]: number };
                     storage: number;
                 }
                 /**

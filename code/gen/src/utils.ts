@@ -112,5 +112,6 @@ export const rawRemapNode: { [keys: string]: string } = {
     "ipInterface": "string",
     "duration": "string",
     "internationalPhoneNumber": "string",
-    "map[string]string": "{ [key: string]: string }"
+    "map[string]string": "{ [key: string]: string }",
+    "map[string]long": "{ [key: string]: number }"
 }
