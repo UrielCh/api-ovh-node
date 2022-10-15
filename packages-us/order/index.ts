@@ -1321,6 +1321,22 @@ export interface Order {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
+            bringYourOwnIp: {
+                /**
+                 * Get information about bring your own IP addresses offers
+                 * GET /order/cart/{cartId}/bringYourOwnIp
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new bring your own IP addresses item in your cart
+                 * POST /order/cart/{cartId}/bringYourOwnIp
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             cephaas: {
                 /**
                  * Get informations about Ceph as a Service offers
@@ -1462,6 +1478,38 @@ export interface Order {
                     /**
                      * Post a new Dedicated Discover server option in your cart
                      * POST /order/cart/{cartId}/discover/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
+            eco: {
+                /**
+                 * Get informations about a eco
+                 * GET /order/cart/{cartId}/eco
+                 */
+                $get(params?: { family?: string, planCode?: string }): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new eco item in your cart
+                 * POST /order/cart/{cartId}/eco
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get informations about eco options
+                     * GET /order/cart/{cartId}/eco/options
+                     */
+                    $get(params: { family?: string, planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new eco option in your cart
+                     * POST /order/cart/{cartId}/eco/options
                      */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
                     /**
@@ -2284,6 +2332,17 @@ export interface Order {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            bringYourOwnIp: {
+                /**
+                 * Retrieve information of bring your own IP addresses catalog
+                 * GET /order/catalog/formatted/bringYourOwnIp
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             cloud: {
                 /**
                  * Retrieve information of Public Cloud catalog

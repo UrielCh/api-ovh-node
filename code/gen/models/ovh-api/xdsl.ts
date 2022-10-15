@@ -5204,6 +5204,13 @@ export const schema: Schema = {
           "required": false,
           "type": "datetime"
         },
+        "slotId": {
+          "canBeNull": true,
+          "description": "Represent a meeting id for a fiber collect operator",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "startDate": {
           "canBeNull": false,
           "description": "Start date",
@@ -7163,8 +7170,10 @@ export const schema: Schema = {
     "xdsl.FaultRepairTimeEnum": {
       "description": "Maximum time needed to repair a landline",
       "enum": [
+        "10HO",
         "4HNO",
         "4HO",
+        "DPLUS1",
         "NORMAL"
       ],
       "enumType": "string",
@@ -7174,8 +7183,10 @@ export const schema: Schema = {
     "xdsl.GtrEnum": {
       "description": "Gtr of the line.",
       "enum": [
+        "10ho",
         "4hno",
         "4ho",
+        "dplus1",
         "none"
       ],
       "enumType": "string",
@@ -7293,6 +7304,13 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "taskReference": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -9277,6 +9295,13 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "datetime"
+        },
+        "slotId": {
+          "canBeNull": true,
+          "description": "Represent a meeting id for a fiber collect operator",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "startDate": {
           "canBeNull": false,

@@ -187,6 +187,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Partition description",
+              "fullType": "string",
+              "name": "partitionDescription",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Partition name",
               "fullType": "string",
               "name": "partitionName",
@@ -1637,6 +1645,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "partitionDescription": {
+          "canBeNull": true,
+          "description": "a brief description of the partition",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "partitionName": {
           "canBeNull": false,

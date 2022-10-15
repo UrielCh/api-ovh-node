@@ -1044,6 +1044,7 @@ export const schema: Schema = {
     "dedicated.TemplateOsSubfamilyEnum": {
       "description": "Os subfamily definition",
       "enum": [
+        "alma",
         "aos",
         "arch",
         "centos",
@@ -1065,10 +1066,11 @@ export const schema: Schema = {
         "power",
         "proxmox",
         "rhel",
+        "rocky",
         "slackware",
+        "sles-sap",
         "smartos",
         "solusvm",
-        "suse",
         "ubuntu",
         "windows-server-core",
         "windows-server-desktop-exp",
@@ -1421,7 +1423,7 @@ export const schema: Schema = {
         },
         "size": {
           "canBeNull": false,
-          "description": "Partition size in MiB, 0 => rest of the space",
+          "description": "Partition size (unit: MB GB TB, MB by default), 0 => rest of the space",
           "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,

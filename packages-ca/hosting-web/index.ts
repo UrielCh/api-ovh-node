@@ -29,7 +29,7 @@ export namespace cdn {
      * Operation function
      * type fullname: cdn.OperationFunctionEnum
      */
-    export type OperationFunctionEnum = "domain_delete" | "domain_disable" | "domain_purge" | "domain_refresh" | "service_install" | "ssl_delete" | "ssl_install"
+    export type OperationFunctionEnum = "analytics_delete" | "analytics_recompute" | "domain_delete" | "domain_disable" | "domain_purge" | "domain_refresh" | "service_install" | "ssl_delete" | "ssl_install"
     /**
      * Shared CDN offer
      * type fullname: cdn.OperationOfferEnum
@@ -228,6 +228,7 @@ export namespace cdn {
         export interface parameter {
             anycastIp?: string;
             cluster?: string;
+            date?: string;
             domainName?: string;
             fingerprint?: string;
             offer?: cdn.OperationOfferEnum;
@@ -275,7 +276,7 @@ export namespace hosting {
          * Private database orderable versions
          * type fullname: hosting.PrivateDatabase.OrderableVersionEnum
          */
-        export type OrderableVersionEnum = "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mysql_5.7" | "mysql_8.0" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_9.6" | "redis_4.0" | "redis_6.0"
+        export type OrderableVersionEnum = "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mysql_5.7" | "mysql_8.0" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "redis_4.0" | "redis_6.0"
     }
     export namespace web {
         /**
@@ -373,6 +374,11 @@ export namespace hosting {
          * type fullname: hosting.web.HighLightEnum
          */
         export type HighLightEnum = "best-seller" | "new"
+        /**
+         * Web supported languages
+         * type fullname: hosting.web.LanguagesEnum
+         */
+        export type LanguagesEnum = "node10" | "node11" | "node12" | "node14" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "php8.1" | "python2" | "python3" | "ruby2.5" | "ruby2.6"
         /**
          * A module specifically packaged by OVH
          * interface fullName: hosting.web.ModuleList.ModuleList
@@ -797,7 +803,7 @@ export namespace hosting {
              * Database Version enum
              * type fullname: hosting.web.database.VersionEnum
              */
-            export type VersionEnum = "3.4" | "4.0" | "5.1" | "5.5" | "5.6" | "8.4"
+            export type VersionEnum = "3.4" | "4.0" | "5.1" | "5.5" | "5.6" | "5.7" | "8.4"
             export namespace dump {
                 /**
                  * List of dump types
@@ -1410,11 +1416,12 @@ export namespace hosting {
 }
 export namespace order {
     /**
+     * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
-     * Price with it's currency and textual representation
+     * Price with its currency and textual representation
      * interface fullName: order.Price.Price
      */
     export interface Price {
@@ -1916,7 +1923,7 @@ export interface Hosting {
                  * Create new cron
                  * POST /hosting/web/{serviceName}/cron
                  */
-                $post(params: { command: string, description?: string, email?: string, frequency: string, language: hosting.web.cron.LanguageEnum, status?: hosting.web.cron.StatusEnum }): Promise<string>;
+                $post(params: { command: string, description?: string, email?: string, frequency: string, language: hosting.web.cron.LanguageEnum, status?: hosting.web.cron.StatusEnum }): Promise<hosting.web.task>;
                 /**
                  * Controle cache
                  */
@@ -1926,7 +1933,7 @@ export interface Hosting {
                      * Delete cron
                      * DELETE /hosting/web/{serviceName}/cron/{id}
                      */
-                    $delete(): Promise<string>;
+                    $delete(): Promise<hosting.web.task>;
                     /**
                      * Get this object properties
                      * GET /hosting/web/{serviceName}/cron/{id}
@@ -1945,10 +1952,10 @@ export interface Hosting {
             }
             cronAvailableLanguage: {
                 /**
-                 * List available cron language
+                 * Get the list of supported languages by web domain
                  * GET /hosting/web/{serviceName}/cronAvailableLanguage
                  */
-                $get(): Promise<hosting.web.cron.LanguageEnum[]>;
+                $get(): Promise<hosting.web.LanguagesEnum[]>;
                 /**
                  * Controle cache
                  */

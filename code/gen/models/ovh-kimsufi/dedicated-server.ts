@@ -215,7 +215,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Configure SGX feature",
+          "description": "Enable or disable SGX and configure PRMRR size. This will cause your server to reboot one or several time(s).",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -1297,6 +1297,74 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicated/server/{serviceName}/option/{option}"
+    },
+    {
+      "description": "List the dedicated.server.PlannedIntervention objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Planned interventions for the server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/plannedIntervention"
+    },
+    {
+      "description": "Planned intervention on the server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "ID of the intervention",
+              "fullType": "long",
+              "name": "interventionId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.PlannedIntervention",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/plannedIntervention/{interventionId}"
     },
     {
       "description": "reboot operations",
@@ -2791,6 +2859,60 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/task/{taskId}"
     },
     {
+      "description": "availableTimeslots operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available time slots for intervention",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "the id of the task",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "date",
+              "description": "End of the period to query",
+              "fullType": "date",
+              "name": "periodEnd",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "date",
+              "description": "Begining of the period to query",
+              "fullType": "date",
+              "name": "periodStart",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.PlannedInterventionTimeSlot[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/task/{taskId}/availableTimeslots"
+    },
+    {
       "description": "cancel operations",
       "operations": [
         {
@@ -2827,6 +2949,60 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicated/server/{serviceName}/task/{taskId}/cancel"
+    },
+    {
+      "description": "schedule operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Schedule intervention",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Whether or not you have made a backup of your data",
+              "fullType": "boolean",
+              "name": "hasPerformedBackup",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Wanted begining date for your intervention",
+              "fullType": "datetime",
+              "name": "wantedBeginingDate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "the id of the task",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/task/{taskId}/schedule"
     },
     {
       "description": "Terminate your service",
@@ -4590,13 +4766,6 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
-        "resetHwRaid": {
-          "canBeNull": true,
-          "description": "Specify if we should attempt to reset hw raid on install.",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
         "softRaidDevices": {
           "canBeNull": true,
           "description": "Number of devices to use for system's software RAID",
@@ -6248,6 +6417,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "dedicated.TaskStatusEnum"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Task result tags output",
+          "fullType": "complexType.SafeKeyValueCanBeNull<string>[]",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.SafeKeyValueCanBeNull<string>[]"
         },
         "taskId": {
           "canBeNull": false,

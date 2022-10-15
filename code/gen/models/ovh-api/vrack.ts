@@ -1000,6 +1000,32 @@ export const schema: Schema = {
       "path": "/vrack/{serviceName}/dedicatedServerInterfaceDetails"
     },
     {
+      "description": "List all eligible services for this vRack asynchronously",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List all eligible services for this vRack asynchronously",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vrack.EligibleServicesResponse"
+        }
+      ],
+      "path": "/vrack/{serviceName}/eligibleServices"
+    },
+    {
       "description": "List the vrack.ip objects",
       "operations": [
         {
@@ -1968,6 +1994,163 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "uuid[]"
+        }
+      }
+    },
+    "vrack.EligibleDedicatedServerInterfaces": {
+      "description": "Dedicated server interfaces allowed for this vRack",
+      "id": "EligibleDedicatedServerInterfaces",
+      "namespace": "vrack",
+      "properties": {
+        "dedicatedServer": {
+          "canBeNull": false,
+          "description": "The name of the dedicatedServer",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "dedicatedServerInterface": {
+          "canBeNull": false,
+          "description": "The unique identifier of the dedicatedServerInterface",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The name of the dedicatedServerInterface",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "vrack.EligibleServices": {
+      "description": "Eligible services for this vRack",
+      "id": "EligibleServices",
+      "namespace": "vrack",
+      "properties": {
+        "cloudProject": {
+          "canBeNull": true,
+          "description": "List of publicCloud projects allowed to be connected to this vRack",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "dedicatedCloud": {
+          "canBeNull": true,
+          "description": "List of dedicated cloud allowed to be connected to this vRack",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "dedicatedCloudDatacenter": {
+          "canBeNull": true,
+          "description": "List of dedicated cloud datacenters allowed to be connected to this vRack",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "dedicatedConnect": {
+          "canBeNull": true,
+          "description": "List of dedicated connect links allowed to be connected to this vRack",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "dedicatedServer": {
+          "canBeNull": true,
+          "description": "List of dedicated servers allowed to be connected to this vRack",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "dedicatedServerInterface": {
+          "canBeNull": true,
+          "description": "List of dedicated server interfaces allowed to be connected to this vRack",
+          "fullType": "vrack.EligibleDedicatedServerInterfaces[]",
+          "readOnly": true,
+          "required": false,
+          "type": "vrack.EligibleDedicatedServerInterfaces[]"
+        },
+        "ip": {
+          "canBeNull": true,
+          "description": "List of blocks allowed to be connected to this vRack",
+          "fullType": "ipBlock[]",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock[]"
+        },
+        "ipLoadbalancing": {
+          "canBeNull": true,
+          "description": "List of ipLoadbalancing allowed to be connected to this vRack",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "legacyVrack": {
+          "canBeNull": true,
+          "description": "List of legacy vRack (1.0) allowed to be connected to this vRack",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "ovhCloudConnect": {
+          "canBeNull": true,
+          "description": "List of the ovhCloudConnect services allowed to be connected to this vRack",
+          "fullType": "uuid[]",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid[]"
+        }
+      }
+    },
+    "vrack.EligibleServicesResponse": {
+      "description": "Eligible services call response",
+      "id": "EligibleServicesResponse",
+      "namespace": "vrack",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation date of the call",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "errors": {
+          "canBeNull": false,
+          "description": "List of services where an error has been encountered",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "result": {
+          "canBeNull": false,
+          "description": "Eligible services for this vRack",
+          "fullType": "vrack.EligibleServices",
+          "readOnly": true,
+          "required": false,
+          "type": "vrack.EligibleServices"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the call",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },

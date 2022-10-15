@@ -92,8 +92,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-11-05T10:00:00+01:00",
+            "deprecatedDate": "2022-09-05T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/pack/xdsl/{packName}/addressMove/offers",
+            "value": "DEPRECATED"
           },
           "description": "Eligibility to move the access",
           "httpMethod": "POST",
@@ -138,8 +141,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-11-05T10:00:00+01:00",
+            "deprecatedDate": "2022-09-05T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/pack/xdsl/{packName}/addressMove/moveOffer",
+            "value": "DEPRECATED"
           },
           "description": "Move the Xdsl access to another address",
           "httpMethod": "POST",
@@ -392,6 +398,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "pack.xdsl.migration.OfferServiceToKeep[]",
+              "description": "List of domains of services to keep if needed",
+              "fullType": "pack.xdsl.migration.OfferServiceToKeep[]",
+              "name": "subServicesToKeep",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
               "description": "The internal name of your pack",
               "fullType": "string",
@@ -452,8 +466,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-12-15T10:00:00+01:00",
+            "deprecatedDate": "2022-10-25T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/pack/xdsl/{packName}/addressMove/servicesToDeleteUnpackTerms",
+            "value": "DEPRECATED"
           },
           "description": "Calculate services to delete with new offer and options",
           "httpMethod": "POST",
@@ -500,6 +517,60 @@ export const schema: Schema = {
         }
       ],
       "path": "/pack/xdsl/{packName}/addressMove/servicesToDelete"
+    },
+    {
+      "description": "servicesToDeleteUnpackTerms operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Calculate services to delete with unpack terms for new offer and options",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Eligibility reference",
+              "fullType": "string",
+              "name": "eligibilityReference",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Reference of the new offer",
+              "fullType": "string",
+              "name": "offerName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "pack.xdsl.migration.OfferOption[]",
+              "description": "Options wanted in the new offer",
+              "fullType": "pack.xdsl.migration.OfferOption[]",
+              "name": "options",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pack",
+              "fullType": "string",
+              "name": "packName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "pack.xdsl.migration.SubServicesDetailsToDelete[]",
+          "scopes": [
+            "all",
+            "product/pack-xdsl/all"
+          ]
+        }
+      ],
+      "path": "/pack/xdsl/{packName}/addressMove/servicesToDeleteUnpackTerms"
     },
     {
       "description": "canCancelResiliation operations",
@@ -1794,6 +1865,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "pack.xdsl.migration.OfferServiceToKeep[]",
+              "description": "List of domains of services to keep if needed",
+              "fullType": "pack.xdsl.migration.OfferServiceToKeep[]",
+              "name": "subServicesToKeep",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
               "description": "The internal name of your pack",
               "fullType": "string",
@@ -1854,8 +1933,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2022-12-15T10:00:00+01:00",
+            "deprecatedDate": "2022-10-25T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/pack/xdsl/{packName}/migration/servicesToDeleteUnpackTerms",
+            "value": "DEPRECATED"
           },
           "description": "Calculate services to delete with new offer and options",
           "httpMethod": "POST",
@@ -1894,6 +1976,52 @@ export const schema: Schema = {
         }
       ],
       "path": "/pack/xdsl/{packName}/migration/servicesToDelete"
+    },
+    {
+      "description": "servicesToDeleteUnpackTerms operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Calculate services to delete with unpack terms for an offer and options",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Reference of the new offer",
+              "fullType": "string",
+              "name": "offerName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "pack.xdsl.migration.OfferOption[]",
+              "description": "Options wanted in the new offer",
+              "fullType": "pack.xdsl.migration.OfferOption[]",
+              "name": "options",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pack",
+              "fullType": "string",
+              "name": "packName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "pack.xdsl.migration.SubServicesDetailsToDelete[]",
+          "scopes": [
+            "all",
+            "product/pack-xdsl/all"
+          ]
+        }
+      ],
+      "path": "/pack/xdsl/{packName}/migration/servicesToDeleteUnpackTerms"
     },
     {
       "description": "capabilities operations",
@@ -3889,6 +4017,13 @@ export const schema: Schema = {
         "exchangeIndividual",
         "exchangeLite",
         "exchangeOrganization",
+        "grt10ho",
+        "grt20m10ho",
+        "grt20m4ho",
+        "grt4ho",
+        "grt5m10ho",
+        "grt5m4ho",
+        "grtOvh",
         "hostedEmail",
         "hubic",
         "modem",
@@ -4511,6 +4646,13 @@ export const schema: Schema = {
           "required": false,
           "type": "pack.xdsl.addressMove.Price"
         },
+        "gtrComfortFees": {
+          "canBeNull": true,
+          "description": "Install fee for GTR option comfort additional cost",
+          "readOnly": false,
+          "required": false,
+          "type": "pack.xdsl.addressMove.Price"
+        },
         "installFees": {
           "canBeNull": false,
           "description": "Installation fees",
@@ -4538,6 +4680,20 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "pack.xdsl.migrationAndAddressMove.Promotion"
+        },
+        "providerAI": {
+          "canBeNull": true,
+          "description": "Subscription price for provider AI additional cost",
+          "readOnly": false,
+          "required": false,
+          "type": "pack.xdsl.addressMove.Price"
+        },
+        "providerOrange": {
+          "canBeNull": true,
+          "description": "Subscription price for provider ORANGE additional cost",
+          "readOnly": false,
+          "required": false,
+          "type": "pack.xdsl.addressMove.Price"
         }
       }
     },
@@ -4598,6 +4754,13 @@ export const schema: Schema = {
         "firstYearPromo": {
           "canBeNull": true,
           "description": "Subscription price the first year",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
+        },
+        "gtrComfortFees": {
+          "canBeNull": true,
+          "description": "Install fee for GTR option comfort additional cost",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -4664,6 +4827,20 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "pack.xdsl.migrationAndAddressMove.Promotion"
+        },
+        "providerAI": {
+          "canBeNull": true,
+          "description": "Subscription price for provider AI additional cost",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
+        },
+        "providerOrange": {
+          "canBeNull": true,
+          "description": "Subscription price for provider ORANGE additional cost",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
         },
         "subServicesToDelete": {
           "canBeNull": false,
@@ -4786,6 +4963,69 @@ export const schema: Schema = {
         }
       }
     },
+    "pack.xdsl.migration.OfferServiceToKeep": {
+      "description": "Option of Offer",
+      "id": "OfferServiceToKeep",
+      "namespace": "pack.xdsl.migration",
+      "properties": {
+        "service": {
+          "canBeNull": false,
+          "description": "Type of the service",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of the service to keep",
+          "readOnly": false,
+          "required": false,
+          "type": "pack.xdsl.ServiceNameEnum"
+        }
+      }
+    },
+    "pack.xdsl.migration.SubServiceDetails": {
+      "description": "Sub service with unpack terms details",
+      "id": "SubServiceDetails",
+      "namespace": "pack.xdsl.migration",
+      "properties": {
+        "isAllowed": {
+          "canBeNull": false,
+          "description": "Tells whether or not the service can be unpacked",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Price bill on the unpack action",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
+        },
+        "renewPeriod": {
+          "canBeNull": false,
+          "description": "Renew period in month of the service",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
+        },
+        "renewPrice": {
+          "canBeNull": false,
+          "description": "The price it will cost when it will be renewed",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
+        },
+        "service": {
+          "canBeNull": false,
+          "description": "sub service name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "pack.xdsl.migration.SubServiceToDelete": {
       "description": "Sub service to delete",
       "id": "SubServiceToDelete",
@@ -4804,6 +5044,34 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string[]"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of service to be deleted",
+          "readOnly": false,
+          "required": false,
+          "type": "pack.xdsl.ServiceNameEnum"
+        }
+      }
+    },
+    "pack.xdsl.migration.SubServicesDetailsToDelete": {
+      "description": "Sub services to delete with unpack terms",
+      "id": "SubServicesDetailsToDelete",
+      "namespace": "pack.xdsl.migration",
+      "properties": {
+        "numberToDelete": {
+          "canBeNull": false,
+          "description": "Number of services to be deleted",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "services": {
+          "canBeNull": false,
+          "description": "List of domains of sub services with unpack terms",
+          "readOnly": false,
+          "required": false,
+          "type": "pack.xdsl.migration.SubServiceDetails[]"
         },
         "type": {
           "canBeNull": false,
@@ -5323,6 +5591,13 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "datetime"
+        },
+        "slotId": {
+          "canBeNull": true,
+          "description": "Represent a meeting id for a fiber collect operator",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "startDate": {
           "canBeNull": false,

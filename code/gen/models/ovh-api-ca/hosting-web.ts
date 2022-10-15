@@ -6,7 +6,7 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Operations about the HOSTING service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -27,7 +27,7 @@ export const schema: Schema = {
       "path": "/hosting/web"
     },
     {
-      "description": "Web Hosting",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -40,7 +40,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -64,14 +64,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "hosting.web.Service",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "hosting.web.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -605,7 +605,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -635,7 +635,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -673,7 +673,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -711,7 +711,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -757,7 +757,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -796,7 +796,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -842,7 +842,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -882,7 +882,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -929,7 +929,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -967,7 +967,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1021,7 +1021,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1059,7 +1059,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1097,7 +1097,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1135,7 +1135,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1551,7 +1551,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
+          "responseType": "hosting.web.task",
           "scopes": [
             "all",
             "product/hosting-web/all"
@@ -1589,7 +1589,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
+          "responseType": "hosting.web.task",
           "scopes": [
             "all",
             "product/hosting-web/all"
@@ -1670,27 +1670,27 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/cron/{id}"
     },
     {
-      "description": "cronAvailableLanguage operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available cron language",
+          "description": "Get the list of supported languages by web domain",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.web.cron.LanguageEnum[]",
+          "responseType": "hosting.web.LanguagesEnum[]",
           "scopes": [
             "all",
             "product/hosting-web/all"
@@ -6708,6 +6708,8 @@ export const schema: Schema = {
     "cdn.OperationFunctionEnum": {
       "description": "Operation function",
       "enum": [
+        "analytics_delete",
+        "analytics_recompute",
         "domain_delete",
         "domain_disable",
         "domain_purge",
@@ -7424,6 +7426,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "date": {
+          "canBeNull": true,
+          "description": "Date",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
         "domainName": {
           "canBeNull": true,
           "description": "Domain name",
@@ -7531,13 +7541,17 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Unit of the value",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Value",
+          "fullType": "T",
+          "readOnly": true,
           "required": false,
           "type": "T"
         }
@@ -7566,7 +7580,6 @@ export const schema: Schema = {
         "postgresql_10",
         "postgresql_11",
         "postgresql_12",
-        "postgresql_9.6",
         "redis_4.0",
         "redis_6.0"
       ],
@@ -7582,6 +7595,7 @@ export const schema: Schema = {
         "port": {
           "canBeNull": false,
           "description": "Port to use to access to the service",
+          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -7589,6 +7603,7 @@ export const schema: Schema = {
         "url": {
           "canBeNull": false,
           "description": "Url to contact the service",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7603,6 +7618,7 @@ export const schema: Schema = {
         "offer": {
           "canBeNull": false,
           "description": "Available boost offer",
+          "fullType": "hosting.web.OfferEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.OfferEnum"
@@ -7610,6 +7626,7 @@ export const schema: Schema = {
         "price": {
           "canBeNull": false,
           "description": "The price in month for this boost offer",
+          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -7750,6 +7767,7 @@ export const schema: Schema = {
         "country": {
           "canBeNull": false,
           "description": "The whois country of the ip",
+          "fullType": "hosting.web.CountryEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.CountryEnum"
@@ -7757,16 +7775,18 @@ export const schema: Schema = {
         "ip": {
           "canBeNull": false,
           "description": "The cluster ip",
+          "fullType": "ipv4",
           "readOnly": false,
           "required": false,
-          "type": "ip"
+          "type": "ipv4"
         },
         "ipv6": {
           "canBeNull": true,
           "description": "The cluster ipv6",
+          "fullType": "ipv6",
           "readOnly": false,
           "required": false,
-          "type": "ip"
+          "type": "ipv6"
         }
       }
     },
@@ -7907,6 +7927,38 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "HighLightEnum",
+      "namespace": "hosting.web"
+    },
+    "hosting.web.LanguagesEnum": {
+      "description": "Web supported languages",
+      "enum": [
+        "node10",
+        "node11",
+        "node12",
+        "node14",
+        "node8",
+        "node9",
+        "other",
+        "php4",
+        "php5.2",
+        "php5.3",
+        "php5.4",
+        "php5.5",
+        "php5.6",
+        "php7.0",
+        "php7.1",
+        "php7.2",
+        "php7.3",
+        "php7.4",
+        "php8.0",
+        "php8.1",
+        "python2",
+        "python3",
+        "ruby2.5",
+        "ruby2.6"
+      ],
+      "enumType": "string",
+      "id": "LanguagesEnum",
       "namespace": "hosting.web"
     },
     "hosting.web.ModuleList": {
@@ -8216,6 +8268,7 @@ export const schema: Schema = {
         "support": {
           "canBeNull": false,
           "description": "Current support of this php version",
+          "fullType": "hosting.web.PhpVersionStateEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.PhpVersionStateEnum"
@@ -8223,6 +8276,7 @@ export const schema: Schema = {
         "version": {
           "canBeNull": false,
           "description": "PHP version",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8331,18 +8385,18 @@ export const schema: Schema = {
         "clusterIp": {
           "canBeNull": true,
           "description": "This direct ip to your cluster ( usefull for application like api )",
-          "fullType": "ip",
+          "fullType": "ipv4",
           "readOnly": true,
           "required": false,
-          "type": "ip"
+          "type": "ipv4"
         },
         "clusterIpv6": {
           "canBeNull": true,
           "description": "This direct ipv6 to your cluster ( usefull for application like api )",
-          "fullType": "ip",
+          "fullType": "ipv6",
           "readOnly": true,
           "required": false,
-          "type": "ip"
+          "type": "ipv6"
         },
         "countriesIp": {
           "canBeNull": true,
@@ -8403,18 +8457,18 @@ export const schema: Schema = {
         "hostingIp": {
           "canBeNull": true,
           "description": "The recommended ip for your hosting ( depends on hosting's linked services, e.g CDN or hostedSSL )",
-          "fullType": "ip",
+          "fullType": "ipv4",
           "readOnly": true,
           "required": false,
-          "type": "ip"
+          "type": "ipv4"
         },
         "hostingIpv6": {
           "canBeNull": true,
           "description": "The recommended ipv6 for your hosting ( depends on hosting's linked services, e.g CDN or hostedSSL )",
-          "fullType": "ip",
+          "fullType": "ipv6",
           "readOnly": true,
           "required": false,
-          "type": "ip"
+          "type": "ipv6"
         },
         "lastOvhConfigScan": {
           "canBeNull": true,
@@ -8554,6 +8608,7 @@ export const schema: Schema = {
         "ftp": {
           "canBeNull": false,
           "description": "Address with url and port to manage files by ftp",
+          "fullType": "hosting.web.Address",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.Address"
@@ -8561,6 +8616,7 @@ export const schema: Schema = {
         "http": {
           "canBeNull": false,
           "description": "Address to see your webhosting without domain",
+          "fullType": "hosting.web.Address",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.Address"
@@ -8568,6 +8624,7 @@ export const schema: Schema = {
         "ssh": {
           "canBeNull": false,
           "description": "Address with url and port to manage webhosting by ssh",
+          "fullType": "hosting.web.Address",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.Address"
@@ -9558,6 +9615,7 @@ export const schema: Schema = {
         "5.1",
         "5.5",
         "5.6",
+        "5.7",
         "8.4"
       ],
       "enumType": "string",
@@ -11830,13 +11888,13 @@ export const schema: Schema = {
       "namespace": "hosting.web.userLogs"
     },
     "order.CurrencyCodeEnum": {
+      "description": "Currency code",
       "enum": [
         "AUD",
         "CAD",
         "CZK",
         "EUR",
         "GBP",
-        "INR",
         "LTL",
         "MAD",
         "N/A",
@@ -11852,25 +11910,31 @@ export const schema: Schema = {
       "namespace": "order"
     },
     "order.Price": {
-      "description": "Price with it's currency and textual representation",
+      "description": "Price with its currency and textual representation",
       "id": "Price",
       "namespace": "order",
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Currency code",
+          "fullType": "order.CurrencyCodeEnum",
+          "readOnly": true,
           "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Textual representation",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "The effective price",
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         }

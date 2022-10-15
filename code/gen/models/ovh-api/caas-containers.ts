@@ -854,7 +854,7 @@ export const schema: Schema = {
         },
         "diskHa": {
           "canBeNull": false,
-          "description": "Wether the disk is HA (stored in Ceph) or local (SSD)",
+          "description": "Whether the disk is HA (stored in Ceph) or local (SSD)",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,

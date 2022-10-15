@@ -1318,14 +1318,14 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/serviceInfos"
     },
     {
-      "description": "List the domain.Task objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Domain pending tasks",
+          "description": "List all domain tasks",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1364,20 +1364,20 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/task"
     },
     {
-      "description": "Tasks associated to domain",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get details about a domain task",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1402,7 +1402,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/task/{id}"
     },
     {
-      "description": "accelerate operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1415,7 +1415,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1440,7 +1440,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/task/{id}/accelerate"
     },
     {
-      "description": "cancel operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1453,7 +1453,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1478,7 +1478,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/task/{id}/cancel"
     },
     {
-      "description": "relaunch operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1491,7 +1491,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3231,7 +3231,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of subDomain property (like)",
+              "description": "Filter the value of subDomain property (ilike)",
               "fullType": "string",
               "name": "subDomain",
               "paramType": "query",
@@ -4138,11 +4138,12 @@ export const schema: Schema = {
       }
     },
     "dnssec.KeyAlgorithmEnum": {
-      "description": "Dnssec Algorithm\n                        ###\n                        5  : RSASHA1\n                        7  : RSASHA1-NSEC3-SHA1\n                        8  : RSASHA256\n                        10 : RSASHA512\n                        13 : ECDSAP256SHA256\n                        14 : ECDSAP384SHA384",
+      "description": "Dnssec Algorithm\n                        ###\n                        5  : RSASHA1\n                        7  : RSASHA1-NSEC3-SHA1\n                        8  : RSASHA256\n                        10 : RSASHA512\n                        13 : ECDSAP256SHA256\n                        14 : ECDSAP384SHA384\n                        15 : ED25519",
       "enum": [
         "10",
         "13",
         "14",
+        "15",
         "5",
         "7",
         "8"
@@ -4789,6 +4790,22 @@ export const schema: Schema = {
           "required": false,
           "type": "domain.ParentService"
         },
+        "state": {
+          "canBeNull": false,
+          "description": "Current state of the domain",
+          "fullType": "domain.DomainStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.DomainStateEnum"
+        },
+        "suspensionState": {
+          "canBeNull": false,
+          "description": "Current suspension state of the domain",
+          "fullType": "domain.DomainSuspensionStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.DomainSuspensionStateEnum"
+        },
         "transferLockStatus": {
           "canBeNull": false,
           "description": "Transfer lock status",
@@ -4847,6 +4864,32 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "DomainOptionStateEnum",
+      "namespace": "domain"
+    },
+    "domain.DomainStateEnum": {
+      "description": "Domain name current state",
+      "enum": [
+        "deleted",
+        "dispute",
+        "expired",
+        "ok",
+        "outgoing_transfer",
+        "pending_delete",
+        "pending_installation",
+        "restorable"
+      ],
+      "enumType": "string",
+      "id": "DomainStateEnum",
+      "namespace": "domain"
+    },
+    "domain.DomainSuspensionStateEnum": {
+      "description": "Domain name current suspension state",
+      "enum": [
+        "not_suspended",
+        "suspended"
+      ],
+      "enumType": "string",
+      "id": "DomainSuspensionStateEnum",
       "namespace": "domain"
     },
     "domain.IsForEnum": {
@@ -5072,6 +5115,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "datetime"
+        },
+        "domain": {
+          "canBeNull": true,
+          "description": "Domain of the task",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "doneDate": {
           "canBeNull": true,
@@ -7445,6 +7496,7 @@ export const schema: Schema = {
     "nichandle.LanguageEnum": {
       "description": "Languages a nichandle can choose",
       "enum": [
+        "cs_CZ",
         "de_DE",
         "en_AU",
         "en_CA",
@@ -7452,12 +7504,14 @@ export const schema: Schema = {
         "en_IE",
         "en_US",
         "es_ES",
+        "fi_FI",
         "fr_CA",
         "fr_FR",
         "fr_MA",
         "fr_SN",
         "fr_TN",
         "it_IT",
+        "lt_LT",
         "nl_NL",
         "pl_PL",
         "pt_PT"

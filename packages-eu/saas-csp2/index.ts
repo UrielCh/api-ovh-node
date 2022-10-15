@@ -110,7 +110,7 @@ export namespace saas {
          * Office tenant state
          * type fullname: saas.csp2.ServiceStateEnum
          */
-        export type ServiceStateEnum = "creating" | "inMaintenance" | "ok" | "suspended" | "suspending"
+        export type ServiceStateEnum = "creating" | "inMaintenance" | "ok" | "reopening" | "suspended" | "suspending"
         /**
          * License usage statistics.
          * interface fullName: saas.csp2.Statistics.Statistics

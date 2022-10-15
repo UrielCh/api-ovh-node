@@ -379,6 +379,16 @@ export namespace dedicatedCloud {
         url?: string;
     }
     /**
+     * The Dedicated Cloud NSX-T option
+     * interface fullName: dedicatedCloud.Nsxt.Nsxt
+     */
+    export interface Nsxt {
+        datacentersState?: dedicatedCloudoptionDatacenterOptionState[];
+        state: dedicatedCloudoptionStateEnum;
+        url?: string;
+        version?: string;
+    }
+    /**
      * Dedicated Cloud User object right
      * interface fullName: dedicatedCloud.ObjectRight.ObjectRight
      */
@@ -539,6 +549,7 @@ export namespace dedicatedCloud {
         canManageNetwork: boolean;
         canManageRights: boolean;
         email?: string;
+        encryptionRight: boolean;
         firstName?: string;
         fullAdminRo: boolean;
         isEnableManageable: boolean;
@@ -907,6 +918,18 @@ export namespace dedicatedCloud {
          * type fullname: dedicatedCloud.disasterRecovery.VpnConfigStateEnum
          */
         export type VpnConfigStateEnum = "configured" | "configuring" | "error" | "notConfigured" | "tunnelError"
+        /**
+         * Information on virtual machine protected by Zerto
+         * interface fullName: dedicatedCloud.disasterRecovery.ZertoProtectedVm.ZertoProtectedVm
+         */
+        export interface ZertoProtectedVm {
+            fromDate: string;
+            protectedSite: string;
+            recoverySite: string;
+            vmId: string;
+            vmName: string;
+            vpgName: string;
+        }
     }
     export namespace filer {
         /**
@@ -1005,6 +1028,14 @@ export namespace dedicatedCloud {
         warpEndpoint: string;
     }
     export namespace option {
+        /**
+         * States of a Dedicated Cloud Datacenter Option
+         * interface fullName: dedicatedCloud.option.DatacenterOptionState.DatacenterOptionState
+         */
+        export interface DatacenterOptionState {
+            id: number;
+            state: dedicatedCloudoptionStateEnum;
+        }
         /**
          * States of a Dedicated Cloud option
          * type fullname: dedicatedCloud.option.StateEnum
@@ -1635,6 +1666,28 @@ export interface DedicatedCloud {
                 }
             };
         }
+        backupRepository: {
+            /**
+             * Backup repositories associated with this Pcc
+             * GET /dedicatedCloud/{serviceName}/backupRepository
+             */
+            $get(): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(repositoryId: number): {
+                /**
+                 * Get this object properties
+                 * GET /dedicatedCloud/{serviceName}/backupRepository/{repositoryId}
+                 */
+                $get(): Promise<dedicatedCloud.BackupRepository>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
         capabilities: {
             /**
              * Get this object properties
@@ -1895,6 +1948,17 @@ export interface DedicatedCloud {
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/status
                              */
                             $get(): Promise<dedicatedCloud.disasterRecovery.Profile>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        usageReport: {
+                            /**
+                             * Get the list of VMs protected by Zerto for a specific month on your dedicated Cloud.
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/usageReport
+                             */
+                            $get(params: { month: number, year: number }): Promise<dedicatedCloud.disasterRecovery.ZertoProtectedVm[]>;
                             /**
                              * Controle cache
                              */
@@ -2834,6 +2898,17 @@ export interface DedicatedCloud {
                 $post(): Promise<dedicatedCloud.Task>;
             }
         }
+        nsxt: {
+            /**
+             * Get this object properties
+             * GET /dedicatedCloud/{serviceName}/nsxt
+             */
+            $get(): Promise<dedicatedCloud.Nsxt>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
         orderNewFilerHourly: {
             /**
              * Order a new hourly Filer mounted in every Datacenter of a given Dedicated Cloud
@@ -3145,7 +3220,7 @@ export interface DedicatedCloud {
              * Create a new User in your Dedicated Cloud
              * POST /dedicatedCloud/{serviceName}/user
              */
-            $post(params: { canAddRessource?: boolean, canManageRights?: boolean, email?: string, expirationDate?: string, firstName?: string, lastName?: string, name: string, networkRole?: dedicatedCloudrightNetworkRoleEnum, nsxRight?: boolean, password?: string, phoneNumber?: string, receiveAlerts?: boolean, right?: dedicatedCloudrightRightEnum, tokenValidator?: boolean, vmNetworkRole?: dedicatedCloudrightVmNetworkRoleEnum }): Promise<dedicatedCloud.Task>;
+            $post(params: { canAddRessource?: boolean, canManageRights?: boolean, email?: string, encryptionRight?: boolean, expirationDate?: string, firstName?: string, lastName?: string, name: string, networkRole?: dedicatedCloudrightNetworkRoleEnum, nsxRight?: boolean, password?: string, phoneNumber?: string, receiveAlerts?: boolean, right?: dedicatedCloudrightRightEnum, tokenValidator?: boolean, vmNetworkRole?: dedicatedCloudrightVmNetworkRoleEnum }): Promise<dedicatedCloud.Task>;
             /**
              * Controle cache
              */
@@ -3177,7 +3252,7 @@ export interface DedicatedCloud {
                      * Change Dedicated Cloud user properties
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/changeProperties
                      */
-                    $post(params?: { canManageIpFailOvers?: boolean, canManageNetwork?: boolean, canManageRights?: boolean, email?: string, firstName?: string, fullAdminRo?: boolean, lastName?: string, nsxRight?: boolean, phoneNumber?: string, receiveAlerts?: boolean, tokenValidator?: boolean }): Promise<dedicatedCloud.Task>;
+                    $post(params?: { canManageIpFailOvers?: boolean, canManageNetwork?: boolean, canManageRights?: boolean, email?: string, encryptionRight?: boolean, firstName?: string, fullAdminRo?: boolean, lastName?: string, nsxRight?: boolean, phoneNumber?: string, receiveAlerts?: boolean, tokenValidator?: boolean }): Promise<dedicatedCloud.Task>;
                 }
                 confirmPhoneNumber: {
                     /**
@@ -3523,6 +3598,7 @@ type dedicatedCloudHostStockHypervisor = dedicatedCloud.HostStockHypervisor;
 type dedicatedCloudHostStockProcGen = dedicatedCloud.HostStockProcGen;
 type dedicatedCloudBlockRegisterEnum = dedicatedCloud.BlockRegisterEnum;
 type dedicatedCloudipUsageEnum = dedicatedCloud.ipUsageEnum;
+type dedicatedCloudoptionDatacenterOptionState = dedicatedCloud.option.DatacenterOptionState;
 type dedicatedCloudrightRightEnum = dedicatedCloud.right.RightEnum;
 type dedicatedCloudrightUserObjectRightTypeEnum = dedicatedCloud.right.UserObjectRightTypeEnum;
 type dedicatedCloudbackupBackupTypeEnum = dedicatedCloud.backup.BackupTypeEnum;

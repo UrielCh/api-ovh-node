@@ -1678,7 +1678,7 @@ export const schema: Schema = {
         },
         "isRemovable": {
           "canBeNull": false,
-          "description": "Wether or not the Node is removable",
+          "description": "Whether or not the Node is removable",
           "fullType": "boolean",
           "readOnly": true,
           "required": false,

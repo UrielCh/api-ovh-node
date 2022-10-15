@@ -403,7 +403,7 @@ export namespace billing {
      * All payment means you might have use on an OVH order
      * type fullname: billing.PaymentMeanEnum
      */
-    export type PaymentMeanEnum = "cash" | "chargeback" | "cheque" | "creditAccount" | "creditCard" | "debtAccount" | "deposit" | "digitalLaunchPad" | "edinar" | "fidelityPoints" | "free" | "ideal" | "incubatorAccount" | "mandat" | "multibanco" | "none" | "ovhAccount" | "paymentMandate" | "paypal" | "payu" | "platnosci" | "refund" | "transfer" | "withdrawal"
+    export type PaymentMeanEnum = "cash" | "chargeback" | "check" | "cheque" | "creditAccount" | "creditCard" | "debtAccount" | "deposit" | "digitalLaunchPad" | "edinar" | "fidelityPoints" | "free" | "ideal" | "incubatorAccount" | "mandat" | "multibanco" | "none" | "ovhAccount" | "paymentMandate" | "paypal" | "payu" | "platnosci" | "refund" | "rupay" | "transfer" | "withdrawal"
     /**
      * Details about a Refund
      * interface fullName: billing.Refund.Refund
@@ -438,7 +438,7 @@ export namespace billing {
      * Reusable payment mean type
      * type fullname: billing.ReusablePaymentMeanEnum
      */
-    export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "bankAccount" | "creditCard" | "deferredPaymentAccount" | "fidelityAccount" | "ovhAccount" | "paypal"
+    export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "DOMESTIC_CARD" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "RUPAY" | "SEPA_DIRECT_DEBIT" | "bankAccount" | "creditCard" | "deferredPaymentAccount" | "fidelityAccount" | "ovhAccount" | "paypal"
     /**
      * SLA properties
      * interface fullName: billing.SlaOperation.SlaOperation
@@ -699,6 +699,7 @@ export namespace billing {
          */
         export interface PaymentMethods {
             available: payment.method.AvailablePaymentMethod[];
+            paymentMethods: payment.method.PaymentMethod[];
             registered: number[];
         }
         /**
@@ -935,7 +936,7 @@ export namespace debt {
          * All operations a debt entry can represent
          * type fullname: debt.entry.OperationEnum
          */
-        export type OperationEnum = "CANCEL" | "CASH_MANUAL" | "CHECK_MANUAL" | "CREDITCARD" | "CREDITCARD_AUTOMATIC" | "CREDITCARD_MANUAL" | "CREDIT_ACCOUNT_AUTOMATIC" | "EDINAR_MANUAL" | "IDEAL_AUTOMATIC" | "IDEAL_MANUAL" | "MULTIBANCO_AUTOMATIC" | "MULTIBANCO_MANUAL" | "ORDER" | "PAYPAL_AUTOMATIC" | "PAYPAL_MANUAL" | "PAYU_AUTOMATIC" | "PAYU_MANUAL" | "RECOVERY_TRANSFER_AUTOMATIC" | "REFUND" | "REFUND_CHECK" | "REFUND_CREDITCARD" | "REFUND_CREDIT_ACCOUNT" | "REFUND_IDEAL" | "REFUND_LOSS" | "REFUND_MULTIBANCO" | "REFUND_PAYPAL" | "REFUND_PAYU" | "REFUND_SEPA" | "REFUND_TRANSFER" | "REFUND_UNKNOWN" | "SEPA_AUTOMATIC" | "TRANSFER_MANUAL" | "UNPAID_CHECK" | "UNPAID_CREDITCARD" | "UNPAID_CREDIT_ACCOUNT" | "UNPAID_IDEAL" | "UNPAID_MULTIBANCO" | "UNPAID_PAYPAL" | "UNPAID_PAYU" | "UNPAID_SEPA" | "UNPAID_WITHDRAW" | "WARRANT_MANUAL" | "WITHDRAW_AUTOMATIC"
+        export type OperationEnum = "CANCEL" | "CASH_MANUAL" | "CHECK_MANUAL" | "CREDITCARD" | "CREDITCARD_AUTOMATIC" | "CREDITCARD_MANUAL" | "CREDIT_ACCOUNT_AUTOMATIC" | "CREDIT_CARD_AUTOMATIC" | "CREDIT_CARD_MANUAL" | "CURRENT_ACCOUNT_AUTOMATIC" | "CURRENT_ACCOUNT_MANUAL" | "DOMESTIC_CARD_AUTOMATIC" | "DOMESTIC_CARD_MANUAL" | "EDINAR_MANUAL" | "ENTERPRISE_AUTOMATIC" | "ENTERPRISE_MANUAL" | "IDEAL_AUTOMATIC" | "IDEAL_MANUAL" | "INCOMING_AUTOMATIC" | "INCOMING_MANUAL" | "INTERNAL_TRUSTED_ACCOUNT_AUTOMATIC" | "INTERNAL_TRUSTED_ACCOUNT_MANUAL" | "MULTIBANCO_AUTOMATIC" | "MULTIBANCO_MANUAL" | "ORDER" | "PAYPAL_AUTOMATIC" | "PAYPAL_MANUAL" | "PAYU_AUTOMATIC" | "PAYU_MANUAL" | "RECOVERY_TRANSFER_AUTOMATIC" | "REFUND" | "REFUND_CHECK" | "REFUND_CREDITCARD" | "REFUND_CREDIT_ACCOUNT" | "REFUND_CREDIT_CARD" | "REFUND_CURRENT_ACCOUNT" | "REFUND_DOMESTIC_CARD" | "REFUND_ENTERPRISE" | "REFUND_IDEAL" | "REFUND_INCOMING" | "REFUND_INTERNAL_TRUSTED_ACCOUNT" | "REFUND_LOSS" | "REFUND_MULTIBANCO" | "REFUND_PAYPAL" | "REFUND_PAYU" | "REFUND_RUPAY" | "REFUND_SEPA" | "REFUND_SEPA_DIRECT_DEBIT" | "REFUND_TRANSFER" | "REFUND_UNKNOWN" | "RUPAY_AUTOMATIC" | "RUPAY_MANUAL" | "SEPA_AUTOMATIC" | "SEPA_DIRECT_DEBIT_AUTOMATIC" | "SEPA_DIRECT_DEBIT_MANUAL" | "TRANSFER_MANUAL" | "UNPAID_CHECK" | "UNPAID_CREDITCARD" | "UNPAID_CREDIT_ACCOUNT" | "UNPAID_CREDIT_CARD" | "UNPAID_CURRENT_ACCOUNT" | "UNPAID_DOMESTIC_CARD" | "UNPAID_ENTERPRISE" | "UNPAID_IDEAL" | "UNPAID_INCOMING" | "UNPAID_INTERNAL_TRUSTED_ACCOUNT" | "UNPAID_MULTIBANCO" | "UNPAID_PAYPAL" | "UNPAID_PAYU" | "UNPAID_RUPAY" | "UNPAID_SEPA" | "UNPAID_SEPA_DIRECT_DEBIT" | "UNPAID_WITHDRAW" | "WARRANT_MANUAL" | "WIRE_TRANSFER_MANUAL" | "WITHDRAW_AUTOMATIC"
         /**
          * All status a debt HistoryOrder entry can be in
          * type fullname: debt.entry.StatusDebtOrderEnum
@@ -1018,7 +1019,7 @@ export namespace dedicated {
      * Os subfamily definition
      * type fullname: dedicated.TemplateOsSubfamilyEnum
      */
-    export type TemplateOsSubfamilyEnum = "aos" | "arch" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "slackware" | "smartos" | "solusvm" | "suse" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
+    export type TemplateOsSubfamilyEnum = "alma" | "aos" | "arch" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "rocky" | "slackware" | "sles-sap" | "smartos" | "solusvm" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
     /**
      * Os type
      * type fullname: dedicated.TemplateOsTypeEnum
@@ -1122,15 +1123,15 @@ export namespace domain {
      */
     export type DocumentFormatsEnum = "gif" | "jpeg" | "jpg" | "pdf" | "png"
     /**
-     * Operation functions
-     * type fullname: domain.NicOperationFunctionEnum
-     */
-    export type NicOperationFunctionEnum = "ContactControl" | "DnsAnycastActivate" | "DnsAnycastDeactivate" | "DnssecDisable" | "DnssecEnable" | "DnssecResigning" | "DnssecRollKsk" | "DnssecRollZsk" | "DomainAfterMarket" | "DomainContactControl" | "DomainContactUpdate" | "DomainControl" | "DomainCreate" | "DomainDelete" | "DomainDnsUpdate" | "DomainDsUpdate" | "DomainEmailRedirectionsCreate" | "DomainEmailRedirectionsDelete" | "DomainHold" | "DomainHostCreate" | "DomainHostDelete" | "DomainHostUpdate" | "DomainIncomingTransfer" | "DomainLock" | "DomainOutgoingTransfer" | "DomainRegistryDelete" | "DomainRenew" | "DomainResourceDelete" | "DomainRestore" | "DomainTrade" | "DomainUnhold" | "DomainUnlock" | "ZoneImport"
-    /**
-     * operation Action
+     * Operation actions
      * type fullname: domain.OperationActionEnum
      */
     export type OperationActionEnum = "canCancel" | "canCorrect" | "canRelaunch" | "canReset"
+    /**
+     * Operation functions
+     * type fullname: domain.OperationFunctionEnum
+     */
+    export type OperationFunctionEnum = "ContactControl" | "DnsAnycastActivate" | "DnsAnycastDeactivate" | "DnssecDisable" | "DnssecEnable" | "DnssecResigning" | "DnssecRollKsk" | "DnssecRollZsk" | "DomainAfterMarket" | "DomainContactControl" | "DomainContactUpdate" | "DomainControl" | "DomainCreate" | "DomainDelete" | "DomainDnsUpdate" | "DomainDsUpdate" | "DomainEmailRedirectionsCreate" | "DomainEmailRedirectionsDelete" | "DomainHold" | "DomainHostCreate" | "DomainHostDelete" | "DomainHostUpdate" | "DomainIncomingTransfer" | "DomainLock" | "DomainOutgoingTransfer" | "DomainRegistryDelete" | "DomainRenew" | "DomainResourceDelete" | "DomainRestore" | "DomainTrade" | "DomainUnhold" | "DomainUnlock" | "ZoneImport"
     /**
      * Operation status
      * type fullname: domain.OperationStatusEnum
@@ -1144,6 +1145,24 @@ export namespace domain {
         description: string;
         executionDuration: number;
         step: string;
+    }
+    /**
+     * Tasks associated to domain
+     * interface fullName: domain.Task.Task
+     */
+    export interface Task {
+        canAccelerate: boolean;
+        canCancel: boolean;
+        canRelaunch: boolean;
+        comment?: string;
+        creationDate: string;
+        domain?: string;
+        doneDate?: string;
+        function: string;
+        id: number;
+        lastUpdate: string;
+        status: domain.OperationStatusEnum;
+        todoDate: string;
     }
 }
 export namespace http {
@@ -1746,7 +1765,7 @@ export namespace me {
              * Payment method status
              * type fullname: me.payment.method.StatusEnum
              */
-            export type StatusEnum = "CANCELED" | "CANCELING" | "CREATED" | "CREATING" | "ERROR" | "EXPIRED" | "FAILED" | "MAINTENANCE" | "PAUSED" | "VALID"
+            export type StatusEnum = "CANCELED" | "CANCELING" | "CREATED" | "CREATING" | "ERROR" | "EXPIRED" | "FAILED" | "MAINTENANCE" | "PAUSED" | "REJECTED" | "REPLACED" | "VALID" | "VALIDATING"
             /**
              * Registration response to validate
              * interface fullName: me.payment.method.Validation.Validation
@@ -1817,7 +1836,7 @@ export namespace me {
          * State of your bank account
          * type fullname: me.paymentMean.BankAccountStateEnum
          */
-        export type BankAccountStateEnum = "blockedForIncidents" | "pendingValidation" | "valid"
+        export type BankAccountStateEnum = "blockedForIncidents" | "pendingValidation" | "replaced" | "valid"
         /**
          * A validation required to add a payment mean bank account
          * interface fullName: me.paymentMean.BankAccountValidation.BankAccountValidation
@@ -1952,6 +1971,29 @@ export namespace me {
          */
         export type ValidationTypeEnum = "creditAccount" | "documentToSend" | "simpleValidation"
     }
+    export namespace repricing {
+        /**
+         * Description of a service being repricing
+         * interface fullName: me.repricing.Service.Service
+         */
+        export interface Service {
+            addons: me.repricing.Service[];
+            description: string;
+            displayName: string;
+            duration: string;
+            priceAfterWithTax: orderPrice;
+            priceAfterWithoutTax: orderPrice;
+            priceBeforeWithTax: orderPrice;
+            priceBeforeWithoutTax: orderPrice;
+            route?: services.expanded.Route;
+            serviceId: number;
+            serviceName: string;
+            totalPriceAfterWithTax: orderPrice;
+            totalPriceAfterWithoutTax: orderPrice;
+            totalPriceBeforeWithTax: orderPrice;
+            totalPriceBeforeWithoutTax: orderPrice;
+        }
+    }
     export namespace tag {
         /**
          * Available tag configuration object for creation
@@ -2080,24 +2122,6 @@ export namespace nichandle {
         enabled: boolean;
     }
     /**
-     * Domain tasks
-     * interface fullName: nichandle.DomainTask.DomainTask
-     */
-    export interface DomainTask {
-        canAccelerate: boolean;
-        canCancel: boolean;
-        canRelaunch: boolean;
-        comment?: string;
-        creationDate: string;
-        domain: string;
-        doneDate?: string;
-        function: domain.NicOperationFunctionEnum;
-        id: number;
-        lastUpdate: string;
-        status: domain.OperationStatusEnum;
-        todoDate: string;
-    }
-    /**
      * Domain operation argument
      * interface fullName: nichandle.DomainTaskArgument.DomainTaskArgument
      */
@@ -2126,6 +2150,16 @@ export namespace nichandle {
         progress: number;
         taskActions: domain.OperationActionEnum[];
         taskStatus: domain.OperationStatusEnum;
+    }
+    /**
+     * Email notification received
+     * interface fullName: nichandle.EmailNotification.EmailNotification
+     */
+    export interface EmailNotification {
+        body: string;
+        date: string;
+        id: number;
+        subject: string;
     }
     /**
      * All genders a person can choose
@@ -2176,7 +2210,7 @@ export namespace nichandle {
      * Languages a nichandle can choose
      * type fullname: nichandle.LanguageEnum
      */
-    export type LanguageEnum = "de_DE" | "en_AU" | "en_CA" | "en_GB" | "en_IE" | "en_US" | "es_ES" | "fr_CA" | "fr_FR" | "fr_MA" | "fr_SN" | "fr_TN" | "it_IT" | "nl_NL" | "pl_PL" | "pt_PT"
+    export type LanguageEnum = "cs_CZ" | "de_DE" | "en_AU" | "en_CA" | "en_GB" | "en_IE" | "en_US" | "es_ES" | "fi_FI" | "fr_CA" | "fr_FR" | "fr_MA" | "fr_SN" | "fr_TN" | "it_IT" | "lt_LT" | "nl_NL" | "pl_PL" | "pt_PT"
     /**
      * Legal forms a nichandle can be registered as
      * type fullname: nichandle.LegalFormEnum
@@ -2766,7 +2800,85 @@ export namespace payment {
          * Payment method integration type
          * type fullname: payment.method.IntegrationType
          */
-        export type IntegrationType = "COMPONENT" | "DONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "POST_FORM" | "REDIRECT"
+        export type IntegrationType = "COMPONENT" | "DONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "NONE" | "POST_FORM" | "REDIRECT"
+        /**
+         * payment method
+         * interface fullName: payment.method.PaymentMethod.PaymentMethod
+         */
+        export interface PaymentMethod {
+            billingContactId?: number;
+            creationDate: string;
+            default: boolean;
+            description?: string;
+            expirationDate?: string;
+            formSessionId?: string;
+            icon: payment.method.Icon;
+            integration?: payment.method.IntegrationType;
+            label?: string;
+            lastUpdate?: string;
+            merchantId?: string;
+            oneclick?: boolean;
+            paymentMeanId?: number;
+            paymentMethodId: number;
+            paymentSubType?: payment.method.SubTypeEnum;
+            paymentType: string;
+            status: payment.method.StatusEnum;
+        }
+        /**
+         * Payment method status
+         * type fullname: payment.method.StatusEnum
+         */
+        export type StatusEnum = "CANCELED" | "CANCELING" | "CREATED" | "CREATING" | "ERROR" | "EXPIRED" | "FAILED" | "MAINTENANCE" | "PAUSED" | "REJECTED" | "REPLACED" | "VALID" | "VALIDATING"
+        /**
+         * Payment method sub-type
+         * type fullname: payment.method.SubTypeEnum
+         */
+        export type SubTypeEnum = "30_DAYS" | "45_DAYS" | "60_DAYS" | "AMERICAN_EXPRESS" | "AURA" | "CARTE_BANCAIRE" | "CARTE_BLEUE" | "CHORUS" | "DINERS_CLUB" | "DISCOVER" | "JCB" | "MAESTRO" | "MASTERCARD" | "NONE" | "VISA"
+    }
+}
+export namespace recommendations {
+    /**
+     * Recommendation struct
+     * interface fullName: recommendations.Recommendation.Recommendation
+     */
+    export interface Recommendation {
+        advices: recommendations.RecommendationAdvice[];
+        localizedDescription: map[recommendations.supportedLocalesEnum]string;
+        rank: number;
+    }
+    /**
+     * Recommendation advice struct
+     * interface fullName: recommendations.RecommendationAdvice.RecommendationAdvice
+     */
+    export interface RecommendationAdvice {
+        id: string;
+        score: number;
+        url: string;
+    }
+    /**
+     * Array of Recommendation objects
+     * interface fullName: recommendations.Recommendations.Recommendations
+     */
+    export interface Recommendations {
+        recommendations: recommendations.Recommendation[];
+    }
+    /**
+     * Supported locales for recommendations
+     * type fullname: recommendations.supportedLocalesEnum
+     */
+    export type supportedLocalesEnum = "en_GB" | "fr_FR"
+}
+export namespace services {
+    export namespace expanded {
+        /**
+         * Route of the service
+         * interface fullName: services.expanded.Route.Route
+         */
+        export interface Route {
+            path?: string;
+            url?: string;
+            vars: complexType.SafeKeyValue<string>[];
+        }
     }
 }
 export namespace xander {
@@ -2789,12 +2901,12 @@ export default proxyMe;
  */
 export interface Me {
     /**
-     * Get this object properties
+     * Get details about your nichandle
      * GET /me
      */
     $get(): Promise<nichandle.Nichandle>;
     /**
-     * Alter this object properties
+     * Update details of your nichandle
      * PUT /me
      */
     $put(params?: { address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, currency?: nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state?: nichandle.StateEnum, vat?: string, zip?: string }): Promise<void>;
@@ -3450,6 +3562,43 @@ export interface Me {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
+            };
+        }
+        purchaseOrder: {
+            /**
+             * Retrieve all purchase orders
+             * GET /me/billing/purchaseOrder
+             */
+            $get(params?: { billingGroupId?: number }): Promise<number[]>;
+            /**
+             * Create a purchase order
+             * POST /me/billing/purchaseOrder
+             */
+            $post(params: { active?: boolean, billingGroupId?: number, description?: string, endDate?: string, reference: string, startDate: string, type: me.billing.purchaseOrder.PurchaseOrderTypeEnum }): Promise<me.billing.purchaseOrder.PurchaseOrder>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(id: number): {
+                /**
+                 * Delete a purchase order
+                 * DELETE /me/billing/purchaseOrder/{id}
+                 */
+                $delete(): Promise<void>;
+                /**
+                 * Retrieve information about a purchase order
+                 * GET /me/billing/purchaseOrder/{id}
+                 */
+                $get(): Promise<me.billing.purchaseOrder.PurchaseOrder>;
+                /**
+                 * Update a purchase order
+                 * PUT /me/billing/purchaseOrder/{id}
+                 */
+                $put(params?: { active?: boolean, billingGroupId?: number, description?: string, endDate?: string, reference?: string, startDate?: string, type?: me.billing.purchaseOrder.PurchaseOrderTypeEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
     }
@@ -4375,7 +4524,7 @@ export interface Me {
         email: {
             history: {
                 /**
-                 * List of all your email notifications
+                 * Retrieve every email sent to you
                  * GET /me/notification/email/history
                  */
                 $get(): Promise<number[]>;
@@ -4385,10 +4534,10 @@ export interface Me {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(id: number): {
                     /**
-                     * Get this object properties
+                     * Retrieve information about an email
                      * GET /me/notification/email/history/{id}
                      */
-                    $get(): Promise<nichandle.emailNotification>;
+                    $get(): Promise<nichandle.EmailNotification>;
                     /**
                      * Controle cache
                      */
@@ -5343,10 +5492,10 @@ export interface Me {
         }
         domain: {
             /**
-             * List of domain task
+             * List of domain tasks
              * GET /me/task/domain
              */
-            $get(params?: { domain?: string, function_?: domain.NicOperationFunctionEnum, status?: domain.OperationStatusEnum }): Promise<number[]>;
+            $get(params?: { domain?: string, function_?: domain.OperationFunctionEnum, status?: domain.OperationStatusEnum }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -5356,7 +5505,7 @@ export interface Me {
                  * Get this object properties
                  * GET /me/task/domain/{id}
                  */
-                $get(): Promise<nichandle.DomainTask>;
+                $get(): Promise<domain.Task>;
                 /**
                  * Controle cache
                  */
@@ -5404,7 +5553,7 @@ export interface Me {
                 }
                 progressbar: {
                     /**
-                     * Get this object properties
+                     * Show progress of a task
                      * GET /me/task/domain/{id}/progressbar
                      */
                     $get(): Promise<nichandle.DomainTaskProgressBar>;
