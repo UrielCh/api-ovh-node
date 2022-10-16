@@ -438,7 +438,6 @@ export namespace dedicated {
             noRaid?: boolean;
             postInstallationScriptLink?: string;
             postInstallationScriptReturn?: string;
-            resetHwRaid?: boolean;
             softRaidDevices?: number;
             sshKeyName?: string;
             useDistribKernel?: boolean;
@@ -916,6 +915,7 @@ export namespace dedicated {
             plannedInterventionId?: number;
             startDate: string;
             status: dedicated.TaskStatusEnum;
+            tags?: complexType.SafeKeyValueCanBeNull<string>[];
             taskId: number;
             ticketReference?: string;
         }
@@ -1176,7 +1176,7 @@ export interface Dedicated {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     configure: {
                         /**
-                         * Configure SGX feature
+                         * Enable or disable SGX and configure PRMRR size. This will cause your server to reboot one or several time(s).
                          * POST /dedicated/server/{serviceName}/biosSettings/sgx/configure
                          */
                         $post(params?: { prmrr?: dedicated.server.BiosSettingsSgxPrmrrEnum, status?: dedicated.server.BiosSettingsSgxStatusEnum }): Promise<dedicated.server.Task>;
@@ -1439,6 +1439,28 @@ export interface Dedicated {
                      * GET /dedicated/server/{serviceName}/option/{option}
                      */
                     $get(): Promise<dedicated.server.Option>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
+            plannedIntervention: {
+                /**
+                 * Planned interventions for the server
+                 * GET /dedicated/server/{serviceName}/plannedIntervention
+                 */
+                $get(): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(interventionId: number): {
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/plannedIntervention/{interventionId}
+                     */
+                    $get(): Promise<dedicated.server.PlannedIntervention>;
                     /**
                      * Controle cache
                      */
@@ -1860,12 +1882,30 @@ export interface Dedicated {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    availableTimeslots: {
+                        /**
+                         * List available time slots for intervention
+                         * GET /dedicated/server/{serviceName}/task/{taskId}/availableTimeslots
+                         */
+                        $get(params: { periodEnd: string, periodStart: string }): Promise<dedicated.PlannedInterventionTimeSlot[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                     cancel: {
                         /**
                          * this action stop the task progression if it's possible
                          * POST /dedicated/server/{serviceName}/task/{taskId}/cancel
                          */
                         $post(): Promise<void>;
+                    }
+                    schedule: {
+                        /**
+                         * Schedule intervention
+                         * POST /dedicated/server/{serviceName}/task/{taskId}/schedule
+                         */
+                        $post(params: { hasPerformedBackup: boolean, wantedBeginingDate: string }): Promise<void>;
                     }
                 };
             }

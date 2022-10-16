@@ -1100,6 +1100,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "uuid",
+              "description": "Filter on message id property (=)",
+              "fullType": "uuid",
+              "name": "messageID",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "long",
               "description": "Filter on ptt property (=)",
               "fullType": "long",
@@ -2630,6 +2638,127 @@ export const schema: Schema = {
         }
       ],
       "path": "/sms/{serviceName}/serviceInfos"
+    },
+    {
+      "description": "Manage smpp allowedIPs",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get SMPP allowed IPs",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip[]",
+          "scopes": [
+            "all",
+            "product/sms/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add or remove allowed IPs",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "sms.AllowedIPs",
+              "description": "Request Body",
+              "fullType": "sms.AllowedIPs",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip[]",
+          "scopes": [
+            "all",
+            "product/sms/all"
+          ]
+        }
+      ],
+      "path": "/sms/{serviceName}/smpp/allowedIPs"
+    },
+    {
+      "description": "Manage SMPP password",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Renew SMPP password",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/sms/all"
+          ]
+        }
+      ],
+      "path": "/sms/{serviceName}/smpp/password"
+    },
+    {
+      "description": "Get SMPP settings",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get SMPP settings",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "sms.Settings",
+          "scopes": [
+            "all",
+            "product/sms/all"
+          ]
+        }
+      ],
+      "path": "/sms/{serviceName}/smpp/settings"
     },
     {
       "description": "List the sms.Task objects",
@@ -5567,6 +5696,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "channel": {
+          "canBeNull": false,
+          "description": "For what purpose this account can be used for",
+          "fullType": "sms.ChannelEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "sms.ChannelEnum"
+        },
         "creditThresholdForAutomaticRecredit": {
           "canBeNull": false,
           "description": "Credit threshold after which an automatic recredit is launched",
@@ -5602,6 +5739,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "smpp": {
+          "canBeNull": false,
+          "description": "Whether the account can be used for smpp or not",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "smsResponse": {
           "canBeNull": false,
@@ -5671,6 +5816,39 @@ export const schema: Schema = {
           "type": "sms.SupportEnum"
         }
       }
+    },
+    "sms.AllowedIPs": {
+      "description": "Smpp allowed IPs",
+      "id": "AllowedIPs",
+      "namespace": "sms",
+      "properties": {
+        "action": {
+          "canBeNull": false,
+          "description": "Action to perform on the provided IPs",
+          "fullType": "sms.AllowedIPsActionEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "sms.AllowedIPsActionEnum"
+        },
+        "ips": {
+          "canBeNull": false,
+          "description": "List of IPs to add or remove",
+          "fullType": "ip[]",
+          "readOnly": false,
+          "required": true,
+          "type": "ip[]"
+        }
+      }
+    },
+    "sms.AllowedIPsActionEnum": {
+      "description": "Smpp allowed IPs action",
+      "enum": [
+        "add",
+        "remove"
+      ],
+      "enumType": "string",
+      "id": "AllowedIPsActionEnum",
+      "namespace": "sms"
     },
     "sms.Batch": {
       "description": "Batch of SMS to send",
@@ -6089,6 +6267,17 @@ export const schema: Schema = {
           "type": "long"
         }
       }
+    },
+    "sms.ChannelEnum": {
+      "description": "In case of smpp the channel can not be \"both\"",
+      "enum": [
+        "both",
+        "marketing",
+        "transactional"
+      ],
+      "enumType": "string",
+      "id": "ChannelEnum",
+      "namespace": "sms"
     },
     "sms.CharsetEnum": {
       "description": "The charset format",
@@ -6858,6 +7047,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "messageID": {
+          "canBeNull": true,
+          "description": "SMPP messageID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
         "messageLength": {
           "canBeNull": false,
           "description": "SMS message length",
@@ -7622,6 +7819,80 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "SenderRefererEnum",
+      "namespace": "sms"
+    },
+    "sms.Settings": {
+      "description": "SMPP settings",
+      "id": "Settings",
+      "namespace": "sms",
+      "properties": {
+        "endpoints": {
+          "canBeNull": false,
+          "description": "Addresses of the TLS and non-TLS endpoints",
+          "fullType": "sms.SettingsEndpoints[]",
+          "readOnly": true,
+          "required": false,
+          "type": "sms.SettingsEndpoints[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the SMPP account",
+          "fullType": "sms.SettingsStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "sms.SettingsStatusEnum"
+        },
+        "throughput": {
+          "canBeNull": false,
+          "description": "Number of messages allowed per seconds",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "windowing": {
+          "canBeNull": false,
+          "description": "Number of messages treated simultaneously",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "sms.SettingsEndpoints": {
+      "description": "SMPP Settings Endpoints",
+      "id": "SettingsEndpoints",
+      "namespace": "sms",
+      "properties": {
+        "secured": {
+          "canBeNull": false,
+          "description": "address of the TLS endpoint: domain:port",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "unsecured": {
+          "canBeNull": false,
+          "description": "address of the non-TLS endpoint: domain:port",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "sms.SettingsStatusEnum": {
+      "description": "Smpp Settings Statuses",
+      "enum": [
+        "ERROR",
+        "INSTALLING",
+        "OK",
+        "UPDATING_IPS"
+      ],
+      "enumType": "string",
+      "id": "SettingsStatusEnum",
       "namespace": "sms"
     },
     "sms.SmsSendingReport": {

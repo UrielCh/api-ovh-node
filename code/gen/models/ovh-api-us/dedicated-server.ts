@@ -215,7 +215,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Configure SGX feature",
+          "description": "Enable or disable SGX and configure PRMRR size. This will cause your server to reboot one or several time(s).",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -2637,6 +2637,74 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/orderable/usbKey"
     },
     {
+      "description": "List the dedicated.server.PlannedIntervention objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Planned interventions for the server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/plannedIntervention"
+    },
+    {
+      "description": "Planned intervention on the server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "ID of the intervention",
+              "fullType": "long",
+              "name": "interventionId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.PlannedIntervention",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/plannedIntervention/{interventionId}"
+    },
+    {
       "description": "reboot operations",
       "operations": [
         {
@@ -5011,6 +5079,60 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/task/{taskId}"
     },
     {
+      "description": "availableTimeslots operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available time slots for intervention",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "the id of the task",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "date",
+              "description": "End of the period to query",
+              "fullType": "date",
+              "name": "periodEnd",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "date",
+              "description": "Begining of the period to query",
+              "fullType": "date",
+              "name": "periodStart",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.PlannedInterventionTimeSlot[]",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/task/{taskId}/availableTimeslots"
+    },
+    {
       "description": "cancel operations",
       "operations": [
         {
@@ -5047,6 +5169,60 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicated/server/{serviceName}/task/{taskId}/cancel"
+    },
+    {
+      "description": "schedule operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Schedule intervention",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Whether or not you have made a backup of your data",
+              "fullType": "boolean",
+              "name": "hasPerformedBackup",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Wanted begining date for your intervention",
+              "fullType": "datetime",
+              "name": "wantedBeginingDate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "the id of the task",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/dedicated-server/all"
+          ]
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/task/{taskId}/schedule"
     },
     {
       "description": "Terminate your service",
@@ -6536,6 +6712,7 @@ export const schema: Schema = {
     "dedicated.AvailabilityDatacenterEnum": {
       "description": "The datacenter",
       "enum": [
+        "au",
         "bhs",
         "ca",
         "de",
@@ -6550,6 +6727,7 @@ export const schema: Schema = {
         "rbx",
         "rbx-hz",
         "sbg",
+        "sg",
         "sgp",
         "syd",
         "us",
@@ -8560,13 +8738,6 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
-        "resetHwRaid": {
-          "canBeNull": true,
-          "description": "Specify if we should attempt to reset hw raid on install.",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
         "softRaidDevices": {
           "canBeNull": true,
           "description": "Number of devices to use for system's software RAID",
@@ -10252,7 +10423,7 @@ export const schema: Schema = {
         },
         "status": {
           "canBeNull": false,
-          "description": "indicates wether burstable bandwidth is currently active, allowing it to temporarily exceed the normally included bandwidth.OvhToInternet amount, within the limits indicated by the burst.capacity item. It can also be inactiveLocked when temporarily disabled due to overuse, capping it to the included non-burstable bandwidth capacity of bandwidth.OvhToInternet",
+          "description": "indicates whether burstable bandwidth is currently active, allowing it to temporarily exceed the normally included bandwidth.OvhToInternet amount, within the limits indicated by the burst.capacity item. It can also be inactiveLocked when temporarily disabled due to overuse, capping it to the included non-burstable bandwidth capacity of bandwidth.OvhToInternet",
           "fullType": "dedicated.server.BurstStatusEnum",
           "readOnly": false,
           "required": false,
@@ -10449,6 +10620,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "dedicated.TaskStatusEnum"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Task result tags output",
+          "fullType": "complexType.SafeKeyValueCanBeNull<string>[]",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.SafeKeyValueCanBeNull<string>[]"
         },
         "taskId": {
           "canBeNull": false,
@@ -11436,7 +11615,65 @@ export const schema: Schema = {
         "windows-server-2019-license-standard-edition-60-cores",
         "windows-server-2019-license-standard-edition-62-cores",
         "windows-server-2019-license-standard-edition-64-cores",
-        "windows-server-2019-license-standard-edition-8-cores"
+        "windows-server-2019-license-standard-edition-8-cores",
+        "windows-server-2022-license-datacenter-edition-10-cores",
+        "windows-server-2022-license-datacenter-edition-12-cores",
+        "windows-server-2022-license-datacenter-edition-14-cores",
+        "windows-server-2022-license-datacenter-edition-16-cores",
+        "windows-server-2022-license-datacenter-edition-18-cores",
+        "windows-server-2022-license-datacenter-edition-20-cores",
+        "windows-server-2022-license-datacenter-edition-22-cores",
+        "windows-server-2022-license-datacenter-edition-24-cores",
+        "windows-server-2022-license-datacenter-edition-26-cores",
+        "windows-server-2022-license-datacenter-edition-28-cores",
+        "windows-server-2022-license-datacenter-edition-30-cores",
+        "windows-server-2022-license-datacenter-edition-32-cores",
+        "windows-server-2022-license-datacenter-edition-34-cores",
+        "windows-server-2022-license-datacenter-edition-36-cores",
+        "windows-server-2022-license-datacenter-edition-38-cores",
+        "windows-server-2022-license-datacenter-edition-40-cores",
+        "windows-server-2022-license-datacenter-edition-42-cores",
+        "windows-server-2022-license-datacenter-edition-44-cores",
+        "windows-server-2022-license-datacenter-edition-46-cores",
+        "windows-server-2022-license-datacenter-edition-48-cores",
+        "windows-server-2022-license-datacenter-edition-50-cores",
+        "windows-server-2022-license-datacenter-edition-52-cores",
+        "windows-server-2022-license-datacenter-edition-54-cores",
+        "windows-server-2022-license-datacenter-edition-56-cores",
+        "windows-server-2022-license-datacenter-edition-58-cores",
+        "windows-server-2022-license-datacenter-edition-60-cores",
+        "windows-server-2022-license-datacenter-edition-62-cores",
+        "windows-server-2022-license-datacenter-edition-64-cores",
+        "windows-server-2022-license-datacenter-edition-8-cores",
+        "windows-server-2022-license-standard-edition-10-cores",
+        "windows-server-2022-license-standard-edition-12-cores",
+        "windows-server-2022-license-standard-edition-14-cores",
+        "windows-server-2022-license-standard-edition-16-cores",
+        "windows-server-2022-license-standard-edition-18-cores",
+        "windows-server-2022-license-standard-edition-20-cores",
+        "windows-server-2022-license-standard-edition-22-cores",
+        "windows-server-2022-license-standard-edition-24-cores",
+        "windows-server-2022-license-standard-edition-26-cores",
+        "windows-server-2022-license-standard-edition-28-cores",
+        "windows-server-2022-license-standard-edition-30-cores",
+        "windows-server-2022-license-standard-edition-32-cores",
+        "windows-server-2022-license-standard-edition-34-cores",
+        "windows-server-2022-license-standard-edition-36-cores",
+        "windows-server-2022-license-standard-edition-38-cores",
+        "windows-server-2022-license-standard-edition-40-cores",
+        "windows-server-2022-license-standard-edition-42-cores",
+        "windows-server-2022-license-standard-edition-44-cores",
+        "windows-server-2022-license-standard-edition-46-cores",
+        "windows-server-2022-license-standard-edition-48-cores",
+        "windows-server-2022-license-standard-edition-50-cores",
+        "windows-server-2022-license-standard-edition-52-cores",
+        "windows-server-2022-license-standard-edition-54-cores",
+        "windows-server-2022-license-standard-edition-56-cores",
+        "windows-server-2022-license-standard-edition-58-cores",
+        "windows-server-2022-license-standard-edition-60-cores",
+        "windows-server-2022-license-standard-edition-62-cores",
+        "windows-server-2022-license-standard-edition-64-cores",
+        "windows-server-2022-license-standard-edition-8-cores"
       ],
       "enumType": "string",
       "id": "WindowsOsVersionEnum",

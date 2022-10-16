@@ -170,6 +170,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of company property (like)",
+              "fullType": "string",
+              "name": "company",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "long",
               "description": "Filter the value of id property (like)",
               "fullType": "long",
@@ -350,6 +358,14 @@ export const schema: Schema = {
               "description": "Enable mailing filtrering",
               "fullType": "email.exchange.MailingFilterEnum[]",
               "name": "mailingFilter",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Email display as sender",
+              "fullType": "string",
+              "name": "mailSenderDisplay",
               "paramType": "body",
               "required": false
             },
@@ -7814,6 +7830,202 @@ export const schema: Schema = {
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}"
     },
     {
+      "description": "List the email.exchange.exchangeSharedAccountAlias objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Aliases associated to this mailbox",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Default email for this shared mailbox",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create new alias",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
+              "name": "alias",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Default email for this shared mailbox",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/alias"
+    },
+    {
+      "description": "Aliases on this shared mailbox",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete existing alias",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
+              "name": "alias",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Default email for this shared mailbox",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
+              "name": "alias",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Default email for this shared mailbox",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.exchangeSharedAccountAlias",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/alias/{alias}"
+    },
+    {
       "description": "List the email.exchange.exchangeSharedAccountFullAccess objects",
       "operations": [
         {
@@ -8966,6 +9178,14 @@ export const schema: Schema = {
         "login": {
           "canBeNull": false,
           "description": "Account login",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "mailSenderDisplay": {
+          "canBeNull": true,
+          "description": "Email display as sender",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -10316,6 +10536,13 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
+        },
+        "singleMailboxQuotaLimit": {
+          "canBeNull": false,
+          "description": "amount of space in MB available for single shared account",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
@@ -11623,6 +11850,37 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "boolean"
+        }
+      }
+    },
+    "email.exchange.exchangeSharedAccountAlias": {
+      "description": "Aliases on this shared mailbox",
+      "id": "exchangeSharedAccountAlias",
+      "namespace": "email.exchange",
+      "properties": {
+        "alias": {
+          "canBeNull": false,
+          "description": "Alias",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "taskPendingId": {
+          "canBeNull": false,
+          "description": "Pending task id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },

@@ -1937,6 +1937,120 @@ export const schema: Schema = {
       "path": "/order/cart/{cartId}/dedicatedLabs/options"
     },
     {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get information about dedicatedLegacy",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new dedicatedLegacy item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/dedicatedLegacy"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get information about the options of Ovh offers",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of an Ovh offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new Ovh option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/dedicatedLegacy/options"
+    },
+    {
       "description": "Missing description",
       "operations": [
         {
@@ -3916,6 +4030,350 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/cart/{cartId}/ipReseller"
+    },
+    {
+      "description": "List of ISP public product",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about offers",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/ispPublic"
+    },
+    {
+      "description": "List of ISP public addon",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about options",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the plan you want to consult options",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Cart item to be linked",
+              "fullType": "long",
+              "name": "itemId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of an option offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/ispPublic/options"
+    },
+    {
+      "description": "List of ISP reseller product",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about offers",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/ispReseller"
+    },
+    {
+      "description": "List of ISP reseller addon",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about options",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the plan you want to consult options",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Cart item to be linked",
+              "fullType": "long",
+              "name": "itemId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of an option offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/ispReseller/options"
     },
     {
       "description": "Missing description",
@@ -13858,108 +14316,6 @@ export const schema: Schema = {
       "path": "/order/cloud/project/{serviceName}/credit"
     },
     {
-      "description": "Order failover ip on your Cloud project",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The project id",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "vps.ip.GeolocationEnum",
-              "description": "IP geolocation",
-              "fullType": "vps.ip.GeolocationEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Instance id where ip will be routed to",
-              "fullType": "string",
-              "name": "instanceId",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Number of failover ip",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "vps.ip.GeolocationEnum",
-              "description": "IP geolocation",
-              "fullType": "vps.ip.GeolocationEnum",
-              "name": "country",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Instance id where ip will be routed to",
-              "fullType": "string",
-              "name": "instanceId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Number of failover ip",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The project id",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        }
-      ],
-      "path": "/order/cloud/project/{serviceName}/ip"
-    },
-    {
       "description": "Operations about the HOUSING service",
       "operations": [
         {
@@ -14688,8 +15044,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deprecatedDate": "2022-07-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/ip",
+            "value": "DEPRECATED"
           },
           "description": "Get allowed durations for 'failoverIP' option",
           "httpMethod": "GET",
@@ -14726,8 +15084,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deprecatedDate": "2022-07-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/ip",
+            "value": "DEPRECATED"
           },
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
@@ -14766,8 +15126,10 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deprecatedDate": "2022-07-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/ip",
+            "value": "DEPRECATED"
           },
           "description": "Create order",
           "httpMethod": "POST",
@@ -15060,8 +15422,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deprecatedDate": "2022-07-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/ip",
+            "value": "DEPRECATED"
           },
           "description": "Get allowed durations for 'ip' option",
           "httpMethod": "GET",
@@ -15122,8 +15486,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deprecatedDate": "2022-07-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/ip",
+            "value": "DEPRECATED"
           },
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
@@ -15186,8 +15552,10 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deprecatedDate": "2022-07-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/ip",
+            "value": "DEPRECATED"
           },
           "description": "Create order",
           "httpMethod": "POST",
@@ -15698,130 +16066,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/professionalUse/{duration}"
-    },
-    {
-      "description": "Order a static IP for this server",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'staticIP' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.IpStaticCountryEnum",
-              "description": "Ip localization",
-              "fullType": "dedicated.server.IpStaticCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        }
-      ],
-      "path": "/order/dedicated/server/{serviceName}/staticIP"
-    },
-    {
-      "description": "Order a static IP for this server",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.IpStaticCountryEnum",
-              "description": "Ip localization",
-              "fullType": "dedicated.server.IpStaticCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.IpStaticCountryEnum",
-              "description": "Ip localization",
-              "fullType": "dedicated.server.IpStaticCountryEnum",
-              "name": "country",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        }
-      ],
-      "path": "/order/dedicated/server/{serviceName}/staticIP/{duration}"
     },
     {
       "description": "Order additionall traffic for this server",
@@ -30412,154 +30656,6 @@ export const schema: Schema = {
       "path": "/order/vps/{serviceName}/ftpbackup/{duration}"
     },
     {
-      "description": "Order Additional IP",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'ip' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "vps.ip.GeolocationEnum",
-              "description": "Choose a geolocation for your IP Address",
-              "fullType": "vps.ip.GeolocationEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Number of IPs to order",
-              "fullType": "long",
-              "name": "number",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        }
-      ],
-      "path": "/order/vps/{serviceName}/ip"
-    },
-    {
-      "description": "Order Additional IP",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "vps.ip.GeolocationEnum",
-              "description": "Choose a geolocation for your IP Address",
-              "fullType": "vps.ip.GeolocationEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Number of IPs to order",
-              "fullType": "long",
-              "name": "number",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "vps.ip.GeolocationEnum",
-              "description": "Choose a geolocation for your IP Address",
-              "fullType": "vps.ip.GeolocationEnum",
-              "name": "country",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Number of IPs to order",
-              "fullType": "long",
-              "name": "number",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        }
-      ],
-      "path": "/order/vps/{serviceName}/ip/{duration}"
-    },
-    {
       "description": "Create an order for a PLESK license",
       "operations": [
         {
@@ -32101,7 +32197,6 @@ export const schema: Schema = {
         "postgresql_10",
         "postgresql_11",
         "postgresql_12",
-        "postgresql_9.6",
         "redis_4.0",
         "redis_6.0"
       ],
@@ -33284,6 +33379,37 @@ export const schema: Schema = {
         "SQL_SERVER_2017_WEB_EDITION_4_CORES",
         "SQL_SERVER_2017_WEB_EDITION_6_CORES",
         "SQL_SERVER_2017_WEB_EDITION_8_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_10_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_12_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_14_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_16_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_18_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_20_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_22_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_24_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_26_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_28_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_30_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_32_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_34_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_36_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_38_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_40_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_42_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_44_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_46_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_48_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_4_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_50_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_52_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_54_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_56_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_58_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_60_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_62_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_64_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_6_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_8_CORES",
         "SQL_SERVER_2019_STANDARD_EDITION_10_CORES",
         "SQL_SERVER_2019_STANDARD_EDITION_12_CORES",
         "SQL_SERVER_2019_STANDARD_EDITION_14_CORES",
@@ -33433,6 +33559,37 @@ export const schema: Schema = {
         "sql-server-2017-license-web-edition-4-cores",
         "sql-server-2017-license-web-edition-6-cores",
         "sql-server-2017-license-web-edition-8-cores",
+        "sql-server-2019-license-enterprise-edition-10-cores",
+        "sql-server-2019-license-enterprise-edition-12-cores",
+        "sql-server-2019-license-enterprise-edition-14-cores",
+        "sql-server-2019-license-enterprise-edition-16-cores",
+        "sql-server-2019-license-enterprise-edition-18-cores",
+        "sql-server-2019-license-enterprise-edition-20-cores",
+        "sql-server-2019-license-enterprise-edition-22-cores",
+        "sql-server-2019-license-enterprise-edition-24-cores",
+        "sql-server-2019-license-enterprise-edition-26-cores",
+        "sql-server-2019-license-enterprise-edition-28-cores",
+        "sql-server-2019-license-enterprise-edition-30-cores",
+        "sql-server-2019-license-enterprise-edition-32-cores",
+        "sql-server-2019-license-enterprise-edition-34-cores",
+        "sql-server-2019-license-enterprise-edition-36-cores",
+        "sql-server-2019-license-enterprise-edition-38-cores",
+        "sql-server-2019-license-enterprise-edition-4-cores",
+        "sql-server-2019-license-enterprise-edition-40-cores",
+        "sql-server-2019-license-enterprise-edition-42-cores",
+        "sql-server-2019-license-enterprise-edition-44-cores",
+        "sql-server-2019-license-enterprise-edition-46-cores",
+        "sql-server-2019-license-enterprise-edition-48-cores",
+        "sql-server-2019-license-enterprise-edition-50-cores",
+        "sql-server-2019-license-enterprise-edition-52-cores",
+        "sql-server-2019-license-enterprise-edition-54-cores",
+        "sql-server-2019-license-enterprise-edition-56-cores",
+        "sql-server-2019-license-enterprise-edition-58-cores",
+        "sql-server-2019-license-enterprise-edition-6-cores",
+        "sql-server-2019-license-enterprise-edition-60-cores",
+        "sql-server-2019-license-enterprise-edition-62-cores",
+        "sql-server-2019-license-enterprise-edition-64-cores",
+        "sql-server-2019-license-enterprise-edition-8-cores",
         "sql-server-2019-license-standard-edition-10-cores",
         "sql-server-2019-license-standard-edition-12-cores",
         "sql-server-2019-license-standard-edition-14-cores",
@@ -33645,6 +33802,64 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2019_STANDARD_EDITION_62_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_64_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_8_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_10_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_12_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_14_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_16_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_18_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_20_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_22_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_24_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_26_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_28_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_30_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_32_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_34_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_36_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_38_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_40_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_42_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_44_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_46_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_48_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_50_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_52_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_54_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_56_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_58_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_60_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_62_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_64_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_8_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_10_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_12_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_14_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_16_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_18_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_20_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_22_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_24_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_26_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_28_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_30_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_32_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_34_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_36_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_38_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_40_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_42_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_44_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_46_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_48_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_50_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_52_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_54_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_56_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_58_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_60_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_62_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_64_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_8_CORES",
         "windows-server-2008-license-datacenter-edition-1-cpu",
         "windows-server-2008-license-datacenter-edition-2-cpu",
         "windows-server-2008-license-datacenter-edition-4-cpu",
@@ -33774,7 +33989,65 @@ export const schema: Schema = {
         "windows-server-2019-license-standard-edition-60-cores",
         "windows-server-2019-license-standard-edition-62-cores",
         "windows-server-2019-license-standard-edition-64-cores",
-        "windows-server-2019-license-standard-edition-8-cores"
+        "windows-server-2019-license-standard-edition-8-cores",
+        "windows-server-2022-license-datacenter-edition-10-cores",
+        "windows-server-2022-license-datacenter-edition-12-cores",
+        "windows-server-2022-license-datacenter-edition-14-cores",
+        "windows-server-2022-license-datacenter-edition-16-cores",
+        "windows-server-2022-license-datacenter-edition-18-cores",
+        "windows-server-2022-license-datacenter-edition-20-cores",
+        "windows-server-2022-license-datacenter-edition-22-cores",
+        "windows-server-2022-license-datacenter-edition-24-cores",
+        "windows-server-2022-license-datacenter-edition-26-cores",
+        "windows-server-2022-license-datacenter-edition-28-cores",
+        "windows-server-2022-license-datacenter-edition-30-cores",
+        "windows-server-2022-license-datacenter-edition-32-cores",
+        "windows-server-2022-license-datacenter-edition-34-cores",
+        "windows-server-2022-license-datacenter-edition-36-cores",
+        "windows-server-2022-license-datacenter-edition-38-cores",
+        "windows-server-2022-license-datacenter-edition-40-cores",
+        "windows-server-2022-license-datacenter-edition-42-cores",
+        "windows-server-2022-license-datacenter-edition-44-cores",
+        "windows-server-2022-license-datacenter-edition-46-cores",
+        "windows-server-2022-license-datacenter-edition-48-cores",
+        "windows-server-2022-license-datacenter-edition-50-cores",
+        "windows-server-2022-license-datacenter-edition-52-cores",
+        "windows-server-2022-license-datacenter-edition-54-cores",
+        "windows-server-2022-license-datacenter-edition-56-cores",
+        "windows-server-2022-license-datacenter-edition-58-cores",
+        "windows-server-2022-license-datacenter-edition-60-cores",
+        "windows-server-2022-license-datacenter-edition-62-cores",
+        "windows-server-2022-license-datacenter-edition-64-cores",
+        "windows-server-2022-license-datacenter-edition-8-cores",
+        "windows-server-2022-license-standard-edition-10-cores",
+        "windows-server-2022-license-standard-edition-12-cores",
+        "windows-server-2022-license-standard-edition-14-cores",
+        "windows-server-2022-license-standard-edition-16-cores",
+        "windows-server-2022-license-standard-edition-18-cores",
+        "windows-server-2022-license-standard-edition-20-cores",
+        "windows-server-2022-license-standard-edition-22-cores",
+        "windows-server-2022-license-standard-edition-24-cores",
+        "windows-server-2022-license-standard-edition-26-cores",
+        "windows-server-2022-license-standard-edition-28-cores",
+        "windows-server-2022-license-standard-edition-30-cores",
+        "windows-server-2022-license-standard-edition-32-cores",
+        "windows-server-2022-license-standard-edition-34-cores",
+        "windows-server-2022-license-standard-edition-36-cores",
+        "windows-server-2022-license-standard-edition-38-cores",
+        "windows-server-2022-license-standard-edition-40-cores",
+        "windows-server-2022-license-standard-edition-42-cores",
+        "windows-server-2022-license-standard-edition-44-cores",
+        "windows-server-2022-license-standard-edition-46-cores",
+        "windows-server-2022-license-standard-edition-48-cores",
+        "windows-server-2022-license-standard-edition-50-cores",
+        "windows-server-2022-license-standard-edition-52-cores",
+        "windows-server-2022-license-standard-edition-54-cores",
+        "windows-server-2022-license-standard-edition-56-cores",
+        "windows-server-2022-license-standard-edition-58-cores",
+        "windows-server-2022-license-standard-edition-60-cores",
+        "windows-server-2022-license-standard-edition-62-cores",
+        "windows-server-2022-license-standard-edition-64-cores",
+        "windows-server-2022-license-standard-edition-8-cores"
       ],
       "enumType": "string",
       "id": "WindowsOsVersionEnum",

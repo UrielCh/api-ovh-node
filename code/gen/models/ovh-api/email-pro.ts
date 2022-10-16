@@ -10,8 +10,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "List available services",
           "httpMethod": "GET",
@@ -27,12 +27,12 @@ export const schema: Schema = {
       "path": "/email/pro"
     },
     {
-      "description": "Email pro service",
+      "description": "Operations about the PROEMAIL service",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -40,14 +40,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "email.pro.Service",
+          "responseType": "email.pro.ServiceNative",
           "scopes": [
             "all",
             "product/email-pro/all"
@@ -92,8 +92,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Accounts associated to this pro service",
           "httpMethod": "GET",
@@ -101,7 +101,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -134,8 +134,40 @@ export const schema: Schema = {
       "path": "/email/pro/{service}/account"
     },
     {
-      "description": "Mailbox",
+      "description": "List the email.pro.Account objects",
       "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.AccountNative",
+          "scopes": [
+            "all",
+            "product/email-pro/all"
+          ]
+        },
         {
           "apiStatus": {
             "description": "Beta version",
@@ -163,38 +195,6 @@ export const schema: Schema = {
             }
           ],
           "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-pro/all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Default email for this mailbox",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pro organization",
-              "fullType": "string",
-              "name": "service",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.pro.Account",
           "scopes": [
             "all",
             "product/email-pro/all"
@@ -247,8 +247,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Aliases associated to this mailbox",
           "httpMethod": "GET",
@@ -256,7 +256,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "Email",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -264,7 +264,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -321,8 +321,48 @@ export const schema: Schema = {
       "path": "/email/pro/{service}/account/{email}/alias"
     },
     {
-      "description": "Aliases on this mailbox",
+      "description": "List the email.pro.AccountAlias objects",
       "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
+              "name": "alias",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.AccountAlias",
+          "scopes": [
+            "all",
+            "product/email-pro/all"
+          ]
+        },
         {
           "apiStatus": {
             "description": "Beta version",
@@ -358,46 +398,6 @@ export const schema: Schema = {
             }
           ],
           "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-pro/all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Alias",
-              "fullType": "string",
-              "name": "alias",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Default email for this mailbox",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pro organization",
-              "fullType": "string",
-              "name": "service",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.pro.AccountAlias",
           "scopes": [
             "all",
             "product/email-pro/all"
@@ -457,8 +457,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -466,7 +466,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "Email",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -474,7 +474,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -535,8 +535,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Full access granted users for this mailbox",
           "httpMethod": "GET",
@@ -544,7 +544,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "Email",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -552,7 +552,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -609,8 +609,48 @@ export const schema: Schema = {
       "path": "/email/pro/{service}/account/{email}/fullAccess"
     },
     {
-      "description": "Users having full access on this mailbox",
+      "description": "List the email.pro.AccountFullAccess objects",
       "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.AccountFullAccess",
+          "scopes": [
+            "all",
+            "product/email-pro/all"
+          ]
+        },
         {
           "apiStatus": {
             "description": "Beta version",
@@ -650,46 +690,6 @@ export const schema: Schema = {
             "all",
             "product/email-pro/all"
           ]
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Account id to give full access",
-              "fullType": "long",
-              "name": "allowedAccountId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Default email for this mailbox",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pro organization",
-              "fullType": "string",
-              "name": "service",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.pro.AccountFullAccess",
-          "scopes": [
-            "all",
-            "product/email-pro/all"
-          ]
         }
       ],
       "path": "/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}"
@@ -699,8 +699,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Send as granted users for this mailbox",
           "httpMethod": "GET",
@@ -708,7 +708,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "Email",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -716,7 +716,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -773,8 +773,48 @@ export const schema: Schema = {
       "path": "/email/pro/{service}/account/{email}/sendAs"
     },
     {
-      "description": "Users authorized to send mails from this mailbox",
+      "description": "List the email.pro.AccountSendAs objects",
       "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.AccountSendAs",
+          "scopes": [
+            "all",
+            "product/email-pro/all"
+          ]
+        },
         {
           "apiStatus": {
             "description": "Beta version",
@@ -814,46 +854,6 @@ export const schema: Schema = {
             "all",
             "product/email-pro/all"
           ]
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Account id to give send as",
-              "fullType": "long",
-              "name": "allowedAccountId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Default email for this mailbox",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pro organization",
-              "fullType": "string",
-              "name": "service",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.pro.AccountSendAs",
-          "scopes": [
-            "all",
-            "product/email-pro/all"
-          ]
         }
       ],
       "path": "/email/pro/{service}/account/{email}/sendAs/{allowedAccountId}"
@@ -863,8 +863,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "SendOnBehalfTo granted users for this mailbox",
           "httpMethod": "GET",
@@ -872,7 +872,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "Email",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -880,7 +880,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -937,8 +937,48 @@ export const schema: Schema = {
       "path": "/email/pro/{service}/account/{email}/sendOnBehalfTo"
     },
     {
-      "description": "Get users authorized to Send On Behalf To mails from this mailbox",
+      "description": "List the email.pro.AccountSendOnBehalfTo objects",
       "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.AccountSendOnBehalfTo",
+          "scopes": [
+            "all",
+            "product/email-pro/all"
+          ]
+        },
         {
           "apiStatus": {
             "description": "Beta version",
@@ -978,46 +1018,6 @@ export const schema: Schema = {
             "all",
             "product/email-pro/all"
           ]
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Account id to give send on behalf to",
-              "fullType": "long",
-              "name": "allowedAccountId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Default email for this mailbox",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pro organization",
-              "fullType": "string",
-              "name": "service",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.pro.AccountSendOnBehalfTo",
-          "scopes": [
-            "all",
-            "product/email-pro/all"
-          ]
         }
       ],
       "path": "/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}"
@@ -1027,8 +1027,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Pending task for this mailbox",
           "httpMethod": "GET",
@@ -1036,7 +1036,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "Email",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -1044,7 +1044,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1061,12 +1061,12 @@ export const schema: Schema = {
       "path": "/email/pro/{service}/account/{email}/tasks"
     },
     {
-      "description": "Organization task details",
+      "description": "List the email.pro.Task objects",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -1074,7 +1074,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "Email",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -1082,7 +1082,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Task id",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1090,7 +1090,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1149,8 +1149,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Detects billing transition status for the service",
           "httpMethod": "GET",
@@ -1158,7 +1158,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1179,8 +1179,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Emailpro billing plan",
           "httpMethod": "GET",
@@ -1188,7 +1188,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1263,8 +1263,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Domains associated to this service",
           "httpMethod": "GET",
@@ -1272,7 +1272,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1361,8 +1361,40 @@ export const schema: Schema = {
       "path": "/email/pro/{service}/domain"
     },
     {
-      "description": "Domain",
+      "description": "List the email.pro.Domain objects",
       "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.DomainNative",
+          "scopes": [
+            "all",
+            "product/email-pro/all"
+          ]
+        },
         {
           "apiStatus": {
             "description": "Beta version",
@@ -1390,38 +1422,6 @@ export const schema: Schema = {
             }
           ],
           "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-pro/all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Domain name",
-              "fullType": "string",
-              "name": "domainName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pro organization",
-              "fullType": "string",
-              "name": "service",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.pro.Domain",
           "scopes": [
             "all",
             "product/email-pro/all"
@@ -1474,6 +1474,38 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.disclaimerNative",
+          "scopes": [
+            "all",
+            "product/email-pro/all"
+          ]
+        },
+        {
+          "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
@@ -1499,38 +1531,6 @@ export const schema: Schema = {
             }
           ],
           "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-pro/all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Domain name",
-              "fullType": "string",
-              "name": "domainName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pro organization",
-              "fullType": "string",
-              "name": "service",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.pro.disclaimer",
           "scopes": [
             "all",
             "product/email-pro/all"
@@ -1631,8 +1631,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get diclaimer attributes to substitute with Active Directory properties",
           "httpMethod": "GET",
@@ -1648,7 +1648,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1669,8 +1669,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "External contacts for this service",
           "httpMethod": "GET",
@@ -1678,7 +1678,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1807,8 +1807,40 @@ export const schema: Schema = {
       "path": "/email/pro/{service}/externalContact"
     },
     {
-      "description": "External contact for this pro service",
+      "description": "List the email.pro.ExternalContact objects",
       "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "External email address",
+              "fullType": "string",
+              "name": "externalEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.ExternalContactNative",
+          "scopes": [
+            "all",
+            "product/email-pro/all"
+          ]
+        },
         {
           "apiStatus": {
             "description": "Beta version",
@@ -1836,38 +1868,6 @@ export const schema: Schema = {
             }
           ],
           "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-pro/all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Contact email",
-              "fullType": "string",
-              "name": "externalEmailAddress",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pro organization",
-              "fullType": "string",
-              "name": "service",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.pro.ExternalContact",
           "scopes": [
             "all",
             "product/email-pro/all"
@@ -1929,7 +1929,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -2011,8 +2011,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Pending actions",
           "httpMethod": "GET",
@@ -2020,7 +2020,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -2037,12 +2037,12 @@ export const schema: Schema = {
       "path": "/email/pro/{service}/task"
     },
     {
-      "description": "Organization task details",
+      "description": "List the email.pro.Task objects",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -2050,7 +2050,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Task id",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2058,7 +2058,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your pro organization",
+              "description": "Service",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -2479,6 +2479,237 @@ export const schema: Schema = {
         }
       }
     },
+    "email.pro.AccountNative": {
+      "description": "Mailbox",
+      "id": "AccountNative",
+      "namespace": "email.pro",
+      "properties": {
+        "SAMAccountName": {
+          "canBeNull": true,
+          "description": "SAM account name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "configured": {
+          "canBeNull": false,
+          "description": "Indicates if the account is configured",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "creationDate": {
+          "canBeNull": true,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "currentUsage": {
+          "canBeNull": true,
+          "description": "Mailbox usage",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "deleteAtExpiration": {
+          "canBeNull": true,
+          "description": "delete at expiration",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "displayName": {
+          "canBeNull": true,
+          "description": "Account display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Email domain",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "expirationDate": {
+          "canBeNull": true,
+          "description": "expiration date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "expirationOutlookDate": {
+          "canBeNull": true,
+          "description": "expiration date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "firstName": {
+          "canBeNull": true,
+          "description": "Account first name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "hiddenFromGAL": {
+          "canBeNull": false,
+          "description": "Hide account in Global Address List",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Account id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "initial": {
+          "canBeNull": true,
+          "description": "Account initials",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lastLogoffDate": {
+          "canBeNull": true,
+          "description": "Last logoff",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lastLogonDate": {
+          "canBeNull": true,
+          "description": "Last logon",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lastName": {
+          "canBeNull": true,
+          "description": "Account last name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lastUpdateDate": {
+          "canBeNull": true,
+          "description": "Last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "login": {
+          "canBeNull": false,
+          "description": "Account login",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "mailingFilter": {
+          "canBeNull": true,
+          "description": "Enable or disable anti-virus and anti-spam",
+          "fullType": "email.pro.MailingFilterEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.MailingFilterEnum[]"
+        },
+        "passwordLastUpdate": {
+          "canBeNull": true,
+          "description": "Time of account's password last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "primaryEmailAddress": {
+          "canBeNull": false,
+          "description": "Default email for this mailbox",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quota": {
+          "canBeNull": false,
+          "description": "Account maximum size",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "renewPeriod": {
+          "canBeNull": true,
+          "description": "change the renew period",
+          "fullType": "email.pro.renewPeriodEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.renewPeriodEnum"
+        },
+        "spamAndVirusConfiguration": {
+          "canBeNull": false,
+          "description": "Spam and Antivirus configuration",
+          "fullType": "email.pro.spamAndVirusConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.spamAndVirusConfiguration"
+        },
+        "spamDetected": {
+          "canBeNull": false,
+          "description": "Account was sending spam",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "spamTicketNumber": {
+          "canBeNull": true,
+          "description": "Ticket number of spam detection",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Account state",
+          "fullType": "email.pro.ObjectStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.ObjectStateEnum"
+        },
+        "taskPendingId": {
+          "canBeNull": true,
+          "description": "Pending tasks for this account",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "email.pro.AccountSendAs": {
       "description": "Users authorized to send mails from this mailbox",
       "id": "AccountSendAs",
@@ -2685,6 +2916,117 @@ export const schema: Schema = {
         }
       }
     },
+    "email.pro.DomainNative": {
+      "description": "Domain",
+      "id": "DomainNative",
+      "namespace": "email.pro",
+      "properties": {
+        "cnameToCheck": {
+          "canBeNull": true,
+          "description": "Cname that will be checked to prove the domain ownership",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "domainAliases": {
+          "canBeNull": false,
+          "description": "List of aliases for this domain",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "domainValidated": {
+          "canBeNull": false,
+          "description": "Domain validation status",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "isAliasDomain": {
+          "canBeNull": false,
+          "description": "Indicate if this domain is an alias for another domain",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "mxIsValid": {
+          "canBeNull": false,
+          "description": "If true your dns mx configuration is valid",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "mxRecord": {
+          "canBeNull": true,
+          "description": "Domain MX record configured in DNS",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "mxRelay": {
+          "canBeNull": true,
+          "description": "If specified, emails to not existing address will be redirected to that domain",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Domain name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "srvIsValid": {
+          "canBeNull": false,
+          "description": "If true your dns srv record is valid",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "srvRecord": {
+          "canBeNull": true,
+          "description": "Domain SRV record configured in DNS",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Domain state",
+          "fullType": "email.pro.ObjectStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.ObjectStateEnum"
+        },
+        "taskPendingId": {
+          "canBeNull": false,
+          "description": "Pending taks id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Domain type",
+          "fullType": "email.pro.DomainTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.DomainTypeEnum"
+        }
+      }
+    },
     "email.pro.DomainTypeEnum": {
       "description": "Domain type",
       "enum": [
@@ -2761,6 +3103,93 @@ export const schema: Schema = {
           "description": "Contact last name",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Contact state",
+          "fullType": "email.pro.ObjectStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.ObjectStateEnum"
+        },
+        "taskPendingId": {
+          "canBeNull": false,
+          "description": "Task pending id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "email.pro.ExternalContactNative": {
+      "description": "External contact for this pro service",
+      "id": "ExternalContactNative",
+      "namespace": "email.pro",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "displayName": {
+          "canBeNull": false,
+          "description": "Contact display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "externalEmailAddress": {
+          "canBeNull": false,
+          "description": "Contact email",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "firstName": {
+          "canBeNull": true,
+          "description": "Contact first name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "hiddenFromGAL": {
+          "canBeNull": false,
+          "description": "Hide the contact in Global Address List",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Contact id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "initials": {
+          "canBeNull": true,
+          "description": "Contact initals",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lastName": {
+          "canBeNull": true,
+          "description": "Contact last name",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -3063,6 +3492,157 @@ export const schema: Schema = {
         }
       }
     },
+    "email.pro.ServiceNative": {
+      "description": "Email pro service",
+      "id": "ServiceNative",
+      "namespace": "email.pro",
+      "properties": {
+        "complexityEnabled": {
+          "canBeNull": false,
+          "description": "enable policy for strong and secure passwords",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "displayName": {
+          "canBeNull": true,
+          "description": "service displayName",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Domain name of your service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "hostname": {
+          "canBeNull": true,
+          "description": "Hostname of your service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lastUpdateDate": {
+          "canBeNull": true,
+          "description": "Update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lockoutDuration": {
+          "canBeNull": false,
+          "description": "number of minutes account will remain locked if it occurs",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "lockoutObservationWindow": {
+          "canBeNull": false,
+          "description": "number of minutes that must elapse after a failed logon to reset lockout trigger",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "lockoutThreshold": {
+          "canBeNull": true,
+          "description": "number of attempts before account to be locked",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxPasswordAge": {
+          "canBeNull": true,
+          "description": "maximum number of days that account's password is valid before expiration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxReceiveSize": {
+          "canBeNull": false,
+          "description": "Maximum message size that You can receive in MB",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxSendSize": {
+          "canBeNull": false,
+          "description": "Maximum message size that You can send in MB",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minPasswordAge": {
+          "canBeNull": true,
+          "description": "minimum number of days before able to change account's password",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minPasswordLength": {
+          "canBeNull": true,
+          "description": "minimum number of characters password must contain",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "offer": {
+          "canBeNull": false,
+          "description": "Type of your offer",
+          "fullType": "email.pro.ServiceOfferEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.ServiceOfferEnum"
+        },
+        "spamAndVirusConfiguration": {
+          "canBeNull": false,
+          "description": "Spam and Antivirus configuration",
+          "fullType": "email.pro.spamAndVirusConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.spamAndVirusConfiguration"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "State of your service",
+          "fullType": "email.pro.ServiceStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.ServiceStateEnum"
+        },
+        "taskPendingId": {
+          "canBeNull": false,
+          "description": "Task pending id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "webUrl": {
+          "canBeNull": true,
+          "description": "URL for web interface",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "email.pro.ServiceOfferEnum": {
       "description": "Service Offer name",
       "enum": [
@@ -3247,6 +3827,53 @@ export const schema: Schema = {
         }
       }
     },
+    "email.pro.disclaimerNative": {
+      "description": "disclaimer",
+      "id": "disclaimerNative",
+      "namespace": "email.pro",
+      "properties": {
+        "content": {
+          "canBeNull": false,
+          "description": "Signature, added at the bottom of your organization emails",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Disclaimer name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "outsideOnly": {
+          "canBeNull": false,
+          "description": "Activate the disclaimer only for external emails",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "taskPendingId": {
+          "canBeNull": false,
+          "description": "task pending id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "email.pro.renewPeriodEnum": {
       "description": "Renew period",
       "enum": [
@@ -3265,49 +3892,56 @@ export const schema: Schema = {
         "checkDKIM": {
           "canBeNull": false,
           "description": "Check DKIM of message",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "checkSPF": {
           "canBeNull": false,
           "description": "Check SPF of message",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "deleteSpam": {
           "canBeNull": false,
           "description": "If message is a spam delete it",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "deleteVirus": {
           "canBeNull": false,
           "description": "If message is a virus delete it",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "putInJunk": {
           "canBeNull": false,
           "description": "If message is a spam or virus put in junk. Overridden by deleteSpam or deleteVirus",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "tagSpam": {
           "canBeNull": false,
           "description": "If message is a spam change its subject",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "tagVirus": {
           "canBeNull": false,
           "description": "If message is a virus change its subject",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         }

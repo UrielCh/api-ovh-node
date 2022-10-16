@@ -6,6 +6,14 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  */
 export namespace complexType {
     /**
+     * Key and value, with proper key strings
+     * interface fullName: complexType.SafeKeyValueCanBeNull.SafeKeyValueCanBeNull
+     */
+    export interface SafeKeyValueCanBeNull<T> {
+        key?: string;
+        value?: T;
+    }
+    /**
      * A numeric value tagged with its unit
      * interface fullName: complexType.UnitAndValue.UnitAndValue
      */
@@ -72,6 +80,7 @@ export namespace dedicated {
             plannedInterventionId?: number;
             startDate: string;
             status: dedicated.TaskStatusEnum;
+            tags?: complexType.SafeKeyValueCanBeNull<string>[];
             taskId: number;
             ticketReference?: string;
         }
@@ -205,6 +214,14 @@ export namespace vps {
         size: number;
         state: vps.disk.StateEnum;
         type: vps.disk.TypeEnum;
+    }
+    /**
+     * URL to download the VPS snapshot
+     * interface fullName: vps.DownloadSnapshotURL.DownloadSnapshotURL
+     */
+    export interface DownloadSnapshotURL {
+        size: number;
+        url: string;
     }
     /**
      * Installation image for a VPS
@@ -516,7 +533,7 @@ export namespace vps {
          * All datacenter of vps migration
          * type fullname: vps.migration.DatacenterEnum
          */
-        export type DatacenterEnum = "BHS" | "GRA" | "SBG" | "SGP" | "SYD" | "UK" | "WAW"
+        export type DatacenterEnum = "BHS" | "DE" | "GRA" | "SBG" | "SGP" | "SYD" | "UK" | "WAW"
         /**
          * Description not available
          * interface fullName: vps.migration.Migration.Migration

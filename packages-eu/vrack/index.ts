@@ -89,6 +89,41 @@ export namespace vrack {
         ovhCloudConnect?: string[];
     }
     /**
+     * Dedicated server interfaces allowed for this vRack
+     * interface fullName: vrack.EligibleDedicatedServerInterfaces.EligibleDedicatedServerInterfaces
+     */
+    export interface EligibleDedicatedServerInterfaces {
+        dedicatedServer: string;
+        dedicatedServerInterface: string;
+        name: string;
+    }
+    /**
+     * Eligible services for this vRack
+     * interface fullName: vrack.EligibleServices.EligibleServices
+     */
+    export interface EligibleServices {
+        cloudProject?: string[];
+        dedicatedCloud?: string[];
+        dedicatedCloudDatacenter?: string[];
+        dedicatedConnect?: string[];
+        dedicatedServer?: string[];
+        dedicatedServerInterface?: vrackEligibleDedicatedServerInterfaces[];
+        ip?: string[];
+        ipLoadbalancing?: string[];
+        legacyVrack?: string[];
+        ovhCloudConnect?: string[];
+    }
+    /**
+     * Eligible services call response
+     * interface fullName: vrack.EligibleServicesResponse.EligibleServicesResponse
+     */
+    export interface EligibleServicesResponse {
+        createdAt: string;
+        errors: string[];
+        result: vrackEligibleServices;
+        status: string;
+    }
+    /**
      * vrack tasks
      * interface fullName: vrack.Task.Task
      */
@@ -482,6 +517,17 @@ export interface Vrack {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
+        eligibleServices: {
+            /**
+             * List all eligible services for this vRack asynchronously
+             * GET /vrack/{serviceName}/eligibleServices
+             */
+            $get(): Promise<vrack.EligibleServicesResponse>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
         ip: {
             /**
              * vrack for IP blocks
@@ -667,5 +713,7 @@ export interface Vrack {
  * Extra Alias to bypass relativer namespace colitions
  */
 type vrackAllowedDedicatedServerInterfaces = vrack.AllowedDedicatedServerInterfaces;
+type vrackEligibleDedicatedServerInterfaces = vrack.EligibleDedicatedServerInterfaces;
+type vrackEligibleServices = vrack.EligibleServices;
 type vrackTaskStatusEnum = vrack.TaskStatusEnum;
 type vrackVrackZoneEnum = vrack.VrackZoneEnum;

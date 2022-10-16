@@ -5355,7 +5355,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Partition size in MiB, 0 => rest of the space",
+              "description": "Partition size in MB, 0 => rest of the space",
               "fullType": "long",
               "name": "size",
               "paramType": "body",
@@ -6147,52 +6147,44 @@ export const schema: Schema = {
       "path": "/me/migration/{migrationId}/contract/{contractId}/agreement"
     },
     {
-      "description": "List the nichandle.emailNotification objects",
+      "description": "Email history",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List of all your email notifications",
+          "description": "Retrieve every email sent to you",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/me/notification/email/history"
     },
     {
-      "description": "Email notification",
+      "description": "Email history",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Retrieve information about an email",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "nichandle.emailNotification",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "nichandle.EmailNotification"
         }
       ],
       "path": "/me/notification/email/history/{id}"
@@ -7740,7 +7732,7 @@ export const schema: Schema = {
       "path": "/me/payment/transaction/{transactionId}"
     },
     {
-      "description": "List the payment mean credit cards",
+      "description": "Manage bank accounts",
       "operations": [
         {
           "apiStatus": {
@@ -7793,7 +7785,7 @@ export const schema: Schema = {
       "path": "/me/paymentMean/bankAccount"
     },
     {
-      "description": "List the payment mean credit cards",
+      "description": "Manage bank accounts",
       "operations": [
         {
           "apiStatus": {
@@ -9384,309 +9376,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/me/task/contactChange/{id}/resendEmail"
-    },
-    {
-      "description": "List the nichandle.DomainTask objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of domain task",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Filter the value of domain property (like)",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "domain.NicOperationFunctionEnum",
-              "description": "Filter the value of function property (like)",
-              "fullType": "domain.NicOperationFunctionEnum",
-              "name": "function",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "domain.OperationStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "domain.OperationStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
-        }
-      ],
-      "path": "/me/task/domain"
-    },
-    {
-      "description": "Domain tasks",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "nichandle.DomainTask",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
-        }
-      ],
-      "path": "/me/task/domain/{id}"
-    },
-    {
-      "description": "accelerate operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Accelerate the task",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
-        }
-      ],
-      "path": "/me/task/domain/{id}/accelerate"
-    },
-    {
-      "description": "List the nichandle.DomainTaskArgument objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of arguments",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
-        }
-      ],
-      "path": "/me/task/domain/{id}/argument"
-    },
-    {
-      "description": "Domain operation argument",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Key of the argument",
-              "fullType": "string",
-              "name": "key",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "nichandle.DomainTaskArgument",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.DomainTaskArgument",
-              "description": "New object properties",
-              "fullType": "nichandle.DomainTaskArgument",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Key of the argument",
-              "fullType": "string",
-              "name": "key",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
-        }
-      ],
-      "path": "/me/task/domain/{id}/argument/{key}"
-    },
-    {
-      "description": "cancel operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Cancel the task",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
-        }
-      ],
-      "path": "/me/task/domain/{id}/cancel"
-    },
-    {
-      "description": "Domain operation progress",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "nichandle.DomainTaskProgressBar",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
-        }
-      ],
-      "path": "/me/task/domain/{id}/progressbar"
-    },
-    {
-      "description": "relaunch operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Relaunch the task",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
-        }
-      ],
-      "path": "/me/task/domain/{id}/relaunch"
     },
     {
       "description": "List the nichandle.emailChange.Task objects",
@@ -11638,6 +11327,7 @@ export const schema: Schema = {
       "enum": [
         "cash",
         "chargeback",
+        "check",
         "cheque",
         "creditAccount",
         "creditCard",
@@ -11658,6 +11348,7 @@ export const schema: Schema = {
         "payu",
         "platnosci",
         "refund",
+        "rupay",
         "transfer",
         "withdrawal"
       ],
@@ -11811,9 +11502,12 @@ export const schema: Schema = {
         "CREDIT_CARD",
         "CURRENT_ACCOUNT",
         "DEFERRED_PAYMENT_ACCOUNT",
+        "DOMESTIC_CARD",
         "ENTERPRISE",
         "INTERNAL_TRUSTED_ACCOUNT",
         "PAYPAL",
+        "RUPAY",
+        "SEPA_DIRECT_DEBIT",
         "bankAccount",
         "creditCard",
         "deferredPaymentAccount",
@@ -12755,6 +12449,13 @@ export const schema: Schema = {
           "required": false,
           "type": "payment.method.AvailablePaymentMethod[]"
         },
+        "paymentMethods": {
+          "canBeNull": false,
+          "description": "List of registered Payment methods usable on this order",
+          "readOnly": false,
+          "required": false,
+          "type": "payment.method.PaymentMethod[]"
+        },
         "registered": {
           "canBeNull": false,
           "description": "IDs of registered payment method usable on this order",
@@ -13573,9 +13274,21 @@ export const schema: Schema = {
         "CREDITCARD_AUTOMATIC",
         "CREDITCARD_MANUAL",
         "CREDIT_ACCOUNT_AUTOMATIC",
+        "CREDIT_CARD_AUTOMATIC",
+        "CREDIT_CARD_MANUAL",
+        "CURRENT_ACCOUNT_AUTOMATIC",
+        "CURRENT_ACCOUNT_MANUAL",
+        "DOMESTIC_CARD_AUTOMATIC",
+        "DOMESTIC_CARD_MANUAL",
         "EDINAR_MANUAL",
+        "ENTERPRISE_AUTOMATIC",
+        "ENTERPRISE_MANUAL",
         "IDEAL_AUTOMATIC",
         "IDEAL_MANUAL",
+        "INCOMING_AUTOMATIC",
+        "INCOMING_MANUAL",
+        "INTERNAL_TRUSTED_ACCOUNT_AUTOMATIC",
+        "INTERNAL_TRUSTED_ACCOUNT_MANUAL",
         "MULTIBANCO_AUTOMATIC",
         "MULTIBANCO_MANUAL",
         "ORDER",
@@ -13588,26 +13301,47 @@ export const schema: Schema = {
         "REFUND_CHECK",
         "REFUND_CREDITCARD",
         "REFUND_CREDIT_ACCOUNT",
+        "REFUND_CREDIT_CARD",
+        "REFUND_CURRENT_ACCOUNT",
+        "REFUND_DOMESTIC_CARD",
+        "REFUND_ENTERPRISE",
         "REFUND_IDEAL",
+        "REFUND_INCOMING",
+        "REFUND_INTERNAL_TRUSTED_ACCOUNT",
         "REFUND_LOSS",
         "REFUND_MULTIBANCO",
         "REFUND_PAYPAL",
         "REFUND_PAYU",
+        "REFUND_RUPAY",
         "REFUND_SEPA",
+        "REFUND_SEPA_DIRECT_DEBIT",
         "REFUND_TRANSFER",
         "REFUND_UNKNOWN",
+        "RUPAY_AUTOMATIC",
+        "RUPAY_MANUAL",
         "SEPA_AUTOMATIC",
+        "SEPA_DIRECT_DEBIT_AUTOMATIC",
+        "SEPA_DIRECT_DEBIT_MANUAL",
         "TRANSFER_MANUAL",
         "UNPAID_CHECK",
         "UNPAID_CREDITCARD",
         "UNPAID_CREDIT_ACCOUNT",
+        "UNPAID_CREDIT_CARD",
+        "UNPAID_CURRENT_ACCOUNT",
+        "UNPAID_DOMESTIC_CARD",
+        "UNPAID_ENTERPRISE",
         "UNPAID_IDEAL",
+        "UNPAID_INCOMING",
+        "UNPAID_INTERNAL_TRUSTED_ACCOUNT",
         "UNPAID_MULTIBANCO",
         "UNPAID_PAYPAL",
         "UNPAID_PAYU",
+        "UNPAID_RUPAY",
         "UNPAID_SEPA",
+        "UNPAID_SEPA_DIRECT_DEBIT",
         "UNPAID_WITHDRAW",
         "WARRANT_MANUAL",
+        "WIRE_TRANSFER_MANUAL",
         "WITHDRAW_AUTOMATIC"
       ],
       "enumType": "string",
@@ -14296,6 +14030,7 @@ export const schema: Schema = {
     "dedicated.TemplateOsSubfamilyEnum": {
       "description": "Os subfamily definition",
       "enum": [
+        "alma",
         "aos",
         "arch",
         "centos",
@@ -14317,10 +14052,11 @@ export const schema: Schema = {
         "power",
         "proxmox",
         "rhel",
+        "rocky",
         "slackware",
+        "sles-sap",
         "smartos",
         "solusvm",
-        "suse",
         "ubuntu",
         "windows-server-core",
         "windows-server-desktop-exp",
@@ -14673,7 +14409,7 @@ export const schema: Schema = {
         },
         "size": {
           "canBeNull": false,
-          "description": "Partition size in MiB, 0 => rest of the space",
+          "description": "Partition size (unit: MB GB TB, MB by default), 0 => rest of the space",
           "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
@@ -14731,113 +14467,6 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "SupportsUEFIEnum",
       "namespace": "dedicated.server"
-    },
-    "domain.DocumentFormatsEnum": {
-      "description": "Document file format",
-      "enum": [
-        "gif",
-        "jpeg",
-        "jpg",
-        "pdf",
-        "png"
-      ],
-      "enumType": "string",
-      "id": "DocumentFormatsEnum",
-      "namespace": "domain"
-    },
-    "domain.NicOperationFunctionEnum": {
-      "description": "Operation functions",
-      "enum": [
-        "ContactControl",
-        "DnsAnycastActivate",
-        "DnsAnycastDeactivate",
-        "DnssecDisable",
-        "DnssecEnable",
-        "DnssecResigning",
-        "DnssecRollKsk",
-        "DnssecRollZsk",
-        "DomainAfterMarket",
-        "DomainContactControl",
-        "DomainContactUpdate",
-        "DomainControl",
-        "DomainCreate",
-        "DomainDelete",
-        "DomainDnsUpdate",
-        "DomainDsUpdate",
-        "DomainEmailRedirectionsCreate",
-        "DomainEmailRedirectionsDelete",
-        "DomainHold",
-        "DomainHostCreate",
-        "DomainHostDelete",
-        "DomainHostUpdate",
-        "DomainIncomingTransfer",
-        "DomainLock",
-        "DomainOutgoingTransfer",
-        "DomainRegistryDelete",
-        "DomainRenew",
-        "DomainResourceDelete",
-        "DomainRestore",
-        "DomainTrade",
-        "DomainUnhold",
-        "DomainUnlock",
-        "ZoneImport"
-      ],
-      "enumType": "string",
-      "id": "NicOperationFunctionEnum",
-      "namespace": "domain"
-    },
-    "domain.OperationActionEnum": {
-      "description": "operation Action",
-      "enum": [
-        "canCancel",
-        "canCorrect",
-        "canRelaunch",
-        "canReset"
-      ],
-      "enumType": "string",
-      "id": "OperationActionEnum",
-      "namespace": "domain"
-    },
-    "domain.OperationStatusEnum": {
-      "description": "Operation status",
-      "enum": [
-        "cancelled",
-        "doing",
-        "done",
-        "error",
-        "todo"
-      ],
-      "enumType": "string",
-      "id": "OperationStatusEnum",
-      "namespace": "domain"
-    },
-    "domain.OperationStep": {
-      "description": "One step from an operation",
-      "id": "OperationStep",
-      "namespace": "domain",
-      "properties": {
-        "description": {
-          "canBeNull": false,
-          "description": "Description of the step",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "executionDuration": {
-          "canBeNull": false,
-          "description": "Execution time of the step",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "step": {
-          "canBeNull": false,
-          "description": "Name of the step",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
     },
     "http.MethodEnum": {
       "description": "All HTTP methods available",
@@ -16720,7 +16349,10 @@ export const schema: Schema = {
         "FAILED",
         "MAINTENANCE",
         "PAUSED",
-        "VALID"
+        "REJECTED",
+        "REPLACED",
+        "VALID",
+        "VALIDATING"
       ],
       "enumType": "string",
       "id": "StatusEnum",
@@ -16994,6 +16626,7 @@ export const schema: Schema = {
       "enum": [
         "blockedForIncidents",
         "pendingValidation",
+        "replaced",
         "valid"
       ],
       "enumType": "string",
@@ -17920,264 +17553,42 @@ export const schema: Schema = {
         }
       }
     },
-    "nichandle.DomainTask": {
-      "description": "Domain tasks",
-      "id": "DomainTask",
+    "nichandle.EmailNotification": {
+      "description": "Email notification received",
+      "id": "EmailNotification",
       "namespace": "nichandle",
       "properties": {
-        "canAccelerate": {
+        "body": {
           "canBeNull": false,
-          "description": "Can accelerate the task",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "canCancel": {
-          "canBeNull": false,
-          "description": "Can cancel the task",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "canRelaunch": {
-          "canBeNull": false,
-          "description": "Can relaunch the task",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "comment": {
-          "canBeNull": true,
-          "description": "Comment about the task",
+          "description": "Content of the email",
           "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
         },
-        "creationDate": {
+        "date": {
           "canBeNull": false,
-          "description": "Creation date of the task",
+          "description": "Date at which the email was sent",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
           "type": "datetime"
-        },
-        "domain": {
-          "canBeNull": false,
-          "description": "Domain of the task",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "doneDate": {
-          "canBeNull": true,
-          "description": "Done date of the task",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "function": {
-          "canBeNull": false,
-          "description": "Function of the task",
-          "fullType": "domain.NicOperationFunctionEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "domain.NicOperationFunctionEnum"
         },
         "id": {
           "canBeNull": false,
-          "description": "Id of the task",
+          "description": "ID of the email notification",
           "fullType": "long",
           "readOnly": true,
           "required": false,
           "type": "long"
         },
-        "lastUpdate": {
+        "subject": {
           "canBeNull": false,
-          "description": "Last update date of the task",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "status": {
-          "canBeNull": false,
-          "description": "Status of the task",
-          "fullType": "domain.OperationStatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "domain.OperationStatusEnum"
-        },
-        "todoDate": {
-          "canBeNull": false,
-          "description": "Todo date of the task",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        }
-      }
-    },
-    "nichandle.DomainTaskArgument": {
-      "description": "Domain operation argument",
-      "id": "DomainTaskArgument",
-      "namespace": "nichandle",
-      "properties": {
-        "acceptedFormats": {
-          "canBeNull": true,
-          "description": "List of accepted formats",
-          "fullType": "domain.DocumentFormatsEnum[]",
-          "readOnly": true,
-          "required": false,
-          "type": "domain.DocumentFormatsEnum[]"
-        },
-        "acceptedValues": {
-          "canBeNull": true,
-          "description": "List of accepted values",
-          "fullType": "string[]",
-          "readOnly": true,
-          "required": false,
-          "type": "string[]"
-        },
-        "description": {
-          "canBeNull": true,
-          "description": "Description of the argument",
+          "description": "Subject of the email",
           "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
-        },
-        "fields": {
-          "canBeNull": true,
-          "description": "List of impacted field names",
-          "fullType": "xander.ContactFieldEnum[]",
-          "readOnly": true,
-          "required": false,
-          "type": "xander.ContactFieldEnum[]"
-        },
-        "key": {
-          "canBeNull": false,
-          "description": "Key of the argument",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "maximumSize": {
-          "canBeNull": true,
-          "description": "Maximum of the content length that you can send",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "minimumSize": {
-          "canBeNull": true,
-          "description": "Minimum of the content length that you can send",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "readOnly": {
-          "canBeNull": false,
-          "description": "True if the argument is in read only",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "template": {
-          "canBeNull": true,
-          "description": "Template of the content",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "type": {
-          "canBeNull": false,
-          "description": "Type of the argument",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "value": {
-          "canBeNull": true,
-          "description": "Value of the argument",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "nichandle.DomainTaskProgressBar": {
-      "description": "Domain operation progress",
-      "id": "DomainTaskProgressBar",
-      "namespace": "nichandle",
-      "properties": {
-        "currentStep": {
-          "canBeNull": false,
-          "description": "Current step of the operation",
-          "fullType": "domain.OperationStep",
-          "readOnly": true,
-          "required": false,
-          "type": "domain.OperationStep"
-        },
-        "expectedDoneDate": {
-          "canBeNull": true,
-          "description": "The estimated end date of the task",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "followUpSteps": {
-          "canBeNull": true,
-          "description": "all the steps of operation",
-          "fullType": "domain.OperationStep[]",
-          "readOnly": true,
-          "required": false,
-          "type": "domain.OperationStep[]"
-        },
-        "lastUpdateDate": {
-          "canBeNull": true,
-          "description": "The last update date of the task",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "progress": {
-          "canBeNull": false,
-          "description": "Progress percentage of the task",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "taskActions": {
-          "canBeNull": false,
-          "description": "Action possible on task",
-          "fullType": "domain.OperationActionEnum[]",
-          "readOnly": true,
-          "required": false,
-          "type": "domain.OperationActionEnum[]"
-        },
-        "taskStatus": {
-          "canBeNull": false,
-          "description": "The status of the task",
-          "fullType": "domain.OperationStatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "domain.OperationStatusEnum"
         }
       }
     },
@@ -20320,11 +19731,182 @@ export const schema: Schema = {
         "DONE",
         "IFRAME_VANTIV",
         "IN_CONTEXT",
+        "NONE",
         "POST_FORM",
         "REDIRECT"
       ],
       "enumType": "string",
       "id": "IntegrationType",
+      "namespace": "payment.method"
+    },
+    "payment.method.PaymentMethod": {
+      "description": "payment method",
+      "id": "PaymentMethod",
+      "namespace": "payment.method",
+      "properties": {
+        "billingContactId": {
+          "canBeNull": true,
+          "description": "Associated billing contact ID",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "default": {
+          "canBeNull": false,
+          "description": "Indicates if payment method is the default one for this account",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Custom customer description",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "expirationDate": {
+          "canBeNull": true,
+          "description": "Expiration date",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "formSessionId": {
+          "canBeNull": true,
+          "description": "Form session ID",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "icon": {
+          "canBeNull": false,
+          "description": "Payment method type icon",
+          "readOnly": false,
+          "required": false,
+          "type": "payment.method.Icon"
+        },
+        "integration": {
+          "canBeNull": true,
+          "description": "Payment method integration type",
+          "readOnly": false,
+          "required": false,
+          "type": "payment.method.IntegrationType"
+        },
+        "label": {
+          "canBeNull": true,
+          "description": "Payment method public label",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "lastUpdate": {
+          "canBeNull": true,
+          "description": "Last update date",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "merchantId": {
+          "canBeNull": true,
+          "description": "Merchant ID",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "oneclick": {
+          "canBeNull": true,
+          "description": "Indicates if payment method support the oneclick functionality",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "paymentMeanId": {
+          "canBeNull": true,
+          "description": "Payment mean ID associated to this payment method",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "paymentMethodId": {
+          "canBeNull": false,
+          "description": "Payment method ID",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "paymentSubType": {
+          "canBeNull": true,
+          "description": "Payment method sub type",
+          "readOnly": false,
+          "required": false,
+          "type": "payment.method.SubTypeEnum"
+        },
+        "paymentType": {
+          "canBeNull": false,
+          "description": "Payment method type",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Payment method status",
+          "readOnly": false,
+          "required": false,
+          "type": "payment.method.StatusEnum"
+        }
+      }
+    },
+    "payment.method.StatusEnum": {
+      "description": "Payment method status",
+      "enum": [
+        "CANCELED",
+        "CANCELING",
+        "CREATED",
+        "CREATING",
+        "ERROR",
+        "EXPIRED",
+        "FAILED",
+        "MAINTENANCE",
+        "PAUSED",
+        "REJECTED",
+        "REPLACED",
+        "VALID",
+        "VALIDATING"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "payment.method"
+    },
+    "payment.method.SubTypeEnum": {
+      "description": "Payment method sub-type",
+      "enum": [
+        "30_DAYS",
+        "45_DAYS",
+        "60_DAYS",
+        "AMERICAN_EXPRESS",
+        "AURA",
+        "CARTE_BANCAIRE",
+        "CARTE_BLEUE",
+        "CHORUS",
+        "DINERS_CLUB",
+        "DISCOVER",
+        "JCB",
+        "MAESTRO",
+        "MASTERCARD",
+        "NONE",
+        "VISA"
+      ],
+      "enumType": "string",
+      "id": "SubTypeEnum",
       "namespace": "payment.method"
     },
     "telephony.BillingSettings": {
@@ -20444,42 +20026,6 @@ export const schema: Schema = {
           "type": "telephony.LineDescriptionSettings"
         }
       }
-    },
-    "xander.ContactFieldEnum": {
-      "description": "Available contact fields",
-      "enum": [
-        "address.city",
-        "address.country",
-        "address.line1",
-        "address.line2",
-        "address.line3",
-        "address.otherDetails",
-        "address.province",
-        "address.zip",
-        "birthCity",
-        "birthCountry",
-        "birthDay",
-        "birthZip",
-        "cellPhone",
-        "companyNationalIdentificationNumber",
-        "email",
-        "fax",
-        "firstName",
-        "gender",
-        "language",
-        "lastName",
-        "legalForm",
-        "nationalIdentificationNumber",
-        "nationality",
-        "organisationName",
-        "organisationType",
-        "phone",
-        "spareEmail",
-        "vat"
-      ],
-      "enumType": "string",
-      "id": "ContactFieldEnum",
-      "namespace": "xander"
     },
     "xdsl.Setting": {
       "description": "Xdsl Settings",

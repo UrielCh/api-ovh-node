@@ -1130,6 +1130,7 @@ export const schema: Schema = {
         "creating",
         "inMaintenance",
         "ok",
+        "reopening",
         "suspended",
         "suspending"
       ],

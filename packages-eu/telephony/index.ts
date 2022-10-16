@@ -1477,6 +1477,7 @@ export namespace telephony {
         actionOnOverflow?: telephony.OvhPabxQueueActionEnum;
         actionOnOverflowParam?: string;
         askForRecordDisabling?: boolean;
+        confirmKey?: telephony.OvhPabxIvrMenuKeyEnum;
         description?: string;
         followCallForwards?: boolean;
         maxMember: number;
@@ -1537,6 +1538,11 @@ export namespace telephony {
      * type fullname: telephony.OvhPabxIvrMenuEntryActionEnum
      */
     export type OvhPabxIvrMenuEntryActionEnum = "bridge" | "callcenter" | "menuBack" | "menuExit" | "menuSub" | "menuTop" | "playback" | "readDtmf" | "setCallerName"
+    /**
+     * IVR menu key
+     * type fullname: telephony.OvhPabxIvrMenuKeyEnum
+     */
+    export type OvhPabxIvrMenuKeyEnum = "#" | "*" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
     /**
      * IVR Menu
      * interface fullName: telephony.OvhPabxMenu.OvhPabxMenu
@@ -2821,7 +2827,7 @@ export interface Telephony {
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         required: {
             /**
-             * Tells wether the procedure is necessary to order telephony products or not
+             * Tells whether the procedure is necessary to order telephony products or not
              * GET /telephony/procedure/required
              */
             $get(): Promise<boolean>;
@@ -3961,7 +3967,7 @@ export interface Telephony {
                              * Alter this object properties
                              * PUT /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}
                              */
-                            $put(params?: { actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, followCallForwards?: boolean, maxMember?: number, maxWaitTime?: number, queueId?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy?: telephony.OvhPabxHuntingQueueStrategyEnum }): Promise<void>;
+                            $put(params?: { actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, confirmKey?: telephony.OvhPabxIvrMenuKeyEnum, description?: string, followCallForwards?: boolean, maxMember?: number, maxWaitTime?: number, queueId?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy?: telephony.OvhPabxHuntingQueueStrategyEnum }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -6161,7 +6167,7 @@ export interface Telephony {
                              * Alter this object properties
                              * PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}
                              */
-                            $put(params?: { actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, followCallForwards?: boolean, maxMember?: number, maxWaitTime?: number, queueId?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy?: telephony.OvhPabxHuntingQueueStrategyEnum }): Promise<void>;
+                            $put(params?: { actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, confirmKey?: telephony.OvhPabxIvrMenuKeyEnum, description?: string, followCallForwards?: boolean, maxMember?: number, maxWaitTime?: number, queueId?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy?: telephony.OvhPabxHuntingQueueStrategyEnum }): Promise<void>;
                             /**
                              * Controle cache
                              */

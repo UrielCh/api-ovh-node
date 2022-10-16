@@ -77,11 +77,13 @@ export namespace sms {
     export interface Account {
         automaticRecreditAmount?: sms.PackQuantityAutomaticRecreditEnum;
         callBack?: string;
+        channel: sms.ChannelEnum;
         creditThresholdForAutomaticRecredit: number;
         creditsHoldByQuota: number;
         creditsLeft: number;
         description: string;
         name: string;
+        smpp: boolean;
         smsResponse: sms.Response;
         status: sms.StatusAccountEnum;
         stopCallBack?: string;
@@ -98,6 +100,19 @@ export namespace sms {
         alertThreshold: number;
         support: sms.SupportEnum;
     }
+    /**
+     * Smpp allowed IPs
+     * interface fullName: sms.AllowedIPs.AllowedIPs
+     */
+    export interface AllowedIPs {
+        action: sms.AllowedIPsActionEnum;
+        ips: string[];
+    }
+    /**
+     * Smpp allowed IPs action
+     * type fullname: sms.AllowedIPsActionEnum
+     */
+    export type AllowedIPsActionEnum = "add" | "remove"
     /**
      * Batch of SMS to send
      * interface fullName: sms.Batch.Batch
@@ -191,6 +206,11 @@ export namespace sms {
         number: string;
         smsOutgoingID?: number;
     }
+    /**
+     * In case of smpp the channel can not be "both"
+     * type fullname: sms.ChannelEnum
+     */
+    export type ChannelEnum = "both" | "marketing" | "transactional"
     /**
      * The charset format
      * type fullname: sms.CharsetEnum
@@ -336,6 +356,7 @@ export namespace sms {
         differedDelivery: number;
         id: number;
         message: string;
+        messageID?: string;
         messageLength: number;
         numberOfSms: number;
         ptt: number;
@@ -540,6 +561,29 @@ export namespace sms {
      * type fullname: sms.SenderRefererEnum
      */
     export type SenderRefererEnum = "domain" | "nichandle"
+    /**
+     * SMPP settings
+     * interface fullName: sms.Settings.Settings
+     */
+    export interface Settings {
+        endpoints: sms.SettingsEndpoints[];
+        status: sms.SettingsStatusEnum;
+        throughput: number;
+        windowing: number;
+    }
+    /**
+     * SMPP Settings Endpoints
+     * interface fullName: sms.SettingsEndpoints.SettingsEndpoints
+     */
+    export interface SettingsEndpoints {
+        secured: string;
+        unsecured: string;
+    }
+    /**
+     * Smpp Settings Statuses
+     * type fullname: sms.SettingsStatusEnum
+     */
+    export type SettingsStatusEnum = "ERROR" | "INSTALLING" | "OK" | "UPDATING_IPS"
     /**
      * A structure describing all information about quota informations
      * interface fullName: sms.SmsSendingReport.SmsSendingReport
@@ -821,7 +865,7 @@ export interface Sms {
          * Alter this object properties
          * PUT /sms/{serviceName}
          */
-        $put(params?: { automaticRecreditAmount?: sms.PackQuantityAutomaticRecreditEnum, callBack?: string, creditThresholdForAutomaticRecredit?: number, creditsHoldByQuota?: number, creditsLeft?: number, description?: string, name?: string, smsResponse?: sms.Response, status?: sms.StatusAccountEnum, stopCallBack?: string, templates?: sms.Templates, userQuantityWithQuota?: number }): Promise<void>;
+        $put(params?: { automaticRecreditAmount?: sms.PackQuantityAutomaticRecreditEnum, callBack?: string, channel?: sms.ChannelEnum, creditThresholdForAutomaticRecredit?: number, creditsHoldByQuota?: number, creditsLeft?: number, description?: string, name?: string, smpp?: boolean, smsResponse?: sms.Response, status?: sms.StatusAccountEnum, stopCallBack?: string, templates?: sms.Templates, userQuantityWithQuota?: number }): Promise<void>;
         /**
          * Controle cache
          */
@@ -1027,7 +1071,7 @@ export interface Sms {
              * Get SMS list
              * GET /sms/{serviceName}/outgoing
              */
-            $get(params?: { batchID?: string, 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string }): Promise<number[]>;
+            $get(params?: { batchID?: string, 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, deliveryReceipt?: number, differedDelivery?: number, messageID?: string, ptt?: number, receiver?: string, sender?: string, tag?: string }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -1320,6 +1364,42 @@ export interface Sms {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        smpp: {
+            allowedIPs: {
+                /**
+                 * Get SMPP allowed IPs
+                 * GET /sms/{serviceName}/smpp/allowedIPs
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Add or remove allowed IPs
+                 * PUT /sms/{serviceName}/smpp/allowedIPs
+                 */
+                $put(params: { action: sms.AllowedIPsActionEnum, ips: string[] }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            password: {
+                /**
+                 * Renew SMPP password
+                 * POST /sms/{serviceName}/smpp/password
+                 */
+                $post(): Promise<void>;
+            }
+            settings: {
+                /**
+                 * Get SMPP settings
+                 * GET /sms/{serviceName}/smpp/settings
+                 */
+                $get(): Promise<sms.Settings>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
         }
         task: {
             /**

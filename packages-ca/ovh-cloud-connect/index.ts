@@ -221,7 +221,7 @@ export namespace ovhcloudconnect {
          * Enum values for service provider
          * type fullname: ovhcloudconnect.service.ProviderEnum
          */
-        export type ProviderEnum = "OVHcloud" | "equinix" | "fibrenoire" | "intercloud" | "internal" | "interxion" | "megaport" | "orange" | "risq"
+        export type ProviderEnum = "OVHcloud" | "RISQ" | "equinix" | "fibrenoire" | "intercloud" | "internal" | "interxion" | "megaport" | "orange"
         /**
          * Enum values for the Service
          * type fullname: ovhcloudconnect.service.StatusEnum

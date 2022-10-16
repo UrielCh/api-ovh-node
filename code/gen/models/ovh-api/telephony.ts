@@ -26327,14 +26327,14 @@ export const schema: Schema = {
       "path": "/telephony/procedure/{id}/cancel"
     },
     {
-      "description": "Tells wether the procedure is necessary to order telephony products or not",
+      "description": "Tells whether the procedure is necessary to order telephony products or not",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Tells wether the procedure is necessary to order telephony products or not",
+          "description": "Tells whether the procedure is necessary to order telephony products or not",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
@@ -33530,6 +33530,14 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
+        "confirmKey": {
+          "canBeNull": true,
+          "description": "The key that tells the IVR that digit-entry is finished. Also used as a \"repeat\" key in the menus when no input is expected.",
+          "fullType": "telephony.OvhPabxIvrMenuKeyEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "telephony.OvhPabxIvrMenuKeyEnum"
+        },
         "description": {
           "canBeNull": true,
           "description": "The name of the queue",
@@ -33818,6 +33826,25 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "OvhPabxIvrMenuEntryActionEnum",
+      "namespace": "telephony"
+    },
+    "telephony.OvhPabxIvrMenuKeyEnum": {
+      "description": "IVR menu key",
+      "enum": [
+        "#",
+        "*",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "enumType": "string",
+      "id": "OvhPabxIvrMenuKeyEnum",
       "namespace": "telephony"
     },
     "telephony.OvhPabxMenu": {

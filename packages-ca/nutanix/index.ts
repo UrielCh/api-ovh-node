@@ -6,6 +6,24 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  */
 export namespace nutanix {
     /**
+     * Cluster availability
+     * type fullname: nutanix.AvailabilityEnum
+     */
+    export type AvailabilityEnum = "1440H" | "240H" | "2880H" | "480H" | "720H" | "72H" | "unavailable"
+    /**
+     * Cluster datacenter availability
+     * interface fullName: nutanix.DatacenterAvailability.DatacenterAvailability
+     */
+    export interface DatacenterAvailability {
+        availability: nutanix.AvailabilityEnum;
+        datacenter: string;
+    }
+    /**
+     * Cluster deployment type
+     * type fullname: nutanix.DeploymentTypeEnum
+     */
+    export type DeploymentTypeEnum = "NodeAwareness"
+    /**
      * Cluster redundancy factor
      * type fullname: nutanix.RedundancyFactorEnum
      */
@@ -18,6 +36,22 @@ export namespace nutanix {
         maxNodes: number;
         minNodes: number;
         scaleFactor: number;
+    }
+    /**
+     * Cluster availability
+     * interface fullName: nutanix.availability.availability
+     */
+    export interface availability {
+        datacenters: nutanix.DatacenterAvailability[];
+        deploymentType?: nutanix.DeploymentTypeEnum;
+        erasureCoding?: boolean;
+        fqn: string;
+        memory: string;
+        planCode: string;
+        redundancyFactor?: nutanix.RedundancyFactorEnum;
+        server: string;
+        storage: string;
+        systemStorage?: string;
     }
     /**
      * Cluster configuration
@@ -153,6 +187,17 @@ export interface Nutanix {
      * Controle cache
      */
     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    availableVersions: {
+        /**
+         * Fetch the available Nutanix versions to install
+         * GET /nutanix/availableVersions
+         */
+        $get(params?: { fqn?: string }): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    }
     requirements: {
         /**
          * Fetch the requirements for a given cluster configuration

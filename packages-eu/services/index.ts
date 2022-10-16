@@ -708,7 +708,26 @@ export namespace services {
                     export interface Services {
                         antiddos: string;
                         includedBackup: number;
+                        ipmiAvailable: boolean;
+                        ipv4RangeIncluded?: string;
+                        ipv6RangeIncluded?: string;
+                        kvmipAvailable: boolean;
+                        olaAvailable: boolean;
+                        secureComputingTechnology?: servicesexpandedtechnicalbaremetalServerserverservicesSecureComputingTechnologyEnum;
                         sla: number;
+                        supportLevel?: servicesexpandedtechnicalbaremetalServerserverservicesSupportLevelEnum;
+                    }
+                    export namespace services {
+                        /**
+                         * Type of secure computing technology
+                         * type fullname: services.expanded.technical.baremetalServer.server.services.SecureComputingTechnologyEnum
+                         */
+                        export type SecureComputingTechnologyEnum = "AMDInfinity" | "IntelSGX"
+                        /**
+                         * Type of support level
+                         * type fullname: services.expanded.technical.baremetalServer.server.services.SupportLevelEnum
+                         */
+                        export type SupportLevelEnum = "business" | "enterprise" | "premium" | "premium-accredited" | "standard"
                     }
                 }
                 export namespace storage {
@@ -777,7 +796,7 @@ export namespace services {
                 export interface License {
                     distribution: string;
                     edition: string;
-                    features: services.expanded.technical.nutanixCluster.Features[];
+                    features?: services.expanded.technical.nutanixCluster.Features[];
                 }
                 /**
                  * Nutanix cluser services
@@ -1254,3 +1273,8 @@ export interface Services {
         }
     };
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type servicesexpandedtechnicalbaremetalServerserverservicesSecureComputingTechnologyEnum = services.expanded.technical.baremetalServer.server.services.SecureComputingTechnologyEnum;
+type servicesexpandedtechnicalbaremetalServerserverservicesSupportLevelEnum = services.expanded.technical.baremetalServer.server.services.SupportLevelEnum;
