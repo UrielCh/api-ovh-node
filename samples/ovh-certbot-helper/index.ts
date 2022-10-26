@@ -37,8 +37,8 @@ async function displayGui() {
     console.log('sudo mkdir /etc/letsencrypt; sudo chown ${USER}: /etc/letsencrypt;');
     console.log('certbot certonly --dns-ovh --dns-ovh-credentials /ovh.ini --dns-ovh-propagation-seconds 60 -d "*.example.com"');
     console.log('');
-    console.log('# renew cert within crontab:');
-    console.log('0 11 * * * . .profile && certbot renew');
+    console.log('# renew cert within crontab: (by default expand_aliases if disabled in non insteractive bash)');
+    console.log('0 11 * * * bash -c "shopt -s expand_aliases; . .profile && certbot renew"');
     console.log('');
     console.log('# You may add an other crontab entry to reload your nginx/apache config to reload your certificate');
   }
@@ -59,16 +59,26 @@ async function createovhIni(dest: string) {
     choices: [AUTO, SHELL, MANUAL]
   }])
 
-  const config = await getConfigIni();
-
+  // create folder befor any generation attempte
   if (resp.write === AUTO) {
     const dir = path.dirname(dest);
     try {
       fs.promises.mkdir(dir, { recursive: true });
     } catch (e) {
+      console.error(`Failed to create ${dir} folder`);
+      return;
       // ignore
     }
-    await fs.promises.writeFile(dest, config, {encoding: 'utf8', flag: 'w', mode: 0o600});
+    // create an empty file
+    await fs.promises.writeFile(dest, '', { encoding: 'utf8', flag: 'w', mode: 0o600 });
+    // then delete it
+    await fs.promises.unlink(dest);
+  }
+
+  const config = await getConfigIni();
+
+  if (resp.write === AUTO) {
+    await fs.promises.writeFile(dest, config, { encoding: 'utf8', flag: 'w', mode: 0o600 });
     console.log(`cert generated in ${dest}`);
   }
   else if (resp.write === SHELL) {
@@ -92,7 +102,8 @@ async function createovhIni(dest: string) {
 }
 
 async function main() {
-  const dest = path.resolve(os.homedir(), '.secrets', 'certbot', 'ovh.ini');
+  const directory = path.resolve(os.homedir(), '.secrets', 'certbot');
+  const dest = path.resolve(directory, 'ovh.ini');
   try {
     await fs.promises.stat(dest)
     console.log(`${dest} exists on this system, skip generation`);

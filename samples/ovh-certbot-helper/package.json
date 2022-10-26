@@ -1,7 +1,7 @@
 {
   "name": "ovh-certbot-helper",
-  "version": "0.1.1",
-  "description": "Generate for you a certbot-dns-ovh config file",
+  "version": "0.1.2",
+  "description": "Generate a certbot-dns-ovh config file",
   "main": "index.js",
   "keywords": [
     "ovh",
@@ -10,7 +10,8 @@
     "certbot-dns-ovh",
     "https",
     "ssl",
-    "Let's Encrypt"
+    "Let's Encrypt",
+    "ovh letsencrypt"
   ],
   "typings": "index.d.ts",
   "license": "MIT",
@@ -44,5 +45,5 @@
     "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
   },
-  "files": [ "index.js", "bin" ]
+  "files": ["index.js", "bin"]
 }
