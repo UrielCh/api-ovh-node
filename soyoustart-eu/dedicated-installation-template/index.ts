@@ -98,7 +98,7 @@ export namespace dedicated {
      * Os subfamily definition
      * type fullname: dedicated.TemplateOsSubfamilyEnum
      */
-    export type TemplateOsSubfamilyEnum = "aos" | "arch" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "slackware" | "smartos" | "solusvm" | "suse" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
+    export type TemplateOsSubfamilyEnum = "alma" | "aos" | "arch" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "rocky" | "slackware" | "sles-sap" | "smartos" | "solusvm" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
     /**
      * Os type
      * type fullname: dedicated.TemplateOsTypeEnum

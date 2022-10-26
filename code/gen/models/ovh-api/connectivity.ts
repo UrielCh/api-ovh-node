@@ -1111,6 +1111,13 @@ export const schema: Schema = {
           "required": false,
           "type": "datetime"
         },
+        "slotId": {
+          "canBeNull": true,
+          "description": "Represent a meeting id for a fiber collect operator",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "startDate": {
           "canBeNull": false,
           "description": "Start date",
@@ -1763,6 +1770,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "taskReference": {
+          "canBeNull": true,
+          "description": "Task reference created on Ovhcloud status web page",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },

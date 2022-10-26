@@ -478,6 +478,74 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/resetTaskState"
     },
     {
+      "description": "List the dedicatedCloud.BackupRepository objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Backup repositories associated with this Pcc",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/backupRepository"
+    },
+    {
+      "description": "Backup Repository",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Repository Id",
+              "fullType": "long",
+              "name": "repositoryId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.BackupRepository",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/backupRepository/{repositoryId}"
+    },
+    {
       "description": "The features available in your Dedicated Cloud",
       "operations": [
         {
@@ -1378,8 +1446,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-07-01T00:00:00+01:00",
+            "deprecatedDate": "2022-10-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dedicatedCloud/{serviceName}/backupRepository",
+            "value": "DEPRECATED"
           },
           "description": "Backup repositories associated with this Datacenter",
           "httpMethod": "GET",
@@ -1416,8 +1487,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-07-01T00:00:00+01:00",
+            "deprecatedDate": "2022-10-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dedicatedCloud/{serviceName}/backupRepository/{repositoryId}",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -1900,6 +1974,60 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/status"
+    },
+    {
+      "description": "usageReport operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the list of VMs protected by Zerto for a specific month on your dedicated Cloud.",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Billing month",
+              "fullType": "long",
+              "name": "month",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Billing year",
+              "fullType": "long",
+              "name": "year",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.disasterRecovery.ZertoProtectedVm[]",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/usageReport"
     },
     {
       "description": "configureVpn operations",
@@ -6670,6 +6798,36 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/nsx/enable"
     },
     {
+      "description": "The Dedicated Cloud NSX-T option",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Nsxt",
+          "scopes": [
+            "all",
+            "product/dedicatedCloud/all"
+          ]
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/nsxt"
+    },
+    {
       "description": "orderableIpCountries operations",
       "operations": [
         {
@@ -7900,6 +8058,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "Defines if the user can manage encryption / KMS configuration",
+              "fullType": "boolean",
+              "name": "encryptionRight",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "datetime",
               "description": "Date of removal of the user.",
               "fullType": "datetime",
@@ -8170,6 +8336,14 @@ export const schema: Schema = {
               "description": "Email address of the user",
               "fullType": "string",
               "name": "email",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Defines if the user can manage encryption / KMS configuration",
+              "fullType": "boolean",
+              "name": "encryptionRight",
               "paramType": "body",
               "required": false
             },
@@ -11926,6 +12100,45 @@ export const schema: Schema = {
         }
       }
     },
+    "dedicatedCloud.Nsxt": {
+      "description": "The Dedicated Cloud NSX-T option",
+      "id": "Nsxt",
+      "namespace": "dedicatedCloud",
+      "properties": {
+        "datacentersState": {
+          "canBeNull": true,
+          "description": "Installation status on all datacenters",
+          "fullType": "dedicatedCloud.option.DatacenterOptionState[]",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicatedCloud.option.DatacenterOptionState[]"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "State of the NSX-T option",
+          "fullType": "dedicatedCloud.option.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicatedCloud.option.StateEnum"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Url of the NSX-T interface",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "version": {
+          "canBeNull": true,
+          "description": "Version of the NSX-T",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "dedicatedCloud.ObjectRight": {
       "description": "Dedicated Cloud User object right",
       "id": "ObjectRight",
@@ -12617,6 +12830,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "encryptionRight": {
+          "canBeNull": false,
+          "description": "Defines if the user can manage encryption / KMS configuration",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "firstName": {
           "canBeNull": true,
@@ -14150,6 +14371,55 @@ export const schema: Schema = {
       "id": "VpnConfigStateEnum",
       "namespace": "dedicatedCloud.disasterRecovery"
     },
+    "dedicatedCloud.disasterRecovery.ZertoProtectedVm": {
+      "description": "Information on virtual machine protected by Zerto",
+      "id": "ZertoProtectedVm",
+      "namespace": "dedicatedCloud.disasterRecovery",
+      "properties": {
+        "fromDate": {
+          "canBeNull": false,
+          "description": "Start of the backup for the requested period",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "protectedSite": {
+          "canBeNull": false,
+          "description": "Name of the site in which the VM is running",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "recoverySite": {
+          "canBeNull": false,
+          "description": "Name of the site where the VM is backed up",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "vmId": {
+          "canBeNull": false,
+          "description": "ID of the protected VM",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "vmName": {
+          "canBeNull": false,
+          "description": "Name of the protected VM",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "vpgName": {
+          "canBeNull": false,
+          "description": "Name of the virtual protection group in which the VM is located",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "dedicatedCloud.filer.ConnexionStateEnum": {
       "description": "Connexion states for a Dedicated Cloud Filer.",
       "enum": [
@@ -14398,6 +14668,27 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "dedicatedCloud.option.DatacenterOptionState": {
+      "description": "States of a Dedicated Cloud Datacenter Option",
+      "id": "DatacenterOptionState",
+      "namespace": "dedicatedCloud.option",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the Datacenter",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "State of the Datacenter option",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicatedCloud.option.StateEnum"
         }
       }
     },

@@ -29,9 +29,10 @@ export namespace dnssec {
                         10 : RSASHA512
                         13 : ECDSAP256SHA256
                         14 : ECDSAP384SHA384
+                        15 : ED25519
      * type fullname: dnssec.KeyAlgorithmEnum
      */
-    export type KeyAlgorithmEnum = 10 | 13 | 14 | 5 | 7 | 8
+    export type KeyAlgorithmEnum = 10 | 13 | 14 | 15 | 5 | 7 | 8
     /**
      * Dnssec Key Flag Type
                         ###
@@ -169,6 +170,8 @@ export namespace domain {
         offer: domain.OfferEnum;
         owoSupported: boolean;
         parentService?: domain.ParentService;
+        state: domain.DomainStateEnum;
+        suspensionState: domain.DomainSuspensionStateEnum;
         transferLockStatus: domain.DomainLockStatusEnum;
         whoisOwner: string;
     }
@@ -192,6 +195,16 @@ export namespace domain {
      * type fullname: domain.DomainOptionStateEnum
      */
     export type DomainOptionStateEnum = "released" | "subscribed"
+    /**
+     * Domain name current state
+     * type fullname: domain.DomainStateEnum
+     */
+    export type DomainStateEnum = "deleted" | "dispute" | "expired" | "ok" | "outgoing_transfer" | "pending_delete" | "pending_installation" | "restorable"
+    /**
+     * Domain name current suspension state
+     * type fullname: domain.DomainSuspensionStateEnum
+     */
+    export type DomainSuspensionStateEnum = "not_suspended" | "suspended"
     /**
      * Possible purposes of the domain
      * type fullname: domain.IsForEnum
@@ -267,6 +280,7 @@ export namespace domain {
         canRelaunch: boolean;
         comment?: string;
         creationDate: string;
+        domain?: string;
         doneDate?: string;
         function: string;
         id: number;
@@ -847,7 +861,7 @@ export namespace nichandle {
      * Languages a nichandle can choose
      * type fullname: nichandle.LanguageEnum
      */
-    export type LanguageEnum = "de_DE" | "en_AU" | "en_CA" | "en_GB" | "en_IE" | "en_US" | "es_ES" | "fr_CA" | "fr_FR" | "fr_MA" | "fr_SN" | "fr_TN" | "it_IT" | "nl_NL" | "pl_PL" | "pt_PT"
+    export type LanguageEnum = "cs_CZ" | "de_DE" | "en_AU" | "en_CA" | "en_GB" | "en_IE" | "en_US" | "es_ES" | "fi_FI" | "fr_CA" | "fr_FR" | "fr_MA" | "fr_SN" | "fr_TN" | "it_IT" | "lt_LT" | "nl_NL" | "pl_PL" | "pt_PT"
     /**
      * Legal forms a nichandle can be registered as
      * type fullname: nichandle.LegalFormEnum
@@ -1503,7 +1517,7 @@ export interface Domain {
          * Alter this object properties
          * PUT /domain/{serviceName}
          */
-        $put(params?: { dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, hostSupported?: boolean, lastUpdate?: string, nameServerType?: domain.DomainNsTypeEnum, offer?: domain.OfferEnum, owoSupported?: boolean, parentService?: domain.ParentService, transferLockStatus?: domain.DomainLockStatusEnum, whoisOwner?: string }): Promise<void>;
+        $put(params?: { dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, hostSupported?: boolean, lastUpdate?: string, nameServerType?: domain.DomainNsTypeEnum, offer?: domain.OfferEnum, owoSupported?: boolean, parentService?: domain.ParentService, state?: domain.DomainStateEnum, suspensionState?: domain.DomainSuspensionStateEnum, transferLockStatus?: domain.DomainLockStatusEnum, whoisOwner?: string }): Promise<void>;
         /**
          * Controle cache
          */
@@ -1811,7 +1825,7 @@ export interface Domain {
         }
         task: {
             /**
-             * Domain pending tasks
+             * List all domain tasks
              * GET /domain/{serviceName}/task
              */
             $get(params?: { function_?: string, status?: domain.OperationStatusEnum }): Promise<number[]>;
@@ -1821,7 +1835,7 @@ export interface Domain {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
-                 * Get this object properties
+                 * Get details about a domain task
                  * GET /domain/{serviceName}/task/{id}
                  */
                 $get(): Promise<domain.Task>;

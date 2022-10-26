@@ -2005,14 +2005,14 @@ export const schema: Schema = {
       "description": "Enum values for service provider",
       "enum": [
         "OVHcloud",
+        "RISQ",
         "equinix",
         "fibrenoire",
         "intercloud",
         "internal",
         "interxion",
         "megaport",
-        "orange",
-        "risq"
+        "orange"
       ],
       "enumType": "string",
       "id": "ProviderEnum",

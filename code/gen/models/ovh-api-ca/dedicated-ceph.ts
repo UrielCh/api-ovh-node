@@ -10,8 +10,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List available services",
           "httpMethod": "GET",
@@ -31,8 +31,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get cluster details",
           "httpMethod": "GET",
@@ -55,8 +55,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Update cluster details",
           "httpMethod": "PUT",
@@ -101,8 +101,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get list of all IP ACLs in a cluster",
           "httpMethod": "GET",
@@ -125,8 +125,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create one or more new IP ACLs",
           "httpMethod": "POST",
@@ -163,8 +163,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete single IP ACL",
           "httpMethod": "DELETE",
@@ -195,8 +195,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about IP ACL",
           "httpMethod": "GET",
@@ -409,8 +409,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
@@ -463,8 +463,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
@@ -525,8 +525,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get cluster health",
           "httpMethod": "GET",
@@ -555,8 +555,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get list of all pools in a cluster",
           "httpMethod": "GET",
@@ -579,8 +579,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a new ceph pool",
           "httpMethod": "POST",
@@ -617,8 +617,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete a single ceph pool",
           "httpMethod": "DELETE",
@@ -649,8 +649,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about an existing ceph pool",
           "httpMethod": "GET",
@@ -687,8 +687,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -711,8 +711,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
@@ -748,8 +748,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List tasks in progress",
           "httpMethod": "GET",
@@ -778,8 +778,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get task details",
           "httpMethod": "GET",
@@ -816,8 +816,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
@@ -846,8 +846,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get list of all users in a cluster",
           "httpMethod": "GET",
@@ -870,8 +870,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a new ceph user",
           "httpMethod": "POST",
@@ -908,8 +908,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete an existing single ceph user",
           "httpMethod": "DELETE",
@@ -940,8 +940,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a ceph user",
           "httpMethod": "GET",
@@ -978,8 +978,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List user-pool permissions",
           "httpMethod": "GET",
@@ -1010,8 +1010,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create new user-pool permissions. All old permissions will be cleared",
           "httpMethod": "POST",
@@ -1050,8 +1050,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Update user-pool permission for single pool",
           "httpMethod": "PUT",
@@ -1136,8 +1136,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Clear user-pool permission for single pool",
           "httpMethod": "DELETE",

@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/nutanix",
     "description": "Add typing to to ovh api nutanix",
-    "version": "3.1.26",
+    "version": "3.1.28",
     "keywords": [
         "ovh",
         "ovhCloud",

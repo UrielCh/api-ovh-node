@@ -965,7 +965,7 @@ export interface IpLoadbalancing {
                  * HTTP frontends for this iplb
                  * GET /ipLoadbalancing/{serviceName}/http/frontend
                  */
-                $get(params?: { defaultFarmId?: number, port?: string, zone?: string }): Promise<number[]>;
+                $get(params?: { defaultFarmId?: number, defaultSslId?: number, port?: string, zone?: string }): Promise<number[]>;
                 /**
                  * Add a new http frontend on your IP Load Balancing
                  * POST /ipLoadbalancing/{serviceName}/http/frontend
@@ -1327,7 +1327,7 @@ export interface IpLoadbalancing {
                  * TCP frontends for this iplb
                  * GET /ipLoadbalancing/{serviceName}/tcp/frontend
                  */
-                $get(params?: { defaultFarmId?: number, port?: string, zone?: string }): Promise<number[]>;
+                $get(params?: { defaultFarmId?: number, defaultSslId?: number, port?: string, zone?: string }): Promise<number[]>;
                 /**
                  * Add a new TCP frontend on your IP Load Balancing
                  * POST /ipLoadbalancing/{serviceName}/tcp/frontend

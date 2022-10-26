@@ -1934,6 +1934,28 @@ export const schema: Schema = {
   ],
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
+    "complexType.SafeKeyValueCanBeNull<T>": {
+      "description": "Key and value, with proper key strings",
+      "generics": [
+        "T"
+      ],
+      "id": "SafeKeyValueCanBeNull",
+      "namespace": "complexType",
+      "properties": {
+        "key": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
     "complexType.UnitAndValue<T>": {
       "description": "A numeric value tagged with its unit",
       "generics": [
@@ -2324,7 +2346,7 @@ export const schema: Schema = {
       "properties": {
         "cifs": {
           "canBeNull": false,
-          "description": "Wether to allow the CIFS (SMB) protocol for this ACL",
+          "description": "Whether to allow the CIFS (SMB) protocol for this ACL",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,
@@ -2332,7 +2354,7 @@ export const schema: Schema = {
         },
         "ftp": {
           "canBeNull": false,
-          "description": "Wether to allow the FTP protocol for this ACL",
+          "description": "Whether to allow the FTP protocol for this ACL",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,
@@ -2364,7 +2386,7 @@ export const schema: Schema = {
         },
         "nfs": {
           "canBeNull": false,
-          "description": "Wether to allow the NFS protocol for this ACL",
+          "description": "Whether to allow the NFS protocol for this ACL",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,
@@ -2448,6 +2470,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "dedicated.TaskStatusEnum"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Task result tags output",
+          "fullType": "complexType.SafeKeyValueCanBeNull<string>[]",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.SafeKeyValueCanBeNull<string>[]"
         },
         "taskId": {
           "canBeNull": false,
@@ -2942,6 +2972,27 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "vps.disk.TypeEnum"
+        }
+      }
+    },
+    "vps.DownloadSnapshotURL": {
+      "description": "URL to download the VPS snapshot",
+      "id": "DownloadSnapshotURL",
+      "namespace": "vps",
+      "properties": {
+        "size": {
+          "canBeNull": false,
+          "description": "Snapshot size (bytes)",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "URL to download the snapshot",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -3889,6 +3940,7 @@ export const schema: Schema = {
       "description": "All datacenter of vps migration",
       "enum": [
         "BHS",
+        "DE",
         "GRA",
         "SBG",
         "SGP",

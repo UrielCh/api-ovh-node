@@ -3478,6 +3478,54 @@ export const schema: Schema = {
           "required": false,
           "type": "double"
         },
+        "ipmiAvailable": {
+          "canBeNull": false,
+          "description": "Is IPMI available",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "ipv4RangeIncluded": {
+          "canBeNull": true,
+          "description": "ipv4 range included",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "ipv6RangeIncluded": {
+          "canBeNull": true,
+          "description": "ipv6 range included",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "kvmipAvailable": {
+          "canBeNull": false,
+          "description": "Is KVMIP available",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "olaAvailable": {
+          "canBeNull": false,
+          "description": "Define if the product is eligible to the OVHcloud Link aggregation feature",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "secureComputingTechnology": {
+          "canBeNull": true,
+          "description": "Which secure computing technology is used",
+          "fullType": "services.expanded.technical.baremetalServer.server.services.SecureComputingTechnologyEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.server.services.SecureComputingTechnologyEnum"
+        },
         "sla": {
           "canBeNull": false,
           "description": "SLA of the service (in percent)",
@@ -3485,8 +3533,39 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "double"
+        },
+        "supportLevel": {
+          "canBeNull": true,
+          "description": "Which support level of service is included",
+          "fullType": "services.expanded.technical.baremetalServer.server.services.SupportLevelEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.server.services.SupportLevelEnum"
         }
       }
+    },
+    "services.expanded.technical.baremetalServer.server.services.SecureComputingTechnologyEnum": {
+      "description": "Type of secure computing technology",
+      "enum": [
+        "AMDInfinity",
+        "IntelSGX"
+      ],
+      "enumType": "string",
+      "id": "SecureComputingTechnologyEnum",
+      "namespace": "services.expanded.technical.baremetalServer.server.services"
+    },
+    "services.expanded.technical.baremetalServer.server.services.SupportLevelEnum": {
+      "description": "Type of support level",
+      "enum": [
+        "business",
+        "enterprise",
+        "premium",
+        "premium-accredited",
+        "standard"
+      ],
+      "enumType": "string",
+      "id": "SupportLevelEnum",
+      "namespace": "services.expanded.technical.baremetalServer.server.services"
     },
     "services.expanded.technical.baremetalServer.storage.Disk": {
       "description": "Technical information of storage disk of a baremetal service",
@@ -3695,7 +3774,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "features": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "List of license features",
           "fullType": "services.expanded.technical.nutanixCluster.Features[]",
           "readOnly": true,

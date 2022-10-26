@@ -192,8 +192,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get informations about a baremetal server",
           "httpMethod": "GET",
@@ -212,8 +212,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Post a new baremetal server item in your cart",
           "httpMethod": "POST",
@@ -270,8 +270,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get informations about baremetal server options",
           "httpMethod": "GET",
@@ -298,8 +298,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Post a new baremetal server option in your cart",
           "httpMethod": "POST",
@@ -358,6 +358,84 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/cart/{cartId}/baremetalServers/options"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get information about bring your own IP addresses offers",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post a new bring your own IP addresses item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the bring your own IP addresses offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/bringYourOwnIp"
     },
     {
       "description": "Missing description",
@@ -1128,6 +1206,202 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/cart/{cartId}/discover/options"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about a eco",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of family property (=)",
+              "fullType": "string",
+              "name": "family",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of planCode property (=)",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new eco item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of a eco offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/eco"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about eco options",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of family property (=)",
+              "fullType": "string",
+              "name": "family",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of a eco offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new eco option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Cart item to be linked",
+              "fullType": "long",
+              "name": "itemId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of a eco offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/eco/options"
     },
     {
       "description": "Missing description",
@@ -4953,6 +5227,32 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve information of bring your own IP addresses catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.Catalog"
+        }
+      ],
+      "path": "/order/catalog/formatted/bringYourOwnIp"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
           "description": "Retrieve information of Public Cloud catalog",
           "httpMethod": "GET",
           "noAuthentication": true,
@@ -5374,8 +5674,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Retrieve bare-metal servers catalog",
           "httpMethod": "GET",

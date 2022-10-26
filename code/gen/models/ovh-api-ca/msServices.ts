@@ -2931,6 +2931,7 @@ export const schema: Schema = {
       "enum": [
         "creating",
         "deleting",
+        "disabled",
         "modifying",
         "ok",
         "reopening",

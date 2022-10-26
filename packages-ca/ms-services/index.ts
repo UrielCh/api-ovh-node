@@ -149,7 +149,7 @@ export namespace msServices {
      * Current object state
      * type fullname: msServices.ObjectStateEnum
      */
-    export type ObjectStateEnum = "creating" | "deleting" | "modifying" | "ok" | "reopening" | "suspended" | "suspending"
+    export type ObjectStateEnum = "creating" | "deleting" | "disabled" | "modifying" | "ok" | "reopening" | "suspended" | "suspending"
     /**
      * Renew period
      * type fullname: msServices.RenewPeriodEnum

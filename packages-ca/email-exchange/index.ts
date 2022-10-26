@@ -44,6 +44,7 @@ export namespace email {
             litigation: boolean;
             litigationPeriod?: number;
             login: string;
+            mailSenderDisplay?: string;
             mailingFilter?: email.exchange.MailingFilterEnum[];
             mobile?: string;
             numberOfAliases: number;
@@ -302,6 +303,7 @@ export namespace email {
             quotaLimit: number;
             quotaReserved: number;
             quotaUsed: number;
+            singleMailboxQuotaLimit: number;
         }
         /**
          * Level of access to calendar of Resource Mailbox
@@ -596,6 +598,15 @@ export namespace email {
             webMail: boolean;
         }
         /**
+         * Aliases on this shared mailbox
+         * interface fullName: email.exchange.exchangeSharedAccountAlias.exchangeSharedAccountAlias
+         */
+        export interface exchangeSharedAccountAlias {
+            alias: string;
+            creationDate: string;
+            taskPendingId: number;
+        }
+        /**
          * Users having full access on this shared mailbox
          * interface fullName: email.exchange.exchangeSharedAccountFullAccess.exchangeSharedAccountFullAccess
          */
@@ -847,12 +858,12 @@ export interface Email {
                          * Accounts associated to this exchange service
                          * GET /email/exchange/{organizationName}/service/{exchangeService}/account
                          */
-                        $get(params?: { accountLicense?: email.exchange.OvhLicenceEnum, id?: number, primaryEmailAddress?: string }): Promise<string[]>;
+                        $get(params?: { accountLicense?: email.exchange.OvhLicenceEnum, company?: string, id?: number, primaryEmailAddress?: string }): Promise<string[]>;
                         /**
                          * Create new mailbox in exchange server
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/account
                          */
-                        $post(params: { city?: string, company?: string, countryCode?: email.exchange.CountryCodeEnum, description?: string, displayName?: string, domain: string, fax?: string, firstName?: string, forwardingEmail?: string, hiddenFromGAL?: boolean, initials?: string, jobDepartment?: string, jobTitle?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], mobile?: string, office?: string, outlookLicense?: boolean, password: string, phone?: string, postalCode?: string, quota?: number, region?: string, SAMAccountName?: string, sbrDestination?: string, sendConnectorId?: number, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, storeCopyOfEmail?: boolean, streetAddress?: string }): Promise<email.exchange.Task>;
+                        $post(params: { city?: string, company?: string, countryCode?: email.exchange.CountryCodeEnum, description?: string, displayName?: string, domain: string, fax?: string, firstName?: string, forwardingEmail?: string, hiddenFromGAL?: boolean, initials?: string, jobDepartment?: string, jobTitle?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], mailSenderDisplay?: string, mobile?: string, office?: string, outlookLicense?: boolean, password: string, phone?: string, postalCode?: string, quota?: number, region?: string, SAMAccountName?: string, sbrDestination?: string, sendConnectorId?: number, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, storeCopyOfEmail?: boolean, streetAddress?: string }): Promise<email.exchange.Task>;
                         /**
                          * Controle cache
                          */
@@ -872,7 +883,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}
                              */
-                            $put(params?: { SAMAccountName?: string, accountLicense?: email.exchange.OvhLicenceEnum, city?: string, company?: string, configured?: boolean, countryCode?: email.exchange.CountryCodeEnum, creationDate?: string, currentUsage?: number, customIsolationId?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, description?: string, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, fax?: string, firstName?: string, forwardingEmail?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, jobDepartment?: string, jobTitle?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailingFilter?: email.exchange.MailingFilterEnum[], mobile?: string, numberOfAliases?: number, office?: string, outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, phone?: string, postalCode?: string, primaryEmailAddress?: string, quota?: number, region?: string, renewOutlookPeriod?: email.exchange.renewPeriodEnum, renewPeriod?: email.exchange.renewPeriodEnum, sbrDestination?: string, sendConnectorId?: number, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, storeCopyOfEmail?: boolean, streetAddress?: string, taskPendingId?: number }): Promise<void>;
+                            $put(params?: { SAMAccountName?: string, accountLicense?: email.exchange.OvhLicenceEnum, city?: string, company?: string, configured?: boolean, countryCode?: email.exchange.CountryCodeEnum, creationDate?: string, currentUsage?: number, customIsolationId?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, description?: string, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, fax?: string, firstName?: string, forwardingEmail?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, jobDepartment?: string, jobTitle?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailSenderDisplay?: string, mailingFilter?: email.exchange.MailingFilterEnum[], mobile?: string, numberOfAliases?: number, office?: string, outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, phone?: string, postalCode?: string, primaryEmailAddress?: string, quota?: number, region?: string, renewOutlookPeriod?: email.exchange.renewPeriodEnum, renewPeriod?: email.exchange.renewPeriodEnum, sbrDestination?: string, sendConnectorId?: number, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, storeCopyOfEmail?: boolean, streetAddress?: string, taskPendingId?: number }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -1995,6 +2006,38 @@ export interface Email {
                              * Controle cache
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            alias: {
+                                /**
+                                 * Aliases associated to this mailbox
+                                 * GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/alias
+                                 */
+                                $get(): Promise<string[]>;
+                                /**
+                                 * Create new alias
+                                 * POST /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/alias
+                                 */
+                                $post(params: { alias: string }): Promise<email.exchange.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(alias: string): {
+                                    /**
+                                     * Delete existing alias
+                                     * DELETE /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/alias/{alias}
+                                     */
+                                    $delete(): Promise<email.exchange.Task>;
+                                    /**
+                                     * Get this object properties
+                                     * GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/alias/{alias}
+                                     */
+                                    $get(): Promise<email.exchange.exchangeSharedAccountAlias>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                };
+                            }
                             fullAccess: {
                                 /**
                                  * Full access granted users for this shared mailbox
