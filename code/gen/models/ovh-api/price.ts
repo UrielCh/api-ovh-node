@@ -13946,11 +13946,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-10-29T18:00:00+01:00",
-            "deprecatedDate": "2022-07-29T18:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/csp2/options",
-            "value": "DEPRECATED"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get the monthly price for an Office 365 license",
           "httpMethod": "GET",

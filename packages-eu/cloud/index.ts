@@ -92,6 +92,7 @@ export namespace cloud {
      * interface fullName: cloud.ColdArchiveContainer.ColdArchiveContainer
      */
     export interface ColdArchiveContainer {
+        createdAt: string;
         name: string;
         objects: cloud.StorageObject[];
         objectsCount: number;
@@ -809,6 +810,7 @@ export namespace cloud {
      * interface fullName: cloud.StorageContainer.StorageContainer
      */
     export interface StorageContainer {
+        createdAt: string;
         name: string;
         objects: cloud.StorageObject[];
         objectsCount: number;
@@ -1829,7 +1831,7 @@ export namespace cloud {
          * Enum values for Status
          * type fullname: cloud.kube.ClusterStatusEnum
          */
-        export type ClusterStatusEnum = "DELETED" | "DELETING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "RESIZING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR"
+        export type ClusterStatusEnum = "DELETED" | "DELETING" | "DOWNSCALING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "RESIZING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "UPSCALING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR"
         /**
          * a flavor kind
          * interface fullName: cloud.kube.Flavor.Flavor
@@ -1930,7 +1932,7 @@ export namespace cloud {
          * Enum values for NodePool Status
          * type fullname: cloud.kube.NodePoolStatusEnum
          */
-        export type NodePoolStatusEnum = "DELETED" | "DELETING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "RESIZING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR"
+        export type NodePoolStatusEnum = "DELETED" | "DELETING" | "DOWNSCALING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "RESIZING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "UPSCALING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR"
         /**
          * Managed Kubernetes nodepool template
          * interface fullName: cloud.kube.NodePoolTemplate.NodePoolTemplate
@@ -1965,7 +1967,7 @@ export namespace cloud {
          * Enum values for Status
          * type fullname: cloud.kube.NodeStatusEnum
          */
-        export type NodeStatusEnum = "DELETED" | "DELETING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "RESIZING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR"
+        export type NodeStatusEnum = "DELETED" | "DELETING" | "DOWNSCALING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "RESIZING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "UPSCALING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR"
         /**
          * Managed Kubernetes oidc integration
          * interface fullName: cloud.kube.OpenIdConnect.OpenIdConnect
@@ -2642,6 +2644,29 @@ export namespace cloud {
                 name: string;
                 regions: string[];
             }
+            /**
+             * Public Cloud instance categories
+             * interface fullName: cloud.order.rule.InstanceCategories.InstanceCategories
+             */
+            export interface InstanceCategories {
+                categories: cloud.order.rule.InstanceCategory[];
+                defaultCategory: string;
+            }
+            /**
+             * Public Cloud instance category
+             * interface fullName: cloud.order.rule.InstanceCategory.InstanceCategory
+             */
+            export interface InstanceCategory {
+                category: cloud.order.rule.InstanceCategoryTypeEnum;
+                isNew?: boolean;
+                kinds: string[];
+                title: string;
+            }
+            /**
+             * InstanceCategoryTypeEnum
+             * type fullname: cloud.order.rule.InstanceCategoryTypeEnum
+             */
+            export type InstanceCategoryTypeEnum = "accelerated" | "balanced" | "baremetal" | "discovery" | "iops" | "ram" | "vps"
         }
     }
     export namespace project {
@@ -4185,6 +4210,7 @@ export namespace cloud {
              */
             export interface Availability {
                 backup: cloud.project.database.BackupTypeEnum;
+                backupRetentionDays: number;
                 default: boolean;
                 endOfLife?: string;
                 engine: string;
@@ -4212,10 +4238,12 @@ export namespace cloud {
              * interface fullName: cloud.project.database.Capabilities.Capabilities
              */
             export interface Capabilities {
+                disks: string[];
                 engines: cloud.project.database.capabilities.Engine[];
                 flavors: cloud.project.database.capabilities.Flavor[];
                 options: cloud.project.database.capabilities.Option[];
                 plans: cloud.project.database.capabilities.Plan[];
+                regions: string[];
             }
             /**
              * Possible names of the engines
@@ -4252,6 +4280,7 @@ export namespace cloud {
                 backupTime: string;
                 createdAt: string;
                 description: string;
+                disk: cloud.project.database.service.Disk;
                 domain: string;
                 endpoints: cloud.project.database.service.Endpoint[];
                 engine: cloud.project.database.EngineEnum;
@@ -4278,6 +4307,7 @@ export namespace cloud {
                 backup?: cloud.project.database.service.creation.BackupFork;
                 backupTime?: string;
                 description: string;
+                disk: cloud.project.database.service.Disk;
                 maintenanceTime?: string;
                 networkId?: string;
                 nodesList?: cloud.project.database.service.NodeCreation[];
@@ -4979,6 +5009,14 @@ export namespace cloud {
                     default: boolean;
                     id: string;
                     name: string;
+                }
+                /**
+                 * Defines the disk attributes of a service
+                 * interface fullName: cloud.project.database.service.Disk.Disk
+                 */
+                export interface Disk {
+                    size: number;
+                    type: string;
                 }
                 /**
                  * Defines the endpoint object in a cluster
@@ -6703,6 +6741,17 @@ export interface Cloud {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            instanceCategory: {
+                /**
+                 * Get instance categories
+                 * GET /cloud/order/rule/instanceCategory
+                 */
+                $get(): Promise<cloud.order.rule.InstanceCategories>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
         }
     }
     price: {
@@ -7860,7 +7909,7 @@ export interface Cloud {
                      * Create a new cassandra cluster
                      * POST /cloud/project/{serviceName}/database/cassandra
                      */
-                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, disk?: cloud.project.database.service.Disk, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                     /**
                      * Controle cache
                      */
@@ -7880,7 +7929,7 @@ export interface Cloud {
                          * Update an existing cassandra cluster
                          * PUT /cloud/project/{serviceName}/database/cassandra/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -8164,7 +8213,7 @@ export interface Cloud {
                      * Create a new grafana cluster
                      * POST /cloud/project/{serviceName}/database/grafana
                      */
-                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, disk?: cloud.project.database.service.Disk, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                     /**
                      * Controle cache
                      */
@@ -8184,7 +8233,7 @@ export interface Cloud {
                          * Update an existing grafana cluster
                          * PUT /cloud/project/{serviceName}/database/grafana/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -8420,7 +8469,7 @@ export interface Cloud {
                      * Create a new kafka cluster
                      * POST /cloud/project/{serviceName}/database/kafka
                      */
-                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, disk?: cloud.project.database.service.Disk, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                     /**
                      * Controle cache
                      */
@@ -8788,7 +8837,7 @@ export interface Cloud {
                      * Create a new kafkaConnect cluster
                      * POST /cloud/project/{serviceName}/database/kafkaConnect
                      */
-                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, disk?: cloud.project.database.service.Disk, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                     /**
                      * Controle cache
                      */
@@ -8808,7 +8857,7 @@ export interface Cloud {
                          * Update an existing kafkaConnect cluster
                          * PUT /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -9190,7 +9239,7 @@ export interface Cloud {
                      * Create a new kafkaMirrorMaker
                      * POST /cloud/project/{serviceName}/database/kafkaMirrorMaker
                      */
-                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, disk?: cloud.project.database.service.Disk, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                     /**
                      * Controle cache
                      */
@@ -9210,7 +9259,7 @@ export interface Cloud {
                          * Update an existing kafkaMirrorMaker
                          * PUT /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -9393,7 +9442,7 @@ export interface Cloud {
                      * Create a new m3aggregator
                      * POST /cloud/project/{serviceName}/database/m3aggregator
                      */
-                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, disk?: cloud.project.database.service.Disk, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                     /**
                      * Controle cache
                      */
@@ -9413,7 +9462,7 @@ export interface Cloud {
                          * Update an existing m3aggregator
                          * PUT /cloud/project/{serviceName}/database/m3aggregator/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -9559,7 +9608,7 @@ export interface Cloud {
                      * Create a new m3db cluster
                      * POST /cloud/project/{serviceName}/database/m3db
                      */
-                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, disk?: cloud.project.database.service.Disk, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                     /**
                      * Controle cache
                      */
@@ -9579,7 +9628,7 @@ export interface Cloud {
                          * Update an existing m3db cluster
                          * PUT /cloud/project/{serviceName}/database/m3db/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -9894,7 +9943,7 @@ export interface Cloud {
                      * Create a new mongodb cluster
                      * POST /cloud/project/{serviceName}/database/mongodb
                      */
-                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, disk?: cloud.project.database.service.Disk, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                     /**
                      * Controle cache
                      */
@@ -9914,7 +9963,7 @@ export interface Cloud {
                          * Update an existing mongodb cluster
                          * PUT /cloud/project/{serviceName}/database/mongodb/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -10160,7 +10209,7 @@ export interface Cloud {
                      * Create a new mysql cluster
                      * POST /cloud/project/{serviceName}/database/mysql
                      */
-                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, disk?: cloud.project.database.service.Disk, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                     /**
                      * Controle cache
                      */
@@ -10180,7 +10229,7 @@ export interface Cloud {
                          * Update an existing mysql cluster
                          * PUT /cloud/project/{serviceName}/database/mysql/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -10531,7 +10580,7 @@ export interface Cloud {
                      * Create a new opensearch cluster
                      * POST /cloud/project/{serviceName}/database/opensearch
                      */
-                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, disk?: cloud.project.database.service.Disk, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                     /**
                      * Controle cache
                      */
@@ -10899,7 +10948,7 @@ export interface Cloud {
                      * Create a new postgresql cluster
                      * POST /cloud/project/{serviceName}/database/postgresql
                      */
-                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, disk?: cloud.project.database.service.Disk, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                     /**
                      * Controle cache
                      */
@@ -10919,7 +10968,7 @@ export interface Cloud {
                          * Update an existing postgresql cluster
                          * PUT /cloud/project/{serviceName}/database/postgresql/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -11322,7 +11371,7 @@ export interface Cloud {
                      * Create a new redis cluster
                      * POST /cloud/project/{serviceName}/database/redis
                      */
-                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, description?: string, disk?: cloud.project.database.service.Disk, maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                     /**
                      * Controle cache
                      */
@@ -11342,7 +11391,7 @@ export interface Cloud {
                          * Update an existing redis cluster
                          * PUT /cloud/project/{serviceName}/database/redis/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */

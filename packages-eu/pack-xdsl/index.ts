@@ -195,6 +195,11 @@ export namespace pack {
             voucher?: string;
         }
         /**
+         * modem type
+         * type fullname: pack.xdsl.ModemOptionEnum
+         */
+        export type ModemOptionEnum = "no" | "recycled" | "yes"
+        /**
          * Pack of xDSL services
          * interface fullName: pack.xdsl.PackAdsl.PackAdsl
          */
@@ -283,7 +288,7 @@ export namespace pack {
          * Service name
          * type fullname: pack.xdsl.ServiceNameEnum
          */
-        export type ServiceNameEnum = "domain" | "emailPro" | "exchangeAccount" | "exchangeIndividual" | "exchangeLite" | "exchangeOrganization" | "grt10ho" | "grt20m10ho" | "grt20m4ho" | "grt4ho" | "grt5m10ho" | "grt5m4ho" | "grtOvh" | "hostedEmail" | "hubic" | "modem" | "overTheBoxHardware" | "overTheBoxService" | "voipAlias" | "voipBillingAccount" | "voipEcoFax" | "voipLine" | "voipTrunk" | "xdslAccess"
+        export type ServiceNameEnum = "domain" | "emailPro" | "exchangeAccount" | "exchangeIndividual" | "exchangeLite" | "exchangeOrganization" | "grt10ho" | "grt20m10ho" | "grt20m4ho" | "grt4ho" | "grt5m10ho" | "grt5m4ho" | "grtAlt" | "grtDsp" | "grtFt" | "grtOvh" | "hostedEmail" | "hubic" | "modem" | "overTheBoxHardware" | "overTheBoxService" | "voipAlias" | "voipBillingAccount" | "voipEcoFax" | "voipLine" | "voipTrunk" | "xdslAccess"
         /**
          * Shipping address
          * interface fullName: pack.xdsl.ShippingAddress.ShippingAddress
@@ -395,6 +400,8 @@ export namespace pack {
                 contracts: order.Contract[];
                 description: string;
                 engageMonths?: number;
+                engaged: boolean;
+                modemOptions?: pack.xdsl.migration.OfferModemOption[];
                 modemReferenceToReturn?: string;
                 needModem: boolean;
                 needNewModem: boolean;
@@ -447,6 +454,7 @@ export namespace pack {
              * interface fullName: pack.xdsl.addressMove.PriceOffer.PriceOffer
              */
             export interface PriceOffer {
+                creationLineFees: pack.xdsl.addressMove.Price;
                 currentOfferPrice: pack.xdsl.addressMove.Price;
                 due: pack.xdsl.addressMove.Price;
                 firstYearPromo: pack.xdsl.addressMove.Price;
@@ -471,11 +479,13 @@ export namespace pack {
                 description: string;
                 due?: order.Price;
                 engageMonths?: number;
+                engaged: boolean;
                 engagementMonths: number[];
                 firstYearPromo?: order.Price;
                 gtrComfortFees?: order.Price;
                 installFees?: order.Price;
                 modemMacToReturn?: string;
+                modemOptions?: pack.xdsl.migration.OfferModemOption[];
                 modemRental?: order.Price;
                 needModem: boolean;
                 needNewModem: boolean;
@@ -506,6 +516,14 @@ export namespace pack {
                 name: string;
                 optional: number;
                 optionalPrice?: order.Price;
+            }
+            /**
+             * Available modem option for the offer
+             * interface fullName: pack.xdsl.migration.OfferModemOption.OfferModemOption
+             */
+            export interface OfferModemOption {
+                name: string;
+                price: order.Price;
             }
             /**
              * Option of Offer
@@ -569,9 +587,9 @@ export namespace pack {
             export interface Promotion {
                 endDate?: string;
                 id: string;
-                installFee: pack.xdsl.migrationAndAddressMove.PromotionDetails;
+                installFee?: pack.xdsl.migrationAndAddressMove.PromotionDetails;
                 startDate?: string;
-                subscription: pack.xdsl.migrationAndAddressMove.PromotionDetails;
+                subscription?: pack.xdsl.migrationAndAddressMove.PromotionDetails;
             }
             /**
              * Migration or address move offer promotion details
@@ -820,7 +838,7 @@ export interface Pack {
                      * Move the access to another address
                      * POST /pack/xdsl/{packName}/addressMove/moveOffer
                      */
-                    $post(params: { acceptContracts: boolean, building?: string, buildingReference?: string, contactPhone?: string, door?: string, eligibilityReference: string, engageMonths?: number, floor?: string, keepCurrentNumber: boolean, meeting?: xdsleligibilityBookMeetingSlot, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, residence?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.AsyncTask<number>>;
+                    $post(params: { acceptContracts: boolean, building?: string, buildingReference?: string, contactPhone?: string, door?: string, eligibilityReference: string, engageMonths?: number, floor?: string, keepCurrentNumber: boolean, meeting?: xdsleligibilityBookMeetingSlot, modem?: pack.xdsl.ModemOptionEnum, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, residence?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.AsyncTask<number>>;
                 }
                 offers: {
                     /**
@@ -1175,7 +1193,7 @@ export interface Pack {
                      * Migrate to the selected offer
                      * POST /pack/xdsl/{packName}/migration/migrate
                      */
-                    $post(params: { acceptContracts: boolean, buildingReference?: string, contactPhone?: string, engageMonths?: number, floor?: string, meeting?: xdsleligibilityBookMeetingSlot, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, productCode?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.Task>;
+                    $post(params: { acceptContracts: boolean, buildingReference?: string, contactPhone?: string, engageMonths?: number, floor?: string, meeting?: xdsleligibilityBookMeetingSlot, modem?: pack.xdsl.ModemOptionEnum, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, productCode?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.Task>;
                 }
                 offers: {
                     /**

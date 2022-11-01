@@ -2141,6 +2141,7 @@ export namespace me {
          */
         export interface Service {
             addons: me.repricing.Service[];
+            applicationDate: string;
             description: string;
             displayName: string;
             duration: string;
@@ -2249,10 +2250,28 @@ export namespace nichandle {
          */
         export interface Provider {
             creation: string;
+            extensions?: nichandle.Authentication.ProviderExtensions;
             groupAttributeName: string;
             idpSigningCertificates: nichandle.Authentication.Certificate[];
             lastUpdate: string;
             ssoServiceUrl: string;
+        }
+        /**
+         * A SAML 2.0 Extension that should be added to SAML requests when using this provider
+         * interface fullName: nichandle.Authentication.ProviderExtensions.ProviderExtensions
+         */
+        export interface ProviderExtensions {
+            requestedAttributes?: nichandle.Authentication.RequestedAttribute[];
+        }
+        /**
+         * A SAML 2.0 requested attribute that should be added to SAML requests when using this provider
+         * interface fullName: nichandle.Authentication.RequestedAttribute.RequestedAttribute
+         */
+        export interface RequestedAttribute {
+            isRequired: boolean;
+            name: string;
+            nameFormat?: string;
+            values?: string[];
         }
     }
     /**
@@ -3025,6 +3044,11 @@ export namespace recommendations {
     export interface Recommendations {
         recommendations: recommendations.Recommendation[];
     }
+    /**
+     * Recommendations product ranges
+     * type fullname: recommendations.productRangesEnum
+     */
+    export type productRangesEnum = "baremetal" | "domain" | "public_cloud" | "saas" | "vps" | "web"
     /**
      * Supported locales for recommendations
      * type fullname: recommendations.supportedLocalesEnum
@@ -5553,6 +5577,17 @@ export interface Me {
                 }
             };
         }
+    }
+    recommendations: {
+        /**
+         * Get this object properties
+         * GET /me/recommendations
+         */
+        $get(params?: { max?: number, range?: recommendations.productRangesEnum }): Promise<recommendations.Recommendations>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     refund: {
         /**

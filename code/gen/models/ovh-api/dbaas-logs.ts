@@ -378,6 +378,167 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}/retention/{retentionId}"
     },
     {
+      "description": "Encryption keys",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Return the list of registred encryption keys",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Add a new encryption key",
+          "errors": [
+            "Client::ValidationError::EncryptionKeyFingerprintMismatch",
+            "Client::ValidationError::EncryptionKeyHasExpirationDate",
+            "Client::ValidationError::InvalidEncryptionKey",
+            "Client::ValidationError::InvalidEncryptionKeyAlgorithm",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::AlreadyExists"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dbaas.logs.EncryptionKey",
+              "description": "Request Body",
+              "fullType": "dbaas.logs.EncryptionKey",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/encryptionKey"
+    },
+    {
+      "description": "Encryption keys",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete the specified encryption key",
+          "errors": [
+            "Client::ValidationError::EncryptionKeyStillAssignedToCluster",
+            "Client::ValidationError::EncryptionKeyStillAssignedToStream",
+            "Client::ValidationError::EncryptionKeyStillUsedByArchive",
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::EncryptionKeyDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Encryption key ID",
+              "fullType": "uuid",
+              "name": "encryptionKeyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Return details of an encryption key",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::EncryptionKeyDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Encryption key ID",
+              "fullType": "uuid",
+              "name": "encryptionKeyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.EncryptionKey",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/encryptionKey/{encryptionKeyId}"
+    },
+    {
       "description": "Inputs",
       "operations": [
         {
@@ -3437,6 +3598,58 @@ export const schema: Schema = {
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}"
+    },
+    {
+      "description": "Archive encryption keys",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the list of encryption keys used to encrypt the archive",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ArchiveDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Archive ID",
+              "fullType": "uuid",
+              "name": "archiveId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]",
+          "scopes": [
+            "all",
+            "product/dbaas-logs/all"
+          ]
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/encryptionKey"
     },
     {
       "description": "Streams",

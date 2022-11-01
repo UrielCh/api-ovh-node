@@ -17210,6 +17210,14 @@ export const schema: Schema = {
           "required": false,
           "type": "datetime"
         },
+        "extensions": {
+          "canBeNull": true,
+          "description": "SAML Extensions to embed inside the SAML requests",
+          "fullType": "nichandle.Authentication.ProviderExtensions",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.Authentication.ProviderExtensions"
+        },
         "groupAttributeName": {
           "canBeNull": false,
           "description": "SAML Group attribute name",
@@ -17241,6 +17249,60 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "nichandle.Authentication.ProviderExtensions": {
+      "description": "A SAML 2.0 Extension that should be added to SAML requests when using this provider",
+      "id": "ProviderExtensions",
+      "namespace": "nichandle.Authentication",
+      "properties": {
+        "requestedAttributes": {
+          "canBeNull": true,
+          "description": "List of SAML RequestedAttribute to add to SAML requestes",
+          "fullType": "nichandle.Authentication.RequestedAttribute[]",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.Authentication.RequestedAttribute[]"
+        }
+      }
+    },
+    "nichandle.Authentication.RequestedAttribute": {
+      "description": "A SAML 2.0 requested attribute that should be added to SAML requests when using this provider",
+      "id": "RequestedAttribute",
+      "namespace": "nichandle.Authentication",
+      "properties": {
+        "isRequired": {
+          "canBeNull": false,
+          "description": "Expresses that this RequestedAttribute is mandatory (remains advisory)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the SAML RequestedAttribute",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "nameFormat": {
+          "canBeNull": true,
+          "description": "NameFormat of the SAML RequestedAttribute",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "values": {
+          "canBeNull": true,
+          "description": "List of AttributeValues allowed for this RequestedAttribute",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         }
       }
     },

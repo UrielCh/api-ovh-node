@@ -1654,10 +1654,28 @@ export namespace nichandle {
          */
         export interface Provider {
             creation: string;
+            extensions?: nichandle.Authentication.ProviderExtensions;
             groupAttributeName: string;
             idpSigningCertificates: nichandle.Authentication.Certificate[];
             lastUpdate: string;
             ssoServiceUrl: string;
+        }
+        /**
+         * A SAML 2.0 Extension that should be added to SAML requests when using this provider
+         * interface fullName: nichandle.Authentication.ProviderExtensions.ProviderExtensions
+         */
+        export interface ProviderExtensions {
+            requestedAttributes?: nichandle.Authentication.RequestedAttribute[];
+        }
+        /**
+         * A SAML 2.0 requested attribute that should be added to SAML requests when using this provider
+         * interface fullName: nichandle.Authentication.RequestedAttribute.RequestedAttribute
+         */
+        export interface RequestedAttribute {
+            isRequired: boolean;
+            name: string;
+            nameFormat?: string;
+            values?: string[];
         }
     }
     /**

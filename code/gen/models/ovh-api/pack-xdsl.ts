@@ -310,6 +310,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "pack.xdsl.ModemOptionEnum",
+              "description": "Modem choose",
+              "fullType": "pack.xdsl.ModemOptionEnum",
+              "name": "modem",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "long",
               "description": "Mondial relay ID if a shipping is needed",
               "fullType": "long",
@@ -1789,6 +1797,14 @@ export const schema: Schema = {
               "description": "Data to book a meeting slot",
               "fullType": "xdsl.eligibility.BookMeetingSlot",
               "name": "meeting",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "pack.xdsl.ModemOptionEnum",
+              "description": "Modem choose",
+              "fullType": "pack.xdsl.ModemOptionEnum",
+              "name": "modem",
               "paramType": "body",
               "required": false
             },
@@ -3708,6 +3724,17 @@ export const schema: Schema = {
         }
       }
     },
+    "pack.xdsl.ModemOptionEnum": {
+      "description": "modem type",
+      "enum": [
+        "no",
+        "recycled",
+        "yes"
+      ],
+      "enumType": "string",
+      "id": "ModemOptionEnum",
+      "namespace": "pack.xdsl"
+    },
     "pack.xdsl.PackAdsl": {
       "description": "Pack of xDSL services",
       "id": "PackAdsl",
@@ -4023,6 +4050,9 @@ export const schema: Schema = {
         "grt4ho",
         "grt5m10ho",
         "grt5m4ho",
+        "grtAlt",
+        "grtDsp",
+        "grtFt",
         "grtOvh",
         "hostedEmail",
         "hubic",
@@ -4401,6 +4431,20 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "engaged": {
+          "canBeNull": false,
+          "description": "Tells if the customer is still engaged",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "modemOptions": {
+          "canBeNull": true,
+          "description": "List of modems for this offer",
+          "readOnly": false,
+          "required": false,
+          "type": "pack.xdsl.migration.OfferModemOption[]"
+        },
         "modemReferenceToReturn": {
           "canBeNull": true,
           "description": "Modem reference (Mac or Serial) to be returned",
@@ -4625,6 +4669,13 @@ export const schema: Schema = {
       "id": "PriceOffer",
       "namespace": "pack.xdsl.addressMove",
       "properties": {
+        "creationLineFees": {
+          "canBeNull": false,
+          "description": "Creation line fees",
+          "readOnly": false,
+          "required": false,
+          "type": "pack.xdsl.addressMove.Price"
+        },
         "currentOfferPrice": {
           "canBeNull": false,
           "description": "Price of the current offer",
@@ -4744,6 +4795,13 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "engaged": {
+          "canBeNull": false,
+          "description": "Tells if the customer is still engaged",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "engagementMonths": {
           "canBeNull": false,
           "description": "List of number of months possible for engagement",
@@ -4778,6 +4836,13 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "modemOptions": {
+          "canBeNull": true,
+          "description": "List of modems for this offer",
+          "readOnly": false,
+          "required": false,
+          "type": "pack.xdsl.migration.OfferModemOption[]"
         },
         "modemRental": {
           "canBeNull": true,
@@ -4915,6 +4980,27 @@ export const schema: Schema = {
         "optionalPrice": {
           "canBeNull": true,
           "description": "Price of an additional slot. You pay this price everytime the duration is expired",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
+    },
+    "pack.xdsl.migration.OfferModemOption": {
+      "description": "Available modem option for the offer",
+      "id": "OfferModemOption",
+      "namespace": "pack.xdsl.migration",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the modem",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Price of for this modem",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -5102,7 +5188,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "installFee": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Details of the promotion for the install fee",
           "readOnly": false,
           "required": false,
@@ -5116,7 +5202,7 @@ export const schema: Schema = {
           "type": "datetime"
         },
         "subscription": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Details of the promotion for the subscription",
           "readOnly": false,
           "required": false,

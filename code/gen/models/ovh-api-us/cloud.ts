@@ -82,6 +82,27 @@ export const schema: Schema = {
       "path": "/cloud/order/rule/availability"
     },
     {
+      "description": "Instance Categories",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get instance categories",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "cloud.order.rule.InstanceCategories",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/order/rule/instanceCategory"
+    },
+    {
       "description": "Operations about the PUBLICCLOUD service",
       "operations": [
         {
@@ -13924,6 +13945,14 @@ export const schema: Schema = {
       "id": "ColdArchiveContainer",
       "namespace": "cloud",
       "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "The date and timestamp when the resource was created",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
         "name": {
           "canBeNull": false,
           "description": "Container name",
@@ -16106,6 +16135,14 @@ export const schema: Schema = {
       "id": "StorageContainer",
       "namespace": "cloud",
       "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "The date and timestamp when the resource was created",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
         "name": {
           "canBeNull": false,
           "description": "Container name",
@@ -18243,6 +18280,7 @@ export const schema: Schema = {
       "enum": [
         "DELETED",
         "DELETING",
+        "DOWNSCALING",
         "ERROR",
         "INSTALLING",
         "MAINTENANCE",
@@ -18254,6 +18292,7 @@ export const schema: Schema = {
         "SUSPENDED",
         "SUSPENDING",
         "UPDATING",
+        "UPSCALING",
         "USER_ERROR",
         "USER_NODE_NOT_FOUND_ERROR",
         "USER_NODE_SUSPENDED_SERVICE",
@@ -18667,6 +18706,7 @@ export const schema: Schema = {
       "enum": [
         "DELETED",
         "DELETING",
+        "DOWNSCALING",
         "ERROR",
         "INSTALLING",
         "MAINTENANCE",
@@ -18678,6 +18718,7 @@ export const schema: Schema = {
         "SUSPENDED",
         "SUSPENDING",
         "UPDATING",
+        "UPSCALING",
         "USER_ERROR",
         "USER_NODE_NOT_FOUND_ERROR",
         "USER_NODE_SUSPENDED_SERVICE",
@@ -18769,6 +18810,7 @@ export const schema: Schema = {
       "enum": [
         "DELETED",
         "DELETING",
+        "DOWNSCALING",
         "ERROR",
         "INSTALLING",
         "MAINTENANCE",
@@ -18780,6 +18822,7 @@ export const schema: Schema = {
         "SUSPENDED",
         "SUSPENDING",
         "UPDATING",
+        "UPSCALING",
         "USER_ERROR",
         "USER_NODE_NOT_FOUND_ERROR",
         "USER_NODE_SUSPENDED_SERVICE",
@@ -21146,6 +21189,83 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.order.rule.InstanceCategories": {
+      "description": "Public Cloud instance categories",
+      "id": "InstanceCategories",
+      "namespace": "cloud.order.rule",
+      "properties": {
+        "categories": {
+          "canBeNull": false,
+          "description": "Instance categories",
+          "fullType": "cloud.order.rule.InstanceCategory[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.order.rule.InstanceCategory[]"
+        },
+        "defaultCategory": {
+          "canBeNull": false,
+          "description": "Default instance category name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.order.rule.InstanceCategory": {
+      "description": "Public Cloud instance category",
+      "id": "InstanceCategory",
+      "namespace": "cloud.order.rule",
+      "properties": {
+        "category": {
+          "canBeNull": false,
+          "description": "Instance category name",
+          "fullType": "cloud.order.rule.InstanceCategoryTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.order.rule.InstanceCategoryTypeEnum"
+        },
+        "isNew": {
+          "canBeNull": true,
+          "description": "Instance category is new",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "kinds": {
+          "canBeNull": false,
+          "description": "Instance flavor matching patterns",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "title": {
+          "canBeNull": false,
+          "description": "Instance category title",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.order.rule.InstanceCategoryTypeEnum": {
+      "description": "InstanceCategoryTypeEnum",
+      "enum": [
+        "accelerated",
+        "balanced",
+        "baremetal",
+        "discovery",
+        "iops",
+        "ram",
+        "vps"
+      ],
+      "enumType": "string",
+      "id": "InstanceCategoryTypeEnum",
+      "namespace": "cloud.order.rule"
+    },
     "cloud.project.AllocationPool": {
       "description": "AllocationPool",
       "id": "AllocationPool",
@@ -22068,6 +22188,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.project.database.BackupTypeEnum"
         },
+        "backupRetentionDays": {
+          "canBeNull": false,
+          "description": "Backup retention time of the availability in days",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "default": {
           "canBeNull": false,
           "description": "Whether this availability can be used by default",
@@ -22213,6 +22341,14 @@ export const schema: Schema = {
       "id": "Capabilities",
       "namespace": "cloud.project.database",
       "properties": {
+        "disks": {
+          "canBeNull": false,
+          "description": "Disks available",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
         "engines": {
           "canBeNull": false,
           "description": "Database engines available",
@@ -22244,6 +22380,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "cloud.project.database.capabilities.Plan[]"
+        },
+        "regions": {
+          "canBeNull": false,
+          "description": "Regions available",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
@@ -22359,6 +22503,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "disk": {
+          "canBeNull": false,
+          "description": "Disk attributes of the cluster",
+          "fullType": "cloud.project.database.service.Disk",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.Disk"
         },
         "domain": {
           "canBeNull": false,
@@ -22526,6 +22678,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "disk": {
+          "canBeNull": false,
+          "description": "Disk attributes of the cluster",
+          "fullType": "cloud.project.database.service.Disk",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.Disk"
         },
         "maintenanceTime": {
           "canBeNull": true,
@@ -25419,6 +25579,29 @@ export const schema: Schema = {
           "fullType": "string",
           "readOnly": false,
           "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.service.Disk": {
+      "description": "Defines the disk attributes of a service",
+      "id": "Disk",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "size": {
+          "canBeNull": false,
+          "description": "Service disk size ",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Service disk size ",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }

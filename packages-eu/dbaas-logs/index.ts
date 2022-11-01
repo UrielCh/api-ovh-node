@@ -1065,6 +1065,38 @@ export interface Dbaas {
                     }
                 };
             }
+            encryptionKey: {
+                /**
+                 * Return the list of registred encryption keys
+                 * GET /dbaas/logs/{serviceName}/encryptionKey
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Add a new encryption key
+                 * POST /dbaas/logs/{serviceName}/encryptionKey
+                 */
+                $post(params: { algorithm?: dbaas.logs.EncryptionKeyAlgorithmEnum, content: string, createdAt?: string, encryptionKeyId?: string, fingerprint: string, isEditable?: boolean, nbArchive?: number, title: string, uid?: string }): Promise<dbaas.logs.Operation>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(encryptionKeyId: string): {
+                    /**
+                     * Delete the specified encryption key
+                     * DELETE /dbaas/logs/{serviceName}/encryptionKey/{encryptionKeyId}
+                     */
+                    $delete(): Promise<dbaas.logs.Operation>;
+                    /**
+                     * Return details of an encryption key
+                     * GET /dbaas/logs/{serviceName}/encryptionKey/{encryptionKeyId}
+                     */
+                    $get(): Promise<dbaas.logs.EncryptionKey>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
             input: {
                 /**
                  * Returns the list of registered input attached to the logged user
@@ -1624,6 +1656,17 @@ export interface Dbaas {
                                      * Controle cache
                                      */
                                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    encryptionKey: {
+                                        /**
+                                         * Get the list of encryption keys used to encrypt the archive
+                                         * GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/encryptionKey
+                                         */
+                                        $get(): Promise<string[]>;
+                                        /**
+                                         * Controle cache
+                                         */
+                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    }
                                     url: {
                                         /**
                                          * Get a public temporary URL to access the archive
