@@ -1,10 +1,14 @@
 {
     "compilerOptions": {
         "target": "es2017",
-        "module": "commonjs",
-        "declaration": true,
         "strict": true,
         "moduleResolution": "node",
-        "esModuleInterop": true
-    }
+        "esModuleInterop": true,
+        "module": "ES2020",
+        "declaration": true,
+        "outDir": "."
+    },
+    "include": [
+        "index.ts"
+    ]
 }

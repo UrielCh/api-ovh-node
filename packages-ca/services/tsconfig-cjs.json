@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "strict": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "module": "commonjs",
+        "declaration": false,
+        "outDir": "cjs"
+    },
+    "include": [
+        "index.ts"
+    ]
+}
