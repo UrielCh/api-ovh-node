@@ -1,4 +1,4 @@
-import { OvhCredential, OvhCredentialNew } from "./OVHInterfaces";
+import { OvhCredential, OvhCredentialNew } from "./OVHInterfaces.js";
 import OvhApi from ".";
 
 export interface CertMonitor {
