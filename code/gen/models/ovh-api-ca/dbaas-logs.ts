@@ -9464,9 +9464,14 @@ export const schema: Schema = {
     "dbaas.logs.StreamAlertConditionThresholdTypeEnum": {
       "description": "Possible values for StreamAlertConditionThresholdTypeEnum",
       "enum": [
+        "EQ",
+        "GT",
+        "GTE",
         "HIGHER",
         "LESS",
         "LOWER",
+        "LT",
+        "LTE",
         "MORE"
       ],
       "enumType": "string",

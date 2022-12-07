@@ -94,7 +94,7 @@ export interface Support {
          * List support tickets identifiers for this service
          * GET /support/tickets
          */
-        $get(params?: { archived?: boolean, category?: support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: support.TicketProductEnum, serviceName?: string, status?: support.TicketStatusEnum, subject?: string, ticketNumber?: string }): Promise<number[]>;
+        $get(params?: { archived?: boolean, category?: support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, page?: number, pageSize?: number, product?: support.TicketProductEnum, serviceName?: string, status?: support.TicketStatusEnum, subject?: string, ticketNumber?: string }): Promise<number[]>;
         /**
          * Controle cache
          */

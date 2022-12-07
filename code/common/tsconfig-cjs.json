@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "commonjs",
+        "declaration": false,
+        "strict": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "outDir": "lib/cjs",
+        "skipLibCheck": true
+    },
+    "exclude": ["./lib/**/*"]
+}

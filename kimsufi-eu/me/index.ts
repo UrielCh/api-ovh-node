@@ -1005,7 +1005,7 @@ export namespace dedicated {
      * Os usage definition
      * type fullname: dedicated.TemplateOsUsageEnum
      */
-    export type TemplateOsUsageEnum = "basic" | "customer" | "database" | "hosting" | "management" | "other" | "readyToUse" | "virtualisation" | "virtualization"
+    export type TemplateOsUsageEnum = "basic" | "customer" | "database" | "erp" | "hosting" | "management" | "other" | "readyToUse" | "virtualisation" | "virtualization"
     /**
      * partition type
      * type fullname: dedicated.TemplatePartitionTypeEnum
@@ -1028,7 +1028,6 @@ export namespace dedicated {
             family: dedicated.TemplateOsTypeEnum;
             filesystems: dedicated.TemplateOsFileSystemEnum[];
             hardRaidConfiguration?: boolean;
-            lastModification?: string;
             license?: dedicated.TemplateOsInfoLicense;
             lvmReady?: boolean;
             noPartitioning: boolean;
@@ -3638,6 +3637,32 @@ export interface Me {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
+        provider: {
+            /**
+             * Remove the identity provider
+             * DELETE /me/identity/provider
+             */
+            $delete(): Promise<void>;
+            /**
+             * Identity provider linked to this account
+             * GET /me/identity/provider
+             */
+            $get(): Promise<nichandle.Authentication.Provider>;
+            /**
+             * Define an identity provider (SAML 2.0)
+             * POST /me/identity/provider
+             */
+            $post(params: { extensions?: nichandle.Authentication.ProviderExtensions, groupAttributeName?: string, metadata: string }): Promise<nichandle.Authentication.Provider>;
+            /**
+             * Alter the provider
+             * PUT /me/identity/provider
+             */
+            $put(params?: { extensions?: nichandle.Authentication.ProviderExtensions, groupAttributeName?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
         user: {
             /**
              * Retrieve all users of this account
@@ -3740,7 +3765,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/installationTemplate/{templateName}
              */
-            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, endOfInstall?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, softRaidOnlyMirroring?: boolean, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
+            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, endOfInstall?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, softRaidOnlyMirroring?: boolean, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
             /**
              * Controle cache
              */

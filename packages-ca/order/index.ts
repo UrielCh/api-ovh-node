@@ -42,16 +42,6 @@ export namespace coreTypes {
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
 }
 export namespace dedicated {
-    /**
-     * ovh Nas HA offer
-     * type fullname: dedicated.NasHAOfferEnum
-     */
-    export type NasHAOfferEnum = "1200g" | "13200g" | "19200g" | "2400g" | "26400g" | "3600g" | "7200g"
-    /**
-     * Nas HA localization
-     * type fullname: dedicated.NasHAZoneEnum
-     */
-    export type NasHAZoneEnum = "bhs" | "rbx" | "sbg"
     export namespace housing {
         /**
          * Housing bay High Availablility offers
@@ -2697,38 +2687,6 @@ export interface Order {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
-            enterpriseCloudDatabases: {
-                /**
-                 * Get informations about an Enterprise Cloud Databases cluster
-                 * GET /order/cart/{cartId}/enterpriseCloudDatabases
-                 */
-                $get(): Promise<order.cart.GenericProductDefinition[]>;
-                /**
-                 * Add a new Enterprise Cloud Databases cluster item to your cart
-                 * POST /order/cart/{cartId}/enterpriseCloudDatabases
-                 */
-                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                options: {
-                    /**
-                     * Get information about Enterprise Cloud Databases options
-                     * GET /order/cart/{cartId}/enterpriseCloudDatabases/options
-                     */
-                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
-                    /**
-                     * Add a new Enterprise Cloud Databases node to your cart
-                     * POST /order/cart/{cartId}/enterpriseCloudDatabases/options
-                     */
-                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-            }
             exchange: {
                 /**
                  * Get informations about Exchange offers
@@ -3267,6 +3225,38 @@ export interface Order {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            packsProfessionalServices: {
+                /**
+                 * Get informations about a packs professional services
+                 * GET /order/cart/{cartId}/packsProfessionalServices
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new packs professional services item in your cart
+                 * POST /order/cart/{cartId}/packsProfessionalServices
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get informations about packs professional services options
+                     * GET /order/cart/{cartId}/packsProfessionalServices/options
+                     */
+                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new packs professional services option in your cart
+                     * POST /order/cart/{cartId}/packsProfessionalServices/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
             }
             privateCloud: {
                 /**
@@ -4595,17 +4585,6 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
-            enterpriseCloudDatabases: {
-                /**
-                 * Retrieve Enterprise Cloud Databases catalog
-                 * GET /order/catalog/public/enterpriseCloudDatabases
-                 */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
             exchange: {
                 /**
                  * Retrieve exchange catalog
@@ -4698,6 +4677,17 @@ export interface Order {
                 /**
                  * Retrieve OVH Cloud Connect catalog
                  * GET /order/catalog/public/ovhCloudConnect
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            packsProfessionalServices: {
+                /**
+                 * Retrieve packs_professional_services catalog
+                 * GET /order/catalog/public/packsProfessionalServices
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
@@ -5006,35 +4996,6 @@ export interface Order {
                 }
             };
         }
-        nasha: {
-            new: {
-                /**
-                 * Get allowed durations for 'new' option
-                 * GET /order/dedicated/nasha/new
-                 */
-                $get(params: { datacenter: dedicated.NasHAZoneEnum, model: dedicated.NasHAOfferEnum }): Promise<string[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                $(duration: string): {
-                    /**
-                     * Get prices and contracts information
-                     * GET /order/dedicated/nasha/new/{duration}
-                     */
-                    $get(params: { datacenter: dedicated.NasHAZoneEnum, model: dedicated.NasHAOfferEnum }): Promise<order.Order>;
-                    /**
-                     * Create order
-                     * POST /order/dedicated/nasha/new/{duration}
-                     */
-                    $post(params: { datacenter: dedicated.NasHAZoneEnum, model: dedicated.NasHAOfferEnum }): Promise<order.Order>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                };
-            }
-        }
         server: {
             /**
              * List available services
@@ -5136,33 +5097,6 @@ export interface Order {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
-                failoverIP: {
-                    /**
-                     * Get allowed durations for 'failoverIP' option
-                     * GET /order/dedicated/server/{serviceName}/failoverIP
-                     */
-                    $get(params: { country: dedicated.server.IpCountryEnum }): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(duration: string): {
-                        /**
-                         * Get prices and contracts information
-                         * GET /order/dedicated/server/{serviceName}/failoverIP/{duration}
-                         */
-                        $get(params: { country: dedicated.server.IpCountryEnum }): Promise<order.Order>;
-                        /**
-                         * Create order
-                         * POST /order/dedicated/server/{serviceName}/failoverIP/{duration}
-                         */
-                        $post(params: { country: dedicated.server.IpCountryEnum }): Promise<order.Order>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
                 feature: {
                     /**
                      * Get allowed durations for 'feature' option
@@ -5211,33 +5145,6 @@ export interface Order {
                          * POST /order/dedicated/server/{serviceName}/firewall/{duration}
                          */
                         $post(params: { firewallModel: dedicated.server.FirewallModelEnum }): Promise<order.Order>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-                ip: {
-                    /**
-                     * Get allowed durations for 'ip' option
-                     * GET /order/dedicated/server/{serviceName}/ip
-                     */
-                    $get(params: { blockSize: dedicated.server.IpBlockSizeEnum, country?: dedicated.server.IpCountryEnum, organisationId?: string, type: dedicated.server.IpTypeOrderableEnum }): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(duration: string): {
-                        /**
-                         * Get prices and contracts information
-                         * GET /order/dedicated/server/{serviceName}/ip/{duration}
-                         */
-                        $get(params: { blockSize: dedicated.server.IpBlockSizeEnum, country?: dedicated.server.IpCountryEnum, organisationId?: string, type: dedicated.server.IpTypeOrderableEnum }): Promise<order.Order>;
-                        /**
-                         * Create order
-                         * POST /order/dedicated/server/{serviceName}/ip/{duration}
-                         */
-                        $post(params: { blockSize: dedicated.server.IpBlockSizeEnum, country?: dedicated.server.IpCountryEnum, organisationId?: string, type: dedicated.server.IpTypeOrderableEnum }): Promise<order.Order>;
                         /**
                          * Controle cache
                          */

@@ -288,7 +288,7 @@ export namespace pack {
          * Service name
          * type fullname: pack.xdsl.ServiceNameEnum
          */
-        export type ServiceNameEnum = "domain" | "emailPro" | "exchangeAccount" | "exchangeIndividual" | "exchangeLite" | "exchangeOrganization" | "grt10ho" | "grt20m10ho" | "grt20m4ho" | "grt4ho" | "grt5m10ho" | "grt5m4ho" | "grtAlt" | "grtDsp" | "grtFt" | "grtOvh" | "hostedEmail" | "hubic" | "modem" | "overTheBoxHardware" | "overTheBoxService" | "voipAlias" | "voipBillingAccount" | "voipEcoFax" | "voipLine" | "voipTrunk" | "xdslAccess"
+        export type ServiceNameEnum = "domain" | "emailPro" | "exchangeAccount" | "exchangeIndividual" | "exchangeLite" | "exchangeOrganization" | "grt10ho" | "grt20m10ho" | "grt20m4ho" | "grt4ho" | "grt5m10ho" | "grt5m4ho" | "grtAlt" | "grtDsp" | "grtFt" | "grtKosc" | "grtOvh" | "hostedEmail" | "hubic" | "modem" | "overTheBoxHardware" | "overTheBoxService" | "voipAlias" | "voipBillingAccount" | "voipEcoFax" | "voipLine" | "voipTrunk" | "xdslAccess"
         /**
          * Shipping address
          * interface fullName: pack.xdsl.ShippingAddress.ShippingAddress
@@ -366,33 +366,6 @@ export namespace pack {
         }
         export namespace addressMove {
             /**
-             * The parameters needed to create a new landline
-             * interface fullName: pack.xdsl.addressMove.Creation.Creation
-             */
-            export interface Creation {
-                address: xdsleligibilityAddress;
-                meeting: xdsleligibilityBookMeetingSlot;
-            }
-            /**
-             * Eligibility
-             * interface fullName: pack.xdsl.addressMove.Eligibility.Eligibility
-             */
-            export interface Eligibility {
-                keepCurrentPortability?: xdsleligibilityPortability;
-                offers: pack.xdsl.addressMove.Offer[];
-            }
-            /**
-             * The parameters needed to activate the access on a landline
-             * interface fullName: pack.xdsl.addressMove.Landline.Landline
-             */
-            export interface Landline {
-                lineNumber: string;
-                portLineNumber: boolean;
-                rio?: string;
-                status: xdsleligibilityLandlineStatusEnum;
-                unbundling: xdslDeconsolidationEnum;
-            }
-            /**
              * Address move offer
              * interface fullName: pack.xdsl.addressMove.MoveOffer.MoveOffer
              */
@@ -418,28 +391,6 @@ export namespace pack {
              */
             export interface MoveOfferResponse {
                 offers: pack.xdsl.addressMove.MoveOffer[];
-            }
-            /**
-             * An offer
-             * interface fullName: pack.xdsl.addressMove.Offer.Offer
-             */
-            export interface Offer {
-                address: xdsleligibilityAddress;
-                estimatedDownload: number;
-                estimatedUpload: number;
-                lineSectionsLength: xdslLineSectionLength[];
-                lineStatus: xdsleligibilityLandlineStatusEnum;
-                meetingSlots?: xdsleligibilityMeetingSlots;
-                nra: string;
-                offerCode: string;
-                portability: xdsleligibilityPortability;
-                price: order.Price;
-                provider: xdsleligibilityProviderEnum;
-                reseller: boolean;
-                syncDownload: number;
-                syncUpload: number;
-                type: xdslDslTypeEnum;
-                unbundling: xdslDeconsolidationEnum;
             }
             /**
              * Price details for an offer
@@ -664,39 +615,11 @@ export namespace services {
 }
 export namespace xdsl {
     /**
-     * Deconsolidation of the line.
-     * type fullname: xdsl.DeconsolidationEnum
-     */
-    export type DeconsolidationEnum = "createNeighbour" | "creation" | "creationNeighbour" | "partial" | "total"
-    /**
      * Possible DSL technologies
      * type fullname: xdsl.DslTypeEnum
      */
     export type DslTypeEnum = "adsl" | "ftte" | "ftth" | "sdsl" | "vdsl"
-    /**
-     * interface fullName: xdsl.LineSectionLength.LineSectionLength
-     */
-    export interface LineSectionLength {
-        diameter: number;
-        length: number;
-    }
     export namespace eligibility {
-        /**
-         * Represents an address
-         * interface fullName: xdsl.eligibility.Address.Address
-         */
-        export interface Address {
-            building?: string;
-            city: xdsl.eligibility.City;
-            door?: string;
-            floor?: string;
-            logo?: string;
-            owner?: string;
-            residence?: string;
-            stair?: string;
-            street?: xdsl.eligibility.Street;
-            streetNumber?: string;
-        }
         /**
          * Parameters to book a time slot for a meeting
          * interface fullName: xdsl.eligibility.BookMeetingSlot.BookMeetingSlot
@@ -707,29 +630,6 @@ export namespace xdsl {
             name?: string;
         }
         /**
-         * Represent a city
-         * interface fullName: xdsl.eligibility.City.City
-         */
-        export interface City {
-            inseeCode: string;
-            locality?: string;
-            name: string;
-            zipCode: string;
-        }
-        /**
-         * A message and its code
-         * interface fullName: xdsl.eligibility.CodeAndMessage.CodeAndMessage
-         */
-        export interface CodeAndMessage {
-            code: string;
-            message: string;
-        }
-        /**
-         * Status of a landline
-         * type fullname: xdsl.eligibility.LandlineStatusEnum
-         */
-        export type LandlineStatusEnum = "active" | "inactive"
-        /**
          * Represents a time slot for a meeting
          * interface fullName: xdsl.eligibility.MeetingSlot.MeetingSlot
          */
@@ -738,37 +638,6 @@ export namespace xdsl {
             slotId?: string;
             startDate: string;
             uiCode: string;
-        }
-        /**
-         * List of available meeting time slots
-         * interface fullName: xdsl.eligibility.MeetingSlots.MeetingSlots
-         */
-        export interface MeetingSlots {
-            canBookFakeMeeting: boolean;
-            meetingSlots: xdsl.eligibility.MeetingSlot[];
-        }
-        /**
-         * Eligibility of the portability of the line number
-         * interface fullName: xdsl.eligibility.Portability.Portability
-         */
-        export interface Portability {
-            comments: xdsl.eligibility.CodeAndMessage[];
-            eligible: boolean;
-            underCondition: boolean;
-            warnings: xdsl.eligibility.CodeAndMessage[];
-        }
-        /**
-         * The providers
-         * type fullname: xdsl.eligibility.ProviderEnum
-         */
-        export type ProviderEnum = "axione" | "ft" | "kosc" | "ovh" | "sfr"
-        /**
-         * Represent a street
-         * interface fullName: xdsl.eligibility.Street.Street
-         */
-        export interface Street {
-            name: string;
-            rivoliCode: string;
         }
     }
     export namespace hubic {
@@ -819,26 +688,12 @@ export interface Pack {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             addressMove: {
-                eligibility: {
-                    /**
-                     * Eligibility to move the access
-                     * POST /pack/xdsl/{packName}/addressMove/eligibility
-                     */
-                    $post(params?: { address?: xdsleligibilityAddress, lineNumber?: string }): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
-                }
-                move: {
-                    /**
-                     * Move the Xdsl access to another address
-                     * POST /pack/xdsl/{packName}/addressMove/move
-                     */
-                    $post(params: { creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum }): Promise<pack.xdsl.AsyncTask<number>>;
-                }
                 moveOffer: {
                     /**
                      * Move the access to another address
                      * POST /pack/xdsl/{packName}/addressMove/moveOffer
                      */
-                    $post(params: { acceptContracts: boolean, building?: string, buildingReference?: string, contactPhone?: string, door?: string, eligibilityReference: string, engageMonths?: number, floor?: string, keepCurrentNumber: boolean, meeting?: xdsleligibilityBookMeetingSlot, modem?: pack.xdsl.ModemOptionEnum, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, residence?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.AsyncTask<number>>;
+                    $post(params: { acceptContracts: boolean, building?: string, buildingReference?: string, contactPhone?: string, door?: string, eligibilityReference: string, engageMonths?: number, floor?: string, keepCurrentNumber: boolean, meeting?: xdsl.eligibility.BookMeetingSlot, modem?: pack.xdsl.ModemOptionEnum, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, residence?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.AsyncTask<number>>;
                 }
                 offers: {
                     /**
@@ -1193,7 +1048,7 @@ export interface Pack {
                      * Migrate to the selected offer
                      * POST /pack/xdsl/{packName}/migration/migrate
                      */
-                    $post(params: { acceptContracts: boolean, buildingReference?: string, contactPhone?: string, engageMonths?: number, floor?: string, meeting?: xdsleligibilityBookMeetingSlot, modem?: pack.xdsl.ModemOptionEnum, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, productCode?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.Task>;
+                    $post(params: { acceptContracts: boolean, buildingReference?: string, contactPhone?: string, engageMonths?: number, floor?: string, meeting?: xdsl.eligibility.BookMeetingSlot, modem?: pack.xdsl.ModemOptionEnum, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, productCode?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.Task>;
                 }
                 offers: {
                     /**
@@ -1470,11 +1325,3 @@ export interface Pack {
  * Extra Alias to bypass relativer namespace colitions
  */
 type xdslDslTypeEnum = xdsl.DslTypeEnum;
-type xdsleligibilityAddress = xdsl.eligibility.Address;
-type xdsleligibilityBookMeetingSlot = xdsl.eligibility.BookMeetingSlot;
-type xdsleligibilityPortability = xdsl.eligibility.Portability;
-type xdsleligibilityLandlineStatusEnum = xdsl.eligibility.LandlineStatusEnum;
-type xdslDeconsolidationEnum = xdsl.DeconsolidationEnum;
-type xdslLineSectionLength = xdsl.LineSectionLength;
-type xdsleligibilityMeetingSlots = xdsl.eligibility.MeetingSlots;
-type xdsleligibilityProviderEnum = xdsl.eligibility.ProviderEnum;

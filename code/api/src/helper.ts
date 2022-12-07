@@ -1,10 +1,10 @@
 import OvhApi from ".";
-import { HttpMethod, OvhCredential, OvhCredentialNew } from "./OVHInterfaces";
-import fs from 'fs';
-import { EOL } from 'os';
-import { RequestOptions } from "https";
+import { HttpMethod, OvhCredential, OvhCredentialNew } from "./OVHInterfaces.js";
+import * as fs from 'node:fs';
+import { EOL } from 'node:os';
+import { RequestOptions } from "node:https";
 import { ICacheSilot } from "@ovh-api/common";
-import { OvhError } from "./OvhError";
+import { OvhError } from "./OvhError.js";
 // import open from 'open';
 
 /**
@@ -46,8 +46,12 @@ export const waitForCertValidation = async (api: OvhApi, newCert: OvhCredentialN
         } catch (e) {
             // exception if used in browser
             // Try to open a popup
-            if (window)
-                window.open(validationUrl);
+            try {
+                if (window)
+                    window.open(validationUrl);
+            } catch (e) {
+                // ESM Build crash on accessing non existing global
+            }
         }
     let pass = 0;
 

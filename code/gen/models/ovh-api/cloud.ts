@@ -557,8 +557,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "List apps",
           "httpMethod": "GET",
@@ -637,8 +637,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Create a new app",
           "httpMethod": "POST",
@@ -674,8 +674,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Delete an app",
           "httpMethod": "DELETE",
@@ -714,8 +714,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Get app information",
           "httpMethod": "GET",
@@ -748,12 +748,57 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/ai/app/{appId}"
     },
     {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Starts a manual data synchronization on an app",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.ai.volume.DataSyncSpec",
+              "description": "Request Body",
+              "fullType": "cloud.project.ai.volume.DataSyncSpec",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "App ID",
+              "fullType": "uuid",
+              "name": "appId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.volume.DataSync",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/app/{appId}/datasync"
+    },
+    {
       "description": "Set the Docker image of an AI app",
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Set the Docker image of an AI app",
           "httpMethod": "PUT",
@@ -797,8 +842,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Update/add an AI Solutions app label",
           "httpMethod": "PUT",
@@ -842,8 +887,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Get the logs of an app",
           "httpMethod": "GET",
@@ -904,8 +949,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Scale a App",
           "httpMethod": "PUT",
@@ -949,8 +994,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Start an existing AI Solutions app",
           "httpMethod": "PUT",
@@ -987,8 +1032,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Stop an AI Solutions app",
           "httpMethod": "PUT",
@@ -1025,8 +1070,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Generate an app spec corresponding CLI command",
           "httpMethod": "POST",
@@ -1458,10 +1503,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "List Serving Engine available backends",
+          "description": "Deprecated - ML Serving is End Of Life - List Serving Engine available backends",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1488,10 +1535,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "List Serving Engine Features",
+          "description": "Deprecated - ML Serving is End Of Life - List Serving Engine Features",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1518,10 +1567,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "List Serving Engine available flavor",
+          "description": "Deprecated - ML Serving is End Of Life - List Serving Engine available flavor",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1548,10 +1599,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "List Serving Engine available frameworks",
+          "description": "Deprecated - ML Serving is End Of Life - List Serving Engine available frameworks",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1578,10 +1631,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "List Serving Engine Preset Model Images",
+          "description": "Deprecated - ML Serving is End Of Life - List Serving Engine Preset Model Images",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1608,10 +1663,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "List Serving Engine available regions",
+          "description": "Deprecated - ML Serving is End Of Life - List Serving Engine available regions",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2534,6 +2591,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Only list editors compatible with this framework",
+              "fullType": "string",
+              "name": "compatibleWithFramework",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "cloud.project.ai.notebook.Editor[]",
@@ -2564,6 +2629,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Only list frameworks compatible with this editor",
+              "fullType": "string",
+              "name": "compatibleWithEditor",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "cloud.project.ai.notebook.Framework[]",
@@ -2748,10 +2821,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "List namespaces of the project",
+          "description": "Deprecated - ML Serving is End Of Life - List namespaces of the project",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2772,10 +2847,12 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "Create a new namespace",
+          "description": "Deprecated - ML Serving is End Of Life - Create a new namespace",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -2809,10 +2886,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "Delete a namespace",
+          "description": "Deprecated - ML Serving is End Of Life - Delete a namespace",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -2841,10 +2920,12 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "Get the namespace information",
+          "description": "Deprecated - ML Serving is End Of Life - Get the namespace information",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2879,10 +2960,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "Get metrics token and urls compatible with this token",
+          "description": "Deprecated - ML Serving is End Of Life - Get metrics token and urls compatible with this token",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2917,10 +3000,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "List models",
+          "description": "Deprecated - ML Serving is End Of Life - List models",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2949,10 +3034,12 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "Create a new model",
+          "description": "Deprecated - ML Serving is End Of Life - Create a new model",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -2994,10 +3081,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "Delete a model",
+          "description": "Deprecated - ML Serving is End Of Life - Delete a model",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -3034,10 +3123,12 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "Get model information",
+          "description": "Deprecated - ML Serving is End Of Life - Get model information",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3074,10 +3165,12 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "Update a model",
+          "description": "Deprecated - ML Serving is End Of Life - Update a model",
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -3120,10 +3213,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "Detach the current registry",
+          "description": "Deprecated - ML Serving is End Of Life - Detach the current registry",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -3152,10 +3247,12 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "Get registry information",
+          "description": "Deprecated - ML Serving is End Of Life - Get registry information",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3184,10 +3281,12 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "Attach a docker registry",
+          "description": "Deprecated - ML Serving is End Of Life - Attach a docker registry",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -3229,10 +3328,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "List tokens",
+          "description": "Deprecated - ML Serving is End Of Life - List tokens",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3261,10 +3362,12 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "Create a new token",
+          "description": "Deprecated - ML Serving is End Of Life - Create a new token",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -3306,10 +3409,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "Delete a token",
+          "description": "Deprecated - ML Serving is End Of Life - Delete a token",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -3346,10 +3451,12 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "Get token information",
+          "description": "Deprecated - ML Serving is End Of Life - Get token information",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3386,10 +3493,12 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+00:00",
+            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "Renew a new token",
+          "description": "Deprecated - ML Serving is End Of Life - Renew a new token",
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
@@ -8099,6 +8208,163 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}"
     },
     {
+      "description": "Operations about the cloud project grafana advanced configuration",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get grafana advanced configuration",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "map[string]string",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update grafana advanced configuration",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "map[string]string",
+              "description": "Request Body",
+              "fullType": "map[string]string",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "map[string]string",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/advancedConfiguration"
+    },
+    {
       "description": "Operations about the cloud project grafana backups",
       "operations": [
         {
@@ -8261,6 +8527,84 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/backup/{backupId}"
+    },
+    {
+      "description": "Operations about the cloud project grafana advanced configuration",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get grafana advanced configuration fields",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/capabilities/advancedConfiguration"
     },
     {
       "description": "Operations about the grafana cloud project integration capabilities",
@@ -12687,9 +13031,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "cloud.project.database.kafka.Topic",
+              "dataType": "cloud.project.database.kafka.TopicCreation",
               "description": "Request Body",
-              "fullType": "cloud.project.database.kafka.Topic",
+              "fullType": "cloud.project.database.kafka.TopicCreation",
               "paramType": "body",
               "required": true
             },
@@ -12851,6 +13195,93 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Topic ID",
+              "fullType": "uuid",
+              "name": "topicId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.kafka.Topic",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Updates the topic on the kafka cluster",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.database.kafka.Topic",
+              "description": "Request Body",
+              "fullType": "cloud.project.database.kafka.Topic",
+              "paramType": "body",
+              "required": true
+            },
             {
               "dataType": "uuid",
               "description": "Cluster ID",
@@ -27651,6 +28082,84 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/database/{databaseId}"
     },
     {
+      "description": "Query operations on mysql cluster database write permissions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Enable temporary write permission on readonly lock mysql service",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.TemporaryWriteDeadline",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/enableWrites"
+    },
+    {
       "description": "Operations about the cloud project MySQL integrations",
       "operations": [
         {
@@ -34865,6 +35374,84 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/database/{databaseId}"
     },
     {
+      "description": "Query operations on postgresql cluster database write permissions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Enable temporary write permission on readonly lock postgresql service",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.database.TemporaryWriteDeadline",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/enableWrites"
+    },
+    {
       "description": "Operations about the cloud project PostgreSQL integrations",
       "operations": [
         {
@@ -37783,6 +38370,162 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/capabilities/advancedConfiguration"
+    },
+    {
+      "description": "Operations about the redis cloud project available categories",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get available categories in the redis service",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/capabilities/categories"
+    },
+    {
+      "description": "Operations about the redis cloud project available commands",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get available commands in the redis service",
+          "errors": [
+            "Client::BadRequest::AtLeastOneNode",
+            "Client::BadRequest::FlavorDiskSizeTooLow",
+            "Client::BadRequest::NoUpdate",
+            "Client::BadRequest::NodesFlavorMismatch",
+            "Client::BadRequest::NodesRegionMismatch",
+            "Client::BadRequest::NotEnoughNodes",
+            "Client::BadRequest::OnlyNodeListOrPattern",
+            "Client::BadRequest::TooManyNodes",
+            "Client::BadRequest::UserInvalidNameFormat",
+            "Client::Unauthorized::InvalidAuthToken",
+            "Client::NotFound::AvailabilityDoesNotExistAnymore",
+            "Client::NotFound::AvailabilityNotFound",
+            "Client::NotFound::BackupNotFound",
+            "Client::NotFound::BillingNotFound",
+            "Client::NotFound::EngineNameNotFound",
+            "Client::NotFound::FlavorNameNotFound",
+            "Client::NotFound::InsertIpRestrictionsMultipleServices",
+            "Client::NotFound::InvalidMetricName",
+            "Client::NotFound::InvalidNodeNumber",
+            "Client::NotFound::IpRestrictionAlreadyExists",
+            "Client::NotFound::IpRestrictionIDNotFound",
+            "Client::NotFound::IpRestrictionInvalidFormat",
+            "Client::NotFound::IpRestrictionNotFound",
+            "Client::NotFound::NoMatchingAvailability",
+            "Client::NotFound::NodeNameNotFound",
+            "Client::NotFound::NodeNotFound",
+            "Client::NotFound::OrganizationNotFound",
+            "Client::NotFound::PlanInvalidUpgrade",
+            "Client::NotFound::PlanNotFound",
+            "Client::NotFound::RegionNotFound",
+            "Client::NotFound::RoleNotFound",
+            "Client::NotFound::ServiceNotFound",
+            "Client::NotFound::SslCertificateNotFound",
+            "Client::NotFound::UserNotFound",
+            "Client::NotFound::VersionNotFound",
+            "Client::Conflict::ServiceLocked",
+            "Client::Conflict::ServiceNotReady",
+            "Client::Conflict::ServiceOnlyOneModification"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]",
+          "scopes": [
+            "all",
+            "product/cloud/all"
+          ]
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/capabilities/commands"
     },
     {
       "description": "Operations about the redis cloud project integration capabilities",
@@ -43398,8 +44141,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Remove OpenIdConnect integration from APIServer",
           "httpMethod": "DELETE",
@@ -43430,8 +44173,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get openIdConnect integration parameters",
           "httpMethod": "GET",
@@ -43462,8 +44205,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Configure APIServer for OpenIdConnect",
           "httpMethod": "POST",
@@ -43501,8 +44244,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Update parameters and reconfigure APIServer",
           "httpMethod": "PUT",
@@ -45315,8 +46058,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get floating ips",
           "httpMethod": "GET",
@@ -45353,8 +46096,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete a floating ip",
           "httpMethod": "DELETE",
@@ -45393,8 +46136,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get a floating ip",
           "httpMethod": "GET",
@@ -45439,8 +46182,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List gateways",
           "httpMethod": "GET",
@@ -45479,8 +46222,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create new Gateway and new Private Network with new Subnet",
           "httpMethod": "POST",
@@ -45524,8 +46267,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete gateway",
           "httpMethod": "DELETE",
@@ -45564,8 +46307,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get gateway",
           "httpMethod": "GET",
@@ -45604,8 +46347,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Update a gateway",
           "httpMethod": "PUT",
@@ -45657,8 +46400,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Expose gateway to public network by adding a public port on it.",
           "httpMethod": "POST",
@@ -45703,8 +46446,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List interfaces",
           "httpMethod": "GET",
@@ -45743,8 +46486,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create gateway interface",
           "httpMethod": "POST",
@@ -45796,8 +46539,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete gateway interface",
           "httpMethod": "DELETE",
@@ -45844,8 +46587,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get interface",
           "httpMethod": "GET",
@@ -45898,8 +46641,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Associate an existing floating IP to an instance",
           "httpMethod": "POST",
@@ -45951,8 +46694,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a floating IP and attach it to an instance",
           "httpMethod": "POST",
@@ -46004,8 +46747,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List certificates",
           "httpMethod": "GET",
@@ -46036,8 +46779,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a new certificate",
           "httpMethod": "POST",
@@ -46081,8 +46824,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete a certificate",
           "httpMethod": "DELETE",
@@ -46121,8 +46864,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a certificate",
           "httpMethod": "GET",
@@ -46167,8 +46910,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List secrets",
           "httpMethod": "GET",
@@ -46205,8 +46948,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete a secret",
           "httpMethod": "DELETE",
@@ -46245,8 +46988,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a secret",
           "httpMethod": "GET",
@@ -46291,8 +47034,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List flavors",
           "httpMethod": "GET",
@@ -46329,8 +47072,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a load balancing flavor",
           "httpMethod": "GET",
@@ -46375,8 +47118,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List health monitors",
           "httpMethod": "GET",
@@ -46407,8 +47150,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create health monitor",
           "httpMethod": "POST",
@@ -46452,8 +47195,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete health monitor",
           "httpMethod": "DELETE",
@@ -46492,8 +47235,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a loadbalancer health monitor",
           "httpMethod": "GET",
@@ -46532,8 +47275,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Update a health monitor",
           "httpMethod": "PUT",
@@ -46585,8 +47328,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "GET",
           "noAuthentication": false,
@@ -46616,8 +47359,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "POST",
           "noAuthentication": false,
@@ -46660,8 +47403,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "DELETE",
           "noAuthentication": false,
@@ -46699,8 +47442,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "GET",
           "noAuthentication": false,
@@ -46738,8 +47481,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "PUT",
           "noAuthentication": false,
@@ -46790,8 +47533,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "GET",
           "noAuthentication": false,
@@ -46829,8 +47572,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "POST",
           "noAuthentication": false,
@@ -46881,8 +47624,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "DELETE",
           "noAuthentication": false,
@@ -46928,8 +47671,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "GET",
           "noAuthentication": false,
@@ -46975,8 +47718,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "PUT",
           "noAuthentication": false,
@@ -47035,8 +47778,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List your loadbalancer listeners",
           "httpMethod": "GET",
@@ -47075,8 +47818,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a loadbalancer listerner",
           "httpMethod": "POST",
@@ -47120,8 +47863,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete loadbalancer listener",
           "httpMethod": "DELETE",
@@ -47160,8 +47903,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a loadbalancer listener",
           "httpMethod": "GET",
@@ -47206,8 +47949,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List your load balancers",
           "httpMethod": "GET",
@@ -47238,8 +47981,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a loadbalancer",
           "httpMethod": "POST",
@@ -47283,8 +48026,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete loadbalancer",
           "httpMethod": "DELETE",
@@ -47323,8 +48066,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a load balancer",
           "httpMethod": "GET",
@@ -47369,8 +48112,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Associate an existing floating IP to a loadbalancer",
           "httpMethod": "POST",
@@ -47422,8 +48165,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a floating IP and attach it to a loadbalancer",
           "httpMethod": "POST",
@@ -47475,8 +48218,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List your loadbalancer pools",
           "httpMethod": "GET",
@@ -47515,8 +48258,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a loadbalancer pool",
           "httpMethod": "POST",
@@ -47560,8 +48303,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete a loadbalancer pool",
           "httpMethod": "DELETE",
@@ -47600,8 +48343,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a loadbalancer pool",
           "httpMethod": "GET",
@@ -47640,8 +48383,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Update a loadbalancer pool",
           "httpMethod": "PUT",
@@ -47693,8 +48436,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List your pool members",
           "httpMethod": "GET",
@@ -47733,8 +48476,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a pool member",
           "httpMethod": "POST",
@@ -47786,8 +48529,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete a pool member",
           "httpMethod": "DELETE",
@@ -47834,8 +48577,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a pool member",
           "httpMethod": "GET",
@@ -47882,8 +48625,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Update a pool member",
           "httpMethod": "PUT",
@@ -47943,8 +48686,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List networks",
           "httpMethod": "GET",
@@ -47975,8 +48718,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a network with a gateway",
           "httpMethod": "POST",
@@ -48020,8 +48763,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete network",
           "httpMethod": "DELETE",
@@ -48060,8 +48803,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get network",
           "httpMethod": "GET",
@@ -48106,8 +48849,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List subnets",
           "httpMethod": "GET",
@@ -48152,8 +48895,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete subnet",
           "httpMethod": "DELETE",
@@ -48200,8 +48943,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get subnet",
           "httpMethod": "GET",
@@ -48254,8 +48997,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create Gateway for existing subnet",
           "httpMethod": "POST",
@@ -51855,9 +52598,7 @@ export const schema: Schema = {
         "archived",
         "archiving",
         "deleting",
-        "draining",
         "flushed",
-        "locked",
         "none",
         "restored",
         "restoring"
@@ -53334,6 +54075,14 @@ export const schema: Schema = {
       "id": "ProjectKubeOpenIdConnectCreation",
       "namespace": "cloud",
       "properties": {
+        "caContent": {
+          "canBeNull": true,
+          "description": "Content of the certificate for the CA, in base64 format, that signed your identity provider's web certificate. Defaults to the host's root CAs.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "clientId": {
           "canBeNull": false,
           "description": "Client ID",
@@ -53342,12 +54091,60 @@ export const schema: Schema = {
           "required": true,
           "type": "string"
         },
+        "groupsClaim": {
+          "canBeNull": true,
+          "description": "JWT claim to use as the user's group. If the claim is present it must be an array of strings.",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "groupsPrefix": {
+          "canBeNull": true,
+          "description": "Prefix prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: will create group names like oidc:engineering and oidc:infra.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "issuerUrl": {
           "canBeNull": false,
           "description": "Issuer URL",
           "fullType": "string",
           "readOnly": false,
           "required": true,
+          "type": "string"
+        },
+        "requiredClaim": {
+          "canBeNull": true,
+          "description": "key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value.",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "signingAlgorithms": {
+          "canBeNull": true,
+          "description": "The signing algorithms accepted. Default is \"RS256\".",
+          "fullType": "cloud.kube.OpenIdConnectSigningAlgorithmsEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.OpenIdConnectSigningAlgorithmsEnum[]"
+        },
+        "usernameClaim": {
+          "canBeNull": true,
+          "description": "JWT claim to use as the user name. By default sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "usernamePrefix": {
+          "canBeNull": true,
+          "description": "Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn't set and oidcUsernameClaim is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -53357,6 +54154,14 @@ export const schema: Schema = {
       "id": "ProjectKubeOpenIdConnectUpdate",
       "namespace": "cloud",
       "properties": {
+        "caContent": {
+          "canBeNull": true,
+          "description": "Content of the certificate for the CA, in base64 format, that signed your identity provider's web certificate. Defaults to the host's root CAs.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "clientId": {
           "canBeNull": false,
           "description": "Client ID",
@@ -53365,9 +54170,57 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "groupsClaim": {
+          "canBeNull": true,
+          "description": "JWT claim to use as the user's group. If the claim is present it must be an array of strings.",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "groupsPrefix": {
+          "canBeNull": true,
+          "description": "Prefix prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: will create group names like oidc:engineering and oidc:infra.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "issuerUrl": {
           "canBeNull": false,
           "description": "Issuer URL",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "requiredClaim": {
+          "canBeNull": true,
+          "description": "key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value.",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "signingAlgorithms": {
+          "canBeNull": true,
+          "description": "The signing algorithms accepted. Default is \"RS256\".",
+          "fullType": "cloud.kube.OpenIdConnectSigningAlgorithmsEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.OpenIdConnectSigningAlgorithmsEnum[]"
+        },
+        "usernameClaim": {
+          "canBeNull": true,
+          "description": "JWT claim to use as the user name. By default sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "usernamePrefix": {
+          "canBeNull": true,
+          "description": "Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn't set and oidcUsernameClaim is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -58551,9 +59404,33 @@ export const schema: Schema = {
       "id": "OpenIdConnect",
       "namespace": "cloud.kube",
       "properties": {
+        "caContent": {
+          "canBeNull": true,
+          "description": "Content of the certificate for the CA, in base64 format, that signed your identity provider's web certificate. Defaults to the host's root CAs.",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "clientId": {
           "canBeNull": false,
           "description": "Client ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "groupsClaim": {
+          "canBeNull": true,
+          "description": "JWT claim to use as the user's group. If the claim is present it must be an array of strings.",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "groupsPrefix": {
+          "canBeNull": true,
+          "description": "Prefix prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: will create group names like oidc:engineering and oidc:infra.",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -58566,8 +59443,57 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "requiredClaim": {
+          "canBeNull": true,
+          "description": "key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value.",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "signingAlgorithms": {
+          "canBeNull": true,
+          "description": "The signing algorithms accepted. Default is \"RS256\".",
+          "fullType": "cloud.kube.OpenIdConnectSigningAlgorithmsEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.kube.OpenIdConnectSigningAlgorithmsEnum[]"
+        },
+        "usernameClaim": {
+          "canBeNull": true,
+          "description": "JWT claim to use as the user name. By default sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "usernamePrefix": {
+          "canBeNull": true,
+          "description": "Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn't set and oidcUsernameClaim is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
+    },
+    "cloud.kube.OpenIdConnectSigningAlgorithmsEnum": {
+      "description": "Enum values for OpenIdConnect signing algorithms",
+      "enum": [
+        "ES256",
+        "ES384",
+        "ES512",
+        "PS256",
+        "PS384",
+        "PS512",
+        "RS256",
+        "RS384",
+        "RS512"
+      ],
+      "enumType": "string",
+      "id": "OpenIdConnectSigningAlgorithmsEnum",
+      "namespace": "cloud.kube"
     },
     "cloud.kube.PrivateNetworkConfiguration": {
       "description": "Managed Kubernetes cluster private networking configuration",
@@ -62619,6 +63545,7 @@ export const schema: Schema = {
         "APP_STOPPING",
         "COMPATIBILITY",
         "DATASYNC_AUTHENTICATE_FAILED",
+        "DATASYNC_DATA_STORE_NOT_FOUND",
         "DATASYNC_DONE",
         "DATASYNC_ERROR",
         "DATASYNC_FAILED",
@@ -62647,6 +63574,7 @@ export const schema: Schema = {
         "JOB_QUEUED",
         "JOB_REGISTRY_UNAVAILABLE",
         "JOB_RUNNING",
+        "JOB_SYNC_FAILED",
         "JOB_TIMEOUT",
         "NOTEBOOK_FAILED",
         "NOTEBOOK_FAILED_WITH_MESSAGE",
@@ -62656,7 +63584,8 @@ export const schema: Schema = {
         "NOTEBOOK_RUNNING",
         "NOTEBOOK_STARTING",
         "NOTEBOOK_STOPPED",
-        "NOTEBOOK_STOPPING"
+        "NOTEBOOK_STOPPING",
+        "NOTEBOOK_SYNC_FAILED"
       ],
       "enumType": "string",
       "id": "InfoCodeEnum",
@@ -64339,6 +65268,7 @@ export const schema: Schema = {
         "PENDING",
         "QUEUED",
         "RUNNING",
+        "SYNC_FAILED",
         "TIMEOUT"
       ],
       "enumType": "string",
@@ -64806,6 +65736,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.project.ai.notebook.NotebookEnv"
         },
+        "envVars": {
+          "canBeNull": false,
+          "description": "List of environment variables to be set inside the notebook",
+          "fullType": "cloud.project.ai.job.JobEnv[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.job.JobEnv[]"
+        },
         "flavor": {
           "canBeNull": true,
           "description": "Current notebook flavor",
@@ -64893,6 +65831,14 @@ export const schema: Schema = {
           "required": true,
           "type": "cloud.project.ai.notebook.NotebookEnv"
         },
+        "envVars": {
+          "canBeNull": true,
+          "description": "List of environment variables to be set inside the notebook",
+          "fullType": "cloud.project.ai.job.JobEnv[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.job.JobEnv[]"
+        },
         "labels": {
           "canBeNull": true,
           "description": "Labels are used to scope tokens, labels prefixed by 'ovh/' are owned by the platform and overridden",
@@ -64967,7 +65913,8 @@ export const schema: Schema = {
         "RUNNING",
         "STARTING",
         "STOPPED",
-        "STOPPING"
+        "STOPPING",
+        "SYNC_FAILED"
       ],
       "enumType": "string",
       "id": "NotebookStateEnum",
@@ -66104,6 +67051,53 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.ai.volume.DataStore": {
+      "description": "AI Solutions data store container Volume Object",
+      "id": "DataStore",
+      "namespace": "cloud.project.ai.volume",
+      "properties": {
+        "alias": {
+          "canBeNull": false,
+          "description": "Data store alias",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "archive": {
+          "canBeNull": true,
+          "description": "Name of the tar archive that needs to be saved",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "container": {
+          "canBeNull": false,
+          "description": "Data store container to attach",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "internal": {
+          "canBeNull": true,
+          "description": "True if data is stored on OVHcloud AI's internal storage",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "prefix": {
+          "canBeNull": true,
+          "description": "Prefix to fetch only part of the volume",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "cloud.project.ai.volume.DataSync": {
       "description": "AI Solutions Data Sync",
       "id": "DataSync",
@@ -66195,6 +67189,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
+        },
+        "volume": {
+          "canBeNull": true,
+          "description": "Only sync this volume",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
@@ -66499,6 +67501,22 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "dataStore": {
+          "canBeNull": true,
+          "description": "Volume details for data store containers",
+          "fullType": "cloud.project.ai.volume.DataStore",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.volume.DataStore"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Volume Id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
         "mountPath": {
           "canBeNull": false,
           "description": "Path where to mount the data inside the container",
@@ -66562,6 +67580,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "cloud.project.ai.volume.Standalone"
+        },
+        "targetDataStore": {
+          "canBeNull": true,
+          "description": "Target volume details for data store containers",
+          "fullType": "cloud.project.ai.volume.DataStore",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.volume.DataStore"
         },
         "targetPrivateSwift": {
           "canBeNull": true,
@@ -66709,6 +67735,85 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.dataProcessing.CapabilitiesNotebookTemplate": {
+      "description": "Engine Template",
+      "id": "CapabilitiesNotebookTemplate",
+      "namespace": "cloud.project.dataProcessing",
+      "properties": {
+        "driverCores": {
+          "canBeNull": false,
+          "description": "Number of driver cores of the template",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "driverMemory": {
+          "canBeNull": false,
+          "description": "Driver memory in bytes of the template",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "driverMemoryOverhead": {
+          "canBeNull": false,
+          "description": "Driver memory overhead in bytes of the template",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "executorCores": {
+          "canBeNull": false,
+          "description": "Number of executor cores of the template",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "executorMemory": {
+          "canBeNull": false,
+          "description": "Executor memory in bytes of the template",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "executorMemoryOverhead": {
+          "canBeNull": false,
+          "description": "Executor memory overhead in bytes of the template",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "executorNumber": {
+          "canBeNull": false,
+          "description": "Number of executors of the template",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the template",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the template",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "cloud.project.dataProcessing.CapabilitiesTemplate": {
       "description": "Engine Template",
       "id": "CapabilitiesTemplate",
@@ -66832,6 +67937,87 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "cloud.project.dataProcessing.Info": {
+      "description": "Information about the state of this entity",
+      "id": "Info",
+      "namespace": "cloud.project.dataProcessing",
+      "properties": {
+        "code": {
+          "canBeNull": false,
+          "description": "Info code identifier",
+          "fullType": "cloud.project.dataProcessing.InfoCodeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataProcessing.InfoCodeEnum"
+        },
+        "message": {
+          "canBeNull": false,
+          "description": "Formatted message",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.dataProcessing.InfoCodeEnum": {
+      "description": "Code enum for Info object",
+      "enum": [
+        "APP_CREATE_ERROR",
+        "APP_ERROR",
+        "APP_FAILED",
+        "APP_INITIALIZING",
+        "APP_INTERRUPTED_BY_PLATFORM",
+        "APP_QUEUED",
+        "APP_RUNNING",
+        "APP_SCALING",
+        "APP_STOPPED",
+        "APP_STOPPING",
+        "COMPATIBILITY",
+        "DATASYNC_AUTHENTICATE_FAILED",
+        "DATASYNC_DONE",
+        "DATASYNC_ERROR",
+        "DATASYNC_FAILED",
+        "DATASYNC_INTERRUPTED",
+        "DATASYNC_INVALID_CONTAINER",
+        "DATASYNC_QUEUED",
+        "DATASYNC_RETRY_ERROR",
+        "DATASYNC_RUNNING",
+        "JOB_CREATE_CONTAINER_CONFIG_ERROR",
+        "JOB_CREATE_CONTAINER_ERROR",
+        "JOB_DONE",
+        "JOB_ERROR",
+        "JOB_EVICTED",
+        "JOB_FAILED",
+        "JOB_FAILED_WITH_MESSAGE",
+        "JOB_FINALIZING",
+        "JOB_IMAGE_INSPECT_ERROR",
+        "JOB_IMAGE_PULL",
+        "JOB_IMAGE_PULL_BACKOFF",
+        "JOB_INITIALIZING",
+        "JOB_INTERRUPTED",
+        "JOB_INTERRUPTED_BY_PLATFORM",
+        "JOB_INTERRUPTING",
+        "JOB_INVALID_IMAGE_NAME",
+        "JOB_PENDING",
+        "JOB_QUEUED",
+        "JOB_REGISTRY_UNAVAILABLE",
+        "JOB_RUNNING",
+        "JOB_TIMEOUT",
+        "NOTEBOOK_FAILED",
+        "NOTEBOOK_FAILED_WITH_MESSAGE",
+        "NOTEBOOK_FINALIZING",
+        "NOTEBOOK_INITIALIZING",
+        "NOTEBOOK_PENDING",
+        "NOTEBOOK_RUNNING",
+        "NOTEBOOK_STARTING",
+        "NOTEBOOK_STOPPED",
+        "NOTEBOOK_STOPPING"
+      ],
+      "enumType": "string",
+      "id": "InfoCodeEnum",
+      "namespace": "cloud.project.dataProcessing"
     },
     "cloud.project.dataProcessing.Job": {
       "description": "Job information",
@@ -67098,6 +68284,199 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "StatusEnum",
       "namespace": "cloud.project.dataProcessing"
+    },
+    "cloud.project.dataProcessing.notebook.Capability": {
+      "description": "Capabilities of data processing service",
+      "id": "Capability",
+      "namespace": "cloud.project.dataProcessing.notebook",
+      "properties": {
+        "availableVersions": {
+          "canBeNull": false,
+          "description": "Available versions of the engine",
+          "fullType": "cloud.project.dataProcessing.EngineVersion[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataProcessing.EngineVersion[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the engine",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "templates": {
+          "canBeNull": false,
+          "description": "Templates of the engine",
+          "fullType": "cloud.project.dataProcessing.CapabilitiesNotebookTemplate[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataProcessing.CapabilitiesNotebookTemplate[]"
+        }
+      }
+    },
+    "cloud.project.dataProcessing.notebook.Notebook": {
+      "description": "Data Processing Notebook Object",
+      "id": "Notebook",
+      "namespace": "cloud.project.dataProcessing.notebook",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Notebook Id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "spec": {
+          "canBeNull": false,
+          "description": "Notebook spec",
+          "fullType": "cloud.project.dataProcessing.notebook.NotebookSpec",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataProcessing.notebook.NotebookSpec"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Notebook Container Status",
+          "fullType": "cloud.project.dataProcessing.notebook.NotebookStatus",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataProcessing.notebook.NotebookStatus"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Notebook last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "cloud.project.dataProcessing.notebook.NotebookEnv": {
+      "description": "Data Processing Object to create a notebook",
+      "id": "NotebookEnv",
+      "namespace": "cloud.project.dataProcessing.notebook",
+      "properties": {
+        "engineName": {
+          "canBeNull": true,
+          "description": "Engine name to use",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "engineVersion": {
+          "canBeNull": true,
+          "description": "Engine version to use",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.dataProcessing.notebook.NotebookSpec": {
+      "description": "Data Processing Notebook Spec Object to create a notebook",
+      "id": "NotebookSpec",
+      "namespace": "cloud.project.dataProcessing.notebook",
+      "properties": {
+        "env": {
+          "canBeNull": false,
+          "description": "Environment to deploy in this notebook",
+          "fullType": "cloud.project.dataProcessing.notebook.NotebookEnv",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.dataProcessing.notebook.NotebookEnv"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Notebook name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Host region of the notebook",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.dataProcessing.notebook.NotebookStateEnum": {
+      "description": "State of the notebook",
+      "enum": [
+        "DELETING",
+        "FAILED",
+        "RUNNING",
+        "STARTING",
+        "STOPPED",
+        "STOPPING"
+      ],
+      "enumType": "string",
+      "id": "NotebookStateEnum",
+      "namespace": "cloud.project.dataProcessing.notebook"
+    },
+    "cloud.project.dataProcessing.notebook.NotebookStatus": {
+      "description": "Data Processing Notebook Status Object",
+      "id": "NotebookStatus",
+      "namespace": "cloud.project.dataProcessing.notebook",
+      "properties": {
+        "duration": {
+          "canBeNull": true,
+          "description": "Duration of the notebook in seconds",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "info": {
+          "canBeNull": false,
+          "description": "Information about the notebook",
+          "fullType": "cloud.project.dataProcessing.Info",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataProcessing.Info"
+        },
+        "lastStartedAt": {
+          "canBeNull": true,
+          "description": "Date when the notebook was last started",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lastStoppedAt": {
+          "canBeNull": true,
+          "description": "Date when the notebook was last stopped",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "state": {
+          "canBeNull": true,
+          "description": "State of the notebook",
+          "fullType": "cloud.project.dataProcessing.notebook.NotebookStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataProcessing.notebook.NotebookStateEnum"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Notebook access url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "cloud.project.database.Availability": {
       "description": "Availability of databases engines on cloud projects",
@@ -67687,6 +69066,21 @@ export const schema: Schema = {
       "id": "StatusEnum",
       "namespace": "cloud.project.database"
     },
+    "cloud.project.database.TemporaryWriteDeadline": {
+      "description": "Cloud databases temporary write deadline definition",
+      "id": "TemporaryWriteDeadline",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "until": {
+          "canBeNull": false,
+          "description": "Date on which the temporary write permissions would be lifted",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
     "cloud.project.database.TypeEnum": {
       "description": "Type of data returned in the capabilities options",
       "enum": [
@@ -68073,6 +69467,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "disk": {
+          "canBeNull": false,
+          "description": "Disk attributes of the cluster",
+          "fullType": "cloud.project.database.service.Disk",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.Disk"
+        },
         "domain": {
           "canBeNull": false,
           "description": "Domain of the cluster (DEPRECATED: use endpoints)",
@@ -68222,6 +69624,69 @@ export const schema: Schema = {
     "cloud.project.database.kafka.Topic": {
       "description": "Cloud database kafka topic definition",
       "id": "Topic",
+      "namespace": "cloud.project.database.kafka",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Topic ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "minInsyncReplicas": {
+          "canBeNull": false,
+          "description": "Minimum insync replica accepted for this topic",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the topic",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "partitions": {
+          "canBeNull": false,
+          "description": "Number of partitions for this topic",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "replication": {
+          "canBeNull": false,
+          "description": "Number of replication for this topic",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "retentionBytes": {
+          "canBeNull": false,
+          "description": "Number of bytes for the retention of the data for this topic",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "retentionHours": {
+          "canBeNull": false,
+          "description": "Number of hours for the retention of the data for this topic",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.database.kafka.TopicCreation": {
+      "description": "Cloud database kafka topic creation definition",
+      "id": "TopicCreation",
       "namespace": "cloud.project.database.kafka",
       "properties": {
         "id": {
@@ -69453,6 +70918,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "disk": {
+          "canBeNull": false,
+          "description": "Disk attributes of the cluster",
+          "fullType": "cloud.project.database.service.Disk",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.Disk"
         },
         "domain": {
           "canBeNull": false,
@@ -70831,6 +72304,7 @@ export const schema: Schema = {
         "BYTES_PER_SECOND",
         "GIGABYTES",
         "GIGABYTES_PER_HOUR",
+        "MEGABYTES",
         "MEGABYTES_PER_SECOND",
         "MILLISECONDS",
         "PERCENT",
@@ -71778,6 +73252,7 @@ export const schema: Schema = {
         "APPLIED",
         "APPLYING",
         "ERROR",
+        "PENDING",
         "SCHEDULED"
       ],
       "enumType": "string",

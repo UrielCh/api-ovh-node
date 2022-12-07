@@ -11,6 +11,24 @@ import { EOL } from 'os';
 
 const pathToApiName = (api: string) => api.substring(1).replace(/\//g, '-').replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`).replace(/^-/, '');
 
+async function writeIfDiff(fn: string, expected: string): Promise<number> {
+    let oldEsm = '';
+    try {
+        oldEsm = await fs.promises.readFile(fn, { encoding: 'utf-8' });
+    } catch (e) {
+    }
+    if (oldEsm != expected) {
+        if (!oldEsm)
+            console.log(`Creating ${fn}`);
+        else
+            console.log(`Overwriting ${fn}`);
+        await fs.promises.writeFile(fn, expected, { encoding: 'utf-8' });
+        return 1;
+    }
+    return 0;
+}
+
+
 export class RegionGenerator {
     constructor(private endpoint: IEndpoint) {
         this.workDir = path.join('..', '..', this.endpoint.directory);
@@ -115,7 +133,7 @@ export class RegionGenerator {
             //
 
             let fn = path.join(dir, 'index.ts');
-            let code = await cg.generate({dest: fn});
+            let code = await cg.generate({ dest: fn });
             await fs.promises.writeFile(fn, code);
 
             await this.genPackageReadme(dir, cg);
@@ -187,7 +205,9 @@ export class RegionGenerator {
         content.push('}');
         content.push('```');
         content.push('');
-        await fs.promises.writeFile(fn, content.join(EOL));
+
+        await writeIfDiff(fn, content.join(EOL));
+        // await fs.promises.writeFile(fn, content.join(EOL));
     }
 
 
@@ -199,12 +219,13 @@ export class RegionGenerator {
             await fs.promises.stat(fn);
             rwfile = false;
         } catch { }
-        //rwfile = true;
+        // rwfile = true;
         if (rwfile)
             await fse.writeJSON(fn, {
                 name: `@${namespace}/${flat}`,
                 description: `Add typing to to ovh api ${flat}`,
-                version: "3.0.0",
+                version: "4.0.0",
+                type: "module",
                 keywords: [
                     "ovh",
                     "ovhCloud",
@@ -212,11 +233,19 @@ export class RegionGenerator {
                     "typing",
                     "typescript"
                 ],
+                exports: {
+                    ".": {
+                        require: "./cjs/index.js",
+                        import: "./index.js",
+                        types: "./index.d.ts"
+                    }
+                },
                 typings: "index.d.ts",
+                main: "./cjs/index.js",
                 license: "MIT",
                 author: "Uriel Chemouni <uchemouni@gmail.com>",
                 dependencies: {
-                    "@ovh-api/common": "^3.1.2",
+                    "@ovh-api/common": "4.0.0",
                 },
                 publishConfig: {
                     access: "public"
@@ -227,16 +256,16 @@ export class RegionGenerator {
                     url: "git+https://github.com/UrielCh/api-ovh-node.git"
                 },
                 scripts: {
-                    build: "tsc",
-                    "build:watch": "tsc --watch",
+                    build: "tsc --pretty --project . && tsc --pretty --project tsconfig-cjs.json",
                     prepare: "npm run build"
                 },
                 files: [
+                    "cjs",
+                    "index.ts",
                     "index.js",
                     "index.d.ts"
                 ]
             }, { spaces: 4 })
-
     }
 
     /**
@@ -244,25 +273,33 @@ export class RegionGenerator {
      * @param dir generation dir
      */
     private async genTsConfig(dir: string) {
-        const fn = path.join(dir, 'tsconfig.json');
-        let rwfile = true;
-        try {
-            await fs.promises.stat(fn);
-            rwfile = false;
-        } catch (e) {
-        }
-        if (rwfile)
-            await fse.writeJSON(fn, {
-                "compilerOptions": {
-                    "target": "es2017",
-                    "module": "commonjs",
-                    "declaration": true,
-                    "strict": true,
-                    "moduleResolution": "node",
-                    "esModuleInterop": true,
-                }
-            }, { spaces: 4 });
-        // DONE
-    }
+        const fnEsm = path.join(dir, 'tsconfig.json');
+        const fnCjs = path.join(dir, 'tsconfig-cjs.json');
 
+        const compilerOptions = {
+            target: "es2017",
+            strict: true,
+            moduleResolution: "node",
+            esModuleInterop: true,
+        };
+        const include = ["index.ts"];
+        const expectedEsm = JSON.stringify({
+            compilerOptions: {
+                ...compilerOptions,
+                module: "ES2020",
+                declaration: true,
+            }, include
+        }, undefined, 4);
+        const expectedCjs = JSON.stringify({
+            compilerOptions: {
+                ...compilerOptions,
+                module: "commonjs",
+                declaration: false,
+                outDir: "cjs",
+            }, include
+        }, undefined, 4);
+
+        await writeIfDiff(fnEsm, expectedEsm);
+        await writeIfDiff(fnCjs, expectedCjs);
+    }
 }

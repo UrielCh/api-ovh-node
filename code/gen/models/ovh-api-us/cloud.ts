@@ -5982,8 +5982,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Remove OpenIdConnect integration from APIServer",
           "httpMethod": "DELETE",
@@ -6014,8 +6014,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get openIdConnect integration parameters",
           "httpMethod": "GET",
@@ -6046,8 +6046,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Configure APIServer for OpenIdConnect",
           "httpMethod": "POST",
@@ -6085,8 +6085,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Update parameters and reconfigure APIServer",
           "httpMethod": "PUT",
@@ -7900,8 +7900,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get floating ips",
           "httpMethod": "GET",
@@ -7938,8 +7938,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete a floating ip",
           "httpMethod": "DELETE",
@@ -7978,8 +7978,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get a floating ip",
           "httpMethod": "GET",
@@ -8024,8 +8024,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List gateways",
           "httpMethod": "GET",
@@ -8064,8 +8064,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create new Gateway and new Private Network with new Subnet",
           "httpMethod": "POST",
@@ -8109,8 +8109,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete gateway",
           "httpMethod": "DELETE",
@@ -8149,8 +8149,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get gateway",
           "httpMethod": "GET",
@@ -8189,8 +8189,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Update a gateway",
           "httpMethod": "PUT",
@@ -8242,8 +8242,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Expose gateway to public network by adding a public port on it.",
           "httpMethod": "POST",
@@ -8288,8 +8288,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List interfaces",
           "httpMethod": "GET",
@@ -8328,8 +8328,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create gateway interface",
           "httpMethod": "POST",
@@ -8381,8 +8381,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete gateway interface",
           "httpMethod": "DELETE",
@@ -8429,8 +8429,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get interface",
           "httpMethod": "GET",
@@ -8483,8 +8483,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Associate an existing floating IP to an instance",
           "httpMethod": "POST",
@@ -8536,8 +8536,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a floating IP and attach it to an instance",
           "httpMethod": "POST",
@@ -8589,8 +8589,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List certificates",
           "httpMethod": "GET",
@@ -8621,8 +8621,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a new certificate",
           "httpMethod": "POST",
@@ -8666,8 +8666,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete a certificate",
           "httpMethod": "DELETE",
@@ -8706,8 +8706,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a certificate",
           "httpMethod": "GET",
@@ -8752,8 +8752,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List secrets",
           "httpMethod": "GET",
@@ -8790,8 +8790,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete a secret",
           "httpMethod": "DELETE",
@@ -8830,8 +8830,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a secret",
           "httpMethod": "GET",
@@ -8876,8 +8876,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List flavors",
           "httpMethod": "GET",
@@ -8914,8 +8914,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a load balancing flavor",
           "httpMethod": "GET",
@@ -8960,8 +8960,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List health monitors",
           "httpMethod": "GET",
@@ -8992,8 +8992,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create health monitor",
           "httpMethod": "POST",
@@ -9037,8 +9037,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete health monitor",
           "httpMethod": "DELETE",
@@ -9077,8 +9077,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a loadbalancer health monitor",
           "httpMethod": "GET",
@@ -9117,8 +9117,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Update a health monitor",
           "httpMethod": "PUT",
@@ -9170,8 +9170,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "GET",
           "noAuthentication": false,
@@ -9201,8 +9201,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "POST",
           "noAuthentication": false,
@@ -9245,8 +9245,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "DELETE",
           "noAuthentication": false,
@@ -9284,8 +9284,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "GET",
           "noAuthentication": false,
@@ -9323,8 +9323,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "PUT",
           "noAuthentication": false,
@@ -9375,8 +9375,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "GET",
           "noAuthentication": false,
@@ -9414,8 +9414,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "POST",
           "noAuthentication": false,
@@ -9466,8 +9466,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "DELETE",
           "noAuthentication": false,
@@ -9513,8 +9513,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "GET",
           "noAuthentication": false,
@@ -9560,8 +9560,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "httpMethod": "PUT",
           "noAuthentication": false,
@@ -9620,8 +9620,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List your loadbalancer listeners",
           "httpMethod": "GET",
@@ -9660,8 +9660,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a loadbalancer listerner",
           "httpMethod": "POST",
@@ -9705,8 +9705,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete loadbalancer listener",
           "httpMethod": "DELETE",
@@ -9745,8 +9745,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a loadbalancer listener",
           "httpMethod": "GET",
@@ -9791,8 +9791,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List your load balancers",
           "httpMethod": "GET",
@@ -9823,8 +9823,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a loadbalancer",
           "httpMethod": "POST",
@@ -9868,8 +9868,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete loadbalancer",
           "httpMethod": "DELETE",
@@ -9908,8 +9908,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a load balancer",
           "httpMethod": "GET",
@@ -9954,8 +9954,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Associate an existing floating IP to a loadbalancer",
           "httpMethod": "POST",
@@ -10007,8 +10007,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a floating IP and attach it to a loadbalancer",
           "httpMethod": "POST",
@@ -10060,8 +10060,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List your loadbalancer pools",
           "httpMethod": "GET",
@@ -10100,8 +10100,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a loadbalancer pool",
           "httpMethod": "POST",
@@ -10145,8 +10145,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete a loadbalancer pool",
           "httpMethod": "DELETE",
@@ -10185,8 +10185,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a loadbalancer pool",
           "httpMethod": "GET",
@@ -10225,8 +10225,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Update a loadbalancer pool",
           "httpMethod": "PUT",
@@ -10278,8 +10278,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List your pool members",
           "httpMethod": "GET",
@@ -10318,8 +10318,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a pool member",
           "httpMethod": "POST",
@@ -10371,8 +10371,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete a pool member",
           "httpMethod": "DELETE",
@@ -10419,8 +10419,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details about a pool member",
           "httpMethod": "GET",
@@ -10467,8 +10467,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Update a pool member",
           "httpMethod": "PUT",
@@ -10528,8 +10528,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List networks",
           "httpMethod": "GET",
@@ -10560,8 +10560,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a network with a gateway",
           "httpMethod": "POST",
@@ -10605,8 +10605,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete network",
           "httpMethod": "DELETE",
@@ -10645,8 +10645,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get network",
           "httpMethod": "GET",
@@ -10691,8 +10691,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List subnets",
           "httpMethod": "GET",
@@ -10737,8 +10737,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete subnet",
           "httpMethod": "DELETE",
@@ -10785,8 +10785,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get subnet",
           "httpMethod": "GET",
@@ -10839,8 +10839,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create Gateway for existing subnet",
           "httpMethod": "POST",
@@ -14017,9 +14017,7 @@ export const schema: Schema = {
         "archived",
         "archiving",
         "deleting",
-        "draining",
         "flushed",
-        "locked",
         "none",
         "restored",
         "restoring"
@@ -15237,6 +15235,14 @@ export const schema: Schema = {
       "id": "ProjectKubeOpenIdConnectCreation",
       "namespace": "cloud",
       "properties": {
+        "caContent": {
+          "canBeNull": true,
+          "description": "Content of the certificate for the CA, in base64 format, that signed your identity provider's web certificate. Defaults to the host's root CAs.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "clientId": {
           "canBeNull": false,
           "description": "Client ID",
@@ -15245,12 +15251,60 @@ export const schema: Schema = {
           "required": true,
           "type": "string"
         },
+        "groupsClaim": {
+          "canBeNull": true,
+          "description": "JWT claim to use as the user's group. If the claim is present it must be an array of strings.",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "groupsPrefix": {
+          "canBeNull": true,
+          "description": "Prefix prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: will create group names like oidc:engineering and oidc:infra.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "issuerUrl": {
           "canBeNull": false,
           "description": "Issuer URL",
           "fullType": "string",
           "readOnly": false,
           "required": true,
+          "type": "string"
+        },
+        "requiredClaim": {
+          "canBeNull": true,
+          "description": "key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value.",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "signingAlgorithms": {
+          "canBeNull": true,
+          "description": "The signing algorithms accepted. Default is \"RS256\".",
+          "fullType": "cloud.kube.OpenIdConnectSigningAlgorithmsEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.OpenIdConnectSigningAlgorithmsEnum[]"
+        },
+        "usernameClaim": {
+          "canBeNull": true,
+          "description": "JWT claim to use as the user name. By default sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "usernamePrefix": {
+          "canBeNull": true,
+          "description": "Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn't set and oidcUsernameClaim is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -15260,6 +15314,14 @@ export const schema: Schema = {
       "id": "ProjectKubeOpenIdConnectUpdate",
       "namespace": "cloud",
       "properties": {
+        "caContent": {
+          "canBeNull": true,
+          "description": "Content of the certificate for the CA, in base64 format, that signed your identity provider's web certificate. Defaults to the host's root CAs.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "clientId": {
           "canBeNull": false,
           "description": "Client ID",
@@ -15268,9 +15330,57 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "groupsClaim": {
+          "canBeNull": true,
+          "description": "JWT claim to use as the user's group. If the claim is present it must be an array of strings.",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "groupsPrefix": {
+          "canBeNull": true,
+          "description": "Prefix prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: will create group names like oidc:engineering and oidc:infra.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "issuerUrl": {
           "canBeNull": false,
           "description": "Issuer URL",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "requiredClaim": {
+          "canBeNull": true,
+          "description": "key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value.",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "signingAlgorithms": {
+          "canBeNull": true,
+          "description": "The signing algorithms accepted. Default is \"RS256\".",
+          "fullType": "cloud.kube.OpenIdConnectSigningAlgorithmsEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.OpenIdConnectSigningAlgorithmsEnum[]"
+        },
+        "usernameClaim": {
+          "canBeNull": true,
+          "description": "JWT claim to use as the user name. By default sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "usernamePrefix": {
+          "canBeNull": true,
+          "description": "Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn't set and oidcUsernameClaim is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -18837,9 +18947,33 @@ export const schema: Schema = {
       "id": "OpenIdConnect",
       "namespace": "cloud.kube",
       "properties": {
+        "caContent": {
+          "canBeNull": true,
+          "description": "Content of the certificate for the CA, in base64 format, that signed your identity provider's web certificate. Defaults to the host's root CAs.",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "clientId": {
           "canBeNull": false,
           "description": "Client ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "groupsClaim": {
+          "canBeNull": true,
+          "description": "JWT claim to use as the user's group. If the claim is present it must be an array of strings.",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "groupsPrefix": {
+          "canBeNull": true,
+          "description": "Prefix prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: will create group names like oidc:engineering and oidc:infra.",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -18852,8 +18986,57 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "requiredClaim": {
+          "canBeNull": true,
+          "description": "key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value.",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "signingAlgorithms": {
+          "canBeNull": true,
+          "description": "The signing algorithms accepted. Default is \"RS256\".",
+          "fullType": "cloud.kube.OpenIdConnectSigningAlgorithmsEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.kube.OpenIdConnectSigningAlgorithmsEnum[]"
+        },
+        "usernameClaim": {
+          "canBeNull": true,
+          "description": "JWT claim to use as the user name. By default sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "usernamePrefix": {
+          "canBeNull": true,
+          "description": "Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn't set and oidcUsernameClaim is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
+    },
+    "cloud.kube.OpenIdConnectSigningAlgorithmsEnum": {
+      "description": "Enum values for OpenIdConnect signing algorithms",
+      "enum": [
+        "ES256",
+        "ES384",
+        "ES512",
+        "PS256",
+        "PS384",
+        "PS512",
+        "RS256",
+        "RS384",
+        "RS512"
+      ],
+      "enumType": "string",
+      "id": "OpenIdConnectSigningAlgorithmsEnum",
+      "namespace": "cloud.kube"
     },
     "cloud.kube.PrivateNetworkConfiguration": {
       "description": "Managed Kubernetes cluster private networking configuration",
@@ -22763,6 +22946,21 @@ export const schema: Schema = {
       "id": "StatusEnum",
       "namespace": "cloud.project.database"
     },
+    "cloud.project.database.TemporaryWriteDeadline": {
+      "description": "Cloud databases temporary write deadline definition",
+      "id": "TemporaryWriteDeadline",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "until": {
+          "canBeNull": false,
+          "description": "Date on which the temporary write permissions would be lifted",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
     "cloud.project.database.TypeEnum": {
       "description": "Type of data returned in the capabilities options",
       "enum": [
@@ -23149,6 +23347,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "disk": {
+          "canBeNull": false,
+          "description": "Disk attributes of the cluster",
+          "fullType": "cloud.project.database.service.Disk",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.Disk"
+        },
         "domain": {
           "canBeNull": false,
           "description": "Domain of the cluster (DEPRECATED: use endpoints)",
@@ -23298,6 +23504,69 @@ export const schema: Schema = {
     "cloud.project.database.kafka.Topic": {
       "description": "Cloud database kafka topic definition",
       "id": "Topic",
+      "namespace": "cloud.project.database.kafka",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Topic ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "minInsyncReplicas": {
+          "canBeNull": false,
+          "description": "Minimum insync replica accepted for this topic",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the topic",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "partitions": {
+          "canBeNull": false,
+          "description": "Number of partitions for this topic",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "replication": {
+          "canBeNull": false,
+          "description": "Number of replication for this topic",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "retentionBytes": {
+          "canBeNull": false,
+          "description": "Number of bytes for the retention of the data for this topic",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "retentionHours": {
+          "canBeNull": false,
+          "description": "Number of hours for the retention of the data for this topic",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.database.kafka.TopicCreation": {
+      "description": "Cloud database kafka topic creation definition",
+      "id": "TopicCreation",
       "namespace": "cloud.project.database.kafka",
       "properties": {
         "id": {
@@ -24529,6 +24798,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "disk": {
+          "canBeNull": false,
+          "description": "Disk attributes of the cluster",
+          "fullType": "cloud.project.database.service.Disk",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.Disk"
         },
         "domain": {
           "canBeNull": false,
@@ -25907,6 +26184,7 @@ export const schema: Schema = {
         "BYTES_PER_SECOND",
         "GIGABYTES",
         "GIGABYTES_PER_HOUR",
+        "MEGABYTES",
         "MEGABYTES_PER_SECOND",
         "MILLISECONDS",
         "PERCENT",
@@ -26839,6 +27117,7 @@ export const schema: Schema = {
         "APPLIED",
         "APPLYING",
         "ERROR",
+        "PENDING",
         "SCHEDULED"
       ],
       "enumType": "string",

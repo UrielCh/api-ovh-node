@@ -1536,27 +1536,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/vrack"
-    },
-    {
-      "description": "Get availabilities of nasha offer",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get availabilities of nasha offer",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "dedicated.NasHAAvailabilities[]",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
-        }
-      ],
-      "path": "/dedicated/nasha/availabilities"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
@@ -1582,87 +1561,6 @@ export const schema: Schema = {
           "type": "T"
         }
       }
-    },
-    "dedicated.NasHAAvailabilities": {
-      "description": "ovh Nas HA offer availabilities",
-      "id": "NasHAAvailabilities",
-      "namespace": "dedicated",
-      "properties": {
-        "datacenters": {
-          "canBeNull": false,
-          "description": "Zone of the DC",
-          "readOnly": false,
-          "required": false,
-          "type": "dedicated.NasHAAvailabilityDatacenter[]"
-        },
-        "offer": {
-          "canBeNull": false,
-          "description": "Name of the offer",
-          "readOnly": false,
-          "required": false,
-          "type": "dedicated.NasHAOfferEnum"
-        }
-      }
-    },
-    "dedicated.NasHAAvailabilityDatacenter": {
-      "description": "A structure describing the availability of offer for each datacenter",
-      "id": "NasHAAvailabilityDatacenter",
-      "namespace": "dedicated",
-      "properties": {
-        "availability": {
-          "canBeNull": false,
-          "description": "The availability",
-          "readOnly": false,
-          "required": false,
-          "type": "dedicated.NasHAAvailabilityEnum"
-        },
-        "datacenter": {
-          "canBeNull": false,
-          "description": "The code of the datacenter",
-          "readOnly": false,
-          "required": false,
-          "type": "dedicated.NasHAZoneEnum"
-        }
-      }
-    },
-    "dedicated.NasHAAvailabilityEnum": {
-      "description": "The availability",
-      "enum": [
-        "1H",
-        "240H",
-        "24H",
-        "72H",
-        "unknown"
-      ],
-      "enumType": "string",
-      "id": "NasHAAvailabilityEnum",
-      "namespace": "dedicated"
-    },
-    "dedicated.NasHAOfferEnum": {
-      "description": "ovh Nas HA offer",
-      "enum": [
-        "1200g",
-        "13200g",
-        "19200g",
-        "2400g",
-        "26400g",
-        "3600g",
-        "7200g"
-      ],
-      "enumType": "string",
-      "id": "NasHAOfferEnum",
-      "namespace": "dedicated"
-    },
-    "dedicated.NasHAZoneEnum": {
-      "description": "Nas HA localization",
-      "enum": [
-        "bhs",
-        "rbx",
-        "sbg"
-      ],
-      "enumType": "string",
-      "id": "NasHAZoneEnum",
-      "namespace": "dedicated"
     },
     "dedicated.TaskStatusEnum": {
       "description": "different task status",

@@ -1,6 +1,20 @@
 import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
+ * START API /order Models
+ * Source: https://eu.api.soyoustart.com/1.0/order.json
+ */
+export namespace complexType {
+    /**
+     * Key and value, with proper key strings
+     * interface fullName: complexType.SafeKeyValue.SafeKeyValue
+     */
+    export interface SafeKeyValue<T> {
+        key: string;
+        value: T;
+    }
+}
+/**
  * START API /me Models
  * Source: https://api.us.ovhcloud.com/1.0/me.json
  */
@@ -941,7 +955,7 @@ export namespace dedicated {
      * Os usage definition
      * type fullname: dedicated.TemplateOsUsageEnum
      */
-    export type TemplateOsUsageEnum = "basic" | "customer" | "database" | "hosting" | "management" | "other" | "readyToUse" | "virtualisation" | "virtualization"
+    export type TemplateOsUsageEnum = "basic" | "customer" | "database" | "erp" | "hosting" | "management" | "other" | "readyToUse" | "virtualisation" | "virtualization"
     /**
      * partition type
      * type fullname: dedicated.TemplatePartitionTypeEnum
@@ -964,7 +978,6 @@ export namespace dedicated {
             family: dedicated.TemplateOsTypeEnum;
             filesystems: dedicated.TemplateOsFileSystemEnum[];
             hardRaidConfiguration?: boolean;
-            lastModification?: string;
             license?: dedicated.TemplateOsInfoLicense;
             lvmReady?: boolean;
             noPartitioning: boolean;
@@ -1908,7 +1921,7 @@ export namespace nichandle {
      * OVH subsidiaries
      * type fullname: nichandle.OvhSubsidiaryEnum
      */
-    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IN" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
+    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
     /**
      * Indicates the mandatory nature of having a valid payment method
      * type fullname: nichandle.RequiredPaymentMethodEnum
@@ -2338,12 +2351,12 @@ export default proxyMe;
  */
 export interface Me {
     /**
-     * Get this object properties
+     * Get details about your nichandle
      * GET /me
      */
     $get(): Promise<nichandle.Nichandle>;
     /**
-     * Alter this object properties
+     * Update details of your nichandle
      * PUT /me
      */
     $put(params?: { address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, currency?: nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state?: nichandle.StateEnum, vat?: string, zip?: string }): Promise<void>;
@@ -3530,6 +3543,32 @@ export interface Me {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
+        provider: {
+            /**
+             * Remove the identity provider
+             * DELETE /me/identity/provider
+             */
+            $delete(): Promise<void>;
+            /**
+             * Identity provider linked to this account
+             * GET /me/identity/provider
+             */
+            $get(): Promise<nichandle.Authentication.Provider>;
+            /**
+             * Define an identity provider (SAML 2.0)
+             * POST /me/identity/provider
+             */
+            $post(params: { extensions?: nichandle.Authentication.ProviderExtensions, groupAttributeName?: string, metadata: string }): Promise<nichandle.Authentication.Provider>;
+            /**
+             * Alter the provider
+             * PUT /me/identity/provider
+             */
+            $put(params?: { extensions?: nichandle.Authentication.ProviderExtensions, groupAttributeName?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
         user: {
             /**
              * Retrieve all users of this account
@@ -3612,7 +3651,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/installationTemplate/{templateName}
              */
-            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, endOfInstall?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, softRaidOnlyMirroring?: boolean, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
+            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, endOfInstall?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, softRaidOnlyMirroring?: boolean, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
             /**
              * Controle cache
              */

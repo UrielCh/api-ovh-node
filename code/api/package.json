@@ -1,7 +1,8 @@
 {
   "name": "@ovh-api/api",
   "description": "Ovh api connector implementation",
-  "version": "3.2.10",
+  "version": "4.0.0",
+  "type": "module",
   "keywords": [
     "ovh",
     "ovhCloud",
@@ -11,12 +12,19 @@
     "REST",
     "api.ovh.com"
   ],
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "typings": "dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "types": "./dist/esm/index.d.ts"
+    }
+  },
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com> (https://urielch.github.io/)",
   "dependencies": {
-    "@ovh-api/common": "^3.1.2",
+    "@ovh-api/common": "4.0.0",
     "open": "^8.4.0"
   },
   "devDependencies": {
@@ -37,12 +45,13 @@
     "type": "git",
     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
+  "files": ["dist", "src"],
   "scripts": {
     "ncu": "npx npm-check-updates",
     "clean": "rimraf dist",
-    "build": "tsc -p .",
+    "build": "tsc --pretty --project . && tsc --pretty --project tsconfig-cjs.json",
     "prepare": "npm run build",
-    "build:watch": "tsc -p . --watch"
+    "build:watch": "tsc --pretty --project . --watch"
   },
   "gitHead": "b9fec53f25067fa01d341adc086a63ef2c2a5f62"
 }

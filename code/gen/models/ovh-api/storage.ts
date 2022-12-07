@@ -2310,7 +2310,9 @@ export const schema: Schema = {
     "storage.NetAppSnapshotTypeEnum": {
       "description": "Snapshot type",
       "enum": [
-        "manual"
+        "automatic",
+        "manual",
+        "system"
       ],
       "enumType": "string",
       "id": "NetAppSnapshotTypeEnum",

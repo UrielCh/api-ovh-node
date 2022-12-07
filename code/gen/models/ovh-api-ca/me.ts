@@ -4413,6 +4413,114 @@ export const schema: Schema = {
       "path": "/me/identity/group/{group}"
     },
     {
+      "description": "Identity provider linked to this account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Remove the identity provider",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Identity provider linked to this account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "nichandle.Authentication.Provider",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Define an identity provider (SAML 2.0)",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.Authentication.ProviderExtensions",
+              "description": "A list of SAML 2.0 requested attribute that should be added to SAML requests",
+              "fullType": "nichandle.Authentication.ProviderExtensions",
+              "name": "extensions",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "SAML Group attribute name",
+              "fullType": "string",
+              "name": "groupAttributeName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "text",
+              "description": "IDP's metadata in XML",
+              "fullType": "text",
+              "name": "metadata",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.Authentication.Provider",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Alter the provider",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.Authentication.ProviderExtensions",
+              "description": "A list of SAML 2.0 requested attribute that should be added to SAML requests",
+              "fullType": "nichandle.Authentication.ProviderExtensions",
+              "name": "extensions",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "SAML Group attribute name",
+              "fullType": "string",
+              "name": "groupAttributeName",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
+        }
+      ],
+      "path": "/me/identity/provider"
+    },
+    {
       "description": "Users linked to this account",
       "operations": [
         {
@@ -14271,6 +14379,7 @@ export const schema: Schema = {
         "basic",
         "customer",
         "database",
+        "erp",
         "hosting",
         "management",
         "other",
@@ -14385,14 +14494,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
-        },
-        "lastModification": {
-          "canBeNull": true,
-          "description": "Date of last modification of the base image",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
         },
         "license": {
           "canBeNull": true,
@@ -21732,10 +21833,10 @@ export const schema: Schema = {
         "localizedDescription": {
           "canBeNull": false,
           "description": "Recommendation advices introduction and description sentences, indexed by supported locales",
-          "fullType": "map[recommendations.supportedLocalesEnum]string",
+          "fullType": "map[string]string",
           "readOnly": true,
           "required": false,
-          "type": "map[recommendations.supportedLocalesEnum]string"
+          "type": "map[string]string"
         },
         "rank": {
           "canBeNull": false,
@@ -21804,16 +21905,6 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "productRangesEnum",
-      "namespace": "recommendations"
-    },
-    "recommendations.supportedLocalesEnum": {
-      "description": "Supported locales for recommendations",
-      "enum": [
-        "en_GB",
-        "fr_FR"
-      ],
-      "enumType": "string",
-      "id": "supportedLocalesEnum",
       "namespace": "recommendations"
     },
     "services.expanded.Route": {

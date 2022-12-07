@@ -6,45 +6,37 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Details about your OVH identifier",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get details about your nichandle",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "nichandle.Nichandle",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "nichandle.Nichandle"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update details of your nichandle",
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "nichandle.Nichandle",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "nichandle.Nichandle",
               "paramType": "body",
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "account/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/me"
@@ -4056,6 +4048,114 @@ export const schema: Schema = {
         }
       ],
       "path": "/me/identity/group/{group}"
+    },
+    {
+      "description": "Identity provider linked to this account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Remove the identity provider",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Identity provider linked to this account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "nichandle.Authentication.Provider",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Define an identity provider (SAML 2.0)",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.Authentication.ProviderExtensions",
+              "description": "A list of SAML 2.0 requested attribute that should be added to SAML requests",
+              "fullType": "nichandle.Authentication.ProviderExtensions",
+              "name": "extensions",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "SAML Group attribute name",
+              "fullType": "string",
+              "name": "groupAttributeName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "text",
+              "description": "IDP's metadata in XML",
+              "fullType": "text",
+              "name": "metadata",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.Authentication.Provider",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Alter the provider",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.Authentication.ProviderExtensions",
+              "description": "A list of SAML 2.0 requested attribute that should be added to SAML requests",
+              "fullType": "nichandle.Authentication.ProviderExtensions",
+              "name": "extensions",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "SAML Group attribute name",
+              "fullType": "string",
+              "name": "groupAttributeName",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "account/all"
+          ]
+        }
+      ],
+      "path": "/me/identity/provider"
     },
     {
       "description": "Users linked to this account",
@@ -11779,6 +11879,7 @@ export const schema: Schema = {
         "basic",
         "customer",
         "database",
+        "erp",
         "hosting",
         "management",
         "other",
@@ -11893,14 +11994,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
-        },
-        "lastModification": {
-          "canBeNull": true,
-          "description": "Date of last modification of the base image",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
         },
         "license": {
           "canBeNull": true,
@@ -15571,6 +15664,7 @@ export const schema: Schema = {
         "code": {
           "canBeNull": false,
           "description": "Currency code",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -15578,6 +15672,7 @@ export const schema: Schema = {
         "symbol": {
           "canBeNull": false,
           "description": "Currency symbol",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -15836,6 +15931,7 @@ export const schema: Schema = {
       "properties": {
         "address": {
           "canBeNull": true,
+          "description": "Address of nichandle",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -15843,6 +15939,7 @@ export const schema: Schema = {
         },
         "area": {
           "canBeNull": true,
+          "description": "Area of nichandle",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -15850,6 +15947,7 @@ export const schema: Schema = {
         },
         "birthCity": {
           "canBeNull": true,
+          "description": "City of birth",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -15857,6 +15955,7 @@ export const schema: Schema = {
         },
         "birthDay": {
           "canBeNull": true,
+          "description": "Birth date",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -15864,6 +15963,7 @@ export const schema: Schema = {
         },
         "city": {
           "canBeNull": true,
+          "description": "City of nichandle",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -15871,6 +15971,7 @@ export const schema: Schema = {
         },
         "companyNationalIdentificationNumber": {
           "canBeNull": true,
+          "description": "Company National Identification Number",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -15878,6 +15979,7 @@ export const schema: Schema = {
         },
         "corporationType": {
           "canBeNull": true,
+          "description": "Corporation type",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -15885,6 +15987,7 @@ export const schema: Schema = {
         },
         "country": {
           "canBeNull": false,
+          "description": "Customer country",
           "fullType": "nichandle.CountryEnum",
           "readOnly": false,
           "required": false,
@@ -15908,6 +16011,7 @@ export const schema: Schema = {
         },
         "email": {
           "canBeNull": false,
+          "description": "Email address",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -15915,6 +16019,7 @@ export const schema: Schema = {
         },
         "fax": {
           "canBeNull": true,
+          "description": "Fax number",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -15922,6 +16027,7 @@ export const schema: Schema = {
         },
         "firstname": {
           "canBeNull": true,
+          "description": "First name",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -15929,6 +16035,7 @@ export const schema: Schema = {
         },
         "italianSDI": {
           "canBeNull": true,
+          "description": "Italian SDI",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -15936,6 +16043,7 @@ export const schema: Schema = {
         },
         "language": {
           "canBeNull": true,
+          "description": "Language",
           "fullType": "nichandle.LanguageEnum",
           "readOnly": false,
           "required": false,
@@ -15943,6 +16051,7 @@ export const schema: Schema = {
         },
         "legalform": {
           "canBeNull": false,
+          "description": "Customer legal form",
           "fullType": "nichandle.LegalFormEnum",
           "readOnly": false,
           "required": false,
@@ -15950,6 +16059,7 @@ export const schema: Schema = {
         },
         "name": {
           "canBeNull": true,
+          "description": "Customer name",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -15957,6 +16067,7 @@ export const schema: Schema = {
         },
         "nationalIdentificationNumber": {
           "canBeNull": true,
+          "description": "National Identification Number",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -15964,13 +16075,15 @@ export const schema: Schema = {
         },
         "nichandle": {
           "canBeNull": false,
-          "fullType": "coreTypes.AccountId:string",
+          "description": "Customer identifier",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
         },
         "organisation": {
           "canBeNull": true,
+          "description": "Name of organisation",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -15978,6 +16091,7 @@ export const schema: Schema = {
         },
         "ovhCompany": {
           "canBeNull": false,
+          "description": "OVH subsidiary",
           "fullType": "nichandle.OvhCompanyEnum",
           "readOnly": true,
           "required": false,
@@ -15985,6 +16099,7 @@ export const schema: Schema = {
         },
         "ovhSubsidiary": {
           "canBeNull": false,
+          "description": "OVH subsidiary",
           "fullType": "nichandle.OvhSubsidiaryEnum",
           "readOnly": true,
           "required": false,
@@ -15992,6 +16107,7 @@ export const schema: Schema = {
         },
         "phone": {
           "canBeNull": true,
+          "description": "Phone number",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -16006,6 +16122,7 @@ export const schema: Schema = {
         },
         "sex": {
           "canBeNull": true,
+          "description": "Gender",
           "fullType": "nichandle.GenderEnum",
           "readOnly": false,
           "required": false,
@@ -16013,6 +16130,7 @@ export const schema: Schema = {
         },
         "spareEmail": {
           "canBeNull": true,
+          "description": "Spare email",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -16020,6 +16138,7 @@ export const schema: Schema = {
         },
         "state": {
           "canBeNull": false,
+          "description": "Nichandle state",
           "fullType": "nichandle.StateEnum",
           "readOnly": true,
           "required": false,
@@ -16027,6 +16146,7 @@ export const schema: Schema = {
         },
         "vat": {
           "canBeNull": true,
+          "description": "VAT number",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -16034,6 +16154,7 @@ export const schema: Schema = {
         },
         "zip": {
           "canBeNull": true,
+          "description": "Zipcode",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -16123,7 +16244,6 @@ export const schema: Schema = {
         "FR",
         "GB",
         "IE",
-        "IN",
         "IT",
         "LT",
         "MA",

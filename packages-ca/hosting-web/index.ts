@@ -341,6 +341,20 @@ export namespace hosting {
             quota: complexType.UnitAndValue<number>;
         }
         /**
+         * Cron
+         * interface fullName: hosting.web.Cron.Cron
+         */
+        export interface Cron {
+            command: string;
+            description?: string;
+            email?: string;
+            frequency: string;
+            id: number;
+            language: hosting.web.LanguagesEnum;
+            state: hosting.web.cron.StateEnum;
+            status: hosting.web.cron.StatusEnum;
+        }
+        /**
          * Language available for cron script
          * interface fullName: hosting.web.CronLanguageAvailable.CronLanguageAvailable
          */
@@ -455,6 +469,20 @@ export namespace hosting {
          * type fullname: hosting.web.PhpVersionStateEnum
          */
         export type PhpVersionStateEnum = "BETA" | "END_OF_LIFE" | "SECURITY_FIXES" | "SUPPORTED"
+        /**
+         * Public task
+         * interface fullName: hosting.web.PublicTask.PublicTask
+         */
+        export interface PublicTask {
+            doneDate?: string;
+            function: hosting.web.task.FunctionEnum;
+            id: number;
+            lastUpdate?: string;
+            objectId?: string;
+            objectType?: hosting.web.task.ObjectTypeEnum;
+            startDate: string;
+            status: hosting.web.task.StatusEnum;
+        }
         /**
          * Different Python versions available
          * type fullname: hosting.web.PythonVersionAvailableEnum
@@ -1335,15 +1363,20 @@ export namespace hosting {
         }
         export namespace task {
             /**
-             * Task object type listing
+             * Task function enum
+             * type fullname: hosting.web.task.FunctionEnum
+             */
+            export type FunctionEnum = "cron/create" | "cron/delete" | "cron/update"
+            /**
+             * Object type enum
              * type fullname: hosting.web.task.ObjectTypeEnum
              */
             export type ObjectTypeEnum = "Abuse" | "AttachedDomain" | "BlockedIp" | "Cdn" | "Cron" | "Database" | "Dump" | "EnvVar" | "Filerz" | "Hostedssl" | "Hosting" | "Indy" | "Infra" | "Minor" | "Module" | "Other" | "OvhConfig" | "OvhOrg" | "OwnLogs" | "Runtime" | "Scan" | "Sqlperso" | "User" | "UserLogs" | "Web" | "Webd"
             /**
-             * Task's status
+             * Task status enum
              * type fullname: hosting.web.task.StatusEnum
              */
-            export type StatusEnum = "cancelled" | "doing" | "done" | "error" | "init" | "todo"
+            export type StatusEnum = "cancelled" | "doing" | "done" | "init" | "todo"
         }
         /**
          * Hosting users
@@ -1915,15 +1948,15 @@ export interface Hosting {
             }
             cron: {
                 /**
-                 * Crons on your hosting
+                 * Crons on your webhosting
                  * GET /hosting/web/{serviceName}/cron
                  */
-                $get(params?: { command?: string, description?: string, email?: string, language?: hosting.web.cron.LanguageEnum }): Promise<number[]>;
+                $get(params?: { command?: string, description?: string, email?: string, language?: hosting.web.LanguagesEnum }): Promise<number[]>;
                 /**
                  * Create new cron
                  * POST /hosting/web/{serviceName}/cron
                  */
-                $post(params: { command: string, description?: string, email?: string, frequency: string, language: hosting.web.cron.LanguageEnum, status?: hosting.web.cron.StatusEnum }): Promise<hosting.web.task>;
+                $post(params: { command: string, description?: string, email?: string, frequency: string, id?: number, language: hosting.web.LanguagesEnum, state?: hosting.web.cron.StateEnum, status?: hosting.web.cron.StatusEnum }): Promise<hosting.web.PublicTask>;
                 /**
                  * Controle cache
                  */
@@ -1933,17 +1966,17 @@ export interface Hosting {
                      * Delete cron
                      * DELETE /hosting/web/{serviceName}/cron/{id}
                      */
-                    $delete(): Promise<hosting.web.task>;
+                    $delete(): Promise<hosting.web.PublicTask>;
                     /**
-                     * Get this object properties
+                     * Get cron by id
                      * GET /hosting/web/{serviceName}/cron/{id}
                      */
-                    $get(): Promise<hosting.web.cron>;
+                    $get(): Promise<hosting.web.Cron>;
                     /**
-                     * Alter this object properties
+                     * Update cron
                      * PUT /hosting/web/{serviceName}/cron/{id}
                      */
-                    $put(params?: { command?: string, description?: string, email?: string, frequency?: string, id?: number, language?: hosting.web.cron.LanguageEnum, state?: hosting.web.cron.StateEnum, status?: hosting.web.cron.StatusEnum }): Promise<void>;
+                    $put(params: { command: string, description?: string, email?: string, frequency: string, id?: number, language: hosting.web.LanguagesEnum, state?: hosting.web.cron.StateEnum, status?: hosting.web.cron.StatusEnum }): Promise<string>;
                     /**
                      * Controle cache
                      */

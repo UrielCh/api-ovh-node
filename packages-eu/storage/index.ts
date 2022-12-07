@@ -275,7 +275,7 @@ export namespace storage {
      * Snapshot type
      * type fullname: storage.NetAppSnapshotTypeEnum
      */
-    export type NetAppSnapshotTypeEnum = "manual"
+    export type NetAppSnapshotTypeEnum = "automatic" | "manual" | "system"
     /**
      * Storage protocol
      * type fullname: storage.ProtocolEnum

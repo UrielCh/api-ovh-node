@@ -16,37 +16,6 @@ export namespace complexType {
 }
 export namespace dedicated {
     /**
-     * ovh Nas HA offer availabilities
-     * interface fullName: dedicated.NasHAAvailabilities.NasHAAvailabilities
-     */
-    export interface NasHAAvailabilities {
-        datacenters: dedicated.NasHAAvailabilityDatacenter[];
-        offer: dedicated.NasHAOfferEnum;
-    }
-    /**
-     * A structure describing the availability of offer for each datacenter
-     * interface fullName: dedicated.NasHAAvailabilityDatacenter.NasHAAvailabilityDatacenter
-     */
-    export interface NasHAAvailabilityDatacenter {
-        availability: dedicated.NasHAAvailabilityEnum;
-        datacenter: dedicated.NasHAZoneEnum;
-    }
-    /**
-     * The availability
-     * type fullname: dedicated.NasHAAvailabilityEnum
-     */
-    export type NasHAAvailabilityEnum = "1H" | "240H" | "24H" | "72H" | "unknown"
-    /**
-     * ovh Nas HA offer
-     * type fullname: dedicated.NasHAOfferEnum
-     */
-    export type NasHAOfferEnum = "1200g" | "13200g" | "19200g" | "2400g" | "26400g" | "3600g" | "7200g"
-    /**
-     * Nas HA localization
-     * type fullname: dedicated.NasHAZoneEnum
-     */
-    export type NasHAZoneEnum = "bhs" | "rbx" | "sbg"
-    /**
      * different task status
      * type fullname: dedicated.TaskStatusEnum
      */
@@ -277,17 +246,6 @@ export interface Dedicated {
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-        availabilities: {
-            /**
-             * Get availabilities of nasha offer
-             * GET /dedicated/nasha/availabilities
-             */
-            $get(): Promise<dedicated.NasHAAvailabilities[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-        }
         $(serviceName: string): {
             /**
              * Get this object properties

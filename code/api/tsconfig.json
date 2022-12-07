@@ -1,13 +1,14 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "module": "commonjs",
+        "module": "ES2020",
         "declaration": true,
         "strict": true,
         "moduleResolution": "node",
         "esModuleInterop": true,
+        "alwaysStrict": true,
         "sourceMap": true,
-        "outDir": "dist",
+        "outDir": "dist/esm",
         "rootDirs": ["src"]
     },
     "exclude": [

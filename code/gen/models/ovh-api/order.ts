@@ -3305,120 +3305,6 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about an Enterprise Cloud Databases cluster",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.GenericProductDefinition[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add a new Enterprise Cloud Databases cluster item to your cart",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "order.cart.GenericProductCreation",
-              "description": "Request Body",
-              "fullType": "order.cart.GenericProductCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.Item"
-        }
-      ],
-      "path": "/order/cart/{cartId}/enterpriseCloudDatabases"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get information about Enterprise Cloud Databases options",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Identifier of an Enterprise Cloud Databases node offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add a new Enterprise Cloud Databases node to your cart",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "order.cart.GenericOptionCreation",
-              "description": "Request Body",
-              "fullType": "order.cart.GenericOptionCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.Item"
-        }
-      ],
-      "path": "/order/cart/{cartId}/enterpriseCloudDatabases/options"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
           "description": "Get informations about Exchange offers",
           "httpMethod": "GET",
           "noAuthentication": true,
@@ -3644,8 +3530,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-01-10T00:00:00+01:00",
+            "deprecatedDate": "2022-11-15T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get informations about Hosting Reseller offers",
           "httpMethod": "GET",
@@ -3664,8 +3552,10 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-01-10T00:00:00+01:00",
+            "deprecatedDate": "2022-11-15T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Post a new Hosting Reseller item in your cart",
           "httpMethod": "POST",
@@ -6645,6 +6535,120 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/cart/{cartId}/paasmon"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get informations about a packs professional services",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post a new packs professional services item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/packsProfessionalServices"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get informations about packs professional services options",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of a packs professional services offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post a new packs professional services option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/packsProfessionalServices/options"
     },
     {
       "description": "Power hosting offer",
@@ -10135,121 +10139,6 @@ export const schema: Schema = {
       "path": "/order/cartServiceOption/emailpro/{serviceName}"
     },
     {
-      "description": "Operations about the CLOUDDB service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "order/all"
-          ]
-        }
-      ],
-      "path": "/order/cartServiceOption/enterpriseCloudDatabases"
-    },
-    {
-      "description": "Listing offers /order/cartServiceOptions/enterpriseCloudDatabases/#serviceName#",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Information about additional Enterprise Cloud Databases offer for your service",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal ID of Enterprise Cloud Databases service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "scopes": [
-            "all",
-            "order/all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Post an additional Enterprise Cloud Databases option in your cart",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Additional offer identifier",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal ID of Enterprise Cloud Databases service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.Item",
-          "scopes": [
-            "all",
-            "order/all"
-          ]
-        }
-      ],
-      "path": "/order/cartServiceOption/enterpriseCloudDatabases/{serviceName}"
-    },
-    {
       "description": "Operations about the IPLB service",
       "operations": [
         {
@@ -13011,32 +12900,6 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve Enterprise Cloud Databases catalog",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "Subsidiary of the country you want to consult catalog",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.catalog.public.Catalog"
-        }
-      ],
-      "path": "/order/catalog/public/enterpriseCloudDatabases"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
@@ -13265,6 +13128,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/catalog/public/ovhCloudConnect"
+    },
+    {
+      "description": "Operations linked to packs professional services catalog",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve packs_professional_services catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/packsProfessionalServices"
     },
     {
       "description": "Missing description",
@@ -14468,130 +14357,6 @@ export const schema: Schema = {
       "path": "/order/dedicated/housing/{serviceName}/APC/{duration}"
     },
     {
-      "description": "Order a new Nas HA",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.NasHAZoneEnum",
-              "description": "Nas HA localization",
-              "fullType": "dedicated.NasHAZoneEnum",
-              "name": "datacenter",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.NasHAOfferEnum",
-              "description": "Capacity of Nas HA offer",
-              "fullType": "dedicated.NasHAOfferEnum",
-              "name": "model",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        }
-      ],
-      "path": "/order/dedicated/nasha/new"
-    },
-    {
-      "description": "Order a new Nas HA",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.NasHAZoneEnum",
-              "description": "Nas HA localization",
-              "fullType": "dedicated.NasHAZoneEnum",
-              "name": "datacenter",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.NasHAOfferEnum",
-              "description": "Capacity of Nas HA offer",
-              "fullType": "dedicated.NasHAOfferEnum",
-              "name": "model",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.NasHAZoneEnum",
-              "description": "Nas HA localization",
-              "fullType": "dedicated.NasHAZoneEnum",
-              "name": "datacenter",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.NasHAOfferEnum",
-              "description": "Capacity of Nas HA offer",
-              "fullType": "dedicated.NasHAOfferEnum",
-              "name": "model",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        }
-      ],
-      "path": "/order/dedicated/nasha/new/{duration}"
-    },
-    {
       "description": "Operations about the DEDICATED service",
       "operations": [
         {
@@ -15040,136 +14805,6 @@ export const schema: Schema = {
       "path": "/order/dedicated/server/{serviceName}/bandwidthvRack/{duration}"
     },
     {
-      "description": "Order a failover IP for this server",
-      "operations": [
-        {
-          "apiStatus": {
-            "deprecatedDate": "2022-07-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/ip",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed durations for 'failoverIP' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.IpCountryEnum",
-              "description": "Ip localization",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        }
-      ],
-      "path": "/order/dedicated/server/{serviceName}/failoverIP"
-    },
-    {
-      "description": "Order a failover IP for this server",
-      "operations": [
-        {
-          "apiStatus": {
-            "deprecatedDate": "2022-07-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/ip",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.IpCountryEnum",
-              "description": "Ip localization",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "deprecatedDate": "2022-07-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/ip",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.IpCountryEnum",
-              "description": "Ip localization",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "name": "country",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        }
-      ],
-      "path": "/order/dedicated/server/{serviceName}/failoverIP/{duration}"
-    },
-    {
       "description": "Order a feature for this server",
       "operations": [
         {
@@ -15416,208 +15051,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/dedicated/server/{serviceName}/firewall/{duration}"
-    },
-    {
-      "description": "Order IP for this server",
-      "operations": [
-        {
-          "apiStatus": {
-            "deprecatedDate": "2022-07-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/ip",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed durations for 'ip' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.IpBlockSizeEnum",
-              "description": "IP block size",
-              "fullType": "dedicated.server.IpBlockSizeEnum",
-              "name": "blockSize",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.IpCountryEnum",
-              "description": "IP localization",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Your organisation id to add on block informations",
-              "fullType": "string",
-              "name": "organisationId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.server.IpTypeOrderableEnum",
-              "description": "The type of IP",
-              "fullType": "dedicated.server.IpTypeOrderableEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        }
-      ],
-      "path": "/order/dedicated/server/{serviceName}/ip"
-    },
-    {
-      "description": "Order IP for this server",
-      "operations": [
-        {
-          "apiStatus": {
-            "deprecatedDate": "2022-07-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/ip",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.IpBlockSizeEnum",
-              "description": "IP block size",
-              "fullType": "dedicated.server.IpBlockSizeEnum",
-              "name": "blockSize",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.IpCountryEnum",
-              "description": "IP localization",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Your organisation id to add on block informations",
-              "fullType": "string",
-              "name": "organisationId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.server.IpTypeOrderableEnum",
-              "description": "The type of IP",
-              "fullType": "dedicated.server.IpTypeOrderableEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        },
-        {
-          "apiStatus": {
-            "deprecatedDate": "2022-07-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/ip",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.IpBlockSizeEnum",
-              "description": "IP block size",
-              "fullType": "dedicated.server.IpBlockSizeEnum",
-              "name": "blockSize",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.IpCountryEnum",
-              "description": "IP localization",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "name": "country",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Your organisation id to add on block informations",
-              "fullType": "string",
-              "name": "organisationId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.server.IpTypeOrderableEnum",
-              "description": "The type of IP",
-              "fullType": "dedicated.server.IpTypeOrderableEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
-        }
-      ],
-      "path": "/order/dedicated/server/{serviceName}/ip/{duration}"
     },
     {
       "description": "Migrate an IP from So you Start to OVH server, this operation is one-way only and can't be reverted",
@@ -24029,12 +23462,28 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "sms.ChannelEnum",
+              "description": "For what purpose this account can be used for",
+              "fullType": "sms.ChannelEnum",
+              "name": "channel",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "long",
               "description": "Sms credit quantity",
               "fullType": "long",
               "name": "quantity",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Whether the account can be used for smpp or not",
+              "fullType": "boolean",
+              "name": "smpp",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "order.Order",
@@ -24053,12 +23502,28 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "sms.ChannelEnum",
+              "description": "For what purpose this account can be used for",
+              "fullType": "sms.ChannelEnum",
+              "name": "channel",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "long",
               "description": "Sms credit quantity",
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Whether the account can be used for smpp or not",
+              "fullType": "boolean",
+              "name": "smpp",
+              "paramType": "body",
+              "required": false
             }
           ],
           "responseType": "order.Order",
@@ -27824,8 +27289,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2023-01-10T00:00:00+01:00",
+            "deprecatedDate": "2022-11-15T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "List available services",
           "httpMethod": "GET",
@@ -31810,32 +31277,6 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "CountryEnum",
       "namespace": "coreTypes"
-    },
-    "dedicated.NasHAOfferEnum": {
-      "description": "ovh Nas HA offer",
-      "enum": [
-        "1200g",
-        "13200g",
-        "19200g",
-        "2400g",
-        "26400g",
-        "3600g",
-        "7200g"
-      ],
-      "enumType": "string",
-      "id": "NasHAOfferEnum",
-      "namespace": "dedicated"
-    },
-    "dedicated.NasHAZoneEnum": {
-      "description": "Nas HA localization",
-      "enum": [
-        "bhs",
-        "rbx",
-        "sbg"
-      ],
-      "enumType": "string",
-      "id": "NasHAZoneEnum",
-      "namespace": "dedicated"
     },
     "dedicated.housing.HaRoutingOfferEnum": {
       "description": "Housing bay High Availablility offers",
@@ -41142,6 +40583,17 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ShippingMethodEnum",
       "namespace": "overTheBox"
+    },
+    "sms.ChannelEnum": {
+      "description": "In case of smpp the channel can not be \"both\"",
+      "enum": [
+        "both",
+        "marketing",
+        "transactional"
+      ],
+      "enumType": "string",
+      "id": "ChannelEnum",
+      "namespace": "sms"
     },
     "telephony.LineTypeEnum": {
       "description": "Typology of number",

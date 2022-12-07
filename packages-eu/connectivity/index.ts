@@ -295,6 +295,7 @@ export namespace connectivity {
             departments: string[];
             endDate?: string;
             id: number;
+            national: boolean;
             nra: string[];
             operators: connectivity.OperatorEnum[];
             status: connectivity.monitoring.GenericIncidentStatusEnum;
@@ -440,13 +441,13 @@ export interface Connectivity {
                  * Do an eligibility test on a line number, for copper only
                  * POST /connectivity/eligibility/test/line
                  */
-                $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum, streetCode?: string, streetNumber?: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
                 partners: {
                     /**
                      * Do an eligibility test on a line number, for copper only. Partners only.
                      * POST /connectivity/eligibility/test/line/partners
                      */
-                    $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                    $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum, streetCode?: string, streetNumber?: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
                 }
             }
             otp: {
