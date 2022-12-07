@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/api",
   "description": "Ovh api connector implementation",
-  "version": "4.0.0",
+  "version": "4.0.0-beta",
   "type": "module",
   "keywords": [
     "ovh",
@@ -12,8 +12,8 @@
     "REST",
     "api.ovh.com"
   ],
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "typings": "dist/esm/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/cjs/index.js",
@@ -24,7 +24,7 @@
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com> (https://urielch.github.io/)",
   "dependencies": {
-    "@ovh-api/common": "link:..\\common",
+    "@ovh-api/common": "4.0.0-beta2",
     "open": "^8.4.0"
   },
   "devDependencies": {
@@ -45,6 +45,7 @@
     "type": "git",
     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
+  "files": ["dist"],
   "scripts": {
     "ncu": "npx npm-check-updates",
     "clean": "rimraf dist",
