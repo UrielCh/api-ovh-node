@@ -219,7 +219,7 @@ export class RegionGenerator {
             await fs.promises.stat(fn);
             rwfile = false;
         } catch { }
-        //rwfile = true;
+        // rwfile = true;
         if (rwfile)
             await fse.writeJSON(fn, {
                 name: `@${namespace}/${flat}`,

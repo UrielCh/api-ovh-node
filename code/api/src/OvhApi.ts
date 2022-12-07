@@ -80,7 +80,7 @@ export default class OvhApi extends EventEmitter implements OvhRequestable {
             appKey: apiOptions.appKey || 'bIYf2Ji3u5Qm93JZ',
             appSecret: apiOptions.appSecret || 'MGqfOgkblLhj1GOefKULD3ljnWitUwBW',
             consumerKey: apiOptions.consumerKey || '',
-            timeout: apiOptions.timeout || 3 * 60_000, // default time out is 3 minutes
+            timeout: apiOptions.timeout || 3 * 60000, // default time out is 3 minutes
             host: '',
             port: 0,
             accessRules: [] as string[],

@@ -1,12 +1,28 @@
 {
     "name": "@ovh-api/email-pro",
     "description": "Add typing to to ovh api email-pro",
-    "version": "3.1.28",
+    "version": "4.0.0",
+    "type": "module",
+    "keywords": [
+        "ovh",
+        "ovhCloud",
+        "api",
+        "typing",
+        "typescript"
+    ],
+    "exports": {
+        ".": {
+            "require": "./cjs/index.js",
+            "import": "./index.js",
+            "types": "./index.d.ts"
+        }
+    },
     "typings": "index.d.ts",
+    "main": "./cjs/index.js",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
     "dependencies": {
-        "@ovh-api/common": "^3.1.2"
+        "@ovh-api/common": "4.0.0-beta2"
     },
     "publishConfig": {
         "access": "public"
@@ -17,20 +33,13 @@
         "url": "git+https://github.com/UrielCh/api-ovh-node.git"
     },
     "scripts": {
-        "build": "tsc",
-        "build:watch": "tsc --watch",
+        "build": "tsc --pretty --project . && tsc --pretty --project tsconfig-cjs.json",
         "prepare": "npm run build"
     },
     "files": [
+        "cjs",
+        "index.ts",
         "index.js",
         "index.d.ts"
-    ],
-    "gitHead": "fe86cdf9361549f57086497c6eb8a16d19408a7b",
-    "keywords": [
-        "ovh",
-        "ovhCloud",
-        "api",
-        "typing",
-        "typescript"
     ]
 }
