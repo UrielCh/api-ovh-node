@@ -1,10 +1,10 @@
 import OvhApi from ".";
-import { HttpMethod, OvhCredential, OvhCredentialNew } from "./OVHInterfaces";
-import fs from 'fs';
-import { EOL } from 'os';
-import { RequestOptions } from "https";
+import { HttpMethod, OvhCredential, OvhCredentialNew } from "./OVHInterfaces.js";
+import * as fs from 'node:fs';
+import { EOL } from 'node:os';
+import { RequestOptions } from "node:https";
 import { ICacheSilot } from "@ovh-api/common";
-import { OvhError } from "./OvhError";
+import { OvhError } from "./OvhError.js";
 // import open from 'open';
 
 /**

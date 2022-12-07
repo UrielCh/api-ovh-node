@@ -1,7 +1,7 @@
-export { CertMonitorProvider, CertMonitor } from './certMonitor';
-export { OvhCredentialNew } from './OVHInterfaces';
-export { OvhParams } from './OvhParams';
-export { IOvhError, OvhError } from './OvhError';
+export { CertMonitorProvider, CertMonitor } from './certMonitor.js';
+export { OvhCredentialNew } from './OVHInterfaces.js';
+export { OvhParams } from './OvhParams.js';
+export { IOvhError, OvhError } from './OvhError.js';
+import OvhApi from './OvhApi.js';
 
-import OvhApi from './OvhApi';
 export default OvhApi;

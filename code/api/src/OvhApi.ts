@@ -38,10 +38,10 @@ import { OvhParams, OvhParamsFull } from './OvhParams.js';
 import { RequestContext } from './helper.js';
 import { makeRequest } from './requestHandler.js';
 import { OvhError } from './OvhError.js';
-import path from 'node:path';
-import os from 'node:os';
-import fs from 'node:fs';
-import crypto from 'node:crypto';
+import * as path from 'node:path';
+import * as os from 'node:os';
+import * as fs from 'node:fs';
+import * as crypto from 'node:crypto';
 // import { createHash } from 'node:crypto';
 
 /**
