@@ -45,7 +45,7 @@
     "type": "git",
     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
-  "files": ["dist"],
+  "files": ["dist", "src"],
   "scripts": {
     "ncu": "npx npm-check-updates",
     "clean": "rimraf dist",

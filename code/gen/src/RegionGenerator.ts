@@ -261,6 +261,7 @@ export class RegionGenerator {
                 },
                 files: [
                     "cjs",
+                    "index.ts",
                     "index.js",
                     "index.d.ts"
                 ]

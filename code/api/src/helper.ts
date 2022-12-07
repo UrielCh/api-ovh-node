@@ -46,8 +46,12 @@ export const waitForCertValidation = async (api: OvhApi, newCert: OvhCredentialN
         } catch (e) {
             // exception if used in browser
             // Try to open a popup
-            if (window)
-                window.open(validationUrl);
+            try {
+                if (window)
+                    window.open(validationUrl);
+            } catch (e) {
+                // ESM Build crash on accessing non existing global
+            }
         }
     let pass = 0;
 
