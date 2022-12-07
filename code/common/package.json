@@ -24,5 +24,8 @@
     "index.js",
     "index.ts",
     "index.d.ts"
-  ]
+  ],
+  "devDependencies": {
+    "typescript": "^4.9.3"
+  }
 }
