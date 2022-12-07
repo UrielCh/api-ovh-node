@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/api",
   "description": "Ovh api connector implementation",
-  "version": "4.0.0-beta4",
+  "version": "4.0.0-beta5",
   "type": "module",
   "keywords": [
     "ovh",
