@@ -1,9 +1,17 @@
 {
   "name": "@ovh-api/common",
   "description": "common class used to enable Ovh Api new calls Syntax",
-  "version": "3.1.2",
+  "version": "4.0.0-beta",
+  "type": "module",
   "main": "index.js",
   "typings": "index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./lib/cjs/index.js",
+      "import": "./lib/esm/index.js",
+      "types": "./lib/esm/index.d.ts"
+    }
+  },
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com> (https://urielch.github.io/)",
   "gitHead": "9054d4e68cd0b25c73f4d6d47a17e6b174a281db",
@@ -16,15 +24,11 @@
     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
   "scripts": {
-    "build": "tsc -p .",
+    "build": "tsc --pretty --project . && tsc --pretty --project tsconfig-cjs.json",
     "prepare": "npm run build",
     "build:watch": "tsc -p . --watch"
   },
-  "files": [
-    "index.js",
-    "index.ts",
-    "index.d.ts"
-  ],
+  "files": ["lib"],
   "devDependencies": {
     "typescript": "^4.9.3"
   }
