@@ -325,7 +325,7 @@ export namespace email {
          * function enumeration for exchange task
          * type fullname: email.exchange.TaskFunctionEnum
          */
-        export type TaskFunctionEnum = "activateSharepoint" | "addAccount" | "addAccountArchive" | "addActiveSyncMailNotification" | "addAlias" | "addDistributionGroup" | "addDistributionGroupManager" | "addDistributionGroupMember" | "addDistributionGroupSendAs" | "addDistributionGroupSendOnBehalfTo" | "addDomain" | "addDomainDisclaimer" | "addExchangeCustomIsolation" | "addExchangeDomainDKIM" | "addExchangeServiceAuthorizedIp" | "addExportPstRequest" | "addExternalContact" | "addFullAccess" | "addOutlookLicense" | "addPublicFolder" | "addPublicFolderPermission" | "addResourceAccount" | "addResourceDelegate" | "addSendAs" | "addSendConnector" | "addSendOnBehalfTo" | "addSharedAccount" | "addSharedAccountFullAccess" | "addSharedAccountSendAs" | "addSharedAccountSendOnBehalfTo" | "changeHostname" | "changePassword" | "clearDataOnDevice" | "cloneTemplateExchangePrivate" | "configureExchangeCustomer" | "configureExchangeOwaMfa" | "deleteAccount" | "deleteAccountArchive" | "deleteActiveSyncMailNotification" | "deleteAlias" | "deleteDistributionGroup" | "deleteDistributionGroupManager" | "deleteDistributionGroupMember" | "deleteDistributionGroupSendAs" | "deleteDistributionGroupSendOnBehalfTo" | "deleteDomain" | "deleteDomainDisclaimer" | "deleteExchangeCustomIsolation" | "deleteExchangeDomainDKIM" | "deleteExchangeService" | "deleteExchangeServiceAuthorizedIp" | "deleteExportPstRequest" | "deleteExternalContact" | "deleteFullAccess" | "deleteOutlookLicense" | "deletePublicFolder" | "deletePublicFolderPermission" | "deleteResourceAccount" | "deleteResourceDelegate" | "deleteSendAs" | "deleteSendConnector" | "deleteSendOnBehalfTo" | "deleteSharedAccount" | "deleteSharedAccountFullAccess" | "deleteSharedAccountSendAs" | "deleteSharedAccountSendOnBehalfTo" | "destroyPrivateVm" | "diagnoseAccount" | "disableExchangeDKIM" | "enableExchangeDKIM" | "expandDrive" | "generateOutlookUrl" | "generatePstUrl" | "installExchange" | "installSSL" | "maintenance" | "migrationAccount" | "migrationDisclaimer" | "migrationExternalContact" | "migrationHistory" | "migrationMailingList" | "migrationResourceAccount" | "migrationService" | "reOpenHostedAccount" | "reOpenOutlookLicense" | "reOpenPrivateAccount" | "reOpenPrivateVm" | "setAccount" | "setAccountArchive" | "setAlias" | "setDistributionGroup" | "setDns" | "setDomain" | "setDomainDisclaimer" | "setExchangeAccountProtocol" | "setExchangeServiceDevice" | "setExternalContact" | "setPublicFolder" | "setPublicFolderPermission" | "setResourceAccount" | "setSendConnector" | "setService" | "setSharedAccount" | "suspendAccount" | "suspendExchangeService" | "suspendHostedAccount" | "suspendOutlookLicense" | "suspendPrivateAccount" | "suspendPrivateVm" | "unsuspendAccount" | "unsuspendExchangeService" | "unsuspendHostedAccount" | "updateExchangeServiceDevice" | "upgrade2016"
+        export type TaskFunctionEnum = "activateSharepoint" | "addAccount" | "addAccountArchive" | "addAccountImpersonation" | "addActiveSyncMailNotification" | "addAlias" | "addDistributionGroup" | "addDistributionGroupManager" | "addDistributionGroupMember" | "addDistributionGroupSendAs" | "addDistributionGroupSendOnBehalfTo" | "addDomain" | "addDomainDisclaimer" | "addExchangeCustomIsolation" | "addExchangeDomainDKIM" | "addExchangeServiceAuthorizedIp" | "addExportPstRequest" | "addExternalContact" | "addFullAccess" | "addOutlookLicense" | "addPublicFolder" | "addPublicFolderPermission" | "addResourceAccount" | "addResourceDelegate" | "addSendAs" | "addSendConnector" | "addSendOnBehalfTo" | "addSharedAccount" | "addSharedAccountFullAccess" | "addSharedAccountSendAs" | "addSharedAccountSendOnBehalfTo" | "changeHostname" | "changePassword" | "clearDataOnDevice" | "cloneTemplateExchangePrivate" | "configureExchangeCustomer" | "configureExchangeOwaMfa" | "deleteAccount" | "deleteAccountArchive" | "deleteAccountImpersonation" | "deleteActiveSyncMailNotification" | "deleteAlias" | "deleteDistributionGroup" | "deleteDistributionGroupManager" | "deleteDistributionGroupMember" | "deleteDistributionGroupSendAs" | "deleteDistributionGroupSendOnBehalfTo" | "deleteDomain" | "deleteDomainDisclaimer" | "deleteExchangeCustomIsolation" | "deleteExchangeDomainDKIM" | "deleteExchangeService" | "deleteExchangeServiceAuthorizedIp" | "deleteExportPstRequest" | "deleteExternalContact" | "deleteFullAccess" | "deleteOutlookLicense" | "deletePublicFolder" | "deletePublicFolderPermission" | "deleteResourceAccount" | "deleteResourceDelegate" | "deleteSendAs" | "deleteSendConnector" | "deleteSendOnBehalfTo" | "deleteSharedAccount" | "deleteSharedAccountFullAccess" | "deleteSharedAccountSendAs" | "deleteSharedAccountSendOnBehalfTo" | "destroyPrivateVm" | "diagnoseAccount" | "disableExchangeDKIM" | "enableExchangeDKIM" | "expandDrive" | "generateOutlookUrl" | "generatePstUrl" | "installExchange" | "installSSL" | "maintenance" | "migrationAccount" | "migrationDisclaimer" | "migrationExternalContact" | "migrationHistory" | "migrationMailingList" | "migrationResourceAccount" | "migrationService" | "reOpenHostedAccount" | "reOpenOutlookLicense" | "reOpenPrivateAccount" | "reOpenPrivateVm" | "setAccount" | "setAccountArchive" | "setAlias" | "setDistributionGroup" | "setDns" | "setDomain" | "setDomainDisclaimer" | "setExchangeAccountProtocol" | "setExchangeServiceDevice" | "setExternalContact" | "setPublicFolder" | "setPublicFolderPermission" | "setResourceAccount" | "setSendConnector" | "setService" | "setSharedAccount" | "suspendAccount" | "suspendExchangeService" | "suspendHostedAccount" | "suspendOutlookLicense" | "suspendPrivateAccount" | "suspendPrivateVm" | "unsuspendAccount" | "unsuspendExchangeService" | "unsuspendHostedAccount" | "updateExchangeServiceDevice" | "upgrade2016"
         /**
          * Exchange task status
          * type fullname: email.exchange.TaskStatusEnum
@@ -415,6 +415,17 @@ export namespace email {
             allowedAccountId: number;
             creationDate: string;
             taskPendingId: number;
+        }
+        /**
+         * Get user that has an impersonation right on all that mailboxes
+         * interface fullName: email.exchange.exchangeAccountImpersonation.exchangeAccountImpersonation
+         */
+        export interface exchangeAccountImpersonation {
+            creationDate: string;
+            lastPasswordChange?: string;
+            state: email.exchange.ObjectStateEnum;
+            taskPendingId?: number;
+            upn: string;
         }
         /**
          * Get protocol status on that mailbox
@@ -560,13 +571,22 @@ export namespace email {
             state: email.exchange.activeSyncNotificationStateEnum;
         }
         /**
-         * Get authorized IPs for POP, IMAP and webmail
+         * Get authorized IPs for POP(s),IMAP(s), SMTP(s) and HTTP(s)
          * interface fullName: email.exchange.exchangeServiceAuthorizedIp.exchangeServiceAuthorizedIp
          */
         export interface exchangeServiceAuthorizedIp {
+            HTTPS: boolean;
+            IMAP: boolean;
+            IMAPS: boolean;
+            POP: boolean;
+            POPS: boolean;
+            SMTP: boolean;
+            SMTPS: boolean;
             creationDate: string;
+            displayName: string;
             ip: string;
             status: email.exchange.authorizedIpStatusEnum;
+            updateDate?: string;
         }
         /**
          * Get the list of your ActiveSync devices registered on this Exchange service
@@ -653,6 +673,19 @@ export namespace email {
             spamTicketNumber?: number;
             state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
+        }
+        /**
+         * Password policy used for impersonated account
+         * interface fullName: email.exchange.passwordPolicy.passwordPolicy
+         */
+        export interface passwordPolicy {
+            complexityEnabled: boolean;
+            lockoutDuration: number;
+            lockoutThreshold: number;
+            maxPasswordAge: number;
+            minPasswordAge: number;
+            minPasswordLength: number;
+            passwordHistoryCount: number;
         }
         /**
          * Exchange organization public folder
@@ -1172,6 +1205,43 @@ export interface Email {
                          */
                         $post(params: { primaryEmailAddress: string, subDomain: string }): Promise<email.exchange.Task>;
                     }
+                    authorizedIp: {
+                        /**
+                         * Authorized IPs for POP(s),IMAP(s), SMTP(s) and HTTP(s)
+                         * GET /email/exchange/{organizationName}/service/{exchangeService}/authorizedIp
+                         */
+                        $get(): Promise<string[]>;
+                        /**
+                         * Authorize new IP to access the service
+                         * POST /email/exchange/{organizationName}/service/{exchangeService}/authorizedIp
+                         */
+                        $post(params: { displayName?: string, HTTPS?: boolean, IMAP?: boolean, IMAPS?: boolean, IP: string, POP?: boolean, POPS?: boolean, SMTP?: boolean, SMTPS?: boolean }): Promise<email.exchange.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(ip: string): {
+                            /**
+                             * Delete authorized IP
+                             * DELETE /email/exchange/{organizationName}/service/{exchangeService}/authorizedIp/{ip}
+                             */
+                            $delete(): Promise<email.exchange.Task>;
+                            /**
+                             * Get this object properties
+                             * GET /email/exchange/{organizationName}/service/{exchangeService}/authorizedIp/{ip}
+                             */
+                            $get(): Promise<email.exchange.exchangeServiceAuthorizedIp>;
+                            /**
+                             * Alter this object properties
+                             * PUT /email/exchange/{organizationName}/service/{exchangeService}/authorizedIp/{ip}
+                             */
+                            $put(params?: { HTTPS?: boolean, IMAP?: boolean, IMAPS?: boolean, POP?: boolean, POPS?: boolean, SMTP?: boolean, SMTPS?: boolean, creationDate?: string, displayName?: string, ip?: string, status?: email.exchange.authorizedIpStatusEnum, updateDate?: string }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        };
+                    }
                     changeHostname: {
                         /**
                          * Setting SSL hostname for Exchange private offer
@@ -1430,6 +1500,45 @@ export interface Email {
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
+                    }
+                    impersonatedUser: {
+                        /**
+                         * Delete user with impersonation right on all mailboxes
+                         * DELETE /email/exchange/{organizationName}/service/{exchangeService}/impersonatedUser
+                         */
+                        $delete(): Promise<email.exchange.Task>;
+                        /**
+                         * Get this object properties
+                         * GET /email/exchange/{organizationName}/service/{exchangeService}/impersonatedUser
+                         */
+                        $get(): Promise<email.exchange.exchangeAccountImpersonation>;
+                        /**
+                         * Create user with impersonation right on all mailboxes
+                         * POST /email/exchange/{organizationName}/service/{exchangeService}/impersonatedUser
+                         */
+                        $post(params: { password: string }): Promise<email.exchange.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        changePassword: {
+                            /**
+                             * Change user password
+                             * POST /email/exchange/{organizationName}/service/{exchangeService}/impersonatedUser/changePassword
+                             */
+                            $post(params: { password: string }): Promise<email.exchange.Task>;
+                        }
+                    }
+                    impersonationPasswordPolicy: {
+                        /**
+                         * Get configuration of password policy linked to impersonated account
+                         * GET /email/exchange/{organizationName}/service/{exchangeService}/impersonationPasswordPolicy
+                         */
+                        $get(): Promise<email.exchange.passwordPolicy>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     license: {
                         /**

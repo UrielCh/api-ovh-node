@@ -105,7 +105,7 @@ export namespace cloud {
      * Enum values for Status
      * type fullname: cloud.ColdArchiveContainerStatusEnum
      */
-    export type ColdArchiveContainerStatusEnum = "archived" | "archiving" | "deleting" | "draining" | "flushed" | "locked" | "none" | "restored" | "restoring"
+    export type ColdArchiveContainerStatusEnum = "archived" | "archiving" | "deleting" | "flushed" | "none" | "restored" | "restoring"
     /**
      * Information about the different components available in the region
      * interface fullName: cloud.Component.Component
@@ -496,16 +496,30 @@ export namespace cloud {
      * interface fullName: cloud.ProjectKubeOpenIdConnectCreation.ProjectKubeOpenIdConnectCreation
      */
     export interface ProjectKubeOpenIdConnectCreation {
+        caContent?: string;
         clientId: string;
+        groupsClaim?: string[];
+        groupsPrefix?: string;
         issuerUrl: string;
+        requiredClaim?: string[];
+        signingAlgorithms?: cloud.kube.OpenIdConnectSigningAlgorithmsEnum[];
+        usernameClaim?: string;
+        usernamePrefix?: string;
     }
     /**
      * Update model for OIDC
      * interface fullName: cloud.ProjectKubeOpenIdConnectUpdate.ProjectKubeOpenIdConnectUpdate
      */
     export interface ProjectKubeOpenIdConnectUpdate {
+        caContent?: string;
         clientId: string;
+        groupsClaim?: string[];
+        groupsPrefix?: string;
         issuerUrl: string;
+        requiredClaim?: string[];
+        signingAlgorithms?: cloud.kube.OpenIdConnectSigningAlgorithmsEnum[];
+        usernameClaim?: string;
+        usernamePrefix?: string;
     }
     /**
      * Model object to reset kube cluster
@@ -1973,9 +1987,21 @@ export namespace cloud {
          * interface fullName: cloud.kube.OpenIdConnect.OpenIdConnect
          */
         export interface OpenIdConnect {
+            caContent?: string;
             clientId: string;
+            groupsClaim?: string[];
+            groupsPrefix?: string;
             issuerUrl: string;
+            requiredClaim?: string[];
+            signingAlgorithms?: cloud.kube.OpenIdConnectSigningAlgorithmsEnum[];
+            usernameClaim?: string;
+            usernamePrefix?: string;
         }
+        /**
+         * Enum values for OpenIdConnect signing algorithms
+         * type fullname: cloud.kube.OpenIdConnectSigningAlgorithmsEnum
+         */
+        export type OpenIdConnectSigningAlgorithmsEnum = "ES256" | "ES384" | "ES512" | "PS256" | "PS384" | "PS512" | "RS256" | "RS384" | "RS512"
         /**
          * Managed Kubernetes cluster private networking configuration
          * interface fullName: cloud.kube.PrivateNetworkConfiguration.PrivateNetworkConfiguration
@@ -3096,7 +3122,7 @@ export namespace cloud {
              * Code enum for Info object
              * type fullname: cloud.project.ai.InfoCodeEnum
              */
-            export type InfoCodeEnum = "APP_CREATE_ERROR" | "APP_ERROR" | "APP_FAILED" | "APP_INITIALIZING" | "APP_INTERRUPTED_BY_PLATFORM" | "APP_QUEUED" | "APP_RUNNING" | "APP_SCALING" | "APP_STOPPED" | "APP_STOPPING" | "COMPATIBILITY" | "DATASYNC_AUTHENTICATE_FAILED" | "DATASYNC_DONE" | "DATASYNC_ERROR" | "DATASYNC_FAILED" | "DATASYNC_INTERRUPTED" | "DATASYNC_INVALID_CONTAINER" | "DATASYNC_QUEUED" | "DATASYNC_RETRY_ERROR" | "DATASYNC_RUNNING" | "JOB_CREATE_CONTAINER_CONFIG_ERROR" | "JOB_CREATE_CONTAINER_ERROR" | "JOB_DONE" | "JOB_ERROR" | "JOB_EVICTED" | "JOB_FAILED" | "JOB_FAILED_WITH_MESSAGE" | "JOB_FINALIZING" | "JOB_IMAGE_INSPECT_ERROR" | "JOB_IMAGE_PULL" | "JOB_IMAGE_PULL_BACKOFF" | "JOB_INITIALIZING" | "JOB_INTERRUPTED" | "JOB_INTERRUPTED_BY_PLATFORM" | "JOB_INTERRUPTING" | "JOB_INVALID_IMAGE_NAME" | "JOB_PENDING" | "JOB_QUEUED" | "JOB_REGISTRY_UNAVAILABLE" | "JOB_RUNNING" | "JOB_TIMEOUT" | "NOTEBOOK_FAILED" | "NOTEBOOK_FAILED_WITH_MESSAGE" | "NOTEBOOK_FINALIZING" | "NOTEBOOK_INITIALIZING" | "NOTEBOOK_PENDING" | "NOTEBOOK_RUNNING" | "NOTEBOOK_STARTING" | "NOTEBOOK_STOPPED" | "NOTEBOOK_STOPPING"
+            export type InfoCodeEnum = "APP_CREATE_ERROR" | "APP_ERROR" | "APP_FAILED" | "APP_INITIALIZING" | "APP_INTERRUPTED_BY_PLATFORM" | "APP_QUEUED" | "APP_RUNNING" | "APP_SCALING" | "APP_STOPPED" | "APP_STOPPING" | "COMPATIBILITY" | "DATASYNC_AUTHENTICATE_FAILED" | "DATASYNC_DATA_STORE_NOT_FOUND" | "DATASYNC_DONE" | "DATASYNC_ERROR" | "DATASYNC_FAILED" | "DATASYNC_INTERRUPTED" | "DATASYNC_INVALID_CONTAINER" | "DATASYNC_QUEUED" | "DATASYNC_RETRY_ERROR" | "DATASYNC_RUNNING" | "JOB_CREATE_CONTAINER_CONFIG_ERROR" | "JOB_CREATE_CONTAINER_ERROR" | "JOB_DONE" | "JOB_ERROR" | "JOB_EVICTED" | "JOB_FAILED" | "JOB_FAILED_WITH_MESSAGE" | "JOB_FINALIZING" | "JOB_IMAGE_INSPECT_ERROR" | "JOB_IMAGE_PULL" | "JOB_IMAGE_PULL_BACKOFF" | "JOB_INITIALIZING" | "JOB_INTERRUPTED" | "JOB_INTERRUPTED_BY_PLATFORM" | "JOB_INTERRUPTING" | "JOB_INVALID_IMAGE_NAME" | "JOB_PENDING" | "JOB_QUEUED" | "JOB_REGISTRY_UNAVAILABLE" | "JOB_RUNNING" | "JOB_SYNC_FAILED" | "JOB_TIMEOUT" | "NOTEBOOK_FAILED" | "NOTEBOOK_FAILED_WITH_MESSAGE" | "NOTEBOOK_FINALIZING" | "NOTEBOOK_INITIALIZING" | "NOTEBOOK_PENDING" | "NOTEBOOK_RUNNING" | "NOTEBOOK_STARTING" | "NOTEBOOK_STOPPED" | "NOTEBOOK_STOPPING" | "NOTEBOOK_SYNC_FAILED"
             /**
              * AI Solutions Label Object
              * interface fullName: cloud.project.ai.Label.Label
@@ -3514,7 +3540,7 @@ export namespace cloud {
                  * State of the job
                  * type fullname: cloud.project.ai.job.JobStateEnum
                  */
-                export type JobStateEnum = "DONE" | "ERROR" | "FAILED" | "FINALIZING" | "INITIALIZING" | "INTERRUPTED" | "INTERRUPTING" | "PENDING" | "QUEUED" | "RUNNING" | "TIMEOUT"
+                export type JobStateEnum = "DONE" | "ERROR" | "FAILED" | "FINALIZING" | "INITIALIZING" | "INTERRUPTED" | "INTERRUPTING" | "PENDING" | "QUEUED" | "RUNNING" | "SYNC_FAILED" | "TIMEOUT"
                 /**
                  * AI Solutions Job Status Object
                  * interface fullName: cloud.project.ai.job.JobStatus.JobStatus
@@ -3620,6 +3646,7 @@ export namespace cloud {
                  */
                 export interface NotebookSpec {
                     env: cloud.project.ai.notebook.NotebookEnv;
+                    envVars: cloud.project.ai.job.JobEnv[];
                     flavor?: string;
                     labels?: { [key: string]: string };
                     name: string;
@@ -3636,6 +3663,7 @@ export namespace cloud {
                  */
                 export interface NotebookSpecInput {
                     env: cloud.project.ai.notebook.NotebookEnv;
+                    envVars?: cloud.project.ai.job.JobEnv[];
                     labels?: { [key: string]: string };
                     name: string;
                     region: string;
@@ -3649,7 +3677,7 @@ export namespace cloud {
                  * State of the notebook
                  * type fullname: cloud.project.ai.notebook.NotebookStateEnum
                  */
-                export type NotebookStateEnum = "DELETING" | "FAILED" | "RUNNING" | "STARTING" | "STOPPED" | "STOPPING"
+                export type NotebookStateEnum = "DELETING" | "FAILED" | "RUNNING" | "STARTING" | "STOPPED" | "STOPPING" | "SYNC_FAILED"
                 /**
                  * AI Solutions Notebook Status Object
                  * interface fullName: cloud.project.ai.notebook.NotebookStatus.NotebookStatus
@@ -3939,6 +3967,17 @@ export namespace cloud {
             }
             export namespace volume {
                 /**
+                 * AI Solutions data store container Volume Object
+                 * interface fullName: cloud.project.ai.volume.DataStore.DataStore
+                 */
+                export interface DataStore {
+                    alias: string;
+                    archive?: string;
+                    container: string;
+                    internal?: boolean;
+                    prefix?: string;
+                }
+                /**
                  * AI Solutions Data Sync
                  * interface fullName: cloud.project.ai.volume.DataSync.DataSync
                  */
@@ -3966,6 +4005,7 @@ export namespace cloud {
                 export interface DataSyncSpec {
                     direction: cloud.project.ai.volume.DataSyncEnum;
                     manual: boolean;
+                    volume?: string;
                 }
                 /**
                  * State of the data sync
@@ -4043,6 +4083,8 @@ export namespace cloud {
                 export interface Volume {
                     cache: boolean;
                     container?: string;
+                    dataStore?: cloud.project.ai.volume.DataStore;
+                    id: string;
                     mountPath: string;
                     permission: cloud.project.ai.VolumePermissionEnum;
                     prefix?: string;
@@ -4051,6 +4093,7 @@ export namespace cloud {
                     publicSwift?: cloud.project.ai.volume.PublicSwift;
                     region?: string;
                     standalone?: cloud.project.ai.volume.Standalone;
+                    targetDataStore?: cloud.project.ai.volume.DataStore;
                     targetPrivateSwift?: cloud.project.ai.volume.PrivateSwift;
                 }
             }
@@ -4101,6 +4144,21 @@ export namespace cloud {
             }
             /**
              * Engine Template
+             * interface fullName: cloud.project.dataProcessing.CapabilitiesNotebookTemplate.CapabilitiesNotebookTemplate
+             */
+            export interface CapabilitiesNotebookTemplate {
+                driverCores: number;
+                driverMemory: number;
+                driverMemoryOverhead: number;
+                executorCores: number;
+                executorMemory: number;
+                executorMemoryOverhead: number;
+                executorNumber: number;
+                id: number;
+                name: string;
+            }
+            /**
+             * Engine Template
              * interface fullName: cloud.project.dataProcessing.CapabilitiesTemplate.CapabilitiesTemplate
              */
             export interface CapabilitiesTemplate {
@@ -4135,6 +4193,19 @@ export namespace cloud {
                 description: string;
                 name: string;
             }
+            /**
+             * Information about the state of this entity
+             * interface fullName: cloud.project.dataProcessing.Info.Info
+             */
+            export interface Info {
+                code: cloud.project.dataProcessing.InfoCodeEnum;
+                message: string;
+            }
+            /**
+             * Code enum for Info object
+             * type fullname: cloud.project.dataProcessing.InfoCodeEnum
+             */
+            export type InfoCodeEnum = "APP_CREATE_ERROR" | "APP_ERROR" | "APP_FAILED" | "APP_INITIALIZING" | "APP_INTERRUPTED_BY_PLATFORM" | "APP_QUEUED" | "APP_RUNNING" | "APP_SCALING" | "APP_STOPPED" | "APP_STOPPING" | "COMPATIBILITY" | "DATASYNC_AUTHENTICATE_FAILED" | "DATASYNC_DONE" | "DATASYNC_ERROR" | "DATASYNC_FAILED" | "DATASYNC_INTERRUPTED" | "DATASYNC_INVALID_CONTAINER" | "DATASYNC_QUEUED" | "DATASYNC_RETRY_ERROR" | "DATASYNC_RUNNING" | "JOB_CREATE_CONTAINER_CONFIG_ERROR" | "JOB_CREATE_CONTAINER_ERROR" | "JOB_DONE" | "JOB_ERROR" | "JOB_EVICTED" | "JOB_FAILED" | "JOB_FAILED_WITH_MESSAGE" | "JOB_FINALIZING" | "JOB_IMAGE_INSPECT_ERROR" | "JOB_IMAGE_PULL" | "JOB_IMAGE_PULL_BACKOFF" | "JOB_INITIALIZING" | "JOB_INTERRUPTED" | "JOB_INTERRUPTED_BY_PLATFORM" | "JOB_INTERRUPTING" | "JOB_INVALID_IMAGE_NAME" | "JOB_PENDING" | "JOB_QUEUED" | "JOB_REGISTRY_UNAVAILABLE" | "JOB_RUNNING" | "JOB_TIMEOUT" | "NOTEBOOK_FAILED" | "NOTEBOOK_FAILED_WITH_MESSAGE" | "NOTEBOOK_FINALIZING" | "NOTEBOOK_INITIALIZING" | "NOTEBOOK_PENDING" | "NOTEBOOK_RUNNING" | "NOTEBOOK_STARTING" | "NOTEBOOK_STOPPED" | "NOTEBOOK_STOPPING"
             /**
              * Job information
              * interface fullName: cloud.project.dataProcessing.Job.Job
@@ -4202,6 +4273,61 @@ export namespace cloud {
              * type fullname: cloud.project.dataProcessing.StatusEnum
              */
             export type StatusEnum = "CANCELLING" | "COMPLETED" | "FAILED" | "PENDING" | "RUNNING" | "SUBMITTED" | "TERMINATED" | "UNKNOWN"
+            export namespace notebook {
+                /**
+                 * Capabilities of data processing service
+                 * interface fullName: cloud.project.dataProcessing.notebook.Capability.Capability
+                 */
+                export interface Capability {
+                    availableVersions: cloud.project.dataProcessing.EngineVersion[];
+                    name: string;
+                    templates: cloud.project.dataProcessing.CapabilitiesNotebookTemplate[];
+                }
+                /**
+                 * Data Processing Notebook Object
+                 * interface fullName: cloud.project.dataProcessing.notebook.Notebook.Notebook
+                 */
+                export interface Notebook {
+                    id: string;
+                    spec: cloud.project.dataProcessing.notebook.NotebookSpec;
+                    status: cloud.project.dataProcessing.notebook.NotebookStatus;
+                    updatedAt: string;
+                }
+                /**
+                 * Data Processing Object to create a notebook
+                 * interface fullName: cloud.project.dataProcessing.notebook.NotebookEnv.NotebookEnv
+                 */
+                export interface NotebookEnv {
+                    engineName?: string;
+                    engineVersion?: string;
+                }
+                /**
+                 * Data Processing Notebook Spec Object to create a notebook
+                 * interface fullName: cloud.project.dataProcessing.notebook.NotebookSpec.NotebookSpec
+                 */
+                export interface NotebookSpec {
+                    env: cloud.project.dataProcessing.notebook.NotebookEnv;
+                    name: string;
+                    region: string;
+                }
+                /**
+                 * State of the notebook
+                 * type fullname: cloud.project.dataProcessing.notebook.NotebookStateEnum
+                 */
+                export type NotebookStateEnum = "DELETING" | "FAILED" | "RUNNING" | "STARTING" | "STOPPED" | "STOPPING"
+                /**
+                 * Data Processing Notebook Status Object
+                 * interface fullName: cloud.project.dataProcessing.notebook.NotebookStatus.NotebookStatus
+                 */
+                export interface NotebookStatus {
+                    duration?: number;
+                    info: cloud.project.dataProcessing.Info;
+                    lastStartedAt?: string;
+                    lastStoppedAt?: string;
+                    state?: cloud.project.dataProcessing.notebook.NotebookStateEnum;
+                    url?: string;
+                }
+            }
         }
         export namespace database {
             /**
@@ -4321,6 +4447,13 @@ export namespace cloud {
              * type fullname: cloud.project.database.StatusEnum
              */
             export type StatusEnum = "CREATING" | "DELETING" | "ERROR" | "ERROR_INCONSISTENT_SPEC" | "LOCKED" | "LOCKED_PENDING" | "LOCKED_UPDATING" | "PENDING" | "READY" | "UPDATING"
+            /**
+             * Cloud databases temporary write deadline definition
+             * interface fullName: cloud.project.database.TemporaryWriteDeadline.TemporaryWriteDeadline
+             */
+            export interface TemporaryWriteDeadline {
+                until: string;
+            }
             /**
              * Type of data returned in the capabilities options
              * type fullname: cloud.project.database.TypeEnum
@@ -4447,6 +4580,7 @@ export namespace cloud {
                     backupTime: string;
                     createdAt: string;
                     description: string;
+                    disk: cloud.project.database.service.Disk;
                     domain: string;
                     endpoints: cloud.project.database.service.Endpoint[];
                     engine: cloud.project.database.EngineEnum;
@@ -4471,6 +4605,19 @@ export namespace cloud {
                  * interface fullName: cloud.project.database.kafka.Topic.Topic
                  */
                 export interface Topic {
+                    id: string;
+                    minInsyncReplicas: number;
+                    name: string;
+                    partitions: number;
+                    replication: number;
+                    retentionBytes: number;
+                    retentionHours: number;
+                }
+                /**
+                 * Cloud database kafka topic creation definition
+                 * interface fullName: cloud.project.database.kafka.TopicCreation.TopicCreation
+                 */
+                export interface TopicCreation {
                     id: string;
                     minInsyncReplicas: number;
                     name: string;
@@ -4771,6 +4918,7 @@ export namespace cloud {
                     backupTime: string;
                     createdAt: string;
                     description: string;
+                    disk: cloud.project.database.service.Disk;
                     domain: string;
                     endpoints: cloud.project.database.service.Endpoint[];
                     engine: cloud.project.database.EngineEnum;
@@ -5098,7 +5246,7 @@ export namespace cloud {
                  * Supported unit types for metrics
                  * type fullname: cloud.project.database.service.MetricUnitEnum
                  */
-                export type MetricUnitEnum = "BYTES" | "BYTES_PER_SECOND" | "GIGABYTES" | "GIGABYTES_PER_HOUR" | "MEGABYTES_PER_SECOND" | "MILLISECONDS" | "PERCENT" | "SCALAR" | "SCALAR_PER_SECOND" | "SECONDS" | "UNKNOWN"
+                export type MetricUnitEnum = "BYTES" | "BYTES_PER_SECOND" | "GIGABYTES" | "GIGABYTES_PER_HOUR" | "MEGABYTES" | "MEGABYTES_PER_SECOND" | "MILLISECONDS" | "PERCENT" | "SCALAR" | "SCALAR_PER_SECOND" | "SECONDS" | "UNKNOWN"
                 /**
                  * Cloud databases cluster node definition
                  * interface fullName: cloud.project.database.service.Node.Node
@@ -5326,7 +5474,7 @@ export namespace cloud {
                      * Possible status of a service maintenance
                      * type fullname: cloud.project.database.service.maintenance.StatusEnum
                      */
-                    export type StatusEnum = "APPLIED" | "APPLYING" | "ERROR" | "SCHEDULED"
+                    export type StatusEnum = "APPLIED" | "APPLYING" | "ERROR" | "PENDING" | "SCHEDULED"
                 }
                 export namespace node {
                     /**
@@ -6867,6 +7015,13 @@ export interface Cloud {
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        datasync: {
+                            /**
+                             * Starts a manual data synchronization on an app
+                             * POST /cloud/project/{serviceName}/ai/app/{appId}/datasync
+                             */
+                            $post(params?: { direction?: cloud.project.ai.volume.DataSyncEnum, manual?: boolean, volume?: string }): Promise<cloud.project.ai.volume.DataSync>;
+                        }
                         image: {
                             /**
                              * Set the Docker image of an AI app
@@ -7036,7 +7191,7 @@ export interface Cloud {
                     serving: {
                         backend: {
                             /**
-                             * List Serving Engine available backends
+                             * Deprecated - ML Serving is End Of Life - List Serving Engine available backends
                              * GET /cloud/project/{serviceName}/ai/capabilities/serving/backend
                              */
                             $get(): Promise<cloud.project.ai.serving.Backend[]>;
@@ -7047,7 +7202,7 @@ export interface Cloud {
                         }
                         feature: {
                             /**
-                             * List Serving Engine Features
+                             * Deprecated - ML Serving is End Of Life - List Serving Engine Features
                              * GET /cloud/project/{serviceName}/ai/capabilities/serving/feature
                              */
                             $get(): Promise<cloud.project.ai.serving.Features>;
@@ -7058,7 +7213,7 @@ export interface Cloud {
                         }
                         flavor: {
                             /**
-                             * List Serving Engine available flavor
+                             * Deprecated - ML Serving is End Of Life - List Serving Engine available flavor
                              * GET /cloud/project/{serviceName}/ai/capabilities/serving/flavor
                              */
                             $get(): Promise<cloud.project.ai.serving.Flavor[]>;
@@ -7069,7 +7224,7 @@ export interface Cloud {
                         }
                         framework: {
                             /**
-                             * List Serving Engine available frameworks
+                             * Deprecated - ML Serving is End Of Life - List Serving Engine available frameworks
                              * GET /cloud/project/{serviceName}/ai/capabilities/serving/framework
                              */
                             $get(): Promise<cloud.project.ai.serving.Framework[]>;
@@ -7080,7 +7235,7 @@ export interface Cloud {
                         }
                         presetImage: {
                             /**
-                             * List Serving Engine Preset Model Images
+                             * Deprecated - ML Serving is End Of Life - List Serving Engine Preset Model Images
                              * GET /cloud/project/{serviceName}/ai/capabilities/serving/presetImage
                              */
                             $get(): Promise<cloud.project.ai.serving.PresetImage[]>;
@@ -7091,7 +7246,7 @@ export interface Cloud {
                         }
                         region: {
                             /**
-                             * List Serving Engine available regions
+                             * Deprecated - ML Serving is End Of Life - List Serving Engine available regions
                              * GET /cloud/project/{serviceName}/ai/capabilities/serving/region
                              */
                             $get(): Promise<string[]>;
@@ -7157,7 +7312,7 @@ export interface Cloud {
                              * Starts a manual data synchronization on an AI Solutions job
                              * POST /cloud/project/{serviceName}/ai/job/{jobId}/datasync
                              */
-                            $post(params?: { direction?: cloud.project.ai.volume.DataSyncEnum, manual?: boolean }): Promise<cloud.project.ai.volume.DataSync>;
+                            $post(params?: { direction?: cloud.project.ai.volume.DataSyncEnum, manual?: boolean, volume?: string }): Promise<cloud.project.ai.volume.DataSync>;
                         }
                         kill: {
                             /**
@@ -7196,7 +7351,7 @@ export interface Cloud {
                      * Create a new notebook
                      * POST /cloud/project/{serviceName}/ai/notebook
                      */
-                    $post(params: { env: cloud.project.ai.notebook.NotebookEnv, labels?: { [key: string]: string }, name?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.notebook.Notebook>;
+                    $post(params: { env: cloud.project.ai.notebook.NotebookEnv, envVars?: cloud.project.ai.job.JobEnv[], labels?: { [key: string]: string }, name?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.notebook.Notebook>;
                     /**
                      * Controle cache
                      */
@@ -7207,7 +7362,7 @@ export interface Cloud {
                              * List AI Solutions Notebook available code editors
                              * GET /cloud/project/{serviceName}/ai/notebook/capabilities/editor
                              */
-                            $get(): Promise<cloud.project.ai.notebook.Editor[]>;
+                            $get(params?: { compatibleWithFramework?: string }): Promise<cloud.project.ai.notebook.Editor[]>;
                             /**
                              * Controle cache
                              */
@@ -7218,7 +7373,7 @@ export interface Cloud {
                              * List AI Solutions Notebook available frameworks
                              * GET /cloud/project/{serviceName}/ai/notebook/capabilities/framework
                              */
-                            $get(): Promise<cloud.project.ai.notebook.Framework[]>;
+                            $get(params?: { compatibleWithEditor?: string }): Promise<cloud.project.ai.notebook.Framework[]>;
                             /**
                              * Controle cache
                              */
@@ -7230,7 +7385,7 @@ export interface Cloud {
                          * Generate a notebook spec corresponding CLI command
                          * POST /cloud/project/{serviceName}/ai/notebook/command
                          */
-                        $post(params: { env: cloud.project.ai.notebook.NotebookEnv, labels?: { [key: string]: string }, name?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
+                        $post(params: { env: cloud.project.ai.notebook.NotebookEnv, envVars?: cloud.project.ai.job.JobEnv[], labels?: { [key: string]: string }, name?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
                     }
                     $(notebookId: string): {
                         /**
@@ -7257,7 +7412,7 @@ export interface Cloud {
                              * Starts a manual data synchronization on an AI Solutions notebook
                              * POST /cloud/project/{serviceName}/ai/notebook/{notebookId}/datasync
                              */
-                            $post(params?: { direction?: cloud.project.ai.volume.DataSyncEnum, manual?: boolean }): Promise<cloud.project.ai.volume.DataSync>;
+                            $post(params?: { direction?: cloud.project.ai.volume.DataSyncEnum, manual?: boolean, volume?: string }): Promise<cloud.project.ai.volume.DataSync>;
                         }
                         label: {
                             /**
@@ -7327,12 +7482,12 @@ export interface Cloud {
                 }
                 serving: {
                     /**
-                     * List namespaces of the project
+                     * Deprecated - ML Serving is End Of Life - List namespaces of the project
                      * GET /cloud/project/{serviceName}/ai/serving
                      */
                     $get(): Promise<cloud.project.ai.serving.Namespace[]>;
                     /**
-                     * Create a new namespace
+                     * Deprecated - ML Serving is End Of Life - Create a new namespace
                      * POST /cloud/project/{serviceName}/ai/serving
                      */
                     $post(params: { container: string, description: string, region: string }): Promise<cloud.project.ai.serving.Namespace>;
@@ -7342,12 +7497,12 @@ export interface Cloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(namespaceId: string): {
                         /**
-                         * Delete a namespace
+                         * Deprecated - ML Serving is End Of Life - Delete a namespace
                          * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}
                          */
                         $delete(): Promise<void>;
                         /**
-                         * Get the namespace information
+                         * Deprecated - ML Serving is End Of Life - Get the namespace information
                          * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}
                          */
                         $get(): Promise<cloud.project.ai.serving.Namespace>;
@@ -7357,7 +7512,7 @@ export interface Cloud {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         metrics: {
                             /**
-                             * Get metrics token and urls compatible with this token
+                             * Deprecated - ML Serving is End Of Life - Get metrics token and urls compatible with this token
                              * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/metrics
                              */
                             $get(): Promise<cloud.project.ai.serving.Metrics>;
@@ -7368,12 +7523,12 @@ export interface Cloud {
                         }
                         model: {
                             /**
-                             * List models
+                             * Deprecated - ML Serving is End Of Life - List models
                              * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/model
                              */
                             $get(): Promise<cloud.project.ai.serving.Model[]>;
                             /**
-                             * Create a new model
+                             * Deprecated - ML Serving is End Of Life - Create a new model
                              * POST /cloud/project/{serviceName}/ai/serving/{namespaceId}/model
                              */
                             $post(params: { autoscalingSpec?: cloud.project.ai.serving.AutoscalingSpec, backend?: cloud.project.ai.serving.BackendIdEnum, flavor: string, framework?: cloud.project.ai.serving.FrameworkIdEnum, id: string, imageId?: string, storagePath?: string, workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum }): Promise<cloud.project.ai.serving.Model>;
@@ -7383,17 +7538,17 @@ export interface Cloud {
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             $(modelId: string): {
                                 /**
-                                 * Delete a model
+                                 * Deprecated - ML Serving is End Of Life - Delete a model
                                  * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}/model/{modelId}
                                  */
                                 $delete(): Promise<void>;
                                 /**
-                                 * Get model information
+                                 * Deprecated - ML Serving is End Of Life - Get model information
                                  * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/model/{modelId}
                                  */
                                 $get(): Promise<cloud.project.ai.serving.Model>;
                                 /**
-                                 * Update a model
+                                 * Deprecated - ML Serving is End Of Life - Update a model
                                  * PUT /cloud/project/{serviceName}/ai/serving/{namespaceId}/model/{modelId}
                                  */
                                 $put(): Promise<cloud.project.ai.serving.Model>;
@@ -7405,17 +7560,17 @@ export interface Cloud {
                         }
                         registry: {
                             /**
-                             * Detach the current registry
+                             * Deprecated - ML Serving is End Of Life - Detach the current registry
                              * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}/registry
                              */
                             $delete(): Promise<void>;
                             /**
-                             * Get registry information
+                             * Deprecated - ML Serving is End Of Life - Get registry information
                              * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/registry
                              */
                             $get(): Promise<cloud.project.ai.serving.Registry>;
                             /**
-                             * Attach a docker registry
+                             * Deprecated - ML Serving is End Of Life - Attach a docker registry
                              * POST /cloud/project/{serviceName}/ai/serving/{namespaceId}/registry
                              */
                             $post(params: { custom?: boolean, password: string, url: string, username: string }): Promise<cloud.project.ai.serving.RegistryResponse>;
@@ -7426,12 +7581,12 @@ export interface Cloud {
                         }
                         token: {
                             /**
-                             * List tokens
+                             * Deprecated - ML Serving is End Of Life - List tokens
                              * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/token
                              */
                             $get(): Promise<cloud.project.ai.serving.Token[]>;
                             /**
-                             * Create a new token
+                             * Deprecated - ML Serving is End Of Life - Create a new token
                              * POST /cloud/project/{serviceName}/ai/serving/{namespaceId}/token
                              */
                             $post(params: { createdAt?: string, groups: cloud.project.ai.serving.TokenGroupEnum[], id?: string, resource: string, token?: string }): Promise<cloud.project.ai.serving.Token>;
@@ -7441,17 +7596,17 @@ export interface Cloud {
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             $(tokenId: string): {
                                 /**
-                                 * Delete a token
+                                 * Deprecated - ML Serving is End Of Life - Delete a token
                                  * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}/token/{tokenId}
                                  */
                                 $delete(): Promise<void>;
                                 /**
-                                 * Get token information
+                                 * Deprecated - ML Serving is End Of Life - Get token information
                                  * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/token/{tokenId}
                                  */
                                 $get(): Promise<cloud.project.ai.serving.Token>;
                                 /**
-                                 * Renew a new token
+                                 * Deprecated - ML Serving is End Of Life - Renew a new token
                                  * PUT /cloud/project/{serviceName}/ai/serving/{namespaceId}/token/{tokenId}
                                  */
                                 $put(): Promise<cloud.project.ai.serving.Token>;
@@ -8238,6 +8393,22 @@ export interface Cloud {
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        advancedConfiguration: {
+                            /**
+                             * Get grafana advanced configuration
+                             * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/advancedConfiguration
+                             */
+                            $get(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Update grafana advanced configuration
+                             * PUT /cloud/project/{serviceName}/database/grafana/{clusterId}/advancedConfiguration
+                             */
+                            $put(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         backup: {
                             /**
                              * List backups of the grafana
@@ -8261,6 +8432,17 @@ export interface Cloud {
                             };
                         }
                         capabilities: {
+                            advancedConfiguration: {
+                                /**
+                                 * Get grafana advanced configuration fields
+                                 * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/capabilities/advancedConfiguration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.advancedConfiguration.Property[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
                             integration: {
                                 /**
                                  * Get integration capabilities related to the grafana service
@@ -8489,7 +8671,7 @@ export interface Cloud {
                          * Update an existing kafka cluster
                          * PUT /cloud/project/{serviceName}/database/kafka/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, restApi?: boolean, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.kafka.Service>;
+                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, restApi?: boolean, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.kafka.Service>;
                         /**
                          * Controle cache
                          */
@@ -8767,6 +8949,11 @@ export interface Cloud {
                                  * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/topic/{topicId}
                                  */
                                 $get(): Promise<cloud.project.database.kafka.Topic>;
+                                /**
+                                 * Updates the topic on the kafka cluster
+                                 * PUT /cloud/project/{serviceName}/database/kafka/{clusterId}/topic/{topicId}
+                                 */
+                                $put(params?: { id?: string, minInsyncReplicas?: number, name?: string, partitions?: number, replication?: number, retentionBytes?: number, retentionHours?: number }): Promise<cloud.project.database.kafka.Topic>;
                                 /**
                                  * Controle cache
                                  */
@@ -10356,6 +10543,13 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        enableWrites: {
+                            /**
+                             * Enable temporary write permission on readonly lock mysql service
+                             * POST /cloud/project/{serviceName}/database/mysql/{clusterId}/enableWrites
+                             */
+                            $post(): Promise<cloud.project.database.TemporaryWriteDeadline>;
+                        }
                         integration: {
                             /**
                              * List integrations
@@ -10600,7 +10794,7 @@ export interface Cloud {
                          * Update an existing opensearch cluster
                          * PUT /cloud/project/{serviceName}/database/opensearch/{clusterId}
                          */
-                        $put(params?: { aclsEnabled?: boolean, additionalUris?: cloud.project.database.opensearch.service.AdditionalUris, backupTime?: string, createdAt?: string, description?: string, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.opensearch.Service>;
+                        $put(params?: { aclsEnabled?: boolean, additionalUris?: cloud.project.database.opensearch.service.AdditionalUris, backupTime?: string, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, domain?: string, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, maintenanceTime?: string, maintenanceWindow?: cloud.project.database.service.MaintenanceWindow, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, port?: number, sslMode?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, uri?: string, version?: string }): Promise<cloud.project.database.opensearch.Service>;
                         /**
                          * Controle cache
                          */
@@ -11131,6 +11325,13 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        enableWrites: {
+                            /**
+                             * Enable temporary write permission on readonly lock postgresql service
+                             * POST /cloud/project/{serviceName}/database/postgresql/{clusterId}/enableWrites
+                             */
+                            $post(): Promise<cloud.project.database.TemporaryWriteDeadline>;
+                        }
                         integration: {
                             /**
                              * List integrations
@@ -11441,6 +11642,28 @@ export interface Cloud {
                                  * GET /cloud/project/{serviceName}/database/redis/{clusterId}/capabilities/advancedConfiguration
                                  */
                                 $get(): Promise<cloud.project.database.capabilities.advancedConfiguration.Property[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            categories: {
+                                /**
+                                 * Get available categories in the redis service
+                                 * GET /cloud/project/{serviceName}/database/redis/{clusterId}/capabilities/categories
+                                 */
+                                $get(): Promise<string[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            commands: {
+                                /**
+                                 * Get available commands in the redis service
+                                 * GET /cloud/project/{serviceName}/database/redis/{clusterId}/capabilities/commands
+                                 */
+                                $get(): Promise<string[]>;
                                 /**
                                  * Controle cache
                                  */
@@ -12362,12 +12585,12 @@ export interface Cloud {
                          * Configure APIServer for OpenIdConnect
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/openIdConnect
                          */
-                        $post(params: { clientId: string, issuerUrl: string }): Promise<cloud.kube.OpenIdConnect>;
+                        $post(params: { caContent?: string, clientId: string, groupsClaim?: string[], groupsPrefix?: string, issuerUrl: string, requiredClaim?: string[], signingAlgorithms?: cloud.kube.OpenIdConnectSigningAlgorithmsEnum[], usernameClaim?: string, usernamePrefix?: string }): Promise<cloud.kube.OpenIdConnect>;
                         /**
                          * Update parameters and reconfigure APIServer
                          * PUT /cloud/project/{serviceName}/kube/{kubeId}/openIdConnect
                          */
-                        $put(params?: { clientId?: string, issuerUrl?: string }): Promise<void>;
+                        $put(params?: { caContent?: string, clientId?: string, groupsClaim?: string[], groupsPrefix?: string, issuerUrl?: string, requiredClaim?: string[], signingAlgorithms?: cloud.kube.OpenIdConnectSigningAlgorithmsEnum[], usernameClaim?: string, usernamePrefix?: string }): Promise<void>;
                         /**
                          * Controle cache
                          */

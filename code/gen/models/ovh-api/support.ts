@@ -50,6 +50,22 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "long",
+              "description": "Page of tickets to fetch (only if pageSize is defined)",
+              "fullType": "long",
+              "name": "page",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Number of ticket to fetch",
+              "fullType": "long",
+              "name": "pageSize",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "support.TicketProductEnum",
               "description": "Search by ticket product",
               "fullType": "support.TicketProductEnum",

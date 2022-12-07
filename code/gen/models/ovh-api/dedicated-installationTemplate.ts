@@ -1101,6 +1101,7 @@ export const schema: Schema = {
         "basic",
         "customer",
         "database",
+        "erp",
         "hosting",
         "management",
         "other",
@@ -1215,14 +1216,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
-        },
-        "lastModification": {
-          "canBeNull": true,
-          "description": "Date of last modification of the base image",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
         },
         "license": {
           "canBeNull": true,

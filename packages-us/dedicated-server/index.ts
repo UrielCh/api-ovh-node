@@ -154,7 +154,7 @@ export namespace dedicated {
      * ovh datacenter
      * type fullname: dedicated.DatacenterEnum
      */
-    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "bhs8" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sbg5" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1"
+    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "bhs8" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lil1-int1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sbg5" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1"
     /**
      * A structure describing the raw availabilities of dedicated server
      * interface fullName: dedicated.DatacenterRawAvailability.DatacenterRawAvailability

@@ -50,7 +50,7 @@ export namespace cloud {
      * Enum values for Status
      * type fullname: cloud.ColdArchiveContainerStatusEnum
      */
-    export type ColdArchiveContainerStatusEnum = "archived" | "archiving" | "deleting" | "draining" | "flushed" | "locked" | "none" | "restored" | "restoring"
+    export type ColdArchiveContainerStatusEnum = "archived" | "archiving" | "deleting" | "flushed" | "none" | "restored" | "restoring"
     /**
      * Information about the different components available in the region
      * interface fullName: cloud.Component.Component
@@ -376,16 +376,30 @@ export namespace cloud {
      * interface fullName: cloud.ProjectKubeOpenIdConnectCreation.ProjectKubeOpenIdConnectCreation
      */
     export interface ProjectKubeOpenIdConnectCreation {
+        caContent?: string;
         clientId: string;
+        groupsClaim?: string[];
+        groupsPrefix?: string;
         issuerUrl: string;
+        requiredClaim?: string[];
+        signingAlgorithms?: cloud.kube.OpenIdConnectSigningAlgorithmsEnum[];
+        usernameClaim?: string;
+        usernamePrefix?: string;
     }
     /**
      * Update model for OIDC
      * interface fullName: cloud.ProjectKubeOpenIdConnectUpdate.ProjectKubeOpenIdConnectUpdate
      */
     export interface ProjectKubeOpenIdConnectUpdate {
+        caContent?: string;
         clientId: string;
+        groupsClaim?: string[];
+        groupsPrefix?: string;
         issuerUrl: string;
+        requiredClaim?: string[];
+        signingAlgorithms?: cloud.kube.OpenIdConnectSigningAlgorithmsEnum[];
+        usernameClaim?: string;
+        usernamePrefix?: string;
     }
     /**
      * Model object to reset kube cluster
@@ -1385,9 +1399,21 @@ export namespace cloud {
          * interface fullName: cloud.kube.OpenIdConnect.OpenIdConnect
          */
         export interface OpenIdConnect {
+            caContent?: string;
             clientId: string;
+            groupsClaim?: string[];
+            groupsPrefix?: string;
             issuerUrl: string;
+            requiredClaim?: string[];
+            signingAlgorithms?: cloud.kube.OpenIdConnectSigningAlgorithmsEnum[];
+            usernameClaim?: string;
+            usernamePrefix?: string;
         }
+        /**
+         * Enum values for OpenIdConnect signing algorithms
+         * type fullname: cloud.kube.OpenIdConnectSigningAlgorithmsEnum
+         */
+        export type OpenIdConnectSigningAlgorithmsEnum = "ES256" | "ES384" | "ES512" | "PS256" | "PS384" | "PS512" | "RS256" | "RS384" | "RS512"
         /**
          * Managed Kubernetes cluster private networking configuration
          * interface fullName: cloud.kube.PrivateNetworkConfiguration.PrivateNetworkConfiguration
@@ -2376,6 +2402,13 @@ export namespace cloud {
              */
             export type StatusEnum = "CREATING" | "DELETING" | "ERROR" | "ERROR_INCONSISTENT_SPEC" | "LOCKED" | "LOCKED_PENDING" | "LOCKED_UPDATING" | "PENDING" | "READY" | "UPDATING"
             /**
+             * Cloud databases temporary write deadline definition
+             * interface fullName: cloud.project.database.TemporaryWriteDeadline.TemporaryWriteDeadline
+             */
+            export interface TemporaryWriteDeadline {
+                until: string;
+            }
+            /**
              * Type of data returned in the capabilities options
              * type fullname: cloud.project.database.TypeEnum
              */
@@ -2501,6 +2534,7 @@ export namespace cloud {
                     backupTime: string;
                     createdAt: string;
                     description: string;
+                    disk: cloud.project.database.service.Disk;
                     domain: string;
                     endpoints: cloud.project.database.service.Endpoint[];
                     engine: cloud.project.database.EngineEnum;
@@ -2525,6 +2559,19 @@ export namespace cloud {
                  * interface fullName: cloud.project.database.kafka.Topic.Topic
                  */
                 export interface Topic {
+                    id: string;
+                    minInsyncReplicas: number;
+                    name: string;
+                    partitions: number;
+                    replication: number;
+                    retentionBytes: number;
+                    retentionHours: number;
+                }
+                /**
+                 * Cloud database kafka topic creation definition
+                 * interface fullName: cloud.project.database.kafka.TopicCreation.TopicCreation
+                 */
+                export interface TopicCreation {
                     id: string;
                     minInsyncReplicas: number;
                     name: string;
@@ -2825,6 +2872,7 @@ export namespace cloud {
                     backupTime: string;
                     createdAt: string;
                     description: string;
+                    disk: cloud.project.database.service.Disk;
                     domain: string;
                     endpoints: cloud.project.database.service.Endpoint[];
                     engine: cloud.project.database.EngineEnum;
@@ -3152,7 +3200,7 @@ export namespace cloud {
                  * Supported unit types for metrics
                  * type fullname: cloud.project.database.service.MetricUnitEnum
                  */
-                export type MetricUnitEnum = "BYTES" | "BYTES_PER_SECOND" | "GIGABYTES" | "GIGABYTES_PER_HOUR" | "MEGABYTES_PER_SECOND" | "MILLISECONDS" | "PERCENT" | "SCALAR" | "SCALAR_PER_SECOND" | "SECONDS" | "UNKNOWN"
+                export type MetricUnitEnum = "BYTES" | "BYTES_PER_SECOND" | "GIGABYTES" | "GIGABYTES_PER_HOUR" | "MEGABYTES" | "MEGABYTES_PER_SECOND" | "MILLISECONDS" | "PERCENT" | "SCALAR" | "SCALAR_PER_SECOND" | "SECONDS" | "UNKNOWN"
                 /**
                  * Cloud databases cluster node definition
                  * interface fullName: cloud.project.database.service.Node.Node
@@ -3373,7 +3421,7 @@ export namespace cloud {
                      * Possible status of a service maintenance
                      * type fullname: cloud.project.database.service.maintenance.StatusEnum
                      */
-                    export type StatusEnum = "APPLIED" | "APPLYING" | "ERROR" | "SCHEDULED"
+                    export type StatusEnum = "APPLIED" | "APPLYING" | "ERROR" | "PENDING" | "SCHEDULED"
                 }
                 export namespace node {
                     /**
@@ -5554,12 +5602,12 @@ export interface Cloud {
                          * Configure APIServer for OpenIdConnect
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/openIdConnect
                          */
-                        $post(params: { clientId: string, issuerUrl: string }): Promise<cloud.kube.OpenIdConnect>;
+                        $post(params: { caContent?: string, clientId: string, groupsClaim?: string[], groupsPrefix?: string, issuerUrl: string, requiredClaim?: string[], signingAlgorithms?: cloud.kube.OpenIdConnectSigningAlgorithmsEnum[], usernameClaim?: string, usernamePrefix?: string }): Promise<cloud.kube.OpenIdConnect>;
                         /**
                          * Update parameters and reconfigure APIServer
                          * PUT /cloud/project/{serviceName}/kube/{kubeId}/openIdConnect
                          */
-                        $put(params?: { clientId?: string, issuerUrl?: string }): Promise<void>;
+                        $put(params?: { caContent?: string, clientId?: string, groupsClaim?: string[], groupsPrefix?: string, issuerUrl?: string, requiredClaim?: string[], signingAlgorithms?: cloud.kube.OpenIdConnectSigningAlgorithmsEnum[], usernameClaim?: string, usernamePrefix?: string }): Promise<void>;
                         /**
                          * Controle cache
                          */

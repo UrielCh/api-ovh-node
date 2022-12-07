@@ -5804,32 +5804,6 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve Enterprise Cloud Databases catalog",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "Subsidiary of the country you want to consult catalog",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.catalog.public.Catalog"
-        }
-      ],
-      "path": "/order/catalog/public/enterpriseCloudDatabases"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },

@@ -785,7 +785,7 @@ export namespace dbaas {
          * Possible values for StreamAlertConditionThresholdTypeEnum
          * type fullname: dbaas.logs.StreamAlertConditionThresholdTypeEnum
          */
-        export type StreamAlertConditionThresholdTypeEnum = "HIGHER" | "LESS" | "LOWER" | "MORE"
+        export type StreamAlertConditionThresholdTypeEnum = "EQ" | "GT" | "GTE" | "HIGHER" | "LESS" | "LOWER" | "LT" | "LTE" | "MORE"
         /**
          * Possible values for StreamColdStorageCompressionEnum
          * type fullname: dbaas.logs.StreamColdStorageCompressionEnum

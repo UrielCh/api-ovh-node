@@ -2361,6 +2361,281 @@ export const schema: Schema = {
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/activateSharepoint"
     },
     {
+      "description": "List the email.exchange.exchangeServiceAuthorizedIp objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Authorized IPs for POP(s),IMAP(s), SMTP(s) and HTTP(s)",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipv4Block[]",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Authorize new IP to access the service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "display name information",
+              "fullType": "string",
+              "name": "displayName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Webmail,outlook,web Service(EWS) and active sync access (port 443)",
+              "fullType": "boolean",
+              "name": "HTTPS",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "IMAP access (port 143)",
+              "fullType": "boolean",
+              "name": "IMAP",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "IMAPS access (port 993)",
+              "fullType": "boolean",
+              "name": "IMAPS",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "ipv4Block",
+              "description": "Authorized IP",
+              "fullType": "ipv4Block",
+              "name": "IP",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "POP access (port 110)",
+              "fullType": "boolean",
+              "name": "POP",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "POPS access (port 995)",
+              "fullType": "boolean",
+              "name": "POPS",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "SMTP access (port 25)",
+              "fullType": "boolean",
+              "name": "SMTP",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "SMTPS access (port 587)",
+              "fullType": "boolean",
+              "name": "SMTPS",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/authorizedIp"
+    },
+    {
+      "description": "Get authorized IPs for POP(s),IMAP(s), SMTP(s) and HTTP(s)",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete authorized IP",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4Block",
+              "description": "Allowed IP",
+              "fullType": "ipv4Block",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4Block",
+              "description": "Allowed IP",
+              "fullType": "ipv4Block",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.exchangeServiceAuthorizedIp",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "email.exchange.exchangeServiceAuthorizedIp",
+              "description": "New object properties",
+              "fullType": "email.exchange.exchangeServiceAuthorizedIp",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4Block",
+              "description": "Allowed IP",
+              "fullType": "ipv4Block",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/authorizedIp/{ip}"
+    },
+    {
       "description": "changeHostname operations",
       "operations": [
         {
@@ -4109,6 +4384,200 @@ export const schema: Schema = {
         }
       ],
       "path": "/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}"
+    },
+    {
+      "description": "Get user that has an impersonation right on all that mailboxes",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete user with impersonation right on all mailboxes",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.exchangeAccountImpersonation",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create user with impersonation right on all mailboxes",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "password for the user",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/impersonatedUser"
+    },
+    {
+      "description": "changePassword operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change user password",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "new password",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/impersonatedUser/changePassword"
+    },
+    {
+      "description": "impersonationPasswordPolicy operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get configuration of password policy linked to impersonated account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.passwordPolicy",
+          "scopes": [
+            "all",
+            "product/email-exchange/all"
+          ]
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/impersonationPasswordPolicy"
     },
     {
       "description": "license operations",
@@ -10610,6 +11079,7 @@ export const schema: Schema = {
         "activateSharepoint",
         "addAccount",
         "addAccountArchive",
+        "addAccountImpersonation",
         "addActiveSyncMailNotification",
         "addAlias",
         "addDistributionGroup",
@@ -10645,6 +11115,7 @@ export const schema: Schema = {
         "configureExchangeOwaMfa",
         "deleteAccount",
         "deleteAccountArchive",
+        "deleteAccountImpersonation",
         "deleteActiveSyncMailNotification",
         "deleteAlias",
         "deleteDistributionGroup",
@@ -11087,6 +11558,53 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        }
+      }
+    },
+    "email.exchange.exchangeAccountImpersonation": {
+      "description": "Get user that has an impersonation right on all that mailboxes",
+      "id": "exchangeAccountImpersonation",
+      "namespace": "email.exchange",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lastPasswordChange": {
+          "canBeNull": true,
+          "description": "Last password update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "User state",
+          "fullType": "email.exchange.ObjectStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.exchange.ObjectStateEnum"
+        },
+        "taskPendingId": {
+          "canBeNull": true,
+          "description": "Pending task id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "upn": {
+          "canBeNull": false,
+          "description": "User Principal Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -11673,10 +12191,66 @@ export const schema: Schema = {
       }
     },
     "email.exchange.exchangeServiceAuthorizedIp": {
-      "description": "Get authorized IPs for POP, IMAP and webmail",
+      "description": "Get authorized IPs for POP(s),IMAP(s), SMTP(s) and HTTP(s)",
       "id": "exchangeServiceAuthorizedIp",
       "namespace": "email.exchange",
       "properties": {
+        "HTTPS": {
+          "canBeNull": false,
+          "description": "Webmail,outlook,web Service(EWS) and active sync access (port 443)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "IMAP": {
+          "canBeNull": false,
+          "description": "IMAP access (port 143)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "IMAPS": {
+          "canBeNull": false,
+          "description": "IMAPS access (port 993)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "POP": {
+          "canBeNull": false,
+          "description": "POP access (port 110)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "POPS": {
+          "canBeNull": false,
+          "description": "POPS access (port 995)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "SMTP": {
+          "canBeNull": false,
+          "description": "SMTP access (port 25)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "SMTPS": {
+          "canBeNull": false,
+          "description": "SMTPS access (port 587)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "creationDate": {
           "canBeNull": false,
           "description": "Creation date",
@@ -11685,13 +12259,21 @@ export const schema: Schema = {
           "required": false,
           "type": "datetime"
         },
+        "displayName": {
+          "canBeNull": false,
+          "description": "display name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "ip": {
           "canBeNull": false,
-          "description": "Authorized IP",
-          "fullType": "ipv4",
+          "description": "Allowed IP",
+          "fullType": "ipv4Block",
           "readOnly": true,
           "required": false,
-          "type": "ipv4"
+          "type": "ipv4Block"
         },
         "status": {
           "canBeNull": false,
@@ -11700,6 +12282,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "email.exchange.authorizedIpStatusEnum"
+        },
+        "updateDate": {
+          "canBeNull": true,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
@@ -12099,6 +12689,62 @@ export const schema: Schema = {
           "description": "Task pending id",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "email.exchange.passwordPolicy": {
+      "description": "Password policy used for impersonated account",
+      "id": "passwordPolicy",
+      "namespace": "email.exchange",
+      "properties": {
+        "complexityEnabled": {
+          "canBeNull": false,
+          "description": "enable policy for strong and secure passwords",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "lockoutDuration": {
+          "canBeNull": false,
+          "description": "number of minutes account will remain locked if it occurs",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "lockoutThreshold": {
+          "canBeNull": false,
+          "description": "number of attempts before account is locked",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "maxPasswordAge": {
+          "canBeNull": false,
+          "description": "maximum number of days that account's password is valid before expiration",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "minPasswordAge": {
+          "canBeNull": false,
+          "description": "minimum number of days before being able to change account's password",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "minPasswordLength": {
+          "canBeNull": false,
+          "description": "minimum number of characters password must contain",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "passwordHistoryCount": {
+          "canBeNull": false,
+          "description": "number of historical passwords that cannot be reused",
+          "readOnly": false,
           "required": false,
           "type": "long"
         }

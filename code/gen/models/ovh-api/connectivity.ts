@@ -342,8 +342,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Do an eligibility for an address, if no line exist. Partners only.",
           "httpMethod": "POST",
@@ -428,6 +428,22 @@ export const schema: Schema = {
               "name": "status",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
+              "fullType": "string",
+              "name": "streetCode",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Street number",
+              "fullType": "string",
+              "name": "streetNumber",
+              "paramType": "body",
+              "required": false
             }
           ],
           "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>"
@@ -440,8 +456,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Do an eligibility test on a line number, for copper only. Partners only.",
           "httpMethod": "POST",
@@ -462,6 +478,22 @@ export const schema: Schema = {
               "name": "status",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
+              "fullType": "string",
+              "name": "streetCode",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Street number",
+              "fullType": "string",
+              "name": "streetNumber",
+              "paramType": "body",
+              "required": false
             }
           ],
           "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>",
@@ -504,8 +536,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List work planned by operators. For partners only",
           "httpMethod": "GET",
@@ -525,8 +557,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List work planned by operators",
           "httpMethod": "GET",
@@ -559,8 +591,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List detected, validated and recently closed generic incidents. For partners only",
           "httpMethod": "GET",
@@ -605,8 +637,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List validated and recently closed generic incidents",
           "httpMethod": "GET",
@@ -1738,6 +1770,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "national": {
+          "canBeNull": false,
+          "description": "Identify a national generic incident",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "nra": {
           "canBeNull": false,

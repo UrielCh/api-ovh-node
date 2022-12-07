@@ -1427,20 +1427,20 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/confirmTermination"
     },
     {
-      "description": "List the hosting.web.cron objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Crons on your hosting",
+          "description": "Crons on your webhosting",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1471,9 +1471,9 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "hosting.web.cron.LanguageEnum",
+              "dataType": "hosting.web.LanguagesEnum",
               "description": "Filter the value of language property (=)",
-              "fullType": "hosting.web.cron.LanguageEnum",
+              "fullType": "hosting.web.LanguagesEnum",
               "name": "language",
               "paramType": "query",
               "required": false
@@ -1495,63 +1495,22 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Command to execute",
-              "fullType": "string",
-              "name": "command",
+              "dataType": "hosting.web.Cron",
+              "description": "Request Body",
+              "fullType": "hosting.web.Cron",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Description field for you",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Email used to receive error log ( stderr )",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Frequency ( crontab format ) define for the script ( minutes are ignored )",
-              "fullType": "string",
-              "name": "frequency",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.cron.LanguageEnum",
-              "description": "Cron language",
-              "fullType": "hosting.web.cron.LanguageEnum",
-              "name": "language",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.cron.StatusEnum",
-              "description": "Cron status",
-              "fullType": "hosting.web.cron.StatusEnum",
-              "name": "status",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
+          "responseType": "hosting.web.PublicTask",
           "scopes": [
             "all",
             "product/hosting-web/all"
@@ -1561,7 +1520,7 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/cron"
     },
     {
-      "description": "Hosting crons",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1574,7 +1533,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Cron's id",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1582,14 +1541,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
+          "responseType": "hosting.web.PublicTask",
           "scopes": [
             "all",
             "product/hosting-web/all"
@@ -1600,13 +1559,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get cron by id",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Cron's id",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1614,14 +1573,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.web.cron",
+          "responseType": "hosting.web.Cron",
           "scopes": [
             "all",
             "product/hosting-web/all"
@@ -1632,20 +1591,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update cron",
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "hosting.web.cron",
-              "description": "New object properties",
-              "fullType": "hosting.web.cron",
+              "dataType": "hosting.web.Cron",
+              "description": "Request Body",
+              "fullType": "hosting.web.Cron",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Cron's id",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1653,14 +1612,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "void",
+          "responseType": "string",
           "scopes": [
             "all",
             "product/hosting-web/all"
@@ -7833,6 +7792,77 @@ export const schema: Schema = {
         }
       }
     },
+    "hosting.web.Cron": {
+      "description": "Cron",
+      "id": "Cron",
+      "namespace": "hosting.web",
+      "properties": {
+        "command": {
+          "canBeNull": false,
+          "description": "Command to execute",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description field for you",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "email": {
+          "canBeNull": true,
+          "description": "Email used to receive error log (stderr)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "frequency": {
+          "canBeNull": false,
+          "description": "Frequency (crontab format) defined for the script (minutes are ignored)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Cron's id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "language": {
+          "canBeNull": false,
+          "description": "Cron language",
+          "fullType": "hosting.web.LanguagesEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "hosting.web.LanguagesEnum"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Cron language",
+          "fullType": "hosting.web.cron.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.cron.StateEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Cron status",
+          "fullType": "hosting.web.cron.StatusEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "hosting.web.cron.StatusEnum"
+        }
+      }
+    },
     "hosting.web.CronLanguageAvailable": {
       "description": "Language available for cron script",
       "id": "CronLanguageAvailable",
@@ -8309,6 +8339,77 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "PhpVersionStateEnum",
       "namespace": "hosting.web"
+    },
+    "hosting.web.PublicTask": {
+      "description": "Public task",
+      "id": "PublicTask",
+      "namespace": "hosting.web",
+      "properties": {
+        "doneDate": {
+          "canBeNull": true,
+          "description": "Done date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "function": {
+          "canBeNull": false,
+          "description": "Task function",
+          "fullType": "hosting.web.task.FunctionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.task.FunctionEnum"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Task's id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "lastUpdate": {
+          "canBeNull": true,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "objectId": {
+          "canBeNull": true,
+          "description": "Task object id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "objectType": {
+          "canBeNull": true,
+          "description": "Task object type",
+          "fullType": "hosting.web.task.ObjectTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.task.ObjectTypeEnum"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Start date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Task status",
+          "fullType": "hosting.web.task.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.task.StatusEnum"
+        }
+      }
     },
     "hosting.web.PythonVersionAvailableEnum": {
       "description": "Different Python versions available",
@@ -11619,8 +11720,19 @@ export const schema: Schema = {
         }
       }
     },
+    "hosting.web.task.FunctionEnum": {
+      "description": "Task function enum",
+      "enum": [
+        "cron/create",
+        "cron/delete",
+        "cron/update"
+      ],
+      "enumType": "string",
+      "id": "FunctionEnum",
+      "namespace": "hosting.web.task"
+    },
     "hosting.web.task.ObjectTypeEnum": {
-      "description": "Task object type listing",
+      "description": "Object type enum",
       "enum": [
         "Abuse",
         "AttachedDomain",
@@ -11654,12 +11766,11 @@ export const schema: Schema = {
       "namespace": "hosting.web.task"
     },
     "hosting.web.task.StatusEnum": {
-      "description": "Task's status",
+      "description": "Task status enum",
       "enum": [
         "cancelled",
         "doing",
         "done",
-        "error",
         "init",
         "todo"
       ],

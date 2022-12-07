@@ -10,8 +10,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-01-10T00:00:00+01:00",
+            "deprecatedDate": "2022-11-15T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "List available services",
           "httpMethod": "GET",
@@ -31,8 +33,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -61,8 +63,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
@@ -115,8 +117,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Change user email",
           "httpMethod": "POST",
@@ -153,8 +155,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Change language of the Plesk instance",
           "httpMethod": "POST",
@@ -191,8 +193,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Register a migration request",
           "httpMethod": "POST",
@@ -237,8 +239,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Restart instance",
           "httpMethod": "POST",
@@ -275,8 +277,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Reinstall instance",
           "httpMethod": "POST",
@@ -305,8 +307,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get reset instance password url",
           "httpMethod": "GET",
@@ -335,8 +337,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Set new reverse to ip",
           "httpMethod": "POST",
@@ -373,8 +375,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -397,8 +399,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
@@ -434,8 +436,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "List instance's current snapshots",
           "httpMethod": "GET",
@@ -458,8 +460,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Make manual snapshot",
           "httpMethod": "POST",
@@ -488,8 +490,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Detail of a snapshot",
           "httpMethod": "GET",
@@ -526,8 +528,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Restore a snapshot",
           "httpMethod": "POST",
@@ -564,8 +566,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get list of tasks",
           "httpMethod": "GET",
@@ -594,8 +596,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get task information given its id",
           "httpMethod": "GET",

@@ -26,7 +26,7 @@ export namespace dedicated {
      * ovh datacenter
      * type fullname: dedicated.DatacenterEnum
      */
-    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "bhs8" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sbg5" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1"
+    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "bhs8" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lil1-int1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sbg5" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1"
 }
 export namespace dedicatedCloud {
     /**
@@ -159,7 +159,7 @@ export namespace dedicatedCloud {
      * The commercial name component
      * type fullname: dedicatedCloud.CommercialNameEnum
      */
-    export type CommercialNameEnum = "CDI" | "CDI-HDS" | "CDI-HIPAA" | "CDI-NSX" | "CDI-NSX-VROPS" | "CDI-PCIDSS" | "CDI-UNKNOWN" | "CDI-VROPS" | "DC" | "DC-ANCIENT" | "DC-ANCIENT-HDS" | "DC-ANCIENT-HIPAA" | "DC-ANCIENT-NSX" | "DC-ANCIENT-NSX-VROPS" | "DC-ANCIENT-PCIDSS" | "DC-ANCIENT-UNKNOWN" | "DC-ANCIENT-VROPS" | "DC-HDS" | "DC-HIPAA" | "DC-LEGACY" | "DC-LEGACY-HDS" | "DC-LEGACY-HIPAA" | "DC-LEGACY-NSX" | "DC-LEGACY-NSX-VROPS" | "DC-LEGACY-PCIDSS" | "DC-LEGACY-UNKNOWN" | "DC-LEGACY-VROPS" | "DC-NSX" | "DC-NSX-VROPS" | "DC-PCIDSS" | "DC-UNKNOWN" | "DC-VROPS" | "ESSENTIALS" | "ESSENTIALS-HDS" | "ESSENTIALS-HIPAA" | "ESSENTIALS-NSX" | "ESSENTIALS-NSX-VROPS" | "ESSENTIALS-PCIDSS" | "ESSENTIALS-UNKNOWN" | "ESSENTIALS-VROPS" | "PREMIER" | "PREMIER-HDS" | "PREMIER-HIPAA" | "PREMIER-NSX" | "PREMIER-NSX-VROPS" | "PREMIER-PCIDSS" | "PREMIER-UNKNOWN" | "PREMIER-VROPS" | "SDDC" | "SDDC-HDS" | "SDDC-HIPAA" | "SDDC-LEGACY" | "SDDC-LEGACY-HDS" | "SDDC-LEGACY-HIPAA" | "SDDC-LEGACY-PCIDSS" | "SDDC-LEGACY-UNKNOWN" | "SDDC-LEGACY-VROPS" | "SDDC-LEGACY-VROPS-WITHOUT-NSX" | "SDDC-LEGACY-WITHOUT-NSX" | "SDDC-PCIDSS" | "SDDC-UNKNOWN" | "SDDC-VROPS" | "SDDC-VROPS-WITHOUT-NSX" | "SDDC-WITHOUT-NSX" | "UNKNOWN" | "UNKNOWN-HDS" | "UNKNOWN-HIPAA" | "UNKNOWN-NSX" | "UNKNOWN-NSX-VROPS" | "UNKNOWN-PCIDSS" | "UNKNOWN-UNKNOWN" | "UNKNOWN-VROPS"
+    export type CommercialNameEnum = "CDI" | "CDI-HDS" | "CDI-HIPAA" | "CDI-NSX" | "CDI-NSX-T" | "CDI-NSX-VROPS" | "CDI-PCIDSS" | "CDI-UNKNOWN" | "CDI-VROPS" | "DC" | "DC-ANCIENT" | "DC-ANCIENT-HDS" | "DC-ANCIENT-HIPAA" | "DC-ANCIENT-NSX" | "DC-ANCIENT-NSX-T" | "DC-ANCIENT-NSX-VROPS" | "DC-ANCIENT-PCIDSS" | "DC-ANCIENT-UNKNOWN" | "DC-ANCIENT-VROPS" | "DC-HDS" | "DC-HIPAA" | "DC-LEGACY" | "DC-LEGACY-HDS" | "DC-LEGACY-HIPAA" | "DC-LEGACY-NSX" | "DC-LEGACY-NSX-T" | "DC-LEGACY-NSX-VROPS" | "DC-LEGACY-PCIDSS" | "DC-LEGACY-UNKNOWN" | "DC-LEGACY-VROPS" | "DC-NSX" | "DC-NSX-T" | "DC-NSX-VROPS" | "DC-PCIDSS" | "DC-UNKNOWN" | "DC-VROPS" | "ESSENTIALS" | "ESSENTIALS-HDS" | "ESSENTIALS-HIPAA" | "ESSENTIALS-NSX" | "ESSENTIALS-NSX-T" | "ESSENTIALS-NSX-VROPS" | "ESSENTIALS-PCIDSS" | "ESSENTIALS-UNKNOWN" | "ESSENTIALS-VROPS" | "PREMIER" | "PREMIER-HDS" | "PREMIER-HIPAA" | "PREMIER-NSX" | "PREMIER-NSX-T" | "PREMIER-NSX-VROPS" | "PREMIER-PCIDSS" | "PREMIER-UNKNOWN" | "PREMIER-VROPS" | "SDDC" | "SDDC-HDS" | "SDDC-HIPAA" | "SDDC-LEGACY" | "SDDC-LEGACY-HDS" | "SDDC-LEGACY-HIPAA" | "SDDC-LEGACY-PCIDSS" | "SDDC-LEGACY-UNKNOWN" | "SDDC-LEGACY-VROPS" | "SDDC-LEGACY-VROPS-WITHOUT-NSX" | "SDDC-LEGACY-WITHOUT-NSX" | "SDDC-PCIDSS" | "SDDC-UNKNOWN" | "SDDC-VROPS" | "SDDC-VROPS-WITHOUT-NSX" | "SDDC-WITHOUT-NSX" | "UNKNOWN" | "UNKNOWN-HDS" | "UNKNOWN-HIPAA" | "UNKNOWN-NSX" | "UNKNOWN-NSX-T" | "UNKNOWN-NSX-VROPS" | "UNKNOWN-PCIDSS" | "UNKNOWN-UNKNOWN" | "UNKNOWN-VROPS"
     /**
      * The commercial ranges actually available for your Dedicated Cloud
      * interface fullName: dedicatedCloud.CommercialRange.CommercialRange
@@ -1175,7 +1175,7 @@ export namespace dedicatedCloud {
          * Security option identifiers
          * type fullname: dedicatedCloud.securityOption.SecurityOptionEnum
          */
-        export type SecurityOptionEnum = "accessNetworkFiltered" | "advancedSecurity" | "base" | "grsecKernel" | "hds" | "hids" | "hipaa" | "nids" | "pcidss" | "privateCustomerVlan" | "privateGw" | "sendLogToCustomer" | "sessionTimeout" | "sftp" | "snc" | "spla" | "sslV3" | "tls1.2" | "tokenValidation" | "twoFa" | "twoFaFail2ban" | "vrliForwarder" | "waf"
+        export type SecurityOptionEnum = "accessNetworkFiltered" | "advancedSecurity" | "base" | "contentLibrary" | "grsecKernel" | "hds" | "hids" | "hipaa" | "nids" | "pcidss" | "privateCustomerVlan" | "privateGw" | "sendLogToCustomer" | "sessionTimeout" | "sftp" | "snc" | "spla" | "sslV3" | "tls1.2" | "tokenValidation" | "twoFa" | "twoFaFail2ban" | "vrliForwarder" | "waf"
         /**
          * Security option detailed states
          * type fullname: dedicatedCloud.securityOption.StateEnum
