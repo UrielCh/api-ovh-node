@@ -245,7 +245,7 @@ export class RegionGenerator {
                 license: "MIT",
                 author: "Uriel Chemouni <uchemouni@gmail.com>",
                 dependencies: {
-                    "@ovh-api/common": "4.0.0-beta2",
+                    "@ovh-api/common": "4.0.0",
                 },
                 publishConfig: {
                     access: "public"
