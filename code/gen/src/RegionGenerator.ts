@@ -287,7 +287,6 @@ export class RegionGenerator {
                 ...compilerOptions,
                 module: "ES2020",
                 declaration: true,
-                outDir: ".",
             }, include
         }, undefined, 4);
         const expectedCjs = JSON.stringify({
