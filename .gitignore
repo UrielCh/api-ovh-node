@@ -1,5 +1,5 @@
 node_modules
-**/.vscode
+**/.vscode/launch.json
 *.log
 package/*/dist/
 code/api/dist/
