@@ -154,7 +154,7 @@ const handlerRoot = <ProxyHandler<OvhProxyApi>>{
     },
     get(target: OvhProxyApi, p: PropertyKey, receiver: any) {
         if (typeof p === 'symbol')
-            return (<any>target)[p];
+            return (target as any)[p];
         let key = p.toString();
         switch (key) {
             // object
