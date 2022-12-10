@@ -31,7 +31,7 @@ export interface ICacheOptions {
     /**
      * max memmory used to store your cache
      */
-    size?:number;
+    size?: number;
     /**
      * max number of entry in your cache
      */
@@ -68,7 +68,7 @@ export interface OvhRequestable {
      * @param params: The request parameters (passed as query string or body params)
      * @deprecated
      */
-    request(httpMethod: string, path: string, params?: OvhParamType): Promise<any>;
+    //request(httpMethod: string, path: string, params?: OvhParamType): Promise<any>;
 
     /**
      * cache controle
@@ -165,7 +165,7 @@ const handlerRoot = <ProxyHandler<OvhProxyApi>>{
                 // isPrototypeOf
                 // propertyIsEnumerable
                 // constructor
-                return (target as any)[p];
+                return target[p as 'toString' | 'valueOf' | 'toLocaleString'];
             // EventEmitter
             case 'addListener':
             case 'on':
@@ -183,13 +183,15 @@ const handlerRoot = <ProxyHandler<OvhProxyApi>>{
             case 'eventNames':
             case 'listenerCount':
                 return (target as any)[p];
+            // return (target as unknown as EventEmitter)[p as 'addListener' | 'on' | 'once' | 'prependListener' | 'prependOnceListener' | 'removeListener' | 'off' | 'removeAllListeners' | 'setMaxListeners' | 'getMaxListeners' | 'listeners' | 'rawListeners' | 'emit' | 'eventNames' | 'listenerCount'];
             // legacy method only in root level
             // @deprecated
             case 'get':
             case 'put':
             case 'post':
             case 'delete':
-                return (path: string) => (params: OvhParamType) => target._ovhEngine.request(key, path, params)
+                // root level call do not have path parameter so pathTemplate == path
+                return (path: string) => (params: OvhParamType) => target._ovhEngine.doRequest(key, path, path, params)
         }
         return commonGet(key, target);
     }
