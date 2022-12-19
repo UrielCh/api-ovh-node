@@ -13,7 +13,7 @@
   ],
   "typings": "dist/index.d.ts",
   "license": "MIT",
-  "author": "Uriel Chemouni <uchemouni@gmail.com> (https://urielch.github.io/)",
+  "author": "Uriel Chemouni <uchemouni@gmail.com> (https://uriel.deno.dev/)",
   "bin": {
     "ovh-telephony-events": "./bin/ovh-telephony-events"
   },

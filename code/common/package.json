@@ -13,7 +13,7 @@
     }
   },
   "license": "MIT",
-  "author": "Uriel Chemouni <uchemouni@gmail.com> (https://urielch.github.io/)",
+  "author": "Uriel Chemouni <uchemouni@gmail.com> (https://uriel.deno.dev/)",
   "gitHead": "9054d4e68cd0b25c73f4d6d47a17e6b174a281db",
   "publishConfig": {
     "access": "public"

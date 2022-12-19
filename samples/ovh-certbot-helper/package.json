@@ -15,7 +15,7 @@
   ],
   "typings": "index.d.ts",
   "license": "MIT",
-  "author": "Uriel Chemouni <uchemouni@gmail.com> (https://urielch.github.io/)",
+  "author": "Uriel Chemouni <uchemouni@gmail.com> (https://uriel.deno.dev/)",
   "bin": {
     "ovh-certbot-helper": "./bin/ovh-certbot-helper"
   },
