@@ -50,7 +50,7 @@ test('play with domains', async (t) => {
         t.fail('should throw invalid ipv4');
     } catch (e) {
         const error = e as OvhError;
-        t.assert(error.path === `/domain/zone/${zoneName}/record`, `path shoud be present in error`);
+        t.assert(error.path === `/domain/zone/${zoneName}/record`, `path shoud be present in error, path: "${error.path}"`);
         t.assert(error.errorCode === 'HTTP_ERROR', `errorCode should be HTTP_ERROR, GET "${error.errorCode}"`);
         t.assert(error.httpCode === '400 Bad Request', `httpCode should be 400 Bad Request, GET "${error.httpCode}"`);
         t.assert(error.message.includes('Invalid IPv4'), 'Error should be Invalid IPv4')

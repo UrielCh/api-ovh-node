@@ -35,6 +35,7 @@ import { CertMonitorProvider, stdOutCertMonitorProvider } from './certMonitor.js
 import { Cache } from './Cache.js';
 import { OvhParams, OvhParamsFull } from './OvhParams.js';
 import { RequestContext } from './helper.js';
+// import { makeRequest } from './requestFetch.js';
 import { makeRequest } from './requestHandler.js';
 import { OvhError } from './OvhError.js';
 import * as path from 'node:path';
