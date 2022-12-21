@@ -26,11 +26,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/domain"
@@ -56,11 +52,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.Domain",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Domain"
         },
         {
           "apiStatus": {
@@ -87,11 +79,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/{serviceName}"
@@ -117,11 +105,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "password",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "password"
         }
       ],
       "path": "/domain/{serviceName}/authInfo"
@@ -171,11 +155,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/domain/{serviceName}/changeContact"
@@ -201,11 +181,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.configurations.ObfuscatedEmail[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.configurations.ObfuscatedEmail[]"
         },
         {
           "apiStatus": {
@@ -232,11 +208,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.configurations.ObfuscatedEmail[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.configurations.ObfuscatedEmail[]"
         }
       ],
       "path": "/domain/{serviceName}/configurations/obfuscatedEmails"
@@ -269,11 +241,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/{serviceName}/configurations/obfuscatedEmails/refresh"
@@ -299,11 +267,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.configurations.Optin[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.configurations.Optin[]"
         },
         {
           "apiStatus": {
@@ -330,11 +294,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.configurations.Optin[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.configurations.Optin[]"
         }
       ],
       "path": "/domain/{serviceName}/configurations/optin"
@@ -376,11 +336,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -408,11 +364,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Task"
         }
       ],
       "path": "/domain/{serviceName}/dsRecord"
@@ -446,11 +398,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.DnssecKey",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.DnssecKey"
         }
       ],
       "path": "/domain/{serviceName}/dsRecord/{id}"
@@ -484,11 +432,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -515,11 +459,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Task"
         }
       ],
       "path": "/domain/{serviceName}/glueRecord"
@@ -553,11 +493,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Task"
         },
         {
           "apiStatus": {
@@ -585,11 +521,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.glueRecord.GlueRecord",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.glueRecord.GlueRecord"
         }
       ],
       "path": "/domain/{serviceName}/glueRecord/{host}"
@@ -630,11 +562,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Task"
         }
       ],
       "path": "/domain/{serviceName}/glueRecord/{host}/update"
@@ -660,11 +588,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -691,11 +615,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Task"
         }
       ],
       "path": "/domain/{serviceName}/nameServer"
@@ -729,11 +649,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Task"
         },
         {
           "apiStatus": {
@@ -761,11 +677,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.nameServer.FullNameServer",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.nameServer.FullNameServer"
         }
       ],
       "path": "/domain/{serviceName}/nameServer/{id}"
@@ -799,11 +711,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.nameServer.NameServerStatus",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.nameServer.NameServerStatus"
         },
         {
           "apiStatus": {
@@ -834,11 +742,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.nameServer.NameServerStatus",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.nameServer.NameServerStatus"
         }
       ],
       "path": "/domain/{serviceName}/nameServer/{id}/status"
@@ -871,11 +775,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Task"
         }
       ],
       "path": "/domain/{serviceName}/nameServers/update"
@@ -901,11 +801,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.DomainOptionEnum[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.DomainOptionEnum[]"
         }
       ],
       "path": "/domain/{serviceName}/option"
@@ -939,11 +835,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -971,11 +863,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.Option",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Option"
         }
       ],
       "path": "/domain/{serviceName}/option/{option}"
@@ -1001,11 +889,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.ServiceOptions",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.ServiceOptions"
         }
       ],
       "path": "/domain/{serviceName}/options"
@@ -1038,11 +922,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/{serviceName}/outgoingTransfer/approve"
@@ -1079,11 +959,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "domain.WhoisObfuscatorFieldsEnum[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.WhoisObfuscatorFieldsEnum[]"
         },
         {
           "apiStatus": {
@@ -1113,11 +989,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.WhoisObfuscatorFieldsEnum[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.WhoisObfuscatorFieldsEnum[]"
         }
       ],
       "path": "/domain/{serviceName}/owo"
@@ -1153,11 +1025,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -1187,11 +1055,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.Owo",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Owo"
         }
       ],
       "path": "/domain/{serviceName}/owo/{field}"
@@ -1217,11 +1081,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.configurations.ContactTypeEnum[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.configurations.ContactTypeEnum[]"
         }
       ],
       "path": "/domain/{serviceName}/rules/emailsObfuscation"
@@ -1247,11 +1107,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.rules.Optin[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.rules.Optin[]"
         }
       ],
       "path": "/domain/{serviceName}/rules/optin"
@@ -1277,11 +1133,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -1308,11 +1160,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/{serviceName}/serviceInfos"
@@ -1354,11 +1202,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/domain/{serviceName}/task"
@@ -1392,11 +1236,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Task"
         }
       ],
       "path": "/domain/{serviceName}/task/{id}"
@@ -1430,11 +1270,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/{serviceName}/task/{id}/accelerate"
@@ -1468,11 +1304,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/{serviceName}/task/{id}/cancel"
@@ -1506,11 +1338,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/{serviceName}/task/{id}/relaunch"
@@ -1543,11 +1371,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Task"
         }
       ],
       "path": "/domain/{serviceName}/ukOutgoingTransfer"
@@ -1573,11 +1397,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.UkRegistrar[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.UkRegistrar[]"
         }
       ],
       "path": "/domain/{serviceName}/ukRegistrars"
@@ -1652,11 +1472,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/configurationRule/check"
@@ -1673,11 +1489,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "domain.Contact[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Contact[]"
         },
         {
           "apiStatus": {
@@ -1696,11 +1508,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.Contact",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Contact"
         }
       ],
       "path": "/domain/contact"
@@ -1726,11 +1534,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.Contact",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Contact"
         },
         {
           "apiStatus": {
@@ -1757,11 +1561,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.Contact",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.Contact"
         }
       ],
       "path": "/domain/contact/{contactId}"
@@ -1866,11 +1666,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/domain/extensions"
@@ -1896,11 +1692,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.extensions.Extension",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.extensions.Extension"
         }
       ],
       "path": "/domain/extensions/{name}"
@@ -1926,11 +1718,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.extensions.registryConfigurations.RegistryConfigurations",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.extensions.registryConfigurations.RegistryConfigurations"
         }
       ],
       "path": "/domain/extensions/{name}/registryConfigurations"
@@ -1956,11 +1744,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "domain.extensions.ExtensionsByCategory",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.extensions.ExtensionsByCategory"
         }
       ],
       "path": "/domain/extensions/byCategory"
@@ -1986,11 +1770,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/domain/extensions/highlighted"
@@ -2016,11 +1796,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "domain.extensions.ExtensionsPricingAttributes[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.extensions.ExtensionsPricingAttributes[]"
         }
       ],
       "path": "/domain/extensions/pricingAttributes"
@@ -2037,11 +1813,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/domain/zone"
@@ -2067,11 +1839,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.zone.Zone",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.zone.Zone"
         }
       ],
       "path": "/domain/zone/{zoneName}"
@@ -2097,11 +1865,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "zone.Capabilities",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "zone.Capabilities"
         }
       ],
       "path": "/domain/zone/{zoneName}/capabilities"
@@ -2151,11 +1915,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/domain/zone/{zoneName}/changeContact"
@@ -2213,11 +1973,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/domain/zone/{zoneName}/confirmTermination"
@@ -2243,11 +1999,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -2267,11 +2019,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.zone.Dnssec",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.zone.Dnssec"
         },
         {
           "apiStatus": {
@@ -2291,11 +2039,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/zone/{zoneName}/dnssec"
@@ -2321,11 +2065,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "text",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "text"
         }
       ],
       "path": "/domain/zone/{zoneName}/export"
@@ -2367,11 +2107,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "datetime[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "datetime[]"
         }
       ],
       "path": "/domain/zone/{zoneName}/history"
@@ -2405,11 +2141,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.zone.ZoneRestorePoint",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.zone.ZoneRestorePoint"
         }
       ],
       "path": "/domain/zone/{zoneName}/history/{creationDate}"
@@ -2443,11 +2175,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.zone.Task",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.zone.Task"
         }
       ],
       "path": "/domain/zone/{zoneName}/history/{creationDate}/restore"
@@ -2481,11 +2209,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.zone.Task",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.zone.Task"
         }
       ],
       "path": "/domain/zone/{zoneName}/import"
@@ -2511,11 +2235,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/domain/zone/{zoneName}/option"
@@ -2549,11 +2269,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.zone.Option",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.zone.Option"
         }
       ],
       "path": "/domain/zone/{zoneName}/option/{name}"
@@ -2587,11 +2303,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -2627,11 +2339,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/zone/{zoneName}/option/{name}/serviceInfos"
@@ -2673,11 +2381,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -2729,11 +2433,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.zone.Record",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.zone.Record"
         }
       ],
       "path": "/domain/zone/{zoneName}/record"
@@ -2767,11 +2467,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -2799,11 +2495,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.zone.Record",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.zone.Record"
         },
         {
           "apiStatus": {
@@ -2838,11 +2530,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/zone/{zoneName}/record/{id}"
@@ -2876,11 +2564,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -2948,11 +2632,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.zone.Redirection",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.zone.Redirection"
         }
       ],
       "path": "/domain/zone/{zoneName}/redirection"
@@ -2986,11 +2666,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -3018,11 +2694,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.zone.Redirection",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.zone.Redirection"
         },
         {
           "apiStatus": {
@@ -3057,11 +2729,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/zone/{zoneName}/redirection/{id}"
@@ -3087,11 +2755,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/zone/{zoneName}/refresh"
@@ -3133,11 +2797,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/zone/{zoneName}/reset"
@@ -3163,11 +2823,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -3194,11 +2850,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/zone/{zoneName}/serviceInfos"
@@ -3224,11 +2876,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.zone.Soa",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.zone.Soa"
         },
         {
           "apiStatus": {
@@ -3255,11 +2903,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/zone/{zoneName}/soa"
@@ -3285,11 +2929,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "zone.Status",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "zone.Status"
         }
       ],
       "path": "/domain/zone/{zoneName}/status"
@@ -3331,11 +2971,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/domain/zone/{zoneName}/task"
@@ -3369,11 +3005,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "domain.zone.Task",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "domain.zone.Task"
         }
       ],
       "path": "/domain/zone/{zoneName}/task/{id}"
@@ -3407,11 +3039,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/zone/{zoneName}/task/{id}/accelerate"
@@ -3445,11 +3073,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/zone/{zoneName}/task/{id}/cancel"
@@ -3483,11 +3107,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/domain/zone/{zoneName}/task/{id}/relaunch"
@@ -3513,11 +3133,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/domain/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/domain/zone/{zoneName}/terminate"

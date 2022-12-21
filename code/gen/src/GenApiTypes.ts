@@ -4,6 +4,7 @@ import { endpoints } from './endpoints';
 import path from 'path';
 import fse from 'fs-extra';
 import { EOL } from 'os';
+import { writeIfDiff } from './utils';
 
 export const INDEX_BY_NAME = false;
 
@@ -165,7 +166,7 @@ export default class GenApiTypes {
             if (!schema.apis) {
                 console.error(`Missing APIS in ${srcUrl}`)
             } else {
-                schema.apis.sort((a,b) => a.path.localeCompare(b.path));
+                schema.apis.sort((a, b) => a.path.localeCompare(b.path));
                 schema.apis.forEach(api => {
                     if (!api.operations) {
                         console.error(`missing APIS in Operartions in ${api.path} in ${srcUrl}`)
@@ -195,7 +196,9 @@ export default class GenApiTypes {
             const commentHeader = `// imported from ${srcUrl}${EOL}${EOL}`;
             const exportHeader = `export const schema: Schema = `;
             if (doWrite) {
-                await fse.writeFile(destination, `${importHeader}${commentHeader}${exportHeader}${json}`, { encoding: 'UTF8' });
+                const code = `${importHeader}${commentHeader}${exportHeader}${json}`;
+                await writeIfDiff(destination, code)
+                // await fse.writeFile(destination, `${importHeader}${commentHeader}${exportHeader}${json}`, { encoding: 'UTF8' });
             }
             // Entry Points
             if (schema.apis)

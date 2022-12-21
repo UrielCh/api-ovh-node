@@ -69,11 +69,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicated-installationTemplate/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/dedicated/installationTemplate/{templateName}/partitionScheme"
@@ -107,11 +103,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.installationTemplate.templatePartitioningSchemes",
-          "scopes": [
-            "all",
-            "product/dedicated-installationTemplate/all"
-          ]
+          "responseType": "dedicated.installationTemplate.templatePartitioningSchemes"
         }
       ],
       "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}"
@@ -145,11 +137,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicated-installationTemplate/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid"
@@ -191,11 +179,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.installationTemplate.hardwareRaid",
-          "scopes": [
-            "all",
-            "product/dedicated-installationTemplate/all"
-          ]
+          "responseType": "dedicated.installationTemplate.hardwareRaid"
         }
       ],
       "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}"
@@ -229,11 +213,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicated-installationTemplate/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition"
@@ -275,11 +255,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.installationTemplate.templatePartitions",
-          "scopes": [
-            "all",
-            "product/dedicated-installationTemplate/all"
-          ]
+          "responseType": "dedicated.installationTemplate.templatePartitions"
         }
       ],
       "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}"

@@ -492,6 +492,13 @@ export interface Storage {
                              * Controle cache
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            hold: {
+                                /**
+                                 * Hold an automatic share snapshot
+                                 * POST /storage/netapp/{serviceName}/share/{shareId}/snapshot/{snapshotId}/hold
+                                 */
+                                $post(): Promise<storage.NetAppShareSnapshot>;
+                            }
                         };
                     }
                     snapshotPolicy: {

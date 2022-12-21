@@ -50,11 +50,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ipBlock[]"
         }
       ],
       "path": "/ip"
@@ -80,11 +76,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.Ip",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.Ip"
         },
         {
           "apiStatus": {
@@ -111,11 +103,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/ip/{ip}"
@@ -149,11 +137,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "ipv4[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ipv4[]"
         }
       ],
       "path": "/ip/{ip}/antihack"
@@ -187,11 +171,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.BlockedIp",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.BlockedIp"
         }
       ],
       "path": "/ip/{ip}/antihack/{ipBlocked}"
@@ -225,11 +205,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/ip/{ip}/antihack/{ipBlocked}/unblock"
@@ -263,11 +239,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "ipv4[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ipv4[]"
         }
       ],
       "path": "/ip/{ip}/arp"
@@ -301,11 +273,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.ArpBlockedIp",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.ArpBlockedIp"
         }
       ],
       "path": "/ip/{ip}/arp/{ipBlocked}"
@@ -339,11 +307,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/ip/{ip}/arp/{ipBlocked}/unblock"
@@ -377,11 +341,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.IpTask",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.IpTask"
         }
       ],
       "path": "/ip/{ip}/changeOrg"
@@ -407,11 +367,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -439,11 +395,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.ReverseDelegation",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.ReverseDelegation"
         }
       ],
       "path": "/ip/{ip}/delegation"
@@ -477,11 +429,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -509,11 +457,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.ReverseDelegation",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.ReverseDelegation"
         }
       ],
       "path": "/ip/{ip}/delegation/{target}"
@@ -555,11 +499,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "ipv4[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ipv4[]"
         },
         {
           "apiStatus": {
@@ -587,11 +527,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.FirewallIp",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.FirewallIp"
         }
       ],
       "path": "/ip/{ip}/firewall"
@@ -625,11 +561,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "string"
         },
         {
           "apiStatus": {
@@ -657,11 +589,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.FirewallIp",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.FirewallIp"
         },
         {
           "apiStatus": {
@@ -696,11 +624,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/ip/{ip}/firewall/{ipOnFirewall}"
@@ -742,11 +666,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -830,11 +750,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.FirewallNetworkRule",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.FirewallNetworkRule"
         }
       ],
       "path": "/ip/{ip}/firewall/{ipOnFirewall}/rule"
@@ -876,11 +792,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.FirewallNetworkRule",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.FirewallNetworkRule"
         },
         {
           "apiStatus": {
@@ -916,11 +828,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.FirewallNetworkRule",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.FirewallNetworkRule"
         }
       ],
       "path": "/ip/{ip}/firewall/{ipOnFirewall}/rule/{sequence}"
@@ -946,11 +854,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipv4[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ipv4[]"
         }
       ],
       "path": "/ip/{ip}/game"
@@ -984,11 +888,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.GameMitigation",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.GameMitigation"
         },
         {
           "apiStatus": {
@@ -1023,11 +923,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/ip/{ip}/game/{ipOnGame}"
@@ -1061,11 +957,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -1109,11 +1001,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.GameMitigationRule",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.GameMitigationRule"
         }
       ],
       "path": "/ip/{ip}/game/{ipOnGame}/rule"
@@ -1155,11 +1043,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.GameMitigationRule",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.GameMitigationRule"
         },
         {
           "apiStatus": {
@@ -1195,11 +1079,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.GameMitigationRule",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.GameMitigationRule"
         }
       ],
       "path": "/ip/{ip}/game/{ipOnGame}/rule/{id}"
@@ -1233,11 +1113,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/ip/{ip}/license/cloudLinux"
@@ -1271,11 +1147,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/ip/{ip}/license/cpanel"
@@ -1309,11 +1181,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/ip/{ip}/license/directadmin"
@@ -1347,11 +1215,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/ip/{ip}/license/plesk"
@@ -1385,11 +1249,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/ip/{ip}/license/sqlserver"
@@ -1423,11 +1283,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/ip/{ip}/license/virtuozzo"
@@ -1461,11 +1317,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/ip/{ip}/license/windows"
@@ -1499,11 +1351,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/ip/{ip}/license/worklight"
@@ -1529,11 +1377,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.IpMigrationToken",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.IpMigrationToken"
         },
         {
           "apiStatus": {
@@ -1561,11 +1405,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.IpMigrationToken",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.IpMigrationToken"
         }
       ],
       "path": "/ip/{ip}/migrationToken"
@@ -1607,11 +1447,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "ipv4[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ipv4[]"
         },
         {
           "apiStatus": {
@@ -1639,11 +1475,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.MitigationIp",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.MitigationIp"
         }
       ],
       "path": "/ip/{ip}/mitigation"
@@ -1677,11 +1509,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.MitigationIp",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.MitigationIp"
         },
         {
           "apiStatus": {
@@ -1709,11 +1537,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.MitigationIp",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.MitigationIp"
         },
         {
           "apiStatus": {
@@ -1748,11 +1572,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/ip/{ip}/mitigation/{ipOnMitigation}"
@@ -1810,11 +1630,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.MitigationStats[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.MitigationStats[]"
         }
       ],
       "path": "/ip/{ip}/mitigation/{ipOnMitigation}/stats"
@@ -1864,11 +1680,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.MitigationDetailedStats[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.MitigationDetailedStats[]"
         }
       ],
       "path": "/ip/{ip}/mitigation/{ipOnMitigation}/topStream"
@@ -1894,11 +1706,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipv4[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ipv4[]"
         },
         {
           "apiStatus": {
@@ -1934,11 +1742,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.MitigationProfile",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.MitigationProfile"
         }
       ],
       "path": "/ip/{ip}/mitigationProfiles"
@@ -1972,11 +1776,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -2004,11 +1804,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.MitigationProfile",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.MitigationProfile"
         },
         {
           "apiStatus": {
@@ -2043,11 +1839,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/ip/{ip}/mitigationProfiles/{ipMitigationProfile}"
@@ -2073,11 +1865,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.Destinations",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.Destinations"
         },
         {
           "apiStatus": {
@@ -2113,11 +1901,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.IpTask",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.IpTask"
         }
       ],
       "path": "/ip/{ip}/move"
@@ -2143,11 +1927,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.IpTask",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.IpTask"
         }
       ],
       "path": "/ip/{ip}/park"
@@ -2189,11 +1969,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/ip/{ip}/phishing"
@@ -2227,11 +2003,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.Antiphishing",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.Antiphishing"
         }
       ],
       "path": "/ip/{ip}/phishing/{id}"
@@ -2257,11 +2029,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip[]"
         },
         {
           "apiStatus": {
@@ -2297,11 +2065,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.ReverseIp",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.ReverseIp"
         }
       ],
       "path": "/ip/{ip}/reverse"
@@ -2335,11 +2099,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -2367,11 +2127,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.ReverseIp",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.ReverseIp"
         }
       ],
       "path": "/ip/{ip}/reverse/{ipReverse}"
@@ -2397,11 +2153,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.RipeInfos",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.RipeInfos"
         },
         {
           "apiStatus": {
@@ -2428,11 +2180,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/ip/{ip}/ripe"
@@ -2466,11 +2214,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "ipv4[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ipv4[]"
         }
       ],
       "path": "/ip/{ip}/spam"
@@ -2504,11 +2248,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.SpamIp",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.SpamIp"
         }
       ],
       "path": "/ip/{ip}/spam/{ipSpamming}"
@@ -2558,11 +2298,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.SpamStats[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.SpamStats[]"
         }
       ],
       "path": "/ip/{ip}/spam/{ipSpamming}/stats"
@@ -2596,11 +2332,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.SpamIp",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.SpamIp"
         }
       ],
       "path": "/ip/{ip}/spam/{ipSpamming}/unblock"
@@ -2642,11 +2374,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/ip/{ip}/task"
@@ -2680,11 +2408,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.IpTask",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.IpTask"
         }
       ],
       "path": "/ip/{ip}/task/{taskId}"
@@ -2713,11 +2437,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.IpTask",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.IpTask"
         }
       ],
       "path": "/ip/{ip}/terminate"
@@ -2751,11 +2471,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/ip/loadBalancing"
@@ -2781,11 +2497,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.LoadBalancingIp",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.LoadBalancingIp"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}"
@@ -2811,11 +2523,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip[]"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/allowedBackends"
@@ -2841,11 +2549,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipv4[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ipv4[]"
         },
         {
           "apiStatus": {
@@ -2889,11 +2593,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.LoadBalancingTask",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.LoadBalancingTask"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/backend"
@@ -2927,11 +2627,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.LoadBalancingTask",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.LoadBalancingTask"
         },
         {
           "apiStatus": {
@@ -2959,11 +2655,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.LoadBalancingBackendIp",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.LoadBalancingBackendIp"
         },
         {
           "apiStatus": {
@@ -2998,11 +2690,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/backend/{backend}"
@@ -3052,11 +2740,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.LoadBalancingTask",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.LoadBalancingTask"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/backend/{backend}/backupState"
@@ -3098,11 +2782,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.LoadBalancingTask",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.LoadBalancingTask"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/backend/{backend}/setWeight"
@@ -3152,11 +2832,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.LoadBalancingTask",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.LoadBalancingTask"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/importCustomSsl"
@@ -3190,11 +2866,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ipBlock"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/internalNatIp"
@@ -3220,11 +2892,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.LoadBalancingAdditionalPortEnum[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.LoadBalancingAdditionalPortEnum[]"
         },
         {
           "apiStatus": {
@@ -3251,11 +2919,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.LoadBalancingTask",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.LoadBalancingTask"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/portsRedirection"
@@ -3289,11 +2953,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.LoadBalancingTask",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.LoadBalancingTask"
         },
         {
           "apiStatus": {
@@ -3321,11 +2981,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.LoadBalancingIp.LoadBalancingPort",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.LoadBalancingIp.LoadBalancingPort"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}"
@@ -3359,11 +3015,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ipBlock[]"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/probeIp"
@@ -3389,11 +3041,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.LoadBalancingTask",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.LoadBalancingTask"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/restoreSsl"
@@ -3419,11 +3067,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -3450,11 +3094,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/serviceInfos"
@@ -3488,11 +3128,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.LoadBalancingTask",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.LoadBalancingTask"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/stickiness"
@@ -3518,11 +3154,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Task.Task",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ipLoadbalancing.Task.Task"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/switchToIplbNextGenerationApi"
@@ -3548,11 +3180,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/task"
@@ -3586,11 +3214,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.LoadBalancingTask",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.LoadBalancingTask"
         }
       ],
       "path": "/ip/loadBalancing/{serviceName}/task/{taskId}"
@@ -3607,11 +3231,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/ip/service"
@@ -3637,11 +3257,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.ServiceIp",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "ip.ServiceIp"
         },
         {
           "apiStatus": {
@@ -3668,11 +3284,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/ip/service/{serviceName}"
@@ -3722,11 +3334,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/ip/service/{serviceName}/changeContact"
@@ -3784,11 +3392,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/ip/service/{serviceName}/confirmTermination"
@@ -3814,11 +3418,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.NonExpiringService",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "services.NonExpiringService"
         }
       ],
       "path": "/ip/service/{serviceName}/serviceInfos"
@@ -3844,11 +3444,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/ip/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/ip/service/{serviceName}/terminate"
@@ -4188,7 +3784,8 @@ export const schema: Schema = {
         "syd1",
         "syd2",
         "vin1",
-        "waw1"
+        "waw1",
+        "ynm1"
       ],
       "enumType": "string",
       "id": "DatacenterEnum",

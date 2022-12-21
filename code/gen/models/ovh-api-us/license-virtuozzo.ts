@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/license/virtuozzo"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.virtuozzo.Virtuozzo",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.virtuozzo.Virtuozzo"
         },
         {
           "apiStatus": {
@@ -78,11 +70,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/license/virtuozzo/{serviceName}"
@@ -108,11 +96,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "ipBlock[]"
         }
       ],
       "path": "/license/virtuozzo/{serviceName}/allowedDestinationIp"
@@ -146,11 +130,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.ChangeIpStatus",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.ChangeIpStatus"
         }
       ],
       "path": "/license/virtuozzo/{serviceName}/canLicenseBeMovedTo"
@@ -184,11 +164,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Task",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.Task"
         }
       ],
       "path": "/license/virtuozzo/{serviceName}/changeIp"
@@ -246,11 +222,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/license/virtuozzo/{serviceName}/confirmTermination"
@@ -284,11 +256,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "license.OptionLabel[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.OptionLabel[]"
         }
       ],
       "path": "/license/virtuozzo/{serviceName}/option"
@@ -322,11 +290,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Task",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.Task"
         },
         {
           "apiStatus": {
@@ -354,11 +318,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Option",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.Option"
         }
       ],
       "path": "/license/virtuozzo/{serviceName}/option/{label}"
@@ -384,11 +344,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -415,11 +371,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/license/virtuozzo/{serviceName}/serviceInfos"
@@ -461,11 +413,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/license/virtuozzo/{serviceName}/tasks"
@@ -499,11 +447,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Task",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.Task"
         }
       ],
       "path": "/license/virtuozzo/{serviceName}/tasks/{taskId}"
@@ -529,11 +473,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/license/virtuozzo/{serviceName}/terminate"
@@ -559,11 +499,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.VirtuozzoOrderConfiguration[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.VirtuozzoOrderConfiguration[]"
         }
       ],
       "path": "/license/virtuozzo/orderableVersions"

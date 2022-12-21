@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/stack-mis/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/stack/mis"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "stack.mis.product",
-          "scopes": [
-            "all",
-            "product/stack-mis/all"
-          ]
+          "responseType": "stack.mis.product"
         }
       ],
       "path": "/stack/mis/{serviceName}"
@@ -77,11 +69,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/stack-mis/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -108,11 +96,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/stack-mis/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/stack/mis/{serviceName}/serviceInfos"

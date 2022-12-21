@@ -17,12 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicated-server/all",
-            "order/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/order/dedicated/server"
@@ -48,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "order/all",
-            "all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/order/dedicated/server/{serviceName}"

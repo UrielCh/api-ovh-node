@@ -21,10 +21,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "startup.startup",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "startup.startup"
         },
         {
           "apiStatus": {
@@ -43,10 +40,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/startup"

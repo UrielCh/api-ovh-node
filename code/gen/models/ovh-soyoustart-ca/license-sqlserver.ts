@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/license/sqlserver"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.sqlserver.SqlServer",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.sqlserver.SqlServer"
         }
       ],
       "path": "/license/sqlserver/{serviceName}"
@@ -109,11 +101,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/license/sqlserver/{serviceName}/confirmTermination"
@@ -139,11 +127,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -170,11 +154,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/license/sqlserver/{serviceName}/serviceInfos"
@@ -216,11 +196,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/license/sqlserver/{serviceName}/tasks"
@@ -254,11 +230,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Task",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.Task"
         }
       ],
       "path": "/license/sqlserver/{serviceName}/tasks/{taskId}"
@@ -284,11 +256,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/license/sqlserver/{serviceName}/terminate"
@@ -314,11 +282,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.SqlServerOrderConfiguration[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.SqlServerOrderConfiguration[]"
         }
       ],
       "path": "/license/sqlserver/orderableVersions"

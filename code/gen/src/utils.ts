@@ -1,3 +1,4 @@
+import fs from 'fs'
 
 export function indentGen(depth: number): string {
     let s = '';
@@ -124,7 +125,6 @@ export const doRawRemapNode = (type: string): string => {
     return tr || type;
 }
 
-
 export const remapMapType = (type: string): string => {
     const m = type.match(/^map\[([^\]]+)\](.+)/);
     if (!m)
@@ -135,3 +135,21 @@ export const remapMapType = (type: string): string => {
         return `{ [key in ${key}]: ${value} }`
     return `{ [key: ${key}]: ${value} }`
 }
+
+export async function writeIfDiff(fn: string, expected: string): Promise<number> {
+    let oldEsm = '';
+    try {
+        oldEsm = await fs.promises.readFile(fn, { encoding: 'utf-8' });
+    } catch (e) {
+    }
+    if (oldEsm.replaceAll(/[\r\n]+/g, '\n') != expected.replaceAll(/[\r\n]+/g, '\n')) {
+        if (!oldEsm)
+            console.log(`Creating ${fn}`);
+        else
+            console.log(`Overwriting ${fn}`);
+        await fs.promises.writeFile(fn, expected, { encoding: 'utf-8' });
+        return 1;
+    }
+    return 0;
+}
+

@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/veeamCloudConnect/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/veeamCloudConnect"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "veeamCloudConnect.Account",
-          "scopes": [
-            "all",
-            "product/veeamCloudConnect/all"
-          ]
+          "responseType": "veeamCloudConnect.Account"
         }
       ],
       "path": "/veeamCloudConnect/{serviceName}"
@@ -77,11 +69,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/veeamCloudConnect/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -101,11 +89,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "veeamCloudConnect.Task[]",
-          "scopes": [
-            "all",
-            "product/veeamCloudConnect/all"
-          ]
+          "responseType": "veeamCloudConnect.Task[]"
         }
       ],
       "path": "/veeamCloudConnect/{serviceName}/backupRepository"
@@ -139,11 +123,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "veeamCloudConnect.Task[]",
-          "scopes": [
-            "all",
-            "product/veeamCloudConnect/all"
-          ]
+          "responseType": "veeamCloudConnect.Task[]"
         },
         {
           "apiStatus": {
@@ -171,11 +151,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "veeamCloudConnect.BackupRepository",
-          "scopes": [
-            "all",
-            "product/veeamCloudConnect/all"
-          ]
+          "responseType": "veeamCloudConnect.BackupRepository"
         }
       ],
       "path": "/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}"
@@ -217,11 +193,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "veeamCloudConnect.Task[]",
-          "scopes": [
-            "all",
-            "product/veeamCloudConnect/all"
-          ]
+          "responseType": "veeamCloudConnect.Task[]"
         }
       ],
       "path": "/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota"
@@ -247,11 +219,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "veeamCloudConnect.offerCapabilities",
-          "scopes": [
-            "all",
-            "product/veeamCloudConnect/all"
-          ]
+          "responseType": "veeamCloudConnect.offerCapabilities"
         }
       ],
       "path": "/veeamCloudConnect/{serviceName}/capabilities"
@@ -277,11 +245,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "veeamCloudConnect.Offer[]",
-          "scopes": [
-            "all",
-            "product/veeamCloudConnect/all"
-          ]
+          "responseType": "veeamCloudConnect.Offer[]"
         }
       ],
       "path": "/veeamCloudConnect/{serviceName}/orderableUpgrade"
@@ -307,11 +271,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "veeamCloudConnect.Task",
-          "scopes": [
-            "all",
-            "product/veeamCloudConnect/all"
-          ]
+          "responseType": "veeamCloudConnect.Task"
         }
       ],
       "path": "/veeamCloudConnect/{serviceName}/resetPassword"
@@ -337,11 +297,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/veeamCloudConnect/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -368,11 +324,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/veeamCloudConnect/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/veeamCloudConnect/{serviceName}/serviceInfos"
@@ -414,11 +366,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/veeamCloudConnect/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/veeamCloudConnect/{serviceName}/task"
@@ -452,11 +400,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "veeamCloudConnect.Task",
-          "scopes": [
-            "all",
-            "product/veeamCloudConnect/all"
-          ]
+          "responseType": "veeamCloudConnect.Task"
         }
       ],
       "path": "/veeamCloudConnect/{serviceName}/task/{taskId}"

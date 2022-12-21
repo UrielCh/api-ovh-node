@@ -17,10 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/kube"
@@ -46,10 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "kube.Cluster",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "kube.Cluster"
         },
         {
           "apiStatus": {
@@ -77,10 +71,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/kube/{serviceName}"
@@ -130,10 +121,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/kube/{serviceName}/changeContact"
@@ -191,10 +179,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/kube/{serviceName}/confirmTermination"
@@ -220,10 +205,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "kube.Kubeconfig",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "kube.Kubeconfig"
         }
       ],
       "path": "/kube/{serviceName}/kubeconfig"
@@ -249,10 +231,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "kube.Node[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "kube.Node[]"
         },
         {
           "apiStatus": {
@@ -288,10 +267,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "kube.Node",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "kube.Node"
         }
       ],
       "path": "/kube/{serviceName}/publiccloud/node"
@@ -325,10 +301,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -356,10 +329,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "kube.Node",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "kube.Node"
         }
       ],
       "path": "/kube/{serviceName}/publiccloud/node/{nodeId}"
@@ -385,10 +355,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "kube.PublicCloudProject",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "kube.PublicCloudProject"
         }
       ],
       "path": "/kube/{serviceName}/publiccloud/project"
@@ -430,10 +397,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/kube/{serviceName}/reset"
@@ -459,10 +423,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -489,10 +450,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/kube/{serviceName}/serviceInfos"
@@ -518,10 +476,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/kube/{serviceName}/terminate"
@@ -547,10 +502,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/kube/{serviceName}/update"
@@ -584,10 +536,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/kube/{serviceName}/updatePolicy"

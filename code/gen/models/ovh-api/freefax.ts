@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/freefax"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "freefax.FreefaxProperties",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "freefax.FreefaxProperties"
         },
         {
           "apiStatus": {
@@ -78,11 +70,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/freefax/{serviceName}"
@@ -108,11 +96,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "password",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "password"
         }
       ],
       "path": "/freefax/{serviceName}/changePassword"
@@ -138,11 +122,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.DirectoryInfo",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "telephony.DirectoryInfo"
         },
         {
           "apiStatus": {
@@ -169,11 +149,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/freefax/{serviceName}/directory"
@@ -207,11 +183,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EntrepriseNumberInformationsTask",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "telephony.EntrepriseNumberInformationsTask"
         }
       ],
       "path": "/freefax/{serviceName}/directory/fetchEntrepriseInformations"
@@ -245,11 +217,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.DirectoryHeadingPJ[]",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "telephony.DirectoryHeadingPJ[]"
         }
       ],
       "path": "/freefax/{serviceName}/directory/getDirectoryServiceCode"
@@ -275,11 +243,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.DirectoryWayType[]",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "telephony.DirectoryWayType[]"
         }
       ],
       "path": "/freefax/{serviceName}/directory/getWayTypes"
@@ -305,11 +269,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/freefax/{serviceName}/mainService"
@@ -335,11 +295,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -366,11 +322,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/freefax/{serviceName}/serviceInfos"
@@ -396,11 +348,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.VoicemailProperties",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "telephony.VoicemailProperties"
         },
         {
           "apiStatus": {
@@ -427,11 +375,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/freefax/{serviceName}/voicemail"
@@ -465,11 +409,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/freefax/{serviceName}/voicemail/changePassword"
@@ -503,11 +443,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/freefax/{serviceName}/voicemail/changeRouting"
@@ -533,11 +469,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.VoicefaxRoutingEnum",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "telephony.VoicefaxRoutingEnum"
         }
       ],
       "path": "/freefax/{serviceName}/voicemail/routing"
@@ -563,11 +495,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.VoicemailNumbers",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "telephony.VoicemailNumbers"
         }
       ],
       "path": "/freefax/{serviceName}/voicemail/voicemailNumbers"
@@ -584,11 +512,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "freefax.BalanceInformations",
-          "scopes": [
-            "all",
-            "product/freefax/all"
-          ]
+          "responseType": "freefax.BalanceInformations"
         }
       ],
       "path": "/freefax/credits"

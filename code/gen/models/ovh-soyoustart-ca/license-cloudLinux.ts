@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/license/cloudLinux"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.cloudLinux.CloudLinux",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.cloudLinux.CloudLinux"
         }
       ],
       "path": "/license/cloudLinux/{serviceName}"
@@ -109,11 +101,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/license/cloudLinux/{serviceName}/confirmTermination"
@@ -139,11 +127,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -170,11 +154,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/license/cloudLinux/{serviceName}/serviceInfos"
@@ -216,11 +196,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/license/cloudLinux/{serviceName}/tasks"
@@ -254,11 +230,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Task",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.Task"
         }
       ],
       "path": "/license/cloudLinux/{serviceName}/tasks/{taskId}"
@@ -284,11 +256,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/license/cloudLinux/{serviceName}/terminate"
@@ -314,11 +282,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.CloudLinuxOrderConfiguration[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.CloudLinuxOrderConfiguration[]"
         }
       ],
       "path": "/license/cloudLinux/orderableVersions"

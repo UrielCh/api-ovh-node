@@ -42,11 +42,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/services"
@@ -72,11 +68,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.expanded.Service",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.expanded.Service"
         },
         {
           "apiStatus": {
@@ -103,11 +95,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/services/{serviceId}"
@@ -133,11 +121,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.billing.engagement.Engagement",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.billing.engagement.Engagement"
         }
       ],
       "path": "/services/{serviceId}/billing/engagement"
@@ -163,11 +147,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.billing.Pricing[]",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.billing.Pricing[]"
         }
       ],
       "path": "/services/{serviceId}/billing/engagement/available"
@@ -200,11 +180,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/services/{serviceId}/billing/engagement/endRule"
@@ -237,11 +213,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.billing.engagement.EngagementFlushOrder",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.billing.engagement.EngagementFlushOrder"
         }
       ],
       "path": "/services/{serviceId}/billing/engagement/flush"
@@ -267,11 +239,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -291,11 +259,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.billing.engagement.EngagementRequest",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.billing.engagement.EngagementRequest"
         },
         {
           "apiStatus": {
@@ -322,11 +286,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.billing.engagement.EngagementRequest",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.billing.engagement.EngagementRequest"
         }
       ],
       "path": "/services/{serviceId}/billing/engagement/request"
@@ -352,11 +312,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.consumption.Summary",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.consumption.Summary"
         }
       ],
       "path": "/services/{serviceId}/consumption"
@@ -398,11 +354,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "services.consumption.Element[]",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.consumption.Element[]"
         }
       ],
       "path": "/services/{serviceId}/consumption/element"
@@ -428,11 +380,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.consumption.Summary",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.consumption.Summary"
         }
       ],
       "path": "/services/{serviceId}/consumption/forecast"
@@ -474,11 +422,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "services.consumption.Element[]",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.consumption.Element[]"
         }
       ],
       "path": "/services/{serviceId}/consumption/forecast/element"
@@ -520,11 +464,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/services/{serviceId}/consumption/history"
@@ -558,11 +498,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.consumption.Summary",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.consumption.Summary"
         }
       ],
       "path": "/services/{serviceId}/consumption/history/{id}"
@@ -612,11 +548,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "services.consumption.Element[]",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.consumption.Element[]"
         }
       ],
       "path": "/services/{serviceId}/consumption/history/{id}/element"
@@ -642,11 +574,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "order.cart.GenericProductDefinition[]"
         }
       ],
       "path": "/services/{serviceId}/detach"
@@ -680,11 +608,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "order.cart.GenericProductDefinition"
         }
       ],
       "path": "/services/{serviceId}/detach/{planCode}"
@@ -725,11 +649,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.operation.Order",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.operation.Order"
         }
       ],
       "path": "/services/{serviceId}/detach/{planCode}/execute"
@@ -763,11 +683,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.operation.DetachOptionsDefinition[]",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.operation.DetachOptionsDefinition[]"
         }
       ],
       "path": "/services/{serviceId}/detach/{planCode}/options"
@@ -808,11 +724,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.operation.Order",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.operation.Order"
         }
       ],
       "path": "/services/{serviceId}/detach/{planCode}/simulate"
@@ -838,11 +750,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.form.Description[]",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.form.Description[]"
         }
       ],
       "path": "/services/{serviceId}/form"
@@ -876,11 +784,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.form.Description",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.form.Description"
         }
       ],
       "path": "/services/{serviceId}/form/{formName}"
@@ -921,11 +825,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.form.Response",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.form.Response"
         }
       ],
       "path": "/services/{serviceId}/form/{formName}/answer"
@@ -951,11 +851,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.expanded.Service[]",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.expanded.Service[]"
         }
       ],
       "path": "/services/{serviceId}/options"
@@ -981,11 +877,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "duration[]",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "duration[]"
         }
       ],
       "path": "/services/{serviceId}/renewPeriodCapacities"
@@ -1011,11 +903,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.expanded.TechnicalDetails",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.expanded.TechnicalDetails"
         }
       ],
       "path": "/services/{serviceId}/technicalDetails"
@@ -1041,11 +929,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "order.cart.GenericProductDefinition[]"
         }
       ],
       "path": "/services/{serviceId}/upgrade"
@@ -1079,11 +963,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "order.cart.GenericProductDefinition"
         }
       ],
       "path": "/services/{serviceId}/upgrade/{planCode}"
@@ -1124,11 +1004,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.operation.Order",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.operation.Order"
         }
       ],
       "path": "/services/{serviceId}/upgrade/{planCode}/execute"
@@ -1169,11 +1045,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.operation.Order",
-          "scopes": [
-            "all",
-            "services/all"
-          ]
+          "responseType": "services.operation.Order"
         }
       ],
       "path": "/services/{serviceId}/upgrade/{planCode}/simulate"

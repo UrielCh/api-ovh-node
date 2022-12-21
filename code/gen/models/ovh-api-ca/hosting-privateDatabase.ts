@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/hosting/privateDatabase"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.Service",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.Service"
         },
         {
           "apiStatus": {
@@ -78,11 +70,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}"
@@ -108,11 +96,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.PrivateDatabase.AvailableVersionEnum[]",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.PrivateDatabase.AvailableVersionEnum[]"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/availableVersions"
@@ -162,11 +146,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/changeContact"
@@ -200,11 +180,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/changeFtpPassword"
@@ -238,11 +214,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/changeVersion"
@@ -268,11 +240,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.Configuration",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.Configuration"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/config"
@@ -306,11 +274,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.Configuration",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.Configuration"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/config/update"
@@ -368,11 +332,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/confirmTermination"
@@ -398,11 +358,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.PrivateDatabase.CpuThrottle[]",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.PrivateDatabase.CpuThrottle[]"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/cpuThrottle"
@@ -428,11 +384,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -460,11 +412,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/database"
@@ -498,11 +446,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         },
         {
           "apiStatus": {
@@ -530,11 +474,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.database",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.database"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}"
@@ -584,11 +524,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -624,11 +560,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump"
@@ -670,11 +602,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         },
         {
           "apiStatus": {
@@ -710,11 +638,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.database.dump",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.database.dump"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}"
@@ -756,11 +680,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}/restore"
@@ -810,11 +730,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension"
@@ -856,11 +772,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.database.extension",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.database.extension"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}"
@@ -902,11 +814,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/disable"
@@ -948,11 +856,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/enable"
@@ -1010,11 +914,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/import"
@@ -1072,11 +972,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/databaseWizard"
@@ -1118,11 +1014,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/dump"
@@ -1156,11 +1048,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         },
         {
           "apiStatus": {
@@ -1188,11 +1076,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.dump",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.dump"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/dump/{dumpId}"
@@ -1234,11 +1118,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore"
@@ -1264,11 +1144,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.PrivateDatabase.TemporaryLogsLink",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.PrivateDatabase.TemporaryLogsLink"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/generateTemporaryLogsLink"
@@ -1294,11 +1170,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.PrivateDatabase.Oom[]",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.PrivateDatabase.Oom[]"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/oom"
@@ -1324,11 +1196,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/quotaRefresh"
@@ -1354,11 +1222,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/restart"
@@ -1384,11 +1248,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -1415,11 +1275,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/serviceInfos"
@@ -1445,11 +1301,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/start"
@@ -1475,11 +1327,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/stop"
@@ -1521,11 +1369,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/tasks"
@@ -1559,11 +1403,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/tasks/{id}"
@@ -1589,11 +1429,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/terminate"
@@ -1619,11 +1455,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -1659,11 +1491,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/user"
@@ -1697,11 +1525,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         },
         {
           "apiStatus": {
@@ -1729,11 +1553,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.user",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.user"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/user/{userName}"
@@ -1775,11 +1595,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/changePassword"
@@ -1813,11 +1629,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -1861,11 +1673,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/grant"
@@ -1907,11 +1715,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         },
         {
           "apiStatus": {
@@ -1947,11 +1751,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.grant",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.grant"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}"
@@ -2001,11 +1801,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update"
@@ -2031,11 +1827,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         },
         {
           "apiStatus": {
@@ -2055,11 +1847,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.webhostingNetwork",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.webhostingNetwork"
         },
         {
           "apiStatus": {
@@ -2079,11 +1867,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/webhostingNetwork"
@@ -2109,11 +1893,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/webs"
@@ -2163,11 +1943,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
@@ -2219,11 +1995,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/whitelist"
@@ -2257,11 +2029,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.task"
         },
         {
           "apiStatus": {
@@ -2289,11 +2057,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.whitelist",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.privateDatabase.whitelist"
         },
         {
           "apiStatus": {
@@ -2328,11 +2092,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/whitelist/{ip}"
@@ -2358,11 +2118,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.PrivateDatabase.AvailableOrderCapacities",
-          "scopes": [
-            "all",
-            "product/hosting-privateDatabase/all"
-          ]
+          "responseType": "hosting.PrivateDatabase.AvailableOrderCapacities"
         }
       ],
       "path": "/hosting/privateDatabase/availableOrderCapacities"

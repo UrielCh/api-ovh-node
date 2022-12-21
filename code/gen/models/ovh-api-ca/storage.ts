@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "storage.NetAppService[]",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppService[]"
         }
       ],
       "path": "/storage/netapp"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppService",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppService"
         },
         {
           "apiStatus": {
@@ -78,11 +70,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppService",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppService"
         }
       ],
       "path": "/storage/netapp/{serviceName}"
@@ -132,11 +120,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/storage/netapp/{serviceName}/changeContact"
@@ -194,11 +178,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/storage/netapp/{serviceName}/confirmTermination"
@@ -224,11 +204,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -255,11 +231,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/storage/netapp/{serviceName}/serviceInfos"
@@ -293,11 +265,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "storage.NetAppShare[]",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppShare[]"
         },
         {
           "apiStatus": {
@@ -324,11 +292,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppShare",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppShare"
         }
       ],
       "path": "/storage/netapp/{serviceName}/share"
@@ -362,11 +326,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -394,11 +354,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppShare",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppShare"
         },
         {
           "apiStatus": {
@@ -433,11 +389,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppShare",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppShare"
         }
       ],
       "path": "/storage/netapp/{serviceName}/share/{shareId}"
@@ -471,11 +423,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppShareAccessPath[]",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppShareAccessPath[]"
         }
       ],
       "path": "/storage/netapp/{serviceName}/share/{shareId}/accessPath"
@@ -517,11 +465,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppShareAccessPath",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppShareAccessPath"
         }
       ],
       "path": "/storage/netapp/{serviceName}/share/{shareId}/accessPath/{accessPathId}"
@@ -555,11 +499,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppShareACLRule[]",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppShareACLRule[]"
         },
         {
           "apiStatus": {
@@ -594,11 +534,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppShareACLRule",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppShareACLRule"
         }
       ],
       "path": "/storage/netapp/{serviceName}/share/{shareId}/acl"
@@ -640,11 +576,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -680,11 +612,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppShareACLRule",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppShareACLRule"
         }
       ],
       "path": "/storage/netapp/{serviceName}/share/{shareId}/acl/{aclRuleId}"
@@ -725,11 +653,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/storage/netapp/{serviceName}/share/{shareId}/extend"
@@ -770,11 +694,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/storage/netapp/{serviceName}/share/{shareId}/shrink"
@@ -816,11 +736,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "storage.NetAppShareSnapshot[]",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppShareSnapshot[]"
         },
         {
           "apiStatus": {
@@ -855,11 +771,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppShareSnapshot",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppShareSnapshot"
         }
       ],
       "path": "/storage/netapp/{serviceName}/share/{shareId}/snapshot"
@@ -901,11 +813,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -941,11 +849,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppShareSnapshot",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppShareSnapshot"
         },
         {
           "apiStatus": {
@@ -988,14 +892,52 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppShareSnapshot",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppShareSnapshot"
         }
       ],
       "path": "/storage/netapp/{serviceName}/share/{shareId}/snapshot/{snapshotId}"
+    },
+    {
+      "description": "Share Snapshot Hold",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Hold an automatic share snapshot",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Share ID",
+              "fullType": "uuid",
+              "name": "shareId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Snapshot ID",
+              "fullType": "uuid",
+              "name": "snapshotId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "storage.NetAppShareSnapshot"
+        }
+      ],
+      "path": "/storage/netapp/{serviceName}/share/{shareId}/snapshot/{snapshotId}/hold"
     },
     {
       "description": "Share snapshot policy",
@@ -1026,11 +968,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppShareSnapshotPolicy",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppShareSnapshotPolicy"
         },
         {
           "apiStatus": {
@@ -1065,11 +1003,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/storage/netapp/{serviceName}/share/{shareId}/snapshotPolicy"
@@ -1103,11 +1037,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppShareSnapshotReserve",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppShareSnapshotReserve"
         },
         {
           "apiStatus": {
@@ -1142,11 +1072,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/storage/netapp/{serviceName}/share/{shareId}/snapshotReserve"
@@ -1172,11 +1098,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppSnapshotPolicy[]",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppSnapshotPolicy[]"
         },
         {
           "apiStatus": {
@@ -1203,11 +1125,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppSnapshotPolicy",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppSnapshotPolicy"
         }
       ],
       "path": "/storage/netapp/{serviceName}/snapshotPolicy"
@@ -1241,11 +1159,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -1273,11 +1187,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppSnapshotPolicy",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "storage.NetAppSnapshotPolicy"
         },
         {
           "apiStatus": {
@@ -1312,11 +1222,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/storage/netapp/{serviceName}/snapshotPolicy/{snapshotPolicyId}"
@@ -1342,11 +1248,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/storage/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/storage/netapp/{serviceName}/terminate"

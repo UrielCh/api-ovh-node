@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cdn/dedicated"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Anycast",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Anycast"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}"
@@ -101,11 +93,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/changeContact"
@@ -131,11 +119,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -163,11 +147,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Domain",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Domain"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/domains"
@@ -201,11 +181,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Task"
         },
         {
           "apiStatus": {
@@ -233,11 +209,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Domain",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Domain"
         },
         {
           "apiStatus": {
@@ -272,11 +244,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/domains/{domain}"
@@ -310,11 +278,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipv4[]",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "ipv4[]"
         },
         {
           "apiStatus": {
@@ -350,11 +314,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Backend",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Backend"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/domains/{domain}/backends"
@@ -396,11 +356,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipv4",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "ipv4"
         },
         {
           "apiStatus": {
@@ -436,11 +392,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Backend",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Backend"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}"
@@ -482,11 +434,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -546,11 +494,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.CacheRule",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.CacheRule"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules"
@@ -592,11 +536,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Task"
         },
         {
           "apiStatus": {
@@ -632,11 +572,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.CacheRule",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.CacheRule"
         },
         {
           "apiStatus": {
@@ -679,11 +615,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}"
@@ -725,11 +657,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Task"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush"
@@ -771,11 +699,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks"
@@ -825,11 +749,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Task"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}"
@@ -863,11 +783,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Task"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/domains/{domain}/flush"
@@ -901,11 +817,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.LogsURL",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.LogsURL"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/domains/{domain}/logs"
@@ -963,11 +875,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.StatsDataType[]",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.StatsDataType[]"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/domains/{domain}/statistics"
@@ -1001,11 +909,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/domains/{domain}/tasks"
@@ -1047,11 +951,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Task"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}"
@@ -1077,11 +977,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.LogsURL",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.LogsURL"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/logs"
@@ -1115,11 +1011,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.StatsDataType[]",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.StatsDataType[]"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/quota"
@@ -1145,11 +1037,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -1176,11 +1064,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/serviceInfos"
@@ -1206,11 +1090,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Task"
         },
         {
           "apiStatus": {
@@ -1230,11 +1110,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Ssl",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Ssl"
         },
         {
           "apiStatus": {
@@ -1286,11 +1162,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Ssl",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Ssl"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/ssl"
@@ -1332,11 +1204,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/ssl/tasks"
@@ -1370,11 +1238,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Task"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/ssl/tasks/{taskId}"
@@ -1424,11 +1288,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "scopes": [
-            "all",
-            "product/cdn-dedicated/all"
-          ]
+          "responseType": "cdnanycast.Task"
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/ssl/update"

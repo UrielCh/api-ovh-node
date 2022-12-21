@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/license/worklight"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.worklight.WorkLight",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.worklight.WorkLight"
         },
         {
           "apiStatus": {
@@ -78,11 +70,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/license/worklight/{serviceName}"
@@ -108,11 +96,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "ipBlock[]"
         }
       ],
       "path": "/license/worklight/{serviceName}/allowedDestinationIp"
@@ -146,11 +130,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.ChangeIpStatus",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.ChangeIpStatus"
         }
       ],
       "path": "/license/worklight/{serviceName}/canLicenseBeMovedTo"
@@ -184,11 +164,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Task",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.Task"
         }
       ],
       "path": "/license/worklight/{serviceName}/changeIp"
@@ -246,11 +222,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/license/worklight/{serviceName}/confirmTermination"
@@ -276,11 +248,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -307,11 +275,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/license/worklight/{serviceName}/serviceInfos"
@@ -353,11 +317,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/license/worklight/{serviceName}/tasks"
@@ -391,11 +351,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Task",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.Task"
         }
       ],
       "path": "/license/worklight/{serviceName}/tasks/{taskId}"
@@ -421,11 +377,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/license/worklight/{serviceName}/terminate"
@@ -451,11 +403,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.WorkLightOrderConfiguration[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.WorkLightOrderConfiguration[]"
         }
       ],
       "path": "/license/worklight/orderableVersions"

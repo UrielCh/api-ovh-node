@@ -106,11 +106,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "support/all",
-            "all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/support/tickets"
@@ -136,11 +132,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "support.Ticket",
-          "scopes": [
-            "support/all",
-            "all"
-          ]
+          "responseType": "support.Ticket"
         }
       ],
       "path": "/support/tickets/{ticketId}"
@@ -166,11 +158,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean",
-          "scopes": [
-            "support/all",
-            "all"
-          ]
+          "responseType": "boolean"
         }
       ],
       "path": "/support/tickets/{ticketId}/canBeScored"
@@ -196,11 +184,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "support/all",
-            "all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/support/tickets/{ticketId}/close"
@@ -226,11 +210,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "support.Message[]",
-          "scopes": [
-            "support/all",
-            "all"
-          ]
+          "responseType": "support.Message[]"
         }
       ],
       "path": "/support/tickets/{ticketId}/messages"
@@ -264,11 +244,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "support/all",
-            "all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/support/tickets/{ticketId}/reopen"
@@ -302,11 +278,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "support/all",
-            "all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/support/tickets/{ticketId}/reply"
@@ -348,11 +320,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "support/all",
-            "all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/support/tickets/{ticketId}/score"
@@ -426,11 +394,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "support.NewMessageInfo",
-          "scopes": [
-            "support/all",
-            "all"
-          ]
+          "responseType": "support.NewMessageInfo"
         }
       ],
       "path": "/support/tickets/create"

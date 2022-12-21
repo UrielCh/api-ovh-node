@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/dedicated/nasha"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasha.Storage",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasha.Storage"
         },
         {
           "apiStatus": {
@@ -78,11 +70,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}"
@@ -132,11 +120,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/changeContact"
@@ -194,11 +178,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/confirmTermination"
@@ -224,11 +204,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -280,11 +256,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasTask.Task"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/partition"
@@ -318,11 +290,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasTask.Task"
         },
         {
           "apiStatus": {
@@ -350,11 +318,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasha.Partition",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasha.Partition"
         },
         {
           "apiStatus": {
@@ -389,11 +353,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/partition/{partitionName}"
@@ -427,11 +387,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
@@ -475,11 +431,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasTask.Task"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/partition/{partitionName}/access"
@@ -521,11 +473,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasTask.Task"
         },
         {
           "apiStatus": {
@@ -561,11 +509,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasha.Access",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasha.Access"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/partition/{partitionName}/access/{ip}"
@@ -599,11 +543,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "ipBlock[]"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/partition/{partitionName}/authorizableBlocks"
@@ -637,11 +577,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip[]",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "ip[]"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/partition/{partitionName}/authorizableIps"
@@ -675,11 +611,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -723,11 +655,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasTask.Task"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot"
@@ -769,11 +697,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasTask.Task"
         },
         {
           "apiStatus": {
@@ -809,11 +733,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasha.customSnap",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasha.customSnap"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot/{name}"
@@ -847,11 +767,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasha.options",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasha.options"
         },
         {
           "apiStatus": {
@@ -903,11 +819,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasTask.Task"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/partition/{partitionName}/options"
@@ -941,11 +853,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -989,11 +897,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasTask.Task"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/partition/{partitionName}/quota"
@@ -1035,11 +939,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasTask.Task"
         },
         {
           "apiStatus": {
@@ -1075,11 +975,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasha.Quota",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasha.Quota"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/partition/{partitionName}/quota/{uid}"
@@ -1113,11 +1009,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.storage.SnapshotEnum[]",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.storage.SnapshotEnum[]"
         },
         {
           "apiStatus": {
@@ -1153,11 +1045,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasTask.Task"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot"
@@ -1199,11 +1087,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasTask.Task"
         },
         {
           "apiStatus": {
@@ -1239,11 +1123,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasha.Snapshot",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasha.Snapshot"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}"
@@ -1285,11 +1165,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValue<double>",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "complexType.UnitAndValue<double>"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/partition/{partitionName}/use"
@@ -1315,11 +1191,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -1346,11 +1218,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/serviceInfos"
@@ -1392,11 +1260,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/task"
@@ -1430,11 +1294,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasTask.Task"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/task/{taskId}"
@@ -1460,11 +1320,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/terminate"
@@ -1498,11 +1354,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValue<double>",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "complexType.UnitAndValue<double>"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/use"
@@ -1528,11 +1380,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-nasha/all"
-          ]
+          "responseType": "dedicated.nasTask.Task"
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/vrack"

@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/license/plesk"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.plesk.Plesk",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.plesk.Plesk"
         },
         {
           "apiStatus": {
@@ -78,11 +70,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/license/plesk/{serviceName}"
@@ -108,11 +96,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "ipBlock[]"
         }
       ],
       "path": "/license/plesk/{serviceName}/allowedDestinationIp"
@@ -146,11 +130,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.ChangeIpStatus",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.ChangeIpStatus"
         }
       ],
       "path": "/license/plesk/{serviceName}/canLicenseBeMovedTo"
@@ -184,11 +164,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Task",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.Task"
         }
       ],
       "path": "/license/plesk/{serviceName}/changeIp"
@@ -246,11 +222,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/license/plesk/{serviceName}/confirmTermination"
@@ -276,11 +248,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.OptionLabel[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.OptionLabel[]"
         }
       ],
       "path": "/license/plesk/{serviceName}/option"
@@ -314,11 +282,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Task",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.Task"
         },
         {
           "apiStatus": {
@@ -346,11 +310,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Option",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.Option"
         }
       ],
       "path": "/license/plesk/{serviceName}/option/{label}"
@@ -376,11 +336,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -407,11 +363,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/license/plesk/{serviceName}/serviceInfos"
@@ -453,11 +405,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/license/plesk/{serviceName}/tasks"
@@ -491,11 +439,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.Task",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.Task"
         }
       ],
       "path": "/license/plesk/{serviceName}/tasks/{taskId}"
@@ -521,11 +465,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/license/plesk/{serviceName}/terminate"
@@ -551,11 +491,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.PleskOrderConfiguration[]",
-          "scopes": [
-            "all",
-            "product/licenses/all"
-          ]
+          "responseType": "license.PleskOrderConfiguration[]"
         }
       ],
       "path": "/license/plesk/orderableVersions"

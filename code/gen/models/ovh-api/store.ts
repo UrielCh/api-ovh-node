@@ -17,10 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "MarketPlace.Contact[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "MarketPlace.Contact[]"
         },
         {
           "apiStatus": {
@@ -112,10 +109,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "MarketPlace.Contact",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "MarketPlace.Contact"
         }
       ],
       "path": "/store/contact"
@@ -141,10 +135,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string"
         },
         {
           "apiStatus": {
@@ -164,10 +155,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "MarketPlace.Contact",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "MarketPlace.Contact"
         },
         {
           "apiStatus": {
@@ -267,10 +255,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "MarketPlace.Contact",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "MarketPlace.Contact"
         }
       ],
       "path": "/store/contact/{contactId}"
@@ -296,10 +281,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -327,10 +309,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/store/contact/{contactId}/document"
@@ -364,10 +343,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/store/contact/{contactId}/document/{documentId}"
@@ -384,10 +360,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "MarketPlace.Document[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "MarketPlace.Document[]"
         },
         {
           "apiStatus": {
@@ -415,10 +388,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "MarketPlace.Document",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "MarketPlace.Document"
         }
       ],
       "path": "/store/document"
@@ -444,10 +414,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string"
         },
         {
           "apiStatus": {
@@ -467,10 +434,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "MarketPlace.Document",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "MarketPlace.Document"
         }
       ],
       "path": "/store/document/{documentId}"
@@ -496,10 +460,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/store/document/cors"
@@ -516,10 +477,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "MarketPlace.Partner[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "MarketPlace.Partner[]"
         },
         {
           "apiStatus": {
@@ -659,10 +617,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "MarketPlace.Partner",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "MarketPlace.Partner"
         }
       ],
       "path": "/store/partner"
@@ -688,10 +643,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string"
         },
         {
           "apiStatus": {
@@ -711,10 +663,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "MarketPlace.Partner",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "MarketPlace.Partner"
         },
         {
           "apiStatus": {
@@ -862,10 +811,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "MarketPlace.Partner",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "MarketPlace.Partner"
         }
       ],
       "path": "/store/partner/{partnerId}"
@@ -891,10 +837,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -922,10 +865,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/store/partner/{partnerId}/document"
@@ -959,10 +899,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/store/partner/{partnerId}/document/{documentId}"
@@ -988,10 +925,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "MarketPlace.Partner.Product[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "MarketPlace.Partner.Product[]"
         },
         {
           "apiStatus": {
@@ -1043,10 +977,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "MarketPlace.Partner.Product",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "MarketPlace.Partner.Product"
         }
       ],
       "path": "/store/partner/{partnerId}/product"
@@ -1080,10 +1011,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string"
         },
         {
           "apiStatus": {
@@ -1111,10 +1039,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "MarketPlace.Partner.Product",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "MarketPlace.Partner.Product"
         },
         {
           "apiStatus": {
@@ -1174,10 +1099,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "MarketPlace.Partner.Product",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "MarketPlace.Partner.Product"
         }
       ],
       "path": "/store/partner/{partnerId}/product/{productId}"
@@ -1211,10 +1133,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -1250,10 +1169,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/store/partner/{partnerId}/product/{productId}/document"
@@ -1295,10 +1211,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/store/partner/{partnerId}/product/{productId}/document/{documentId}"

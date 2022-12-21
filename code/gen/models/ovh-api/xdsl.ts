@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/xdsl"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Access",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Access"
         },
         {
           "apiStatus": {
@@ -78,11 +70,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}"
@@ -108,11 +96,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.ExtraIpRangeMove",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.ExtraIpRangeMove"
         }
       ],
       "path": "/xdsl/{serviceName}/addressMove/extraIpRange"
@@ -138,11 +122,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/addressMove/extraIpRangeMove"
@@ -168,11 +148,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "ip[]"
         }
       ],
       "path": "/xdsl/{serviceName}/antiSpams"
@@ -206,11 +182,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.AntiSpam",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.AntiSpam"
         }
       ],
       "path": "/xdsl/{serviceName}/antiSpams/{ip}"
@@ -244,11 +216,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.antiSpam.EvidencesInfo",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.antiSpam.EvidencesInfo"
         }
       ],
       "path": "/xdsl/{serviceName}/antiSpams/{ip}/evidences"
@@ -282,11 +250,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/applyTemplateToModem"
@@ -312,11 +276,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "boolean"
         }
       ],
       "path": "/xdsl/{serviceName}/canCancelResiliation"
@@ -342,11 +302,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/cancelResiliation"
@@ -396,11 +352,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/xdsl/{serviceName}/changeContact"
@@ -426,11 +378,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.AccessDiagnostic",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.AccessDiagnostic"
         },
         {
           "apiStatus": {
@@ -450,11 +398,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/diagnostic"
@@ -480,11 +424,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Incident",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Incident"
         }
       ],
       "path": "/xdsl/{serviceName}/incident"
@@ -510,11 +450,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "ip[]"
         },
         {
           "apiStatus": {
@@ -534,11 +470,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/ips"
@@ -572,11 +504,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -604,11 +532,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.IP",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.IP"
         }
       ],
       "path": "/xdsl/{serviceName}/ips/{ip}"
@@ -642,11 +566,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/ipv6"
@@ -672,11 +592,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/xdsl/{serviceName}/lines"
@@ -710,11 +626,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Line",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Line"
         }
       ],
       "path": "/xdsl/{serviceName}/lines/{number}"
@@ -748,11 +660,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/lines/{number}/diagnostic/cancel"
@@ -810,11 +718,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.lineDiagnostic.Diagnostic",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.lineDiagnostic.Diagnostic"
         }
       ],
       "path": "/xdsl/{serviceName}/lines/{number}/diagnostic/run"
@@ -848,11 +752,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.DslamPort",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.DslamPort"
         }
       ],
       "path": "/xdsl/{serviceName}/lines/{number}/dslamPort"
@@ -886,11 +786,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.DslamLineProfile[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.DslamLineProfile[]"
         }
       ],
       "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles"
@@ -932,11 +828,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile"
@@ -978,11 +870,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.DslamPortLog[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.DslamPortLog[]"
         }
       ],
       "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/logs"
@@ -1016,11 +904,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/reset"
@@ -1070,11 +954,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValues<xdsl.TimestampAndValue>",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "complexType.UnitAndValues<xdsl.TimestampAndValue>"
         }
       ],
       "path": "/xdsl/{serviceName}/lines/{number}/statistics"
@@ -1100,11 +980,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Modem",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Modem"
         },
         {
           "apiStatus": {
@@ -1131,11 +1007,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/modem"
@@ -1161,11 +1033,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/availableACSBackend"
@@ -1199,11 +1067,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/availableWLANChannel"
@@ -1229,11 +1093,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.ServiceStatusEnum",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.ServiceStatusEnum"
         },
         {
           "apiStatus": {
@@ -1261,11 +1121,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/blocIp"
@@ -1291,11 +1147,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.ServiceStatusEnum",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.ServiceStatusEnum"
         },
         {
           "apiStatus": {
@@ -1323,11 +1175,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/callWaiting"
@@ -1353,11 +1201,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.ModemExchangeInfo",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.ModemExchangeInfo"
         },
         {
           "apiStatus": {
@@ -1385,11 +1229,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Order",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "order.Order"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/comfortExchange"
@@ -1415,11 +1255,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/connectedDevices"
@@ -1453,11 +1289,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.connectedDevice",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.connectedDevice"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/connectedDevices/{macAddress}"
@@ -1483,11 +1315,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.ServiceStatusEnum",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.ServiceStatusEnum"
         },
         {
           "apiStatus": {
@@ -1515,11 +1343,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/contentSharing"
@@ -1556,11 +1380,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/duplicatePortMappingConfig"
@@ -1586,11 +1406,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string"
         },
         {
           "apiStatus": {
@@ -1626,11 +1442,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/firmware"
@@ -1656,11 +1468,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/firmwareAvailable"
@@ -1686,11 +1494,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.ServiceStatusEnum",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.ServiceStatusEnum"
         },
         {
           "apiStatus": {
@@ -1718,11 +1522,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/ftp"
@@ -1748,11 +1548,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.ServiceStatusEnum",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.ServiceStatusEnum"
         },
         {
           "apiStatus": {
@@ -1780,11 +1576,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/ipsecAlg"
@@ -1810,11 +1602,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/lan"
@@ -1848,11 +1636,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.LAN",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.LAN"
         },
         {
           "apiStatus": {
@@ -1887,11 +1671,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/lan/{lanName}"
@@ -1925,11 +1705,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp"
@@ -1971,11 +1747,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.DHCP",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.DHCP"
         },
         {
           "apiStatus": {
@@ -2018,11 +1790,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}"
@@ -2064,11 +1832,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -2128,11 +1892,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.DHCPStaticAddress",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.DHCPStaticAddress"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses"
@@ -2182,11 +1942,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         },
         {
           "apiStatus": {
@@ -2230,11 +1986,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.DHCPStaticAddress",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.DHCPStaticAddress"
         },
         {
           "apiStatus": {
@@ -2285,11 +2037,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}"
@@ -2315,11 +2063,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -2411,11 +2155,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.PortMapping",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.PortMapping"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/portMappings"
@@ -2449,11 +2189,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         },
         {
           "apiStatus": {
@@ -2481,11 +2217,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.PortMapping",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.PortMapping"
         },
         {
           "apiStatus": {
@@ -2520,11 +2252,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/portMappings/{name}"
@@ -2558,11 +2286,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/reboot"
@@ -2588,11 +2312,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/reconfigureVoip"
@@ -2618,11 +2338,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/refreshConnectedDevices"
@@ -2656,11 +2372,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/reset"
@@ -2686,11 +2398,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/resetPortMappingConfig"
@@ -2716,11 +2424,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<xdsl.ModemInfo>",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.AsyncTask<xdsl.ModemInfo>"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/retrieveInfo"
@@ -2746,11 +2450,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.ServiceStatusEnum",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.ServiceStatusEnum"
         },
         {
           "apiStatus": {
@@ -2778,11 +2478,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/sipAlg"
@@ -2808,11 +2504,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.ServiceStatusEnum",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.ServiceStatusEnum"
         },
         {
           "apiStatus": {
@@ -2840,11 +2532,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/upnp"
@@ -2870,11 +2558,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/wifi"
@@ -2908,11 +2592,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.WLAN",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.WLAN"
         },
         {
           "apiStatus": {
@@ -2947,11 +2627,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/wifi/{wifiName}"
@@ -2977,11 +2653,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -3057,11 +2729,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.MonitoringNotification",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.MonitoringNotification"
         }
       ],
       "path": "/xdsl/{serviceName}/monitoringNotifications"
@@ -3095,11 +2763,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -3127,11 +2791,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.MonitoringNotification",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.MonitoringNotification"
         },
         {
           "apiStatus": {
@@ -3166,11 +2826,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/monitoringNotifications/{id}"
@@ -3196,11 +2852,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.orderFollowup.Step[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.orderFollowup.Step[]"
         }
       ],
       "path": "/xdsl/{serviceName}/orderFollowup"
@@ -3250,11 +2902,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/orderMeeting"
@@ -3280,11 +2928,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.PendingAction",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.PendingAction"
         }
       ],
       "path": "/xdsl/{serviceName}/pendingAction"
@@ -3310,11 +2954,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.RadiusConnectionLog[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.RadiusConnectionLog[]"
         }
       ],
       "path": "/xdsl/{serviceName}/radiusConnectionLogs"
@@ -3340,11 +2980,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/requestPPPLoginMail"
@@ -3386,11 +3022,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/requestTotalDeconsolidation"
@@ -3432,11 +3064,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.ResiliationFollowUpDetail",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.ResiliationFollowUpDetail"
         }
       ],
       "path": "/xdsl/{serviceName}/resiliate"
@@ -3462,11 +3090,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.ResiliationFollowUpDetail",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.ResiliationFollowUpDetail"
         }
       ],
       "path": "/xdsl/{serviceName}/resiliationFollowup"
@@ -3500,11 +3124,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "xdsl.ResiliationTerms",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.ResiliationTerms"
         }
       ],
       "path": "/xdsl/{serviceName}/resiliationTerms"
@@ -3530,11 +3150,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/xdsl/{serviceName}/rma"
@@ -3568,11 +3184,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -3600,11 +3212,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Rma",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "telephony.Rma"
         },
         {
           "apiStatus": {
@@ -3639,11 +3247,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/rma/{id}"
@@ -3685,11 +3289,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/rma/{id}/changeType"
@@ -3715,11 +3315,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<connectivity.eligibility.Meetings>",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.AsyncTask<connectivity.eligibility.Meetings>"
         }
       ],
       "path": "/xdsl/{serviceName}/searchOrderMeetings"
@@ -3745,11 +3341,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/sendOrderToProvider"
@@ -3775,11 +3367,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -3806,11 +3394,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/serviceInfos"
@@ -3852,11 +3436,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValues<xdsl.TimestampAndValue>",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "complexType.UnitAndValues<xdsl.TimestampAndValue>"
         }
       ],
       "path": "/xdsl/{serviceName}/statistics"
@@ -3898,11 +3478,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/xdsl/{serviceName}/tasks"
@@ -3936,11 +3512,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.Task"
         }
       ],
       "path": "/xdsl/{serviceName}/tasks/{id}"
@@ -3974,11 +3546,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/tasks/{id}/archive"
@@ -4004,11 +3572,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.DeconsolidationTerms",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.DeconsolidationTerms"
         }
       ],
       "path": "/xdsl/{serviceName}/totalDeconsolidationTerms"
@@ -4050,11 +3614,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/{serviceName}/updateInvalidOrMissingRio"
@@ -4083,11 +3643,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.eligibility.City[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.eligibility.City[]"
         }
       ],
       "path": "/xdsl/eligibility/cities"
@@ -4140,11 +3696,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Line>",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Line>"
         }
       ],
       "path": "/xdsl/eligibility/lines/active"
@@ -4197,11 +3749,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Line>",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Line>"
         }
       ],
       "path": "/xdsl/eligibility/lines/inactive"
@@ -4238,11 +3786,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<xdsl.eligibility.MeetingSlots>",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.AsyncTask<xdsl.eligibility.MeetingSlots>"
         }
       ],
       "path": "/xdsl/eligibility/meetings"
@@ -4403,11 +3947,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.eligibility.Street[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.eligibility.Street[]"
         }
       ],
       "path": "/xdsl/eligibility/streets"
@@ -4436,11 +3976,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.eligibility.Eligibility",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.eligibility.Eligibility"
         }
       ],
       "path": "/xdsl/eligibility/test"
@@ -4469,11 +4005,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<xdsl.eligibility.Eligibility>",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.AsyncTask<xdsl.eligibility.Eligibility>"
         }
       ],
       "path": "/xdsl/eligibility/test/address"
@@ -4539,11 +4071,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<xdsl.eligibility.Eligibility>",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.AsyncTask<xdsl.eligibility.Eligibility>"
         }
       ],
       "path": "/xdsl/eligibility/test/line"
@@ -4560,11 +4088,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/xdsl/email/pro"
@@ -4590,11 +4114,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -4614,11 +4134,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.xdslEmailPro",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.xdslEmailPro"
         },
         {
           "apiStatus": {
@@ -4645,11 +4161,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/email/pro/{email}"
@@ -4683,11 +4195,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.email.pro.Task",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.email.pro.Task"
         }
       ],
       "path": "/xdsl/email/pro/{email}/changePassword"
@@ -4764,11 +4272,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/xdsl/spare"
@@ -4794,11 +4298,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -4818,11 +4318,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "spare.xdsl.XdslSpare",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "spare.xdsl.XdslSpare"
         }
       ],
       "path": "/xdsl/spare/{spare}"
@@ -4848,11 +4344,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/xdsl/spare/{spare}/compatibleReplacement"
@@ -4886,11 +4378,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/spare/{spare}/replace"
@@ -4916,11 +4404,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/spare/{spare}/returnMerchandise"
@@ -4946,11 +4430,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -4977,11 +4457,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/spare/{spare}/serviceInfos"
@@ -4998,11 +4474,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/xdsl/spare/brands"
@@ -5019,11 +4491,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -5051,11 +4519,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.TemplateModem",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.TemplateModem"
         }
       ],
       "path": "/xdsl/templateModem"
@@ -5081,11 +4545,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -5105,11 +4565,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.TemplateModem",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "xdsl.TemplateModem"
         },
         {
           "apiStatus": {
@@ -5136,11 +4592,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/xdsl/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/xdsl/templateModem/{name}"

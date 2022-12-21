@@ -26,11 +26,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ProductAgreements",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ProductAgreements"
         }
       ],
       "path": "/cloud/agreements"
@@ -75,11 +71,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.NewProject",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.NewProject"
         }
       ],
       "path": "/cloud/createProject"
@@ -108,11 +100,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.NewProjectInfo",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.NewProjectInfo"
         }
       ],
       "path": "/cloud/createProjectInfo"
@@ -138,11 +126,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.EligibilityInfo",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.EligibilityInfo"
         }
       ],
       "path": "/cloud/eligibility"
@@ -168,11 +152,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.order.Order[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.order.Order[]"
         }
       ],
       "path": "/cloud/order"
@@ -214,11 +194,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.order.rule.Availability",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.order.rule.Availability"
         }
       ],
       "path": "/cloud/order/rule/availability"
@@ -235,11 +211,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "cloud.order.rule.InstanceCategories",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.order.rule.InstanceCategories"
         }
       ],
       "path": "/cloud/order/rule/instanceCategory"
@@ -276,11 +248,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.Price",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Price"
         }
       ],
       "path": "/cloud/price"
@@ -297,11 +265,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project"
@@ -327,11 +291,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Project",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Project"
         },
         {
           "apiStatus": {
@@ -358,11 +318,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}"
@@ -396,11 +352,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -436,11 +388,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Acl",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Acl"
         }
       ],
       "path": "/cloud/project/{serviceName}/acl"
@@ -474,11 +422,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -506,11 +450,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Acl",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Acl"
         }
       ],
       "path": "/cloud/project/{serviceName}/acl/{accountId}"
@@ -543,11 +483,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instance.InstanceDetail[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/activateMonthlyBilling"
@@ -629,11 +565,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.ai.app.App[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.app.App[]"
         },
         {
           "apiStatus": {
@@ -660,11 +592,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.app.App",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.app.App"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/app"
@@ -706,11 +634,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -738,11 +662,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.app.App",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.app.App"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/app/{appId}"
@@ -783,11 +703,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.volume.DataSync",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.volume.DataSync"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/app/{appId}/datasync"
@@ -828,11 +744,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/app/{appId}/image"
@@ -873,11 +785,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/app/{appId}/label"
@@ -935,11 +843,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.ai.Logs",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.Logs"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/app/{appId}/log"
@@ -980,11 +884,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/app/{appId}/scalingstrategy"
@@ -1018,11 +918,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/app/{appId}/start"
@@ -1056,11 +952,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/app/{appId}/stop"
@@ -1093,11 +985,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.Command",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.Command"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/app/command"
@@ -1123,11 +1011,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.AuthorizationStatus",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.AuthorizationStatus"
         },
         {
           "apiStatus": {
@@ -1147,11 +1031,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/authorization"
@@ -1177,11 +1057,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.Features",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.capabilities.Features"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/feature"
@@ -1207,11 +1083,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.ProjectQuotas",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.capabilities.ProjectQuotas"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/quota"
@@ -1237,11 +1109,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.Region[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.capabilities.Region[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/region"
@@ -1275,11 +1143,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.Region",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.capabilities.Region"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}"
@@ -1313,11 +1177,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}/data/region"
@@ -1351,11 +1211,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.Flavor[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.capabilities.Flavor[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}/flavor"
@@ -1397,11 +1253,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.Flavor",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.capabilities.Flavor"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}/flavor/{flavorId}"
@@ -1443,11 +1295,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.Preset[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.capabilities.Preset[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}/preset"
@@ -1489,11 +1337,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.capabilities.Preset",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.capabilities.Preset"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/region/{region}/preset/{presetId}"
@@ -1521,11 +1365,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Backend[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Backend[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/backend"
@@ -1553,11 +1393,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Features",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Features"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/feature"
@@ -1585,11 +1421,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Flavor[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Flavor[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/flavor"
@@ -1617,11 +1449,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Framework[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Framework[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/framework"
@@ -1649,11 +1477,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.PresetImage[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.PresetImage[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/presetImage"
@@ -1681,11 +1505,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/region"
@@ -1767,11 +1587,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.ai.job.Job[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.job.Job[]"
         },
         {
           "apiStatus": {
@@ -1798,11 +1614,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.job.Job",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.job.Job"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/job"
@@ -1844,11 +1656,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -1876,11 +1684,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.job.Job",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.job.Job"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/job/{jobId}"
@@ -1921,11 +1725,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.volume.DataSync",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.volume.DataSync"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/job/{jobId}/datasync"
@@ -1959,11 +1759,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/job/{jobId}/kill"
@@ -2004,11 +1800,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/job/{jobId}/label"
@@ -2058,11 +1850,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.ai.Logs",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.Logs"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/job/{jobId}/log"
@@ -2088,11 +1876,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.job.PresetImage[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.job.PresetImage[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/job/capabilities/presetImage"
@@ -2125,11 +1909,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.Command",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.Command"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/job/command"
@@ -2211,11 +1991,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.ai.notebook.Notebook[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.notebook.Notebook[]"
         },
         {
           "apiStatus": {
@@ -2242,11 +2018,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.notebook.Notebook",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.notebook.Notebook"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/notebook"
@@ -2288,11 +2060,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -2320,11 +2088,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.notebook.Notebook",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.notebook.Notebook"
         },
         {
           "apiStatus": {
@@ -2359,11 +2123,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/notebook/{notebookId}"
@@ -2404,11 +2164,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.volume.DataSync",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.volume.DataSync"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/notebook/{notebookId}/datasync"
@@ -2449,11 +2205,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/notebook/{notebookId}/label"
@@ -2487,11 +2239,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.Logs",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.Logs"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/notebook/{notebookId}/log"
@@ -2525,11 +2273,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/notebook/{notebookId}/start"
@@ -2563,11 +2307,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/notebook/{notebookId}/stop"
@@ -2601,11 +2341,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.ai.notebook.Editor[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.notebook.Editor[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/notebook/capabilities/editor"
@@ -2639,11 +2375,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.ai.notebook.Framework[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.notebook.Framework[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/notebook/capabilities/framework"
@@ -2676,11 +2408,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.Command",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.Command"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/notebook/command"
@@ -2706,11 +2434,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.registry.Registry[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.registry.Registry[]"
         },
         {
           "apiStatus": {
@@ -2737,11 +2461,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.registry.Registry",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.registry.Registry"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/registry"
@@ -2775,11 +2495,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -2807,11 +2523,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.registry.Registry",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.registry.Registry"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/registry/{registryId}"
@@ -2839,11 +2551,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Namespace[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Namespace[]"
         },
         {
           "apiStatus": {
@@ -2872,11 +2580,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Namespace",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Namespace"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving"
@@ -2912,11 +2616,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -2946,11 +2646,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Namespace",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Namespace"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving/{namespaceId}"
@@ -2986,11 +2682,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Metrics",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Metrics"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving/{namespaceId}/metrics"
@@ -3026,11 +2718,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Model[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Model[]"
         },
         {
           "apiStatus": {
@@ -3067,11 +2755,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Model",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Model"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving/{namespaceId}/model"
@@ -3115,11 +2799,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -3157,11 +2837,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Model",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Model"
         },
         {
           "apiStatus": {
@@ -3199,11 +2875,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Model",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Model"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving/{namespaceId}/model/{modelId}"
@@ -3239,11 +2911,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -3273,11 +2941,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Registry",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Registry"
         },
         {
           "apiStatus": {
@@ -3314,11 +2978,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.RegistryResponse",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.RegistryResponse"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving/{namespaceId}/registry"
@@ -3354,11 +3014,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Token[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Token[]"
         },
         {
           "apiStatus": {
@@ -3395,11 +3051,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Token",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Token"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving/{namespaceId}/token"
@@ -3443,11 +3095,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -3485,11 +3133,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Token",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Token"
         },
         {
           "apiStatus": {
@@ -3527,11 +3171,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.serving.Token",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.serving.Token"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving/{namespaceId}/token/{tokenId}"
@@ -3557,11 +3197,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.token.Token[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.token.Token[]"
         },
         {
           "apiStatus": {
@@ -3588,11 +3224,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.token.Token",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.token.Token"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/token"
@@ -3626,11 +3258,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -3658,11 +3286,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.token.Token",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.token.Token"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/token/{id}"
@@ -3696,11 +3320,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ai.token.Token",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ai.token.Token"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/token/{id}/renew"
@@ -3726,11 +3346,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -3774,11 +3390,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Alerting",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Alerting"
         }
       ],
       "path": "/cloud/project/{serviceName}/alerting"
@@ -3812,11 +3424,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -3844,11 +3452,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Alerting",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Alerting"
         },
         {
           "apiStatus": {
@@ -3883,11 +3487,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/alerting/{id}"
@@ -3921,11 +3521,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/alerting/{id}/alert"
@@ -3967,11 +3563,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.AlertingAlert",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.AlertingAlert"
         }
       ],
       "path": "/cloud/project/{serviceName}/alerting/{id}/alert/{alertId}"
@@ -4013,11 +3605,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.Bill[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.Bill[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/bill"
@@ -4043,11 +3631,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/cancel"
@@ -4073,11 +3657,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.Capability[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.containerRegistry.Capability[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/containerRegistry"
@@ -4111,11 +3691,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.kube.Flavor[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.Flavor[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/kube/flavors"
@@ -4141,11 +3717,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.RegionEnum[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.RegionEnum[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/kube/regions"
@@ -4171,11 +3743,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/region"
@@ -4209,11 +3777,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.loadbalancer.Region",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.loadbalancer.Region"
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/region/{regionName}"
@@ -4279,11 +3843,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.capabilities.Availability",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.capabilities.Availability"
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/productAvailability"
@@ -4333,11 +3893,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/changeContact"
@@ -4395,11 +3951,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/cloud/project/{serviceName}/confirmTermination"
@@ -4441,11 +3993,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.ProjectUsage",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.ProjectUsage"
         }
       ],
       "path": "/cloud/project/{serviceName}/consumption"
@@ -4471,11 +4019,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.Registry[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.containerRegistry.Registry[]"
         },
         {
           "apiStatus": {
@@ -4502,11 +4046,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.Registry",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.containerRegistry.Registry"
         }
       ],
       "path": "/cloud/project/{serviceName}/containerRegistry"
@@ -4540,11 +4080,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -4572,11 +4108,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.Registry",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.containerRegistry.Registry"
         },
         {
           "apiStatus": {
@@ -4611,11 +4143,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/containerRegistry/{registryID}"
@@ -4649,11 +4177,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.Plan[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.containerRegistry.Plan[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/containerRegistry/{registryID}/capabilities/plan"
@@ -4687,11 +4211,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.Plan",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.containerRegistry.Plan"
         },
         {
           "apiStatus": {
@@ -4726,11 +4246,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/containerRegistry/{registryID}/plan"
@@ -4764,11 +4280,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.User[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.containerRegistry.User[]"
         },
         {
           "apiStatus": {
@@ -4803,11 +4315,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.containerRegistry.User",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.containerRegistry.User"
         }
       ],
       "path": "/cloud/project/{serviceName}/containerRegistry/{registryID}/users"
@@ -4849,11 +4357,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}"
@@ -4879,11 +4383,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -4911,11 +4411,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/credit"
@@ -4949,11 +4445,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Credit",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Credit"
         }
       ],
       "path": "/cloud/project/{serviceName}/credit/{id}"
@@ -5019,11 +4511,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Availability[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Availability[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/availability"
@@ -5089,11 +4577,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Capabilities",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Capabilities"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/capabilities"
@@ -5159,11 +4643,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -5230,11 +4710,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra"
@@ -5308,11 +4784,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -5380,11 +4852,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         },
         {
           "apiStatus": {
@@ -5459,11 +4927,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}"
@@ -5537,11 +5001,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         },
         {
           "apiStatus": {
@@ -5616,11 +5076,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/advancedConfiguration"
@@ -5694,11 +5150,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/backup"
@@ -5780,11 +5232,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/backup/{backupId}"
@@ -5858,11 +5306,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/capabilities/advancedConfiguration"
@@ -5936,11 +5380,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.Integration[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.Integration[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/capabilities/integration"
@@ -6014,11 +5454,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Certificates",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Certificates"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/certificates"
@@ -6092,11 +5528,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -6171,11 +5603,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/integration"
@@ -6257,11 +5685,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -6337,11 +5761,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/integration/{integrationId}"
@@ -6351,8 +5771,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/cassandra",
+            "value": "DEPRECATED"
           },
           "description": "List cassandra ip restrictions",
           "errors": [
@@ -6415,16 +5838,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/cassandra",
+            "value": "DEPRECATED"
           },
           "description": "Add ip restrictions to the cassandra",
           "errors": [
@@ -6494,11 +5916,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/ipRestriction"
@@ -6508,8 +5926,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/cassandra",
+            "value": "DEPRECATED"
           },
           "description": "Deletes the given IP from the restricted IPs of the cassandra",
           "errors": [
@@ -6580,16 +6001,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/cassandra",
+            "value": "DEPRECATED"
           },
           "description": "Get cassandra ip restrictions",
           "errors": [
@@ -6660,16 +6080,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/cassandra",
+            "value": "DEPRECATED"
           },
           "description": "Changes the list of ip restrictions to the cassandra",
           "errors": [
@@ -6747,11 +6166,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/ipRestriction/{ipBlock}"
@@ -6825,11 +6240,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.LogEntry[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.LogEntry[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/logs"
@@ -6903,11 +6314,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/maintenance"
@@ -6989,11 +6396,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/maintenance/{maintenanceId}"
@@ -7075,11 +6478,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/maintenance/{maintenanceId}/apply"
@@ -7161,11 +6560,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/metric"
@@ -7255,11 +6650,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Metric",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Metric"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/metric/{metricName}"
@@ -7333,11 +6724,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/node"
@@ -7419,11 +6806,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/node/{nodeId}"
@@ -7497,11 +6880,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -7576,11 +6955,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/user"
@@ -7662,11 +7037,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -7742,11 +7113,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.User",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.User"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/user/{userId}"
@@ -7828,11 +7195,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/user/{userId}/credentials/reset"
@@ -7898,11 +7261,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -7969,11 +7328,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana"
@@ -8047,11 +7402,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -8119,11 +7470,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         },
         {
           "apiStatus": {
@@ -8198,11 +7545,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}"
@@ -8276,11 +7619,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         },
         {
           "apiStatus": {
@@ -8355,11 +7694,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/advancedConfiguration"
@@ -8433,11 +7768,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/backup"
@@ -8519,11 +7850,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/backup/{backupId}"
@@ -8597,11 +7924,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/capabilities/advancedConfiguration"
@@ -8675,11 +7998,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.Integration[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.Integration[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/capabilities/integration"
@@ -8753,11 +8072,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -8832,11 +8147,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/integration"
@@ -8918,11 +8229,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -8998,11 +8305,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/integration/{integrationId}"
@@ -9012,8 +8315,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/grafana",
+            "value": "DEPRECATED"
           },
           "description": "List grafana ip restrictions",
           "errors": [
@@ -9076,16 +8382,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/grafana",
+            "value": "DEPRECATED"
           },
           "description": "Add ip restrictions to the grafana",
           "errors": [
@@ -9155,11 +8460,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/ipRestriction"
@@ -9169,8 +8470,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/grafana",
+            "value": "DEPRECATED"
           },
           "description": "Deletes the given IP from the restricted IPs of the grafana",
           "errors": [
@@ -9241,16 +8545,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/grafana",
+            "value": "DEPRECATED"
           },
           "description": "Get grafana ip restrictions",
           "errors": [
@@ -9321,16 +8624,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/grafana",
+            "value": "DEPRECATED"
           },
           "description": "Changes the list of ip restrictions to the grafana",
           "errors": [
@@ -9408,11 +8710,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/ipRestriction/{ipBlock}"
@@ -9486,11 +8784,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.LogEntry[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.LogEntry[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/logs"
@@ -9564,11 +8858,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/maintenance"
@@ -9650,11 +8940,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/maintenance/{maintenanceId}"
@@ -9736,11 +9022,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/maintenance/{maintenanceId}/apply"
@@ -9822,11 +9104,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/metric"
@@ -9916,11 +9194,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Metric",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Metric"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/metric/{metricName}"
@@ -9994,11 +9268,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/node"
@@ -10080,11 +9350,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/node/{nodeId}"
@@ -10158,11 +9424,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/user"
@@ -10244,11 +9506,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.User",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.User"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/user/{userId}"
@@ -10330,11 +9588,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/user/{userId}/credentials/reset"
@@ -10400,11 +9654,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -10471,11 +9721,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka"
@@ -10549,11 +9795,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -10621,11 +9863,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafka.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafka.Service"
         },
         {
           "apiStatus": {
@@ -10700,11 +9938,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafka.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafka.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}"
@@ -10778,11 +10012,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -10857,11 +10087,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafka.Acl",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafka.Acl"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/acl"
@@ -10943,11 +10169,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -11023,11 +10245,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafka.Acl",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafka.Acl"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/acl/{aclId}"
@@ -11101,11 +10319,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         },
         {
           "apiStatus": {
@@ -11180,11 +10394,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/advancedConfiguration"
@@ -11258,11 +10468,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/capabilities/advancedConfiguration"
@@ -11336,11 +10542,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.Integration[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.Integration[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/capabilities/integration"
@@ -11414,11 +10616,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Certificates",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Certificates"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/certificates"
@@ -11492,11 +10690,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -11571,11 +10765,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/integration"
@@ -11657,11 +10847,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -11737,11 +10923,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/integration/{integrationId}"
@@ -11751,8 +10933,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/kafka",
+            "value": "DEPRECATED"
           },
           "description": "List kafka ip restrictions",
           "errors": [
@@ -11815,16 +11000,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/kafka",
+            "value": "DEPRECATED"
           },
           "description": "Add ip restrictions to the kafka",
           "errors": [
@@ -11894,11 +11078,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/ipRestriction"
@@ -11908,8 +11088,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/kafka",
+            "value": "DEPRECATED"
           },
           "description": "Deletes the given IP from the restricted IPs of the kafka",
           "errors": [
@@ -11980,16 +11163,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/kafka",
+            "value": "DEPRECATED"
           },
           "description": "Get kafka ip restrictions",
           "errors": [
@@ -12060,16 +11242,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/kafka",
+            "value": "DEPRECATED"
           },
           "description": "Changes the list of ip restrictions to the kafka",
           "errors": [
@@ -12147,11 +11328,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/ipRestriction/{ipBlock}"
@@ -12225,11 +11402,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.LogEntry[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.LogEntry[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/logs"
@@ -12303,11 +11476,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/maintenance"
@@ -12389,11 +11558,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/maintenance/{maintenanceId}"
@@ -12475,11 +11640,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/maintenance/{maintenanceId}/apply"
@@ -12561,11 +11722,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/metric"
@@ -12655,11 +11812,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Metric",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Metric"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/metric/{metricName}"
@@ -12733,11 +11886,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/node"
@@ -12819,11 +11968,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/node/{nodeId}"
@@ -12897,11 +12042,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafka.Permissions",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafka.Permissions"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/permissions"
@@ -12975,11 +12116,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -13054,11 +12191,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafka.Topic",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafka.Topic"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/topic"
@@ -13140,11 +12273,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -13220,11 +12349,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafka.Topic",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafka.Topic"
         },
         {
           "apiStatus": {
@@ -13307,11 +12432,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafka.Topic",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafka.Topic"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/topic/{topicId}"
@@ -13385,11 +12506,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -13464,11 +12581,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/user"
@@ -13550,11 +12663,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -13630,11 +12739,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.User",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.User"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/user/{userId}"
@@ -13716,11 +12821,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafka.user.Access",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafka.user.Access"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/user/{userId}/access"
@@ -13802,11 +12903,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafka/{clusterId}/user/{userId}/credentials/reset"
@@ -13872,11 +12969,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -13943,11 +13036,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect"
@@ -14021,11 +13110,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -14093,11 +13178,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         },
         {
           "apiStatus": {
@@ -14172,11 +13253,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}"
@@ -14250,11 +13327,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         },
         {
           "apiStatus": {
@@ -14329,11 +13402,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/advancedConfiguration"
@@ -14407,11 +13476,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/capabilities/advancedConfiguration"
@@ -14485,11 +13550,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/capabilities/connector"
@@ -14571,11 +13632,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafkaConnect.capabilities.Connector",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafkaConnect.capabilities.Connector"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/capabilities/connector/{connectorId}"
@@ -14657,11 +13714,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafkaConnect.capabilities.connector.configuration.Property[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafkaConnect.capabilities.connector.configuration.Property[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/capabilities/connector/{connectorId}/configuration"
@@ -14743,11 +13796,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafkaConnect.capabilities.connector.Transform[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafkaConnect.capabilities.connector.Transform[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/capabilities/connector/{connectorId}/transforms"
@@ -14821,11 +13870,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.Integration[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.Integration[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/capabilities/integration"
@@ -14899,11 +13944,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -14978,11 +14019,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafkaConnect.Connector",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafkaConnect.Connector"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector"
@@ -15064,11 +14101,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -15144,11 +14177,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafkaConnect.Connector",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafkaConnect.Connector"
         },
         {
           "apiStatus": {
@@ -15231,11 +14260,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafkaConnect.Connector",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafkaConnect.Connector"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}"
@@ -15317,11 +14342,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}/pause"
@@ -15403,11 +14424,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}/restart"
@@ -15489,11 +14506,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}/resume"
@@ -15575,11 +14588,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}/task"
@@ -15669,11 +14678,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.kafkaConnect.connector.Task",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.kafkaConnect.connector.Task"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}/task/{taskId}"
@@ -15763,11 +14768,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}/task/{taskId}/restart"
@@ -15841,11 +14842,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -15920,11 +14917,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/integration"
@@ -16006,11 +14999,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -16086,11 +15075,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/integration/{integrationId}"
@@ -16100,8 +15085,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/kafkaConnect",
+            "value": "DEPRECATED"
           },
           "description": "List kafkaConnect ip restrictions",
           "errors": [
@@ -16164,16 +15152,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/kafkaConnect",
+            "value": "DEPRECATED"
           },
           "description": "Add ip restrictions to the kafkaConnect",
           "errors": [
@@ -16243,11 +15230,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/ipRestriction"
@@ -16257,8 +15240,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/kafkaConnect",
+            "value": "DEPRECATED"
           },
           "description": "Deletes the given IP from the restricted IPs of the kafkaConnect",
           "errors": [
@@ -16329,16 +15315,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/kafkaConnect",
+            "value": "DEPRECATED"
           },
           "description": "Get kafkaConnect ip restrictions",
           "errors": [
@@ -16409,16 +15394,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/kafkaConnect",
+            "value": "DEPRECATED"
           },
           "description": "Changes the list of ip restrictions to the kafkaConnect",
           "errors": [
@@ -16496,11 +15480,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/ipRestriction/{ipBlock}"
@@ -16574,11 +15554,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.LogEntry[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.LogEntry[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/logs"
@@ -16652,11 +15628,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/maintenance"
@@ -16738,11 +15710,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/maintenance/{maintenanceId}"
@@ -16824,11 +15792,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/maintenance/{maintenanceId}/apply"
@@ -16910,11 +15874,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/metric"
@@ -17004,11 +15964,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Metric",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Metric"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/metric/{metricName}"
@@ -17082,11 +16038,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/node"
@@ -17168,11 +16120,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/node/{nodeId}"
@@ -17246,11 +16194,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -17325,11 +16269,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/user"
@@ -17411,11 +16351,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -17491,11 +16427,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.User",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.User"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/user/{userId}"
@@ -17577,11 +16509,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/user/{userId}/credentials/reset"
@@ -17647,11 +16575,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -17718,11 +16642,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker"
@@ -17796,11 +16716,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -17868,11 +16784,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         },
         {
           "apiStatus": {
@@ -17947,11 +16859,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}"
@@ -18025,11 +16933,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.Integration[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.Integration[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/capabilities/integration"
@@ -18103,11 +17007,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -18182,11 +17082,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/integration"
@@ -18268,11 +17164,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -18348,11 +17240,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/integration/{integrationId}"
@@ -18426,11 +17314,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.LogEntry[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.LogEntry[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/logs"
@@ -18504,11 +17388,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/maintenance"
@@ -18590,11 +17470,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/maintenance/{maintenanceId}"
@@ -18676,11 +17552,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/maintenance/{maintenanceId}/apply"
@@ -18762,11 +17634,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/metric"
@@ -18856,11 +17724,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Metric",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Metric"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/metric/{metricName}"
@@ -18934,11 +17798,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/node"
@@ -19020,11 +17880,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/node/{nodeId}"
@@ -19098,11 +17954,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -19177,11 +18029,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Replication",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Replication"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/replication"
@@ -19263,11 +18111,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -19343,11 +18187,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Replication",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Replication"
         },
         {
           "apiStatus": {
@@ -19430,11 +18270,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Replication",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Replication"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/replication/{replicationId}"
@@ -19500,11 +18336,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -19571,11 +18403,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3aggregator"
@@ -19649,11 +18477,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -19721,11 +18545,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         },
         {
           "apiStatus": {
@@ -19800,11 +18620,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3aggregator/{clusterId}"
@@ -19878,11 +18694,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.Integration[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.Integration[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3aggregator/{clusterId}/capabilities/integration"
@@ -19956,11 +18768,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -20035,11 +18843,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3aggregator/{clusterId}/integration"
@@ -20121,11 +18925,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -20201,11 +19001,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3aggregator/{clusterId}/integration/{integrationId}"
@@ -20279,11 +19075,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.LogEntry[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.LogEntry[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3aggregator/{clusterId}/logs"
@@ -20357,11 +19149,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3aggregator/{clusterId}/maintenance"
@@ -20443,11 +19231,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3aggregator/{clusterId}/maintenance/{maintenanceId}"
@@ -20529,11 +19313,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3aggregator/{clusterId}/maintenance/{maintenanceId}/apply"
@@ -20615,11 +19395,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3aggregator/{clusterId}/metric"
@@ -20709,11 +19485,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Metric",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Metric"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3aggregator/{clusterId}/metric/{metricName}"
@@ -20787,11 +19559,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3aggregator/{clusterId}/node"
@@ -20873,11 +19641,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3aggregator/{clusterId}/node/{nodeId}"
@@ -20943,11 +19707,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -21014,11 +19774,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db"
@@ -21092,11 +19848,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -21164,11 +19916,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         },
         {
           "apiStatus": {
@@ -21243,11 +19991,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}"
@@ -21321,11 +20065,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         },
         {
           "apiStatus": {
@@ -21400,11 +20140,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/advancedConfiguration"
@@ -21478,11 +20214,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/backup"
@@ -21564,11 +20296,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/backup/{backupId}"
@@ -21642,11 +20370,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/capabilities/advancedConfiguration"
@@ -21720,11 +20444,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.Integration[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.Integration[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/capabilities/integration"
@@ -21798,11 +20518,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -21877,11 +20593,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/integration"
@@ -21963,11 +20675,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -22043,11 +20751,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/integration/{integrationId}"
@@ -22057,8 +20761,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/m3db",
+            "value": "DEPRECATED"
           },
           "description": "List m3db ip restrictions",
           "errors": [
@@ -22121,16 +20828,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/m3db",
+            "value": "DEPRECATED"
           },
           "description": "Add ip restrictions to the m3db",
           "errors": [
@@ -22200,11 +20906,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/ipRestriction"
@@ -22214,8 +20916,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/m3db",
+            "value": "DEPRECATED"
           },
           "description": "Deletes the given IP from the restricted IPs of the m3db",
           "errors": [
@@ -22286,16 +20991,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/m3db",
+            "value": "DEPRECATED"
           },
           "description": "Get m3db ip restrictions",
           "errors": [
@@ -22366,16 +21070,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/m3db",
+            "value": "DEPRECATED"
           },
           "description": "Changes the list of ip restrictions to the m3db",
           "errors": [
@@ -22453,11 +21156,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/ipRestriction/{ipBlock}"
@@ -22531,11 +21230,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.LogEntry[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.LogEntry[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/logs"
@@ -22609,11 +21304,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/maintenance"
@@ -22695,11 +21386,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/maintenance/{maintenanceId}"
@@ -22781,11 +21468,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/maintenance/{maintenanceId}/apply"
@@ -22867,11 +21550,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/metric"
@@ -22961,11 +21640,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Metric",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Metric"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/metric/{metricName}"
@@ -23039,11 +21714,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -23118,11 +21789,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.m3db.Namespace",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.m3db.Namespace"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/namespace"
@@ -23204,11 +21871,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -23284,11 +21947,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.m3db.Namespace",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.m3db.Namespace"
         },
         {
           "apiStatus": {
@@ -23371,11 +22030,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.m3db.Namespace",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.m3db.Namespace"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/namespace/{namespaceId}"
@@ -23449,11 +22104,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/node"
@@ -23535,11 +22186,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/node/{nodeId}"
@@ -23613,11 +22260,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -23692,11 +22335,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.m3db.UserWithPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.m3db.UserWithPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/user"
@@ -23778,11 +22417,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -23858,11 +22493,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.m3db.User",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.m3db.User"
         },
         {
           "apiStatus": {
@@ -23945,11 +22576,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.m3db.User",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.m3db.User"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/user/{userId}"
@@ -24031,11 +22658,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.m3db.UserWithPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.m3db.UserWithPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/user/{userId}/credentials/reset"
@@ -24101,11 +22724,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -24172,11 +22791,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb"
@@ -24250,11 +22865,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -24322,11 +22933,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         },
         {
           "apiStatus": {
@@ -24401,11 +23008,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}"
@@ -24479,11 +23082,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/backup"
@@ -24565,11 +23164,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/backup/{backupId}"
@@ -24651,11 +23246,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/backup/{backupId}/restore"
@@ -24665,8 +23256,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/mongodb",
+            "value": "DEPRECATED"
           },
           "description": "List mongodb ip restrictions",
           "errors": [
@@ -24729,16 +23323,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/mongodb",
+            "value": "DEPRECATED"
           },
           "description": "Add ip restrictions to the mongodb",
           "errors": [
@@ -24808,11 +23401,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/ipRestriction"
@@ -24822,8 +23411,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/mongodb",
+            "value": "DEPRECATED"
           },
           "description": "Deletes the given IP from the restricted IPs of the mongodb",
           "errors": [
@@ -24894,16 +23486,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/mongodb",
+            "value": "DEPRECATED"
           },
           "description": "Get mongodb ip restrictions",
           "errors": [
@@ -24974,16 +23565,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/mongodb",
+            "value": "DEPRECATED"
           },
           "description": "Changes the list of ip restrictions to the mongodb",
           "errors": [
@@ -25061,11 +23651,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/ipRestriction/{ipBlock}"
@@ -25139,11 +23725,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.LogEntry[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.LogEntry[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/logs"
@@ -25217,11 +23799,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/maintenance"
@@ -25303,11 +23881,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/maintenance/{maintenanceId}"
@@ -25389,11 +23963,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/maintenance/{maintenanceId}/apply"
@@ -25475,11 +24045,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/metric"
@@ -25569,11 +24135,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Metric",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Metric"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/metric/{metricName}"
@@ -25647,11 +24209,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -25726,11 +24284,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/node"
@@ -25812,11 +24366,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -25892,11 +24442,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Node"
         },
         {
           "apiStatus": {
@@ -25979,11 +24525,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/node/{nodeId}"
@@ -26064,11 +24606,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/restore"
@@ -26150,11 +24688,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/roles"
@@ -26228,11 +24762,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -26307,11 +24837,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithPasswordAndRoles",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithPasswordAndRoles"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/user"
@@ -26393,11 +24919,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -26473,11 +24995,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithRoles",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithRoles"
         },
         {
           "apiStatus": {
@@ -26560,11 +25078,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithRoles",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithRoles"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/user/{userId}"
@@ -26646,11 +25160,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithPasswordAndRoles",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithPasswordAndRoles"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/user/{userId}/credentials/reset"
@@ -26716,11 +25226,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -26787,11 +25293,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql"
@@ -26865,11 +25367,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -26937,11 +25435,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         },
         {
           "apiStatus": {
@@ -27016,11 +25510,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}"
@@ -27094,11 +25584,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         },
         {
           "apiStatus": {
@@ -27173,11 +25659,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/advancedConfiguration"
@@ -27251,11 +25733,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/backup"
@@ -27337,11 +25815,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/backup/{backupId}"
@@ -27415,11 +25889,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/capabilities/advancedConfiguration"
@@ -27493,11 +25963,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.Integration[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.Integration[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/capabilities/integration"
@@ -27571,11 +26037,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Certificates",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Certificates"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/certificates"
@@ -27665,11 +26127,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.database.service.CurrentQueries",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.CurrentQueries"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/currentQueries"
@@ -27750,11 +26208,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.currentqueries.query.CancelResponse",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.currentqueries.query.CancelResponse"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/currentQueries/cancel"
@@ -27827,11 +26281,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -27906,11 +26356,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Database",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Database"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/database"
@@ -27992,11 +26438,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -28072,11 +26514,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Database",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Database"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/database/{databaseId}"
@@ -28150,11 +26588,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.TemporaryWriteDeadline",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.TemporaryWriteDeadline"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/enableWrites"
@@ -28228,11 +26662,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -28307,11 +26737,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/integration"
@@ -28393,11 +26819,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -28473,11 +26895,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/integration/{integrationId}"
@@ -28487,8 +26905,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/mysql",
+            "value": "DEPRECATED"
           },
           "description": "List mysql ip restrictions",
           "errors": [
@@ -28551,16 +26972,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/mysql",
+            "value": "DEPRECATED"
           },
           "description": "Add ip restrictions to the mysql",
           "errors": [
@@ -28630,11 +27050,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/ipRestriction"
@@ -28644,8 +27060,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/mysql",
+            "value": "DEPRECATED"
           },
           "description": "Deletes the given IP from the restricted IPs of the mysql",
           "errors": [
@@ -28716,16 +27135,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/mysql",
+            "value": "DEPRECATED"
           },
           "description": "Get mysql ip restrictions",
           "errors": [
@@ -28796,16 +27214,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/mysql",
+            "value": "DEPRECATED"
           },
           "description": "Changes the list of ip restrictions to the mysql",
           "errors": [
@@ -28883,11 +27300,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/ipRestriction/{ipBlock}"
@@ -28961,11 +27374,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.LogEntry[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.LogEntry[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/logs"
@@ -29039,11 +27448,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/maintenance"
@@ -29125,11 +27530,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/maintenance/{maintenanceId}"
@@ -29211,11 +27612,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/maintenance/{maintenanceId}/apply"
@@ -29297,11 +27694,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/metric"
@@ -29391,11 +27784,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Metric",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Metric"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/metric/{metricName}"
@@ -29469,11 +27858,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/node"
@@ -29555,11 +27940,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/node/{nodeId}"
@@ -29649,11 +28030,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.database.mysql.QueryStatistics",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.mysql.QueryStatistics"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/queryStatistics"
@@ -29727,11 +28104,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/queryStatistics/reset"
@@ -29805,11 +28178,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -29884,11 +28253,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/user"
@@ -29970,11 +28335,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -30050,11 +28411,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.User",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.User"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/user/{userId}"
@@ -30136,11 +28493,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/user/{userId}/credentials/reset"
@@ -30206,11 +28559,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -30277,11 +28626,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch"
@@ -30355,11 +28700,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -30427,11 +28768,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.opensearch.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.opensearch.Service"
         },
         {
           "apiStatus": {
@@ -30506,11 +28843,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.opensearch.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.opensearch.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}"
@@ -30584,11 +28917,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         },
         {
           "apiStatus": {
@@ -30663,11 +28992,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/advancedConfiguration"
@@ -30741,11 +29066,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/backup"
@@ -30827,11 +29148,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/backup/{backupId}"
@@ -30905,11 +29222,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/capabilities/advancedConfiguration"
@@ -30983,11 +29296,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.Integration[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.Integration[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/capabilities/integration"
@@ -31061,11 +29370,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/index"
@@ -31147,11 +29452,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -31227,11 +29528,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.opensearch.Index",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.opensearch.Index"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/index/{indexId}"
@@ -31305,11 +29602,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -31384,11 +29677,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/integration"
@@ -31470,11 +29759,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -31550,11 +29835,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/integration/{integrationId}"
@@ -31564,8 +29845,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/opensearch",
+            "value": "DEPRECATED"
           },
           "description": "List opensearch ip restrictions",
           "errors": [
@@ -31628,16 +29912,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/opensearch",
+            "value": "DEPRECATED"
           },
           "description": "Add ip restrictions to the opensearch",
           "errors": [
@@ -31707,11 +29990,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/ipRestriction"
@@ -31721,8 +30000,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/opensearch",
+            "value": "DEPRECATED"
           },
           "description": "Deletes the given IP from the restricted IPs of the opensearch",
           "errors": [
@@ -31793,16 +30075,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/opensearch",
+            "value": "DEPRECATED"
           },
           "description": "Get opensearch ip restrictions",
           "errors": [
@@ -31873,16 +30154,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/opensearch",
+            "value": "DEPRECATED"
           },
           "description": "Changes the list of ip restrictions to the opensearch",
           "errors": [
@@ -31960,11 +30240,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/ipRestriction/{ipBlock}"
@@ -32038,11 +30314,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.LogEntry[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.LogEntry[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/logs"
@@ -32116,11 +30388,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/maintenance"
@@ -32202,11 +30470,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/maintenance/{maintenanceId}"
@@ -32288,11 +30552,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/maintenance/{maintenanceId}/apply"
@@ -32374,11 +30634,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/metric"
@@ -32468,11 +30724,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Metric",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Metric"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/metric/{metricName}"
@@ -32546,11 +30798,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/node"
@@ -32632,11 +30880,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/node/{nodeId}"
@@ -32710,11 +30954,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -32789,11 +31029,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.opensearch.Pattern",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.opensearch.Pattern"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/pattern"
@@ -32875,11 +31111,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -32955,11 +31187,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.opensearch.Pattern",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.opensearch.Pattern"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/pattern/{patternId}"
@@ -33033,11 +31261,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.opensearch.Permissions",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.opensearch.Permissions"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/permissions"
@@ -33111,11 +31335,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -33190,11 +31410,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.opensearch.UserWithPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.opensearch.UserWithPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/user"
@@ -33276,11 +31492,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -33356,11 +31568,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.opensearch.User",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.opensearch.User"
         },
         {
           "apiStatus": {
@@ -33443,11 +31651,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.opensearch.User",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.opensearch.User"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/user/{userId}"
@@ -33529,11 +31733,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.opensearch.UserWithPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.opensearch.UserWithPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/user/{userId}/credentials/reset"
@@ -33599,11 +31799,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -33670,11 +31866,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql"
@@ -33748,11 +31940,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -33820,11 +32008,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         },
         {
           "apiStatus": {
@@ -33899,11 +32083,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}"
@@ -33977,11 +32157,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         },
         {
           "apiStatus": {
@@ -34056,11 +32232,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/advancedConfiguration"
@@ -34134,11 +32306,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/backup"
@@ -34220,11 +32388,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/backup/{backupId}"
@@ -34298,11 +32462,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/capabilities/advancedConfiguration"
@@ -34376,11 +32536,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.Integration[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.Integration[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/capabilities/integration"
@@ -34454,11 +32610,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Certificates",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Certificates"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/certificates"
@@ -34531,11 +32683,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -34610,11 +32758,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.postgresql.ConnectionPool",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.postgresql.ConnectionPool"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/connectionPool"
@@ -34696,11 +32840,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -34776,11 +32916,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.postgresql.ConnectionPool",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.postgresql.ConnectionPool"
         },
         {
           "apiStatus": {
@@ -34863,11 +32999,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.postgresql.ConnectionPool",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.postgresql.ConnectionPool"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/connectionPool/{connectionPoolId}"
@@ -34957,11 +33089,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.database.service.CurrentQueries",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.CurrentQueries"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/currentQueries"
@@ -35042,11 +33170,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.currentqueries.query.CancelResponse",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.currentqueries.query.CancelResponse"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/currentQueries/cancel"
@@ -35119,11 +33243,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -35198,11 +33318,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Database",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Database"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/database"
@@ -35284,11 +33400,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -35364,11 +33476,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Database",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Database"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/database/{databaseId}"
@@ -35442,11 +33550,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.TemporaryWriteDeadline",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.TemporaryWriteDeadline"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/enableWrites"
@@ -35520,11 +33624,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -35599,11 +33699,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/integration"
@@ -35685,11 +33781,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -35765,11 +33857,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/integration/{integrationId}"
@@ -35779,8 +33867,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "List postgresql ip restrictions",
           "errors": [
@@ -35843,16 +33934,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Add ip restrictions to the postgresql",
           "errors": [
@@ -35922,11 +34012,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/ipRestriction"
@@ -35936,8 +34022,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Deletes the given IP from the restricted IPs of the postgresql",
           "errors": [
@@ -36008,16 +34097,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Get postgresql ip restrictions",
           "errors": [
@@ -36088,16 +34176,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/postgresql",
+            "value": "DEPRECATED"
           },
           "description": "Changes the list of ip restrictions to the postgresql",
           "errors": [
@@ -36175,11 +34262,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/ipRestriction/{ipBlock}"
@@ -36253,11 +34336,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.LogEntry[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.LogEntry[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/logs"
@@ -36331,11 +34410,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/maintenance"
@@ -36417,11 +34492,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/maintenance/{maintenanceId}"
@@ -36503,11 +34574,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/maintenance/{maintenanceId}/apply"
@@ -36589,11 +34656,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/metric"
@@ -36683,11 +34746,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Metric",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Metric"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/metric/{metricName}"
@@ -36761,11 +34820,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/node"
@@ -36847,11 +34902,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/node/{nodeId}"
@@ -36941,11 +34992,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.database.postgresql.QueryStatistics",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.postgresql.QueryStatistics"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/queryStatistics"
@@ -37019,11 +35066,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/queryStatistics/reset"
@@ -37097,11 +35140,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/roles"
@@ -37175,11 +35214,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -37254,11 +35289,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithPasswordAndRoles",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithPasswordAndRoles"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/user"
@@ -37340,11 +35371,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -37420,11 +35447,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithRoles",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithRoles"
         },
         {
           "apiStatus": {
@@ -37507,11 +35530,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithRoles",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithRoles"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/user/{userId}"
@@ -37593,11 +35612,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.UserWithPasswordAndRoles",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.UserWithPasswordAndRoles"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/user/{userId}/credentials/reset"
@@ -37663,11 +35678,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -37734,11 +35745,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis"
@@ -37812,11 +35819,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -37884,11 +35887,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         },
         {
           "apiStatus": {
@@ -37963,11 +35962,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}"
@@ -38041,11 +36036,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         },
         {
           "apiStatus": {
@@ -38120,11 +36111,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "map[string]string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "map[string]string"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/advancedConfiguration"
@@ -38198,11 +36185,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/backup"
@@ -38284,11 +36267,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/backup/{backupId}"
@@ -38362,11 +36341,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.advancedConfiguration.Property[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/capabilities/advancedConfiguration"
@@ -38440,11 +36415,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/capabilities/categories"
@@ -38518,11 +36489,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/capabilities/commands"
@@ -38596,11 +36563,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.capabilities.Integration[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.capabilities.Integration[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/capabilities/integration"
@@ -38674,11 +36637,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -38753,11 +36712,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/integration"
@@ -38839,11 +36794,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -38919,11 +36870,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Integration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Integration"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/integration/{integrationId}"
@@ -38933,8 +36880,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/redis",
+            "value": "DEPRECATED"
           },
           "description": "List redis ip restrictions",
           "errors": [
@@ -38997,16 +36947,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/redis",
+            "value": "DEPRECATED"
           },
           "description": "Add ip restrictions to the redis",
           "errors": [
@@ -39076,11 +37025,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/ipRestriction"
@@ -39090,8 +37035,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/redis",
+            "value": "DEPRECATED"
           },
           "description": "Deletes the given IP from the restricted IPs of the redis",
           "errors": [
@@ -39162,16 +37110,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/redis",
+            "value": "DEPRECATED"
           },
           "description": "Get redis ip restrictions",
           "errors": [
@@ -39242,16 +37189,15 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-03-15T00:00:00+00:00",
+            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/cloud/project/{serviceName}/database/redis",
+            "value": "DEPRECATED"
           },
           "description": "Changes the list of ip restrictions to the redis",
           "errors": [
@@ -39329,11 +37275,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.IpRestriction",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.IpRestriction"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/ipRestriction/{ipBlock}"
@@ -39407,11 +37349,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.LogEntry[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.LogEntry[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/logs"
@@ -39485,11 +37423,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/maintenance"
@@ -39571,11 +37505,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/maintenance/{maintenanceId}"
@@ -39657,11 +37587,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Maintenance",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Maintenance"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/maintenance/{maintenanceId}/apply"
@@ -39743,11 +37669,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/metric"
@@ -39837,11 +37759,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Metric",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Metric"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/metric/{metricName}"
@@ -39915,11 +37833,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/node"
@@ -40001,11 +37915,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.service.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/node/{nodeId}"
@@ -40079,11 +37989,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -40158,11 +38064,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.redis.UserWithPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.redis.UserWithPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/user"
@@ -40244,11 +38146,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -40324,11 +38222,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.redis.User",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.redis.User"
         },
         {
           "apiStatus": {
@@ -40411,11 +38305,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.redis.User",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.redis.User"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/user/{userId}"
@@ -40497,11 +38387,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.redis.UserWithPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.redis.UserWithPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/user/{userId}/credentials/reset"
@@ -40567,11 +38453,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/service"
@@ -40645,11 +38527,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.database.Service"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/service/{clusterId}"
@@ -40675,11 +38553,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.dataProcessing.AuthorizationStatus",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.dataProcessing.AuthorizationStatus"
         },
         {
           "apiStatus": {
@@ -40699,11 +38573,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/dataProcessing/authorization"
@@ -40729,11 +38599,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.dataProcessing.Capability[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.dataProcessing.Capability[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/dataProcessing/capabilities"
@@ -40759,11 +38625,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -40790,11 +38652,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.dataProcessing.Job",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.dataProcessing.Job"
         }
       ],
       "path": "/cloud/project/{serviceName}/dataProcessing/jobs"
@@ -40828,11 +38686,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -40860,11 +38714,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.dataProcessing.Job",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.dataProcessing.Job"
         }
       ],
       "path": "/cloud/project/{serviceName}/dataProcessing/jobs/{jobId}"
@@ -40906,11 +38756,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.project.dataProcessing.JobLogs",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.dataProcessing.JobLogs"
         }
       ],
       "path": "/cloud/project/{serviceName}/dataProcessing/jobs/{jobId}/logs"
@@ -40936,11 +38782,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.dataProcessing.Metrics",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.dataProcessing.Metrics"
         }
       ],
       "path": "/cloud/project/{serviceName}/dataProcessing/metrics"
@@ -40974,11 +38816,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.flavor.Flavor[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.flavor.Flavor[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/flavor"
@@ -41012,11 +38850,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.flavor.Flavor",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.flavor.Flavor"
         }
       ],
       "path": "/cloud/project/{serviceName}/flavor/{flavorId}"
@@ -41053,11 +38887,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.forecast.ProjectForecast",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.forecast.ProjectForecast"
         }
       ],
       "path": "/cloud/project/{serviceName}/forecast"
@@ -41107,11 +38937,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.image.Image[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.image.Image[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/image"
@@ -41145,11 +38971,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.image.Image",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.image.Image"
         }
       ],
       "path": "/cloud/project/{serviceName}/image/{imageId}"
@@ -41183,11 +39005,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.instance.Instance[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instance.Instance[]"
         },
         {
           "apiStatus": {
@@ -41214,11 +39032,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instance.InstanceDetail"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance"
@@ -41252,11 +39066,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -41284,11 +39094,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instance.InstanceDetail"
         },
         {
           "apiStatus": {
@@ -41323,11 +39129,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}"
@@ -41361,11 +39163,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instance.InstanceDetail"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/activeMonthlyBilling"
@@ -41399,11 +39197,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.ApplicationAccess",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instance.ApplicationAccess"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/applicationAccess"
@@ -41437,11 +39231,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instanceInterface.Interface[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instanceInterface.Interface[]"
         },
         {
           "apiStatus": {
@@ -41476,11 +39266,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instanceInterface.Interface",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instanceInterface.Interface"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/interface"
@@ -41522,11 +39308,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -41562,11 +39344,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instanceInterface.Interface",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instanceInterface.Interface"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}"
@@ -41616,11 +39394,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceMetrics",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instance.InstanceMetrics"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/monitoring"
@@ -41661,11 +39435,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/reboot"
@@ -41706,11 +39476,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instance.InstanceDetail"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/reinstall"
@@ -41751,11 +39517,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.RescueAdminPassword",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instance.RescueAdminPassword"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/rescueMode"
@@ -41796,11 +39558,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instance.InstanceDetail"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/resize"
@@ -41834,11 +39592,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/resume"
@@ -41872,11 +39626,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/shelve"
@@ -41917,11 +39667,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/snapshot"
@@ -41955,11 +39701,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/start"
@@ -41993,11 +39735,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/stop"
@@ -42031,11 +39769,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/unshelve"
@@ -42069,11 +39803,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceVnc",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instance.InstanceVnc"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/vnc"
@@ -42106,11 +39836,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instance.Instance[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instance.Instance[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/bulk"
@@ -42144,11 +39870,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.instancegroup.InstanceGroup[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instancegroup.InstanceGroup[]"
         },
         {
           "apiStatus": {
@@ -42175,11 +39897,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.instancegroup.InstanceGroup",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instancegroup.InstanceGroup"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/group"
@@ -42213,11 +39931,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -42253,11 +39967,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.instancegroup.InstanceGroup",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.instancegroup.InstanceGroup"
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/group/{groupId}"
@@ -42286,11 +39996,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/io/capabilities/stream/region"
@@ -42327,11 +40033,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.io.stream.Region",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.io.stream.Region"
         }
       ],
       "path": "/cloud/project/{serviceName}/io/capabilities/stream/region/{regionName}"
@@ -42360,11 +40062,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -42394,11 +40092,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.io.Stream",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.io.Stream"
         }
       ],
       "path": "/cloud/project/{serviceName}/io/stream"
@@ -42435,11 +40129,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -42470,11 +40160,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.io.Stream",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.io.Stream"
         },
         {
           "apiStatus": {
@@ -42512,11 +40198,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.io.Stream",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.io.Stream"
         }
       ],
       "path": "/cloud/project/{serviceName}/io/stream/{streamId}"
@@ -42553,11 +40235,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.io.StreamStats",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.io.StreamStats"
         }
       ],
       "path": "/cloud/project/{serviceName}/io/stream/{streamId}/stats"
@@ -42594,11 +40272,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -42636,11 +40310,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.io.stream.Subscription",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.io.stream.Subscription"
         }
       ],
       "path": "/cloud/project/{serviceName}/io/stream/{streamId}/subscription"
@@ -42685,11 +40355,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -42728,11 +40394,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.io.stream.Subscription",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.io.stream.Subscription"
         }
       ],
       "path": "/cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}"
@@ -42777,11 +40439,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}/resetCursor"
@@ -42826,11 +40484,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.io.stream.SubscriptionStats",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.io.stream.SubscriptionStats"
         }
       ],
       "path": "/cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}/stats"
@@ -42867,11 +40521,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -42909,11 +40559,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.io.stream.Token",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.io.stream.Token"
         }
       ],
       "path": "/cloud/project/{serviceName}/io/stream/{streamId}/token"
@@ -42958,11 +40604,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -43001,11 +40643,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.io.stream.Token",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.io.stream.Token"
         }
       ],
       "path": "/cloud/project/{serviceName}/io/stream/{streamId}/token/{tokenId}"
@@ -43031,11 +40669,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.ip.CloudIp[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.ip.CloudIp[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ip"
@@ -43061,11 +40695,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.ip.FailoverIp[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.ip.FailoverIp[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/ip/failover"
@@ -43099,11 +40729,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.ip.FailoverIp",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.ip.FailoverIp"
         }
       ],
       "path": "/cloud/project/{serviceName}/ip/failover/{id}"
@@ -43144,11 +40770,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.ip.FailoverIp",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.ip.FailoverIp"
         }
       ],
       "path": "/cloud/project/{serviceName}/ip/failover/{id}/attach"
@@ -43174,11 +40796,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -43205,11 +40823,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Cluster",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.Cluster"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube"
@@ -43243,11 +40857,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -43275,11 +40885,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Cluster",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.Cluster"
         },
         {
           "apiStatus": {
@@ -43314,11 +40920,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}"
@@ -43352,11 +40954,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.AuditLogs",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.AuditLogs"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/auditLogs"
@@ -43390,11 +40988,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.ProjectKubeCustomization",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.ProjectKubeCustomization"
         },
         {
           "apiStatus": {
@@ -43429,11 +41023,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.ResponseMessage",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.ResponseMessage"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/customization"
@@ -43467,11 +41057,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Flavor[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.Flavor[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/flavors"
@@ -43505,11 +41091,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
@@ -43544,11 +41126,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
@@ -43583,11 +41161,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "ipBlock[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions"
@@ -43629,11 +41203,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions/{ip}"
@@ -43667,11 +41237,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Kubeconfig",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.Kubeconfig"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/kubeconfig"
@@ -43705,14 +41271,44 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/kubeconfig/reset"
+    },
+    {
+      "description": "Get your cluster etcd usage/quota",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available metrics for this cluster",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.EtcdUsage"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/metrics/etcdUsage"
     },
     {
       "description": "Manage your nodes",
@@ -43743,11 +41339,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Node[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.Node[]"
         },
         {
           "apiStatus": {
@@ -43785,11 +41377,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/node"
@@ -43831,11 +41419,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -43871,11 +41455,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Node",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}"
@@ -43909,11 +41489,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.NodePool[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.NodePool[]"
         },
         {
           "apiStatus": {
@@ -43948,11 +41524,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.NodePool",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.NodePool"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/nodepool"
@@ -43994,11 +41566,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -44034,11 +41602,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.NodePool",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.NodePool"
         },
         {
           "apiStatus": {
@@ -44081,11 +41645,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}"
@@ -44127,11 +41687,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.Node[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.Node[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}/nodes"
@@ -44165,11 +41721,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -44197,11 +41749,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.OpenIdConnect",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.OpenIdConnect"
         },
         {
           "apiStatus": {
@@ -44236,11 +41784,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.OpenIdConnect",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.OpenIdConnect"
         },
         {
           "apiStatus": {
@@ -44275,11 +41819,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/openIdConnect"
@@ -44313,11 +41853,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.PrivateNetworkConfiguration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.PrivateNetworkConfiguration"
         },
         {
           "apiStatus": {
@@ -44352,11 +41888,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.ResponseMessage",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.ResponseMessage"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/privateNetworkConfiguration"
@@ -44397,11 +41929,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/reset"
@@ -44442,11 +41970,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/restart"
@@ -44487,11 +42011,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/update"
@@ -44532,11 +42052,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy"
@@ -44565,11 +42081,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.RegionEnum[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.kube.RegionEnum[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/regions"
@@ -44595,11 +42107,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Lab[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Lab[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/lab"
@@ -44633,11 +42141,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Lab",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Lab"
         },
         {
           "apiStatus": {
@@ -44665,11 +42169,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Operation"
         }
       ],
       "path": "/cloud/project/{serviceName}/lab/{labId}"
@@ -44703,11 +42203,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.LabAgreements",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.LabAgreements"
         }
       ],
       "path": "/cloud/project/{serviceName}/lab/{labId}/agreement"
@@ -44762,11 +42258,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -44822,11 +42314,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.LoadBalancer",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.LoadBalancer"
         }
       ],
       "path": "/cloud/project/{serviceName}/loadbalancer"
@@ -44889,11 +42377,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -44950,11 +42434,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.LoadBalancer",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.LoadBalancer"
         },
         {
           "apiStatus": {
@@ -45018,11 +42498,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.LoadBalancer",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.LoadBalancer"
         }
       ],
       "path": "/cloud/project/{serviceName}/loadbalancer/{loadBalancerId}"
@@ -45085,11 +42561,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -45153,11 +42625,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.loadbalancer.Configuration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.loadbalancer.Configuration"
         }
       ],
       "path": "/cloud/project/{serviceName}/loadbalancer/{loadBalancerId}/configuration"
@@ -45228,11 +42696,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -45297,11 +42761,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.loadbalancer.Configuration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.loadbalancer.Configuration"
         }
       ],
       "path": "/cloud/project/{serviceName}/loadbalancer/{loadBalancerId}/configuration/{version}"
@@ -45372,11 +42832,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.loadbalancer.Configuration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.loadbalancer.Configuration"
         }
       ],
       "path": "/cloud/project/{serviceName}/loadbalancer/{loadBalancerId}/configuration/{version}/apply"
@@ -45402,11 +42858,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.migration.Migration[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.migration.Migration[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/migration"
@@ -45440,11 +42892,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.migration.Migration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.migration.Migration"
         },
         {
           "apiStatus": {
@@ -45479,11 +42927,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.migration.Migration",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.migration.Migration"
         }
       ],
       "path": "/cloud/project/{serviceName}/migration/{migrationId}"
@@ -45509,11 +42953,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Network[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.network.Network[]"
         },
         {
           "apiStatus": {
@@ -45540,11 +42980,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Network",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.network.Network"
         }
       ],
       "path": "/cloud/project/{serviceName}/network/private"
@@ -45578,11 +43014,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -45610,11 +43042,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Network",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.network.Network"
         },
         {
           "apiStatus": {
@@ -45649,11 +43077,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/network/private/{networkId}"
@@ -45694,11 +43118,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Network",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.network.Network"
         }
       ],
       "path": "/cloud/project/{serviceName}/network/private/{networkId}/region"
@@ -45732,11 +43152,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Subnet[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.network.Subnet[]"
         },
         {
           "apiStatus": {
@@ -45771,11 +43187,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Subnet",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.network.Subnet"
         }
       ],
       "path": "/cloud/project/{serviceName}/network/private/{networkId}/subnet"
@@ -45817,11 +43229,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}"
@@ -45847,11 +43255,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Network[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.network.Network[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/network/public"
@@ -45877,11 +43281,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Operation[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/operation"
@@ -45915,11 +43315,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Operation"
         }
       ],
       "path": "/cloud/project/{serviceName}/operation/{operationId}"
@@ -45945,11 +43341,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.quota.Quotas[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.quota.Quotas[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/quota"
@@ -45975,11 +43367,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -46006,11 +43394,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Region",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Region"
         }
       ],
       "path": "/cloud/project/{serviceName}/region"
@@ -46044,11 +43428,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Region",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Region"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}"
@@ -46082,11 +43462,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.FloatingIp[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.FloatingIp[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/floatingip"
@@ -46128,11 +43504,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -46168,11 +43540,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.FloatingIp",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.FloatingIp"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/floatingip/{floatingIpId}"
@@ -46214,11 +43582,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.network.Gateway[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.network.Gateway[]"
         },
         {
           "apiStatus": {
@@ -46253,11 +43617,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Operation"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/gateway"
@@ -46299,11 +43659,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Operation"
         },
         {
           "apiStatus": {
@@ -46339,11 +43695,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Gateway",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.network.Gateway"
         },
         {
           "apiStatus": {
@@ -46386,11 +43738,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Gateway",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.network.Gateway"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/gateway/{id}"
@@ -46432,11 +43780,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.Gateway",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.network.Gateway"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/gateway/{id}/expose"
@@ -46478,11 +43822,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.gateway.Interface[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.network.gateway.Interface[]"
         },
         {
           "apiStatus": {
@@ -46525,11 +43865,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.gateway.Interface",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.network.gateway.Interface"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/gateway/{id}/interface"
@@ -46579,11 +43915,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -46627,11 +43959,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.network.gateway.Interface",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.network.gateway.Interface"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/gateway/{id}/interface/{interfaceId}"
@@ -46680,11 +44008,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Operation"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/instance/{instanceId}/associateFloatingIp"
@@ -46733,11 +44057,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Operation"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/instance/{instanceId}/floatingIp"
@@ -46771,11 +44091,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.keymanager.Certificate[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.keymanager.Certificate[]"
         },
         {
           "apiStatus": {
@@ -46810,11 +44126,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.keymanager.Certificate",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.keymanager.Certificate"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/keymanager/certificate"
@@ -46856,11 +44168,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -46896,11 +44204,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.keymanager.Certificate",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.keymanager.Certificate"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/keymanager/certificate/{certificateId}"
@@ -46934,11 +44238,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.keymanager.Secret[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.keymanager.Secret[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/keymanager/secret"
@@ -46980,11 +44280,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -47020,11 +44316,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.keymanager.Secret",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.keymanager.Secret"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/keymanager/secret/{secretId}"
@@ -47058,11 +44350,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.Flavor[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.Flavor[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/flavor"
@@ -47104,11 +44392,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.Flavor",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.Flavor"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/flavor/{flavorId}"
@@ -47142,11 +44426,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.HealthMonitor[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.HealthMonitor[]"
         },
         {
           "apiStatus": {
@@ -47181,11 +44461,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.HealthMonitor",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.HealthMonitor"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/healthMonitor"
@@ -47227,11 +44503,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -47267,11 +44539,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.HealthMonitor",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.HealthMonitor"
         },
         {
           "apiStatus": {
@@ -47314,11 +44582,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.HealthMonitor",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.HealthMonitor"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/healthMonitor/{healthMonitorId}"
@@ -47351,11 +44615,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.L7Policy[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.L7Policy[]"
         },
         {
           "apiStatus": {
@@ -47389,11 +44649,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.L7Policy",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.L7Policy"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/l7Policy"
@@ -47434,11 +44690,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -47473,11 +44725,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.L7Policy",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.L7Policy"
         },
         {
           "apiStatus": {
@@ -47519,11 +44767,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.L7Policy",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.L7Policy"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/l7Policy/{l7PolicyId}"
@@ -47564,11 +44808,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.L7Rule[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.L7Rule[]"
         },
         {
           "apiStatus": {
@@ -47610,11 +44850,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.L7Rule",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.L7Rule"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/l7Policy/{l7PolicyId}/l7Rule"
@@ -47663,11 +44899,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -47710,11 +44942,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.L7Rule",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.L7Rule"
         },
         {
           "apiStatus": {
@@ -47764,11 +44992,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.L7Rule",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.L7Rule"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/l7Policy/{l7PolicyId}/l7Rule/{l7RuleId}"
@@ -47810,11 +45034,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.loadbalancing.Listener[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.Listener[]"
         },
         {
           "apiStatus": {
@@ -47849,11 +45069,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.Listener",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.Listener"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/listener"
@@ -47895,11 +45111,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -47935,11 +45147,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.Listener",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.Listener"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/listener/{listenerId}"
@@ -47973,11 +45181,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.LoadBalancer[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.LoadBalancer[]"
         },
         {
           "apiStatus": {
@@ -48012,11 +45216,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Operation"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer"
@@ -48058,11 +45258,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -48098,11 +45294,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.LoadBalancer",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.LoadBalancer"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}"
@@ -48151,11 +45343,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Operation"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}/associateFloatingIp"
@@ -48204,11 +45392,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Operation"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}/floatingIp"
@@ -48250,11 +45434,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.loadbalancing.Pool[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.Pool[]"
         },
         {
           "apiStatus": {
@@ -48289,11 +45469,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.Pool",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.Pool"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/pool"
@@ -48335,11 +45511,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -48375,11 +45547,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.Pool",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.Pool"
         },
         {
           "apiStatus": {
@@ -48422,11 +45590,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.Pool",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.Pool"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/pool/{poolId}"
@@ -48468,11 +45632,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.pool.Member[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.pool.Member[]"
         },
         {
           "apiStatus": {
@@ -48515,11 +45675,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.pool.Member",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.pool.Member"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/pool/{poolId}/member"
@@ -48569,11 +45725,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -48617,11 +45769,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.pool.Member",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.pool.Member"
         },
         {
           "apiStatus": {
@@ -48672,11 +45820,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.loadbalancing.pool.Member",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.loadbalancing.pool.Member"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/loadbalancing/pool/{poolId}/member/{memberId}"
@@ -48710,11 +45854,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.Network[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.Network[]"
         },
         {
           "apiStatus": {
@@ -48749,11 +45889,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Operation"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/network"
@@ -48795,11 +45931,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -48835,11 +45967,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.Network",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.Network"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/network/{networkId}"
@@ -48881,11 +46009,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.Subnet[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.Subnet[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/network/{networkId}/subnet"
@@ -48935,11 +46059,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -48983,11 +46103,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.Subnet",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.project.Subnet"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/network/{networkId}/subnet/{subnetId}"
@@ -49044,11 +46160,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Operation"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/network/{networkId}/subnet/{subnetId}/gateway"
@@ -49082,11 +46194,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.quota.Quotas",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.quota.Quotas"
         },
         {
           "apiStatus": {
@@ -49121,11 +46229,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Operation"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/quota"
@@ -49159,11 +46263,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.quota.AllowedQuota[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.quota.AllowedQuota[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/quota/allowed"
@@ -49197,11 +46297,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -49229,11 +46325,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.quota.storage.Quota",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.quota.storage.Quota"
         },
         {
           "apiStatus": {
@@ -49268,11 +46360,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/quota/storage"
@@ -49306,11 +46394,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.StorageContainer[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.StorageContainer[]"
         },
         {
           "apiStatus": {
@@ -49345,11 +46429,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.StorageContainer",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.StorageContainer"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/storage"
@@ -49391,11 +46471,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -49447,11 +46523,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.StorageContainer",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.StorageContainer"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/storage/{name}"
@@ -49501,11 +46573,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/storage/{name}/object/{objectKey}"
@@ -49562,11 +46630,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/storage/{name}/policy/{userId}"
@@ -49615,11 +46679,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.storage.PresignedURL",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.storage.PresignedURL"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/storage/{name}/presign"
@@ -49653,11 +46713,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Backup[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Backup[]"
         },
         {
           "apiStatus": {
@@ -49692,11 +46748,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Backup",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/workflow/backup"
@@ -49738,11 +46790,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -49778,11 +46826,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Backup",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}"
@@ -49808,11 +46852,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.AvailableRegion[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.AvailableRegion[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/regionAvailable"
@@ -49838,11 +46878,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/retain"
@@ -49868,11 +46904,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.role.Roles",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.role.Roles"
         }
       ],
       "path": "/cloud/project/{serviceName}/role"
@@ -49898,11 +46930,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -49929,11 +46957,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/serviceInfos"
@@ -49975,11 +46999,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.image.Image[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.image.Image[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/snapshot"
@@ -50013,11 +47033,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.image.Image",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.image.Image"
         },
         {
           "apiStatus": {
@@ -50045,11 +47061,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.image.Image",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.image.Image"
         }
       ],
       "path": "/cloud/project/{serviceName}/snapshot/{imageId}"
@@ -50083,11 +47095,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.sshkey.SshKey[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.sshkey.SshKey[]"
         },
         {
           "apiStatus": {
@@ -50114,11 +47122,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.sshkey.SshKeyDetail",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.sshkey.SshKeyDetail"
         }
       ],
       "path": "/cloud/project/{serviceName}/sshkey"
@@ -50152,11 +47156,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -50184,11 +47184,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.sshkey.SshKeyDetail",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.sshkey.SshKeyDetail"
         }
       ],
       "path": "/cloud/project/{serviceName}/sshkey/{keyId}"
@@ -50214,11 +47210,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.stack.Stack[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.stack.Stack[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/stack"
@@ -50252,11 +47244,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.stack.Stack",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.stack.Stack"
         }
       ],
       "path": "/cloud/project/{serviceName}/stack/{stackId}"
@@ -50282,11 +47270,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.storage.Container[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.storage.Container[]"
         },
         {
           "apiStatus": {
@@ -50313,11 +47297,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.storage.Container",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.storage.Container"
         }
       ],
       "path": "/cloud/project/{serviceName}/storage"
@@ -50359,11 +47339,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -50399,11 +47375,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.storage.ContainerDetail",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.storage.ContainerDetail"
         },
         {
           "apiStatus": {
@@ -50438,11 +47410,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/storage/{containerId}"
@@ -50484,11 +47452,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -50523,11 +47487,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/storage/{containerId}/cors"
@@ -50568,11 +47528,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.storage.ContainerObjectTempURL",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.storage.ContainerObjectTempURL"
         }
       ],
       "path": "/cloud/project/{serviceName}/storage/{containerId}/publicUrl"
@@ -50606,11 +47562,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/storage/{containerId}/static"
@@ -50651,11 +47603,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.UserDetail",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.user.UserDetail"
         }
       ],
       "path": "/cloud/project/{serviceName}/storage/{containerId}/user"
@@ -50681,11 +47629,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.storage.ContainerAccess",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.storage.ContainerAccess"
         },
         {
           "apiStatus": {
@@ -50705,11 +47649,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.storage.ContainerAccess",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.storage.ContainerAccess"
         }
       ],
       "path": "/cloud/project/{serviceName}/storage/access"
@@ -50735,11 +47675,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/cloud/project/{serviceName}/terminate"
@@ -50765,11 +47701,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/unleash"
@@ -50795,11 +47727,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.usage.UsageCurrent",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.usage.UsageCurrent"
         }
       ],
       "path": "/cloud/project/{serviceName}/usage/current"
@@ -50825,11 +47753,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.usage.UsageForecast",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.usage.UsageForecast"
         }
       ],
       "path": "/cloud/project/{serviceName}/usage/forecast"
@@ -50871,11 +47795,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.usage.UsageHistory[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.usage.UsageHistory[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/usage/history"
@@ -50909,11 +47829,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.usage.UsageHistoryDetail",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.usage.UsageHistoryDetail"
         }
       ],
       "path": "/cloud/project/{serviceName}/usage/history/{usageId}"
@@ -50939,11 +47855,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.User[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.user.User[]"
         },
         {
           "apiStatus": {
@@ -50970,11 +47882,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.UserDetail",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.user.UserDetail"
         }
       ],
       "path": "/cloud/project/{serviceName}/user"
@@ -51008,11 +47916,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -51040,11 +47944,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.User",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.user.User"
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}"
@@ -51094,11 +47994,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.user.Openrc",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.user.Openrc"
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/openrc"
@@ -51132,11 +48028,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.storage.PolicyRaw",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.storage.PolicyRaw"
         },
         {
           "apiStatus": {
@@ -51171,11 +48063,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/policy"
@@ -51225,11 +48113,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.user.Rclone",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.user.Rclone"
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/rclone"
@@ -51263,11 +48147,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.UserDetail",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.user.UserDetail"
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/regeneratePassword"
@@ -51301,11 +48181,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.role.Role[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.role.Role[]"
         },
         {
           "apiStatus": {
@@ -51340,11 +48216,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.UserDetail",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.user.UserDetail"
         },
         {
           "apiStatus": {
@@ -51379,11 +48251,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.UserDetail",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.user.UserDetail"
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/role"
@@ -51425,11 +48293,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -51465,11 +48329,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.role.Role",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.role.Role"
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/role/{roleId}"
@@ -51503,11 +48363,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.S3CredentialsWithSecret[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.user.S3CredentialsWithSecret[]"
         },
         {
           "apiStatus": {
@@ -51535,11 +48391,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.S3CredentialsWithSecret",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.user.S3CredentialsWithSecret"
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/s3Credentials"
@@ -51581,11 +48433,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -51621,11 +48469,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.S3CredentialsWithSecret",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.user.S3CredentialsWithSecret"
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/s3Credentials/{access}"
@@ -51666,11 +48510,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.authentication.Token",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.authentication.Token"
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/token"
@@ -51704,11 +48544,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.volume.Volume[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.volume.Volume[]"
         },
         {
           "apiStatus": {
@@ -51735,11 +48571,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.volume.Volume"
         }
       ],
       "path": "/cloud/project/{serviceName}/volume"
@@ -51773,11 +48605,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -51805,11 +48633,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.volume.Volume"
         },
         {
           "apiStatus": {
@@ -51844,11 +48668,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.volume.Volume"
         }
       ],
       "path": "/cloud/project/{serviceName}/volume/{volumeId}"
@@ -51889,11 +48709,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.volume.Volume"
         }
       ],
       "path": "/cloud/project/{serviceName}/volume/{volumeId}/attach"
@@ -51934,11 +48750,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.volume.Volume"
         }
       ],
       "path": "/cloud/project/{serviceName}/volume/{volumeId}/detach"
@@ -51979,11 +48791,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Snapshot",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.volume.Snapshot"
         }
       ],
       "path": "/cloud/project/{serviceName}/volume/{volumeId}/snapshot"
@@ -52024,11 +48832,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.volume.Volume"
         }
       ],
       "path": "/cloud/project/{serviceName}/volume/{volumeId}/upsize"
@@ -52062,11 +48866,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cloud.volume.Snapshot[]",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.volume.Snapshot[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/volume/snapshot"
@@ -52100,11 +48900,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -52132,11 +48928,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.volume.Snapshot",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.volume.Snapshot"
         }
       ],
       "path": "/cloud/project/{serviceName}/volume/snapshot/{snapshotId}"
@@ -52162,11 +48954,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Vrack",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Vrack"
         },
         {
           "apiStatus": {
@@ -52186,11 +48974,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "scopes": [
-            "all",
-            "product/cloud/all"
-          ]
+          "responseType": "cloud.Operation"
         }
       ],
       "path": "/cloud/project/{serviceName}/vrack"
@@ -52200,8 +48984,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-01T00:00:00+01:00",
+            "deprecatedDate": "2018-02-07T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/catalog/formatted/cloud",
+            "value": "DEPRECATED"
           },
           "description": "Get services prices for a subsidiary",
           "httpMethod": "GET",
@@ -58700,10 +55487,10 @@ export const schema: Schema = {
         "nextUpgradeVersions": {
           "canBeNull": true,
           "description": "Kubernetes versions available for upgrade",
-          "fullType": "cloud.kube.VersionEnum[]",
+          "fullType": "string[]",
           "readOnly": true,
           "required": false,
-          "type": "cloud.kube.VersionEnum[]"
+          "type": "string[]"
         },
         "nodesUrl": {
           "canBeNull": false,
@@ -58824,6 +55611,29 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ClusterStatusEnum",
       "namespace": "cloud.kube"
+    },
+    "cloud.kube.EtcdUsage": {
+      "description": "Etcd usage and quota for a given cluster",
+      "id": "EtcdUsage",
+      "namespace": "cloud.kube",
+      "properties": {
+        "quota": {
+          "canBeNull": false,
+          "description": "Maximum allowed size of etcd data for the cluster (bytes)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "usage": {
+          "canBeNull": false,
+          "description": "Size of etcd data used by the cluster (bytes)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
     },
     "cloud.kube.Flavor": {
       "description": "a flavor kind",
@@ -59695,11 +56505,11 @@ export const schema: Schema = {
     "cloud.kube.VersionEnum": {
       "description": "List of available versions for installation",
       "enum": [
-        "1.20",
         "1.21",
         "1.22",
         "1.23",
-        "1.24"
+        "1.24",
+        "1.25"
       ],
       "enumType": "string",
       "id": "VersionEnum",
@@ -68715,7 +65525,7 @@ export const schema: Schema = {
       "namespace": "cloud.project.database"
     },
     "cloud.project.database.IpRestriction": {
-      "description": "Ip Restriction definition for cloud project databases",
+      "description": "Ip Restriction definition for cloud project databases (DEPRECATED)",
       "id": "IpRestriction",
       "namespace": "cloud.project.database",
       "properties": {
@@ -68746,7 +65556,7 @@ export const schema: Schema = {
       }
     },
     "cloud.project.database.IpRestrictionCreation": {
-      "description": "Ip Restriction creation definition for cloud project databases",
+      "description": "Ip Restriction creation definition for cloud project databases (DEPRECATED)",
       "id": "IpRestrictionCreation",
       "namespace": "cloud.project.database",
       "properties": {
@@ -68815,14 +65625,6 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.project.database.service.Disk"
         },
-        "domain": {
-          "canBeNull": false,
-          "description": "Domain of the cluster (DEPRECATED: use endpoints)",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
         "endpoints": {
           "canBeNull": false,
           "description": "List of all endpoints of the service",
@@ -68855,6 +65657,14 @@ export const schema: Schema = {
           "required": false,
           "type": "uuid"
         },
+        "ipRestrictions": {
+          "canBeNull": false,
+          "description": "IP Blocks authorized to access to the cluster",
+          "fullType": "cloud.project.database.service.IpRestriction[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.IpRestriction[]"
+        },
         "maintenanceTime": {
           "canBeNull": false,
           "description": "Time on which maintenances can start every day",
@@ -68862,14 +65672,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "time"
-        },
-        "maintenanceWindow": {
-          "canBeNull": false,
-          "description": "Window during which the maintenance can occur, (DEPRECATED: use maintenanceTime)",
-          "fullType": "cloud.project.database.service.MaintenanceWindow",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.database.service.MaintenanceWindow"
         },
         "networkId": {
           "canBeNull": true,
@@ -68903,22 +65705,6 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
-        "port": {
-          "canBeNull": false,
-          "description": "Connection port for the cluster (DEPRECATED: use endpoints)",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "sslMode": {
-          "canBeNull": false,
-          "description": "Ssl connection mode for the cluster (DEPRECATED: use endpoints)",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
         "status": {
           "canBeNull": false,
           "description": "Current status of the cluster",
@@ -68934,14 +65720,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "uuid"
-        },
-        "uri": {
-          "canBeNull": false,
-          "description": "Connection string for the cluster (DEPRECATED: use endpoints)",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
         },
         "version": {
           "canBeNull": false,
@@ -68989,6 +65767,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "cloud.project.database.service.Disk"
+        },
+        "ipRestrictions": {
+          "canBeNull": false,
+          "description": "IP Blocks authorized to access to the cluster",
+          "fullType": "cloud.project.database.service.IpRestriction[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.IpRestriction[]"
         },
         "maintenanceTime": {
           "canBeNull": true,
@@ -69475,14 +66261,6 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.project.database.service.Disk"
         },
-        "domain": {
-          "canBeNull": false,
-          "description": "Domain of the cluster (DEPRECATED: use endpoints)",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
         "endpoints": {
           "canBeNull": false,
           "description": "List of all endpoints of the service",
@@ -69515,6 +66293,14 @@ export const schema: Schema = {
           "required": false,
           "type": "uuid"
         },
+        "ipRestrictions": {
+          "canBeNull": false,
+          "description": "IP Blocks authorized to access to the cluster",
+          "fullType": "cloud.project.database.service.IpRestriction[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.IpRestriction[]"
+        },
         "maintenanceTime": {
           "canBeNull": false,
           "description": "Time on which maintenances can start every day",
@@ -69522,14 +66308,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "time"
-        },
-        "maintenanceWindow": {
-          "canBeNull": false,
-          "description": "Window during which the maintenance can occur, (DEPRECATED: user maintenance time)",
-          "fullType": "cloud.project.database.service.MaintenanceWindow",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.database.service.MaintenanceWindow"
         },
         "networkId": {
           "canBeNull": true,
@@ -69551,7 +66329,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Number of nodes in the cluster",
           "fullType": "long",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "long"
         },
@@ -69563,14 +66341,6 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
-        "port": {
-          "canBeNull": false,
-          "description": "Connection port for the cluster (DEPRECATED: use endpoints)",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
         "restApi": {
           "canBeNull": false,
           "description": "Defines whether the REST API is enabled on the cluster",
@@ -69578,14 +66348,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "boolean"
-        },
-        "sslMode": {
-          "canBeNull": false,
-          "description": "Ssl connection mode for the cluster (DEPRECATED: use endpoints)",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
         },
         "status": {
           "canBeNull": false,
@@ -69602,14 +66364,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "uuid"
-        },
-        "uri": {
-          "canBeNull": false,
-          "description": "Connection string for the cluster (DEPRECATED: use endpoints)",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
         },
         "version": {
           "canBeNull": false,
@@ -70887,14 +67641,6 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
-        "additionalUris": {
-          "canBeNull": false,
-          "description": "Defines the additionnal uris available on the cluster (DEPRECATED: use endpoints)",
-          "fullType": "cloud.project.database.opensearch.service.AdditionalUris",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.database.opensearch.service.AdditionalUris"
-        },
         "backupTime": {
           "canBeNull": false,
           "description": "Time on which backups start every day",
@@ -70926,14 +67672,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "cloud.project.database.service.Disk"
-        },
-        "domain": {
-          "canBeNull": false,
-          "description": "Domain of the cluster (DEPRECATED: use endpoints)",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
         },
         "endpoints": {
           "canBeNull": false,
@@ -70967,6 +67705,14 @@ export const schema: Schema = {
           "required": false,
           "type": "uuid"
         },
+        "ipRestrictions": {
+          "canBeNull": false,
+          "description": "IP Blocks authorized to access to the cluster",
+          "fullType": "cloud.project.database.service.IpRestriction[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.IpRestriction[]"
+        },
         "maintenanceTime": {
           "canBeNull": false,
           "description": "Time on which maintenances can start every day",
@@ -70974,14 +67720,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "time"
-        },
-        "maintenanceWindow": {
-          "canBeNull": false,
-          "description": "Window during which the maintenance can occur, (DEPRECATED: use maintenanceTime)",
-          "fullType": "cloud.project.database.service.MaintenanceWindow",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.database.service.MaintenanceWindow"
         },
         "networkId": {
           "canBeNull": true,
@@ -71003,7 +67741,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Number of nodes in the cluster",
           "fullType": "long",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "long"
         },
@@ -71012,22 +67750,6 @@ export const schema: Schema = {
           "description": "Plan of the cluster",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "port": {
-          "canBeNull": false,
-          "description": "Connection port for the cluster (DEPRECATED: use endpoints)",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "sslMode": {
-          "canBeNull": false,
-          "description": "Ssl connection mode for the cluster (DEPRECATED: use endpoints)",
-          "fullType": "string",
-          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -71046,14 +67768,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "uuid"
-        },
-        "uri": {
-          "canBeNull": false,
-          "description": "Connection string for the cluster (DEPRECATED: use endpoints)",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
         },
         "version": {
           "canBeNull": false,
@@ -71206,21 +67920,6 @@ export const schema: Schema = {
         "username": {
           "canBeNull": false,
           "description": "Name of the user",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "cloud.project.database.opensearch.service.AdditionalUris": {
-      "description": "Cloud database opensearch service additional uri definition",
-      "id": "AdditionalUris",
-      "namespace": "cloud.project.database.opensearch.service",
-      "properties": {
-        "kibana": {
-          "canBeNull": false,
-          "description": "URI to access the kibana",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -72152,6 +68851,37 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.database.service.IpRestriction": {
+      "description": "Ip Restriction definition for cloud project databases",
+      "id": "IpRestriction",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the ip restriction",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "Whitelisted IP",
+          "fullType": "ipBlock",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the ip restriction",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        }
+      }
+    },
     "cloud.project.database.service.LogEntry": {
       "description": "A single log entry",
       "id": "LogEntry",
@@ -72227,29 +68957,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "cloud.project.database.service.maintenance.StatusEnum"
-        }
-      }
-    },
-    "cloud.project.database.service.MaintenanceWindow": {
-      "description": "Cloud database maintenance window definition",
-      "id": "MaintenanceWindow",
-      "namespace": "cloud.project.database.service",
-      "properties": {
-        "end": {
-          "canBeNull": false,
-          "description": "End time of the maintenance",
-          "fullType": "time",
-          "readOnly": true,
-          "required": false,
-          "type": "time"
-        },
-        "start": {
-          "canBeNull": false,
-          "description": "Start time of the maintenance",
-          "fullType": "time",
-          "readOnly": true,
-          "required": false,
-          "type": "time"
         }
       }
     },
@@ -72886,14 +69593,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
-        },
-        "password": {
-          "canBeNull": false,
-          "description": "Password of the user (deprecated, the password is now auto generated)",
-          "fullType": "password",
-          "readOnly": false,
-          "required": false,
-          "type": "password"
         },
         "roles": {
           "canBeNull": false,

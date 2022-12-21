@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/dedicated/ceph"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.clusterGet.response",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "dedicated.ceph.clusterGet.response"
         },
         {
           "apiStatus": {
@@ -87,11 +79,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}"
@@ -117,11 +105,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.aclList.response[]",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "dedicated.ceph.aclList.response[]"
         },
         {
           "apiStatus": {
@@ -149,11 +133,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/acl"
@@ -187,11 +167,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string"
         },
         {
           "apiStatus": {
@@ -219,11 +195,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.aclGet.response",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "dedicated.ceph.aclGet.response"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/acl/{aclId}"
@@ -249,11 +221,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.cephfsList.response[]",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "dedicated.ceph.cephfsList.response[]"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/cephfs"
@@ -287,11 +255,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string"
         },
         {
           "apiStatus": {
@@ -319,11 +283,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.cephfsGet.response",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "dedicated.ceph.cephfsGet.response"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/cephfs/{fsName}"
@@ -357,11 +317,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/cephfs/{fsName}/disable"
@@ -395,11 +351,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/cephfs/{fsName}/enable"
@@ -449,11 +401,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/changeContact"
@@ -511,11 +459,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/confirmTermination"
@@ -541,11 +485,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.clusterHealth.response",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "dedicated.ceph.clusterHealth.response"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/health"
@@ -571,11 +511,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.poolList.response[]",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "dedicated.ceph.poolList.response[]"
         },
         {
           "apiStatus": {
@@ -603,11 +539,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/pool"
@@ -641,11 +573,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string"
         },
         {
           "apiStatus": {
@@ -673,11 +601,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.poolGet.response",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "dedicated.ceph.poolGet.response"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/pool/{poolName}"
@@ -703,11 +627,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -734,11 +654,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/serviceInfos"
@@ -764,11 +680,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.taskList.response[]",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "dedicated.ceph.taskList.response[]"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/task"
@@ -802,11 +714,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.taskGet.response[]",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "dedicated.ceph.taskGet.response[]"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/task/{taskId}"
@@ -832,11 +740,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/terminate"
@@ -862,11 +766,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.userList.response[]",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "dedicated.ceph.userList.response[]"
         },
         {
           "apiStatus": {
@@ -894,11 +794,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/user"
@@ -932,11 +828,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string"
         },
         {
           "apiStatus": {
@@ -964,11 +856,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.userGet.response",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "dedicated.ceph.userGet.response"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/user/{userName}"
@@ -1002,11 +890,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.userPoolPermList.response[]",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "dedicated.ceph.userPoolPermList.response[]"
         },
         {
           "apiStatus": {
@@ -1042,11 +926,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string"
         },
         {
           "apiStatus": {
@@ -1122,11 +1002,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/user/{userName}/pool"
@@ -1168,11 +1044,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicated-ceph/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}"

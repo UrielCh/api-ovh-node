@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/license/officePrepaid"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.officePrepaid.OfficeUser",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "license.officePrepaid.OfficeUser"
         },
         {
           "apiStatus": {
@@ -78,11 +70,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/license/officePrepaid/{serviceName}"
@@ -132,11 +120,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeTask",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "license.office.OfficeTask"
         }
       ],
       "path": "/license/officePrepaid/{serviceName}/changePassword"
@@ -194,11 +178,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/license/officePrepaid/{serviceName}/confirmTermination"
@@ -224,11 +204,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeTenant",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "license.office.OfficeTenant"
         },
         {
           "apiStatus": {
@@ -256,11 +232,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/license/officePrepaid/{serviceName}/parentTenant"
@@ -286,11 +258,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -317,11 +285,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/license/officePrepaid/{serviceName}/serviceInfos"
@@ -347,11 +311,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/license/officePrepaid/{serviceName}/tenantPendingTask"
@@ -385,11 +345,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeTask",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "license.office.OfficeTask"
         }
       ],
       "path": "/license/officePrepaid/{serviceName}/tenantPendingTask/{id}"
@@ -431,11 +387,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.office.Statistics[]",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "license.office.Statistics[]"
         }
       ],
       "path": "/license/officePrepaid/{serviceName}/tenantUsageStatistics"
@@ -461,11 +413,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/license/officePrepaid/{serviceName}/terminate"
@@ -491,11 +439,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeTask",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "license.office.OfficeTask"
         }
       ],
       "path": "/license/officePrepaid/{serviceName}/unconfigure"

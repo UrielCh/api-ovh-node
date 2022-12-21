@@ -6,28 +6,10 @@ import { CodeGenerator } from './CodeGenerator';
 import Bluebird from 'bluebird';
 import rimraf from 'rimraf'
 import { IEndpoint } from './endpoints';
-import { formatUpperCamlCase, formatLowerCamlCase } from './utils';
+import { formatUpperCamlCase, formatLowerCamlCase, writeIfDiff } from './utils';
 import { EOL } from 'os';
 
 const pathToApiName = (api: string) => api.substring(1).replace(/\//g, '-').replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`).replace(/^-/, '');
-
-async function writeIfDiff(fn: string, expected: string): Promise<number> {
-    let oldEsm = '';
-    try {
-        oldEsm = await fs.promises.readFile(fn, { encoding: 'utf-8' });
-    } catch (e) {
-    }
-    if (oldEsm.replaceAll(/[\r\n]+/g, '\n') != expected.replaceAll(/[\r\n]+/g, '\n')) {
-        if (!oldEsm)
-            console.log(`Creating ${fn}`);
-        else
-            console.log(`Overwriting ${fn}`);
-        await fs.promises.writeFile(fn, expected, { encoding: 'utf-8' });
-        return 1;
-    }
-    return 0;
-}
-
 
 export class RegionGenerator {
     constructor(private endpoint: IEndpoint) {
@@ -134,8 +116,8 @@ export class RegionGenerator {
 
             let fn = path.join(dir, 'index.ts');
             let code = await cg.generate({ dest: fn });
-            await fs.promises.writeFile(fn, code);
-
+            await writeIfDiff(fn, code);
+            // await fs.promises.writeFile(fn, code);
             await this.genPackageReadme(dir, cg);
             await this.genPackageJson(dir, flat);
             await this.genTsConfig(dir);

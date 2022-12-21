@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/hosting/web"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.Service",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.Service"
         },
         {
           "apiStatus": {
@@ -78,11 +70,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/web/{serviceName}"
@@ -127,11 +115,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/activatePrivateDatabase"
@@ -173,11 +157,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -253,11 +233,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/attachedDomain"
@@ -291,11 +267,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         },
         {
           "apiStatus": {
@@ -323,11 +295,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.attachedDomain",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.attachedDomain"
         },
         {
           "apiStatus": {
@@ -362,11 +330,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/web/{serviceName}/attachedDomain/{domain}"
@@ -400,11 +364,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/attachedDomain/{domain}/purgeCache"
@@ -438,11 +398,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/attachedDomain/{domain}/restart"
@@ -476,11 +432,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "hosting.web.configuration.VersionEnum[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.configuration.VersionEnum[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/availableConfigurations"
@@ -514,11 +466,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "datetime[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "datetime[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/boostHistory"
@@ -552,11 +500,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.boostHistory",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.boostHistory"
         }
       ],
       "path": "/hosting/web/{serviceName}/boostHistory/{date}"
@@ -582,11 +526,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.cdn",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.cdn"
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn"
@@ -612,11 +552,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.availableOptions[]",
-          "scopes": [
-            "all",
-            "product/cdn/all"
-          ]
+          "responseType": "cdn.availableOptions[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn/availableOptions"
@@ -642,11 +578,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.domain[]",
-          "scopes": [
-            "all",
-            "product/cdn/all"
-          ]
+          "responseType": "cdn.domain[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn/domain"
@@ -680,11 +612,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.domain",
-          "scopes": [
-            "all",
-            "product/cdn/all"
-          ]
+          "responseType": "cdn.domain"
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn/domain/{domainName}"
@@ -726,11 +654,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cdn.logs",
-          "scopes": [
-            "all",
-            "product/cdn/all"
-          ]
+          "responseType": "cdn.logs"
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn/domain/{domainName}/logs"
@@ -764,11 +688,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.domain.option[]",
-          "scopes": [
-            "all",
-            "product/cdn/all"
-          ]
+          "responseType": "cdn.domain.option[]"
         },
         {
           "apiStatus": {
@@ -803,11 +723,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.domain.option",
-          "scopes": [
-            "all",
-            "product/cdn/all"
-          ]
+          "responseType": "cdn.domain.option"
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn/domain/{domainName}/option"
@@ -849,11 +765,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cdn/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -889,11 +801,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.domain.option",
-          "scopes": [
-            "all",
-            "product/cdn/all"
-          ]
+          "responseType": "cdn.domain.option"
         },
         {
           "apiStatus": {
@@ -936,11 +844,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.domain.option",
-          "scopes": [
-            "all",
-            "product/cdn/all"
-          ]
+          "responseType": "cdn.domain.option"
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn/domain/{domainName}/option/{optionName}"
@@ -990,11 +894,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cdn.operation",
-          "scopes": [
-            "all",
-            "product/cdn/all"
-          ]
+          "responseType": "cdn.operation"
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn/domain/{domainName}/purge"
@@ -1028,11 +928,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.operation",
-          "scopes": [
-            "all",
-            "product/cdn/all"
-          ]
+          "responseType": "cdn.operation"
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn/domain/{domainName}/refresh"
@@ -1074,11 +970,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "cdn.domain.statistics[]",
-          "scopes": [
-            "all",
-            "product/cdn/all"
-          ]
+          "responseType": "cdn.domain.statistics[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn/domain/{domainName}/statistics"
@@ -1104,11 +996,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.operation[]",
-          "scopes": [
-            "all",
-            "product/cdn/all"
-          ]
+          "responseType": "cdn.operation[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn/operation"
@@ -1142,11 +1030,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.operation",
-          "scopes": [
-            "all",
-            "product/cdn/all"
-          ]
+          "responseType": "cdn.operation"
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn/operation/{id}"
@@ -1172,11 +1056,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "services.Service"
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn/serviceInfos"
@@ -1210,11 +1090,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn/serviceInfosUpdate"
@@ -1240,11 +1116,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/web/{serviceName}/cdn/terminate"
@@ -1294,11 +1166,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/changeContact"
@@ -1324,11 +1192,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.configuration",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.configuration"
         },
         {
           "apiStatus": {
@@ -1355,11 +1219,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/web/{serviceName}/configuration"
@@ -1417,11 +1277,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/web/{serviceName}/confirmTermination"
@@ -1479,11 +1335,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -1510,11 +1362,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.PublicTask",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.PublicTask"
         }
       ],
       "path": "/hosting/web/{serviceName}/cron"
@@ -1548,11 +1396,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.PublicTask",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.PublicTask"
         },
         {
           "apiStatus": {
@@ -1580,11 +1424,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.Cron",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.Cron"
         },
         {
           "apiStatus": {
@@ -1619,11 +1459,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/web/{serviceName}/cron/{id}"
@@ -1649,11 +1485,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.LanguagesEnum[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.LanguagesEnum[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/cronAvailableLanguage"
@@ -1719,11 +1551,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -1791,11 +1619,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/database"
@@ -1829,11 +1653,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         },
         {
           "apiStatus": {
@@ -1861,11 +1681,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.database",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.database"
         }
       ],
       "path": "/hosting/web/{serviceName}/database/{name}"
@@ -1899,11 +1715,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.database.DatabaseCapabilities",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.database.DatabaseCapabilities"
         }
       ],
       "path": "/hosting/web/{serviceName}/database/{name}/capabilities"
@@ -1945,11 +1757,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/database/{name}/changePassword"
@@ -2007,11 +1815,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -2055,11 +1859,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/database/{name}/dump"
@@ -2101,11 +1901,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         },
         {
           "apiStatus": {
@@ -2141,11 +1937,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.database.dump",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.database.dump"
         }
       ],
       "path": "/hosting/web/{serviceName}/database/{name}/dump/{id}"
@@ -2187,11 +1979,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/database/{name}/dump/{id}/restore"
@@ -2249,11 +2037,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/database/{name}/import"
@@ -2295,11 +2079,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/database/{name}/request"
@@ -2349,11 +2129,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/database/{name}/restore"
@@ -2403,11 +2179,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.ChartSerie<complexType.ChartTimestampValue>[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "complexType.ChartSerie<complexType.ChartTimestampValue>[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/database/{name}/statistics"
@@ -2433,11 +2205,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.database.DatabaseTypeEnum[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.database.DatabaseTypeEnum[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/databaseAvailableType"
@@ -2471,11 +2239,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.database.AvailableVersionStruct",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.database.AvailableVersionStruct"
         }
       ],
       "path": "/hosting/web/{serviceName}/databaseAvailableVersion"
@@ -2501,11 +2265,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.database.CreationDatabaseCapabilities[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.database.CreationDatabaseCapabilities[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/databaseCreationCapabilities"
@@ -2563,11 +2323,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/dump"
@@ -2601,11 +2357,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         },
         {
           "apiStatus": {
@@ -2633,11 +2385,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.dump",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.dump"
         }
       ],
       "path": "/hosting/web/{serviceName}/dump/{id}"
@@ -2663,11 +2411,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.email",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.email"
         },
         {
           "apiStatus": {
@@ -2694,11 +2438,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/web/{serviceName}/email"
@@ -2732,11 +2472,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.mail.Bounce[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.mail.Bounce[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/email/bounces"
@@ -2770,11 +2506,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/web/{serviceName}/email/request"
@@ -2800,11 +2532,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.mail.VolumeHistory[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.mail.VolumeHistory[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/email/volumes"
@@ -2830,11 +2558,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/emailOption"
@@ -2868,11 +2592,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.emailoption",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.emailoption"
         }
       ],
       "path": "/hosting/web/{serviceName}/emailOption/{id}"
@@ -2906,11 +2626,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "services.Service"
         }
       ],
       "path": "/hosting/web/{serviceName}/emailOption/{id}/serviceInfos"
@@ -2944,11 +2660,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/web/{serviceName}/emailOption/{id}/terminate"
@@ -2982,11 +2694,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -3030,11 +2738,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/envVar"
@@ -3068,11 +2772,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         },
         {
           "apiStatus": {
@@ -3100,11 +2800,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.envVar",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.envVar"
         },
         {
           "apiStatus": {
@@ -3139,11 +2835,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/web/{serviceName}/envVar/{key}"
@@ -3169,11 +2861,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/extraSqlPerso"
@@ -3207,11 +2895,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.extrasqlperso",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.extrasqlperso"
         }
       ],
       "path": "/hosting/web/{serviceName}/extraSqlPerso/{name}"
@@ -3245,11 +2929,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/extraSqlPerso/{name}/databases"
@@ -3283,11 +2963,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "services.Service"
         }
       ],
       "path": "/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfos"
@@ -3329,11 +3005,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfosUpdate"
@@ -3367,11 +3039,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/web/{serviceName}/extraSqlPerso/{name}/terminate"
@@ -3405,11 +3073,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/freedom"
@@ -3443,11 +3107,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -3475,11 +3135,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.freedom",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.freedom"
         }
       ],
       "path": "/hosting/web/{serviceName}/freedom/{domain}"
@@ -3513,11 +3169,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/indy"
@@ -3551,11 +3203,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.indy",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.indy"
         }
       ],
       "path": "/hosting/web/{serviceName}/indy/{login}"
@@ -3589,11 +3237,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/localSeo/account"
@@ -3627,11 +3271,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.localSeo.account",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.localSeo.account"
         }
       ],
       "path": "/hosting/web/{serviceName}/localSeo/account/{id}"
@@ -3665,11 +3305,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/web/{serviceName}/localSeo/account/{id}/login"
@@ -3703,11 +3339,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.localSeo.EmailAvailability",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.localSeo.EmailAvailability"
         }
       ],
       "path": "/hosting/web/{serviceName}/localSeo/emailAvailability"
@@ -3733,11 +3365,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/localSeo/location"
@@ -3771,11 +3399,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.localSeo.location",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.localSeo.location"
         }
       ],
       "path": "/hosting/web/{serviceName}/localSeo/location/{id}"
@@ -3809,11 +3433,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "services.Service"
         }
       ],
       "path": "/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfos"
@@ -3855,11 +3475,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate"
@@ -3893,11 +3509,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/web/{serviceName}/localSeo/location/{id}/terminate"
@@ -3923,11 +3535,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -4003,11 +3611,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/module"
@@ -4049,11 +3653,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         },
         {
           "apiStatus": {
@@ -4081,11 +3681,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.module",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.module"
         }
       ],
       "path": "/hosting/web/{serviceName}/module/{id}"
@@ -4119,11 +3715,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/module/{id}/changePassword"
@@ -4165,11 +3757,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/ovhConfig"
@@ -4203,11 +3791,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.ovhConfig",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.ovhConfig"
         }
       ],
       "path": "/hosting/web/{serviceName}/ovhConfig/{id}"
@@ -4281,11 +3865,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/ovhConfig/{id}/changeConfiguration"
@@ -4327,11 +3907,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/ovhConfig/{id}/rollback"
@@ -4357,11 +3933,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.OvhConfigCapabilities[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.OvhConfigCapabilities[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/ovhConfigCapabilities"
@@ -4387,11 +3959,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.OvhConfigRecommendedValues",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.OvhConfigRecommendedValues"
         }
       ],
       "path": "/hosting/web/{serviceName}/ovhConfigRecommendedValues"
@@ -4417,11 +3985,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/ovhConfigRefresh"
@@ -4455,11 +4019,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/ownLogs"
@@ -4493,11 +4053,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.ownLogs",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.ownLogs"
         }
       ],
       "path": "/hosting/web/{serviceName}/ownLogs/{id}"
@@ -4539,11 +4095,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -4603,11 +4155,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/web/{serviceName}/ownLogs/{id}/userLogs"
@@ -4649,11 +4197,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         },
         {
           "apiStatus": {
@@ -4689,11 +4233,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.userLogs",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.userLogs"
         },
         {
           "apiStatus": {
@@ -4736,11 +4276,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}"
@@ -4790,11 +4326,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}/changePassword"
@@ -4820,11 +4352,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.database.CreationDatabaseCapabilities[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.database.CreationDatabaseCapabilities[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/privateDatabaseCreationCapabilities"
@@ -4850,11 +4378,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/privateDatabases"
@@ -4888,11 +4412,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/request"
@@ -4926,11 +4446,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/requestBoost"
@@ -4964,11 +4480,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/restoreSnapshot"
@@ -5010,11 +4522,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -5090,11 +4598,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/runtime"
@@ -5128,11 +4632,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         },
         {
           "apiStatus": {
@@ -5160,11 +4660,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.runtime",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.runtime"
         },
         {
           "apiStatus": {
@@ -5199,11 +4695,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/web/{serviceName}/runtime/{id}"
@@ -5237,11 +4729,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/runtime/{id}/attachedDomains"
@@ -5275,11 +4763,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "hosting.web.runtime.TypeEnum[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.runtime.TypeEnum[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/runtimeAvailableTypes"
@@ -5305,11 +4789,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -5336,11 +4816,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/web/{serviceName}/serviceInfos"
@@ -5366,11 +4842,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.ssl",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.ssl"
         },
         {
           "apiStatus": {
@@ -5390,11 +4862,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.ssl",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.ssl"
         },
         {
           "apiStatus": {
@@ -5438,11 +4906,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.ssl",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.ssl"
         }
       ],
       "path": "/hosting/web/{serviceName}/ssl"
@@ -5468,11 +4932,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/ssl/domains"
@@ -5498,11 +4958,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.ssl",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.ssl"
         }
       ],
       "path": "/hosting/web/{serviceName}/ssl/regenerate"
@@ -5528,11 +4984,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.ssl.report",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.ssl.report"
         }
       ],
       "path": "/hosting/web/{serviceName}/ssl/report"
@@ -5574,11 +5026,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.ChartSerie<complexType.ChartTimestampValue>[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "complexType.ChartSerie<complexType.ChartTimestampValue>[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/statistics"
@@ -5620,11 +5068,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/hosting/web/{serviceName}/tasks"
@@ -5658,11 +5102,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/tasks/{id}"
@@ -5688,11 +5128,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/web/{serviceName}/terminate"
@@ -5718,11 +5154,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/web/{serviceName}/token"
@@ -5764,11 +5196,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -5820,11 +5248,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/user"
@@ -5858,11 +5282,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         },
         {
           "apiStatus": {
@@ -5890,11 +5310,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.user",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.user"
         },
         {
           "apiStatus": {
@@ -5929,11 +5345,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/web/{serviceName}/user/{login}"
@@ -5975,11 +5387,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.task",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.task"
         }
       ],
       "path": "/hosting/web/{serviceName}/user/{login}/changePassword"
@@ -6013,11 +5421,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -6069,11 +5473,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/web/{serviceName}/userLogs"
@@ -6107,11 +5507,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         },
         {
           "apiStatus": {
@@ -6139,11 +5535,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.userLogs",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.userLogs"
         },
         {
           "apiStatus": {
@@ -6178,11 +5570,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/hosting/web/{serviceName}/userLogs/{login}"
@@ -6224,11 +5612,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/hosting/web/{serviceName}/userLogs/{login}/changePassword"
@@ -6278,11 +5662,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "password",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "password"
         }
       ],
       "path": "/hosting/web/{serviceName}/userLogsToken"
@@ -6308,11 +5688,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/hosting/web/attachedDomain"
@@ -6338,11 +5714,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.OfferEnum[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "hosting.web.OfferEnum[]"
         }
       ],
       "path": "/hosting/web/availableOffer"
@@ -6359,11 +5731,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/hosting-web/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/hosting/web/incident"

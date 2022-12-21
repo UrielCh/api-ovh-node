@@ -366,11 +366,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>",
-          "scopes": [
-            "all",
-            "product/connectivity/all"
-          ]
+          "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>"
         }
       ],
       "path": "/connectivity/eligibility/test/address/partners"
@@ -496,11 +492,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>",
-          "scopes": [
-            "all",
-            "product/connectivity/all"
-          ]
+          "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>"
         }
       ],
       "path": "/connectivity/eligibility/test/line/partners"
@@ -543,11 +535,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "connectivity.maintenance.WorkPlanned[]",
-          "scopes": [
-            "all",
-            "product/connectivity"
-          ]
+          "responseType": "connectivity.maintenance.WorkPlanned[]"
         }
       ],
       "path": "/connectivity/maintenance/workPlanned/partners"
@@ -623,11 +611,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "connectivity.monitoring.GenericIncident[]",
-          "scopes": [
-            "all",
-            "product/connectivity"
-          ]
+          "responseType": "connectivity.monitoring.GenericIncident[]"
         }
       ],
       "path": "/connectivity/monitoring/genericIncident/partners"

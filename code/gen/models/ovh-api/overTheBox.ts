@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/overTheBox"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -71,11 +63,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "overTheBox.Service",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "overTheBox.Service"
         },
         {
           "apiStatus": {
@@ -102,11 +90,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/overTheBox/{serviceName}"
@@ -140,11 +124,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/overTheBox/{serviceName}/autoMTU"
@@ -170,11 +150,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/overTheBox/{serviceName}/availableReleaseChannels"
@@ -200,11 +176,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/overTheBox/{serviceName}/backups"
@@ -238,11 +210,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -270,11 +238,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "overTheBox.Backup",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "overTheBox.Backup"
         }
       ],
       "path": "/overTheBox/{serviceName}/backups/{backupId}"
@@ -300,11 +264,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/overTheBox/{serviceName}/cancelResiliation"
@@ -354,11 +314,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/overTheBox/{serviceName}/changeContact"
@@ -1434,11 +1390,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -1458,11 +1410,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "overTheBox.Device",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "overTheBox.Device"
         }
       ],
       "path": "/overTheBox/{serviceName}/device"
@@ -1504,11 +1452,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -1536,11 +1480,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "overTheBox.DeviceAction",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "overTheBox.DeviceAction"
         }
       ],
       "path": "/overTheBox/{serviceName}/device/actions"
@@ -1574,11 +1514,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "overTheBox.DeviceAction",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "overTheBox.DeviceAction"
         }
       ],
       "path": "/overTheBox/{serviceName}/device/actions/{actionId}"
@@ -1604,11 +1540,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "overTheBox.AvailableDeviceAction[]",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "overTheBox.AvailableDeviceAction[]"
         }
       ],
       "path": "/overTheBox/{serviceName}/device/availableActions"
@@ -1634,11 +1566,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "overTheBox.DeviceAction",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "overTheBox.DeviceAction"
         }
       ],
       "path": "/overTheBox/{serviceName}/device/backup"
@@ -1664,11 +1592,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "overTheBox.TemporaryLogsLink",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "overTheBox.TemporaryLogsLink"
         }
       ],
       "path": "/overTheBox/{serviceName}/device/logs"
@@ -1702,11 +1626,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "overTheBox.DeviceAction[]",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "overTheBox.DeviceAction[]"
         }
       ],
       "path": "/overTheBox/{serviceName}/device/restoreBackup"
@@ -1740,11 +1660,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/overTheBox/{serviceName}/linkDevice"
@@ -1770,11 +1686,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "overTheBox.AvailableMigrationOffer[]",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "overTheBox.AvailableMigrationOffer[]"
         }
       ],
       "path": "/overTheBox/{serviceName}/migration/offers"
@@ -1800,11 +1712,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -1856,11 +1764,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "overTheBox.RemoteAccess",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "overTheBox.RemoteAccess"
         }
       ],
       "path": "/overTheBox/{serviceName}/remoteAccesses"
@@ -1894,11 +1798,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -1926,11 +1826,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "overTheBox.RemoteAccess",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "overTheBox.RemoteAccess"
         }
       ],
       "path": "/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}"
@@ -1964,11 +1860,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize"
@@ -1994,11 +1886,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -2025,11 +1913,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/overTheBox/{serviceName}/serviceInfos"
@@ -2113,11 +1997,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/overTheBox/{serviceName}/tasks"
@@ -2151,11 +2031,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "overTheBox.Task",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "overTheBox.Task"
         }
       ],
       "path": "/overTheBox/{serviceName}/tasks/{taskId}"
@@ -2172,11 +2048,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "price.OverTheBox.OfferEnum[]",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "price.OverTheBox.OfferEnum[]"
         }
       ],
       "path": "/overTheBox/availableOffers"
@@ -2193,11 +2065,7 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "overTheBox.DeviceForRegistration[]",
-          "scopes": [
-            "all",
-            "product/overTheBox/all"
-          ]
+          "responseType": "overTheBox.DeviceForRegistration[]"
         }
       ],
       "path": "/overTheBox/devices"

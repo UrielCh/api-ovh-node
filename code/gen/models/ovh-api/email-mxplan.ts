@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/email/mxplan"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.mxplan.Service",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.mxplan.Service"
         },
         {
           "apiStatus": {
@@ -78,11 +70,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/email/mxplan/{service}"
@@ -124,11 +112,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/email/mxplan/{service}/account"
@@ -162,11 +146,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         },
         {
           "apiStatus": {
@@ -194,11 +174,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.mxplan.Account",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.mxplan.Account"
         },
         {
           "apiStatus": {
@@ -233,11 +209,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/email/mxplan/{service}/account/{email}"
@@ -271,11 +243,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -311,11 +279,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         }
       ],
       "path": "/email/mxplan/{service}/account/{email}/alias"
@@ -357,11 +321,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         },
         {
           "apiStatus": {
@@ -397,11 +357,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.mxplan.AccountAlias",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.mxplan.AccountAlias"
         }
       ],
       "path": "/email/mxplan/{service}/account/{email}/alias/{alias}"
@@ -435,11 +391,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.mxplan.accountCapabilities",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.mxplan.accountCapabilities"
         }
       ],
       "path": "/email/mxplan/{service}/account/{email}/capabilities"
@@ -481,11 +433,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         }
       ],
       "path": "/email/mxplan/{service}/account/{email}/changePassword"
@@ -519,11 +467,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.mxplan.AccountDiagnosis",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.mxplan.AccountDiagnosis"
         },
         {
           "apiStatus": {
@@ -559,11 +503,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         }
       ],
       "path": "/email/mxplan/{service}/account/{email}/diagnostic"
@@ -597,11 +537,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -637,11 +573,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         }
       ],
       "path": "/email/mxplan/{service}/account/{email}/fullAccess"
@@ -683,11 +615,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         },
         {
           "apiStatus": {
@@ -723,11 +651,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.mxplan.AccountFullAccess",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.mxplan.AccountFullAccess"
         }
       ],
       "path": "/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}"
@@ -761,11 +685,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -801,11 +721,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         }
       ],
       "path": "/email/mxplan/{service}/account/{email}/sendAs"
@@ -847,11 +763,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         },
         {
           "apiStatus": {
@@ -887,11 +799,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.mxplan.AccountSendAs",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.mxplan.AccountSendAs"
         }
       ],
       "path": "/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}"
@@ -925,11 +833,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -965,11 +869,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         }
       ],
       "path": "/email/mxplan/{service}/account/{email}/sendOnBehalfTo"
@@ -1011,11 +911,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         },
         {
           "apiStatus": {
@@ -1051,11 +947,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.mxplan.AccountSendOnBehalfTo",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.mxplan.AccountSendOnBehalfTo"
         }
       ],
       "path": "/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}"
@@ -1089,11 +981,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/email/mxplan/{service}/account/{email}/task"
@@ -1135,11 +1023,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         }
       ],
       "path": "/email/mxplan/{service}/account/{email}/task/{id}"
@@ -1173,11 +1057,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/email/mxplan/{service}/domain"
@@ -1211,11 +1091,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.mxplan.Domain",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.mxplan.Domain"
         },
         {
           "apiStatus": {
@@ -1250,11 +1126,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/email/mxplan/{service}/domain/{domainName}"
@@ -1288,11 +1160,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         },
         {
           "apiStatus": {
@@ -1320,11 +1188,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.disclaimer",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.disclaimer"
         },
         {
           "apiStatus": {
@@ -1368,11 +1232,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         },
         {
           "apiStatus": {
@@ -1407,11 +1267,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/email/mxplan/{service}/domain/{domainName}/disclaimer"
@@ -1445,11 +1301,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.DisclaimerAttributeEnum[]",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.DisclaimerAttributeEnum[]"
         }
       ],
       "path": "/email/mxplan/{service}/domain/{domainName}/disclaimerAttribute"
@@ -1515,11 +1367,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -1587,11 +1435,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         }
       ],
       "path": "/email/mxplan/{service}/externalContact"
@@ -1625,11 +1469,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         },
         {
           "apiStatus": {
@@ -1657,11 +1497,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.mxplan.ExternalContact",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.mxplan.ExternalContact"
         },
         {
           "apiStatus": {
@@ -1696,11 +1532,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/email/mxplan/{service}/externalContact/{externalEmailAddress}"
@@ -1726,11 +1558,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.mxplan.Server",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.mxplan.Server"
         }
       ],
       "path": "/email/mxplan/{service}/server"
@@ -1756,11 +1584,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/email/mxplan/{service}/task"
@@ -1794,11 +1618,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "email.pro.Task"
         }
       ],
       "path": "/email/mxplan/{service}/task/{id}"
@@ -1824,11 +1644,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/email-mxplan/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/email/mxplan/{service}/updateFlagsOnAllAccounts"

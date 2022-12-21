@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony"
@@ -63,11 +59,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -87,11 +79,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.BillingAccount",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.BillingAccount"
         },
         {
           "apiStatus": {
@@ -118,11 +106,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}"
@@ -148,11 +132,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -204,11 +184,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.AbbreviatedNumberGroup",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.AbbreviatedNumberGroup"
         }
       ],
       "path": "/telephony/{billingAccount}/abbreviatedNumber"
@@ -242,11 +218,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -274,11 +246,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.AbbreviatedNumberGroup",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.AbbreviatedNumberGroup"
         },
         {
           "apiStatus": {
@@ -313,11 +281,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}"
@@ -343,11 +307,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Price[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "order.Price[]"
         }
       ],
       "path": "/telephony/{billingAccount}/allowedCreditThreshold"
@@ -373,11 +333,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.Price[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "order.Price[]"
         }
       ],
       "path": "/telephony/{billingAccount}/amountSecurityDeposit"
@@ -403,11 +359,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string"
         },
         {
           "apiStatus": {
@@ -435,11 +387,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/billingAccountSite"
@@ -465,11 +413,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/cancelTermination"
@@ -503,11 +447,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "boolean"
         }
       ],
       "path": "/telephony/{billingAccount}/canTransferSecurityDeposit"
@@ -533,11 +473,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/carrierSip"
@@ -571,11 +507,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.CarrierSip",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.CarrierSip"
         }
       ],
       "path": "/telephony/{billingAccount}/carrierSip/{serviceName}"
@@ -617,11 +549,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "telephony.Document",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Document"
         }
       ],
       "path": "/telephony/{billingAccount}/carrierSip/{serviceName}/cdrs"
@@ -655,11 +583,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.CarrierSipClusterInfo",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.CarrierSipClusterInfo"
         }
       ],
       "path": "/telephony/{billingAccount}/carrierSip/{serviceName}/clusterDetails"
@@ -693,11 +617,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/carrierSip/{serviceName}/endpoints"
@@ -739,11 +659,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.CarrierSipCustomerEndpoint",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.CarrierSipCustomerEndpoint"
         }
       ],
       "path": "/telephony/{billingAccount}/carrierSip/{serviceName}/endpoints/{id}"
@@ -777,11 +693,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.CarrierSipDetails",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.CarrierSipDetails"
         },
         {
           "apiStatus": {
@@ -816,11 +728,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/carrierSip/{serviceName}/settings"
@@ -870,11 +778,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/changeContact"
@@ -900,11 +804,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/conference"
@@ -938,11 +838,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Conference",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Conference"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}"
@@ -984,11 +880,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/announceUpload"
@@ -1038,11 +930,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/histories"
@@ -1084,11 +972,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ConferenceHistory",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ConferenceHistory"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/histories/{id}"
@@ -1122,11 +1006,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ConferenceInformations",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ConferenceInformations"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/informations"
@@ -1160,11 +1040,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/lock"
@@ -1198,11 +1074,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/participants"
@@ -1244,11 +1116,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ConferenceParticipants",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ConferenceParticipants"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/participants/{id}"
@@ -1290,11 +1158,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/deaf"
@@ -1344,11 +1208,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/energy"
@@ -1390,11 +1250,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/kick"
@@ -1436,11 +1292,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/mute"
@@ -1482,11 +1334,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/undeaf"
@@ -1528,11 +1376,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/unmute"
@@ -1566,11 +1410,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -1606,11 +1446,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ConferenceRoom",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ConferenceRoom"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms"
@@ -1652,11 +1488,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ConferenceRoom",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ConferenceRoom"
         },
         {
           "apiStatus": {
@@ -1699,11 +1531,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}"
@@ -1761,11 +1589,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/histories"
@@ -1815,11 +1639,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ConferenceHistory",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ConferenceHistory"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/histories/{id}"
@@ -1861,11 +1681,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/lock"
@@ -1907,11 +1723,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants"
@@ -1961,11 +1773,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ConferenceParticipants",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ConferenceParticipants"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}"
@@ -2015,11 +1823,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/deaf"
@@ -2077,11 +1881,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/energy"
@@ -2131,11 +1931,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/kick"
@@ -2185,11 +1981,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/mute"
@@ -2239,11 +2031,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/undeaf"
@@ -2293,11 +2081,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/unmute"
@@ -2339,11 +2123,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/unlock"
@@ -2385,11 +2165,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -2433,11 +2209,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ConferenceWebAccess",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ConferenceWebAccess"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/webAccess"
@@ -2487,11 +2259,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -2535,11 +2303,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ConferenceWebAccess",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ConferenceWebAccess"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/webAccess/{id}"
@@ -2573,11 +2337,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ConferenceRoomsStatistics",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ConferenceRoomsStatistics"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/roomsStats"
@@ -2611,11 +2371,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ConferenceProperties",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ConferenceProperties"
         },
         {
           "apiStatus": {
@@ -2650,11 +2406,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/settings"
@@ -2688,11 +2440,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/unlock"
@@ -2726,11 +2474,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -2766,11 +2510,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ConferenceWebAccess",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ConferenceWebAccess"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/webAccess"
@@ -2812,11 +2552,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -2852,11 +2588,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ConferenceWebAccess",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ConferenceWebAccess"
         }
       ],
       "path": "/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}"
@@ -2882,11 +2614,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/ddi"
@@ -2920,11 +2648,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Ddi",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Ddi"
         },
         {
           "apiStatus": {
@@ -2959,11 +2683,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/ddi/{serviceName}"
@@ -3005,11 +2725,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/ddi/{serviceName}/changeDestination"
@@ -3035,11 +2751,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting"
@@ -3073,11 +2785,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EasyHunting",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EasyHunting"
         },
         {
           "apiStatus": {
@@ -3112,11 +2820,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}"
@@ -3150,11 +2854,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHunting",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHunting"
         },
         {
           "apiStatus": {
@@ -3189,11 +2889,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting"
@@ -3227,11 +2923,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -3307,11 +2999,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgent",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgent"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent"
@@ -3353,11 +3041,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -3393,11 +3077,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgent",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgent"
         },
         {
           "apiStatus": {
@@ -3440,11 +3120,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}"
@@ -3486,11 +3162,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -3526,11 +3198,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.BannerAccess",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.BannerAccess"
         },
         {
           "apiStatus": {
@@ -3566,11 +3234,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.BannerAccess",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.BannerAccess"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess"
@@ -3612,11 +3276,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls"
@@ -3666,11 +3326,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingQueueLiveCalls",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingQueueLiveCalls"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}"
@@ -3728,11 +3384,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop"
@@ -3782,11 +3434,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup"
@@ -3836,11 +3484,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold"
@@ -3898,11 +3542,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept"
@@ -3960,11 +3600,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer"
@@ -4030,11 +3666,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper"
@@ -4076,11 +3708,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -4116,11 +3744,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EventToken",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EventToken"
         },
         {
           "apiStatus": {
@@ -4164,11 +3788,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken"
@@ -4210,11 +3830,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgentLiveStatus",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgentLiveStatus"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/liveStatus"
@@ -4256,11 +3872,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -4312,11 +3924,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgentQueue",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgentQueue"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue"
@@ -4366,11 +3974,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -4414,11 +4018,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgentQueue",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgentQueue"
         },
         {
           "apiStatus": {
@@ -4469,11 +4069,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}"
@@ -4523,11 +4119,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgentLiveStatus",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgentLiveStatus"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus"
@@ -4561,11 +4153,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -4617,11 +4205,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxCustomStatus",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxCustomStatus"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus"
@@ -4663,11 +4247,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -4703,11 +4283,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxCustomStatus",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxCustomStatus"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}"
@@ -4741,11 +4317,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -4773,11 +4345,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EventToken",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EventToken"
         },
         {
           "apiStatus": {
@@ -4813,11 +4381,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken"
@@ -4851,11 +4415,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -4987,11 +4547,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingQueue",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingQueue"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue"
@@ -5033,11 +4589,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -5073,11 +4625,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingQueue",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingQueue"
         },
         {
           "apiStatus": {
@@ -5120,11 +4668,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}"
@@ -5166,11 +4710,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -5214,11 +4754,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgentQueue",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgentQueue"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent"
@@ -5268,11 +4804,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -5316,11 +4848,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgentQueue",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgentQueue"
         },
         {
           "apiStatus": {
@@ -5371,11 +4899,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}"
@@ -5425,11 +4949,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgentLiveStatus",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgentLiveStatus"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus"
@@ -5471,11 +4991,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls"
@@ -5525,11 +5041,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingQueueLiveCalls",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingQueueLiveCalls"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}"
@@ -5587,11 +5099,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop"
@@ -5641,11 +5149,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup"
@@ -5695,11 +5199,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold"
@@ -5757,11 +5257,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept"
@@ -5819,11 +5315,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer"
@@ -5889,11 +5381,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper"
@@ -5935,11 +5423,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingQueueLiveStatistics",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingQueueLiveStatistics"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveStatistics"
@@ -5973,11 +5457,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/records"
@@ -6019,11 +5499,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -6059,11 +5535,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxRecord",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxRecord"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}"
@@ -6097,11 +5569,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EasyHuntingScreenListsConditionsSettings",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EasyHuntingScreenListsConditionsSettings"
         },
         {
           "apiStatus": {
@@ -6136,11 +5604,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions"
@@ -6182,11 +5646,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -6238,11 +5698,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EasyHuntingScreenListsConditions",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EasyHuntingScreenListsConditions"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions"
@@ -6284,11 +5740,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -6324,11 +5776,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EasyHuntingScreenListsConditions",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EasyHuntingScreenListsConditions"
         },
         {
           "apiStatus": {
@@ -6371,11 +5819,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}"
@@ -6409,11 +5853,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/sound"
@@ -6455,11 +5895,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -6495,11 +5931,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxSound",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxSound"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}"
@@ -6557,11 +5989,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/soundUpload"
@@ -6595,11 +6023,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EasyHuntingTimeConditionsSettings",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EasyHuntingTimeConditionsSettings"
         },
         {
           "apiStatus": {
@@ -6634,11 +6058,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions"
@@ -6680,11 +6100,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -6744,11 +6160,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EasyHuntingTimeConditions",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EasyHuntingTimeConditions"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions"
@@ -6790,11 +6202,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -6830,11 +6238,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EasyHuntingTimeConditions",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EasyHuntingTimeConditions"
         },
         {
           "apiStatus": {
@@ -6877,11 +6281,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}"
@@ -6907,11 +6307,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/easyPabx"
@@ -6945,11 +6341,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EasyPabx",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EasyPabx"
         },
         {
           "apiStatus": {
@@ -6984,11 +6376,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/easyPabx/{serviceName}"
@@ -7022,11 +6410,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EasyPabxHunting",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EasyPabxHunting"
         },
         {
           "apiStatus": {
@@ -7061,11 +6445,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/easyPabx/{serviceName}/hunting"
@@ -7099,11 +6479,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "phoneNumber[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "phoneNumber[]"
         },
         {
           "apiStatus": {
@@ -7163,11 +6539,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EasyMiniPabxHuntingAgent",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EasyMiniPabxHuntingAgent"
         }
       ],
       "path": "/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent"
@@ -7209,11 +6581,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -7249,11 +6617,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EasyMiniPabxHuntingAgent",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EasyMiniPabxHuntingAgent"
         },
         {
           "apiStatus": {
@@ -7296,11 +6660,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}"
@@ -7334,11 +6694,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Tones",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Tones"
         },
         {
           "apiStatus": {
@@ -7373,11 +6729,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones"
@@ -7435,11 +6787,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones/toneUpload"
@@ -7465,11 +6813,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -7489,11 +6833,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EventToken",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EventToken"
         },
         {
           "apiStatus": {
@@ -7521,11 +6861,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/telephony/{billingAccount}/eventToken"
@@ -7551,11 +6887,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/fax"
@@ -7589,11 +6921,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Fax",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Fax"
         },
         {
           "apiStatus": {
@@ -7628,11 +6956,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/fax/{serviceName}"
@@ -7666,11 +6990,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -7762,11 +7082,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.FaxCampaign",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.FaxCampaign"
         }
       ],
       "path": "/telephony/{billingAccount}/fax/{serviceName}/campaigns"
@@ -7808,11 +7124,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -7848,11 +7160,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.FaxCampaign",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.FaxCampaign"
         }
       ],
       "path": "/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}"
@@ -7894,11 +7202,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.FaxCampaignDetail",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.FaxCampaignDetail"
         }
       ],
       "path": "/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/detail"
@@ -7940,11 +7244,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/start"
@@ -7986,11 +7286,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/stop"
@@ -8024,11 +7320,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -8056,11 +7348,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.FaxScreen",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.FaxScreen"
         },
         {
           "apiStatus": {
@@ -8128,11 +7416,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.FaxScreen",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.FaxScreen"
         },
         {
           "apiStatus": {
@@ -8167,11 +7451,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/fax/{serviceName}/screenLists"
@@ -8237,11 +7517,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/fax/{serviceName}/screenLists/reset"
@@ -8275,11 +7551,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.FaxProperties",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.FaxProperties"
         },
         {
           "apiStatus": {
@@ -8314,11 +7586,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/fax/{serviceName}/settings"
@@ -8360,11 +7628,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "password",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "password"
         }
       ],
       "path": "/telephony/{billingAccount}/fax/{serviceName}/settings/changePassword"
@@ -8422,11 +7686,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/fax/{serviceName}/settings/sendFax"
@@ -8452,11 +7712,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "boolean"
         }
       ],
       "path": "/telephony/{billingAccount}/hasSpecialNumbers"
@@ -8482,11 +7738,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "date[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "date[]"
         }
       ],
       "path": "/telephony/{billingAccount}/historyConsumption"
@@ -8520,11 +7772,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.HistoryConsumption",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.HistoryConsumption"
         }
       ],
       "path": "/telephony/{billingAccount}/historyConsumption/{date}"
@@ -8566,11 +7814,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.PcsFile",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PcsFile"
         }
       ],
       "path": "/telephony/{billingAccount}/historyConsumption/{date}/file"
@@ -8596,11 +7840,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "date[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "date[]"
         },
         {
           "apiStatus": {
@@ -8628,11 +7868,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.HistoryRepaymentConsumption",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.HistoryRepaymentConsumption"
         }
       ],
       "path": "/telephony/{billingAccount}/historyRepaymentConsumption"
@@ -8666,11 +7902,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.HistoryRepaymentConsumption",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.HistoryRepaymentConsumption"
         }
       ],
       "path": "/telephony/{billingAccount}/historyRepaymentConsumption/{date}"
@@ -8704,11 +7936,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.PcsFile",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PcsFile"
         }
       ],
       "path": "/telephony/{billingAccount}/historyRepaymentConsumption/{date}/document"
@@ -8734,11 +7962,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "date[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "date[]"
         }
       ],
       "path": "/telephony/{billingAccount}/historyTollfreeConsumption"
@@ -8772,11 +7996,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.HistoryTollfreeConsumption",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.HistoryTollfreeConsumption"
         }
       ],
       "path": "/telephony/{billingAccount}/historyTollfreeConsumption/{date}"
@@ -8810,11 +8030,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.PcsFile",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PcsFile"
         }
       ],
       "path": "/telephony/{billingAccount}/historyTollfreeConsumption/{date}/document"
@@ -8840,11 +8056,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/line"
@@ -8878,11 +8090,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Line",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Line"
         },
         {
           "apiStatus": {
@@ -8917,11 +8125,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}"
@@ -8955,11 +8159,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -9019,11 +8219,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.AbbreviatedNumber",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.AbbreviatedNumber"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber"
@@ -9065,11 +8261,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -9105,11 +8297,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.AbbreviatedNumber",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.AbbreviatedNumber"
         },
         {
           "apiStatus": {
@@ -9152,11 +8340,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}"
@@ -9190,11 +8374,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -9222,11 +8402,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/activateNewPhone"
@@ -9260,11 +8436,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -9308,11 +8480,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/antihack"
@@ -9370,11 +8538,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/associateDevice"
@@ -9408,11 +8572,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -9504,11 +8664,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/automaticCall"
@@ -9550,11 +8706,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.CallsGenerated",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.CallsGenerated"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/automaticCall/{identifier}"
@@ -9588,11 +8740,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/availableSipDomains"
@@ -9634,11 +8782,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/block"
@@ -9674,11 +8818,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/calls"
@@ -9722,11 +8862,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingQueueLiveCalls",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingQueueLiveCalls"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/calls/{id}"
@@ -9778,11 +8914,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/calls/{id}/eavesdrop"
@@ -9826,11 +8958,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hangup"
@@ -9874,11 +9002,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hold"
@@ -9930,11 +9054,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/calls/{id}/intercept"
@@ -9986,11 +9106,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/calls/{id}/transfer"
@@ -10050,11 +9166,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper"
@@ -10088,11 +9200,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/cancelConvertToNumber"
@@ -10129,11 +9237,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "boolean"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/canChangePassword"
@@ -10175,11 +9279,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/changePassword"
@@ -10237,11 +9337,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/click2Call"
@@ -10275,11 +9371,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -10323,11 +9415,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/click2CallUser"
@@ -10369,11 +9457,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -10409,11 +9493,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Click2CallUser",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Click2CallUser"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}"
@@ -10463,11 +9543,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/changePassword"
@@ -10525,11 +9601,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/click2Call"
@@ -10563,11 +9635,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OfferTask",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OfferTask"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/convertToNumber"
@@ -10617,11 +9685,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/dissociateDevice"
@@ -10655,11 +9719,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.DatetimeAndIpvalue[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.DatetimeAndIpvalue[]"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/ips"
@@ -10693,11 +9753,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.RegistrationInformations[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.RegistrationInformations[]"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/lastRegistrations"
@@ -10731,11 +9787,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.LinePhoneAssociable[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.LinePhoneAssociable[]"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/listAssociablePhones"
@@ -10769,11 +9821,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/maximumAvailableSimultaneousLines"
@@ -10807,11 +9855,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.LineOffer",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.LineOffer"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/offer"
@@ -10845,11 +9889,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.LineOptions",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.LineOptions"
         },
         {
           "apiStatus": {
@@ -10884,11 +9924,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/options"
@@ -10922,11 +9958,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/options/availableCodecs"
@@ -10960,11 +9992,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/options/defaultCodecs"
@@ -10998,11 +10026,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Phone",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Phone"
         },
         {
           "apiStatus": {
@@ -11037,11 +10061,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone"
@@ -11075,11 +10095,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.PhoneCredentials",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PhoneCredentials"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/adminCredentials"
@@ -11129,11 +10145,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/changePhoneConfiguration"
@@ -11167,11 +10179,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/functionKey"
@@ -11213,11 +10221,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.FunctionKey",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.FunctionKey"
         },
         {
           "apiStatus": {
@@ -11260,11 +10264,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}"
@@ -11306,11 +10306,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}/availableFunction"
@@ -11344,11 +10340,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.HardwareOffer[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.HardwareOffer[]"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/merchandiseAvailable"
@@ -11382,11 +10374,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -11422,11 +10410,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/phonebook"
@@ -11468,11 +10452,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -11508,11 +10488,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Phonebook",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Phonebook"
         },
         {
           "apiStatus": {
@@ -11555,11 +10531,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}"
@@ -11609,11 +10581,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.PcsFile",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PcsFile"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/export"
@@ -11663,11 +10631,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/import"
@@ -11709,11 +10673,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -11805,11 +10765,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact"
@@ -11859,11 +10815,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -11907,11 +10859,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.PhonebookContact",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PhonebookContact"
         },
         {
           "apiStatus": {
@@ -11962,11 +10910,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}"
@@ -12000,11 +10944,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/reboot"
@@ -12038,11 +10978,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/refreshScreen"
@@ -12084,11 +11020,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ResetPhoneInfo",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ResetPhoneInfo"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/resetConfig"
@@ -12122,11 +11054,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -12186,11 +11114,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.RmaReturn",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.RmaReturn"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/rma"
@@ -12232,11 +11156,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -12272,11 +11192,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Rma",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Rma"
         },
         {
           "apiStatus": {
@@ -12319,11 +11235,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}"
@@ -12373,11 +11285,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}/changeType"
@@ -12411,11 +11319,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "boolean"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phone/supportsPhonebook"
@@ -12452,11 +11356,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.LinePhone[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.LinePhone[]"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/phoneCanBeAssociable"
@@ -12490,11 +11390,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/records"
@@ -12536,11 +11432,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -12576,11 +11468,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxRecord",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxRecord"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/records/{id}"
@@ -12622,11 +11510,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/removeSimultaneousLines"
@@ -12660,11 +11544,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.SimultaneousChannelsDetails",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.SimultaneousChannelsDetails"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/simultaneousChannelsDetails"
@@ -12716,11 +11596,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValues<telephony.TimestampAndValue>",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "complexType.UnitAndValues<telephony.TimestampAndValue>"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/statistics"
@@ -12754,11 +11630,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Tones",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Tones"
         },
         {
           "apiStatus": {
@@ -12793,11 +11665,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/tones"
@@ -12855,11 +11723,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/tones/toneUpload"
@@ -12893,11 +11757,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -12941,11 +11801,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.trafficExtract",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.trafficExtract"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/trafficExtracts"
@@ -12987,11 +11843,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -13027,11 +11879,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.trafficExtract",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.trafficExtract"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}"
@@ -13065,11 +11913,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/unblock"
@@ -13095,11 +11939,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/miniPabx"
@@ -13133,11 +11973,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.MiniPabx",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.MiniPabx"
         },
         {
           "apiStatus": {
@@ -13172,11 +12008,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/miniPabx/{serviceName}"
@@ -13210,11 +12042,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.MiniPabxHunting",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.MiniPabxHunting"
         },
         {
           "apiStatus": {
@@ -13249,11 +12077,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/miniPabx/{serviceName}/hunting"
@@ -13287,11 +12111,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "phoneNumber[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "phoneNumber[]"
         },
         {
           "apiStatus": {
@@ -13351,11 +12171,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EasyMiniPabxHuntingAgent",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EasyMiniPabxHuntingAgent"
         }
       ],
       "path": "/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent"
@@ -13397,11 +12213,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -13437,11 +12249,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EasyMiniPabxHuntingAgent",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EasyMiniPabxHuntingAgent"
         },
         {
           "apiStatus": {
@@ -13484,11 +12292,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}"
@@ -13522,11 +12326,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Tones",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Tones"
         },
         {
           "apiStatus": {
@@ -13561,11 +12361,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/miniPabx/{serviceName}/tones"
@@ -13623,11 +12419,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/miniPabx/{serviceName}/tones/toneUpload"
@@ -13653,11 +12445,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/number"
@@ -13691,11 +12479,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Number",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Number"
         },
         {
           "apiStatus": {
@@ -13730,11 +12514,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/number/{serviceName}"
@@ -13768,11 +12548,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/number/{serviceName}/cancelConvertToLine"
@@ -13814,11 +12590,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/number/{serviceName}/changeFeatureType"
@@ -13860,11 +12632,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OfferTask",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OfferTask"
         }
       ],
       "path": "/telephony/{billingAccount}/number/{serviceName}/convertToLine"
@@ -13898,11 +12666,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.LineOffersAndContracts",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.LineOffersAndContracts"
         }
       ],
       "path": "/telephony/{billingAccount}/number/{serviceName}/convertToLineAvailableOffers"
@@ -13952,11 +12716,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/offerTask"
@@ -13990,11 +12750,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OfferTask",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OfferTask"
         },
         {
           "apiStatus": {
@@ -14029,11 +12785,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/offerTask/{taskId}"
@@ -14059,11 +12811,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OldPhone[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OldPhone[]"
         }
       ],
       "path": "/telephony/{billingAccount}/oldPhone"
@@ -14089,11 +12837,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -14137,11 +12881,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ConsumptionThreshold",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ConsumptionThreshold"
         }
       ],
       "path": "/telephony/{billingAccount}/outplanNotification"
@@ -14175,11 +12915,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -14207,11 +12943,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ConsumptionThreshold",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ConsumptionThreshold"
         }
       ],
       "path": "/telephony/{billingAccount}/outplanNotification/{id}"
@@ -14237,11 +12969,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx"
@@ -14275,11 +13003,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabx",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabx"
         },
         {
           "apiStatus": {
@@ -14314,11 +13038,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}"
@@ -14352,11 +13072,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -14416,11 +13132,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxDialplan",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxDialplan"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan"
@@ -14462,11 +13174,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -14502,11 +13210,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxDialplan",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxDialplan"
         },
         {
           "apiStatus": {
@@ -14549,11 +13253,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}"
@@ -14595,11 +13295,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -14667,11 +13363,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxDialplanExtension",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxDialplanExtension"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension"
@@ -14721,11 +13413,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -14769,11 +13457,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxDialplanExtension",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxDialplanExtension"
         },
         {
           "apiStatus": {
@@ -14824,11 +13508,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}"
@@ -14878,11 +13558,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -14950,11 +13626,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxDialplanExtensionConditionScreenList",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxDialplanExtensionConditionScreenList"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList"
@@ -15012,11 +13684,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -15068,11 +13736,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxDialplanExtensionConditionScreenList",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxDialplanExtensionConditionScreenList"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}"
@@ -15122,11 +13786,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -15194,11 +13854,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxDialplanExtensionConditionTime",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxDialplanExtensionConditionTime"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime"
@@ -15256,11 +13912,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -15312,11 +13964,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxDialplanExtensionConditionTime",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxDialplanExtensionConditionTime"
         },
         {
           "apiStatus": {
@@ -15375,11 +14023,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}"
@@ -15429,11 +14073,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -15509,11 +14149,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxDialplanExtensionRule",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxDialplanExtensionRule"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule"
@@ -15571,11 +14207,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -15627,11 +14259,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxDialplanExtensionRule",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxDialplanExtensionRule"
         },
         {
           "apiStatus": {
@@ -15690,11 +14318,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}"
@@ -15728,11 +14352,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHunting",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHunting"
         },
         {
           "apiStatus": {
@@ -15767,11 +14387,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting"
@@ -15805,11 +14421,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -15885,11 +14497,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgent",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgent"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent"
@@ -15931,11 +14539,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -15971,11 +14575,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgent",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgent"
         },
         {
           "apiStatus": {
@@ -16018,11 +14618,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}"
@@ -16064,11 +14660,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -16104,11 +14696,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.BannerAccess",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.BannerAccess"
         },
         {
           "apiStatus": {
@@ -16144,11 +14732,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.BannerAccess",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.BannerAccess"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess"
@@ -16190,11 +14774,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls"
@@ -16244,11 +14824,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingQueueLiveCalls",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingQueueLiveCalls"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}"
@@ -16306,11 +14882,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop"
@@ -16360,11 +14932,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup"
@@ -16414,11 +14982,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold"
@@ -16476,11 +15040,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept"
@@ -16538,11 +15098,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer"
@@ -16608,11 +15164,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper"
@@ -16654,11 +15206,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -16694,11 +15242,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EventToken",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EventToken"
         },
         {
           "apiStatus": {
@@ -16742,11 +15286,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken"
@@ -16788,11 +15328,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgentLiveStatus",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgentLiveStatus"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/liveStatus"
@@ -16834,11 +15370,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -16890,11 +15422,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgentQueue",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgentQueue"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue"
@@ -16944,11 +15472,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -16992,11 +15516,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgentQueue",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgentQueue"
         },
         {
           "apiStatus": {
@@ -17047,11 +15567,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}"
@@ -17101,11 +15617,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgentLiveStatus",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgentLiveStatus"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus"
@@ -17139,11 +15651,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -17195,11 +15703,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxCustomStatus",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxCustomStatus"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus"
@@ -17241,11 +15745,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -17281,11 +15781,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxCustomStatus",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxCustomStatus"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}"
@@ -17319,11 +15815,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -17351,11 +15843,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EventToken",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EventToken"
         },
         {
           "apiStatus": {
@@ -17391,11 +15879,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken"
@@ -17429,11 +15913,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -17565,11 +16045,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingQueue",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingQueue"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue"
@@ -17611,11 +16087,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -17651,11 +16123,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingQueue",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingQueue"
         },
         {
           "apiStatus": {
@@ -17698,11 +16166,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}"
@@ -17744,11 +16208,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -17792,11 +16252,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgentQueue",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgentQueue"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent"
@@ -17846,11 +16302,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -17894,11 +16346,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgentQueue",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgentQueue"
         },
         {
           "apiStatus": {
@@ -17949,11 +16397,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}"
@@ -18003,11 +16447,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingAgentLiveStatus",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingAgentLiveStatus"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus"
@@ -18049,11 +16489,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls"
@@ -18103,11 +16539,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingQueueLiveCalls",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingQueueLiveCalls"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}"
@@ -18165,11 +16597,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop"
@@ -18219,11 +16647,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup"
@@ -18273,11 +16697,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold"
@@ -18335,11 +16755,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept"
@@ -18397,11 +16813,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer"
@@ -18467,11 +16879,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper"
@@ -18513,11 +16921,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxHuntingQueueLiveStatistics",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxHuntingQueueLiveStatistics"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveStatistics"
@@ -18551,11 +16955,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -18639,11 +17039,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxMenu",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxMenu"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/menu"
@@ -18685,11 +17081,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -18725,11 +17117,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxMenu",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxMenu"
         },
         {
           "apiStatus": {
@@ -18772,11 +17160,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}"
@@ -18818,11 +17202,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -18890,11 +17270,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxMenuEntry",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxMenuEntry"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry"
@@ -18944,11 +17320,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -18992,11 +17364,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxMenuEntry",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxMenuEntry"
         },
         {
           "apiStatus": {
@@ -19047,11 +17415,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}"
@@ -19085,11 +17449,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/records"
@@ -19131,11 +17491,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -19171,11 +17527,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxRecord",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxRecord"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}"
@@ -19209,11 +17561,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/sound"
@@ -19255,11 +17603,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -19295,11 +17639,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxSound",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxSound"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}"
@@ -19357,11 +17697,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/soundUpload"
@@ -19395,11 +17731,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -19443,11 +17775,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/tts"
@@ -19489,11 +17817,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -19529,11 +17853,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OvhPabxTts",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OvhPabxTts"
         },
         {
           "apiStatus": {
@@ -19576,11 +17896,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}"
@@ -19606,11 +17922,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -19638,11 +17950,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/telephony/{billingAccount}/phonebook"
@@ -19676,11 +17984,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -19708,11 +18012,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.PhonebookMaster",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PhonebookMaster"
         },
         {
           "apiStatus": {
@@ -19747,11 +18047,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/phonebook/{bookKey}"
@@ -19793,11 +18089,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.PcsFile",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PcsFile"
         }
       ],
       "path": "/telephony/{billingAccount}/phonebook/{bookKey}/export"
@@ -19839,11 +18131,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/phonebook/{bookKey}/import"
@@ -19877,11 +18165,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -19965,11 +18249,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long"
         }
       ],
       "path": "/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact"
@@ -20011,11 +18291,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -20051,11 +18327,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.PhonebookContact",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PhonebookContact"
         },
         {
           "apiStatus": {
@@ -20098,11 +18370,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}"
@@ -20128,11 +18396,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/portability"
@@ -20166,11 +18430,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Portability",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Portability"
         }
       ],
       "path": "/telephony/{billingAccount}/portability/{id}"
@@ -20204,11 +18464,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "boolean"
         }
       ],
       "path": "/telephony/{billingAccount}/portability/{id}/canBeCancelled"
@@ -20242,11 +18498,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "boolean"
         }
       ],
       "path": "/telephony/{billingAccount}/portability/{id}/canBeExecuted"
@@ -20288,11 +18540,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/portability/{id}/cancel"
@@ -20334,11 +18582,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/portability/{id}/changeDate"
@@ -20372,11 +18616,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "boolean"
         }
       ],
       "path": "/telephony/{billingAccount}/portability/{id}/dateCanBeChanged"
@@ -20410,11 +18650,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -20458,11 +18694,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.PortabilityDocument",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PortabilityDocument"
         }
       ],
       "path": "/telephony/{billingAccount}/portability/{id}/document"
@@ -20504,11 +18736,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -20544,11 +18772,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.PortabilityDocument",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PortabilityDocument"
         },
         {
           "apiStatus": {
@@ -20591,11 +18815,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/portability/{id}/document/{documentId}"
@@ -20629,11 +18849,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/portability/{id}/execute"
@@ -20667,11 +18883,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.PortabilityFixErrorPossibleParameters",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PortabilityFixErrorPossibleParameters"
         },
         {
           "apiStatus": {
@@ -20707,11 +18919,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/portability/{id}/relaunch"
@@ -20745,11 +18953,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.PortabilityStep[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PortabilityStep[]"
         }
       ],
       "path": "/telephony/{billingAccount}/portability/{id}/status"
@@ -20775,11 +18979,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/redirect"
@@ -20813,11 +19013,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Redirect",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Redirect"
         },
         {
           "apiStatus": {
@@ -20852,11 +19048,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/redirect/{serviceName}"
@@ -20898,11 +19090,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/redirect/{serviceName}/changeDestination"
@@ -20928,11 +19116,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/rsva"
@@ -20966,11 +19150,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Rsva",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Rsva"
         },
         {
           "apiStatus": {
@@ -21005,11 +19185,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/rsva/{serviceName}"
@@ -21043,11 +19219,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.RateCodeInformation[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.RateCodeInformation[]"
         }
       ],
       "path": "/telephony/{billingAccount}/rsva/{serviceName}/allowedRateCodes"
@@ -21081,11 +19253,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/rsva/{serviceName}/cancelScheduledRateCode"
@@ -21119,11 +19287,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.DetailedRateCodeInformation",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.DetailedRateCodeInformation"
         }
       ],
       "path": "/telephony/{billingAccount}/rsva/{serviceName}/currentRateCode"
@@ -21157,11 +19321,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.DetailedRateCodeInformation",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.DetailedRateCodeInformation"
         }
       ],
       "path": "/telephony/{billingAccount}/rsva/{serviceName}/scheduledRateCode"
@@ -21203,11 +19363,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.DetailedRateCodeInformation",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.DetailedRateCodeInformation"
         }
       ],
       "path": "/telephony/{billingAccount}/rsva/{serviceName}/scheduleRateCode"
@@ -21233,11 +19389,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/scheduler"
@@ -21271,11 +19423,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Scheduler",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Scheduler"
         },
         {
           "apiStatus": {
@@ -21310,11 +19458,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/scheduler/{serviceName}"
@@ -21388,11 +19532,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -21468,11 +19608,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/scheduler/{serviceName}/events"
@@ -21514,11 +19650,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -21554,11 +19686,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.SchedulerEvent",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.SchedulerEvent"
         },
         {
           "apiStatus": {
@@ -21601,11 +19729,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}"
@@ -21647,11 +19771,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/scheduler/{serviceName}/importIcsCalendar"
@@ -21677,11 +19797,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/screen"
@@ -21715,11 +19831,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Screen",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Screen"
         },
         {
           "apiStatus": {
@@ -21754,11 +19866,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/screen/{serviceName}"
@@ -21792,11 +19900,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -21848,11 +19952,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/screen/{serviceName}/screenLists"
@@ -21894,11 +19994,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -21934,11 +20030,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.ScreenList",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ScreenList"
         }
       ],
       "path": "/telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}"
@@ -21964,11 +20056,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/service"
@@ -22018,11 +20106,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -22050,11 +20134,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TelephonyService",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.TelephonyService"
         },
         {
           "apiStatus": {
@@ -22089,11 +20169,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}"
@@ -22127,11 +20203,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/cancelTermination"
@@ -22173,11 +20245,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/changeOfBillingAccount"
@@ -22219,11 +20287,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.DiagnosticReport[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.DiagnosticReport[]"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/diagnosticReports"
@@ -22257,11 +20321,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.DirectoryInfo",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.DirectoryInfo"
         },
         {
           "apiStatus": {
@@ -22296,11 +20356,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/directory"
@@ -22342,11 +20398,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EntrepriseNumberInformationsTask",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EntrepriseNumberInformationsTask"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/directory/fetchEntrepriseInformations"
@@ -22388,11 +20440,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.DirectoryHeadingPJ[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.DirectoryHeadingPJ[]"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/directory/getDirectoryServiceCode"
@@ -22426,11 +20474,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.DirectoryWayType[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.DirectoryWayType[]"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/directory/getWayTypes"
@@ -22464,11 +20508,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -22496,11 +20536,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.EventToken",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.EventToken"
         },
         {
           "apiStatus": {
@@ -22536,11 +20572,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/eventToken"
@@ -22598,11 +20630,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/faxConsumption"
@@ -22644,11 +20672,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.FaxConsumption",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.FaxConsumption"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/faxConsumption/{consumptionId}"
@@ -22682,11 +20706,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -22714,11 +20734,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OfferChange",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OfferChange"
         },
         {
           "apiStatus": {
@@ -22754,11 +20770,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/offerChange"
@@ -22792,11 +20804,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.LineOffer[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.LineOffer[]"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/offerChanges"
@@ -22854,11 +20862,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/offerTask"
@@ -22900,11 +20904,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.OfferTask",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.OfferTask"
         },
         {
           "apiStatus": {
@@ -22947,11 +20947,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}"
@@ -23025,11 +21021,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption"
@@ -23071,11 +21063,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.PreviousVoiceConsumption",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PreviousVoiceConsumption"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption/{consumptionId}"
@@ -23125,11 +21113,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption"
@@ -23171,11 +21155,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.RepaymentConsumption",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.RepaymentConsumption"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption/{consumptionId}"
@@ -23233,11 +21213,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/task"
@@ -23279,11 +21255,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/task/{taskId}"
@@ -23357,11 +21329,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/voiceConsumption"
@@ -23403,11 +21371,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.VoiceConsumption",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.VoiceConsumption"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}"
@@ -23449,11 +21413,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.CallDiagnostics",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.CallDiagnostics"
         }
       ],
       "path": "/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}/callDiagnostics"
@@ -23479,11 +21439,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -23510,11 +21466,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/serviceInfos"
@@ -23564,11 +21516,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/task"
@@ -23602,11 +21550,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/telephony/{billingAccount}/task/{taskId}"
@@ -23632,11 +21576,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/timeCondition"
@@ -23670,11 +21610,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.GenericScreen",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.GenericScreen"
         }
       ],
       "path": "/telephony/{billingAccount}/timeCondition/{serviceName}"
@@ -23708,11 +21644,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -23772,11 +21704,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TimeCondition",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.TimeCondition"
         }
       ],
       "path": "/telephony/{billingAccount}/timeCondition/{serviceName}/condition"
@@ -23818,11 +21746,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -23858,11 +21782,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TimeCondition",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.TimeCondition"
         },
         {
           "apiStatus": {
@@ -23905,11 +21825,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}"
@@ -23943,11 +21859,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TimeConditionOptions",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.TimeConditionOptions"
         },
         {
           "apiStatus": {
@@ -23982,11 +21894,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/timeCondition/{serviceName}/options"
@@ -24028,11 +21936,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/transferSecurityDeposit"
@@ -24058,11 +21962,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/trunk"
@@ -24096,11 +21996,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Trunk",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Trunk"
         }
       ],
       "path": "/telephony/{billingAccount}/trunk/{serviceName}"
@@ -24142,11 +22038,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TrunkSimultaneousPacksRepartition",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.TrunkSimultaneousPacksRepartition"
         }
       ],
       "path": "/telephony/{billingAccount}/trunk/{serviceName}/channelsPacksRepartition"
@@ -24180,11 +22072,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "phoneNumber[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "phoneNumber[]"
         },
         {
           "apiStatus": {
@@ -24228,11 +22116,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TrunkExternalDisplayedNumber",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.TrunkExternalDisplayedNumber"
         }
       ],
       "path": "/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber"
@@ -24274,11 +22158,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -24314,11 +22194,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TrunkExternalDisplayedNumber",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.TrunkExternalDisplayedNumber"
         }
       ],
       "path": "/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}"
@@ -24360,11 +22236,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TrunkExternalDisplayedNumberValidation",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.TrunkExternalDisplayedNumberValidation"
         }
       ],
       "path": "/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}/validate"
@@ -24390,11 +22262,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail"
@@ -24428,11 +22296,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Voicemail",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Voicemail"
         },
         {
           "apiStatus": {
@@ -24467,11 +22331,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail/{serviceName}"
@@ -24513,11 +22373,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail/{serviceName}/directories"
@@ -24559,11 +22415,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -24599,11 +22451,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.VoicemailMessages",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.VoicemailMessages"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}"
@@ -24653,11 +22501,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "telephony.PcsFile",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PcsFile"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/download"
@@ -24707,11 +22551,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/move"
@@ -24753,11 +22593,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -24801,11 +22637,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail/{serviceName}/greetings"
@@ -24847,11 +22679,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -24887,11 +22715,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.VoicemailGreetings",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.VoicemailGreetings"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}"
@@ -24941,11 +22765,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "telephony.PcsFile",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.PcsFile"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/download"
@@ -24995,11 +22815,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/move"
@@ -25033,11 +22849,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail/{serviceName}/migrateOnNewVersion"
@@ -25071,11 +22883,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.VoicemailProperties",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.VoicemailProperties"
         },
         {
           "apiStatus": {
@@ -25110,11 +22918,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail/{serviceName}/settings"
@@ -25156,11 +22960,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail/{serviceName}/settings/changePassword"
@@ -25202,11 +23002,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail/{serviceName}/settings/changeRouting"
@@ -25240,11 +23036,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.VoicefaxRoutingEnum",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.VoicefaxRoutingEnum"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail/{serviceName}/settings/routing"
@@ -25278,11 +23070,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.VoicemailNumbers",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.VoicemailNumbers"
         }
       ],
       "path": "/telephony/{billingAccount}/voicemail/{serviceName}/settings/voicemailNumbers"
@@ -25308,11 +23096,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/{billingAccount}/vxml"
@@ -25346,11 +23130,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Vxml",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Vxml"
         }
       ],
       "path": "/telephony/{billingAccount}/vxml/{serviceName}"
@@ -25384,11 +23164,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.VxmlProperties",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.VxmlProperties"
         },
         {
           "apiStatus": {
@@ -25423,11 +23199,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/{billingAccount}/vxml/{serviceName}/settings"
@@ -25461,11 +23233,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TemporaryLogsLink",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.TemporaryLogsLink"
         }
       ],
       "path": "/telephony/{billingAccount}/vxml/{serviceName}/settings/logs"
@@ -25499,11 +23267,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.AccessoryOffer[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.AccessoryOffer[]"
         }
       ],
       "path": "/telephony/accessories"
@@ -25520,11 +23284,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/aliases"
@@ -25550,11 +23310,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TelephonyGenericService",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.TelephonyGenericService"
         }
       ],
       "path": "/telephony/aliases/{serviceName}"
@@ -25604,11 +23360,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/aliases/{serviceName}/changeContact"
@@ -25634,11 +23386,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -25665,11 +23413,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/aliases/{serviceName}/serviceInfos"
@@ -25695,11 +23439,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.DefaultSipDomains[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.DefaultSipDomains[]"
         }
       ],
       "path": "/telephony/availableDefaultSipDomains"
@@ -25716,11 +23456,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/currentOrderIds"
@@ -25891,11 +23627,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/lines"
@@ -25921,11 +23653,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TelephonyGenericService",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.TelephonyGenericService"
         }
       ],
       "path": "/telephony/lines/{serviceName}"
@@ -25975,11 +23703,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/lines/{serviceName}/changeContact"
@@ -26005,11 +23729,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -26036,11 +23756,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/lines/{serviceName}/serviceInfos"
@@ -26201,11 +23917,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -26257,11 +23969,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "telephony.Procedure",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Procedure"
         }
       ],
       "path": "/telephony/procedure"
@@ -26287,11 +23995,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Procedure",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Procedure"
         }
       ],
       "path": "/telephony/procedure/{id}"
@@ -26317,11 +24021,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/procedure/{id}/cancel"
@@ -26338,11 +24038,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "boolean",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "boolean"
         }
       ],
       "path": "/telephony/procedure/required"
@@ -26359,11 +24055,7 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/resellerPanel/generatePassword"
@@ -26380,11 +24072,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "telephony.ResellerPanelStatus",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.ResellerPanelStatus"
         }
       ],
       "path": "/telephony/resellerPanel/status"
@@ -26410,11 +24098,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TelephonySearchService[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.TelephonySearchService[]"
         }
       ],
       "path": "/telephony/searchServices"
@@ -26456,11 +24140,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/setDefaultSipDomain"
@@ -26477,11 +24157,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -26509,11 +24185,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Sound",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Sound"
         }
       ],
       "path": "/telephony/sounds"
@@ -26539,11 +24211,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -26563,11 +24231,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Sound",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.Sound"
         },
         {
           "apiStatus": {
@@ -26594,11 +24258,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/sounds/{id}"
@@ -26615,11 +24275,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/spare"
@@ -26645,11 +24301,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -26669,11 +24321,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "spare.telephony.TelephonySpare",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "spare.telephony.TelephonySpare"
         }
       ],
       "path": "/telephony/spare/{spare}"
@@ -26699,11 +24347,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/spare/{spare}/compatibleReplacement"
@@ -26745,11 +24389,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/spare/{spare}/replace"
@@ -26775,11 +24415,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -26806,11 +24442,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/spare/{spare}/serviceInfos"
@@ -26844,11 +24476,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/telephony/trunks"
@@ -26874,11 +24502,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TelephonyGenericService",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "telephony.TelephonyGenericService"
         }
       ],
       "path": "/telephony/trunks/{serviceName}"
@@ -26928,11 +24552,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/telephony/trunks/{serviceName}/changeContact"
@@ -26958,11 +24578,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -26989,11 +24605,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/telephony/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/telephony/trunks/{serviceName}/serviceInfos"

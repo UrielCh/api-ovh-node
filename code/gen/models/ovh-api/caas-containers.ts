@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/caas/containers"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "docker.stack",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "docker.stack"
         }
       ],
       "path": "/caas/containers/{serviceName}"
@@ -77,11 +69,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/caas/containers/{serviceName}/availableFrameworks"
@@ -131,11 +119,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/caas/containers/{serviceName}/changeContact"
@@ -161,11 +145,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/caas/containers/{serviceName}/frameworks"
@@ -199,11 +179,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "stack.framework",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "stack.framework"
         }
       ],
       "path": "/caas/containers/{serviceName}/frameworks/{frameworkId}"
@@ -237,11 +213,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "stack.framework.application",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "stack.framework.application"
         }
       ],
       "path": "/caas/containers/{serviceName}/frameworks/{frameworkId}/apps"
@@ -282,11 +254,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/caas/containers/{serviceName}/frameworks/{frameworkId}/password"
@@ -312,11 +280,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -343,11 +307,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "docker.stack.registryCredentials",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "docker.stack.registryCredentials"
         }
       ],
       "path": "/caas/containers/{serviceName}/registry/credentials"
@@ -381,11 +341,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -413,11 +369,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "docker.stack.registryCredentials",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "docker.stack.registryCredentials"
         },
         {
           "apiStatus": {
@@ -452,11 +404,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "docker.stack.registryCredentials",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "docker.stack.registryCredentials"
         }
       ],
       "path": "/caas/containers/{serviceName}/registry/credentials/{credentialsId}"
@@ -482,11 +430,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -513,11 +457,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/caas/containers/{serviceName}/serviceInfos"
@@ -543,11 +483,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/caas/containers/{serviceName}/slaves"
@@ -581,11 +517,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "docker.slave",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "docker.slave"
         }
       ],
       "path": "/caas/containers/{serviceName}/slaves/{slaveId}"
@@ -611,11 +543,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "docker.stack.customSslMessage",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "docker.stack.customSslMessage"
         },
         {
           "apiStatus": {
@@ -635,11 +563,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "docker.stack.customSsl",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "docker.stack.customSsl"
         },
         {
           "apiStatus": {
@@ -666,11 +590,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "docker.stack.customSslMessage",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "docker.stack.customSslMessage"
         }
       ],
       "path": "/caas/containers/{serviceName}/ssl"
@@ -687,11 +607,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/caas/containers/slaves/flavors"
@@ -717,11 +633,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "docker.slave.flavor",
-          "scopes": [
-            "all",
-            "product/caas-containers/all"
-          ]
+          "responseType": "docker.slave.flavor"
         }
       ],
       "path": "/caas/containers/slaves/flavors/{flavorId}"

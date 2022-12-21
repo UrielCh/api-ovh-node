@@ -359,11 +359,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicated/anthos/tenants/{serviceName}/changeContact"
@@ -421,11 +417,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicated/anthos/tenants/{serviceName}/confirmTermination"
@@ -766,11 +758,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -797,11 +785,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/dedicated/anthos/tenants/{serviceName}/serviceInfos"
@@ -968,11 +952,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicated/anthos/tenants/{serviceName}/terminate"

@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/sms"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Account",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Account"
         },
         {
           "apiStatus": {
@@ -78,11 +70,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}"
@@ -108,11 +96,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Batch[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Batch[]"
         },
         {
           "apiStatus": {
@@ -139,11 +123,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Batch",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Batch"
         }
       ],
       "path": "/sms/{serviceName}/batches"
@@ -177,11 +157,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Batch",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Batch"
         },
         {
           "apiStatus": {
@@ -216,11 +192,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Batch",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Batch"
         }
       ],
       "path": "/sms/{serviceName}/batches/{id}"
@@ -254,11 +226,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Batch",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Batch"
         }
       ],
       "path": "/sms/{serviceName}/batches/{id}/cancel"
@@ -292,11 +260,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.BatchStatistics",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.BatchStatistics"
         }
       ],
       "path": "/sms/{serviceName}/batches/{id}/statistics"
@@ -338,11 +302,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/sms/{serviceName}/blacklists"
@@ -376,11 +336,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -408,11 +364,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Blacklist",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Blacklist"
         }
       ],
       "path": "/sms/{serviceName}/blacklists/{number}"
@@ -478,11 +430,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/sms/{serviceName}/document"
@@ -516,11 +464,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Exception[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Exception[]"
         }
       ],
       "path": "/sms/{serviceName}/exceptions"
@@ -546,11 +490,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -586,11 +526,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.SmsSendingReport",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.SmsSendingReport"
         }
       ],
       "path": "/sms/{serviceName}/hlr"
@@ -624,11 +560,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.HlrLookupNumber",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.HlrLookupNumber"
         }
       ],
       "path": "/sms/{serviceName}/hlr/{id}"
@@ -662,11 +594,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Hlr",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Hlr"
         }
       ],
       "path": "/sms/{serviceName}/hlr/{id}/operator"
@@ -724,11 +652,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/sms/{serviceName}/incoming"
@@ -762,11 +686,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -794,11 +714,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Incoming",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Incoming"
         }
       ],
       "path": "/sms/{serviceName}/incoming/{id}"
@@ -824,11 +740,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -960,11 +872,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.SmsSendingReport",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.SmsSendingReport"
         }
       ],
       "path": "/sms/{serviceName}/jobs"
@@ -998,11 +906,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -1030,11 +934,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Job",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Job"
         }
       ],
       "path": "/sms/{serviceName}/jobs/{id}"
@@ -1140,11 +1040,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/sms/{serviceName}/outgoing"
@@ -1178,11 +1074,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -1210,11 +1102,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Outgoing",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Outgoing"
         }
       ],
       "path": "/sms/{serviceName}/outgoing/{id}"
@@ -1248,11 +1136,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Hlr",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Hlr"
         }
       ],
       "path": "/sms/{serviceName}/outgoing/{id}/hlr"
@@ -1278,11 +1162,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -1310,11 +1190,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/sms/{serviceName}/phonebooks"
@@ -1348,11 +1224,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -1380,11 +1252,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Phonebook",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Phonebook"
         },
         {
           "apiStatus": {
@@ -1419,11 +1287,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}/phonebooks/{bookKey}"
@@ -1465,11 +1329,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.PcsFile",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "telephony.PcsFile"
         }
       ],
       "path": "/sms/{serviceName}/phonebooks/{bookKey}/export"
@@ -1511,11 +1371,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "telephony.Task"
         }
       ],
       "path": "/sms/{serviceName}/phonebooks/{bookKey}/import"
@@ -1549,11 +1405,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -1637,11 +1489,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "long"
         }
       ],
       "path": "/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact"
@@ -1683,11 +1531,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -1723,11 +1567,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.PhonebookContact",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.PhonebookContact"
         },
         {
           "apiStatus": {
@@ -1770,11 +1610,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}"
@@ -1800,11 +1636,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -1864,11 +1696,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Receiver",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Receiver"
         }
       ],
       "path": "/sms/{serviceName}/receivers"
@@ -1902,11 +1730,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -1934,11 +1758,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Receiver",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Receiver"
         },
         {
           "apiStatus": {
@@ -1973,11 +1793,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}/receivers/{slotId}"
@@ -2027,11 +1843,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.ReceiversAsynchronousCleanReport",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.ReceiversAsynchronousCleanReport"
         }
       ],
       "path": "/sms/{serviceName}/receivers/{slotId}/clean"
@@ -2065,11 +1877,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/sms/{serviceName}/receivers/{slotId}/csv"
@@ -2119,11 +1927,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.PackOffer[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.PackOffer[]"
         }
       ],
       "path": "/sms/{serviceName}/seeOffers"
@@ -2149,11 +1953,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -2197,11 +1997,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/sms/{serviceName}/senders"
@@ -2235,11 +2031,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -2267,11 +2059,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Sender",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Sender"
         },
         {
           "apiStatus": {
@@ -2306,11 +2094,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}/senders/{sender}"
@@ -2344,11 +2128,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -2392,11 +2172,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.SenderDocument",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.SenderDocument"
         }
       ],
       "path": "/sms/{serviceName}/senders/{sender}/documents"
@@ -2438,11 +2214,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.SenderDocument",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.SenderDocument"
         },
         {
           "apiStatus": {
@@ -2485,11 +2257,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}/senders/{sender}/documents/{documentID}"
@@ -2531,11 +2299,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}/senders/{sender}/validate"
@@ -2569,11 +2333,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "sms.SenderAvailable[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.SenderAvailable[]"
         }
       ],
       "path": "/sms/{serviceName}/sendersAvailableForValidation"
@@ -2599,11 +2359,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -2630,11 +2386,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}/serviceInfos"
@@ -2660,11 +2412,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "ip[]"
         },
         {
           "apiStatus": {
@@ -2691,11 +2439,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "ip[]"
         }
       ],
       "path": "/sms/{serviceName}/smpp/allowedIPs"
@@ -2721,11 +2465,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}/smpp/password"
@@ -2751,11 +2491,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Settings",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Settings"
         }
       ],
       "path": "/sms/{serviceName}/smpp/settings"
@@ -2789,11 +2525,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/sms/{serviceName}/task"
@@ -2827,11 +2559,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Task",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Task"
         }
       ],
       "path": "/sms/{serviceName}/task/{taskId}"
@@ -2857,11 +2585,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -2921,11 +2645,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}/templatesControl"
@@ -2959,11 +2679,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -2991,11 +2707,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.TemplateControl",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.TemplateControl"
         },
         {
           "apiStatus": {
@@ -3030,11 +2742,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}/templatesControl/{name}"
@@ -3084,11 +2792,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}/templatesControl/{name}/relaunchValidation"
@@ -3130,11 +2834,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}/transferCredits"
@@ -3160,11 +2860,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -3200,11 +2896,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}/users"
@@ -3238,11 +2930,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -3270,11 +2958,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.User",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.User"
         },
         {
           "apiStatus": {
@@ -3309,11 +2993,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}/users/{login}"
@@ -3379,11 +3059,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/sms/{serviceName}/users/{login}/document"
@@ -3433,11 +3109,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/sms/{serviceName}/users/{login}/incoming"
@@ -3479,11 +3151,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -3519,11 +3187,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Incoming",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Incoming"
         }
       ],
       "path": "/sms/{serviceName}/users/{login}/incoming/{id}"
@@ -3557,11 +3221,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -3701,11 +3361,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.SmsSendingReport",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.SmsSendingReport"
         }
       ],
       "path": "/sms/{serviceName}/users/{login}/jobs"
@@ -3747,11 +3403,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -3787,11 +3439,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Job",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Job"
         }
       ],
       "path": "/sms/{serviceName}/users/{login}/jobs/{id}"
@@ -3873,11 +3521,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/sms/{serviceName}/users/{login}/outgoing"
@@ -3919,11 +3563,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -3959,11 +3599,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Outgoing",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Outgoing"
         }
       ],
       "path": "/sms/{serviceName}/users/{login}/outgoing/{id}"
@@ -4005,11 +3641,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Hlr",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Hlr"
         }
       ],
       "path": "/sms/{serviceName}/users/{login}/outgoing/{id}/hlr"
@@ -4043,11 +3675,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -4115,11 +3743,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Receiver",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Receiver"
         }
       ],
       "path": "/sms/{serviceName}/users/{login}/receivers"
@@ -4161,11 +3785,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -4201,11 +3821,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Receiver",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Receiver"
         },
         {
           "apiStatus": {
@@ -4248,11 +3864,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/{serviceName}/users/{login}/receivers/{slotId}"
@@ -4310,11 +3922,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.ReceiversAsynchronousCleanReport",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.ReceiversAsynchronousCleanReport"
         }
       ],
       "path": "/sms/{serviceName}/users/{login}/receivers/{slotId}/clean"
@@ -4356,11 +3964,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/sms/{serviceName}/users/{login}/receivers/{slotId}/csv"
@@ -4386,11 +3990,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/sms/{serviceName}/virtualNumbers"
@@ -4424,11 +4024,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.VirtualNumber",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.VirtualNumber"
         }
       ],
       "path": "/sms/{serviceName}/virtualNumbers/{number}"
@@ -4462,11 +4058,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -4494,11 +4086,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.ChatAccess",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.ChatAccess"
         },
         {
           "apiStatus": {
@@ -4526,11 +4114,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.ChatAccess",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.ChatAccess"
         }
       ],
       "path": "/sms/{serviceName}/virtualNumbers/{number}/chatAccess"
@@ -4596,11 +4180,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/sms/{serviceName}/virtualNumbers/{number}/incoming"
@@ -4642,11 +4222,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -4682,11 +4258,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Incoming",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Incoming"
         }
       ],
       "path": "/sms/{serviceName}/virtualNumbers/{number}/incoming/{id}"
@@ -4720,11 +4292,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -4840,11 +4408,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.SmsSendingReport",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.SmsSendingReport"
         }
       ],
       "path": "/sms/{serviceName}/virtualNumbers/{number}/jobs"
@@ -4886,11 +4450,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -4926,11 +4486,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.VirtualNumberJob",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.VirtualNumberJob"
         }
       ],
       "path": "/sms/{serviceName}/virtualNumbers/{number}/jobs/{id}"
@@ -5028,11 +4584,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/sms/{serviceName}/virtualNumbers/{number}/outgoing"
@@ -5074,11 +4626,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -5114,11 +4662,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Outgoing",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Outgoing"
         }
       ],
       "path": "/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}"
@@ -5160,11 +4704,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Hlr",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.Hlr"
         }
       ],
       "path": "/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}/hlr"
@@ -5206,11 +4746,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.JobEstimate",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.JobEstimate"
         }
       ],
       "path": "/sms/estimate"
@@ -5236,11 +4772,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.PttDetails",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.PttDetails"
         }
       ],
       "path": "/sms/ptts"
@@ -5325,11 +4857,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/sms/virtualNumbers"
@@ -5355,11 +4883,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.VirtualNumberGenericService",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "sms.VirtualNumberGenericService"
         }
       ],
       "path": "/sms/virtualNumbers/{number}"
@@ -5385,11 +4909,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -5416,11 +4936,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/sms/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/sms/virtualNumbers/{number}/serviceInfos"

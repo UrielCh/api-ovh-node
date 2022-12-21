@@ -136,11 +136,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/nutanix/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/nutanix/{serviceName}/confirmTermination"
@@ -166,11 +162,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/nutanix/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -197,11 +189,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/nutanix/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/nutanix/{serviceName}/serviceInfos"
@@ -227,11 +215,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/nutanix/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/nutanix/{serviceName}/terminate"

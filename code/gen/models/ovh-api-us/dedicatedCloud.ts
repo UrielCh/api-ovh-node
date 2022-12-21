@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/dedicatedCloud"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.dedicatedCloud",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.dedicatedCloud"
         },
         {
           "apiStatus": {
@@ -81,11 +73,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}"
@@ -111,11 +99,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -151,11 +135,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/allowedNetwork"
@@ -189,11 +169,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         },
         {
           "apiStatus": {
@@ -221,11 +197,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.AllowedNetwork",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.AllowedNetwork"
         },
         {
           "apiStatus": {
@@ -260,11 +232,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}"
@@ -314,11 +282,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task"
@@ -360,11 +324,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}"
@@ -414,11 +374,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/changeMaintenanceExecutionDate"
@@ -468,11 +424,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/resetTaskState"
@@ -498,11 +450,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/backupRepository"
@@ -536,11 +484,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.BackupRepository",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.BackupRepository"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/backupRepository/{repositoryId}"
@@ -566,11 +510,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Capabilities",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Capabilities"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/capabilities"
@@ -644,11 +584,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/changeProperties"
@@ -674,11 +610,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.compliantRanges[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.compliantRanges[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/commercialRange/compliance"
@@ -704,11 +636,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/commercialRange/orderable"
@@ -766,11 +694,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/confirmTermination"
@@ -796,11 +720,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -836,11 +756,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter"
@@ -874,11 +790,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         },
         {
           "apiStatus": {
@@ -906,11 +818,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Datacenter",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Datacenter"
         },
         {
           "apiStatus": {
@@ -945,11 +853,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}"
@@ -983,11 +887,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Backup",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Backup"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup"
@@ -1037,11 +937,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/batchRestore"
@@ -1075,11 +971,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.backup.OptimizeProxies",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.backup.OptimizeProxies"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/canOptimizeProxies"
@@ -1177,11 +1069,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties"
@@ -1215,11 +1103,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/disable"
@@ -1264,11 +1148,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable"
@@ -1302,11 +1182,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/generateReport"
@@ -1340,11 +1216,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.backup.BackupCapabilities[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.backup.BackupCapabilities[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/offerCapabilities"
@@ -1378,11 +1250,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/optimizeProxies"
@@ -1419,11 +1287,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backupRepository"
@@ -1468,11 +1332,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.BackupRepository",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.BackupRepository"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backupRepository/{repositoryId}"
@@ -1506,11 +1366,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/checkBackupJobs"
@@ -1544,11 +1400,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/cluster"
@@ -1590,11 +1442,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Cluster",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Cluster"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/cluster/{id}"
@@ -1644,11 +1492,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/disable"
@@ -1717,11 +1561,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/enable"
@@ -1755,11 +1595,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/endMigration"
@@ -1795,11 +1631,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/generateZsspPassword"
@@ -1833,11 +1665,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/startMigration"
@@ -1874,11 +1702,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.disasterRecovery.Profile",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.disasterRecovery.Profile"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/state"
@@ -1912,11 +1736,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.disasterRecovery.Profile",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.disasterRecovery.Profile"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/status"
@@ -1966,11 +1786,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.disasterRecovery.ZertoProtectedVm[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.disasterRecovery.ZertoProtectedVm[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/usageReport"
@@ -2044,11 +1860,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/configureVpn"
@@ -2082,11 +1894,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipv4Block",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "ipv4Block"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/defaultLocalVraNetwork"
@@ -2120,11 +1928,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/disable"
@@ -2185,11 +1989,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/enable"
@@ -2223,11 +2023,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/requestPairingToken"
@@ -2261,11 +2057,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer"
@@ -2307,11 +2099,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Filer",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Filer"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}"
@@ -2353,11 +2141,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "boolean"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/checkGlobalCompatible"
@@ -2399,11 +2183,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/convertToGlobal"
@@ -2448,11 +2228,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.filer.HourlyConsumption",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.filer.HourlyConsumption"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/hourlyConsumption"
@@ -2502,11 +2278,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "dedicatedCloud.filer.Location",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.filer.Location"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/location"
@@ -2548,11 +2320,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/remove"
@@ -2610,11 +2378,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task"
@@ -2664,11 +2428,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}"
@@ -2726,11 +2486,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate"
@@ -2788,11 +2544,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/resetTaskState"
@@ -2826,11 +2578,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host"
@@ -2872,11 +2620,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Host",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Host"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}"
@@ -2926,11 +2670,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/addHostSpare"
@@ -2975,11 +2715,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.host.HourlyConsumption",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.host.HourlyConsumption"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/hourlyConsumption"
@@ -3021,11 +2757,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.host.Location",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.host.Location"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/location"
@@ -3067,11 +2799,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/remove"
@@ -3113,11 +2841,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.HostResilience",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.HostResilience"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience"
@@ -3159,11 +2883,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "boolean"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience/canBeEnabled"
@@ -3205,11 +2925,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience/disable"
@@ -3259,11 +2975,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience/enable"
@@ -3321,11 +3033,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task"
@@ -3375,11 +3083,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}"
@@ -3437,11 +3141,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/changeMaintenanceExecutionDate"
@@ -3499,11 +3199,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/resetTaskState"
@@ -3537,11 +3233,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.filer.Profile[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.filer.Profile[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles"
@@ -3575,11 +3267,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.host.Profile[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.host.Profile[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles"
@@ -3621,11 +3309,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewFilerHourly"
@@ -3675,11 +3359,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly"
@@ -3713,11 +3393,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.PrivateGateway",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.PrivateGateway"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway"
@@ -3751,11 +3427,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/disable"
@@ -3813,11 +3485,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/enable"
@@ -3867,11 +3535,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task"
@@ -3913,11 +3577,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}"
@@ -3967,11 +3627,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/changeMaintenanceExecutionDate"
@@ -4021,11 +3677,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/resetTaskState"
@@ -4059,11 +3711,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm"
@@ -4105,11 +3753,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Vm",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Vm"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}"
@@ -4154,11 +3798,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.BackupJob",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.BackupJob"
         },
         {
           "apiStatus": {
@@ -4205,11 +3845,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob"
@@ -4254,11 +3890,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/disable"
@@ -4311,11 +3943,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable"
@@ -4360,11 +3988,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints"
@@ -4417,11 +4041,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.RestorePoint",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.RestorePoint"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}"
@@ -4482,11 +4102,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}/restore"
@@ -4528,11 +4144,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/disableBackup"
@@ -4582,11 +4194,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup"
@@ -4636,11 +4244,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup"
@@ -4698,11 +4302,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup"
@@ -4728,11 +4328,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Federation",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Federation"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/federation"
@@ -4758,11 +4354,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -4878,11 +4470,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/federation/activeDirectory"
@@ -4916,11 +4504,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         },
         {
           "apiStatus": {
@@ -4948,11 +4532,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.FederationAccessNetwork",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.FederationAccessNetwork"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}"
@@ -5018,11 +4598,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/changeProperties"
@@ -5064,11 +4640,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/grantActiveDirectoryGroup"
@@ -5110,11 +4682,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/grantActiveDirectoryUser"
@@ -5140,11 +4708,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/filer"
@@ -5178,11 +4742,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Filer",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Filer"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/filer/{filerId}"
@@ -5216,11 +4776,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "boolean"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/filer/{filerId}/checkGlobalCompatible"
@@ -5254,11 +4810,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/filer/{filerId}/convertToGlobal"
@@ -5295,11 +4847,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.filer.HourlyConsumption",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.filer.HourlyConsumption"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/filer/{filerId}/hourlyConsumption"
@@ -5341,11 +4889,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "dedicatedCloud.filer.Location",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.filer.Location"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/filer/{filerId}/location"
@@ -5379,11 +4923,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/filer/{filerId}/remove"
@@ -5433,11 +4973,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/filer/{filerId}/task"
@@ -5479,11 +5015,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}"
@@ -5533,11 +5065,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate"
@@ -5587,11 +5115,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/resetTaskState"
@@ -5745,11 +5269,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/globalTasks"
@@ -5775,11 +5295,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Hcx",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Hcx"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/hcx"
@@ -5808,11 +5324,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "boolean"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/hcx/canBeDisabled"
@@ -5841,11 +5353,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "boolean",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "boolean"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/hcx/canBeEnabled"
@@ -5871,11 +5379,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/hcx/disable"
@@ -5904,11 +5408,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/hcx/enable"
@@ -5934,11 +5434,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Hds",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Hds"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/hds"
@@ -5967,11 +5463,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.optionCompatibility",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.optionCompatibility"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/hds/canBeDisabled"
@@ -6000,11 +5492,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.optionCompatibility",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.optionCompatibility"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/hds/canBeEnabled"
@@ -6033,11 +5521,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/hds/disable"
@@ -6066,11 +5550,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/hds/enable"
@@ -6096,11 +5576,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Hipaa",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Hipaa"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/hipaa"
@@ -6129,11 +5605,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.optionCompatibility",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.optionCompatibility"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/hipaa/canBeDisabled"
@@ -6162,11 +5634,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.optionCompatibility",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.optionCompatibility"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/hipaa/canBeEnabled"
@@ -6195,11 +5663,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/hipaa/disable"
@@ -6228,11 +5692,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/hipaa/enable"
@@ -6258,11 +5718,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipv4Block[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "ipv4Block[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/ip"
@@ -6296,11 +5752,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Ip",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Ip"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/ip/{network}"
@@ -6334,11 +5786,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.IpDetails[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.IpDetails[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/ip/{network}/details"
@@ -6388,11 +5836,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/ip/{network}/task"
@@ -6434,11 +5878,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}"
@@ -6488,11 +5928,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/changeMaintenanceExecutionDate"
@@ -6542,11 +5978,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/resetTaskState"
@@ -6572,11 +6004,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.resourceNewPrices",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.resourceNewPrices"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/newPrices"
@@ -6602,11 +6030,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Nsx",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Nsx"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/nsx"
@@ -6635,11 +6059,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.optionCompatibility",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.optionCompatibility"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/nsx/canBeDisabled"
@@ -6668,11 +6088,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.optionCompatibility",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.optionCompatibility"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/nsx/canBeEnabled"
@@ -6701,11 +6117,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/nsx/disable"
@@ -6734,11 +6146,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/nsx/enable"
@@ -6764,11 +6172,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Nsxt",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Nsxt"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/nsxt"
@@ -6794,11 +6198,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.IpCountriesEnum[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.IpCountriesEnum[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/orderableIpCountries"
@@ -6832,11 +6232,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/orderNewFilerHourly"
@@ -6862,11 +6258,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.passwordPolicy",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.passwordPolicy"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/passwordPolicy"
@@ -6892,11 +6284,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.PciDss",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.PciDss"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/pcidss"
@@ -6925,11 +6313,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.optionCompatibility",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.optionCompatibility"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/pcidss/canBeDisabled"
@@ -6958,11 +6342,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.optionCompatibility",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.optionCompatibility"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/pcidss/canBeEnabled"
@@ -6991,11 +6371,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/pcidss/disable"
@@ -7024,11 +6400,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/pcidss/enable"
@@ -7054,11 +6426,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/resetTriggeredAlarm"
@@ -7084,11 +6452,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/robot"
@@ -7122,11 +6486,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Robot",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Robot"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/robot/{name}"
@@ -7152,11 +6512,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.SecurityOption",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.SecurityOption"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/securityOptions"
@@ -7198,11 +6554,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "dedicatedCloud.securityOption.CompatibilityMatrixEntry[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.securityOption.CompatibilityMatrixEntry[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/securityOptions/compatibilityMatrix"
@@ -7236,11 +6588,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.securityOption.DependenciesTree",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.securityOption.DependenciesTree"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/securityOptions/dependenciesTree"
@@ -7266,11 +6614,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.securityOption.SecurityOptionEnum[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.securityOption.SecurityOptionEnum[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/securityOptions/pendingOptions"
@@ -7304,11 +6648,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/securityOptions/resumePendingEnabling"
@@ -7334,11 +6674,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -7365,11 +6701,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/serviceInfos"
@@ -7395,11 +6727,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.servicePackStatus",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.servicePackStatus"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/servicePack"
@@ -7425,11 +6753,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/servicePacks"
@@ -7463,11 +6787,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.ServicePack",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.ServicePack"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/servicePacks/{name}"
@@ -7509,11 +6829,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/task"
@@ -7547,11 +6863,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/task/{taskId}"
@@ -7593,11 +6905,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/task/{taskId}/changeMaintenanceExecutionDate"
@@ -7639,11 +6947,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/task/{taskId}/resetTaskState"
@@ -7669,11 +6973,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/terminate"
@@ -7699,11 +6999,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -7739,11 +7035,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/twoFAWhitelist"
@@ -7777,11 +7069,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         },
         {
           "apiStatus": {
@@ -7809,11 +7097,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.twoFAWhitelist",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.twoFAWhitelist"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}"
@@ -7855,11 +7139,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}/changeProperties"
@@ -7888,11 +7168,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/upgradeHypervisor"
@@ -7926,11 +7202,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/upgradeVcenter"
@@ -7964,11 +7236,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -8116,11 +7384,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user"
@@ -8154,11 +7418,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         },
         {
           "apiStatus": {
@@ -8186,11 +7446,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.User",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.User"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user/{userId}"
@@ -8232,11 +7488,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/changePassword"
@@ -8366,11 +7618,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/changeProperties"
@@ -8412,11 +7660,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/confirmPhoneNumber"
@@ -8450,11 +7694,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/disable"
@@ -8488,11 +7728,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/enable"
@@ -8526,11 +7762,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.metricsToken",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.metricsToken"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/metricsToken"
@@ -8564,11 +7796,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -8628,11 +7856,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/objectRight"
@@ -8674,11 +7898,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         },
         {
           "apiStatus": {
@@ -8714,11 +7934,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.ObjectRight",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.ObjectRight"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}"
@@ -8752,11 +7968,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/right"
@@ -8798,11 +8010,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Right",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Right"
         },
         {
           "apiStatus": {
@@ -8845,11 +8053,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}"
@@ -8899,11 +8103,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/task"
@@ -8945,11 +8145,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}"
@@ -8999,11 +8195,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/changeMaintenanceExecutionDate"
@@ -9053,11 +8245,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/resetTaskState"
@@ -9083,11 +8271,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.vcenter",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.vcenter"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vcenterVersion"
@@ -9113,11 +8297,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Vendor",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Vendor"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vendor"
@@ -9143,11 +8323,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vendor/objectType"
@@ -9189,11 +8365,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.vendor.OvhId",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.vendor.OvhId"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vendor/ovhId"
@@ -9219,11 +8391,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vlan"
@@ -9257,11 +8425,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Vlan",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Vlan"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vlan/{vlanId}"
@@ -9287,11 +8451,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.VMEncryption",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.VMEncryption"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vmEncryption"
@@ -9317,11 +8477,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
@@ -9365,11 +8521,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vmEncryption/kms"
@@ -9403,11 +8555,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         },
         {
           "apiStatus": {
@@ -9435,11 +8583,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.VMEncryptionAccessNetwork",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.VMEncryptionAccessNetwork"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}"
@@ -9489,11 +8633,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}/changeProperties"
@@ -9519,11 +8659,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vrack"
@@ -9557,11 +8693,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "vrack.Task"
         },
         {
           "apiStatus": {
@@ -9589,11 +8721,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.dedicatedCloud",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "vrack.dedicatedCloud"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vrack/{vrack}"
@@ -9619,11 +8747,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Vrops",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Vrops"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vrops"
@@ -9649,11 +8773,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.optionCompatibility",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.optionCompatibility"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vrops/canBeDisabled"
@@ -9679,11 +8799,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.optionCompatibility",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.optionCompatibility"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vrops/canBeEnabled"
@@ -9712,11 +8828,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vrops/disable"
@@ -9745,11 +8857,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vrops/enable"
@@ -9783,11 +8891,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Task",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Task"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vrops/upgrade"
@@ -9847,11 +8951,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/dedicatedCloud/location"
@@ -9877,11 +8977,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.PccZone",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.PccZone"
         }
       ],
       "path": "/dedicatedCloud/location/{pccZone}"
@@ -9907,11 +9003,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicatedCloud/location/{pccZone}/hostProfile"
@@ -9945,11 +9037,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.HostProfile",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.HostProfile"
         }
       ],
       "path": "/dedicatedCloud/location/{pccZone}/hostProfile/{id}"
@@ -9975,11 +9063,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/dedicatedCloud/location/{pccZone}/hypervisor"
@@ -10013,11 +9097,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.Os",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.Os"
         }
       ],
       "path": "/dedicatedCloud/location/{pccZone}/hypervisor/{shortName}"
@@ -10051,11 +9131,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "dedicatedCloud.HostStockProfile[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.HostStockProfile[]"
         }
       ],
       "path": "/dedicatedCloud/location/{pccZone}/stock/host"
@@ -10081,11 +9157,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicatedCloud.PccStockProfile[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.PccStockProfile[]"
         }
       ],
       "path": "/dedicatedCloud/location/{pccZone}/stock/pcc"
@@ -10119,11 +9191,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "dedicatedCloud.ZpoolStockProfile[]",
-          "scopes": [
-            "all",
-            "product/dedicatedCloud/all"
-          ]
+          "responseType": "dedicatedCloud.ZpoolStockProfile[]"
         }
       ],
       "path": "/dedicatedCloud/location/{pccZone}/stock/zpool"
@@ -10461,7 +9529,8 @@ export const schema: Schema = {
         "syd1",
         "syd2",
         "vin1",
-        "waw1"
+        "waw1",
+        "ynm1"
       ],
       "enumType": "string",
       "id": "DatacenterEnum",

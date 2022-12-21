@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/allDom/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/allDom"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "allDom.AllDom",
-          "scopes": [
-            "all",
-            "product/allDom/all"
-          ]
+          "responseType": "allDom.AllDom"
         }
       ],
       "path": "/allDom/{serviceName}"
@@ -85,11 +77,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/allDom/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/allDom/{serviceName}/domain"
@@ -123,11 +111,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "allDom.AllDomDomain",
-          "scopes": [
-            "all",
-            "product/allDom/all"
-          ]
+          "responseType": "allDom.AllDomDomain"
         }
       ],
       "path": "/allDom/{serviceName}/domain/{domain}"
@@ -153,11 +137,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/allDom/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -184,11 +164,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/allDom/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/allDom/{serviceName}/serviceInfos"

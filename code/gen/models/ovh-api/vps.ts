@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/vps"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.VPS",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.VPS"
         },
         {
           "apiStatus": {
@@ -78,11 +70,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/vps/{serviceName}"
@@ -111,11 +99,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.VpsOptionEnum[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.VpsOptionEnum[]"
         }
       ],
       "path": "/vps/{serviceName}/activeOptions"
@@ -141,11 +125,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.AutomatedBackup",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.AutomatedBackup"
         }
       ],
       "path": "/vps/{serviceName}/automatedBackup"
@@ -171,11 +151,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.automatedBackup.Attached[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.automatedBackup.Attached[]"
         }
       ],
       "path": "/vps/{serviceName}/automatedBackup/attachedBackup"
@@ -209,11 +185,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         }
       ],
       "path": "/vps/{serviceName}/automatedBackup/detachBackup"
@@ -247,11 +219,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         }
       ],
       "path": "/vps/{serviceName}/automatedBackup/reschedule"
@@ -301,11 +269,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         }
       ],
       "path": "/vps/{serviceName}/automatedBackup/restore"
@@ -339,11 +303,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "datetime[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "datetime[]"
         }
       ],
       "path": "/vps/{serviceName}/automatedBackup/restorePoints"
@@ -369,11 +329,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Model[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Model[]"
         }
       ],
       "path": "/vps/{serviceName}/availableUpgrade"
@@ -399,11 +355,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.BackupFtp",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.BackupFtp"
         }
       ],
       "path": "/vps/{serviceName}/backupftp"
@@ -429,11 +381,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
@@ -485,11 +433,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "dedicated.server.Task"
         }
       ],
       "path": "/vps/{serviceName}/backupftp/access"
@@ -523,11 +467,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "dedicated.server.Task"
         },
         {
           "apiStatus": {
@@ -555,11 +495,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.BackupFtpAcl",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "dedicated.server.BackupFtpAcl"
         },
         {
           "apiStatus": {
@@ -594,11 +530,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/vps/{serviceName}/backupftp/access/{ipBlock}"
@@ -624,11 +556,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "ipBlock[]"
         }
       ],
       "path": "/vps/{serviceName}/backupftp/authorizableBlocks"
@@ -654,11 +582,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "dedicated.server.Task"
         }
       ],
       "path": "/vps/{serviceName}/backupftp/password"
@@ -708,11 +632,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/vps/{serviceName}/changeContact"
@@ -770,11 +690,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/vps/{serviceName}/confirmTermination"
@@ -808,11 +724,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         }
       ],
       "path": "/vps/{serviceName}/createSnapshot"
@@ -838,11 +750,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Datacenter",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Datacenter"
         }
       ],
       "path": "/vps/{serviceName}/datacenter"
@@ -868,11 +776,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/vps/{serviceName}/disks"
@@ -906,11 +810,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Disk",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Disk"
         },
         {
           "apiStatus": {
@@ -945,11 +845,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/vps/{serviceName}/disks/{id}"
@@ -999,11 +895,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValues<vps.VpsTimestampValue>",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "complexType.UnitAndValues<vps.VpsTimestampValue>"
         }
       ],
       "path": "/vps/{serviceName}/disks/{id}/monitoring"
@@ -1045,11 +937,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValue<double>",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "complexType.UnitAndValue<double>"
         }
       ],
       "path": "/vps/{serviceName}/disks/{id}/use"
@@ -1075,11 +963,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Template",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Template"
         }
       ],
       "path": "/vps/{serviceName}/distribution"
@@ -1105,11 +989,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/vps/{serviceName}/distribution/software"
@@ -1143,11 +1023,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Software",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Software"
         }
       ],
       "path": "/vps/{serviceName}/distribution/software/{softwareId}"
@@ -1173,11 +1049,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/vps/{serviceName}/getConsoleUrl"
@@ -1203,11 +1075,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/vps/{serviceName}/images/available"
@@ -1241,11 +1109,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Image",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Image"
         }
       ],
       "path": "/vps/{serviceName}/images/available/{id}"
@@ -1271,11 +1135,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Image",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Image"
         }
       ],
       "path": "/vps/{serviceName}/images/current"
@@ -1301,11 +1161,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.ip.GeolocationEnum[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.ip.GeolocationEnum[]"
         }
       ],
       "path": "/vps/{serviceName}/ipCountryAvailable"
@@ -1331,11 +1187,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "ip[]"
         }
       ],
       "path": "/vps/{serviceName}/ips"
@@ -1369,11 +1221,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -1401,11 +1249,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Ip",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Ip"
         },
         {
           "apiStatus": {
@@ -1440,11 +1284,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/vps/{serviceName}/ips/{ipAddress}"
@@ -1473,11 +1313,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.migration.VPS2016to2020",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.migration.VPS2016to2020"
         },
         {
           "apiStatus": {
@@ -1500,11 +1336,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         }
       ],
       "path": "/vps/{serviceName}/migration2016"
@@ -1530,11 +1362,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.migration.VPS2018to2020",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.migration.VPS2018to2020"
         },
         {
           "apiStatus": {
@@ -1562,11 +1390,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         }
       ],
       "path": "/vps/{serviceName}/migration2018"
@@ -1592,11 +1416,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Model[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Model[]"
         }
       ],
       "path": "/vps/{serviceName}/models"
@@ -1638,11 +1458,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValues<vps.VpsTimestampValue>",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "complexType.UnitAndValues<vps.VpsTimestampValue>"
         }
       ],
       "path": "/vps/{serviceName}/monitoring"
@@ -1676,11 +1492,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Vnc",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Vnc"
         }
       ],
       "path": "/vps/{serviceName}/openConsoleAccess"
@@ -1706,11 +1518,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.VpsOptionEnum[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.VpsOptionEnum[]"
         }
       ],
       "path": "/vps/{serviceName}/option"
@@ -1752,11 +1560,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -1784,11 +1588,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Option",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Option"
         }
       ],
       "path": "/vps/{serviceName}/option/{option}"
@@ -1814,11 +1614,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         }
       ],
       "path": "/vps/{serviceName}/reboot"
@@ -1876,11 +1672,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         }
       ],
       "path": "/vps/{serviceName}/rebuild"
@@ -1946,11 +1738,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         }
       ],
       "path": "/vps/{serviceName}/reinstall"
@@ -1976,11 +1764,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
@@ -2016,11 +1800,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/vps/{serviceName}/secondaryDnsDomains"
@@ -2054,11 +1834,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -2086,11 +1862,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "secondaryDns.SecondaryDNS",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "secondaryDns.SecondaryDNS"
         },
         {
           "apiStatus": {
@@ -2125,11 +1897,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/vps/{serviceName}/secondaryDnsDomains/{domain}"
@@ -2163,11 +1931,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "secondaryDns.SecondaryDNSNameServer",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "secondaryDns.SecondaryDNSNameServer"
         }
       ],
       "path": "/vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer"
@@ -2193,11 +1957,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "secondaryDns.SecondaryDNSNameServer",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "secondaryDns.SecondaryDNSNameServer"
         }
       ],
       "path": "/vps/{serviceName}/secondaryDnsNameServerAvailable"
@@ -2223,11 +1983,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -2254,11 +2010,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/vps/{serviceName}/serviceInfos"
@@ -2284,11 +2036,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         }
       ],
       "path": "/vps/{serviceName}/setPassword"
@@ -2314,11 +2062,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         },
         {
           "apiStatus": {
@@ -2338,11 +2082,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Snapshot",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Snapshot"
         },
         {
           "apiStatus": {
@@ -2369,11 +2109,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/vps/{serviceName}/snapshot"
@@ -2399,11 +2135,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         }
       ],
       "path": "/vps/{serviceName}/snapshot/revert"
@@ -2429,11 +2161,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         }
       ],
       "path": "/vps/{serviceName}/start"
@@ -2459,11 +2187,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.VpsMonitoringStatistics",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.VpsMonitoringStatistics"
         }
       ],
       "path": "/vps/{serviceName}/statistics"
@@ -2489,11 +2213,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.ip.ServiceStatus",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.ip.ServiceStatus"
         }
       ],
       "path": "/vps/{serviceName}/status"
@@ -2519,11 +2239,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         }
       ],
       "path": "/vps/{serviceName}/stop"
@@ -2565,11 +2281,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/vps/{serviceName}/tasks"
@@ -2603,11 +2315,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         }
       ],
       "path": "/vps/{serviceName}/tasks/{id}"
@@ -2633,11 +2341,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/vps/{serviceName}/templates"
@@ -2671,11 +2375,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Template",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Template"
         }
       ],
       "path": "/vps/{serviceName}/templates/{id}"
@@ -2709,11 +2409,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/vps/{serviceName}/templates/{id}/software"
@@ -2755,11 +2451,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Software",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Software"
         }
       ],
       "path": "/vps/{serviceName}/templates/{id}/software/{softwareId}"
@@ -2785,11 +2477,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "string"
         }
       ],
       "path": "/vps/{serviceName}/terminate"
@@ -2823,11 +2511,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValue<double>",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "complexType.UnitAndValue<double>"
         }
       ],
       "path": "/vps/{serviceName}/use"
@@ -2853,11 +2537,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Veeam",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Veeam"
         }
       ],
       "path": "/vps/{serviceName}/veeam"
@@ -2883,11 +2563,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         },
         {
           "apiStatus": {
@@ -2907,11 +2583,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.veeam.RestoredBackup",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.veeam.RestoredBackup"
         }
       ],
       "path": "/vps/{serviceName}/veeam/restoredBackup"
@@ -2945,11 +2617,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/vps/{serviceName}/veeam/restorePoints"
@@ -2983,11 +2651,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.veeam.RestorePoint",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.veeam.RestorePoint"
         }
       ],
       "path": "/vps/{serviceName}/veeam/restorePoints/{id}"
@@ -3045,11 +2709,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "scopes": [
-            "all",
-            "product/vps/all"
-          ]
+          "responseType": "vps.Task"
         }
       ],
       "path": "/vps/{serviceName}/veeam/restorePoints/{id}/restore"

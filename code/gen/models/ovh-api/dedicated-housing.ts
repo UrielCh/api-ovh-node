@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/dedicated/housing"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.housing.Housing",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "dedicated.housing.Housing"
         }
       ],
       "path": "/dedicated/housing/{serviceName}"
@@ -77,11 +69,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "dedicated.server.Task"
         },
         {
           "apiStatus": {
@@ -101,11 +89,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.BackupFtp",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "dedicated.server.BackupFtp"
         },
         {
           "apiStatus": {
@@ -125,11 +109,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "dedicated.server.Task"
         }
       ],
       "path": "/dedicated/housing/{serviceName}/features/backupFTP"
@@ -155,11 +135,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
@@ -211,11 +187,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "dedicated.server.Task"
         }
       ],
       "path": "/dedicated/housing/{serviceName}/features/backupFTP/access"
@@ -249,11 +221,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "dedicated.server.Task"
         },
         {
           "apiStatus": {
@@ -281,11 +249,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.BackupFtpAcl",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "dedicated.server.BackupFtpAcl"
         },
         {
           "apiStatus": {
@@ -320,11 +284,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}"
@@ -350,11 +310,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "ipBlock[]"
         }
       ],
       "path": "/dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks"
@@ -380,11 +336,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "dedicated.server.Task"
         }
       ],
       "path": "/dedicated/housing/{serviceName}/features/backupFTP/password"
@@ -410,11 +362,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.housing.ApcOrderable",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "dedicated.housing.ApcOrderable"
         }
       ],
       "path": "/dedicated/housing/{serviceName}/orderable/APC"
@@ -440,11 +388,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -471,11 +415,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/dedicated/housing/{serviceName}/serviceInfos"
@@ -517,11 +457,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "long[]"
         }
       ],
       "path": "/dedicated/housing/{serviceName}/task"
@@ -555,11 +491,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.housing.Task",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "dedicated.housing.Task"
         }
       ],
       "path": "/dedicated/housing/{serviceName}/task/{taskId}"
@@ -593,11 +525,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/dedicated-housing/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/dedicated/housing/{serviceName}/task/{taskId}/cancel"

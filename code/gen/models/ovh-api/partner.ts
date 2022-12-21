@@ -22,10 +22,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "partner2.Partner",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "partner2.Partner"
         },
         {
           "apiStatus": {
@@ -44,10 +41,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/partner"

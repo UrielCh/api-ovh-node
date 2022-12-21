@@ -17,11 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "scopes": [
-            "all",
-            "product/cdn-webstorage/all"
-          ]
+          "responseType": "string[]"
         }
       ],
       "path": "/cdn/webstorage"
@@ -47,11 +43,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.webstorage.Account",
-          "scopes": [
-            "all",
-            "product/cdn-webstorage/all"
-          ]
+          "responseType": "cdn.webstorage.Account"
         }
       ],
       "path": "/cdn/webstorage/{serviceName}"
@@ -77,11 +69,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.webstorage.AccountCredentials",
-          "scopes": [
-            "all",
-            "product/cdn-webstorage/all"
-          ]
+          "responseType": "cdn.webstorage.AccountCredentials"
         }
       ],
       "path": "/cdn/webstorage/{serviceName}/credentials"
@@ -107,11 +95,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.Service",
-          "scopes": [
-            "all",
-            "product/cdn-webstorage/all"
-          ]
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
@@ -138,11 +122,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void",
-          "scopes": [
-            "all",
-            "product/cdn-webstorage/all"
-          ]
+          "responseType": "void"
         }
       ],
       "path": "/cdn/webstorage/{serviceName}/serviceInfos"
@@ -184,11 +164,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cdn.webstorage.StatsDataType[]",
-          "scopes": [
-            "all",
-            "product/cdn-webstorage/all"
-          ]
+          "responseType": "cdn.webstorage.StatsDataType[]"
         }
       ],
       "path": "/cdn/webstorage/{serviceName}/statistics"
