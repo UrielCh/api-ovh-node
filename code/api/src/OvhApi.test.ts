@@ -44,6 +44,18 @@ test('play with domains', async (t) => {
     if (olsIds.length) {
         await engine.doRequest('DELETE', `/domain/zone/${zoneName}/record/${olsIds[0]}`, `/domain/zone/*/record/*`);
     }
+
+    try {
+        await engine.doRequest('POST', `/domain/zone/${zoneName}/record`, `/domain/zone/*/record`, { fieldType: 'A', subDomain: 'foo2', target: 'bar' });
+        t.fail('should throw invalid ipv4');
+    } catch (e) {
+        const error = e as OvhError;
+        t.assert(error.path === `/domain/zone/${zoneName}/record`, `path shoud be present in error`);
+        t.assert(error.errorCode === 'HTTP_ERROR', `errorCode should be HTTP_ERROR, GET "${error.errorCode}"`);
+        t.assert(error.httpCode === '400 Bad Request', `httpCode should be 400 Bad Request, GET "${error.httpCode}"`);
+        t.assert(error.message.includes('Invalid IPv4'), 'Error should be Invalid IPv4')
+    }
+
     const { id } = await engine.doRequest('POST', `/domain/zone/${zoneName}/record`, `/domain/zone/*/record`, { fieldType: 'TXT', subDomain: 'foo', target: 'bar' });
     t.assert(typeof id === 'number', 'get id from record');
     const savedZone = await engine.doRequest('GET', `/domain/zone/${zoneName}/record/${id}`, `/domain/zone/*/record/*`);

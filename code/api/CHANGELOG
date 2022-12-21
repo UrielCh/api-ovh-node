@@ -1,5 +1,9 @@
 # changelog
 
+V 4.0.1
+- Add ava test
+- throw error if access rules are not suffisant
+- reduce hard dependency to nodeJS
 V 4.0.0
 - ESM distibution
 V 3.2.10
