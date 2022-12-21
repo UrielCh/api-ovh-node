@@ -38,3 +38,14 @@ export interface OvhCredential {
     status: CredentialStateEnum;
 }
 
+/**
+ * subset from import { RequestOptions } from 'node:http';
+ */
+export interface ApiRequestOptions {
+    host: string;
+    port: number;
+    method: HttpMethod;
+    path: string;
+    timeout: number;
+    headers: { [key: string]: string };
+};

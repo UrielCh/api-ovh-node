@@ -1,8 +1,7 @@
 import OvhApi from ".";
-import { HttpMethod, OvhCredential, OvhCredentialNew } from "./OVHInterfaces.js";
+import { ApiRequestOptions, HttpMethod, OvhCredential, OvhCredentialNew } from "./OVHInterfaces.js";
 import * as fs from 'node:fs';
 import { EOL } from 'node:os';
-import { RequestOptions } from "node:https";
 import { ICacheSilot } from "@ovh-api/common";
 import { OvhError } from "./OvhError.js";
 // import open from 'open';
@@ -105,7 +104,7 @@ export class RequestContext {
     //     return this.options.path as string;
     // }
 
-    constructor(public api: OvhApi, public path: string, public pathTemplate: string, public options: RequestOptions, public reqBody: string, public params?: { [key: string]: any }) {
+    constructor(public api: OvhApi, public path: string, public pathTemplate: string, public options: ApiRequestOptions, public reqBody: string, public params?: { [key: string]: any }) {
         this.maxRetry = api.maxRetry;
         this.retrySleep = api.retrySleep;
         this.timeout = api.timeout;

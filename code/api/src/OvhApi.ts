@@ -26,12 +26,11 @@
  * other dealings in this Software without prior written authorization from OVH.
  */
 import * as querystring from 'querystring';
-import { RequestOptions } from 'node:http';
 import { endpoints } from './endpoints.js';
 import { readFileSync } from 'node:fs';
 import { EventEmitter } from 'node:events';
 import { OvhRequestable, OvhParamType, ICacheOptions, ICacheSilot, CacheAction } from '@ovh-api/common';
-import { HttpMethod, AccessRule, OvhCredentialNew } from './OVHInterfaces.js';
+import { HttpMethod, AccessRule, OvhCredentialNew, ApiRequestOptions } from './OVHInterfaces.js';
 import { CertMonitorProvider, stdOutCertMonitorProvider } from './certMonitor.js';
 import { Cache } from './Cache.js';
 import { OvhParams, OvhParamsFull } from './OvhParams.js';
@@ -55,7 +54,7 @@ export default class OvhApi extends EventEmitter implements OvhRequestable {
     /**
      * always equals to '/1.0' for now
      */
-    private basePath: string;
+    public readonly basePath: string;
     /**
      * lock used durring cert updating avoiding mutiple certificate generation
      * TODO replace by promise
@@ -71,6 +70,14 @@ export default class OvhApi extends EventEmitter implements OvhRequestable {
      * caching object
      */
     queryCache: Cache | null = null;
+
+    public get host(): string {
+        return this.data.host;
+    }
+
+    public get port(): number {
+        return this.data.port;
+    }
 
     constructor(apiOptions = {} as OvhParams) {
         super();
@@ -425,17 +432,8 @@ export default class OvhApi extends EventEmitter implements OvhRequestable {
         }
 
         /**
-         * build Request
-         */
-        let options: RequestOptions = {
-            host: this.data.host,
-            port: this.data.port,
-            method,
-            path: this.basePath + path,
-            timeout: this.timeout,
-        };
-        /**
          * fill QuerySet if enabled
+         * used to list used entry point
          */
         if (this.querySet) {
             const template = path.split('/').map((e) => {
@@ -448,10 +446,19 @@ export default class OvhApi extends EventEmitter implements OvhRequestable {
             this.querySet.add(`${method} ${template}`);
         }
 
-        // Headers
-        options.headers = {
-            'Content-Type': 'application/json',
-            'X-Ovh-Application': this.appKey,
+        /**
+         * build Request
+         */
+        let options: ApiRequestOptions = {
+            host: this.host,
+            port: this.port,
+            method,
+            path: this.basePath + path,
+            timeout: this.timeout,
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Ovh-Application': this.appKey,
+            } as { [key: string]: string }
         };
 
         /**
@@ -473,7 +480,7 @@ export default class OvhApi extends EventEmitter implements OvhRequestable {
                 reqBody = JSON
                     .stringify(params)
                     .replace(/[\u0080-\uFFFF]/g, (m) => '\\u' + ('0000' + m.charCodeAt(0).toString(16)).slice(-4));
-                options.headers['Content-Length'] = reqBody.length;
+                options.headers['Content-Length'] = reqBody.length.toString();
             } else {
                 options.path += `?${querystring.stringify(params)}`;
             }
@@ -484,7 +491,7 @@ export default class OvhApi extends EventEmitter implements OvhRequestable {
          */
         if (path !== '/auth/credential' && path !== '/auth/time') {
             const XOvhTimestamp: number = Math.round(Date.now() / 1000) + Number(this.data.apiTimeDiff);
-            options.headers['X-Ovh-Timestamp'] = XOvhTimestamp;
+            options.headers['X-Ovh-Timestamp'] = XOvhTimestamp.toString();
 
             // Sign request
             if (this.data.consumerKey) {
