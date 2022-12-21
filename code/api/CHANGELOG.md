@@ -1,89 +1,154 @@
 # changelog
 
-V 4.0.1
+## V4.1.0
+
 - Add ava test
 - throw error if access rules are not suffisant
 - reduce hard dependency to nodeJS
-V 4.0.0
+
+## V4.0.0
+
 - ESM distibution
-V 3.2.10
+
+## V3.2.10
+
 - change default redirection
-V 3.2.9
+
+## V3.2.9
+
 - redirectUrl is now mandatory in ovh new certificat request.
-V 3.2.8
+
+## V3.2.8
+
 - Improve OVHError adding access to the OvhApi object.
 - Improve NOT_GRANTED_CALL error by listing current allow rules.
 - Rename certCache to certCacheFile.
-V 3.2.7
+
+## V3.2.7
+
 - fix autologin regression.
-V 3.2.6
+
+## V3.2.6
+
 - fix open usage, that may stop the process.
-V 3.2.5
-- improve error handling. 
-V 3.2.4
+
+## V3.2.5
+
+- improve error handling.
+
+## V3.2.4
+
 - verbose login prompt.
 - released as latest.
--V 3.2.3
+  -## V3.2.3
 - verbose login prompt.
 - add support for QUERY_TIME_OUT in credential validation
-V 3.2.2
+
+## V3.2.2
+
 - fix consumerkey test.
-V 3.2.1
+
+## V3.2.1
+
 - fix regression: missing exports.
-V 3.2.0
+
+## V3.2.0
+
 - Refactor code
 - improve concurent consumerKey renew request
 - add new certificates storage system
-V 3.1.10
+
+## V3.1.10
+
 - Improve package documentation.
-V 3.1.9
+
+## V3.1.9
+
 - store 'X-Ovh-Queryid' response header as 'XOvhQueryid' in OvhError Exception
-V 3.1.8
+
+## V3.1.8
+
 - accept all 2XX responce as valid. (use to be 200 only) [PR10]
-V 3.1.7
+
+## V3.1.7
+
 - improve warning events
-V 3.1.6
+
+## V3.1.6
+
 - fix invalid timeout handeling
-V 3.1.5
+
+## V3.1.5
+
 - update Readme
-V 3.1.4
+
+## V3.1.4
+
 - update Readme
-V 3.1.3
+
+## V3.1.3
+
 - update Readme
-V 3.1.2
+
+## V3.1.2
+
 - add escape character '/' whene used in query parameter params
-V 3.1.1
+
+## V3.1.1
+
 - Fix bug in cache activation.
-V 3.1.0
+
+## V3.1.0
+
 - cache is now async and it's implementation can be overwrite by $query().
 - default cache can be set in OvhApi constructor.
-V 3.0.2
+
+## V3.0.2
+
 - improve $delete() auto-discard change.
-V 3.0.1
+
+## V3.0.1
+
 - update $cache() interface add action 'flush', 'disable'
-V 3.0.0
+
+## V3.0.0
+
 - add $cache()
 - add remove legacy get/put/post/delete root calls from typing
 - add js doc
-V 2.1.7
+
+## V2.1.7
+
 - allow OvhApi() with no param
-V 2.1.6
+
+## V2.1.6
+
 - all console.log / console.error can be avoid
 - add CertMonitorProvider
 - update doc
 - add launchBrower boolean to block any browser launch
-V 2.1.5
+
+## V2.1.5
+
 - improve Http error handeling on heavy load.
 - fix retry logic and display
-V 2.1.4
+
+## V2.1.4
+
 - improve doc
 - add warning events
 - remove console.log
 - convert Promise usage to await
 - improve handeling error when writing certificat on disk
-V 2.1.3
+
+## V2.1.3
+
 - add queryForCredencial(redirection?: string) for explicit credential generation
-V 2.1.2
+
+## V2.1.2
+
 - reduce npm package size by half
-V 2.1.1
+
+## V2.1.1
+
 - @ovh-api/api can now be used inside a browser
