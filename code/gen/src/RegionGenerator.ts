@@ -17,7 +17,7 @@ async function writeIfDiff(fn: string, expected: string): Promise<number> {
         oldEsm = await fs.promises.readFile(fn, { encoding: 'utf-8' });
     } catch (e) {
     }
-    if (oldEsm != expected) {
+    if (oldEsm.replaceAll(/[\r\n]+/g, '\n') != expected.replaceAll(/[\r\n]+/g, '\n')) {
         if (!oldEsm)
             console.log(`Creating ${fn}`);
         else
