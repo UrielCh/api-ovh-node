@@ -1257,7 +1257,7 @@ export namespace cloud {
             id: string;
             isUpToDate: boolean;
             name: string;
-            nextUpgradeVersions?: cloud.kube.VersionEnum[];
+            nextUpgradeVersions?: string[];
             nodesUrl: string;
             privateNetworkConfiguration?: cloud.kube.PrivateNetworkConfiguration;
             privateNetworkId?: string;
@@ -1273,6 +1273,14 @@ export namespace cloud {
          * type fullname: cloud.kube.ClusterStatusEnum
          */
         export type ClusterStatusEnum = "DELETED" | "DELETING" | "DOWNSCALING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "RESIZING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "UPSCALING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR"
+        /**
+         * Etcd usage and quota for a given cluster
+         * interface fullName: cloud.kube.EtcdUsage.EtcdUsage
+         */
+        export interface EtcdUsage {
+            quota: number;
+            usage: number;
+        }
         /**
          * a flavor kind
          * interface fullName: cloud.kube.Flavor.Flavor
@@ -1467,7 +1475,7 @@ export namespace cloud {
          * List of available versions for installation
          * type fullname: cloud.kube.VersionEnum
          */
-        export type VersionEnum = "1.20" | "1.21" | "1.22" | "1.23" | "1.24"
+        export type VersionEnum = "1.21" | "1.22" | "1.23" | "1.24" | "1.25"
     }
     export namespace loadbalancing {
         /**
@@ -2331,7 +2339,7 @@ export namespace cloud {
              */
             export type EngineEnum = "cassandra" | "grafana" | "kafka" | "kafkaConnect" | "kafkaMirrorMaker" | "m3aggregator" | "m3db" | "mongodb" | "mysql" | "opensearch" | "postgresql" | "redis"
             /**
-             * Ip Restriction definition for cloud project databases
+             * Ip Restriction definition for cloud project databases (DEPRECATED)
              * interface fullName: cloud.project.database.IpRestriction.IpRestriction
              */
             export interface IpRestriction {
@@ -2340,7 +2348,7 @@ export namespace cloud {
                 status: cloud.project.database.StatusEnum;
             }
             /**
-             * Ip Restriction creation definition for cloud project databases
+             * Ip Restriction creation definition for cloud project databases (DEPRECATED)
              * interface fullName: cloud.project.database.IpRestrictionCreation.IpRestrictionCreation
              */
             export interface IpRestrictionCreation {
@@ -2361,22 +2369,18 @@ export namespace cloud {
                 createdAt: string;
                 description: string;
                 disk: cloud.project.database.service.Disk;
-                domain: string;
                 endpoints: cloud.project.database.service.Endpoint[];
                 engine: cloud.project.database.EngineEnum;
                 flavor: string;
                 id: string;
+                ipRestrictions: cloud.project.database.service.IpRestriction[];
                 maintenanceTime: string;
-                maintenanceWindow: cloud.project.database.service.MaintenanceWindow;
                 networkId?: string;
                 networkType: cloud.project.database.NetworkTypeEnum;
                 nodeNumber: number;
                 plan: string;
-                port: number;
-                sslMode: string;
                 status: cloud.project.database.StatusEnum;
                 subnetId?: string;
-                uri: string;
                 version: string;
             }
             /**
@@ -2388,6 +2392,7 @@ export namespace cloud {
                 backupTime?: string;
                 description: string;
                 disk: cloud.project.database.service.Disk;
+                ipRestrictions: cloud.project.database.service.IpRestriction[];
                 maintenanceTime?: string;
                 networkId?: string;
                 nodesList?: cloud.project.database.service.NodeCreation[];
@@ -2535,23 +2540,19 @@ export namespace cloud {
                     createdAt: string;
                     description: string;
                     disk: cloud.project.database.service.Disk;
-                    domain: string;
                     endpoints: cloud.project.database.service.Endpoint[];
                     engine: cloud.project.database.EngineEnum;
                     flavor: string;
                     id: string;
+                    ipRestrictions: cloud.project.database.service.IpRestriction[];
                     maintenanceTime: string;
-                    maintenanceWindow: cloud.project.database.service.MaintenanceWindow;
                     networkId?: string;
                     networkType: cloud.project.database.NetworkTypeEnum;
                     nodeNumber: number;
                     plan: string;
-                    port: number;
                     restApi: boolean;
-                    sslMode: string;
                     status: cloud.project.database.StatusEnum;
                     subnetId?: string;
-                    uri: string;
                     version: string;
                 }
                 /**
@@ -2868,27 +2869,22 @@ export namespace cloud {
                  */
                 export interface Service {
                     aclsEnabled: boolean;
-                    additionalUris: cloud.project.database.opensearch.service.AdditionalUris;
                     backupTime: string;
                     createdAt: string;
                     description: string;
                     disk: cloud.project.database.service.Disk;
-                    domain: string;
                     endpoints: cloud.project.database.service.Endpoint[];
                     engine: cloud.project.database.EngineEnum;
                     flavor: string;
                     id: string;
+                    ipRestrictions: cloud.project.database.service.IpRestriction[];
                     maintenanceTime: string;
-                    maintenanceWindow: cloud.project.database.service.MaintenanceWindow;
                     networkId?: string;
                     networkType: cloud.project.database.NetworkTypeEnum;
                     nodeNumber: number;
                     plan: string;
-                    port: number;
-                    sslMode: string;
                     status: cloud.project.database.StatusEnum;
                     subnetId?: string;
-                    uri: string;
                     version: string;
                 }
                 /**
@@ -2929,15 +2925,6 @@ export namespace cloud {
                     password: string;
                     status: cloud.project.database.StatusEnum;
                     username: string;
-                }
-                export namespace service {
-                    /**
-                     * Cloud database opensearch service additional uri definition
-                     * interface fullName: cloud.project.database.opensearch.service.AdditionalUris.AdditionalUris
-                     */
-                    export interface AdditionalUris {
-                        kibana: string;
-                    }
                 }
             }
             export namespace postgresql {
@@ -3155,6 +3142,15 @@ export namespace cloud {
                     type: cloud.project.database.service.integration.TypeEnum;
                 }
                 /**
+                 * Ip Restriction definition for cloud project databases
+                 * interface fullName: cloud.project.database.service.IpRestriction.IpRestriction
+                 */
+                export interface IpRestriction {
+                    description: string;
+                    ip: string;
+                    status: cloud.project.database.StatusEnum;
+                }
+                /**
                  * A single log entry
                  * interface fullName: cloud.project.database.service.LogEntry.LogEntry
                  */
@@ -3173,14 +3169,6 @@ export namespace cloud {
                     id: string;
                     scheduledAt?: string;
                     status: cloud.project.database.service.maintenance.StatusEnum;
-                }
-                /**
-                 * Cloud database maintenance window definition
-                 * interface fullName: cloud.project.database.service.MaintenanceWindow.MaintenanceWindow
-                 */
-                export interface MaintenanceWindow {
-                    end: string;
-                    start: string;
                 }
                 /**
                  * Metric definition for cloud project databases
@@ -3326,7 +3314,6 @@ export namespace cloud {
                  */
                 export interface UserWithRolesCreation {
                     name: string;
-                    password: string;
                     roles: string[];
                 }
                 export namespace creation {
@@ -4683,6 +4670,43 @@ export interface Cloud {
             database: {
                 cassandra: {
                     $(clusterId: string | number): {
+                        ipRestriction: {
+                            /**
+                             * List cassandra ip restrictions
+                             * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/ipRestriction
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Add ip restrictions to the cassandra
+                             * POST /cloud/project/{serviceName}/database/cassandra/{clusterId}/ipRestriction
+                             */
+                            $post(params?: { description?: string, ip?: string }): Promise<cloud.project.database.IpRestriction>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(ipBlock: string): {
+                                /**
+                                 * Deletes the given IP from the restricted IPs of the cassandra
+                                 * DELETE /cloud/project/{serviceName}/database/cassandra/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get cassandra ip restrictions
+                                 * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $get(): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Changes the list of ip restrictions to the cassandra
+                                 * PUT /cloud/project/{serviceName}/database/cassandra/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $put(params?: { description?: string, ip?: string, status?: cloud.project.database.StatusEnum }): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the cassandra cluster
@@ -4716,6 +4740,43 @@ export interface Cloud {
                 }
                 grafana: {
                     $(clusterId: string | number): {
+                        ipRestriction: {
+                            /**
+                             * List grafana ip restrictions
+                             * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/ipRestriction
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Add ip restrictions to the grafana
+                             * POST /cloud/project/{serviceName}/database/grafana/{clusterId}/ipRestriction
+                             */
+                            $post(params?: { description?: string, ip?: string }): Promise<cloud.project.database.IpRestriction>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(ipBlock: string): {
+                                /**
+                                 * Deletes the given IP from the restricted IPs of the grafana
+                                 * DELETE /cloud/project/{serviceName}/database/grafana/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get grafana ip restrictions
+                                 * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $get(): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Changes the list of ip restrictions to the grafana
+                                 * PUT /cloud/project/{serviceName}/database/grafana/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $put(params?: { description?: string, ip?: string, status?: cloud.project.database.StatusEnum }): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the grafana cluster
@@ -4749,6 +4810,43 @@ export interface Cloud {
                 }
                 kafka: {
                     $(clusterId: string | number): {
+                        ipRestriction: {
+                            /**
+                             * List kafka ip restrictions
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/ipRestriction
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Add ip restrictions to the kafka
+                             * POST /cloud/project/{serviceName}/database/kafka/{clusterId}/ipRestriction
+                             */
+                            $post(params?: { description?: string, ip?: string }): Promise<cloud.project.database.IpRestriction>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(ipBlock: string): {
+                                /**
+                                 * Deletes the given IP from the restricted IPs of the kafka
+                                 * DELETE /cloud/project/{serviceName}/database/kafka/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get kafka ip restrictions
+                                 * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $get(): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Changes the list of ip restrictions to the kafka
+                                 * PUT /cloud/project/{serviceName}/database/kafka/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $put(params?: { description?: string, ip?: string, status?: cloud.project.database.StatusEnum }): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the kafka cluster
@@ -4827,6 +4925,43 @@ export interface Cloud {
                                     }
                                 };
                             }
+                        }
+                        ipRestriction: {
+                            /**
+                             * List kafkaConnect ip restrictions
+                             * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/ipRestriction
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Add ip restrictions to the kafkaConnect
+                             * POST /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/ipRestriction
+                             */
+                            $post(params?: { description?: string, ip?: string }): Promise<cloud.project.database.IpRestriction>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(ipBlock: string): {
+                                /**
+                                 * Deletes the given IP from the restricted IPs of the kafkaConnect
+                                 * DELETE /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get kafkaConnect ip restrictions
+                                 * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $get(): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Changes the list of ip restrictions to the kafkaConnect
+                                 * PUT /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $put(params?: { description?: string, ip?: string, status?: cloud.project.database.StatusEnum }): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
                         }
                         maintenance: {
                             /**
@@ -4927,6 +5062,43 @@ export interface Cloud {
                 }
                 m3db: {
                     $(clusterId: string | number): {
+                        ipRestriction: {
+                            /**
+                             * List m3db ip restrictions
+                             * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/ipRestriction
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Add ip restrictions to the m3db
+                             * POST /cloud/project/{serviceName}/database/m3db/{clusterId}/ipRestriction
+                             */
+                            $post(params?: { description?: string, ip?: string }): Promise<cloud.project.database.IpRestriction>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(ipBlock: string): {
+                                /**
+                                 * Deletes the given IP from the restricted IPs of the m3db
+                                 * DELETE /cloud/project/{serviceName}/database/m3db/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get m3db ip restrictions
+                                 * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $get(): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Changes the list of ip restrictions to the m3db
+                                 * PUT /cloud/project/{serviceName}/database/m3db/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $put(params?: { description?: string, ip?: string, status?: cloud.project.database.StatusEnum }): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the m3db cluster
@@ -4960,6 +5132,43 @@ export interface Cloud {
                 }
                 mysql: {
                     $(clusterId: string | number): {
+                        ipRestriction: {
+                            /**
+                             * List mysql ip restrictions
+                             * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/ipRestriction
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Add ip restrictions to the mysql
+                             * POST /cloud/project/{serviceName}/database/mysql/{clusterId}/ipRestriction
+                             */
+                            $post(params?: { description?: string, ip?: string }): Promise<cloud.project.database.IpRestriction>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(ipBlock: string): {
+                                /**
+                                 * Deletes the given IP from the restricted IPs of the mysql
+                                 * DELETE /cloud/project/{serviceName}/database/mysql/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get mysql ip restrictions
+                                 * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $get(): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Changes the list of ip restrictions to the mysql
+                                 * PUT /cloud/project/{serviceName}/database/mysql/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $put(params?: { description?: string, ip?: string, status?: cloud.project.database.StatusEnum }): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the mysql cluster
@@ -4993,6 +5202,43 @@ export interface Cloud {
                 }
                 opensearch: {
                     $(clusterId: string | number): {
+                        ipRestriction: {
+                            /**
+                             * List opensearch ip restrictions
+                             * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/ipRestriction
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Add ip restrictions to the opensearch
+                             * POST /cloud/project/{serviceName}/database/opensearch/{clusterId}/ipRestriction
+                             */
+                            $post(params?: { description?: string, ip?: string }): Promise<cloud.project.database.IpRestriction>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(ipBlock: string): {
+                                /**
+                                 * Deletes the given IP from the restricted IPs of the opensearch
+                                 * DELETE /cloud/project/{serviceName}/database/opensearch/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get opensearch ip restrictions
+                                 * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $get(): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Changes the list of ip restrictions to the opensearch
+                                 * PUT /cloud/project/{serviceName}/database/opensearch/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $put(params?: { description?: string, ip?: string, status?: cloud.project.database.StatusEnum }): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the opensearch cluster
@@ -5026,6 +5272,43 @@ export interface Cloud {
                 }
                 postgresql: {
                     $(clusterId: string | number): {
+                        ipRestriction: {
+                            /**
+                             * List postgresql ip restrictions
+                             * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/ipRestriction
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Add ip restrictions to the postgresql
+                             * POST /cloud/project/{serviceName}/database/postgresql/{clusterId}/ipRestriction
+                             */
+                            $post(params?: { description?: string, ip?: string }): Promise<cloud.project.database.IpRestriction>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(ipBlock: string): {
+                                /**
+                                 * Deletes the given IP from the restricted IPs of the postgresql
+                                 * DELETE /cloud/project/{serviceName}/database/postgresql/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get postgresql ip restrictions
+                                 * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $get(): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Changes the list of ip restrictions to the postgresql
+                                 * PUT /cloud/project/{serviceName}/database/postgresql/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $put(params?: { description?: string, ip?: string, status?: cloud.project.database.StatusEnum }): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the postgresql cluster
@@ -5059,6 +5342,43 @@ export interface Cloud {
                 }
                 redis: {
                     $(clusterId: string | number): {
+                        ipRestriction: {
+                            /**
+                             * List redis ip restrictions
+                             * GET /cloud/project/{serviceName}/database/redis/{clusterId}/ipRestriction
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Add ip restrictions to the redis
+                             * POST /cloud/project/{serviceName}/database/redis/{clusterId}/ipRestriction
+                             */
+                            $post(params?: { description?: string, ip?: string }): Promise<cloud.project.database.IpRestriction>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(ipBlock: string): {
+                                /**
+                                 * Deletes the given IP from the restricted IPs of the redis
+                                 * DELETE /cloud/project/{serviceName}/database/redis/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get redis ip restrictions
+                                 * GET /cloud/project/{serviceName}/database/redis/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $get(): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Changes the list of ip restrictions to the redis
+                                 * PUT /cloud/project/{serviceName}/database/redis/{clusterId}/ipRestriction/{ipBlock}
+                                 */
+                                $put(params?: { description?: string, ip?: string, status?: cloud.project.database.StatusEnum }): Promise<cloud.project.database.IpRestriction>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the redis cluster
@@ -5505,6 +5825,19 @@ export interface Cloud {
                              * POST /cloud/project/{serviceName}/kube/{kubeId}/kubeconfig/reset
                              */
                             $post(): Promise<void>;
+                        }
+                    }
+                    metrics: {
+                        etcdUsage: {
+                            /**
+                             * List available metrics for this cluster
+                             * GET /cloud/project/{serviceName}/kube/{kubeId}/metrics/etcdUsage
+                             */
+                            $get(): Promise<cloud.kube.EtcdUsage>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     }
                     node: {

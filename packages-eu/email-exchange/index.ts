@@ -182,7 +182,7 @@ export namespace email {
          * Outlook language
          * type fullname: email.exchange.LanguageEnum
          */
-        export type LanguageEnum = "ar" | "bg" | "cz" | "da" | "de" | "el" | "en" | "es" | "et" | "fi" | "fr" | "he" | "hi" | "hr" | "hu" | "id" | "in" | "it" | "ja" | "ko" | "kz" | "lt" | "lv" | "ms" | "nb" | "nl" | "pl" | "pt" | "pt-BR" | "ro" | "rs" | "ru" | "sk" | "sl" | "sv" | "th" | "tr" | "uk" | "vi" | "zh-CN"
+        export type LanguageEnum = "ar" | "bg" | "cz" | "da" | "de" | "el" | "en" | "es" | "et" | "fi" | "fr" | "he" | "hr" | "hu" | "id" | "in" | "it" | "ja" | "ko" | "kz" | "lt" | "lv" | "ms" | "nb" | "nl" | "pl" | "pt" | "pt-BR" | "ro" | "rs" | "ru" | "sk" | "sl" | "sv" | "th" | "tr" | "uk" | "vi" | "zh-CN"
         /**
          * Mailing filter options availlable
          * type fullname: email.exchange.MailingFilterEnum
@@ -216,7 +216,7 @@ export namespace email {
          * Outlook version
          * type fullname: email.exchange.OutlookVersionEnum
          */
-        export type OutlookVersionEnum = "mac_x86_2016" | "windows_x64_2016" | "windows_x86_2016"
+        export type OutlookVersionEnum = "mac_x86_2016" | "mac_x86_2019" | "mac_x86_2021" | "windows_x64_2016" | "windows_x64_2019" | "windows_x64_2021" | "windows_x86_2016" | "windows_x86_2019" | "windows_x86_2021"
         /**
          * Availability of outlook version
          * interface fullName: email.exchange.OutlookVersions.OutlookVersions

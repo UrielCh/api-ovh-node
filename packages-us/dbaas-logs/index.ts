@@ -1057,6 +1057,50 @@ export interface Dbaas {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                engine: {
+                    /**
+                     * Returns the list of available input engines
+                     * GET /dbaas/logs/{serviceName}/input/engine
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(engineId: string): {
+                        /**
+                         * Returns details of specified input engine
+                         * GET /dbaas/logs/{serviceName}/input/engine/{engineId}
+                         */
+                        $get(): Promise<dbaas.logs.Engine>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        helper: {
+                            /**
+                             * Return the list of available helpers for the given input engine
+                             * GET /dbaas/logs/{serviceName}/input/engine/{engineId}/helper
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(helperId: string): {
+                                /**
+                                 * Returns details of specified input engine helper
+                                 * GET /dbaas/logs/{serviceName}/input/engine/{engineId}/helper/{helperId}
+                                 */
+                                $get(): Promise<dbaas.logs.Helper>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    };
+                }
                 $(inputId: string): {
                     /**
                      * Remove the specified input object

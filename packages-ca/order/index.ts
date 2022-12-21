@@ -152,7 +152,7 @@ export namespace email {
          * Outlook version
          * type fullname: email.exchange.OutlookVersionEnum
          */
-        export type OutlookVersionEnum = "mac_x86_2016" | "windows_x64_2016" | "windows_x86_2016"
+        export type OutlookVersionEnum = "mac_x86_2016" | "mac_x86_2019" | "mac_x86_2021" | "windows_x64_2016" | "windows_x64_2019" | "windows_x64_2021" | "windows_x86_2016" | "windows_x86_2019" | "windows_x86_2021"
         /**
          * OVH licence account
          * type fullname: email.exchange.OvhLicenceEnum
