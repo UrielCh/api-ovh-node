@@ -31,12 +31,12 @@
   "devDependencies": {
     "@types/chai": "^4.3.4",
     "@types/mocha": "^10.0.1",
-    "@types/node": "^18.11.11",
+    "@types/node": "^18.11.17",
     "chai": "^4.3.7",
-    "mocha": "^10.1.0",
+    "mocha": "^10.2.0",
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.4"
   },
   "publishConfig": {
     "access": "public"
@@ -48,7 +48,7 @@
   },
   "files": ["dist", "src"],
   "scripts": {
-    "ncu": "npx npm-check-updates",
+    "ncu": "npx npm-check-updates -i",
     "clean": "rimraf dist",
     "build": "tsc --pretty --project . && tsc --pretty --project tsconfig-cjs.json",
     "prepare": "npm run build",
