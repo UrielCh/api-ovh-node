@@ -32,6 +32,7 @@
     "@types/chai": "^4.3.4",
     "@types/mocha": "^10.0.1",
     "@types/node": "^18.11.17",
+    "ava": "^5.1.0",
     "chai": "^4.3.7",
     "mocha": "^10.2.0",
     "rimraf": "^3.0.2",
@@ -46,13 +47,26 @@
     "type": "git",
     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "ncu": "npx npm-check-updates -i",
     "clean": "rimraf dist",
     "build": "tsc --pretty --project . && tsc --pretty --project tsconfig-cjs.json",
     "prepare": "npm run build",
-    "build:watch": "tsc --pretty --project . --watch"
+    "build:watch": "tsc --pretty --project . --watch",
+    "test": "ava"
+  },
+  "ava": {
+    "extensions": {
+      "ts": "module"
+    },
+    "nodeArguments": [
+      "--loader=ts-node/esm",
+      "--no-warnings"
+    ]
   },
   "gitHead": "b9fec53f25067fa01d341adc086a63ef2c2a5f62"
 }

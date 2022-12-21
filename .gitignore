@@ -42,3 +42,4 @@ code/gen/models/**/*.map
 code/gen/models/**/*.d.ts
 code/test/dist/
 code/common/lib/
+code/test-cert.json

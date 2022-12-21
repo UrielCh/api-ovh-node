@@ -1,5 +1,5 @@
 import OvhApi from ".";
-import { ApiRequestOptions, HttpMethod, OvhCredential, OvhCredentialNew } from "./OVHInterfaces.js";
+import { ApiRequestOptions, HttpMethod, OvhCertSave, OvhCredential, OvhCredentialNew } from "./OVHInterfaces.js";
 import * as fs from 'node:fs';
 import { EOL } from 'node:os';
 import { ICacheSilot } from "@ovh-api/common";
@@ -21,7 +21,8 @@ const saveCert = async (api: OvhApi, req: OvhCredential, consumerKey: string) =>
         return;
     const { appKey, appSecret } = api;
     const { applicationId, creation, credentialId, expiration, rules } = req;
-    const jsonData = JSON.stringify({ applicationId, appKey, appSecret, consumerKey, credentialId, rules, creation, expiration }, null, 2) + EOL;
+    const saveCert: OvhCertSave = { applicationId, appKey, appSecret, consumerKey, credentialId, rules, creation, expiration };
+    const jsonData = JSON.stringify(saveCert, null, 2) + EOL;
     try {
         await fs.promises.writeFile(certCache, jsonData, { encoding: 'utf-8', mode: 0o600 })
     } catch (err) {

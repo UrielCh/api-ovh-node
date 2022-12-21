@@ -49,3 +49,14 @@ export interface ApiRequestOptions {
     timeout: number;
     headers: { [key: string]: string };
 };
+
+export interface OvhCertSave {
+    applicationId: number;
+    appKey: string;
+    appSecret: string;
+    consumerKey: string;
+    credentialId: number;
+    rules: AccessRule[];
+    creation: string;
+    expiration?: string;
+}
