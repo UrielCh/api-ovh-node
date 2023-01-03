@@ -4,7 +4,7 @@ import ApiVps from '@ovh-api/vps'
 import ApiCloud from '@ovh-api/cloud'
 import ApiIp from '@ovh-api/ip'
 import Ovh from '@ovh-api/api'
-import program from 'commander'
+import { program } from 'commander'
 import IPCIDR from "ip-cidr";
 
 interface Option {
@@ -148,7 +148,7 @@ async function genAllFailover(options: Option) {
     console.log(`TOTAL FailOver: ${ipFo.length}`);
     await displayConf(iface, ipFo);
   } catch (e) {
-    console.error(e.message);
+    console.error((e as Error).message);
     process.exit(1);
   }
 }
@@ -190,7 +190,14 @@ async function genFailover(options: Option) {
   } else {
     let vpss = await apis.vps.$get();
     console.log(`Scanning ${vpss.length} vps`);
-    const ips: string[][] = await Promise.all(vpss.map(serviceName => apis.vps.$(serviceName).ips.$get()));
+    const ips: string[][] = await Promise.all(vpss.map(async (serviceName) => {
+            try {
+                return await apis.vps.$(serviceName).ips.$get();
+            } catch (e) {
+                console.log(`vps ${serviceName} ips get:`, e)
+                return [];
+            }
+        }));
     for (let i = 0; i < vpss.length; i++) {
       if (!ips[i].find((e) => e == mainIP))
         continue;
