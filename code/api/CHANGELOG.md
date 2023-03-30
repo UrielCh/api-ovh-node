@@ -1,5 +1,9 @@
 # changelog
 
+## V4.1.1
+
+- add type OvhCredential, AccessRule, CredentialStateEnum export.
+
 ## V4.1.0
 
 - Add ava test
