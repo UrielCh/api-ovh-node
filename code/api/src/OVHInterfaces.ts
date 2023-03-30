@@ -26,6 +26,7 @@ export interface AccessRule {
     method: HttpMethod;
     path: string;
 }
+
 export interface OvhCredential {
     allowedIPs?: string[];
     applicationId: number;

@@ -76,7 +76,8 @@ export const waitForCertValidation = async (api: OvhApi, newCert: OvhCredentialN
                 await saveCert(api, req, consumerKey);
                 return true;
             }
-        } catch ({ errorCode }) {
+        } catch (err) {
+            const { errorCode } = err as OvhError;
             if (errorCode === 'QUERY_TIME_OUT') {
                 return false;
             }
