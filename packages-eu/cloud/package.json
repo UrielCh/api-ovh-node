@@ -2,8 +2,7 @@
     "name": "@ovh-api/cloud",
     "description": "Add typing to to ovh api cloud",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",

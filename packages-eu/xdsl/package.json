@@ -2,8 +2,7 @@
     "name": "@ovh-api/xdsl",
     "description": "Add typing to to ovh api xdsl",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",

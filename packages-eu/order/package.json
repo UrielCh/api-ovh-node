@@ -2,8 +2,7 @@
     "name": "@ovh-api/order",
     "description": "Add typing to to ovh api order",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",

@@ -2,8 +2,7 @@
     "name": "@ovh-api/license-plesk",
     "description": "Add typing to to ovh api license-plesk",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",

@@ -2,8 +2,7 @@
     "name": "@ovh-api-us/license-office",
     "description": "Add typing to to ovh api license-office",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",

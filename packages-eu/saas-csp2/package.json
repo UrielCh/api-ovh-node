@@ -2,8 +2,7 @@
     "name": "@ovh-api/saas-csp2",
     "description": "Add typing to to ovh api saas-csp2",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",

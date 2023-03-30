@@ -2,8 +2,7 @@
     "name": "@ovh-api/sms",
     "description": "Add typing to to ovh api sms",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",

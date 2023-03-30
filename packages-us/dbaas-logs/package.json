@@ -2,8 +2,7 @@
     "name": "@ovh-api-us/dbaas-logs",
     "description": "Add typing to to ovh api dbaas-logs",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",

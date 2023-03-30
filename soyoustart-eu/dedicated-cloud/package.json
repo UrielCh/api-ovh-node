@@ -2,8 +2,7 @@
     "name": "@ovh-soyoustart/dedicated-cloud",
     "description": "Add typing to to ovh api dedicated-cloud",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",

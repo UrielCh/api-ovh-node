@@ -2,8 +2,7 @@
     "name": "@ovh-api-us/veeam-veeam-enterprise",
     "description": "Add typing to to ovh api veeam-veeam-enterprise",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",

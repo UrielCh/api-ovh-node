@@ -2,8 +2,7 @@
     "name": "@ovh-api/telephony",
     "description": "Add typing to to ovh api telephony",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",

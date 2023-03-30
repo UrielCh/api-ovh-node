@@ -2,8 +2,7 @@
     "name": "@ovh-api-us/dedicated-anthos",
     "description": "Add typing to to ovh api dedicated-anthos",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",

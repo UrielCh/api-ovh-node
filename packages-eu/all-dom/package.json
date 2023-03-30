@@ -2,8 +2,7 @@
     "name": "@ovh-api/all-dom",
     "description": "Add typing to to ovh api all-dom",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",

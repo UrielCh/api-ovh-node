@@ -2,8 +2,7 @@
     "name": "@ovh-api/veeam-cloud-connect",
     "description": "Add typing to to ovh api veeam-cloud-connect",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",

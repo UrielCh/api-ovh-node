@@ -2,8 +2,7 @@
     "name": "@ovh-api/caas-registry",
     "description": "Add typing to to ovh api caas-registry",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",

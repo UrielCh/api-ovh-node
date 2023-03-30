@@ -2,8 +2,7 @@
     "name": "@ovh-api/ms-services",
     "description": "Add typing to to ovh api ms-services",
     "version": "4.0.0",
-    "type": "module",
-    "keywords": [
+      "keywords": [
         "ovh",
         "ovhCloud",
         "api",
