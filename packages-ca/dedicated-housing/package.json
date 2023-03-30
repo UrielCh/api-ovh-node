@@ -1,8 +1,8 @@
 {
     "name": "@ovh-api-ca/dedicated-housing",
     "description": "Add typing to to ovh api dedicated-housing",
-    "version": "4.0.0",
-      "keywords": [
+    "version": "4.0.1",
+    "keywords": [
         "ovh",
         "ovhCloud",
         "api",
