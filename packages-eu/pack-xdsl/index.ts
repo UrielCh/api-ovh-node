@@ -62,7 +62,7 @@ export namespace order {
     /**
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = " INR" | "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * Price with it's currency and textual representation
      * interface fullName: order.Price.Price
@@ -118,13 +118,6 @@ export namespace pack {
             domain: string;
             exchangeService: string;
             organizationName: string;
-        }
-        /**
-         * Exchange account service
-         * interface fullName: pack.xdsl.ExchangeLiteService.ExchangeLiteService
-         */
-        export interface ExchangeLiteService {
-            domain: string;
         }
         export namespace HostedEmail {
             /**
@@ -182,17 +175,6 @@ export namespace pack {
          */
         export interface HostedEmailService {
             domain: string;
-        }
-        /**
-         * Hubic service
-         * interface fullName: pack.xdsl.Hubic.Hubic
-         */
-        export interface Hubic {
-            bytes: number;
-            domain: string;
-            isUsed: boolean;
-            size: string;
-            voucher?: string;
         }
         /**
          * modem type
@@ -288,7 +270,7 @@ export namespace pack {
          * Service name
          * type fullname: pack.xdsl.ServiceNameEnum
          */
-        export type ServiceNameEnum = "domain" | "emailPro" | "exchangeAccount" | "exchangeIndividual" | "exchangeLite" | "exchangeOrganization" | "grt10ho" | "grt20m10ho" | "grt20m4ho" | "grt4ho" | "grt5m10ho" | "grt5m4ho" | "grtAlt" | "grtDsp" | "grtFt" | "grtKosc" | "grtOvh" | "hostedEmail" | "hubic" | "modem" | "overTheBoxHardware" | "overTheBoxService" | "voipAlias" | "voipBillingAccount" | "voipEcoFax" | "voipLine" | "voipTrunk" | "xdslAccess"
+        export type ServiceNameEnum = "domain" | "emailPro" | "exchangeAccount" | "exchangeIndividual" | "exchangeOrganization" | "grt10ho" | "grt20m10ho" | "grt20m4ho" | "grt4ho" | "grt5m10ho" | "grt5m4ho" | "grtAlt" | "grtDsp" | "grtFt" | "grtKosc" | "grtOvh" | "hostedEmail" | "modem" | "overTheBoxHardware" | "overTheBoxService" | "voipAlias" | "voipBillingAccount" | "voipEcoFax" | "voipLine" | "voipTrunk" | "xdslAccess"
         /**
          * Shipping address
          * interface fullName: pack.xdsl.ShippingAddress.ShippingAddress
@@ -474,7 +456,7 @@ export namespace pack {
              */
             export interface OfferModemOption {
                 name: string;
-                price: order.Price;
+                price?: order.Price;
             }
             /**
              * Option of Offer
@@ -640,15 +622,6 @@ export namespace xdsl {
             uiCode: string;
         }
     }
-    export namespace hubic {
-        /**
-         * Details that the user used for his voucher
-         * interface fullName: xdsl.hubic.HubicDetailsResponse.HubicDetailsResponse
-         */
-        export interface HubicDetailsResponse {
-            email: string;
-        }
-    }
 }
 
 /**
@@ -693,7 +666,7 @@ export interface Pack {
                      * Move the access to another address
                      * POST /pack/xdsl/{packName}/addressMove/moveOffer
                      */
-                    $post(params: { acceptContracts: boolean, building?: string, buildingReference?: string, contactPhone?: string, door?: string, eligibilityReference: string, engageMonths?: number, floor?: string, keepCurrentNumber: boolean, meeting?: xdsl.eligibility.BookMeetingSlot, modem?: pack.xdsl.ModemOptionEnum, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, residence?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.AsyncTask<number>>;
+                    $post(params: { acceptContracts: boolean, building?: string, buildingReference?: string, contactPhone?: string, door?: string, eligibilityReference: string, engageMonths?: number, floor?: string, keepCurrentNumber: boolean, meeting?: xdsl.eligibility.BookMeetingSlot, modem: pack.xdsl.ModemOptionEnum, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, residence?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.AsyncTask<number>>;
                 }
                 offers: {
                     /**
@@ -701,13 +674,6 @@ export interface Pack {
                      * POST /pack/xdsl/{packName}/addressMove/offers
                      */
                     $post(params: { eligibilityReference: string }): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.MoveOfferResponse>>;
-                }
-                servicesToDelete: {
-                    /**
-                     * Calculate services to delete with new offer and options
-                     * POST /pack/xdsl/{packName}/addressMove/servicesToDelete
-                     */
-                    $post(params: { eligibilityReference: string, offerName: string, options?: pack.xdsl.migration.OfferOption[] }): Promise<pack.xdsl.migration.SubServiceToDelete[]>;
                 }
                 servicesToDeleteUnpackTerms: {
                     /**
@@ -876,48 +842,6 @@ export interface Pack {
                     }
                 }
             }
-            exchangeLite: {
-                options: {
-                    isEmailAvailable: {
-                        /**
-                         * Check if the email address is available for service creation
-                         * GET /pack/xdsl/{packName}/exchangeLite/options/isEmailAvailable
-                         */
-                        $get(params: { email: string }): Promise<boolean>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    }
-                }
-                services: {
-                    /**
-                     * Exchange lite services
-                     * GET /pack/xdsl/{packName}/exchangeLite/services
-                     */
-                    $get(): Promise<string[]>;
-                    /**
-                     * Activate a exchange lite service
-                     * POST /pack/xdsl/{packName}/exchangeLite/services
-                     */
-                    $post(params: { antispam?: boolean, displayName?: string, email: string, firstName?: string, initials?: string, lastName?: string, password: string }): Promise<pack.xdsl.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(domain: string): {
-                        /**
-                         * Get this object properties
-                         * GET /pack/xdsl/{packName}/exchangeLite/services/{domain}
-                         */
-                        $get(): Promise<pack.xdsl.ExchangeLiteService>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-            }
             exchangeOrganization: {
                 services: {
                     /**
@@ -1007,48 +931,13 @@ export interface Pack {
                     };
                 }
             }
-            hubic: {
-                services: {
-                    /**
-                     * Hubic perso services
-                     * GET /pack/xdsl/{packName}/hubic/services
-                     */
-                    $get(): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(domain: string): {
-                        /**
-                         * Get this object properties
-                         * GET /pack/xdsl/{packName}/hubic/services/{domain}
-                         */
-                        $get(): Promise<pack.xdsl.Hubic>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        details: {
-                            /**
-                             * Details associated to a voucher
-                             * GET /pack/xdsl/{packName}/hubic/services/{domain}/details
-                             */
-                            $get(): Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
-                    };
-                }
-            }
             migration: {
                 migrate: {
                     /**
                      * Migrate to the selected offer
                      * POST /pack/xdsl/{packName}/migration/migrate
                      */
-                    $post(params: { acceptContracts: boolean, buildingReference?: string, contactPhone?: string, engageMonths?: number, floor?: string, meeting?: xdsl.eligibility.BookMeetingSlot, modem?: pack.xdsl.ModemOptionEnum, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, productCode?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.Task>;
+                    $post(params: { acceptContracts: boolean, buildingReference?: string, contactPhone?: string, engageMonths?: number, floor?: string, meeting?: xdsl.eligibility.BookMeetingSlot, modem: pack.xdsl.ModemOptionEnum, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, productCode?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.Task>;
                 }
                 offers: {
                     /**
@@ -1056,13 +945,6 @@ export interface Pack {
                      * POST /pack/xdsl/{packName}/migration/offers
                      */
                     $post(params?: { buildingReference?: string }): Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
-                }
-                servicesToDelete: {
-                    /**
-                     * Calculate services to delete with new offer and options
-                     * POST /pack/xdsl/{packName}/migration/servicesToDelete
-                     */
-                    $post(params: { offerName: string, options?: pack.xdsl.migration.OfferOption[] }): Promise<pack.xdsl.migration.SubServiceToDelete[]>;
                 }
                 servicesToDeleteUnpackTerms: {
                     /**

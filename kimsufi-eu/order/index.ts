@@ -37,7 +37,7 @@ export namespace order {
      * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * An order
      * interface fullName: order.Order.Order
@@ -96,7 +96,9 @@ export namespace order {
      */
     export interface Reduction {
         context: order.ReductionContextEnum;
+        description: string;
         price: order.Price;
+        reductionDescription: string;
         type: order.ReductionTypeEnum;
         value: order.Price;
     }
@@ -153,7 +155,7 @@ export namespace order {
          * Type of a product
          * type fullname: order.cart.GenericProductTypeEnum
          */
-        export type GenericProductTypeEnum = "cloud_service" | "delivery" | "deposit" | "domain" | "saas_license" | "shipping" | "storage"
+        export type GenericProductTypeEnum = "cloud_service" | "delivery" | "deposit" | "domain" | "implementation_services" | "saas_license" | "shipping" | "storage"
     }
     export namespace catalog {
         /**

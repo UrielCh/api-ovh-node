@@ -16,6 +16,8 @@ export namespace dbaas {
             description?: string;
             isEditable: boolean;
             name: string;
+            nbIndex: number;
+            nbStream: number;
             updatedAt?: string;
         }
         /**
@@ -192,6 +194,7 @@ export namespace dbaas {
         export interface Index {
             alertNotifyEnabled?: boolean;
             createdAt: string;
+            currentSize?: number;
             description?: string;
             indexId: string;
             isEditable: boolean;
@@ -206,6 +209,7 @@ export namespace dbaas {
          */
         export interface Input {
             allowedNetworks?: string[];
+            autoscale?: boolean;
             createdAt: string;
             description: string;
             engineId: string;
@@ -213,8 +217,11 @@ export namespace dbaas {
             hostname: string;
             inputId: string;
             isRestartRequired: boolean;
+            maxScaleInstance?: number;
+            minScaleInstance?: number;
             nbInstance?: number;
             publicAddress: string;
+            scalingNotifyEnabled?: boolean;
             sslCertificate: string;
             status: dbaas.logs.InputStatusEnum;
             streamId: string;
@@ -257,10 +264,14 @@ export namespace dbaas {
          */
         export interface InputCreation {
             allowedNetworks?: string[];
+            autoscale?: boolean;
             description: string;
             engineId: string;
             exposedPort?: string;
+            maxScaleInstance?: number;
+            minScaleInstance?: number;
             nbInstance?: number;
+            scalingNotifyEnabled?: boolean;
             streamId: string;
             title: string;
         }
@@ -275,10 +286,14 @@ export namespace dbaas {
          */
         export interface InputUpdate {
             allowedNetworks?: string[];
+            autoscale?: boolean;
             description: string;
             engineId: string;
             exposedPort?: string;
+            maxScaleInstance?: number;
+            minScaleInstance?: number;
             nbInstance?: number;
+            scalingNotifyEnabled?: boolean;
             streamId: string;
             title: string;
         }
@@ -343,6 +358,7 @@ export namespace dbaas {
             roleId?: string;
             state: dbaas.logs.OperationStateEnum;
             streamId?: string;
+            tokenId?: string;
             updatedAt?: string;
         }
         /**
@@ -611,6 +627,8 @@ export namespace dbaas {
             createdAt: string;
             description: string;
             name: string;
+            nbMember: number;
+            nbPermission: number;
             roleId: string;
             updatedAt?: string;
         }
@@ -738,6 +756,7 @@ export namespace dbaas {
             createdAt: string;
             description: string;
             encryptionKeysIds?: string[];
+            indexingCurrentSize?: number;
             indexingEnabled?: boolean;
             indexingMaxSize?: number;
             indexingNotifyEnabled?: boolean;
@@ -785,7 +804,7 @@ export namespace dbaas {
          * Possible values for StreamAlertConditionThresholdTypeEnum
          * type fullname: dbaas.logs.StreamAlertConditionThresholdTypeEnum
          */
-        export type StreamAlertConditionThresholdTypeEnum = "EQ" | "GT" | "GTE" | "HIGHER" | "LESS" | "LOWER" | "LT" | "LTE" | "MORE"
+        export type StreamAlertConditionThresholdTypeEnum = "EQ" | "GT" | "GTE" | "LT" | "LTE"
         /**
          * Possible values for StreamColdStorageCompressionEnum
          * type fullname: dbaas.logs.StreamColdStorageCompressionEnum
@@ -948,52 +967,6 @@ export interface Dbaas {
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-        input: {
-            engine: {
-                /**
-                 * Returns the list of available input engines
-                 * GET /dbaas/logs/input/engine
-                 */
-                $get(): Promise<string[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                $(engineId: string): {
-                    /**
-                     * Returns details of specified input engine
-                     * GET /dbaas/logs/input/engine/{engineId}
-                     */
-                    $get(): Promise<dbaas.logs.Engine>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    helper: {
-                        /**
-                         * Return the list of available helpers for the given input engine
-                         * GET /dbaas/logs/input/engine/{engineId}/helper
-                         */
-                        $get(): Promise<string[]>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        $(helperId: string): {
-                            /**
-                             * Returns details of specified input engine helper
-                             * GET /dbaas/logs/input/engine/{engineId}/helper/{helperId}
-                             */
-                            $get(): Promise<dbaas.logs.Helper>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        };
-                    }
-                };
-            }
-        }
         $(serviceName: string): {
             /**
              * Returns the service object of connected identity.
@@ -1107,7 +1080,7 @@ export interface Dbaas {
                  * Register a new input object
                  * POST /dbaas/logs/{serviceName}/input
                  */
-                $post(params: { allowedNetworks?: string[], description: string, engineId: string, exposedPort?: string, nbInstance?: number, streamId: string, title: string }): Promise<dbaas.logs.Operation>;
+                $post(params: { allowedNetworks?: string[], autoscale?: boolean, description: string, engineId: string, exposedPort?: string, maxScaleInstance?: number, minScaleInstance?: number, nbInstance?: number, scalingNotifyEnabled?: boolean, streamId: string, title: string }): Promise<dbaas.logs.Operation>;
                 /**
                  * Controle cache
                  */
@@ -1171,7 +1144,7 @@ export interface Dbaas {
                      * Update information of specified input object
                      * PUT /dbaas/logs/{serviceName}/input/{inputId}
                      */
-                    $put(params: { allowedNetworks?: string[], description: string, engineId: string, exposedPort?: string, nbInstance?: number, streamId: string, title: string }): Promise<dbaas.logs.Operation>;
+                    $put(params: { allowedNetworks?: string[], autoscale?: boolean, description: string, engineId: string, exposedPort?: string, maxScaleInstance?: number, minScaleInstance?: number, nbInstance?: number, scalingNotifyEnabled?: boolean, streamId: string, title: string }): Promise<dbaas.logs.Operation>;
                     /**
                      * Controle cache
                      */

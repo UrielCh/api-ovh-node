@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List created companies",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:partners/register/company/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -26,6 +29,9 @@ export const schema: Schema = {
           },
           "description": "Created a new company for the inscription",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:partners/register/company/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -276,6 +282,9 @@ export const schema: Schema = {
           },
           "description": "Remove a company",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "account:apiovh:partners/register/company/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -296,6 +305,9 @@ export const schema: Schema = {
           },
           "description": "Get information on a created company",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:partners/register/company/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -316,6 +328,9 @@ export const schema: Schema = {
           },
           "description": "Update some fields on a created company",
           "httpMethod": "PUT",
+          "iamActions": [
+            "account:apiovh:partners/register/company/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -574,6 +589,9 @@ export const schema: Schema = {
           },
           "description": "Compute scoring score without submitting application",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:partners/register/company/application/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -594,6 +612,9 @@ export const schema: Schema = {
           },
           "description": "Submit application information for validation",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:partners/register/company/application/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -628,6 +649,9 @@ export const schema: Schema = {
           },
           "description": "List created contacts",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:partners/register/company/contact/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -648,6 +672,9 @@ export const schema: Schema = {
           },
           "description": "Created a new contact for the inscription",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:partners/register/company/contact/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -754,6 +781,9 @@ export const schema: Schema = {
           },
           "description": "Remove a contact",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "account:apiovh:partners/register/company/contact/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -782,6 +812,9 @@ export const schema: Schema = {
           },
           "description": "Get information on a created contact",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:partners/register/company/contact/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -810,6 +843,9 @@ export const schema: Schema = {
           },
           "description": "Update some fields on a created contact",
           "httpMethod": "PUT",
+          "iamActions": [
+            "account:apiovh:partners/register/company/contact/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

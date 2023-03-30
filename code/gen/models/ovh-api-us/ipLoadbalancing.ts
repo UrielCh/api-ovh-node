@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "loadbalancer:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Available farm probes for health checks",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:availableFarmProbes/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -111,6 +123,9 @@ export const schema: Schema = {
           },
           "description": "Available farm types",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:availableFarmType/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -137,6 +152,9 @@ export const schema: Schema = {
           },
           "description": "Available frontend type",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:availableFrontendType/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -163,6 +181,9 @@ export const schema: Schema = {
           },
           "description": "Available route actions",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:availableRouteActions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -189,6 +210,9 @@ export const schema: Schema = {
           },
           "description": "Available route match rules",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:availableRouteRules/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -215,6 +239,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -273,6 +300,9 @@ export const schema: Schema = {
           },
           "description": "List of defined farms, and whether they are HTTP, TCP or UDP",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:definedFarms/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -307,6 +337,9 @@ export const schema: Schema = {
           },
           "description": "List of defined frontends, and whether they are HTTP, TCP or UDP",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:definedFrontends/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -333,6 +366,9 @@ export const schema: Schema = {
           },
           "description": "List of defined routes, and whether they are HTTP or TCP",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:definedRoutes/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -359,6 +395,9 @@ export const schema: Schema = {
           },
           "description": "List all failover ip routed to this IPLB",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:failover/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -385,6 +424,9 @@ export const schema: Schema = {
           },
           "description": "Order a free certificate. We order and deliver it for you",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:freeCertificate/order"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -419,6 +461,9 @@ export const schema: Schema = {
           },
           "description": "HTTP Farm for this iplb",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:http/farm/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -455,6 +500,9 @@ export const schema: Schema = {
           },
           "description": "Add a new HTTP Farm on your IP Load Balancing",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:http/farm/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -537,6 +585,9 @@ export const schema: Schema = {
           },
           "description": "Delete an HTTP Farm",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "loadbalancer:apiovh:http/farm/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -565,6 +616,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:http/farm/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -593,6 +647,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "loadbalancer:apiovh:http/farm/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -634,6 +691,9 @@ export const schema: Schema = {
           },
           "description": "HTTP Farm's Servers",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:http/farm/server/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -686,6 +746,9 @@ export const schema: Schema = {
           },
           "description": "Add a server to an HTTP Farm",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:http/farm/server/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -816,6 +879,9 @@ export const schema: Schema = {
           },
           "description": "Delete a server from an HTTP Farm",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "loadbalancer:apiovh:http/farm/server/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -852,6 +918,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:http/farm/server/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -888,6 +957,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "loadbalancer:apiovh:http/farm/server/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -937,6 +1009,9 @@ export const schema: Schema = {
           },
           "description": "HTTP frontends for this iplb",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:http/frontend/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -989,6 +1064,9 @@ export const schema: Schema = {
           },
           "description": "Add a new http frontend on your IP Load Balancing",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:http/frontend/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1119,6 +1197,9 @@ export const schema: Schema = {
           },
           "description": "Delete an HTTP frontend",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "loadbalancer:apiovh:http/frontend/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1147,6 +1228,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:http/frontend/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1175,6 +1259,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "loadbalancer:apiovh:http/frontend/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1216,6 +1303,9 @@ export const schema: Schema = {
           },
           "description": "HTTP routes for this iplb",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:http/route/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1244,6 +1334,9 @@ export const schema: Schema = {
           },
           "description": "Add a new HTTP route to your frontend",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:http/route/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1302,6 +1395,9 @@ export const schema: Schema = {
           },
           "description": "Delete this HTTP route",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "loadbalancer:apiovh:http/route/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1330,6 +1426,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:http/route/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1358,6 +1457,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "loadbalancer:apiovh:http/route/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1399,6 +1501,9 @@ export const schema: Schema = {
           },
           "description": "HTTP routes for this iplb",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:http/route/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1427,6 +1532,9 @@ export const schema: Schema = {
           },
           "description": "Add a new rule to your route",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:http/route/rule/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1509,6 +1617,9 @@ export const schema: Schema = {
           },
           "description": "Delete this rule from the route",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "loadbalancer:apiovh:http/route/rule/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1545,6 +1656,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:http/route/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1581,6 +1695,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "loadbalancer:apiovh:http/route/rule/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1632,6 +1749,9 @@ export const schema: Schema = {
           },
           "description": "Get the effective state of your IPLB instances on IPLB servers",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:instancesState/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1658,6 +1778,9 @@ export const schema: Schema = {
           },
           "description": "Ip subnet used by OVH to nat requests on your IPLB to your backends. You must ensure that your backends are not part of a network that overlap with this one",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:natIp/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1684,6 +1807,9 @@ export const schema: Schema = {
           },
           "description": "List the pending changes on your Load Balancer configuration, per zone",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:pendingChanges/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1710,6 +1836,9 @@ export const schema: Schema = {
           },
           "description": "Available quota informations for current billing period per zone",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:quota/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1736,6 +1865,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:quota/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1764,6 +1896,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "loadbalancer:apiovh:quota/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1805,6 +1940,9 @@ export const schema: Schema = {
           },
           "description": "Quota history informations, per month",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:quotaHistory/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1855,6 +1993,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:quotaHistory/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1889,6 +2030,9 @@ export const schema: Schema = {
           },
           "description": "Apply the configuration to your iplb",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:refresh"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1923,6 +2067,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1943,6 +2090,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "loadbalancer:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1976,6 +2126,9 @@ export const schema: Schema = {
           },
           "description": "Ssl for this iplb",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:ssl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2028,6 +2181,9 @@ export const schema: Schema = {
           },
           "description": "Add a new custom SSL certificate on your IP Load Balancing",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:ssl/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2086,6 +2242,9 @@ export const schema: Schema = {
           },
           "description": "Delete a custom SSL certificate",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "loadbalancer:apiovh:ssl/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2114,6 +2273,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:ssl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2142,6 +2304,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "loadbalancer:apiovh:ssl/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2183,6 +2348,9 @@ export const schema: Schema = {
           },
           "description": "Get the global status of your IPLB",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:status/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2209,6 +2377,9 @@ export const schema: Schema = {
           },
           "description": "Task for this iplb",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2283,6 +2454,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2317,6 +2491,9 @@ export const schema: Schema = {
           },
           "description": "TCP Farm for this iplb",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/farm/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2353,6 +2530,9 @@ export const schema: Schema = {
           },
           "description": "Add a new TCP Farm on your IP Load Balancing",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/farm/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2435,6 +2615,9 @@ export const schema: Schema = {
           },
           "description": "Delete a TCP Farm",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/farm/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2463,6 +2646,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/farm/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2491,6 +2677,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/farm/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2532,6 +2721,9 @@ export const schema: Schema = {
           },
           "description": "TCP Farm's Servers",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/farm/server/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2576,6 +2768,9 @@ export const schema: Schema = {
           },
           "description": "Add a server to a TCP Farm",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/farm/server/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2698,6 +2893,9 @@ export const schema: Schema = {
           },
           "description": "Delete a server from a TCP Farm",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/farm/server/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2734,6 +2932,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/farm/server/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2770,6 +2971,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/farm/server/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2819,6 +3023,9 @@ export const schema: Schema = {
           },
           "description": "TCP frontends for this iplb",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/frontend/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2871,6 +3078,9 @@ export const schema: Schema = {
           },
           "description": "Add a new TCP frontend on your IP Load Balancing",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/frontend/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2977,6 +3187,9 @@ export const schema: Schema = {
           },
           "description": "Delete an TCP frontend",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/frontend/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3005,6 +3218,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/frontend/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3033,6 +3249,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/frontend/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3074,6 +3293,9 @@ export const schema: Schema = {
           },
           "description": "TCP routes for this iplb",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/route/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3102,6 +3324,9 @@ export const schema: Schema = {
           },
           "description": "Add a new TCP route to your frontend",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/route/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3160,6 +3385,9 @@ export const schema: Schema = {
           },
           "description": "Delete this TCP route",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/route/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3188,6 +3416,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/route/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3216,6 +3447,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/route/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3257,6 +3491,9 @@ export const schema: Schema = {
           },
           "description": "HTTP routes for this iplb",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/route/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3285,6 +3522,9 @@ export const schema: Schema = {
           },
           "description": "Add a new rule to your route",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/route/rule/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3367,6 +3607,9 @@ export const schema: Schema = {
           },
           "description": "Delete this rule from the route",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/route/rule/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3403,6 +3646,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/route/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3439,6 +3685,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "loadbalancer:apiovh:tcp/route/rule/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3488,6 +3737,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3514,6 +3766,9 @@ export const schema: Schema = {
           },
           "description": "Descriptions of private networks in the vRack attached to this Load Balancer",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:vrack/network/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3550,6 +3805,9 @@ export const schema: Schema = {
           },
           "description": "Add a description of a private network in the attached vRack",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:vrack/network/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3616,6 +3874,9 @@ export const schema: Schema = {
           },
           "description": "Delete this description of a private network in the vRack. It must not be used by any farm server",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "loadbalancer:apiovh:vrack/network/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3644,6 +3905,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:vrack/network/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3672,6 +3936,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "loadbalancer:apiovh:vrack/network/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3713,6 +3980,9 @@ export const schema: Schema = {
           },
           "description": "Update farm attached to that vrack network id",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:vrack/network/updateFarmId"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3755,6 +4025,9 @@ export const schema: Schema = {
           },
           "description": "Rules to create a network attached to a vrack",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:vrack/networkCreationRules/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3781,6 +4054,9 @@ export const schema: Schema = {
           },
           "description": "Information about vRack for your Load Balancer",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:vrack/status/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3807,6 +4083,9 @@ export const schema: Schema = {
           },
           "description": "Zone for this iplb",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:zone/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3833,6 +4112,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "loadbalancer:apiovh:zone/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3867,6 +4149,9 @@ export const schema: Schema = {
           },
           "description": "Cancel the termination request of your service zone option",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:zone/cancelTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3901,6 +4186,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service zone option",
           "httpMethod": "POST",
+          "iamActions": [
+            "loadbalancer:apiovh:zone/terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3937,6 +4225,9 @@ export const schema: Schema = {
           },
           "description": "List of zone available for an IP load balancing",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:loadbalancer/availableZones/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"

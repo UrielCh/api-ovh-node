@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "vps:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -88,6 +97,9 @@ export const schema: Schema = {
           },
           "description": "Return all active options for the virtual server",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:activeOptions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -114,6 +126,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:automatedBackup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -140,6 +155,9 @@ export const schema: Schema = {
           },
           "description": "Backup attached to your VPS",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:automatedBackup/attachedBackup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -166,6 +184,9 @@ export const schema: Schema = {
           },
           "description": "Create a VPS.Task that will umount a restored backup on your VPS",
           "httpMethod": "POST",
+          "iamActions": [
+            "vps:apiovh:automatedBackup/detachBackup"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -200,6 +221,9 @@ export const schema: Schema = {
           },
           "description": "Change the scheduled time of your daily backup",
           "httpMethod": "POST",
+          "iamActions": [
+            "vps:apiovh:automatedBackup/reschedule"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -234,6 +258,9 @@ export const schema: Schema = {
           },
           "description": "Creates a VPS.Task that will restore the given restorePoint",
           "httpMethod": "POST",
+          "iamActions": [
+            "vps:apiovh:automatedBackup/restore"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -284,6 +311,9 @@ export const schema: Schema = {
           },
           "description": "Get available Restore Points",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:automatedBackup/restorePoints/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -318,6 +348,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "vps:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -376,6 +409,9 @@ export const schema: Schema = {
           },
           "description": "Create a snapshot of the Virtual Server if the snapshot option is enabled and if there is no existing snapshot",
           "httpMethod": "POST",
+          "iamActions": [
+            "vps:apiovh:snapshot/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -410,6 +446,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:datacenter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -436,6 +475,9 @@ export const schema: Schema = {
           },
           "description": "Disks associated to this virtual server",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:disks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -462,6 +504,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:disks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -490,6 +535,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "vps:apiovh:disks/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -531,6 +579,9 @@ export const schema: Schema = {
           },
           "description": "Return many statistics about the disk for a given period",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:disks/monitoring/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -581,6 +632,9 @@ export const schema: Schema = {
           },
           "description": "Return many statistics about the disk at that time",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:disks/use/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -623,6 +677,9 @@ export const schema: Schema = {
           },
           "description": "Return the VPS console URL",
           "httpMethod": "POST",
+          "iamActions": [
+            "vps:apiovh:getConsoleUrl"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -649,6 +706,9 @@ export const schema: Schema = {
           },
           "description": "Images available for this virtual server",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:images/available/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -675,6 +735,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:images/available/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -709,6 +772,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:images/current/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -735,6 +801,9 @@ export const schema: Schema = {
           },
           "description": "Get the countries you can select for your IPs geolocation",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:ipCountryAvailable/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -761,6 +830,9 @@ export const schema: Schema = {
           },
           "description": "Ips associated to this virtual server",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:ips/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -787,6 +859,9 @@ export const schema: Schema = {
           },
           "description": "Release a given Ip (Additional Ip)",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "vps:apiovh:ips/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -815,6 +890,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:ips/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -843,6 +921,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "vps:apiovh:ips/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -884,6 +965,9 @@ export const schema: Schema = {
           },
           "description": "Return many statistics about the virtual machine for a given period",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:monitoring/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -926,6 +1010,9 @@ export const schema: Schema = {
           },
           "description": "List of VPS options",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -952,6 +1039,9 @@ export const schema: Schema = {
           },
           "description": "Release a given option",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "vps:apiovh:option/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -988,6 +1078,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1022,6 +1115,9 @@ export const schema: Schema = {
           },
           "description": "Request a reboot of the machine",
           "httpMethod": "POST",
+          "iamActions": [
+            "vps:apiovh:reboot"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1048,6 +1144,9 @@ export const schema: Schema = {
           },
           "description": "Reinstall the virtual server",
           "httpMethod": "POST",
+          "iamActions": [
+            "vps:apiovh:rebuild"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1106,6 +1205,9 @@ export const schema: Schema = {
           },
           "description": "List of secondary dns domain name",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:secondaryDnsDomains/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1126,6 +1228,9 @@ export const schema: Schema = {
           },
           "description": "add a domain on secondary dns",
           "httpMethod": "POST",
+          "iamActions": [
+            "vps:apiovh:secondaryDnsDomains/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1168,6 +1273,9 @@ export const schema: Schema = {
           },
           "description": "remove this domain",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "vps:apiovh:secondaryDnsDomains/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1196,6 +1304,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:secondaryDnsDomains/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1224,6 +1335,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "vps:apiovh:secondaryDnsDomains/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1265,6 +1379,9 @@ export const schema: Schema = {
           },
           "description": "domain name server informations",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:secondaryDnsDomains/dnsServer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1299,6 +1416,9 @@ export const schema: Schema = {
           },
           "description": "Secondary nameServer available for your Server",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:secondaryDnsNameServerAvailable/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1325,6 +1445,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1345,6 +1468,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "vps:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1378,6 +1504,9 @@ export const schema: Schema = {
           },
           "description": "Creates a vps.Task that will delete the Snapshot",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "vps:apiovh:snapshot/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1398,6 +1527,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:snapshot/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1418,6 +1550,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "vps:apiovh:snapshot/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1442,6 +1577,35 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/snapshot"
     },
     {
+      "description": "download operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Download the snapshot",
+          "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:snapshot/download/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.DownloadSnapshotURL"
+        }
+      ],
+      "path": "/vps/{serviceName}/snapshot/download"
+    },
+    {
       "description": "revert operations",
       "operations": [
         {
@@ -1451,6 +1615,9 @@ export const schema: Schema = {
           },
           "description": "Revert the Virtual Server to this snapshot",
           "httpMethod": "POST",
+          "iamActions": [
+            "vps:apiovh:snapshot/revert"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1477,6 +1644,9 @@ export const schema: Schema = {
           },
           "description": "Request the machine to start",
           "httpMethod": "POST",
+          "iamActions": [
+            "vps:apiovh:start"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1503,6 +1673,9 @@ export const schema: Schema = {
           },
           "description": "Return monitoring statistics about the virtual machine",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:statistics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1529,6 +1702,9 @@ export const schema: Schema = {
           },
           "description": "Request the machine to stop",
           "httpMethod": "POST",
+          "iamActions": [
+            "vps:apiovh:stop"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1555,6 +1731,9 @@ export const schema: Schema = {
           },
           "description": "Tasks associated to this virtual server",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1597,6 +1776,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vps:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1631,6 +1813,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "vps:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2098,6 +2283,7 @@ export const schema: Schema = {
         "migrateBackupFTP",
         "moveFloatingIp",
         "moveVirtualMac",
+        "reagregateBlock",
         "rebootPower8To",
         "reinstallServer",
         "releaseIp",

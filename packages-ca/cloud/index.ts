@@ -141,11 +141,6 @@ export namespace cloud {
     }
     /**
      * Enum values for State
-     * type fullname: cloud.ExecutionState
-     */
-    export type ExecutionState = "IDLE" | "RUNNING" | "SUCCESS" | "ERROR" | "PAUSED"
-    /**
-     * Enum values for State
      * type fullname: cloud.ExecutionStateEnum
      */
     export type ExecutionStateEnum = "CANCELED" | "ERROR" | "IDLE" | "PAUSED" | "RUNNING" | "SUCCESS"
@@ -184,11 +179,6 @@ export namespace cloud {
     }
     /**
      * Enum values for Status
-     * type fullname: cloud.LabStatus
-     */
-    export type LabStatus = "open" | "activating" | "activated" | "closed"
-    /**
-     * Enum values for Status
      * type fullname: cloud.LabStatusEnum
      */
     export type LabStatusEnum = "activated" | "activating" | "closed" | "open"
@@ -206,12 +196,8 @@ export namespace cloud {
         resourceId?: string;
         startedAt?: string;
         status: cloud.OperationStatusEnum;
+        subOperations?: cloud.SubOperation[];
     }
-    /**
-     * Enum values for Status
-     * type fullname: cloud.OperationStatus
-     */
-    export type OperationStatus = "created" | "in-progress" | "completed" | "in-error" | "unknown"
     /**
      * Enum values for Status
      * type fullname: cloud.OperationStatusEnum
@@ -388,6 +374,7 @@ export namespace cloud {
      */
     export interface ProjectKubeCreation {
         customization?: cloud.ProjectKubeCustomization;
+        kubeProxyMode: cloud.kube.KubeProxyModeEnum;
         name: string;
         nodepool: cloud.ProjectKubeCreationNodePool;
         privateNetworkConfiguration: cloud.kube.PrivateNetworkConfiguration;
@@ -417,6 +404,7 @@ export namespace cloud {
      */
     export interface ProjectKubeCustomization {
         apiServer?: cloud.ProjectKubeCustomizationAPIServer;
+        kubeProxy?: cloud.ProjectKubeCustomizationKubeProxy;
     }
     /**
      * Cluster API server customization
@@ -438,6 +426,34 @@ export namespace cloud {
      * type fullname: cloud.ProjectKubeCustomizationAPIServerAdmissionPluginsEnum
      */
     export type ProjectKubeCustomizationAPIServerAdmissionPluginsEnum = "AlwaysPullImages" | "NodeRestriction"
+    /**
+     * Cluster kube-proxy customization: iptables and ipvs configurations can both be set at the same time, kube-proxy will use the one according to the cluster's kubeProxyMode value
+     * interface fullName: cloud.ProjectKubeCustomizationKubeProxy.ProjectKubeCustomizationKubeProxy
+     */
+    export interface ProjectKubeCustomizationKubeProxy {
+        iptables?: cloud.ProjectKubeCustomizationKubeProxyIptables;
+        ipvs?: cloud.ProjectKubeCustomizationKubeProxyIpvs;
+    }
+    /**
+     * Configuration used when kube-proxy is configured with iptables mode (durations format is RFC3339 duration, e.g. 'PT60S')
+     * interface fullName: cloud.ProjectKubeCustomizationKubeProxyIptables.ProjectKubeCustomizationKubeProxyIptables
+     */
+    export interface ProjectKubeCustomizationKubeProxyIptables {
+        minSyncPeriod?: string;
+        syncPeriod?: string;
+    }
+    /**
+     * Configuration used when kube-proxy is configured with ipvs mode (durations format is RFC3339 duration, e.g. 'PT60S')
+     * interface fullName: cloud.ProjectKubeCustomizationKubeProxyIpvs.ProjectKubeCustomizationKubeProxyIpvs
+     */
+    export interface ProjectKubeCustomizationKubeProxyIpvs {
+        minSyncPeriod?: string;
+        scheduler?: cloud.kube.KubeProxyIpvsSchedulerEnum;
+        syncPeriod?: string;
+        tcpFinTimeout?: string;
+        tcpTimeout?: string;
+        udpTimeout?: string;
+    }
     /**
      * Missing description
      * interface fullName: cloud.ProjectKubeIpRestrictionUpsert.ProjectKubeIpRestrictionUpsert
@@ -527,6 +543,7 @@ export namespace cloud {
      */
     export interface ProjectKubeResetCreation {
         customization: cloud.ProjectKubeCustomization;
+        kubeProxyMode: cloud.kube.KubeProxyModeEnum;
         name: string;
         privateNetworkConfiguration: cloud.kube.PrivateNetworkConfiguration;
         privateNetworkId: string;
@@ -782,29 +799,14 @@ export namespace cloud {
     }
     /**
      * Enum values for ContinentCode
-     * type fullname: cloud.RegionContinent
-     */
-    export type RegionContinent = "EU" | "NA" | "US" | "ASIA"
-    /**
-     * Enum values for ContinentCode
      * type fullname: cloud.RegionContinentEnum
      */
     export type RegionContinentEnum = "ASIA" | "EU" | "NA" | "US"
     /**
      * Enum values for Status
-     * type fullname: cloud.RegionStatus
-     */
-    export type RegionStatus = "UP" | "DOWN" | "MAINTENANCE"
-    /**
-     * Enum values for Status
      * type fullname: cloud.RegionStatusEnum
      */
     export type RegionStatusEnum = "DOWN" | "MAINTENANCE" | "UP"
-    /**
-     * Enum values for Status
-     * type fullname: cloud.ServiceStatus
-     */
-    export type ServiceStatus = "UP" | "DOWN"
     /**
      * Enum values for Status
      * type fullname: cloud.ServiceStatusEnum
@@ -859,6 +861,20 @@ export namespace cloud {
         monthlyPrice: orderPrice;
         price: orderPrice;
         region: string;
+    }
+    /**
+     * A sub-operation is a child of an operation on your Project
+     * interface fullName: cloud.SubOperation.SubOperation
+     */
+    export interface SubOperation {
+        action: string;
+        completedAt?: string;
+        id: string;
+        progress: number;
+        regions?: string[];
+        resourceId?: string;
+        startedAt?: string;
+        status: cloud.OperationStatusEnum;
     }
     /**
      * Details about volume pricing
@@ -1200,11 +1216,6 @@ export namespace cloud {
         }
         /**
          * UnitQuantity
-         * type fullname: cloud.billingView.UnitQuantity
-         */
-        export type UnitQuantity = "GiB" | "GiBh" | "Hour"
-        /**
-         * UnitQuantity
          * type fullname: cloud.billingView.UnitQuantityEnum
          */
         export type UnitQuantityEnum = "GiB" | "GiBh" | "Hour" | "Minute" | "Second" | "Unit"
@@ -1266,14 +1277,6 @@ export namespace cloud {
         export interface AvailabilityRegion {
             continentCode: cloud.RegionContinentEnum;
             datacenter: string;
-            enabled: boolean;
-            name: string;
-        }
-        /**
-         * Capability
-         * interface fullName: cloud.capabilities.Capability.Capability
-         */
-        export interface Capability {
             enabled: boolean;
             name: string;
         }
@@ -1446,16 +1449,6 @@ export namespace cloud {
             monthly?: string;
         }
     }
-    export namespace forecast {
-        /**
-         * ProjectForecast
-         * interface fullName: cloud.forecast.ProjectForecast.ProjectForecast
-         */
-        export interface ProjectForecast {
-            lastMetric: string;
-            projectForecast: orderPrice;
-        }
-    }
     export namespace image {
         /**
          * Image
@@ -1531,6 +1524,164 @@ export namespace cloud {
         export interface CreateFloatingIp {
             gateway?: cloud.network.CreateGatewaySummary;
             ip: string;
+        }
+        /**
+         * Instance creation input
+         * interface fullName: cloud.instance.CreateInput.CreateInput
+         */
+        export interface CreateInput {
+            autobackup: cloud.instance.CreateInput.Autobackup;
+            billingPeriod: cloud.instance.CreateInput.BillingPeriodEnum;
+            bootFrom: cloud.instance.CreateInput.BootFrom;
+            bulk: number;
+            flavor: cloud.instance.CreateInput.Flavor;
+            group: cloud.instance.CreateInput.Group;
+            name: string;
+            network: cloud.instance.CreateInput.Network;
+            sshKey: cloud.instance.CreateInput.SshKey;
+            sshKeyCreate: cloud.instance.CreateInput.SshKeyCreate;
+            userData: string;
+        }
+        export namespace CreateInput {
+            /**
+             * Create an autobackup workflow after instance start up
+             * interface fullName: cloud.instance.CreateInput.Autobackup.Autobackup
+             */
+            export interface Autobackup {
+                cron: string;
+                rotation: number;
+            }
+            /**
+             * Billing period
+             * type fullname: cloud.instance.CreateInput.BillingPeriodEnum
+             */
+            export type BillingPeriodEnum = "hourly" | "monthly"
+            /**
+             * Boot the instance from an image or a volume
+             * interface fullName: cloud.instance.CreateInput.BootFrom.BootFrom
+             */
+            export interface BootFrom {
+                imageId: string;
+                volumeId: string;
+            }
+            /**
+             * Flavor information
+             * interface fullName: cloud.instance.CreateInput.Flavor.Flavor
+             */
+            export interface Flavor {
+                id: string;
+            }
+            /**
+             * Start instance in group
+             * interface fullName: cloud.instance.CreateInput.Group.Group
+             */
+            export interface Group {
+                id: string;
+            }
+            /**
+             * Networks information
+             * interface fullName: cloud.instance.CreateInput.Network.Network
+             */
+            export interface Network {
+                private: cloud.instance.CreateInput.Network.Private;
+                public: boolean;
+            }
+            export namespace Network {
+                /**
+                 * Private network information
+                 * interface fullName: cloud.instance.CreateInput.Network.Private.Private
+                 */
+                export interface Private {
+                    floatingIp: cloud.instance.CreateInput.Network.Private.FloatingIp;
+                    floatingIpCreate: cloud.instance.CreateInput.Network.Private.FloatingIpCreate;
+                    gateway: cloud.instance.CreateInput.Network.Private.Gateway;
+                    gatewayCreate: cloud.instance.CreateInput.Network.Private.GatewayCreate;
+                    ip: string;
+                    network: cloud.instance.CreateInput.Network.Private.Network;
+                    networkCreate: cloud.instance.CreateInput.Network.Private.NetworkCreate;
+                }
+                export namespace Private {
+                    /**
+                     * Existing floating IP
+                     * interface fullName: cloud.instance.CreateInput.Network.Private.FloatingIp.FloatingIp
+                     */
+                    export interface FloatingIp {
+                        id: string;
+                    }
+                    /**
+                     * Information to create a new floating IP
+                     * interface fullName: cloud.instance.CreateInput.Network.Private.FloatingIpCreate.FloatingIpCreate
+                     */
+                    export interface FloatingIpCreate {
+                        description: string;
+                    }
+                    /**
+                     * Existing gateway
+                     * interface fullName: cloud.instance.CreateInput.Network.Private.Gateway.Gateway
+                     */
+                    export interface Gateway {
+                        id: string;
+                    }
+                    /**
+                     * Information to create a new gateway
+                     * interface fullName: cloud.instance.CreateInput.Network.Private.GatewayCreate.GatewayCreate
+                     */
+                    export interface GatewayCreate {
+                        model: cloud.instance.CreateInput.Network.Private.GatewayCreate.ModelEnum;
+                        name: string;
+                    }
+                    export namespace GatewayCreate {
+                        /**
+                         * Gateway model
+                         * type fullname: cloud.instance.CreateInput.Network.Private.GatewayCreate.ModelEnum
+                         */
+                        export type ModelEnum = "l" | "m" | "s"
+                    }
+                    /**
+                     * Existing private network
+                     * interface fullName: cloud.instance.CreateInput.Network.Private.Network.Network
+                     */
+                    export interface Network {
+                        id: string;
+                        subnetId: string;
+                    }
+                    /**
+                     * Information to create a new private network
+                     * interface fullName: cloud.instance.CreateInput.Network.Private.NetworkCreate.NetworkCreate
+                     */
+                    export interface NetworkCreate {
+                        name: string;
+                        subnet: cloud.instance.CreateInput.Network.Private.NetworkCreate.Subnet;
+                        vlanId: number;
+                    }
+                    export namespace NetworkCreate {
+                        /**
+                         * New subnet information
+                         * interface fullName: cloud.instance.CreateInput.Network.Private.NetworkCreate.Subnet.Subnet
+                         */
+                        export interface Subnet {
+                            cidr: string;
+                            enableDhcp: boolean;
+                            ipVersion: number;
+                        }
+                    }
+                }
+            }
+            /**
+             * Existing SSH Keypair
+             * interface fullName: cloud.instance.CreateInput.SshKey.SshKey
+             */
+            export interface SshKey {
+                name: string;
+            }
+            /**
+             * Information to create a new SSH Keypair
+             * interface fullName: cloud.instance.CreateInput.SshKeyCreate.SshKeyCreate
+             */
+            export interface SshKeyCreate {
+                name: string;
+                publicKey: string;
+            }
         }
         /**
          * Instance
@@ -1621,19 +1772,9 @@ export namespace cloud {
         }
         /**
          * MetricsPeriod
-         * type fullname: cloud.instance.MetricsPeriod
-         */
-        export type MetricsPeriod = "lastday" | "lastmonth" | "lastweek" | "lastyear" | "today"
-        /**
-         * MetricsPeriod
          * type fullname: cloud.instance.MetricsPeriodEnum
          */
         export type MetricsPeriodEnum = "lastday" | "lastmonth" | "lastweek" | "lastyear" | "today"
-        /**
-         * MetricsType
-         * type fullname: cloud.instance.MetricsType
-         */
-        export type MetricsType = "mem:used" | "mem:max" | "cpu:used" | "cpu:max" | "net:tx" | "net:rx"
         /**
          * MetricsType
          * type fullname: cloud.instance.MetricsTypeEnum
@@ -1824,6 +1965,7 @@ export namespace cloud {
             customization?: cloud.ProjectKubeCustomization;
             id: string;
             isUpToDate: boolean;
+            kubeProxyMode: cloud.kube.KubeProxyModeEnum;
             name: string;
             nextUpgradeVersions?: string[];
             nodesUrl: string;
@@ -1845,7 +1987,7 @@ export namespace cloud {
          * Enum values for Status
          * type fullname: cloud.kube.ClusterStatusEnum
          */
-        export type ClusterStatusEnum = "DELETED" | "DELETING" | "DOWNSCALING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "RESIZING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "UPSCALING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR"
+        export type ClusterStatusEnum = "DELETED" | "DELETING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_WEBHOOK_PREVENTING_OPERATIONS_ERROR"
         /**
          * Etcd usage and quota for a given cluster
          * interface fullName: cloud.kube.EtcdUsage.EtcdUsage
@@ -1886,6 +2028,16 @@ export namespace cloud {
          * type fullname: cloud.kube.FlavorStateEnum
          */
         export type FlavorStateEnum = "available" | "unavailable"
+        /**
+         * Enum values for scheduler parameter of cluster kubeProxy custom ipvs config
+         * type fullname: cloud.kube.KubeProxyIpvsSchedulerEnum
+         */
+        export type KubeProxyIpvsSchedulerEnum = "dh" | "lc" | "nq" | "rr" | "sed" | "sh"
+        /**
+         * Enum values for cluster kubeProxyMode
+         * type fullname: cloud.kube.KubeProxyModeEnum
+         */
+        export type KubeProxyModeEnum = "iptables" | "ipvs"
         /**
          * Kubeconfig description
          * interface fullName: cloud.kube.Kubeconfig.Kubeconfig
@@ -1954,7 +2106,7 @@ export namespace cloud {
          * Enum values for NodePool Status
          * type fullname: cloud.kube.NodePoolStatusEnum
          */
-        export type NodePoolStatusEnum = "DELETED" | "DELETING" | "DOWNSCALING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "RESIZING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "UPSCALING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR"
+        export type NodePoolStatusEnum = "DELETED" | "DELETING" | "DOWNSCALING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "UPSCALING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR" | "USER_WEBHOOK_PREVENTING_OPERATIONS_ERROR"
         /**
          * Managed Kubernetes nodepool template
          * interface fullName: cloud.kube.NodePoolTemplate.NodePoolTemplate
@@ -1989,7 +2141,7 @@ export namespace cloud {
          * Enum values for Status
          * type fullname: cloud.kube.NodeStatusEnum
          */
-        export type NodeStatusEnum = "DELETED" | "DELETING" | "DOWNSCALING" | "ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "RESIZING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "UPSCALING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR"
+        export type NodeStatusEnum = "DELETED" | "DELETING" | "ERROR" | "FLAVOR_OUT_OF_STOCK_ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR" | "USER_WEBHOOK_PREVENTING_OPERATIONS_ERROR"
         /**
          * Managed Kubernetes oidc integration
          * interface fullName: cloud.kube.OpenIdConnect.OpenIdConnect
@@ -2093,7 +2245,7 @@ export namespace cloud {
          * List of available versions for installation
          * type fullname: cloud.kube.VersionEnum
          */
-        export type VersionEnum = "1.21" | "1.22" | "1.23" | "1.24" | "1.25"
+        export type VersionEnum = "1.23" | "1.24" | "1.25"
     }
     export namespace loadbalancing {
         /**
@@ -2145,8 +2297,23 @@ export namespace cloud {
             monitorType: cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum;
             name: string;
             operatingStatus: cloud.loadbalancing.LoadBalancerOperatingStatusEnum;
-            periodicity: number;
+            periodicity: string;
             poolId: string;
+            provisioningStatus: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum;
+            timeout: number;
+        }
+        /**
+         * Create a health monitor on loadbalancer creation
+         * interface fullName: cloud.loadbalancing.HealthMonitorCreate.HealthMonitorCreate
+         */
+        export interface HealthMonitorCreate {
+            httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration;
+            maxRetries: number;
+            maxRetriesDown: number;
+            monitorType: cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum;
+            name: string;
+            operatingStatus: cloud.loadbalancing.LoadBalancerOperatingStatusEnum;
+            periodicity: string;
             provisioningStatus: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum;
             timeout: number;
         }
@@ -2362,7 +2529,7 @@ export namespace cloud {
             maxRetries: number;
             maxRetriesDown: number;
             name: string;
-            periodicity: number;
+            periodicity: string;
             timeout: number;
         }
         export namespace loadbalancer {
@@ -2403,6 +2570,7 @@ export namespace cloud {
             export interface PoolCreate {
                 algorithm: cloud.loadbalancing.PoolAlgorithmEnum;
                 default: boolean;
+                healthMonitor?: cloud.loadbalancing.HealthMonitorCreate;
                 members: cloud.loadbalancing.loadbalancer.MemberCreate[];
                 name: string;
                 protocol: cloud.loadbalancing.PoolProtocolEnum;
@@ -2939,52 +3107,6 @@ export namespace cloud {
             size?: cloud.project.loadbalancer.SizeEnum;
         }
         /**
-         * New cloud project
-         * interface fullName: cloud.project.NewProject.NewProject
-         */
-        export interface NewProject {
-            agreements?: number[];
-            credit?: cloud.project.NewProjectCredit;
-            description?: string;
-            orderId?: number;
-            project?: string;
-            status: cloud.project.NewProjectStatusEnum;
-        }
-        /**
-         * Credit details
-         * interface fullName: cloud.project.NewProjectCredit.NewProjectCredit
-         */
-        export interface NewProjectCredit {
-            description?: string;
-            id: number;
-            products?: string[];
-            total_credit: orderPrice;
-            validity?: cloud.common.VoucherValidity;
-        }
-        /**
-         * New cloud project informations
-         * interface fullName: cloud.project.NewProjectInfo.NewProjectInfo
-         */
-        export interface NewProjectInfo {
-            agreements?: number[];
-            error?: cloud.project.NewProjectInfoError;
-            order?: orderPrice;
-            voucher?: cloud.project.NewProjectInfoVoucher;
-        }
-        /**
-         * Error that can occur when creating a Public Cloud project
-         * interface fullName: cloud.project.NewProjectInfoError.NewProjectInfoError
-         */
-        export interface NewProjectInfoError {
-            code: cloud.project.NewProjectInfoErrorCodeEnum;
-            message: string;
-        }
-        /**
-         * Possible values for error code on project creation
-         * type fullname: cloud.project.NewProjectInfoErrorCodeEnum
-         */
-        export type NewProjectInfoErrorCodeEnum = "accountNotEligible" | "challengePaymentMethodRequested" | "invalidPaymentMean" | "maxProjectsLimitReached" | "paypalAccountNotVerified" | "unpaidDebts"
-        /**
          * Information about voucher
          * interface fullName: cloud.project.NewProjectInfoVoucher.NewProjectInfoVoucher
          */
@@ -2992,11 +3114,6 @@ export namespace cloud {
             credit: orderPrice;
             paymentMethodRequired: boolean;
         }
-        /**
-         * Possible values for new project status
-         * type fullname: cloud.project.NewProjectStatusEnum
-         */
-        export type NewProjectStatusEnum = "creating" | "ok" | "validationPending" | "waitingAgreementsValidation"
         /**
          * List of accepted payment methods
          * type fullname: cloud.project.PaymentMethodAuthorized
@@ -3119,6 +3236,13 @@ export namespace cloud {
                 command: string;
             }
             /**
+             * Basic model with a single message field
+             * interface fullName: cloud.project.ai.GenericResponse.GenericResponse
+             */
+            export interface GenericResponse {
+                message: string;
+            }
+            /**
              * Information about the state of this entity
              * interface fullName: cloud.project.ai.Info.Info
              */
@@ -3235,6 +3359,7 @@ export namespace cloud {
                     command?: string[];
                     defaultHttpPort?: number;
                     env?: cloud.project.ai.job.JobEnv[];
+                    envVars?: cloud.project.ai.job.JobEnv[];
                     image: string;
                     labels?: { [key: string]: string };
                     name: string;
@@ -3254,6 +3379,7 @@ export namespace cloud {
                     command?: string[];
                     defaultHttpPort?: number;
                     env?: cloud.project.ai.job.JobEnv[];
+                    envVars?: cloud.project.ai.job.JobEnv[];
                     image: string;
                     labels?: { [key: string]: string };
                     name: string;
@@ -3292,6 +3418,7 @@ export namespace cloud {
                     monitoringUrl?: string;
                     state?: cloud.project.ai.app.AppStateEnum;
                     url?: string;
+                    volumes?: cloud.project.ai.volume.VolumeStatus[];
                 }
                 /**
                  * AI Solutions App Probe Object
@@ -3510,6 +3637,7 @@ export namespace cloud {
                     command?: string[];
                     defaultHttpPort?: number;
                     env?: cloud.project.ai.job.JobEnv[];
+                    envVars?: cloud.project.ai.job.JobEnv[];
                     image: string;
                     labels?: { [key: string]: string };
                     name: string;
@@ -3531,6 +3659,7 @@ export namespace cloud {
                     command?: string[];
                     defaultHttpPort?: number;
                     env?: cloud.project.ai.job.JobEnv[];
+                    envVars?: cloud.project.ai.job.JobEnv[];
                     image: string;
                     labels?: { [key: string]: string };
                     name: string;
@@ -3572,6 +3701,7 @@ export namespace cloud {
                     state?: cloud.project.ai.job.JobStateEnum;
                     stoppedAt?: string;
                     url?: string;
+                    volumes?: cloud.project.ai.volume.VolumeStatus[];
                 }
                 /**
                  * AI Solutions Job Status History Object
@@ -3603,6 +3733,15 @@ export namespace cloud {
                 }
             }
             export namespace notebook {
+                /**
+                 * AI Solutions Platform Notebook Backup Object
+                 * interface fullName: cloud.project.ai.notebook.Backup.Backup
+                 */
+                export interface Backup {
+                    createdAt: string;
+                    id: string;
+                    updatedAt: string;
+                }
                 /**
                  * AI Solutions Data Object
                  * interface fullName: cloud.project.ai.notebook.Editor.Editor
@@ -3702,6 +3841,7 @@ export namespace cloud {
                     sshUrl?: string;
                     state?: cloud.project.ai.notebook.NotebookStateEnum;
                     url?: string;
+                    volumes?: cloud.project.ai.volume.VolumeStatus[];
                     workspace?: cloud.project.ai.notebook.NotebookWorkspace;
                 }
                 /**
@@ -3738,6 +3878,15 @@ export namespace cloud {
                     url: string;
                     user: string;
                     username: string;
+                }
+                /**
+                 * Docker registry update object
+                 * interface fullName: cloud.project.ai.registry.RegistryUpdateInput.RegistryUpdateInput
+                 */
+                export interface RegistryUpdateInput {
+                    password?: string;
+                    url?: string;
+                    username?: string;
                 }
             }
             export namespace serving {
@@ -4033,7 +4182,7 @@ export namespace cloud {
                     state: cloud.project.ai.volume.DataSyncStateEnum;
                 }
                 /**
-                 * AI Solutions private Swift container Volume Object
+                 * AI Solutions private Swift container Volume Object. Deprecated: Use DataStore instead
                  * interface fullName: cloud.project.ai.volume.PrivateSwift.PrivateSwift
                  */
                 export interface PrivateSwift {
@@ -4092,7 +4241,7 @@ export namespace cloud {
                     cache: boolean;
                     container?: string;
                     dataStore?: cloud.project.ai.volume.DataStore;
-                    id: string;
+                    id?: string;
                     mountPath: string;
                     permission: cloud.project.ai.VolumePermissionEnum;
                     prefix?: string;
@@ -4103,6 +4252,15 @@ export namespace cloud {
                     standalone?: cloud.project.ai.volume.Standalone;
                     targetDataStore?: cloud.project.ai.volume.DataStore;
                     targetPrivateSwift?: cloud.project.ai.volume.PrivateSwift;
+                }
+                /**
+                 * AI Solutions Volume Object
+                 * interface fullName: cloud.project.ai.volume.VolumeStatus.VolumeStatus
+                 */
+                export interface VolumeStatus {
+                    id: string;
+                    mountPath: string;
+                    userVolumeId: string;
                 }
             }
         }
@@ -4129,6 +4287,143 @@ export namespace cloud {
              * type fullname: cloud.project.certificate.ServerAlternativeNameKindEnum
              */
             export type ServerAlternativeNameKindEnum = "DNS" | "EMAIL" | "IP" | "URI"
+        }
+        export namespace dataIntegration {
+            /**
+             * Connector parameters
+             * interface fullName: cloud.project.dataIntegration.CapabilitiesConnectorParameter.CapabilitiesConnectorParameter
+             */
+            export interface CapabilitiesConnectorParameter {
+                default?: string;
+                description: string;
+                mandatory: boolean;
+                name: string;
+                type: string;
+                validator: cloud.project.dataIntegration.ParameterValidator;
+            }
+            /**
+             * Connection information
+             * interface fullName: cloud.project.dataIntegration.Connection.Connection
+             */
+            export interface Connection {
+                date?: string;
+                status: cloud.project.dataIntegration.ConnectionStatusEnum;
+            }
+            /**
+             * Possible state of connection
+             * type fullname: cloud.project.dataIntegration.ConnectionStatusEnum
+             */
+            export type ConnectionStatusEnum = "CONNECTION_FAILED" | "CONNECTION_RUNNING" | "CONNECTION_SUCCEED"
+            /**
+             * Connector information
+             * interface fullName: cloud.project.dataIntegration.Connector.Connector
+             */
+            export interface Connector {
+                description: string;
+                documentationUrl?: string;
+                id: string;
+                name: string;
+                parameters?: cloud.project.dataIntegration.CapabilitiesConnectorParameter[];
+                version: string;
+            }
+            /**
+             * Destination information
+             * interface fullName: cloud.project.dataIntegration.Destination.Destination
+             */
+            export interface Destination {
+                connectorId: string;
+                creationDate?: string;
+                id: string;
+                lastUpdateDate?: string;
+                name: string;
+                parameters: cloud.project.dataIntegration.Parameter[];
+                status: cloud.project.dataIntegration.ConnectionStatusEnum;
+            }
+            /**
+             * Job information
+             * interface fullName: cloud.project.dataIntegration.Job.Job
+             */
+            export interface Job {
+                createdAt: string;
+                endedAt?: string;
+                id: string;
+                startedAt?: string;
+                status: cloud.project.dataIntegration.StatusEnum;
+            }
+            /**
+             * Metadata from source
+             * interface fullName: cloud.project.dataIntegration.Metadata.Metadata
+             */
+            export interface Metadata {
+                endedAt?: string;
+                metadata?: cloud.project.dataIntegration.MetadataDescription[];
+                startedAt: string;
+                status: cloud.project.dataIntegration.MetadataStatusEnum;
+                tableName: string;
+            }
+            /**
+             * Metadata description
+             * interface fullName: cloud.project.dataIntegration.MetadataDescription.MetadataDescription
+             */
+            export interface MetadataDescription {
+                cardinality: number;
+                max: number;
+                min: number;
+                name: string;
+                type: string;
+            }
+            /**
+             * Possible state of the metadata extraction
+             * type fullname: cloud.project.dataIntegration.MetadataStatusEnum
+             */
+            export type MetadataStatusEnum = "FAILED" | "PROCESSING" | "STOP" | "SUCCESS" | "UNKNOWN"
+            /**
+             * Parameters of the connector
+             * interface fullName: cloud.project.dataIntegration.Parameter.Parameter
+             */
+            export interface Parameter {
+                name: string;
+                value: string;
+            }
+            /**
+             * Conditions to which the value of parameter must conform
+             * interface fullName: cloud.project.dataIntegration.ParameterValidator.ParameterValidator
+             */
+            export interface ParameterValidator {
+                max?: number;
+                min?: number;
+                regex?: string;
+            }
+            /**
+             * Source information
+             * interface fullName: cloud.project.dataIntegration.Source.Source
+             */
+            export interface Source {
+                connectorId: string;
+                creationDate?: string;
+                id: string;
+                lastUpdateDate?: string;
+                name: string;
+                parameters: cloud.project.dataIntegration.Parameter[];
+                status: cloud.project.dataIntegration.ConnectionStatusEnum;
+            }
+            /**
+             * Possible state of the connector
+             * type fullname: cloud.project.dataIntegration.StatusEnum
+             */
+            export type StatusEnum = "COMPLETED" | "DELETED" | "FAILED" | "PROVISIONING" | "RUNNING" | "SUBMITTED" | "TERMINATED" | "UNKNOWN"
+            /**
+             * Workflow information
+             * interface fullName: cloud.project.dataIntegration.Workflow.Workflow
+             */
+            export interface Workflow {
+                description: string;
+                destinationId: string;
+                id: string;
+                name: string;
+                schedule: string;
+                sourceId: string;
+            }
         }
         export namespace dataProcessing {
             /**
@@ -4227,6 +4522,7 @@ export namespace cloud {
                 engineVersion: string;
                 id: string;
                 name: string;
+                notebook?: string;
                 region: string;
                 returnCode?: number;
                 startDate?: string;
@@ -4322,7 +4618,7 @@ export namespace cloud {
                  * State of the notebook
                  * type fullname: cloud.project.dataProcessing.notebook.NotebookStateEnum
                  */
-                export type NotebookStateEnum = "DELETING" | "FAILED" | "RUNNING" | "STARTING" | "STOPPED" | "STOPPING"
+                export type NotebookStateEnum = "DELETED" | "FAILED" | "RUNNING" | "STARTING" | "STOPPED" | "STOPPING"
                 /**
                  * Data Processing Notebook Status Object
                  * interface fullName: cloud.project.dataProcessing.notebook.NotebookStatus.NotebookStatus
@@ -4481,6 +4777,7 @@ export namespace cloud {
                     description: string;
                     name: string;
                     sslModes: string[];
+                    storage: cloud.project.database.capabilities.engine.storage.StrategyEnum;
                     versions: string[];
                 }
                 /**
@@ -4541,6 +4838,15 @@ export namespace cloud {
                         export type TypeEnum = "boolean" | "double" | "long" | "string"
                     }
                 }
+                export namespace engine {
+                    export namespace storage {
+                        /**
+                         * Possible storage strategy for an engine
+                         * type fullname: cloud.project.database.capabilities.engine.storage.StrategyEnum
+                         */
+                        export type StrategyEnum = "distributed" | "n/a" | "replicated"
+                    }
+                }
                 export namespace integration {
                     /**
                      * Integration capability parameter
@@ -4597,6 +4903,7 @@ export namespace cloud {
                     nodeNumber: number;
                     plan: string;
                     restApi: boolean;
+                    schemaRegistry: boolean;
                     status: cloud.project.database.StatusEnum;
                     subnetId?: string;
                     version: string;
@@ -5110,6 +5417,7 @@ export namespace cloud {
                     description: string;
                     id: string;
                     region: string;
+                    regions: cloud.project.database.service.backup.Region[];
                     size: complexType.UnitAndValue<number>;
                     status: cloud.project.database.StatusEnum;
                     type: cloud.project.database.BackupTypeEnum;
@@ -5369,6 +5677,15 @@ export namespace cloud {
                     name: string;
                     roles: string[];
                 }
+                export namespace backup {
+                    /**
+                     * Cloud database backup region definition
+                     * interface fullName: cloud.project.database.service.backup.Region.Region
+                     */
+                    export interface Region {
+                        name: string;
+                    }
+                }
                 export namespace creation {
                     /**
                      * Defines the variable to fork a cluster from a backup
@@ -5442,7 +5759,7 @@ export namespace cloud {
                      * Defines all the values for the component in the service endpoints
                      * type fullname: cloud.project.database.service.endpoint.ComponentEnum
                      */
-                    export type ComponentEnum = "cassandra" | "grafana" | "graphite" | "influxdb" | "kafka" | "kafkaConnect" | "kafkaRestApi" | "kafkaSASL" | "kibana" | "m3coordinator" | "mongodb" | "mongodbAnalytics" | "mongodbSrv" | "mongodbSrvAnalytics" | "mysql" | "mysqlRead" | "mysqlx" | "opensearch" | "postgresql" | "postgresqlRead" | "postgresqlReadReplica" | "prometheusRead" | "prometheusWrite" | "redis"
+                    export type ComponentEnum = "cassandra" | "grafana" | "graphite" | "influxdb" | "kafka" | "kafkaConnect" | "kafkaRestApi" | "kafkaSASL" | "kafkaSchemaRegistry" | "kibana" | "m3coordinator" | "mongodb" | "mongodbAnalytics" | "mongodbSrv" | "mongodbSrvAnalytics" | "mysql" | "mysqlRead" | "mysqlx" | "opensearch" | "postgresql" | "postgresqlRead" | "postgresqlReadReplica" | "prometheusRead" | "prometheusWrite" | "redis"
                 }
                 export namespace integration {
                     /**
@@ -6050,11 +6367,27 @@ export namespace cloud {
             usedRAM: number;
         }
         /**
+         * Quotas on keymanager
+         * interface fullName: cloud.quota.KeymanagerQuotas.KeymanagerQuotas
+         */
+        export interface KeymanagerQuotas {
+            maxSecrets: number;
+            usedSecrets: number;
+        }
+        /**
          * Quotas on keypairs
          * interface fullName: cloud.quota.KeypairQuotas.KeypairQuotas
          */
         export interface KeypairQuotas {
             maxCount: number;
+        }
+        /**
+         * Quotas on loadbalancer
+         * interface fullName: cloud.quota.LoadbalancerQuotas.LoadbalancerQuotas
+         */
+        export interface LoadbalancerQuotas {
+            maxLoadbalancers: number;
+            usedLoadbalancers: number;
         }
         /**
          * Quotas for network
@@ -6066,12 +6399,25 @@ export namespace cloud {
             subnets: number;
         }
         /**
+         * Quotas on network
+         * interface fullName: cloud.quota.NetworkQuotas.NetworkQuotas
+         */
+        export interface NetworkQuotas {
+            maxFloatingIPs: number;
+            maxGateways: number;
+            usedFloatingIPs: number;
+            usedGateways: number;
+        }
+        /**
          * Quotas
          * interface fullName: cloud.quota.Quotas.Quotas
          */
         export interface Quotas {
             instance?: cloud.quota.InstanceUsageQuotas;
+            keymanager?: cloud.quota.KeymanagerQuotas;
             keypair?: cloud.quota.KeypairQuotas;
+            loadbalancer?: cloud.quota.LoadbalancerQuotas;
+            network?: cloud.quota.NetworkQuotas;
             region: string;
             volume?: cloud.quota.VolumeUsageQuotas;
         }
@@ -6329,6 +6675,14 @@ export namespace cloud {
          */
         export type PresignedURLMethodEnum = "GET" | "PUT"
         /**
+         * Cloud Storage Quota
+         * interface fullName: cloud.storage.Quota.Quota
+         */
+        export interface Quota {
+            buckets: number;
+            maxBuckets: number;
+        }
+        /**
          * RetrievalStateEnum
          * type fullname: cloud.storage.RetrievalStateEnum
          */
@@ -6429,6 +6783,13 @@ export namespace cloud {
         }
     }
     export namespace user {
+        /**
+         * Client Cloud Configuration
+         * interface fullName: cloud.user.Configuration.Configuration
+         */
+        export interface Configuration {
+            content: string;
+        }
         /**
          * Openrc
          * interface fullName: cloud.user.Openrc.Openrc
@@ -6554,6 +6915,7 @@ export namespace cloud {
             creationDate: string;
             id: string;
             name: string;
+            region: string;
             size: number;
             status: cloud.volumeBackup.VolumeBackupStatusEnum;
             volumeId: string;
@@ -6608,7 +6970,7 @@ export namespace order {
     /**
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = " INR" | "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * Price with it's currency and textual representation
      * interface fullName: order.Price.Price
@@ -6690,24 +7052,6 @@ export interface Cloud {
          * GET /cloud/agreements
          */
         $get(params: { product: cloud.project.ProductNameEnum }): Promise<cloud.project.ProductAgreements>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-    }
-    createProject: {
-        /**
-         * Start a new cloud project
-         * POST /cloud/createProject
-         */
-        $post(params?: { credit?: number, description?: string, voucher?: string }): Promise<cloud.project.NewProject>;
-    }
-    createProjectInfo: {
-        /**
-         * Get information about a cloud project creation
-         * GET /cloud/createProjectInfo
-         */
-        $get(params?: { voucher?: string }): Promise<cloud.project.NewProjectInfo>;
         /**
          * Controle cache
          */
@@ -6840,12 +7184,12 @@ export interface Cloud {
                      * List apps
                      * GET /cloud/project/{serviceName}/ai/app
                      */
-                    $get(params?: { order?: cloud.project.ai.OrderEnum, page?: number, size?: number, sort?: string, statusState?: cloud.project.ai.app.AppStateEnum[], updatedAfter?: string, userName?: string }): Promise<cloud.project.ai.app.App[]>;
+                    $get(params?: { labelSelector?: string, order?: cloud.project.ai.OrderEnum, page?: number, size?: number, sort?: string, statusState?: cloud.project.ai.app.AppStateEnum[], updatedAfter?: string, updatedBefore?: string, userName?: string }): Promise<cloud.project.ai.app.App[]>;
                     /**
                      * Create a new app
                      * POST /cloud/project/{serviceName}/ai/app
                      */
-                    $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, probe?: cloud.project.ai.app.ProbeInput, region: string, resources: cloud.project.ai.ResourcesInput, scalingStrategy?: cloud.project.ai.app.ScalingStrategyInput, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.app.App>;
+                    $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], envVars?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, probe?: cloud.project.ai.app.ProbeInput, region: string, resources: cloud.project.ai.ResourcesInput, scalingStrategy?: cloud.project.ai.app.ScalingStrategyInput, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.app.App>;
                     /**
                      * Controle cache
                      */
@@ -6855,7 +7199,7 @@ export interface Cloud {
                          * Generate an app spec corresponding CLI command
                          * POST /cloud/project/{serviceName}/ai/app/command
                          */
-                        $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, probe?: cloud.project.ai.app.ProbeInput, region: string, resources: cloud.project.ai.ResourcesInput, scalingStrategy?: cloud.project.ai.app.ScalingStrategyInput, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
+                        $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], envVars?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, probe?: cloud.project.ai.app.ProbeInput, region: string, resources: cloud.project.ai.ResourcesInput, scalingStrategy?: cloud.project.ai.app.ScalingStrategyInput, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
                     }
                     $(appId: string): {
                         /**
@@ -6884,7 +7228,7 @@ export interface Cloud {
                              * Set the Docker image of an AI app
                              * PUT /cloud/project/{serviceName}/ai/app/{appId}/image
                              */
-                            $put(params: { url: string }): Promise<void>;
+                            $put(params: { url: string }): Promise<cloud.project.ai.GenericResponse>;
                         }
                         label: {
                             /**
@@ -7119,12 +7463,12 @@ export interface Cloud {
                      * List jobs
                      * GET /cloud/project/{serviceName}/ai/job
                      */
-                    $get(params?: { order?: cloud.project.ai.OrderEnum, page?: number, size?: number, sort?: string, statusState?: cloud.project.ai.job.JobStateEnum[], updatedAfter?: string, userName?: string }): Promise<cloud.project.ai.job.Job[]>;
+                    $get(params?: { labelSelector?: string, order?: cloud.project.ai.OrderEnum, page?: number, size?: number, sort?: string, statusState?: cloud.project.ai.job.JobStateEnum[], updatedAfter?: string, updatedBefore?: string, userName?: string }): Promise<cloud.project.ai.job.Job[]>;
                     /**
                      * Create a new job
                      * POST /cloud/project/{serviceName}/ai/job
                      */
-                    $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, readUser?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], timeout?: number, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.job.Job>;
+                    $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], envVars?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, readUser?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], timeout?: number, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.job.Job>;
                     /**
                      * Controle cache
                      */
@@ -7132,7 +7476,7 @@ export interface Cloud {
                     capabilities: {
                         presetImage: {
                             /**
-                             * List AI Solutions Preset Model Images
+                             * List AI Solutions Preset Model Images (deprecated)
                              * GET /cloud/project/{serviceName}/ai/job/capabilities/presetImage
                              */
                             $get(): Promise<cloud.project.ai.job.PresetImage[]>;
@@ -7147,7 +7491,7 @@ export interface Cloud {
                          * Generate a job spec corresponding CLI command
                          * POST /cloud/project/{serviceName}/ai/job/command
                          */
-                        $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, readUser?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], timeout?: number, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
+                        $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], envVars?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, readUser?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], timeout?: number, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
                     }
                     $(jobId: string): {
                         /**
@@ -7203,7 +7547,7 @@ export interface Cloud {
                      * List notebooks
                      * GET /cloud/project/{serviceName}/ai/notebook
                      */
-                    $get(params?: { order?: cloud.project.ai.OrderEnum, page?: number, size?: number, sort?: string, statusState?: cloud.project.ai.notebook.NotebookStateEnum[], updatedAfter?: string, userName?: string }): Promise<cloud.project.ai.notebook.Notebook[]>;
+                    $get(params?: { labelSelector?: string, order?: cloud.project.ai.OrderEnum, page?: number, size?: number, sort?: string, statusState?: cloud.project.ai.notebook.NotebookStateEnum[], updatedAfter?: string, updatedBefore?: string, userName?: string }): Promise<cloud.project.ai.notebook.Notebook[]>;
                     /**
                      * Create a new notebook
                      * POST /cloud/project/{serviceName}/ai/notebook
@@ -7264,6 +7608,35 @@ export interface Cloud {
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        backup: {
+                            /**
+                             * List all backups of an AI Solutions notebook
+                             * GET /cloud/project/{serviceName}/ai/notebook/{notebookId}/backup
+                             */
+                            $get(params?: { order?: cloud.project.ai.OrderEnum, page?: number, size?: number, sort?: string, updatedAfter?: string, updatedBefore?: string }): Promise<cloud.project.ai.notebook.Backup[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(backupId: string): {
+                                /**
+                                 * Get details for a single AI Solutions notebook backup
+                                 * GET /cloud/project/{serviceName}/ai/notebook/{notebookId}/backup/{backupId}
+                                 */
+                                $get(): Promise<cloud.project.ai.notebook.Backup>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                fork: {
+                                    /**
+                                     * Starts a new AI Solutions notebook from a backup
+                                     * POST /cloud/project/{serviceName}/ai/notebook/{notebookId}/backup/{backupId}/fork
+                                     */
+                                    $post(): Promise<cloud.project.ai.notebook.Notebook>;
+                                }
+                            };
+                        }
                         datasync: {
                             /**
                              * Starts a manual data synchronization on an AI Solutions notebook
@@ -7307,12 +7680,12 @@ export interface Cloud {
                 }
                 registry: {
                     /**
-                     * List registry
+                     * List Docker registries
                      * GET /cloud/project/{serviceName}/ai/registry
                      */
                     $get(): Promise<cloud.project.ai.registry.Registry[]>;
                     /**
-                     * Create a new docker registry
+                     * Create a Docker registry
                      * POST /cloud/project/{serviceName}/ai/registry
                      */
                     $post(params: { createdAt?: string, id?: string, password: string, region: string, updatedAt?: string, url: string, user?: string, username: string }): Promise<cloud.project.ai.registry.Registry>;
@@ -7322,15 +7695,20 @@ export interface Cloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(registryId: string): {
                         /**
-                         * Detach the current registry
+                         * Delete a Docker registry
                          * DELETE /cloud/project/{serviceName}/ai/registry/{registryId}
                          */
                         $delete(): Promise<void>;
                         /**
-                         * Get registry information
+                         * Get information about a Docker registry
                          * GET /cloud/project/{serviceName}/ai/registry/{registryId}
                          */
                         $get(): Promise<cloud.project.ai.registry.Registry>;
+                        /**
+                         * Update a Docker registry
+                         * PUT /cloud/project/{serviceName}/ai/registry/{registryId}
+                         */
+                        $put(params?: { password?: string, url?: string, username?: string }): Promise<void>;
                         /**
                          * Controle cache
                          */
@@ -7605,6 +7983,17 @@ export interface Cloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 kube: {
+                    admissionplugins: {
+                        /**
+                         * List of admissionPlugins managed by MKS product that can be enabled or disabled.
+                         * GET /cloud/project/{serviceName}/capabilities/kube/admissionplugins
+                         */
+                        $get(): Promise<cloud.ProjectKubeCustomizationAPIServerAdmissionPluginsEnum[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                     flavors: {
                         /**
                          * List Kubernetes available flavors for a region
@@ -7843,7 +8232,7 @@ export interface Cloud {
                      * Submit a job
                      * POST /cloud/project/{serviceName}/dataProcessing/jobs
                      */
-                    $post(params: { containerName: string, creationDate?: string, endDate?: string, engine: string, engineParameters: cloud.project.dataProcessing.EngineParameter[], engineVersion: string, id?: string, name?: string, region: string, returnCode?: number, startDate?: string, status?: cloud.project.dataProcessing.StatusEnum, ttl?: string }): Promise<cloud.project.dataProcessing.Job>;
+                    $post(params: { containerName: string, creationDate?: string, endDate?: string, engine: string, engineParameters: cloud.project.dataProcessing.EngineParameter[], engineVersion: string, id?: string, name?: string, notebook?: string, region: string, returnCode?: number, startDate?: string, status?: cloud.project.dataProcessing.StatusEnum, ttl?: string }): Promise<cloud.project.dataProcessing.Job>;
                     /**
                      * Controle cache
                      */
@@ -7886,6 +8275,63 @@ export interface Cloud {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                notebooks: {
+                    /**
+                     * List all notebooks
+                     * GET /cloud/project/{serviceName}/dataProcessing/notebooks
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Create a notebook
+                     * POST /cloud/project/{serviceName}/dataProcessing/notebooks
+                     */
+                    $post(params: { env: cloud.project.dataProcessing.notebook.NotebookEnv, name?: string, region: string }): Promise<cloud.project.dataProcessing.notebook.Notebook>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    capabilities: {
+                        /**
+                         * Get notebooks capabilities
+                         * GET /cloud/project/{serviceName}/dataProcessing/notebooks/capabilities
+                         */
+                        $get(): Promise<cloud.project.dataProcessing.notebook.Capability[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    $(notebookId: string): {
+                        /**
+                         * Delete notebook with given id
+                         * DELETE /cloud/project/{serviceName}/dataProcessing/notebooks/{notebookId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get notebook information
+                         * GET /cloud/project/{serviceName}/dataProcessing/notebooks/{notebookId}
+                         */
+                        $get(): Promise<cloud.project.dataProcessing.notebook.Notebook>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        start: {
+                            /**
+                             * Start a Data Processing notebook
+                             * PUT /cloud/project/{serviceName}/dataProcessing/notebooks/{notebookId}/start
+                             */
+                            $put(): Promise<void>;
+                        }
+                        stop: {
+                            /**
+                             * Stop a Data Processing notebook
+                             * PUT /cloud/project/{serviceName}/dataProcessing/notebooks/{notebookId}/stop
+                             */
+                            $put(): Promise<void>;
+                        }
+                    };
                 }
             }
             database: {
@@ -8528,7 +8974,7 @@ export interface Cloud {
                          * Update an existing kafka cluster
                          * PUT /cloud/project/{serviceName}/database/kafka/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, restApi?: boolean, status?: cloud.project.database.StatusEnum, subnetId?: string, version?: string }): Promise<cloud.project.database.kafka.Service>;
+                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, restApi?: boolean, schemaRegistry?: boolean, status?: cloud.project.database.StatusEnum, subnetId?: string, version?: string }): Promise<cloud.project.database.kafka.Service>;
                         /**
                          * Controle cache
                          */
@@ -11784,17 +12230,6 @@ export interface Cloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
-            forecast: {
-                /**
-                 * Get your consumption forecast
-                 * GET /cloud/project/{serviceName}/forecast
-                 */
-                $get(params: { toDate: string }): Promise<cloud.forecast.ProjectForecast>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
             image: {
                 /**
                  * Get images
@@ -12077,7 +12512,7 @@ export interface Cloud {
                  * Create a new managed Kubernetes cluster
                  * POST /cloud/project/{serviceName}/kube
                  */
-                $post(params: { customization?: cloud.ProjectKubeCustomization, name?: string, nodepool?: cloud.ProjectKubeCreationNodePool, privateNetworkConfiguration?: cloud.kube.PrivateNetworkConfiguration, privateNetworkId?: string, region: string, updatePolicy?: cloud.kube.UpdatePolicyEnum, version?: cloud.kube.VersionEnum }): Promise<cloud.kube.Cluster>;
+                $post(params: { customization?: cloud.ProjectKubeCustomization, kubeProxyMode?: cloud.kube.KubeProxyModeEnum, name?: string, nodepool?: cloud.ProjectKubeCreationNodePool, privateNetworkConfiguration?: cloud.kube.PrivateNetworkConfiguration, privateNetworkId?: string, region: string, updatePolicy?: cloud.kube.UpdatePolicyEnum, version?: cloud.kube.VersionEnum }): Promise<cloud.kube.Cluster>;
                 /**
                  * Controle cache
                  */
@@ -12130,7 +12565,7 @@ export interface Cloud {
                          * Update cluster customization
                          * PUT /cloud/project/{serviceName}/kube/{kubeId}/customization
                          */
-                        $put(params?: { apiServer?: cloud.ProjectKubeCustomizationAPIServer }): Promise<cloud.kube.ResponseMessage>;
+                        $put(params?: { apiServer?: cloud.ProjectKubeCustomizationAPIServer, kubeProxy?: cloud.ProjectKubeCustomizationKubeProxy }): Promise<cloud.kube.ResponseMessage>;
                         /**
                          * Controle cache
                          */
@@ -12329,7 +12764,7 @@ export interface Cloud {
                          * Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/reset
                          */
-                        $post(params?: { customization?: cloud.ProjectKubeCustomization, name?: string, privateNetworkConfiguration?: cloud.kube.PrivateNetworkConfiguration, privateNetworkId?: string, updatePolicy?: cloud.kube.UpdatePolicyEnum, version?: cloud.kube.VersionEnum, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum }): Promise<void>;
+                        $post(params?: { customization?: cloud.ProjectKubeCustomization, kubeProxyMode?: cloud.kube.KubeProxyModeEnum, name?: string, privateNetworkConfiguration?: cloud.kube.PrivateNetworkConfiguration, privateNetworkId?: string, updatePolicy?: cloud.kube.UpdatePolicyEnum, version?: cloud.kube.VersionEnum, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum }): Promise<void>;
                     }
                     restart: {
                         /**
@@ -12633,6 +13068,84 @@ export interface Cloud {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    coldArchive: {
+                        /**
+                         * Get cold archive containers
+                         * GET /cloud/project/{serviceName}/region/{regionName}/coldArchive
+                         */
+                        $get(): Promise<cloud.ColdArchiveContainer[]>;
+                        /**
+                         * Create S3 cold archive container
+                         * POST /cloud/project/{serviceName}/region/{regionName}/coldArchive
+                         */
+                        $post(params: { name: string, ownerId?: number }): Promise<cloud.ColdArchiveContainer>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(name: string): {
+                            /**
+                             * Delete S3 cold archive container
+                             * DELETE /cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Get S3 cold archive container
+                             * GET /cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}
+                             */
+                            $get(params?: { limit?: number, marker?: string }): Promise<cloud.ColdArchiveContainer>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            archive: {
+                                /**
+                                 * Start archiving of container
+                                 * POST /cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}/archive
+                                 */
+                                $post(): Promise<void>;
+                            }
+                            destroy: {
+                                /**
+                                 * Start cleaning tape date of archived container
+                                 * POST /cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}/destroy
+                                 */
+                                $post(): Promise<void>;
+                            }
+                            object: {
+                                $(objectKey: string): {
+                                    /**
+                                     * Delete S3 cold archive container object
+                                     * DELETE /cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}/object/{objectKey}
+                                     */
+                                    $delete(): Promise<void>;
+                                };
+                            }
+                            policy: {
+                                $(userId: string): {
+                                    /**
+                                     * Add S3 cold archive container policy
+                                     * POST /cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}/policy/{userId}
+                                     */
+                                    $post(params: { objectKey?: string, roleName: cloud.storage.PolicyRoleEnum }): Promise<void>;
+                                };
+                            }
+                            presign: {
+                                /**
+                                 * Generate presigned URLs to download or upload objects
+                                 * POST /cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}/presign
+                                 */
+                                $post(params?: { expire?: number, method?: cloud.storage.PresignedURLMethodEnum, object?: string }): Promise<cloud.storage.PresignedURL>;
+                            }
+                            restore: {
+                                /**
+                                 * Start restoring of container
+                                 * POST /cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}/restore
+                                 */
+                                $post(): Promise<void>;
+                            }
+                        };
+                    }
                     floatingip: {
                         /**
                          * Get floating ips
@@ -12658,6 +13171,13 @@ export interface Cloud {
                              * Controle cache
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            detach: {
+                                /**
+                                 * Detach your floating ip
+                                 * POST /cloud/project/{serviceName}/region/{regionName}/floatingip/{floatingIpId}/detach
+                                 */
+                                $post(): Promise<void>;
+                            }
                         };
                     }
                     gateway: {
@@ -12848,7 +13368,7 @@ export interface Cloud {
                              * Create health monitor
                              * POST /cloud/project/{serviceName}/region/{regionName}/loadbalancing/healthMonitor
                              */
-                            $post(params: { httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration, id?: string, maxRetries: number, maxRetriesDown: number, monitorType: cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum, name: string, operatingStatus?: cloud.loadbalancing.LoadBalancerOperatingStatusEnum, periodicity: number, poolId: string, provisioningStatus?: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum, timeout: number }): Promise<cloud.loadbalancing.HealthMonitor>;
+                            $post(params: { httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration, id?: string, maxRetries: number, maxRetriesDown: number, monitorType: cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum, name: string, operatingStatus?: cloud.loadbalancing.LoadBalancerOperatingStatusEnum, periodicity: string, poolId: string, provisioningStatus?: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum, timeout: number }): Promise<cloud.loadbalancing.HealthMonitor>;
                             /**
                              * Controle cache
                              */
@@ -12868,7 +13388,7 @@ export interface Cloud {
                                  * Update a health monitor
                                  * PUT /cloud/project/{serviceName}/region/{regionName}/loadbalancing/healthMonitor/{healthMonitorId}
                                  */
-                                $put(params?: { httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration, maxRetries?: number, maxRetriesDown?: number, name?: string, periodicity?: number, timeout?: number }): Promise<cloud.loadbalancing.HealthMonitor>;
+                                $put(params?: { httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration, maxRetries?: number, maxRetriesDown?: number, name?: string, periodicity?: string, timeout?: number }): Promise<cloud.loadbalancing.HealthMonitor>;
                                 /**
                                  * Controle cache
                                  */
@@ -13263,6 +13783,52 @@ export interface Cloud {
                             }
                         };
                     }
+                    volumeBackup: {
+                        /**
+                         * List volume backups
+                         * GET /cloud/project/{serviceName}/region/{regionName}/volumeBackup
+                         */
+                        $get(): Promise<cloud.volumeBackup.VolumeBackup[]>;
+                        /**
+                         * Create a volume backup
+                         * POST /cloud/project/{serviceName}/region/{regionName}/volumeBackup
+                         */
+                        $post(params: { name?: string, volumeId: string }): Promise<cloud.volumeBackup.VolumeBackup>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(volumeBackupId: string): {
+                            /**
+                             * Delete volume backup
+                             * DELETE /cloud/project/{serviceName}/region/{regionName}/volumeBackup/{volumeBackupId}
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Get volume backup
+                             * GET /cloud/project/{serviceName}/region/{regionName}/volumeBackup/{volumeBackupId}
+                             */
+                            $get(): Promise<cloud.volumeBackup.VolumeBackup>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            restore: {
+                                /**
+                                 * Restore a volume backup on a volume
+                                 * POST /cloud/project/{serviceName}/region/{regionName}/volumeBackup/{volumeBackupId}/restore
+                                 */
+                                $post(params: { volumeId: string }): Promise<cloud.volumeBackup.VolumeBackup>;
+                            }
+                            volume: {
+                                /**
+                                 * Create a volume from a volume backup
+                                 * POST /cloud/project/{serviceName}/region/{regionName}/volumeBackup/{volumeBackupId}/volume
+                                 */
+                                $post(params?: { name?: string }): Promise<cloud.volume.Volume>;
+                            }
+                        };
+                    }
                     workflow: {
                         backup: {
                             /**
@@ -13456,6 +14022,17 @@ export interface Cloud {
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
+                quota: {
+                    /**
+                     * List storage quotas
+                     * GET /cloud/project/{serviceName}/storage/quota
+                     */
+                    $get(): Promise<cloud.storage.Quota>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
                 $(containerId: string): {
                     /**
                      * Delete SWIFT container
@@ -13601,6 +14178,17 @@ export interface Cloud {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    configuration: {
+                        /**
+                         * Get your client configuration
+                         * GET /cloud/project/{serviceName}/user/{userId}/configuration
+                         */
+                        $get(params?: { region?: string }): Promise<cloud.user.Configuration>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                     openrc: {
                         /**
                          * Get RC file of OpenStack

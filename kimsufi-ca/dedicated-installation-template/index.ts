@@ -16,11 +16,6 @@ export namespace complexType {
 }
 export namespace dedicated {
     /**
-     * Filesystems available
-     * type fullname: dedicated.TemplateOsFileSystemEnum
-     */
-    export type TemplateOsFileSystemEnum = "btrfs" | "ext3" | "ext4" | "fat16" | "ntfs" | "reiserfs" | "swap" | "ufs" | "vmfs5" | "vmfs6" | "vmfsl" | "xfs" | "zfs"
-    /**
      * Hardware RAID enum
      * type fullname: dedicated.TemplateOsHardwareRaidEnum
      */
@@ -79,6 +74,23 @@ export namespace dedicated {
         version?: string;
     }
     /**
+     * A structure describing input questions for the specific OS template
+     * interface fullName: dedicated.TemplateOsInput.TemplateOsInput
+     */
+    export interface TemplateOsInput {
+        default?: string;
+        description?: string;
+        enum: string[];
+        mandatory: boolean;
+        name: string;
+        type: dedicated.TemplateOsInputTypeEnum;
+    }
+    /**
+     * Template OS Input type enum
+     * type fullname: dedicated.TemplateOsInputTypeEnum
+     */
+    export type TemplateOsInputTypeEnum = "boolean" | "date" | "email" | "enum" | "hexstring" | "ip" | "keyValue" | "number" | "string" | "text" | "time" | "url" | "uuid"
+    /**
      * all language available
      * type fullname: dedicated.TemplateOsLanguageEnum
      */
@@ -98,12 +110,12 @@ export namespace dedicated {
      * Os subfamily definition
      * type fullname: dedicated.TemplateOsSubfamilyEnum
      */
-    export type TemplateOsSubfamilyEnum = "alma" | "aos" | "arch" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "rocky" | "slackware" | "sles-sap" | "smartos" | "solusvm" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
+    export type TemplateOsSubfamilyEnum = "alma" | "aos" | "arch" | "byoi" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "rocky" | "slackware" | "sles-sap" | "smartos" | "solusvm" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
     /**
      * Os type
      * type fullname: dedicated.TemplateOsTypeEnum
      */
-    export type TemplateOsTypeEnum = "bsd" | "ibm" | "linux" | "solaris" | "unix" | "windows"
+    export type TemplateOsTypeEnum = "bsd" | "custom" | "ibm" | "linux" | "solaris" | "unix" | "windows"
     /**
      * Os usage definition
      * type fullname: dedicated.TemplateOsUsageEnum
@@ -129,8 +141,9 @@ export namespace dedicated {
             distribution: string;
             endOfInstall: string;
             family: dedicated.TemplateOsTypeEnum;
-            filesystems: dedicated.TemplateOsFileSystemEnum[];
+            filesystems: dedicated.server.FileSystemEnum[];
             hardRaidConfiguration?: boolean;
+            inputs?: dedicated.TemplateOsInput[];
             license?: dedicated.TemplateOsInfoLicense;
             lvmReady?: boolean;
             noPartitioning: boolean;
@@ -141,7 +154,6 @@ export namespace dedicated {
             supportsGptLabel?: boolean;
             supportsRTM: boolean;
             supportsSqlServer?: boolean;
-            supportsUEFI?: dedicated.server.SupportsUEFIEnum;
             templateName: string;
         }
         /**
@@ -167,7 +179,7 @@ export namespace dedicated {
          * interface fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
          */
         export interface templatePartitions {
-            filesystem: dedicated.TemplateOsFileSystemEnum;
+            filesystem: dedicated.server.FileSystemEnum;
             mountpoint: string;
             order: number;
             raid?: dedicated.server.PartitionRaidEnum;
@@ -183,15 +195,15 @@ export namespace dedicated {
          */
         export type BitFormatEnum = 32 | 64
         /**
+         * FileSystems
+         * type fullname: dedicated.server.FileSystemEnum
+         */
+        export type FileSystemEnum = "btrfs" | "ext3" | "ext4" | "fat16" | "none" | "ntfs" | "reiserfs" | "swap" | "ufs" | "vmfs5" | "vmfs6" | "vmfsl" | "xfs" | "zfs"
+        /**
          * partition raid type
          * type fullname: dedicated.server.PartitionRaidEnum
          */
         export type PartitionRaidEnum = "0" | "1" | "10" | "5" | "6" | "7"
-        /**
-         * supports UEFI setup
-         * type fullname: dedicated.server.SupportsUEFIEnum
-         */
-        export type SupportsUEFIEnum = "no" | "only" | "yes"
     }
 }
 

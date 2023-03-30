@@ -935,6 +935,7 @@ export namespace nichandle {
         fax?: string;
         firstname?: string;
         italianSDI?: string;
+        kycValidated?: boolean;
         language?: nichandle.LanguageEnum;
         legalform: nichandle.LegalFormEnum;
         name?: string;
@@ -1162,7 +1163,7 @@ export interface Domain {
              */
             $get(): Promise<domain.data.smd.Smd[]>;
             /**
-             * Create a SMD files
+             * Create a SMD file
              * POST /domain/data/smd
              */
             $post(params: { data: string }): Promise<domain.data.smd.Smd>;
@@ -1216,7 +1217,7 @@ export interface Domain {
         }
         highlighted: {
             /**
-             * Lists highlighted extensions, ordered by decreased importance
+             * List highlighted extensions, ordered by decreased importance
              * GET /domain/extensions/highlighted
              */
             $get(params?: { ovhSubsidiary?: nichandle.OvhSubsidiaryEnum }): Promise<string[]>;
@@ -1248,7 +1249,7 @@ export interface Domain {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             registryConfigurations: {
                 /**
-                 * Retrieve registry configurations for an extension
+                 * Retrieve registry configuration for an extension
                  * GET /domain/extensions/{name}/registryConfigurations
                  */
                 $get(): Promise<domain.extensions.registryConfigurations.RegistryConfigurations>;
@@ -1727,7 +1728,7 @@ export interface Domain {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 refresh: {
                     /**
-                     * Refresh an obfuscated emails configuration
+                     * Refresh an obfuscated emails configuration with new values
                      * POST /domain/{serviceName}/configurations/obfuscatedEmails/refresh
                      */
                     $post(params: { contacts: domain.configurations.ContactTypeEnum[] }): Promise<void>;
@@ -1852,11 +1853,6 @@ export interface Domain {
                      * GET /domain/{serviceName}/nameServer/{id}/status
                      */
                     $get(): Promise<domain.nameServer.NameServerStatus>;
-                    /**
-                     * Get name server status
-                     * POST /domain/{serviceName}/nameServer/{id}/status
-                     */
-                    $post(): Promise<domain.nameServer.NameServerStatus>;
                     /**
                      * Controle cache
                      */

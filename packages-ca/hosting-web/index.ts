@@ -276,7 +276,7 @@ export namespace hosting {
          * Private database orderable versions
          * type fullname: hosting.PrivateDatabase.OrderableVersionEnum
          */
-        export type OrderableVersionEnum = "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mysql_5.7" | "mysql_8.0" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "redis_4.0" | "redis_6.0"
+        export type OrderableVersionEnum = "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mysql_5.7" | "mysql_8.0" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_13" | "redis_6.0" | "redis_7.0"
     }
     export namespace web {
         /**
@@ -392,7 +392,7 @@ export namespace hosting {
          * Web supported languages
          * type fullname: hosting.web.LanguagesEnum
          */
-        export type LanguagesEnum = "node10" | "node11" | "node12" | "node14" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "php8.1" | "python2" | "python3" | "ruby2.5" | "ruby2.6"
+        export type LanguagesEnum = "node10" | "node11" | "node12" | "node14" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "php8.1" | "php8.2" | "python2" | "python3" | "ruby2.6"
         /**
          * A module specifically packaged by OVH
          * interface fullName: hosting.web.ModuleList.ModuleList
@@ -463,7 +463,7 @@ export namespace hosting {
          * Different PHP versions available
          * type fullname: hosting.web.PhpVersionAvailableEnum
          */
-        export type PhpVersionAvailableEnum = "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4" | "phpfpm-8.0"
+        export type PhpVersionAvailableEnum = "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4" | "phpfpm-8.0" | "phpfpm-8.1" | "phpfpm-8.2"
         /**
          * Different support of PHP versions
          * type fullname: hosting.web.PhpVersionStateEnum
@@ -502,7 +502,19 @@ export namespace hosting {
          * Different Ruby versions available
          * type fullname: hosting.web.RubyVersionAvailableEnum
          */
-        export type RubyVersionAvailableEnum = "ruby-2.5" | "ruby-2.6"
+        export type RubyVersionAvailableEnum = "ruby-2.6"
+        /**
+         * Hosted SSL properties
+         * interface fullName: hosting.web.SSL.SSL
+         */
+        export interface SSL {
+            isReportable: boolean;
+            provider: hosting.web.hostedssl.ProviderEnum;
+            regenerable: boolean;
+            status: hosting.web.hostedssl.StatusEnum;
+            taskId?: number;
+            type: hosting.web.hostedssl.TypeEnum;
+        }
         /**
          * Web Hosting
          * interface fullName: hosting.web.Service.Service
@@ -703,7 +715,7 @@ export namespace hosting {
              * Cron's language
              * type fullname: hosting.web.cron.LanguageEnum
              */
-            export type LanguageEnum = "node10" | "node11" | "node12" | "node14" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "php8.1" | "python2" | "python3" | "ruby2.5" | "ruby2.6"
+            export type LanguageEnum = "node10" | "node11" | "node12" | "node14" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "php8.1" | "php8.2" | "python2" | "python3" | "ruby2.6"
             /**
              * Cron state
              * type fullname: hosting.web.cron.StateEnum
@@ -720,6 +732,7 @@ export namespace hosting {
          * interface fullName: hosting.web.database.database
          */
         export interface database {
+            databaseType?: hosting.web.database.DatabaseServiceTypeEnum;
             dumps: number;
             guiURL?: string;
             lastCheck?: string;
@@ -788,6 +801,11 @@ export namespace hosting {
              */
             export type DatabaseIsolationEnum = "dedicated" | "local" | "shared"
             /**
+             * Database Service Type enum
+             * type fullname: hosting.web.database.DatabaseServiceTypeEnum
+             */
+            export type DatabaseServiceTypeEnum = "extra" | "included" | "optional"
+            /**
              * Database Type enum
              * type fullname: hosting.web.database.DatabaseTypeEnum
              */
@@ -831,7 +849,7 @@ export namespace hosting {
              * Database Version enum
              * type fullname: hosting.web.database.VersionEnum
              */
-            export type VersionEnum = "3.4" | "4.0" | "5.1" | "5.5" | "5.6" | "5.7" | "8.4"
+            export type VersionEnum = "10" | "10.1" | "10.2" | "10.3" | "10.4" | "10.5" | "11" | "12" | "13" | "3.2" | "3.4" | "4.0" | "5.1" | "5.5" | "5.6" | "5.7" | "6.0" | "7.0" | "8.0" | "8.4" | "9.4" | "9.5" | "9.6"
             export namespace dump {
                 /**
                  * List of dump types
@@ -946,15 +964,30 @@ export namespace hosting {
         }
         export namespace hostedssl {
             /**
+             * Hosted SSL Provider
+             * type fullname: hosting.web.hostedssl.ProviderEnum
+             */
+            export type ProviderEnum = "COMODO" | "CUSTOM" | "LETSENCRYPT"
+            /**
+             * Hosted SSL report status
+             * type fullname: hosting.web.hostedssl.ReportStatusEnum
+             */
+            export type ReportStatusEnum = "completed" | "in-progress" | "non-completed" | "non-required" | "not-applicable" | "not-provided"
+            /**
              * Hostedssl report value
              * type fullname: hosting.web.hostedssl.ReportValueEnum
              */
             export type ReportValueEnum = "completed" | "in-progress" | "non-completed" | "non-required" | "not-applicable" | "not-provided"
             /**
-             * Hostedssl status
+             * Hosted SSL status
              * type fullname: hosting.web.hostedssl.StatusEnum
              */
             export type StatusEnum = "created" | "creating" | "deleting" | "importing" | "regenerating"
+            /**
+             * Hosted SSL type
+             * type fullname: hosting.web.hostedssl.TypeEnum
+             */
+            export type TypeEnum = "CUSTOM" | "DV" | "EV"
         }
         /**
          * Hosting indys
@@ -1234,7 +1267,7 @@ export namespace hosting {
              * Hosting available configuration version
              * type fullname: hosting.web.ovhConfig.AvailableEngineVersionEnum
              */
-            export type AvailableEngineVersionEnum = "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "8.0" | "8.1"
+            export type AvailableEngineVersionEnum = "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "8.0" | "8.1" | "8.2"
             /**
              * Hosting configuration engine
              * type fullname: hosting.web.ovhConfig.EngineNameEnum
@@ -1244,7 +1277,7 @@ export namespace hosting {
              * Hosting configuration version
              * type fullname: hosting.web.ovhConfig.EngineVersionEnum
              */
-            export type EngineVersionEnum = "4.4" | "5.0" | "5.1" | "5.2" | "5.3" | "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "8.0" | "8.1" | "AUTO"
+            export type EngineVersionEnum = "4.4" | "5.0" | "5.1" | "5.2" | "5.3" | "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "8.0" | "8.1" | "8.2" | "AUTO"
             /**
              * Hosting configuration environment
              * type fullname: hosting.web.ovhConfig.EnvironmentEnum
@@ -1320,7 +1353,7 @@ export namespace hosting {
              * Runtime backend type enum
              * type fullname: hosting.web.runtime.TypeEnum
              */
-            export type TypeEnum = "nodejs-10" | "nodejs-11" | "nodejs-12" | "nodejs-14" | "nodejs-8" | "nodejs-9" | "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4" | "phpfpm-8.0" | "python-2" | "python-3" | "ruby-2.5" | "ruby-2.6"
+            export type TypeEnum = "nodejs-10" | "nodejs-11" | "nodejs-12" | "nodejs-14" | "nodejs-8" | "nodejs-9" | "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4" | "phpfpm-8.0" | "python-2" | "python-3" | "ruby-2.6"
         }
         /**
          * Hostedssl
@@ -1333,6 +1366,21 @@ export namespace hosting {
             status: hosting.web.hostedssl.StatusEnum;
             taskId?: number;
             type: string;
+        }
+        export namespace ssl {
+            /**
+             * Hosted SSL report
+             * interface fullName: hosting.web.ssl.Report.Report
+             */
+            export interface Report {
+                certificateSigningRequestStatus: hosting.web.hostedssl.ReportStatusEnum;
+                domainControlValidationStatus: hosting.web.hostedssl.ReportStatusEnum;
+                organizationValidationStatus: hosting.web.hostedssl.ReportStatusEnum;
+                phoneCallApprovalStatus: hosting.web.hostedssl.ReportStatusEnum;
+                providerOrderId: string;
+                termsAndConditionsAcceptanceStatus: hosting.web.hostedssl.ReportStatusEnum;
+                tradeNameVerificationStatus: hosting.web.hostedssl.ReportStatusEnum;
+            }
         }
         /**
          * Hostedssl Report
@@ -1452,7 +1500,7 @@ export namespace order {
      * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * Price with its currency and textual representation
      * interface fullName: order.Price.Price
@@ -2047,7 +2095,7 @@ export interface Hosting {
                          * Dump available for your databases
                          * GET /hosting/web/{serviceName}/database/{name}/dump
                          */
-                        $get(params?: { creationDate?: string, deletionDate?: string, type?: hosting.web.database.dump.DateEnum }): Promise<number[]>;
+                        $get(params?: { 'creationDate.from'?: string, 'creationDate.to'?: string, 'deletionDate.from'?: string, 'deletionDate.to'?: string, type?: hosting.web.database.dump.DateEnum }): Promise<number[]>;
                         /**
                          * Request the dump from your database
                          * POST /hosting/web/{serviceName}/database/{name}/dump
@@ -2153,7 +2201,7 @@ export interface Hosting {
                  * Dumps linked to your hosting
                  * GET /hosting/web/{serviceName}/dump
                  */
-                $get(params?: { creationDate?: string, databaseName?: string, deletionDate?: string, orphan?: boolean }): Promise<number[]>;
+                $get(params?: { 'creationDate.from'?: string, 'creationDate.to'?: string, databaseName?: string, 'deletionDate.from'?: string, 'deletionDate.to'?: string, orphan?: boolean }): Promise<number[]>;
                 /**
                  * Controle cache
                  */
@@ -2788,10 +2836,10 @@ export interface Hosting {
                  */
                 $delete(): Promise<hosting.web.ssl>;
                 /**
-                 * Get this object properties
+                 * Get hosted SSL properties
                  * GET /hosting/web/{serviceName}/ssl
                  */
-                $get(): Promise<hosting.web.ssl>;
+                $get(): Promise<hosting.web.SSL>;
                 /**
                  * Create the free default HostedSsl OR import your proper SSL on your hosting
                  * POST /hosting/web/{serviceName}/ssl
@@ -2803,7 +2851,7 @@ export interface Hosting {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 domains: {
                     /**
-                     * Get domains linked to this HostedSsl
+                     * Get list of domains linked to the hosted SSL
                      * GET /hosting/web/{serviceName}/ssl/domains
                      */
                     $get(): Promise<string[]>;
@@ -2821,10 +2869,10 @@ export interface Hosting {
                 }
                 report: {
                     /**
-                     * Get this object properties
+                     * Get hosted SSL report properties
                      * GET /hosting/web/{serviceName}/ssl/report
                      */
-                    $get(): Promise<hosting.web.ssl_report>;
+                    $get(): Promise<hosting.web.ssl.Report>;
                     /**
                      * Controle cache
                      */

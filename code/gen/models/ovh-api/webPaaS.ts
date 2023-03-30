@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available regions and templates",
           "httpMethod": "GET",
+          "iamActions": [
+            "webPaaS:apiovh:capabilities/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41,6 +44,9 @@ export const schema: Schema = {
           },
           "description": "List your subscriptions",
           "httpMethod": "GET",
+          "iamActions": [
+            "webPaaS:apiovh:subscription/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -58,6 +64,9 @@ export const schema: Schema = {
           },
           "description": "Get information about your subscription",
           "httpMethod": "GET",
+          "iamActions": [
+            "webPaaS:apiovh:subscription/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -84,6 +93,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "webPaaS:apiovh:subscription/confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -142,6 +154,9 @@ export const schema: Schema = {
           },
           "description": "List customers added to a project",
           "httpMethod": "GET",
+          "iamActions": [
+            "webPaaS:apiovh:subscription/customer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -162,6 +177,9 @@ export const schema: Schema = {
           },
           "description": "Add customer to the project",
           "httpMethod": "POST",
+          "iamActions": [
+            "webPaaS:apiovh:subscription/customer/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -195,6 +213,9 @@ export const schema: Schema = {
           },
           "description": "Remove customer from the project",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webPaaS:apiovh:subscription/customer/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -223,6 +244,9 @@ export const schema: Schema = {
           },
           "description": "Get the customer details",
           "httpMethod": "GET",
+          "iamActions": [
+            "webPaaS:apiovh:subscription/customer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -257,6 +281,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webPaaS:apiovh:subscription/serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -277,6 +304,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webPaaS:apiovh:subscription/serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -310,6 +340,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "webPaaS:apiovh:subscription/terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedHousing:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedHousing:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -58,6 +64,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your Backup FTP service, ALL DATA WILL BE PERMANENTLY DELETED",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedHousing:apiovh:features/backupFTP/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -78,6 +87,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedHousing:apiovh:features/backupFTP/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -98,6 +110,9 @@ export const schema: Schema = {
           },
           "description": "Create a new Backup FTP space",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedHousing:apiovh:features/backupFTP/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -124,6 +139,9 @@ export const schema: Schema = {
           },
           "description": "List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedHousing:apiovh:features/backupFTP/access/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -144,6 +162,9 @@ export const schema: Schema = {
           },
           "description": "Create a new Backup FTP ACL",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedHousing:apiovh:features/backupFTP/access/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -202,6 +223,9 @@ export const schema: Schema = {
           },
           "description": "Revoke this ACL",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedHousing:apiovh:features/backupFTP/access/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -230,6 +254,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedHousing:apiovh:features/backupFTP/access/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -258,6 +285,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedHousing:apiovh:features/backupFTP/access/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -299,6 +329,9 @@ export const schema: Schema = {
           },
           "description": "Get all IP blocks that can be used in the ACL",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedHousing:apiovh:features/backupFTP/authorizableBlocks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -325,6 +358,9 @@ export const schema: Schema = {
           },
           "description": "Change your Backup FTP password",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedHousing:apiovh:features/backupFTP/password/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -351,6 +387,9 @@ export const schema: Schema = {
           },
           "description": "Is an APC orderable for this housing bay",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedHousing:apiovh:orderable/APC/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -377,6 +416,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedHousing:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -397,6 +439,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedHousing:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -430,6 +475,9 @@ export const schema: Schema = {
           },
           "description": "View task list",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedHousing:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -472,6 +520,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedHousing:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -506,6 +557,9 @@ export const schema: Schema = {
           },
           "description": "this action stop the task progression if it's possible",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedHousing:apiovh:task/cancel"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -605,6 +659,7 @@ export const schema: Schema = {
         "migrateBackupFTP",
         "moveFloatingIp",
         "moveVirtualMac",
+        "reagregateBlock",
         "rebootPower8To",
         "reinstallServer",
         "releaseIp",

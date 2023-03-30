@@ -347,6 +347,9 @@ export const schema: Schema = {
           },
           "description": "Do an eligibility for an address, if no line exist. Partners only.",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:connectivity/eligibility/test/address/partners/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -457,6 +460,9 @@ export const schema: Schema = {
           },
           "description": "Do an eligibility test on a line number, for copper only. Partners only.",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:connectivity/eligibility/test/line/partners/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -533,6 +539,9 @@ export const schema: Schema = {
           },
           "description": "List work planned by operators. For partners only",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:connectivity/maintenance/workPlanned/partners/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "connectivity.maintenance.WorkPlanned[]"
@@ -584,6 +593,9 @@ export const schema: Schema = {
           },
           "description": "List detected, validated and recently closed generic incidents. For partners only",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:connectivity/monitoring/genericIncident/partners/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1403,7 +1415,9 @@ export const schema: Schema = {
         "AXIONE",
         "FI",
         "KOSC",
+        "OR",
         "ORANGE",
+        "OS",
         "REFERENCE",
         "SFR"
       ],
@@ -1551,6 +1565,7 @@ export const schema: Schema = {
         "BACKBONE_MAINTENANCE",
         "CARD_SWAP_WITH_IMPACT",
         "CLUSTER_AN_ROUTER_MIGRATION",
+        "CORRECTIVE_MAINTENANCE",
         "DSLAM_LINK_UPGRADE_WITHOUT_CARD_SWAP",
         "DSLAM_UPGRADE_WITH_IMPACT",
         "FIBER_CABLE_LINK_SWAP",

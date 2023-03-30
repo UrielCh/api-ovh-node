@@ -39,6 +39,42 @@ export namespace ovhcloudconnect {
         type: ovhcloudconnect.datacenterExtraConfig.TypeEnum;
     }
     /**
+     * OVHcloud Connect Diagnostic
+     * interface fullName: ovhcloudconnect.Diagnostic.Diagnostic
+     */
+    export interface Diagnostic {
+        function: ovhcloudconnect.diagnostic.FunctionEnum;
+        id: number;
+        result?: ovhcloudconnect.DiagnosticResult[];
+        status: ovhcloudconnect.task.StatusEnum;
+    }
+    /**
+     * OVHcloud Connect Service Diagnostic Configuration
+     * interface fullName: ovhcloudconnect.DiagnosticConfiguration.DiagnosticConfiguration
+     */
+    export interface DiagnosticConfiguration {
+        dcConfigId: number;
+        diagnosticName: ovhcloudconnect.diagnostic.FunctionEnum;
+        diagnosticType: ovhcloudconnect.diagnostic.TypeEnum;
+        extraConfigId: number;
+        popConfigId: number;
+    }
+    /**
+     * OVHcloud Connect Diagnostic Result
+     * interface fullName: ovhcloudconnect.DiagnosticResult.DiagnosticResult
+     */
+    export interface DiagnosticResult {
+        aspath?: string;
+        cmd?: string;
+        localprefix?: number;
+        mac?: string;
+        med?: number;
+        output?: string;
+        prefix?: string;
+        routermac?: string;
+        timestamp?: string;
+    }
+    /**
      * OVHcloud Connect Interface
      * interface fullName: ovhcloudconnect.Interface.Interface
      */
@@ -49,6 +85,8 @@ export namespace ovhcloudconnect {
         incomingLightStatus: ovhcloudconnect.interf.LightStatusEnum;
         incomingLightValue?: number;
         interfaceName?: string;
+        interfaceStatus: ovhcloudconnect.interf.LightStatusEnum;
+        interfaceStatusLastUpdate: string;
         interfaceTerminationType?: ovhcloudconnect.interf.TerminationTypeEnum;
         lightLastUpdate: string;
         outgoingLightStatus: ovhcloudconnect.interf.LightStatusEnum;
@@ -147,6 +185,18 @@ export namespace ovhcloudconnect {
          * type fullname: ovhcloudconnect.datacenterExtraConfig.TypeEnum
          */
         export type TypeEnum = "bgp" | "network"
+    }
+    export namespace diagnostic {
+        /**
+         * Enum values for Diagnostic function
+         * type fullname: ovhcloudconnect.diagnostic.FunctionEnum
+         */
+        export type FunctionEnum = "diagMacs" | "diagPeering" | "diagPeeringExtra" | "diagRoutes"
+        /**
+         * Enum values for Diagnostic type
+         * type fullname: ovhcloudconnect.diagnostic.TypeEnum
+         */
+        export type TypeEnum = "advertised-routes" | "default" | "routes"
     }
     export namespace interf {
         /**
@@ -451,6 +501,33 @@ export interface OvhCloudConnect {
                  * GET /ovhCloudConnect/{serviceName}/datacenter/{id}
                  */
                 $get(): Promise<ovhcloudconnect.Datacenter>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
+        diagnostic: {
+            /**
+             * Get Diagnostics linked to a OVHcloud Connect Service
+             * GET /ovhCloudConnect/{serviceName}/diagnostic
+             */
+            $get(): Promise<number[]>;
+            /**
+             * Create a Diagnostic linked to a OVHcloud Connect Service
+             * POST /ovhCloudConnect/{serviceName}/diagnostic
+             */
+            $post(params: { dcConfigId?: number, diagnosticName: ovhcloudconnect.diagnostic.FunctionEnum, diagnosticType?: ovhcloudconnect.diagnostic.TypeEnum, extraConfigId?: number, popConfigId: number }): Promise<ovhcloudconnect.Diagnostic>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(id: number): {
+                /**
+                 * Get Diagnostic linked to a OVHcloud Connect Service
+                 * GET /ovhCloudConnect/{serviceName}/diagnostic/{id}
+                 */
+                $get(): Promise<ovhcloudconnect.Diagnostic>;
                 /**
                  * Controle cache
                  */

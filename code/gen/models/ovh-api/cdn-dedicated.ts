@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -58,6 +64,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "cdn:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -108,6 +117,9 @@ export const schema: Schema = {
           },
           "description": "Domains associated to this anycast",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:domains/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -128,6 +140,9 @@ export const schema: Schema = {
           },
           "description": "Add a domain on CDN",
           "httpMethod": "POST",
+          "iamActions": [
+            "cdn:apiovh:domains/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -162,6 +177,9 @@ export const schema: Schema = {
           },
           "description": "Remove a domain from the CDN",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "cdn:apiovh:domains/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -190,6 +208,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:domains/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -218,6 +239,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "cdn:apiovh:domains/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -259,6 +283,9 @@ export const schema: Schema = {
           },
           "description": "Backend associated to the domain",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:domains/backends/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -287,6 +314,9 @@ export const schema: Schema = {
           },
           "description": "Add a backend IP",
           "httpMethod": "POST",
+          "iamActions": [
+            "cdn:apiovh:domains/backends/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -329,6 +359,9 @@ export const schema: Schema = {
           },
           "description": "Remove a backend IP",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "cdn:apiovh:domains/backends/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -365,6 +398,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:domains/backends/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -407,6 +443,9 @@ export const schema: Schema = {
           },
           "description": "Cache rules associated to the domain",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:domains/cacheRules/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -443,6 +482,9 @@ export const schema: Schema = {
           },
           "description": "Add a cache rule to a domain",
           "httpMethod": "POST",
+          "iamActions": [
+            "cdn:apiovh:domains/cacheRules/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -509,6 +551,9 @@ export const schema: Schema = {
           },
           "description": "Remove cache rule",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "cdn:apiovh:domains/cacheRules/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -545,6 +590,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:domains/cacheRules/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -581,6 +629,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "cdn:apiovh:domains/cacheRules/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -630,6 +681,9 @@ export const schema: Schema = {
           },
           "description": "Flush the cache",
           "httpMethod": "POST",
+          "iamActions": [
+            "cdn:apiovh:domains/cacheRules/flush"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -672,6 +726,9 @@ export const schema: Schema = {
           },
           "description": "Task associated to the cache rule",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:domains/cacheRules/tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -714,6 +771,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:domains/cacheRules/tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -764,6 +824,9 @@ export const schema: Schema = {
           },
           "description": "Flush all cache",
           "httpMethod": "POST",
+          "iamActions": [
+            "cdn:apiovh:domains/flush"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -798,6 +861,9 @@ export const schema: Schema = {
           },
           "description": "Generate URL to real time logs",
           "httpMethod": "POST",
+          "iamActions": [
+            "cdn:apiovh:domains/logs/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -832,6 +898,9 @@ export const schema: Schema = {
           },
           "description": "Return stats about a domain",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:domains/statistics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -890,6 +959,9 @@ export const schema: Schema = {
           },
           "description": "Task associated to the domain",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:domains/tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -924,6 +996,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:domains/tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -966,6 +1041,9 @@ export const schema: Schema = {
           },
           "description": "Generate URL to real time logs",
           "httpMethod": "POST",
+          "iamActions": [
+            "cdn:apiovh:logs/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -992,6 +1070,9 @@ export const schema: Schema = {
           },
           "description": "Return quota history",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:quota/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1026,6 +1107,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1046,6 +1130,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "cdn:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1079,6 +1166,9 @@ export const schema: Schema = {
           },
           "description": "Remove SSL of the CDN",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "cdn:apiovh:ssl/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1099,6 +1189,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:ssl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1119,6 +1212,9 @@ export const schema: Schema = {
           },
           "description": "Add a SSL on CDN or Generate a Lets Encrypt certificate",
           "httpMethod": "POST",
+          "iamActions": [
+            "cdn:apiovh:ssl/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1177,6 +1273,9 @@ export const schema: Schema = {
           },
           "description": "Task associated to the ssl",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:ssl/tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1219,6 +1318,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "cdn:apiovh:ssl/tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1253,6 +1355,9 @@ export const schema: Schema = {
           },
           "description": "Update an existing SSL with a custom certificate",
           "httpMethod": "POST",
+          "iamActions": [
+            "cdn:apiovh:ssl/update"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Resiliate a service",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "overTheBox:apiovh:delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -72,6 +81,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "overTheBox:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -105,6 +117,9 @@ export const schema: Schema = {
           },
           "description": "Change the value of autoMTU",
           "httpMethod": "PUT",
+          "iamActions": [
+            "overTheBox:apiovh:autoMTU/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -139,6 +154,9 @@ export const schema: Schema = {
           },
           "description": "List available release channels for this service",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:availableReleaseChannels/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -165,6 +183,9 @@ export const schema: Schema = {
           },
           "description": "List of backups for this service",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:backups/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -191,6 +212,9 @@ export const schema: Schema = {
           },
           "description": "Delete a backup",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "overTheBox:apiovh:backups/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -219,6 +243,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:backups/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -253,6 +280,9 @@ export const schema: Schema = {
           },
           "description": "Cancel the resiliation of the Service",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:cancelResiliation"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -279,6 +309,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -329,6 +362,9 @@ export const schema: Schema = {
           },
           "description": "Return the list of DHCP configurations",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dhcp/config/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -349,6 +385,9 @@ export const schema: Schema = {
           },
           "description": "Create a DHCP configuration",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dhcp/config/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -382,6 +421,9 @@ export const schema: Schema = {
           },
           "description": "Delete a DHCP configuration",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dhcp/config/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -410,6 +452,9 @@ export const schema: Schema = {
           },
           "description": "Return the specified DHCP configuration",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dhcp/config/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -438,6 +483,9 @@ export const schema: Schema = {
           },
           "description": "Update a DHCP configuration",
           "httpMethod": "PUT",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dhcp/config/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -479,6 +527,9 @@ export const schema: Schema = {
           },
           "description": "Return the list of DHCP static leases",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dhcp/staticLease/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -499,6 +550,9 @@ export const schema: Schema = {
           },
           "description": "Create a DHCP static lease",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dhcp/staticLease/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -532,6 +586,9 @@ export const schema: Schema = {
           },
           "description": "Delete a DHCP static lease",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dhcp/staticLease/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -560,6 +617,9 @@ export const schema: Schema = {
           },
           "description": "Return the specified DHCP static lease",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dhcp/staticLease/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -588,6 +648,9 @@ export const schema: Schema = {
           },
           "description": "Update a DHCP static lease",
           "httpMethod": "PUT",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dhcp/staticLease/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -629,6 +692,9 @@ export const schema: Schema = {
           },
           "description": "Return the list of DNS local domains",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dns/localDomain/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -649,6 +715,9 @@ export const schema: Schema = {
           },
           "description": "Create a DNS local domain",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dns/localDomain/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -682,6 +751,9 @@ export const schema: Schema = {
           },
           "description": "Delete a DNS local domain",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dns/localDomain/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -710,6 +782,9 @@ export const schema: Schema = {
           },
           "description": "Return the specified DNS local domain",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dns/localDomain/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -738,6 +813,9 @@ export const schema: Schema = {
           },
           "description": "Update a DNS local domain",
           "httpMethod": "PUT",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dns/localDomain/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -779,6 +857,9 @@ export const schema: Schema = {
           },
           "description": "Return the list of DNS nameservers",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dns/nameserver/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -799,6 +880,9 @@ export const schema: Schema = {
           },
           "description": "Create a DNS nameserver",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dns/nameserver/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -832,6 +916,9 @@ export const schema: Schema = {
           },
           "description": "Delete a DNS nameserver",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dns/nameserver/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -860,6 +947,9 @@ export const schema: Schema = {
           },
           "description": "Get a DNS nameserver configuration",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dns/nameserver/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -888,6 +978,9 @@ export const schema: Schema = {
           },
           "description": "Update a DNS nameserver configuration",
           "httpMethod": "PUT",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/dns/nameserver/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -929,6 +1022,9 @@ export const schema: Schema = {
           },
           "description": "Return the list of firewall redirects",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/firewall/redirect/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -949,6 +1045,9 @@ export const schema: Schema = {
           },
           "description": "Create a firewall redirect",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/firewall/redirect/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -982,6 +1081,9 @@ export const schema: Schema = {
           },
           "description": "Delete a firewall redirect",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/firewall/redirect/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1010,6 +1112,9 @@ export const schema: Schema = {
           },
           "description": "Get a firewall redirect",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/firewall/redirect/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1038,6 +1143,9 @@ export const schema: Schema = {
           },
           "description": "Update a firewall redirect",
           "httpMethod": "PUT",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/firewall/redirect/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1079,6 +1187,9 @@ export const schema: Schema = {
           },
           "description": "Return the list of firewall rules",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/firewall/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1099,6 +1210,9 @@ export const schema: Schema = {
           },
           "description": "Create a firewall rule",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/firewall/rule/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1132,6 +1246,9 @@ export const schema: Schema = {
           },
           "description": "Delete a firewall rule",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/firewall/rule/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1160,6 +1277,9 @@ export const schema: Schema = {
           },
           "description": "Get a firewall rule",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/firewall/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1188,6 +1308,9 @@ export const schema: Schema = {
           },
           "description": "Update a firewall rule",
           "httpMethod": "PUT",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/firewall/rule/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1229,6 +1352,9 @@ export const schema: Schema = {
           },
           "description": "Return the list of network interfaces",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/network/interface/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1249,6 +1375,9 @@ export const schema: Schema = {
           },
           "description": "Create a network interface",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/network/interface/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1282,6 +1411,9 @@ export const schema: Schema = {
           },
           "description": "Delete a network interface",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/network/interface/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1310,6 +1442,9 @@ export const schema: Schema = {
           },
           "description": "Get a network interface",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/network/interface/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1338,6 +1473,9 @@ export const schema: Schema = {
           },
           "description": "Update a network interface",
           "httpMethod": "PUT",
+          "iamActions": [
+            "overTheBox:apiovh:configuration/network/interface/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1379,6 +1517,9 @@ export const schema: Schema = {
           },
           "description": "Unlink a device from a service",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "overTheBox:apiovh:device/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1399,6 +1540,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:device/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1425,6 +1569,9 @@ export const schema: Schema = {
           },
           "description": "List of actions scheduled for this device",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:device/actions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1461,6 +1608,9 @@ export const schema: Schema = {
           },
           "description": "Create a device action on the device",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:device/actions/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1495,6 +1645,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:device/actions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1529,6 +1682,9 @@ export const schema: Schema = {
           },
           "description": "List the available device actions",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:device/availableActions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1555,6 +1711,9 @@ export const schema: Schema = {
           },
           "description": "Create an action to generate a backup",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:device/backup/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1581,6 +1740,9 @@ export const schema: Schema = {
           },
           "description": "Generate a temporary url to retrieve device logs",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:device/logs/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1607,6 +1769,9 @@ export const schema: Schema = {
           },
           "description": "Create a group of actions to restore a given backup",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:device/restoreBackup"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1641,6 +1806,9 @@ export const schema: Schema = {
           },
           "description": "Link a device to this service",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:linkDevice"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1666,6 +1834,43 @@ export const schema: Schema = {
       "path": "/overTheBox/{serviceName}/linkDevice"
     },
     {
+      "description": "linkHardware operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Link an available hardware to this service",
+          "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:linkHardware"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your hardware",
+              "fullType": "string",
+              "name": "hardwareName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/overTheBox/{serviceName}/linkHardware"
+    },
+    {
       "description": "offers operations",
       "operations": [
         {
@@ -1675,6 +1880,9 @@ export const schema: Schema = {
           },
           "description": "List all available offers one can migrate to",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:migration/offers/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1701,6 +1909,9 @@ export const schema: Schema = {
           },
           "description": "List of remote accesses for the service",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:remoteAccesses/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1721,6 +1932,9 @@ export const schema: Schema = {
           },
           "description": "Create a new remote access for the service",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:remoteAccesses/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1779,6 +1993,9 @@ export const schema: Schema = {
           },
           "description": "Delete a remote access",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "overTheBox:apiovh:remoteAccesses/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1807,6 +2024,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:remoteAccesses/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1841,6 +2061,9 @@ export const schema: Schema = {
           },
           "description": "Authorize the remote access",
           "httpMethod": "POST",
+          "iamActions": [
+            "overTheBox:apiovh:remoteAccesses/authorize"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1875,6 +2098,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1895,6 +2121,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "overTheBox:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1928,6 +2157,9 @@ export const schema: Schema = {
           },
           "description": "Get statistics for an OTB device",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:statistics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1970,6 +2202,9 @@ export const schema: Schema = {
           },
           "description": "List of tasks scheduled for this service",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2012,6 +2247,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "overTheBox:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2046,6 +2284,9 @@ export const schema: Schema = {
           },
           "description": "List the available offers for the new call",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:overTheBox/availableOffers/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "price.OverTheBox.OfferEnum[]"
@@ -2063,24 +2304,96 @@ export const schema: Schema = {
           },
           "description": "Get the list of devices connected from the same IP address",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:overTheBox/devices/create"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "overTheBox.DeviceForRegistration[]"
         }
       ],
       "path": "/overTheBox/devices"
+    },
+    {
+      "description": "Operations about the OVERTHEBOX service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "iamActions": [
+            "overTheBoxHardware:apiovh:get"
+          ],
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/overTheBox/hardware"
+    },
+    {
+      "description": "Hardware properties",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "iamActions": [
+            "overTheBoxHardware:apiovh:get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your hardware",
+              "fullType": "string",
+              "name": "hardwareName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "overTheBox.Hardware"
+        }
+      ],
+      "path": "/overTheBox/hardware/{hardwareName}"
+    },
+    {
+      "description": "List hardware that can be linked to a service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List hardware that can be linked to a service",
+          "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:overTheBoxHardware/available/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/overTheBox/hardware/available"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "order.CurrencyCodeEnum": {
       "enum": [
+        " INR",
         "AUD",
         "CAD",
         "CZK",
         "EUR",
         "GBP",
-        "INR",
         "LTL",
         "MAD",
         "N/A",
@@ -2601,6 +2914,53 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "The read-only token ID",
           "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "overTheBox.Hardware": {
+      "description": "Hardware properties",
+      "id": "Hardware",
+      "namespace": "overTheBox",
+      "properties": {
+        "canBeLinkedToService": {
+          "canBeNull": false,
+          "description": "True if hardware can be linked to a service without deviceID",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "mac": {
+          "canBeNull": true,
+          "description": "Hardware MAC address",
+          "fullType": "macAddress",
+          "readOnly": true,
+          "required": false,
+          "type": "macAddress"
+        },
+        "model": {
+          "canBeNull": false,
+          "description": "Hardware model",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Hardware name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serial": {
+          "canBeNull": false,
+          "description": "Hardware serial",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }

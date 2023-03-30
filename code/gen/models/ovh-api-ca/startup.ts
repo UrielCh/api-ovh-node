@@ -19,6 +19,9 @@ export const schema: Schema = {
             "Client::NotFound::StartupNotFound"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:startup/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "startup.startup"
@@ -30,6 +33,9 @@ export const schema: Schema = {
           },
           "description": "Register a startup",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:startup/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

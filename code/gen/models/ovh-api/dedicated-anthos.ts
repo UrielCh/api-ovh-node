@@ -10,11 +10,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "List available regions and versions",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:dedicatedAnthos/capabilities/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "dedicated.anthos.Capabilities"
@@ -27,11 +32,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "List your Anthos tenants",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "uuid[]"
@@ -44,11 +54,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get an Anthos tenant",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -64,11 +79,16 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Edit an Anthos tenant",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -97,11 +117,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Start an upgrade",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/actions/upgrade"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -130,11 +155,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "List available Anthos versions for the tenant",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/availableVersions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -156,11 +186,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "List baremetal servers",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/baremetals/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -182,11 +217,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get a baremetal server",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/baremetals/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -210,11 +250,16 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Edit a baremetal server",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/baremetals/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -251,11 +296,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Reinstall a baremetal server",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/baremetals/actions/reinstall"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -285,11 +335,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Restart a baremetal server",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/baremetals/actions/restart"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -324,6 +379,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -374,6 +432,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -427,11 +488,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Reset and return tenant admin access",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/credentials/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -453,11 +519,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "List ip restrictions",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/ipRestrictions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -473,11 +544,16 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Append a list of ip restrictions",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/ipRestrictions/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -500,11 +576,16 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Remove the current list and add a list of ip restrictions",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/ipRestrictions/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -533,11 +614,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Delete an ip restriction",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/ipRestrictions/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -567,11 +653,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "List private IP ranges",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/ips/private/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -587,11 +678,16 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Create a new private IP range",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/ips/private/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -620,11 +716,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Delete a private IP range",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/ips/private/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -648,11 +749,16 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get a private IP range",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/ips/private/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -682,11 +788,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "List public IP ranges",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/ips/public/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -708,11 +819,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get a public IP range",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/ips/public/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -747,6 +863,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -767,6 +886,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -795,11 +917,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "List SVMs",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/storage/netapp/svms/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -815,11 +942,16 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Create a new SVM",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/storage/netapp/svms/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -848,11 +980,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Delete a SVM",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/storage/netapp/svms/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -876,11 +1013,16 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get a SVM",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/storage/netapp/svms/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -910,11 +1052,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-02-28T00:00:00+00:00",
+            "deprecatedDate": "2023-01-26T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get total storage usage",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/storage/netapp/usage/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -941,6 +1088,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

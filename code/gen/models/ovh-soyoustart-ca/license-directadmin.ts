@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseDirectadmin:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseDirectadmin:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "licenseDirectadmin:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Returns an array of ips where the license can be moved to",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseDirectadmin:apiovh:allowedDestinationIp/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -111,6 +123,9 @@ export const schema: Schema = {
           },
           "description": "Will tell if the ip can accept the license",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseDirectadmin:apiovh:canLicenseBeMovedTo/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -145,6 +160,9 @@ export const schema: Schema = {
           },
           "description": "Move this license to another Ip",
           "httpMethod": "POST",
+          "iamActions": [
+            "licenseDirectadmin:apiovh:changeIp"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -179,6 +197,9 @@ export const schema: Schema = {
           },
           "description": "Change the Operating System for a license",
           "httpMethod": "POST",
+          "iamActions": [
+            "licenseDirectadmin:apiovh:changeOs"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -213,6 +234,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "licenseDirectadmin:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -271,6 +295,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseDirectadmin:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -291,6 +318,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "licenseDirectadmin:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -324,6 +354,9 @@ export const schema: Schema = {
           },
           "description": "tasks linked to this license",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseDirectadmin:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -366,6 +399,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseDirectadmin:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -400,6 +436,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "licenseDirectadmin:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -426,6 +465,9 @@ export const schema: Schema = {
           },
           "description": "Get the orderable DirectAdmin versions",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:licenseDirectadmin/orderableVersions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

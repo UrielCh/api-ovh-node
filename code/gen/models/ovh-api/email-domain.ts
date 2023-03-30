@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -58,6 +64,9 @@ export const schema: Schema = {
           },
           "description": "Get accounts",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:account/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -94,6 +103,9 @@ export const schema: Schema = {
           },
           "description": "Create new mailbox in server",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:account/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -152,6 +164,9 @@ export const schema: Schema = {
           },
           "description": "Delete an existing mailbox in server",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailDomain:apiovh:account/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -180,6 +195,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:account/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -208,6 +226,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "emailDomain:apiovh:account/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -249,6 +270,9 @@ export const schema: Schema = {
           },
           "description": "Change mailbox password (length : [9;30], no space at begin and end, no accent)",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:account/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -291,6 +315,9 @@ export const schema: Schema = {
           },
           "description": "Get delegations",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:account/delegation/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -319,6 +346,9 @@ export const schema: Schema = {
           },
           "description": "Create delegation for this account",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:account/delegation/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -361,6 +391,9 @@ export const schema: Schema = {
           },
           "description": "Delete an existing delegation",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailDomain:apiovh:account/delegation/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -397,6 +430,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:account/delegation/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -439,6 +475,9 @@ export const schema: Schema = {
           },
           "description": "Get filters",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:account/filter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -467,6 +506,9 @@ export const schema: Schema = {
           },
           "description": "Create new filter for account",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:account/filter/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -565,6 +607,9 @@ export const schema: Schema = {
           },
           "description": "Delete an existing filter",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailDomain:apiovh:account/filter/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -601,6 +646,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:account/filter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -643,6 +691,9 @@ export const schema: Schema = {
           },
           "description": "Change filter activity",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:account/filter/changeActivity"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -693,6 +744,9 @@ export const schema: Schema = {
           },
           "description": "Change filter priority",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:account/filter/changePriority"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -743,6 +797,9 @@ export const schema: Schema = {
           },
           "description": "Get rules",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:account/filter/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -779,6 +836,9 @@ export const schema: Schema = {
           },
           "description": "Create new rule for filter",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:account/filter/rule/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -845,6 +905,9 @@ export const schema: Schema = {
           },
           "description": "Delete an existing filter",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailDomain:apiovh:account/filter/rule/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -889,6 +952,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:account/filter/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -939,6 +1005,9 @@ export const schema: Schema = {
           },
           "description": "Get migration service",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:account/migrate/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -981,6 +1050,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:account/migrate/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1023,6 +1095,9 @@ export const schema: Schema = {
           },
           "description": "List of email address available for migration",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:account/migrate/destinationEmailAddress/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1073,6 +1148,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:account/migrate/destinationEmailAddress/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1123,6 +1201,9 @@ export const schema: Schema = {
           },
           "description": "Check if it's possible to migrate",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:account/migrate/destinationEmailAddress/checkMigrate/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1173,6 +1254,9 @@ export const schema: Schema = {
           },
           "description": "Migrate account to destination account",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:account/migrate/destinationEmailAddress/migrate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1231,6 +1315,9 @@ export const schema: Schema = {
           },
           "description": "Update usage of account",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:account/updateUsage"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1265,6 +1352,9 @@ export const schema: Schema = {
           },
           "description": "usage of account",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:account/usage/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1299,6 +1389,9 @@ export const schema: Schema = {
           },
           "description": "Get ACL on your domain",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:acl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1319,6 +1412,9 @@ export const schema: Schema = {
           },
           "description": "Create new ACL",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:acl/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1353,6 +1449,9 @@ export const schema: Schema = {
           },
           "description": "Delete ACL",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailDomain:apiovh:acl/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1381,6 +1480,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:acl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1415,6 +1517,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1465,6 +1570,9 @@ export const schema: Schema = {
           },
           "description": "Change MX filter, so change MX DNS records",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:changeDnsMXFilter"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1515,6 +1623,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your email service",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1565,6 +1676,9 @@ export const schema: Schema = {
           },
           "description": "Domain MX filter",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:dnsMXFilter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1599,6 +1713,9 @@ export const schema: Schema = {
           },
           "description": "Domain MX records",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:dnsMXRecords/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1633,6 +1750,9 @@ export const schema: Schema = {
           },
           "description": "Get mailing lists",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:mailingList/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1661,6 +1781,9 @@ export const schema: Schema = {
           },
           "description": "Create new mailingList",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:mailingList/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1727,6 +1850,9 @@ export const schema: Schema = {
           },
           "description": "Delete existing Mailing list",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailDomain:apiovh:mailingList/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1755,6 +1881,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:mailingList/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1783,6 +1912,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "emailDomain:apiovh:mailingList/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1824,6 +1956,9 @@ export const schema: Schema = {
           },
           "description": "Change mailing list options",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:mailingList/changeOptions"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1866,6 +2001,9 @@ export const schema: Schema = {
           },
           "description": "List of moderators",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:mailingList/moderator/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1902,6 +2040,9 @@ export const schema: Schema = {
           },
           "description": "Add moderator to mailing list",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:mailingList/moderator/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1944,6 +2085,9 @@ export const schema: Schema = {
           },
           "description": "Delete existing moderator",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailDomain:apiovh:mailingList/moderator/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1980,6 +2124,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:mailingList/moderator/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2022,6 +2169,9 @@ export const schema: Schema = {
           },
           "description": "Send moderators list and subscribers list of this mailing list by email",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:mailingList/sendListByEmail"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2064,6 +2214,9 @@ export const schema: Schema = {
           },
           "description": "List of subscribers",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:mailingList/subscriber/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2100,6 +2253,9 @@ export const schema: Schema = {
           },
           "description": "Add subscriber to mailing list",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:mailingList/subscriber/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2142,6 +2298,9 @@ export const schema: Schema = {
           },
           "description": "Delete existing subscriber",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailDomain:apiovh:mailingList/subscriber/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2178,6 +2337,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:mailingList/subscriber/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2220,6 +2382,9 @@ export const schema: Schema = {
           },
           "description": "Create delegation of domain with same nic than V3",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:migrateDelegationV3toV6"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2246,6 +2411,9 @@ export const schema: Schema = {
           },
           "description": "List all quotas for this domain",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:quota/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2272,6 +2440,9 @@ export const schema: Schema = {
           },
           "description": "Recommended domain DNS records",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:recommendedDNSRecords/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2298,6 +2469,9 @@ export const schema: Schema = {
           },
           "description": "Get redirections",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:redirection/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2334,6 +2508,9 @@ export const schema: Schema = {
           },
           "description": "Create new redirection in server",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:redirection/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2367,6 +2544,9 @@ export const schema: Schema = {
           },
           "description": "Delete an existing redirection in server",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailDomain:apiovh:redirection/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2395,6 +2575,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:redirection/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2429,6 +2612,9 @@ export const schema: Schema = {
           },
           "description": "Change redirection",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:redirection/changeRedirection"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2470,6 +2656,9 @@ export const schema: Schema = {
           },
           "description": "Get responders",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:responder/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2498,6 +2687,9 @@ export const schema: Schema = {
           },
           "description": "Create new responder in server",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:responder/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2572,6 +2764,9 @@ export const schema: Schema = {
           },
           "description": "Delete an existing responder in server",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailDomain:apiovh:responder/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2600,6 +2795,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:responder/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2628,6 +2826,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "emailDomain:apiovh:responder/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2669,6 +2870,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2689,6 +2893,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "emailDomain:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2722,6 +2929,9 @@ export const schema: Schema = {
           },
           "description": "Summary for this domain",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:summary/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2748,6 +2958,9 @@ export const schema: Schema = {
           },
           "description": "Get account tasks",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:task/account/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2782,6 +2995,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:task/account/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2816,6 +3032,9 @@ export const schema: Schema = {
           },
           "description": "Get filter tasks",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:task/filter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2850,6 +3069,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:task/filter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2884,6 +3106,9 @@ export const schema: Schema = {
           },
           "description": "Get Mailing List tasks",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:task/mailinglist/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2918,6 +3143,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:task/mailinglist/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2952,6 +3180,9 @@ export const schema: Schema = {
           },
           "description": "Get redirection tasks",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:task/redirection/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2986,6 +3217,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:task/redirection/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3020,6 +3254,9 @@ export const schema: Schema = {
           },
           "description": "Get responder tasks",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:task/responder/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3054,6 +3291,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:task/responder/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3088,6 +3328,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your email service",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3114,6 +3357,9 @@ export const schema: Schema = {
           },
           "description": "Delegated emails",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:emailDomain/delegatedAccount/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3148,6 +3394,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:emailDomain/delegatedAccount/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3168,6 +3417,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "account:apiovh:emailDomain/delegatedAccount/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3201,6 +3453,9 @@ export const schema: Schema = {
           },
           "description": "Change mailbox password (length : [9;30], no space at begin and end, no accent)",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:delegatedAccount/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3235,6 +3490,9 @@ export const schema: Schema = {
           },
           "description": "Get filters",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:delegatedAccount/filter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3255,6 +3513,9 @@ export const schema: Schema = {
           },
           "description": "Create new filter for account",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:delegatedAccount/filter/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3345,6 +3606,9 @@ export const schema: Schema = {
           },
           "description": "Delete an existing filter",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailDomain:apiovh:delegatedAccount/filter/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3373,6 +3637,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:delegatedAccount/filter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3407,6 +3674,9 @@ export const schema: Schema = {
           },
           "description": "Change filter activity",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:delegatedAccount/filter/changeActivity"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3449,6 +3719,9 @@ export const schema: Schema = {
           },
           "description": "Change filter priority",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:delegatedAccount/filter/changePriority"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3491,6 +3764,9 @@ export const schema: Schema = {
           },
           "description": "Get rules",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:delegatedAccount/filter/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3519,6 +3795,9 @@ export const schema: Schema = {
           },
           "description": "Create new rule for filter",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailDomain:apiovh:delegatedAccount/filter/rule/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3577,6 +3856,9 @@ export const schema: Schema = {
           },
           "description": "Delete an existing filter",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailDomain:apiovh:delegatedAccount/filter/rule/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3613,6 +3895,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailDomain:apiovh:delegatedAccount/filter/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3655,6 +3940,9 @@ export const schema: Schema = {
           },
           "description": "Delete an existing responder in server",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "account:apiovh:emailDomain/delegatedAccount/responder/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3675,6 +3963,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:emailDomain/delegatedAccount/responder/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3695,6 +3986,9 @@ export const schema: Schema = {
           },
           "description": "Create new responder in server",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:emailDomain/delegatedAccount/responder/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3755,6 +4049,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "account:apiovh:emailDomain/delegatedAccount/responder/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3788,6 +4085,9 @@ export const schema: Schema = {
           },
           "description": "Update usage of account",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:emailDomain/delegatedAccount/updateUsage"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3814,6 +4114,9 @@ export const schema: Schema = {
           },
           "description": "usage of account",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:emailDomain/delegatedAccount/usage/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

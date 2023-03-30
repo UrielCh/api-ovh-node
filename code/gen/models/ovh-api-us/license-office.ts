@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOffice:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOffice:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "licenseOffice:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Domain associated to this office tenant",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOffice:apiovh:domain/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -111,6 +123,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOffice:apiovh:domain/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -145,6 +160,9 @@ export const schema: Schema = {
           },
           "description": "Tasks associated to this office tenant",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOffice:apiovh:pendingTask/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -171,6 +189,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOffice:apiovh:pendingTask/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -205,6 +226,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOffice:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -225,6 +249,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "licenseOffice:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -258,6 +285,9 @@ export const schema: Schema = {
           },
           "description": "Shows the subscriptions' usage statistics for the given time period",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOffice:apiovh:usageStatistics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -300,6 +330,9 @@ export const schema: Schema = {
           },
           "description": "Accounts associated to this office tenant",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOffice:apiovh:user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -352,6 +385,9 @@ export const schema: Schema = {
           },
           "description": "Create new office user",
           "httpMethod": "POST",
+          "iamActions": [
+            "licenseOffice:apiovh:user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -426,6 +462,9 @@ export const schema: Schema = {
           },
           "description": "Delete existing office user",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "licenseOffice:apiovh:user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -454,6 +493,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOffice:apiovh:user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -482,6 +524,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "licenseOffice:apiovh:user/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -523,6 +568,9 @@ export const schema: Schema = {
           },
           "description": "Change or reset  user's password",
           "httpMethod": "POST",
+          "iamActions": [
+            "licenseOffice:apiovh:user/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

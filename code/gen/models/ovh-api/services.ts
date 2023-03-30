@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -57,6 +60,9 @@ export const schema: Schema = {
           },
           "description": "Get details about a service",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -77,6 +83,9 @@ export const schema: Schema = {
           },
           "description": "Update service information",
           "httpMethod": "PUT",
+          "iamActions": [
+            "account:apiovh:services/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -110,6 +119,9 @@ export const schema: Schema = {
           },
           "description": "Get engagement details",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/billing/engagement/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -136,6 +148,9 @@ export const schema: Schema = {
           },
           "description": "List all available engagements a given service can subscribe to",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/billing/engagement/available/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -162,6 +177,9 @@ export const schema: Schema = {
           },
           "description": "Change your Engagement end rules",
           "httpMethod": "PUT",
+          "iamActions": [
+            "account:apiovh:services/billing/engagement/endRule"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -195,6 +213,9 @@ export const schema: Schema = {
           },
           "description": "Flush the engagement of this service",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:services/billing/engagement/flush"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -228,6 +249,9 @@ export const schema: Schema = {
           },
           "description": "Delete the ongoing Engagement request on this Service",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "account:apiovh:services/billing/engagement/request/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -248,6 +272,9 @@ export const schema: Schema = {
           },
           "description": "Get the ongoing Engagement request on this Service",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/billing/engagement/request/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -268,6 +295,9 @@ export const schema: Schema = {
           },
           "description": "Request an Engagement on this Service",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:services/billing/engagement/request/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -301,6 +331,9 @@ export const schema: Schema = {
           },
           "description": "Get a summary of the ongoing consumption of your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/consumption/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -327,6 +360,9 @@ export const schema: Schema = {
           },
           "description": "Get each resource consumed by your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/consumption/element/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -369,6 +405,9 @@ export const schema: Schema = {
           },
           "description": "Get a summary of the forecasted consumption of your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/consumption/forecast/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -395,6 +434,9 @@ export const schema: Schema = {
           },
           "description": "Get each resource forecasted consumption of your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/consumption/forecast/element/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -437,6 +479,9 @@ export const schema: Schema = {
           },
           "description": "List consumption history of your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/consumption/history/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -479,6 +524,9 @@ export const schema: Schema = {
           },
           "description": "Get a summary of the past consumption of your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/consumption/history/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -513,6 +561,9 @@ export const schema: Schema = {
           },
           "description": "Get each resource consumed for the given history",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/consumption/history/element/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -563,6 +614,9 @@ export const schema: Schema = {
           },
           "description": "List offers this option can be converted to",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/detach/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -589,6 +643,9 @@ export const schema: Schema = {
           },
           "description": "View an offer this option can be converted to",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/detach/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -623,6 +680,9 @@ export const schema: Schema = {
           },
           "description": "Perform the migration to a standalone offer. May require you to pay an Order",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:services/detach/execute"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -664,6 +724,9 @@ export const schema: Schema = {
           },
           "description": "View all offers compatible for the detachment for the given option offer",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/detach/options/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -698,6 +761,9 @@ export const schema: Schema = {
           },
           "description": "Simulate the migration to a standalone offer. It won't generate any Order or issue any changes to your Service",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:services/detach/simulate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -739,6 +805,9 @@ export const schema: Schema = {
           },
           "description": "List available forms for service",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/form/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -765,6 +834,9 @@ export const schema: Schema = {
           },
           "description": "Get specified form description for service",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/form/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -799,6 +871,9 @@ export const schema: Schema = {
           },
           "description": "Post answers to the form for your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:services/form/answer"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -840,6 +915,9 @@ export const schema: Schema = {
           },
           "description": "Get options of a service",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/options/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -866,6 +944,9 @@ export const schema: Schema = {
           },
           "description": "Get possible renew periods of a service",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/renewPeriodCapacities/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -892,6 +973,9 @@ export const schema: Schema = {
           },
           "description": "View the technical details of the service",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/technicalDetails/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -918,6 +1002,9 @@ export const schema: Schema = {
           },
           "description": "List offers this option can be converted to",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/upgrade/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -944,6 +1031,9 @@ export const schema: Schema = {
           },
           "description": "View an offer this option can be converted to",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:services/upgrade/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -978,6 +1068,9 @@ export const schema: Schema = {
           },
           "description": "Perform the migration to another offer. May require you to pay an Order",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:services/upgrade/execute"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1019,6 +1112,9 @@ export const schema: Schema = {
           },
           "description": "Simulate the conversion to another offer. It won't generate any Order or issue any changes to your Service",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:services/upgrade/simulate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1116,6 +1212,7 @@ export const schema: Schema = {
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",
@@ -1383,6 +1480,14 @@ export const schema: Schema = {
           "required": false,
           "type": "order.ReductionContextEnum"
         },
+        "description": {
+          "canBeNull": false,
+          "description": "Promotion description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "price": {
           "canBeNull": false,
           "description": "Reduction price applied with this promotion",
@@ -1390,6 +1495,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "order.Price"
+        },
+        "reductionDescription": {
+          "canBeNull": false,
+          "description": "Reduction description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "type": {
           "canBeNull": false,
@@ -1605,6 +1718,7 @@ export const schema: Schema = {
         "delivery",
         "deposit",
         "domain",
+        "implementation_services",
         "saas_license",
         "shipping",
         "storage"

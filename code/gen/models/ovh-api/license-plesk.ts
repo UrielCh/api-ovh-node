@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "licensePlesk:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licensePlesk:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "licensePlesk:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Returns an array of ips where the license can be moved to",
           "httpMethod": "GET",
+          "iamActions": [
+            "licensePlesk:apiovh:allowedDestinationIp/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -111,6 +123,9 @@ export const schema: Schema = {
           },
           "description": "Will tell if the ip can accept the license",
           "httpMethod": "GET",
+          "iamActions": [
+            "licensePlesk:apiovh:canLicenseBeMovedTo/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -145,6 +160,9 @@ export const schema: Schema = {
           },
           "description": "Move this license to another Ip",
           "httpMethod": "POST",
+          "iamActions": [
+            "licensePlesk:apiovh:changeIp"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -179,6 +197,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "licensePlesk:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -237,6 +258,9 @@ export const schema: Schema = {
           },
           "description": "options attached to this license",
           "httpMethod": "GET",
+          "iamActions": [
+            "licensePlesk:apiovh:option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -263,6 +287,9 @@ export const schema: Schema = {
           },
           "description": "release this Option",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "licensePlesk:apiovh:option/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -291,6 +318,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licensePlesk:apiovh:option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -325,6 +355,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licensePlesk:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -345,6 +378,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "licensePlesk:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -378,6 +414,9 @@ export const schema: Schema = {
           },
           "description": "tasks linked to this license",
           "httpMethod": "GET",
+          "iamActions": [
+            "licensePlesk:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -420,6 +459,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licensePlesk:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -454,6 +496,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "licensePlesk:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -480,6 +525,9 @@ export const schema: Schema = {
           },
           "description": "Get the orderable Plesk versions and their associated compatibilities",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:licensePlesk/orderableVersions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

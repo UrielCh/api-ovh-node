@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -35,6 +38,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceNotFound"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -62,6 +68,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceNotFound"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -95,6 +104,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -148,6 +160,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:cluster/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -179,6 +194,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:cluster/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -221,6 +239,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:cluster/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -268,6 +289,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:cluster/retention/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -309,6 +333,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:cluster/retention/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -354,6 +381,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:encryptionKey/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -386,6 +416,9 @@ export const schema: Schema = {
             "Client::Conflict::AlreadyExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:encryptionKey/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -428,6 +461,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:encryptionKey/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -462,6 +498,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:encryptionKey/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -499,6 +538,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -525,7 +567,10 @@ export const schema: Schema = {
             "Client::ValidationError::InvalidIPAddress",
             "Client::ValidationError::InvalidIPAddressKernel",
             "Client::ValidationError::InvalidIPAddressLocalhost",
+            "Client::ValidationError::InvalidInputAutoscalingParameter",
+            "Client::ValidationError::InvalidInstanceModeForInput",
             "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::MissingInputAutoscalingParameter",
             "Client::ValidationError::NotStreamOwner",
             "Client::ValidationError::RequiredField",
             "Client::ValidationError::ValueNotInRange",
@@ -534,11 +579,16 @@ export const schema: Schema = {
             "Client::Forbidden::PCIDSSInputDeny",
             "Client::Forbidden::ServiceUnavailable",
             "Client::NotFound::InputEngineDoesNotExists",
+            "Client::NotFound::OptionDoesNotExists",
             "Client::NotFound::ServiceDoesNotExists",
             "Client::NotFound::StreamDoesNotExists",
-            "Client::Conflict::TitleAlreadyUsed"
+            "Client::Conflict::TitleAlreadyUsed",
+            "Server::NotImplemented::MarathonAutoscaling"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:input/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -574,12 +624,16 @@ export const schema: Schema = {
           "errors": [
             "Client::ValidationError::InvalidUUID",
             "Client::Forbidden::Busy",
+            "Client::Forbidden::IncompatibleStatusForInput",
             "Client::Forbidden::OnlyOwnerCanPerformAction",
             "Client::Forbidden::ServiceUnavailable",
             "Client::NotFound::InputDoesNotExists",
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:input/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -613,6 +667,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -647,7 +704,10 @@ export const schema: Schema = {
             "Client::ValidationError::InvalidIPAddress",
             "Client::ValidationError::InvalidIPAddressKernel",
             "Client::ValidationError::InvalidIPAddressLocalhost",
+            "Client::ValidationError::InvalidInputAutoscalingParameter",
+            "Client::ValidationError::InvalidInstanceModeForInput",
             "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::MissingInputAutoscalingParameter",
             "Client::ValidationError::NotStreamOwner",
             "Client::ValidationError::RequiredField",
             "Client::ValidationError::ValueNotInRange",
@@ -656,11 +716,16 @@ export const schema: Schema = {
             "Client::Forbidden::OnlyOwnerCanPerformAction",
             "Client::Forbidden::ServiceUnavailable",
             "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::OptionDoesNotExists",
             "Client::NotFound::ServiceDoesNotExists",
             "Client::NotFound::StreamDoesNotExists",
-            "Client::Conflict::TitleAlreadyUsed"
+            "Client::Conflict::TitleAlreadyUsed",
+            "Server::NotImplemented::MarathonAutoscaling"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:input/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -707,6 +772,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/action/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -750,6 +818,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:input/configtest/validate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -789,6 +860,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/configtest/result/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -829,6 +903,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/configuration/flowgger/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -867,6 +944,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:input/configuration/flowgger/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -913,6 +993,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/configuration/logstash/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -952,6 +1035,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:input/configuration/logstash/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1002,6 +1088,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:input/end"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1043,6 +1132,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:input/logs/url/generate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1086,6 +1178,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:input/restart"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1129,6 +1224,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:input/start"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1168,6 +1266,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1202,6 +1303,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of available input engines",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/engine/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1232,6 +1336,9 @@ export const schema: Schema = {
             "Client::NotFound::InputEngineDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/engine/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1269,6 +1376,9 @@ export const schema: Schema = {
             "Client::ValidationError::InvalidUUID"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/engine/helper/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1307,6 +1417,9 @@ export const schema: Schema = {
             "Client::NotFound::HelperDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/engine/helper/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1352,6 +1465,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceNotFound"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:metrics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1381,6 +1497,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:operation/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1412,6 +1531,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:operation/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1452,6 +1574,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1489,6 +1614,9 @@ export const schema: Schema = {
             "Client::Conflict::AlreadyExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1532,6 +1660,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1568,6 +1699,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1608,6 +1742,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1657,6 +1794,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/index/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1699,6 +1839,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/index/attach"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1752,6 +1895,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/index/detach"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1802,6 +1948,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/stream/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1845,6 +1994,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/stream/attach"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1898,6 +2050,9 @@ export const schema: Schema = {
             "Client::NotFound::StreamDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/stream/detach"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1948,6 +2103,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1988,6 +2146,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/index/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2026,6 +2187,9 @@ export const schema: Schema = {
             "Client::Conflict::AlreadyExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/index/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2070,6 +2234,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/index/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2106,6 +2273,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/index/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2146,6 +2316,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/index/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2196,6 +2369,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/index/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2236,6 +2412,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/kibana/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2268,6 +2447,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/kibana/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2312,6 +2494,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/kibana/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2349,6 +2534,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/kibana/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2388,6 +2576,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/kibana/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2437,6 +2628,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/kibana/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2474,6 +2668,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/dashboard/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2502,6 +2699,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/dashboard/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2542,6 +2742,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/dashboard/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2575,6 +2778,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/dashboard/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2614,6 +2820,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/dashboard/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2670,6 +2879,9 @@ export const schema: Schema = {
             "Client::Conflict::TitleAlreadyUsed"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/dashboard/duplicate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2715,6 +2927,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/dashboard/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2752,6 +2967,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2796,6 +3014,9 @@ export const schema: Schema = {
             "Server::NotImplemented::SubStreamColdstorageOnAccount"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2841,6 +3062,9 @@ export const schema: Schema = {
             "Client::NotFound::StreamDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2874,6 +3098,9 @@ export const schema: Schema = {
             "Client::NotFound::StreamDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2923,6 +3150,9 @@ export const schema: Schema = {
             "Client::Conflict::TitleAlreadyUsed"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2969,6 +3199,9 @@ export const schema: Schema = {
             "Client::NotFound::StreamDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/alert/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3012,6 +3245,9 @@ export const schema: Schema = {
             "Client::Conflict::AlertAlreadyExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/alert/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3061,6 +3297,9 @@ export const schema: Schema = {
             "Client::NotFound::StreamDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/alert/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3103,6 +3342,9 @@ export const schema: Schema = {
             "Client::NotFound::StreamDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/alert/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3153,6 +3395,9 @@ export const schema: Schema = {
             "Client::Conflict::AlertAlreadyExists"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/alert/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3207,6 +3452,9 @@ export const schema: Schema = {
             "Client::NotFound::StreamDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/archive/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3247,6 +3495,9 @@ export const schema: Schema = {
             "Client::NotFound::StreamDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/archive/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3295,6 +3546,9 @@ export const schema: Schema = {
             "Client::NotFound::StreamDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/archive/encryptionKey/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3344,6 +3598,9 @@ export const schema: Schema = {
             "Client::NotFound::URLDoesNotExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/archive/url/generate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3391,6 +3648,9 @@ export const schema: Schema = {
             "Client::NotFound::StreamDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3434,6 +3694,9 @@ export const schema: Schema = {
             "Client::Conflict::RuleAlreadyExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/rule/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3484,6 +3747,9 @@ export const schema: Schema = {
             "Client::NotFound::StreamRuleDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/rule/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3526,6 +3792,9 @@ export const schema: Schema = {
             "Client::NotFound::StreamRuleDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3573,6 +3842,9 @@ export const schema: Schema = {
             "Client::NotFound::StreamDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3610,6 +3882,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3644,6 +3919,9 @@ export const schema: Schema = {
             "Client::Conflict::AlreadyExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3684,6 +3962,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3717,6 +3998,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3754,6 +4038,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3800,6 +4087,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/index/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3839,6 +4129,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/index/attach"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3889,6 +4182,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/index/detach"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3936,6 +4232,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/stream/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3976,6 +4275,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/stream/attach"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4026,6 +4328,9 @@ export const schema: Schema = {
             "Client::NotFound::StreamDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/stream/detach"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4073,6 +4378,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4110,6 +4418,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/index/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4145,6 +4456,9 @@ export const schema: Schema = {
             "Client::Conflict::AlreadyExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/index/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4186,6 +4500,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/index/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4219,6 +4536,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/index/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4256,6 +4576,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/index/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4303,6 +4626,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/index/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4340,6 +4666,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/osd/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4369,6 +4698,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/osd/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4410,6 +4742,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/osd/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4444,6 +4779,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/osd/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4480,6 +4818,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/osd/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4526,6 +4867,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/osd/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4563,6 +4907,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:role/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4592,6 +4939,9 @@ export const schema: Schema = {
             "Client::Conflict::AlreadyExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4632,6 +4982,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:role/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4665,6 +5018,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:role/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4703,6 +5059,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:role/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4749,6 +5108,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:role/member/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4787,6 +5149,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/member/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4837,6 +5202,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:role/member/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4879,6 +5247,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:role/member/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4926,6 +5297,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:role/member/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4980,6 +5354,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:role/permission/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5022,6 +5399,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:role/permission/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5064,6 +5444,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:role/permission/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5116,6 +5499,9 @@ export const schema: Schema = {
             "Client::Conflict::PermissionAlreadySet"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/permission/alias/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5167,6 +5553,9 @@ export const schema: Schema = {
             "Client::Conflict::PermissionAlreadySet"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/permission/dashboard/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5218,6 +5607,9 @@ export const schema: Schema = {
             "Client::Conflict::PermissionAlreadySet"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/permission/index/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5272,6 +5664,9 @@ export const schema: Schema = {
             "Client::Conflict::PermissionAlreadySet"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/permission/kibana/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5323,6 +5718,9 @@ export const schema: Schema = {
             "Client::Conflict::PermissionAlreadySet"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/permission/osd/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5374,6 +5772,9 @@ export const schema: Schema = {
             "Client::Conflict::PermissionAlreadySet"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/permission/stream/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5415,6 +5816,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5435,6 +5839,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5471,6 +5878,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:token/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5502,6 +5912,9 @@ export const schema: Schema = {
             "Client::Conflict::TokenNameAlreadyUsed"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:token/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5543,6 +5956,9 @@ export const schema: Schema = {
             "Client::NotFound::TokenDoesNotExists"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:token/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5576,6 +5992,9 @@ export const schema: Schema = {
             "Client::NotFound::TokenDoesNotExists"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:token/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5613,6 +6032,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceNotFound"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5645,6 +6067,9 @@ export const schema: Schema = {
             "Client::NotFound::ServiceNotFound"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:user/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5667,132 +6092,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/dbaas/logs/{serviceName}/user/changePassword"
-    },
-    {
-      "description": "Engines",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-05-17T00:00:00+00:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/input/engine",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns the list of available input engines",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "uuid[]"
-        }
-      ],
-      "path": "/dbaas/logs/input/engine"
-    },
-    {
-      "description": "Engines",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-05-17T00:00:00+00:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/input/engine",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns details of specified input engine",
-          "errors": [
-            "Client::ValidationError::InvalidUUID",
-            "Client::NotFound::InputEngineDoesNotExists"
-          ],
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Engine ID",
-              "fullType": "uuid",
-              "name": "engineId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Engine"
-        }
-      ],
-      "path": "/dbaas/logs/input/engine/{engineId}"
-    },
-    {
-      "description": "Input engine helpers",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-05-17T00:00:00+00:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/input/engine/{engineId}/helper",
-            "value": "DEPRECATED"
-          },
-          "description": "Return the list of available helpers for the given input engine",
-          "errors": [
-            "Client::ValidationError::InvalidUUID"
-          ],
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Engine ID",
-              "fullType": "uuid",
-              "name": "engineId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        }
-      ],
-      "path": "/dbaas/logs/input/engine/{engineId}/helper"
-    },
-    {
-      "description": "Input engine helpers",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-05-17T00:00:00+00:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/input/engine/{engineId}/helper",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns details of specified input engine helper",
-          "errors": [
-            "Client::ValidationError::InvalidUUID",
-            "Client::NotFound::HelperDoesNotExists"
-          ],
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Engine ID",
-              "fullType": "uuid",
-              "name": "engineId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Helper ID",
-              "fullType": "uuid",
-              "name": "helperId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Helper"
-        }
-      ],
-      "path": "/dbaas/logs/input/engine/{engineId}/helper/{helperId}"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
@@ -5841,6 +6140,22 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "nbIndex": {
+          "canBeNull": false,
+          "description": "Number of indices linked",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "nbStream": {
+          "canBeNull": false,
+          "description": "Number of streams linked",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "updatedAt": {
           "canBeNull": true,
@@ -6500,6 +6815,14 @@ export const schema: Schema = {
           "required": false,
           "type": "datetime"
         },
+        "currentSize": {
+          "canBeNull": true,
+          "description": "Current index size (in bytes)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "description": {
           "canBeNull": true,
           "description": "Index description",
@@ -6571,6 +6894,14 @@ export const schema: Schema = {
           "required": false,
           "type": "ipBlock[]"
         },
+        "autoscale": {
+          "canBeNull": true,
+          "description": "Whether the workload is auto-scaled",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "createdAt": {
           "canBeNull": false,
           "description": "Input creation",
@@ -6627,6 +6958,22 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
+        "maxScaleInstance": {
+          "canBeNull": true,
+          "description": "Maximum number of instances in auto-scaled mode",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minScaleInstance": {
+          "canBeNull": true,
+          "description": "Minimum number of instances in auto-scaled mode",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "nbInstance": {
           "canBeNull": true,
           "description": "Number of instance running",
@@ -6642,6 +6989,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "scalingNotifyEnabled": {
+          "canBeNull": true,
+          "description": "If set, notify when scaling happens",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "sslCertificate": {
           "canBeNull": false,
@@ -6789,6 +7144,14 @@ export const schema: Schema = {
           "required": false,
           "type": "ipBlock[]"
         },
+        "autoscale": {
+          "canBeNull": true,
+          "description": "Whether the workload is auto-scaled",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "description": {
           "canBeNull": false,
           "description": "Description",
@@ -6813,6 +7176,22 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "maxScaleInstance": {
+          "canBeNull": true,
+          "description": "Maximum number of instances in auto-scaled mode",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "minScaleInstance": {
+          "canBeNull": true,
+          "description": "Minimum number of instances in auto-scaled mode",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
         "nbInstance": {
           "canBeNull": true,
           "description": "Number of instance running",
@@ -6820,6 +7199,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
+        },
+        "scalingNotifyEnabled": {
+          "canBeNull": true,
+          "description": "If set, notify when scaling happens",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "streamId": {
           "canBeNull": false,
@@ -6864,6 +7251,14 @@ export const schema: Schema = {
           "required": false,
           "type": "ipBlock[]"
         },
+        "autoscale": {
+          "canBeNull": true,
+          "description": "Whether the workload is auto-scaled",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "description": {
           "canBeNull": false,
           "description": "Description",
@@ -6888,6 +7283,22 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "maxScaleInstance": {
+          "canBeNull": true,
+          "description": "Maximum number of instances in auto-scaled mode",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "minScaleInstance": {
+          "canBeNull": true,
+          "description": "Minimum number of instances in auto-scaled mode",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
         "nbInstance": {
           "canBeNull": true,
           "description": "Number of instance running",
@@ -6895,6 +7306,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
+        },
+        "scalingNotifyEnabled": {
+          "canBeNull": true,
+          "description": "If set, notify when scaling happens",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "streamId": {
           "canBeNull": false,
@@ -7157,6 +7576,14 @@ export const schema: Schema = {
         "streamId": {
           "canBeNull": true,
           "description": "Stream used",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tokenId": {
+          "canBeNull": true,
+          "description": "Token used",
           "fullType": "uuid",
           "readOnly": true,
           "required": false,
@@ -8227,6 +8654,22 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "nbMember": {
+          "canBeNull": false,
+          "description": "Number of members",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "nbPermission": {
+          "canBeNull": false,
+          "description": "Number of permissions",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "roleId": {
           "canBeNull": false,
           "description": "Role ID",
@@ -8652,6 +9095,14 @@ export const schema: Schema = {
           "required": false,
           "type": "uuid[]"
         },
+        "indexingCurrentSize": {
+          "canBeNull": true,
+          "description": "Indexing current size (in bytes)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "indexingEnabled": {
           "canBeNull": true,
           "description": "Enable ES indexing",
@@ -8899,12 +9350,8 @@ export const schema: Schema = {
         "EQ",
         "GT",
         "GTE",
-        "HIGHER",
-        "LESS",
-        "LOWER",
         "LT",
-        "LTE",
-        "MORE"
+        "LTE"
       ],
       "enumType": "string",
       "id": "StreamAlertConditionThresholdTypeEnum",

@@ -136,8 +136,10 @@ export namespace ip {
         description?: string;
         ip: string;
         organisationId?: string;
+        rir?: string;
         routedTo?: ip.RoutedTo;
         type: ip.IpTypeEnum;
+        version: ip.IpVersionEnum;
     }
     /**
      * IP migration to OVH
@@ -166,6 +168,11 @@ export namespace ip {
      * type fullname: ip.IpTypeEnum
      */
     export type IpTypeEnum = "cdn" | "cloud" | "dedicated" | "failover" | "hosted_ssl" | "housing" | "loadBalancing" | "mail" | "overthebox" | "pcc" | "pci" | "private" | "vpn" | "vps" | "vrack" | "xdsl"
+    /**
+     * Possible values for IP version
+     * type fullname: ip.IpVersionEnum
+     */
+    export type IpVersionEnum = 4 | 6
     /**
      * Mitigation attack on your ip
      * interface fullName: ip.MitigationAttack.MitigationAttack
@@ -278,6 +285,22 @@ export namespace ip {
 }
 export namespace service {
     /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
+    export interface RenewType {
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    /**
      * type fullname: service.StateEnum
      */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
@@ -294,15 +317,21 @@ export namespace service {
 }
 export namespace services {
     /**
-     * Details about a non-expiring Service
-     * interface fullName: services.NonExpiringService.NonExpiringService
+     * Details about a Service
+     * interface fullName: services.Service.Service
      */
-    export interface NonExpiringService {
+    export interface Service {
+        canDeleteAtExpiration: boolean;
         contactAdmin: string;
         contactBilling: string;
         contactTech: string;
         creation: string;
         domain: string;
+        engagedUpTo?: string;
+        expiration: string;
+        possibleRenewPeriod?: number[];
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
         status: service.StateEnum;
     }
@@ -323,7 +352,7 @@ export interface Ip {
      * Your OVH IPs
      * GET /ip
      */
-    $get(params?: { description?: string, ip?: string, 'routedTo.serviceName'?: string, type?: ip.IpTypeEnum }): Promise<string[]>;
+    $get(params?: { campus?: string, description?: string, ip?: string, 'routedTo.serviceName'?: string, type?: ip.IpTypeEnum, version?: ip.IpVersionEnum }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -365,7 +394,12 @@ export interface Ip {
                  * Get this object properties
                  * GET /ip/service/{serviceName}/serviceInfos
                  */
-                $get(): Promise<services.NonExpiringService>;
+                $get(): Promise<services.Service>;
+                /**
+                 * Alter this object properties
+                 * PUT /ip/service/{serviceName}/serviceInfos
+                 */
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -390,7 +424,7 @@ export interface Ip {
          * Alter this object properties
          * PUT /ip/{ip}
          */
-        $put(params?: { bringYourOwnIp?: boolean, campus?: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum }): Promise<void>;
+        $put(params?: { bringYourOwnIp?: boolean, campus?: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, rir?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum, version?: ip.IpVersionEnum }): Promise<void>;
         /**
          * Controle cache
          */

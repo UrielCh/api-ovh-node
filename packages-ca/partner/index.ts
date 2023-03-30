@@ -34,7 +34,7 @@ export namespace partner2 {
      * Area of expertise
      * type fullname: partner2.AreaOfExpertiseEnum
      */
-    export type AreaOfExpertiseEnum = "BigData" | "Connectivity" | "DC" | "DomainName" | "EmailMsSolution" | "HPC" | "Orchestration" | "PC" | "PCIDSS" | "SecurityCertif" | "VPS" | "VoIP" | "WH"
+    export type AreaOfExpertiseEnum = "BigData" | "Connectivity" | "DC" | "DomainName" | "EmailMsSolution" | "HPC" | "Nutanix" | "Orchestration" | "PC" | "PCIDSS" | "SecurityCertif" | "VPS" | "VoIP" | "WH"
     /**
      * Contact Entity
      * interface fullName: partner2.Contact.Contact

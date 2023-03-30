@@ -32,21 +32,6 @@ export namespace saas {
             peakCount: number;
         }
         /**
-         * Change administrator password
-         * interface fullName: saas.csp2.ChangeAdministratorPasswordCreation.ChangeAdministratorPasswordCreation
-         */
-        export interface ChangeAdministratorPasswordCreation {
-            newPassword: string;
-        }
-        /**
-         * Configure domain
-         * interface fullName: saas.csp2.ConfigureDomainCreation.ConfigureDomainCreation
-         */
-        export interface ConfigureDomainCreation {
-            domain: string;
-            supportedServices: saas.csp2.SupportedServiceEnum[];
-        }
-        /**
          * Office license's type
          * type fullname: saas.csp2.LicenseTypeEnum
          */
@@ -153,11 +138,6 @@ export namespace saas {
             quantity: number;
         }
         /**
-         * Supported services of Office365
-         * type fullname: saas.csp2.SupportedServiceEnum
-         */
-        export type SupportedServiceEnum = "Email" | "Intune" | "OfficeCommunicationsOnline"
-        /**
          * Office CSP2 task status
          * type fullname: saas.csp2.TaskStatusEnum
          */
@@ -254,20 +234,6 @@ export interface Saas {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            changeAdministratorPassword: {
-                /**
-                 * Changes the tenant administrator's password
-                 * POST /saas/csp2/{serviceName}/changeAdministratorPassword
-                 */
-                $post(params: { newPassword: string }): Promise<saas.csp2.OfficeTask>;
-            }
-            configureDomain: {
-                /**
-                 * Automatically sets up an OVH-hosted domain of yours for your office365 services. Note, this requires the domain to not have any interfering MX/SRV/TXT records
-                 * POST /saas/csp2/{serviceName}/configureDomain
-                 */
-                $post(params: { domain: string, supportedServices: saas.csp2.SupportedServiceEnum[] }): Promise<saas.csp2.OfficeTask>;
             }
             orderableLicenses: {
                 /**

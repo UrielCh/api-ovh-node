@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseCloudLinux:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseCloudLinux:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -58,6 +64,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "licenseCloudLinux:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -116,6 +125,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseCloudLinux:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -136,6 +148,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "licenseCloudLinux:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -169,6 +184,9 @@ export const schema: Schema = {
           },
           "description": "Tasks linked to this license",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseCloudLinux:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -211,6 +229,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseCloudLinux:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -245,6 +266,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "licenseCloudLinux:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -271,6 +295,9 @@ export const schema: Schema = {
           },
           "description": "Get the orderable CloudLinux versions",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:licenseCloudLinux/orderableVersions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "emailMxplan:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Accounts associated to this mxplan service",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:account/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -127,6 +139,9 @@ export const schema: Schema = {
           },
           "description": "Delete existing mailbox in mxplan server",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailMxplan:apiovh:account/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -155,6 +170,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:account/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -183,6 +201,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "emailMxplan:apiovh:account/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -224,6 +245,9 @@ export const schema: Schema = {
           },
           "description": "Aliases associated to this mailbox",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:account/alias/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -252,6 +276,9 @@ export const schema: Schema = {
           },
           "description": "Create new alias",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailMxplan:apiovh:account/alias/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -294,6 +321,9 @@ export const schema: Schema = {
           },
           "description": "Delete existing alias",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailMxplan:apiovh:account/alias/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -330,6 +360,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:account/alias/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -372,6 +405,9 @@ export const schema: Schema = {
           },
           "description": "Get available capabilities for this account",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:account/capabilities/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -406,6 +442,9 @@ export const schema: Schema = {
           },
           "description": "Change mailbox password",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailMxplan:apiovh:account/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -448,6 +487,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:account/diagnostic/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -476,6 +518,9 @@ export const schema: Schema = {
           },
           "description": "Create new diagnosis request",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailMxplan:apiovh:account/diagnostic/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -518,6 +563,9 @@ export const schema: Schema = {
           },
           "description": "Full access granted users for this mailbox",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:account/fullAccess/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -546,6 +594,9 @@ export const schema: Schema = {
           },
           "description": "Allow full access to a user",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailMxplan:apiovh:account/fullAccess/grant"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -588,6 +639,9 @@ export const schema: Schema = {
           },
           "description": "Revoke full access",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailMxplan:apiovh:account/fullAccess/revoke"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -624,6 +678,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:account/fullAccess/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -666,6 +723,9 @@ export const schema: Schema = {
           },
           "description": "Send as granted users for this mailbox",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:account/sendAs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -694,6 +754,9 @@ export const schema: Schema = {
           },
           "description": "Allow another user to send mails from this mailbox",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailMxplan:apiovh:account/sendAs/grant"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -736,6 +799,9 @@ export const schema: Schema = {
           },
           "description": "Delete allowed user for sendAs",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailMxplan:apiovh:account/sendAs/revoke"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -772,6 +838,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:account/sendAs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -814,6 +883,9 @@ export const schema: Schema = {
           },
           "description": "SendOnBehalfTo granted users for this mailbox",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:account/sendOnBehalfTo/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -842,6 +914,9 @@ export const schema: Schema = {
           },
           "description": "Allow another user to Send On Behalf To mails from this mailbox",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailMxplan:apiovh:account/sendOnBehalfTo/grant"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -884,6 +959,9 @@ export const schema: Schema = {
           },
           "description": "Delete allowed user for SendOnBehalfTo",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailMxplan:apiovh:account/sendOnBehalfTo/revoke"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -920,6 +998,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:account/sendOnBehalfTo/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -962,6 +1043,9 @@ export const schema: Schema = {
           },
           "description": "Pending task for this mailbox",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:account/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -996,6 +1080,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:account/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1038,6 +1125,9 @@ export const schema: Schema = {
           },
           "description": "Domains associated to this service",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:domain/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1072,6 +1162,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:domain/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1100,6 +1193,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "emailMxplan:apiovh:domain/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1141,6 +1237,9 @@ export const schema: Schema = {
           },
           "description": "Delete existing organization disclaimer",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailMxplan:apiovh:domain/disclaimer/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1169,6 +1268,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:domain/disclaimer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1197,6 +1299,9 @@ export const schema: Schema = {
           },
           "description": "Create organization disclaimer of each email",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailMxplan:apiovh:domain/disclaimer/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1241,6 +1346,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "emailMxplan:apiovh:domain/disclaimer/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1282,6 +1390,9 @@ export const schema: Schema = {
           },
           "description": "Get diclaimer attributes to substitute with Active Directory properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:domain/disclaimerAttribute/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1316,6 +1427,9 @@ export const schema: Schema = {
           },
           "description": "External contacts for this service",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:externalContact/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1376,6 +1490,9 @@ export const schema: Schema = {
           },
           "description": "create new external contact",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailMxplan:apiovh:externalContact/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1450,6 +1567,9 @@ export const schema: Schema = {
           },
           "description": "delete external contact",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailMxplan:apiovh:externalContact/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1478,6 +1598,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:externalContact/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1506,6 +1629,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "emailMxplan:apiovh:externalContact/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1547,6 +1673,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:server/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1573,6 +1702,9 @@ export const schema: Schema = {
           },
           "description": "Pending actions",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1599,6 +1731,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailMxplan:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1633,6 +1768,9 @@ export const schema: Schema = {
           },
           "description": "Update spam and virus flags on all active accounts",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailMxplan:apiovh:updateFlagsOnAllAccounts"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2699,6 +2837,7 @@ export const schema: Schema = {
         "addAccount",
         "addAlias",
         "addDomain",
+        "addDomainDKIM",
         "addDomainDisclaimer",
         "addExternalContact",
         "addFullAccess",
@@ -2711,6 +2850,7 @@ export const schema: Schema = {
         "deleteAccount",
         "deleteAlias",
         "deleteDomain",
+        "deleteDomainDKIM",
         "deleteDomainDisclaimer",
         "deleteExternalContact",
         "deleteFullAccess",
@@ -2719,6 +2859,8 @@ export const schema: Schema = {
         "deleteService",
         "deleteServiceAuthorizedIp",
         "diagnoseAccount",
+        "disableDKIM",
+        "enableDKIM",
         "expandDrive",
         "installServer",
         "maintenance",

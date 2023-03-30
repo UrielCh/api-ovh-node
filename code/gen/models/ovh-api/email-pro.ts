@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "emailPro:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Accounts associated to this pro service",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:account/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -127,6 +139,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:account/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -155,6 +170,9 @@ export const schema: Schema = {
           },
           "description": "Delete existing mailbox in pro server",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailPro:apiovh:account/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -183,6 +201,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "emailPro:apiovh:account/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -224,6 +245,9 @@ export const schema: Schema = {
           },
           "description": "Aliases associated to this mailbox",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:account/alias/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -252,6 +276,9 @@ export const schema: Schema = {
           },
           "description": "Create new alias",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailPro:apiovh:account/alias/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -294,6 +321,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:account/alias/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -330,6 +360,9 @@ export const schema: Schema = {
           },
           "description": "Delete existing alias",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailPro:apiovh:account/alias/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -372,6 +405,9 @@ export const schema: Schema = {
           },
           "description": "Change mailbox password",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailPro:apiovh:account/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -414,6 +450,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:account/diagnostics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -442,6 +481,9 @@ export const schema: Schema = {
           },
           "description": "Create new diagnosis request",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailPro:apiovh:account/diagnostics/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -484,6 +526,9 @@ export const schema: Schema = {
           },
           "description": "Full access granted users for this mailbox",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:account/fullAccess/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -512,6 +557,9 @@ export const schema: Schema = {
           },
           "description": "Allow full access to a user",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailPro:apiovh:account/fullAccess/grant"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -554,6 +602,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:account/fullAccess/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -590,6 +641,9 @@ export const schema: Schema = {
           },
           "description": "Revoke full access",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailPro:apiovh:account/fullAccess/revoke"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -632,6 +686,9 @@ export const schema: Schema = {
           },
           "description": "Send as granted users for this mailbox",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:account/sendAs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -660,6 +717,9 @@ export const schema: Schema = {
           },
           "description": "Allow another user to send mails from this mailbox",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailPro:apiovh:account/sendAs/grant"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -702,6 +762,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:account/sendAs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -738,6 +801,9 @@ export const schema: Schema = {
           },
           "description": "Delete allowed user for sendAs",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailPro:apiovh:account/sendAs/revoke"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -780,6 +846,9 @@ export const schema: Schema = {
           },
           "description": "SendOnBehalfTo granted users for this mailbox",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:account/sendOnBehalfTo/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -808,6 +877,9 @@ export const schema: Schema = {
           },
           "description": "Allow another user to Send On Behalf To mails from this mailbox",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailPro:apiovh:account/sendOnBehalfTo/grant"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -850,6 +922,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:account/sendOnBehalfTo/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -886,6 +961,9 @@ export const schema: Schema = {
           },
           "description": "Delete allowed user for SendOnBehalfTo",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailPro:apiovh:account/sendOnBehalfTo/revoke"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -928,6 +1006,9 @@ export const schema: Schema = {
           },
           "description": "Pending task for this mailbox",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:account/tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -962,6 +1043,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:account/tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1004,6 +1088,9 @@ export const schema: Schema = {
           },
           "description": "Terminate account at expiration date",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailPro:apiovh:account/terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1038,6 +1125,9 @@ export const schema: Schema = {
           },
           "description": "Detects billing transition status for the service",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:billingMigrated/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1064,6 +1154,9 @@ export const schema: Schema = {
           },
           "description": "Emailpro billing plan",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:billingPlan/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1090,6 +1183,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailPro:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1140,6 +1236,9 @@ export const schema: Schema = {
           },
           "description": "Domains associated to this service",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:domain/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1168,13 +1267,32 @@ export const schema: Schema = {
           },
           "description": "Create new domain in pro services",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailPro:apiovh:domain/create"
+          ],
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Enable DKIM automatically after DKIM configuration",
+              "fullType": "boolean",
+              "name": "autoEnableDKIM",
+              "paramType": "body",
+              "required": false
+            },
             {
               "dataType": "boolean",
               "description": "If you host domain in OVH we can configure autodiscover record automatically",
               "fullType": "boolean",
               "name": "configureAutodiscover",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Launch configuration of DKIM automatically for the domain",
+              "fullType": "boolean",
+              "name": "configureDKIM",
               "paramType": "body",
               "required": false
             },
@@ -1234,6 +1352,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:domain/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1262,6 +1383,9 @@ export const schema: Schema = {
           },
           "description": "Delete existing domain in pro services",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailPro:apiovh:domain/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1290,6 +1414,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "emailPro:apiovh:domain/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1331,6 +1458,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:domain/disclaimer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1359,6 +1489,9 @@ export const schema: Schema = {
           },
           "description": "Delete existing organization disclaimer",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailPro:apiovh:domain/disclaimer/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1387,6 +1520,9 @@ export const schema: Schema = {
           },
           "description": "Create organization disclaimer of each email",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailPro:apiovh:domain/disclaimer/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1431,6 +1567,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "emailPro:apiovh:domain/disclaimer/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1472,6 +1611,9 @@ export const schema: Schema = {
           },
           "description": "Get diclaimer attributes to substitute with Active Directory properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:domain/disclaimerAttribute/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1497,6 +1639,309 @@ export const schema: Schema = {
       "path": "/email/pro/{service}/domain/{domainName}/disclaimerAttribute"
     },
     {
+      "description": "List the email.pro.dkim objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "DKIM associated to this domain",
+          "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:domain/dkim/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create DKIM selector on this domain",
+          "httpMethod": "POST",
+          "iamActions": [
+            "emailPro:apiovh:domain/dkim/create"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Enable DKIM automatically after DKIM configuration",
+              "fullType": "boolean",
+              "name": "autoEnableDKIM",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "If you host domain in OVH we can configure dkim dns record automatically",
+              "fullType": "boolean",
+              "name": "configureDkim",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "selector name for DKIM",
+              "fullType": "string",
+              "name": "selectorName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pro organization",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.Task"
+        }
+      ],
+      "path": "/email/pro/{service}/domain/{domainName}/dkim"
+    },
+    {
+      "description": "List the email.pro.dkim objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:domain/dkim/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Selector name",
+              "fullType": "string",
+              "name": "selectorName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.Dkim"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete DKIM selector on this domain",
+          "httpMethod": "DELETE",
+          "iamActions": [
+            "emailPro:apiovh:domain/dkim/delete"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "selectorName",
+              "fullType": "string",
+              "name": "selectorName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pro organization",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.Task"
+        }
+      ],
+      "path": "/email/pro/{service}/domain/{domainName}/dkim/{selectorName}"
+    },
+    {
+      "description": "disable operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "disable dkim signing",
+          "httpMethod": "POST",
+          "iamActions": [
+            "emailPro:apiovh:domain/dkim/disable"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "selectorName",
+              "fullType": "string",
+              "name": "selectorName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pro organization",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.Task"
+        }
+      ],
+      "path": "/email/pro/{service}/domain/{domainName}/dkim/{selectorName}/disable"
+    },
+    {
+      "description": "enable operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "enable dkim signing or switch selector used",
+          "httpMethod": "POST",
+          "iamActions": [
+            "emailPro:apiovh:domain/dkim/enable"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "selectorName",
+              "fullType": "string",
+              "name": "selectorName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pro organization",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.Task"
+        }
+      ],
+      "path": "/email/pro/{service}/domain/{domainName}/dkim/{selectorName}/enable"
+    },
+    {
+      "description": "dkimSelector operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get dkim selector list",
+          "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:domain/dkimSelector/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pro organization",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/email/pro/{service}/domain/{domainName}/dkimSelector"
+    },
+    {
       "description": "List the email.pro.ExternalContact objects",
       "operations": [
         {
@@ -1506,6 +1951,9 @@ export const schema: Schema = {
           },
           "description": "External contacts for this service",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:externalContact/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1566,6 +2014,9 @@ export const schema: Schema = {
           },
           "description": "create new external contact",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailPro:apiovh:externalContact/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1640,6 +2091,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:externalContact/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1668,6 +2122,9 @@ export const schema: Schema = {
           },
           "description": "delete external contact",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "emailPro:apiovh:externalContact/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1696,6 +2153,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "emailPro:apiovh:externalContact/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1737,6 +2197,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:server/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1763,6 +2226,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1783,6 +2249,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "emailPro:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1816,6 +2285,9 @@ export const schema: Schema = {
           },
           "description": "Pending actions",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1842,6 +2314,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "emailPro:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1876,6 +2351,9 @@ export const schema: Schema = {
           },
           "description": "Update spam and virus flags on all active accounts",
           "httpMethod": "POST",
+          "iamActions": [
+            "emailPro:apiovh:updateFlagsOnAllAccounts"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2593,6 +3071,101 @@ export const schema: Schema = {
       "id": "DisclaimerAttributeEnum",
       "namespace": "email.pro"
     },
+    "email.pro.Dkim": {
+      "description": "DKIM for a domain",
+      "id": "Dkim",
+      "namespace": "email.pro",
+      "properties": {
+        "customerRecord": {
+          "canBeNull": false,
+          "description": "Customer DNS record",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "header": {
+          "canBeNull": false,
+          "description": "Header used for DKIM signature",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lastUpdate": {
+          "canBeNull": true,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "recordType": {
+          "canBeNull": false,
+          "description": "Record type of the customer record",
+          "fullType": "email.pro.DkimRecordTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.DkimRecordTypeEnum"
+        },
+        "selectorName": {
+          "canBeNull": false,
+          "description": "Selector name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "DKIM status",
+          "fullType": "email.pro.DkimStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.DkimStatusEnum"
+        },
+        "targetRecord": {
+          "canBeNull": true,
+          "description": "Target of the customer record",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "taskPendingId": {
+          "canBeNull": true,
+          "description": "Pending task for this DKIM",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "email.pro.DkimRecordTypeEnum": {
+      "description": "Record type of the customer record",
+      "enum": [
+        "CNAME"
+      ],
+      "enumType": "string",
+      "id": "DkimRecordTypeEnum",
+      "namespace": "email.pro"
+    },
+    "email.pro.DkimStatusEnum": {
+      "description": "DKIM status",
+      "enum": [
+        "deleting",
+        "disabling",
+        "enabling",
+        "inProduction",
+        "ready",
+        "todo",
+        "waitingRecord"
+      ],
+      "enumType": "string",
+      "id": "DkimStatusEnum",
+      "namespace": "email.pro"
+    },
     "email.pro.Domain": {
       "description": "Domain",
       "id": "Domain",
@@ -2743,7 +3316,7 @@ export const schema: Schema = {
         },
         "mxIsValid": {
           "canBeNull": false,
-          "description": "If true your dns mx configuration is valid",
+          "description": "If true your DNS MX configuration is valid",
           "fullType": "boolean",
           "readOnly": true,
           "required": false,
@@ -2775,7 +3348,7 @@ export const schema: Schema = {
         },
         "srvIsValid": {
           "canBeNull": false,
-          "description": "If true your dns srv record is valid",
+          "description": "If true your DNS SRV record is valid",
           "fullType": "boolean",
           "readOnly": true,
           "required": false,
@@ -3508,6 +4081,7 @@ export const schema: Schema = {
         "addAccount",
         "addAlias",
         "addDomain",
+        "addDomainDKIM",
         "addDomainDisclaimer",
         "addExternalContact",
         "addFullAccess",
@@ -3520,6 +4094,7 @@ export const schema: Schema = {
         "deleteAccount",
         "deleteAlias",
         "deleteDomain",
+        "deleteDomainDKIM",
         "deleteDomainDisclaimer",
         "deleteExternalContact",
         "deleteFullAccess",
@@ -3528,6 +4103,8 @@ export const schema: Schema = {
         "deleteService",
         "deleteServiceAuthorizedIp",
         "diagnoseAccount",
+        "disableDKIM",
+        "enableDKIM",
         "expandDrive",
         "installServer",
         "maintenance",
@@ -3661,6 +4238,101 @@ export const schema: Schema = {
           "type": "long"
         }
       }
+    },
+    "email.pro.dkim": {
+      "description": "DKIM for a domain",
+      "id": "dkim",
+      "namespace": "email.pro",
+      "properties": {
+        "customerRecord": {
+          "canBeNull": false,
+          "description": "customer DNS record",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "header": {
+          "canBeNull": false,
+          "description": "header used for DKIM signature",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lastUpdate": {
+          "canBeNull": true,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "recordType": {
+          "canBeNull": false,
+          "description": "Record type of the customer record",
+          "fullType": "email.pro.dkimRecordTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.dkimRecordTypeEnum"
+        },
+        "selectorName": {
+          "canBeNull": false,
+          "description": "selectorName",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "dkim status",
+          "fullType": "email.pro.dkimStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.dkimStatusEnum"
+        },
+        "targetRecord": {
+          "canBeNull": true,
+          "description": "Target of the customer record",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "taskPendingId": {
+          "canBeNull": true,
+          "description": "Pending task for this DKIM",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "email.pro.dkimRecordTypeEnum": {
+      "description": "Record type of the customer record",
+      "enum": [
+        "CNAME"
+      ],
+      "enumType": "string",
+      "id": "dkimRecordTypeEnum",
+      "namespace": "email.pro"
+    },
+    "email.pro.dkimStatusEnum": {
+      "description": "dkim status",
+      "enum": [
+        "deleting",
+        "disabling",
+        "enabling",
+        "inProduction",
+        "ready",
+        "todo",
+        "waitingRecord"
+      ],
+      "enumType": "string",
+      "id": "dkimStatusEnum",
+      "namespace": "email.pro"
     },
     "email.pro.renewPeriodEnum": {
       "description": "Renew period",

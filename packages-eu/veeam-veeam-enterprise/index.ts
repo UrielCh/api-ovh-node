@@ -64,6 +64,7 @@ export namespace veeam {
          * interface fullName: veeam.veeamEnterprise.Account.Account
          */
         export interface Account {
+            activationStatus: veeamEnterpriseActivationStatusEnum;
             ip?: string;
             port?: number;
             serviceName: string;
@@ -84,6 +85,11 @@ export namespace veeam {
     }
 }
 export namespace veeamEnterprise {
+    /**
+     * All possible states for a Veeam Enterprise activation status
+     * type fullname: veeamEnterprise.ActivationStatusEnum
+     */
+    export type ActivationStatusEnum = "cancelled" | "doing" | "done" | "todo"
     /**
      * All possible states for a Veeam Enterprise Task
      * type fullname: veeamEnterprise.TaskStateEnum
@@ -194,4 +200,5 @@ export interface Veeam {
 /**
  * Extra Alias to bypass relativer namespace colitions
  */
+type veeamEnterpriseActivationStatusEnum = veeamEnterprise.ActivationStatusEnum;
 type veeamEnterpriseTaskStateEnum = veeamEnterprise.TaskStateEnum;

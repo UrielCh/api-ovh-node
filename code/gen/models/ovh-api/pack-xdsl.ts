@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "packXdsl:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Move the access to another address",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:addressMove/moveOffer"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -173,7 +185,7 @@ export const schema: Schema = {
               "fullType": "pack.xdsl.ModemOptionEnum",
               "name": "modem",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "long",
@@ -295,6 +307,9 @@ export const schema: Schema = {
           },
           "description": "Get the possibilities of address move offers available",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:addressMove/offers/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -320,59 +335,6 @@ export const schema: Schema = {
       "path": "/pack/xdsl/{packName}/addressMove/offers"
     },
     {
-      "description": "servicesToDelete operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-12-15T10:00:00+01:00",
-            "deprecatedDate": "2022-10-25T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/pack/xdsl/{packName}/addressMove/servicesToDeleteUnpackTerms",
-            "value": "DEPRECATED"
-          },
-          "description": "Calculate services to delete with new offer and options",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Eligibility reference",
-              "fullType": "string",
-              "name": "eligibilityReference",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Reference of the new offer",
-              "fullType": "string",
-              "name": "offerName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "pack.xdsl.migration.OfferOption[]",
-              "description": "Options wanted in the new offer",
-              "fullType": "pack.xdsl.migration.OfferOption[]",
-              "name": "options",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pack",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "pack.xdsl.migration.SubServiceToDelete[]"
-        }
-      ],
-      "path": "/pack/xdsl/{packName}/addressMove/servicesToDelete"
-    },
-    {
       "description": "servicesToDeleteUnpackTerms operations",
       "operations": [
         {
@@ -382,6 +344,9 @@ export const schema: Schema = {
           },
           "description": "Calculate services to delete with unpack terms for new offer and options",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:addressMove/servicesToDeleteUnpackTerms/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -432,6 +397,9 @@ export const schema: Schema = {
           },
           "description": "Check if the resiliation can be cancelled",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:canCancelResiliation/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -458,6 +426,9 @@ export const schema: Schema = {
           },
           "description": "Cancel the ongoing resiliation",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:cancelResiliation/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -484,6 +455,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -534,6 +508,9 @@ export const schema: Schema = {
           },
           "description": "Get contact infos about the owner",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:contactOwner/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -560,6 +537,9 @@ export const schema: Schema = {
           },
           "description": "Get the available tlds for domain order",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:domain/options/tlds/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -586,6 +566,9 @@ export const schema: Schema = {
           },
           "description": "Domain services",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:domain/services/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -606,6 +589,9 @@ export const schema: Schema = {
           },
           "description": "Activate a domain service",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:domain/services/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -664,6 +650,9 @@ export const schema: Schema = {
           },
           "description": "List the available domains for the Email Pro service",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:emailPro/options/domains/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -690,6 +679,9 @@ export const schema: Schema = {
           },
           "description": "Check if the given email address is available for an Email Pro activation",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:emailPro/options/isEmailAvailable/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -724,6 +716,9 @@ export const schema: Schema = {
           },
           "description": "List the Email Pro services",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:emailPro/services/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -744,6 +739,9 @@ export const schema: Schema = {
           },
           "description": "Activate an Email Pro service",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:emailPro/services/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -786,6 +784,9 @@ export const schema: Schema = {
           },
           "description": "Exchange 2013 services",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:exchangeAccount/services/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -812,6 +813,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:exchangeAccount/services/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -846,6 +850,9 @@ export const schema: Schema = {
           },
           "description": "Get the available domains",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:exchangeIndividual/options/domains/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -872,6 +879,9 @@ export const schema: Schema = {
           },
           "description": "Check if the email address is available for service creation",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:exchangeIndividual/options/isEmailAvailable/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -897,188 +907,6 @@ export const schema: Schema = {
       "path": "/pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable"
     },
     {
-      "description": "isEmailAvailable operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-01-10T10:00:00+01:00",
-            "deprecatedDate": "2021-12-10T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/pack/xdsl/{packName}/emailPro/options/isEmailAvailable",
-            "value": "DEPRECATED"
-          },
-          "description": "Check if the email address is available for service creation",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your pack",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "boolean"
-        }
-      ],
-      "path": "/pack/xdsl/{packName}/exchangeLite/options/isEmailAvailable"
-    },
-    {
-      "description": "List the pack.xdsl.ExchangeLiteService objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-01-10T10:00:00+01:00",
-            "deprecatedDate": "2021-12-10T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/pack/xdsl/{packName}/emailPro/services",
-            "value": "DEPRECATED"
-          },
-          "description": "Exchange lite services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your pack",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-01-10T10:00:00+01:00",
-            "deprecatedDate": "2021-12-10T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/pack/xdsl/{packName}/emailPro/services",
-            "value": "DEPRECATED"
-          },
-          "description": "Activate a exchange lite service",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "boolean",
-              "description": "Antispam protection",
-              "fullType": "boolean",
-              "name": "antispam",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Display name",
-              "fullType": "string",
-              "name": "displayName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Email address",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "First name",
-              "fullType": "string",
-              "name": "firstName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Initials",
-              "fullType": "string",
-              "name": "initials",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Last name",
-              "fullType": "string",
-              "name": "lastName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "password",
-              "description": "Password",
-              "fullType": "password",
-              "name": "password",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pack",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "pack.xdsl.Task"
-        }
-      ],
-      "path": "/pack/xdsl/{packName}/exchangeLite/services"
-    },
-    {
-      "description": "Exchange account service",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-01-10T10:00:00+01:00",
-            "deprecatedDate": "2021-12-10T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/xdsl/email/pro/{email}",
-            "value": "DEPRECATED"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pack",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "pack.xdsl.ExchangeLiteService"
-        }
-      ],
-      "path": "/pack/xdsl/{packName}/exchangeLite/services/{domain}"
-    },
-    {
       "description": "List the pack.xdsl.ExchangeOrganizationService objects",
       "operations": [
         {
@@ -1088,6 +916,9 @@ export const schema: Schema = {
           },
           "description": "Exchange 2013 organization services",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:exchangeOrganization/services/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1114,6 +945,9 @@ export const schema: Schema = {
           },
           "description": "Get the hostedemail available domains",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:hostedEmail/options/domains/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1140,6 +974,9 @@ export const schema: Schema = {
           },
           "description": "Hosted email services",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:hostedEmail/services/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1160,6 +997,9 @@ export const schema: Schema = {
           },
           "description": "Activate an hosted email service",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:hostedEmail/services/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1202,6 +1042,9 @@ export const schema: Schema = {
           },
           "description": "Delete hosted email account",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "packXdsl:apiovh:hostedEmail/services/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1230,6 +1073,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:hostedEmail/services/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1264,6 +1110,9 @@ export const schema: Schema = {
           },
           "description": "Get hosted email account informations",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:hostedEmail/services/account/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1298,6 +1147,9 @@ export const schema: Schema = {
           },
           "description": "Change hosted email account password",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:hostedEmail/services/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1340,6 +1192,9 @@ export const schema: Schema = {
           },
           "description": "Get hosted email configuration informations",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:hostedEmail/services/configuration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1365,100 +1220,6 @@ export const schema: Schema = {
       "path": "/pack/xdsl/{packName}/hostedEmail/services/{domain}/configuration"
     },
     {
-      "description": "List the pack.xdsl.Hubic objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Hubic perso services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your pack",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/pack/xdsl/{packName}/hubic/services"
-    },
-    {
-      "description": "Hubic service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pack",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "pack.xdsl.Hubic"
-        }
-      ],
-      "path": "/pack/xdsl/{packName}/hubic/services/{domain}"
-    },
-    {
-      "description": "details operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Details associated to a voucher",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pack",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>"
-        }
-      ],
-      "path": "/pack/xdsl/{packName}/hubic/services/{domain}/details"
-    },
-    {
       "description": "migrate operations",
       "operations": [
         {
@@ -1468,6 +1229,9 @@ export const schema: Schema = {
           },
           "description": "Migrate to the selected offer",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:migration/migrate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1524,7 +1288,7 @@ export const schema: Schema = {
               "fullType": "pack.xdsl.ModemOptionEnum",
               "name": "modem",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "long",
@@ -1630,6 +1394,9 @@ export const schema: Schema = {
           },
           "description": "Get the possibilities of migration offers available",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:migration/offers/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1655,51 +1422,6 @@ export const schema: Schema = {
       "path": "/pack/xdsl/{packName}/migration/offers"
     },
     {
-      "description": "servicesToDelete operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-12-15T10:00:00+01:00",
-            "deprecatedDate": "2022-10-25T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/pack/xdsl/{packName}/migration/servicesToDeleteUnpackTerms",
-            "value": "DEPRECATED"
-          },
-          "description": "Calculate services to delete with new offer and options",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Reference of the new offer",
-              "fullType": "string",
-              "name": "offerName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "pack.xdsl.migration.OfferOption[]",
-              "description": "Options wanted in the new offer",
-              "fullType": "pack.xdsl.migration.OfferOption[]",
-              "name": "options",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your pack",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "pack.xdsl.migration.SubServiceToDelete[]"
-        }
-      ],
-      "path": "/pack/xdsl/{packName}/migration/servicesToDelete"
-    },
-    {
       "description": "servicesToDeleteUnpackTerms operations",
       "operations": [
         {
@@ -1709,6 +1431,9 @@ export const schema: Schema = {
           },
           "description": "Calculate services to delete with unpack terms for an offer and options",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:migration/servicesToDeleteUnpackTerms/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1751,6 +1476,9 @@ export const schema: Schema = {
           },
           "description": "Get informations about the promotion code generation",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:promotionCode/capabilities/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1777,6 +1505,9 @@ export const schema: Schema = {
           },
           "description": "Creates a task to generate a new promotion code",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:promotionCode/generate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1803,6 +1534,9 @@ export const schema: Schema = {
           },
           "description": "Resiliate the pack",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:resiliate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1853,6 +1587,9 @@ export const schema: Schema = {
           },
           "description": "Get information about the ongoing resiliation",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:resiliationFollowUp/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1879,6 +1616,9 @@ export const schema: Schema = {
           },
           "description": "Get resiliation terms",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:resiliationTerms/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1913,6 +1653,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1933,6 +1676,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "packXdsl:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1966,6 +1712,9 @@ export const schema: Schema = {
           },
           "description": "Informations about the services included in the pack",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:services/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1992,6 +1741,9 @@ export const schema: Schema = {
           },
           "description": "Allowed shipping addresses given a context",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:shippingAddresses/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2026,6 +1778,9 @@ export const schema: Schema = {
           },
           "description": "List services contained in the pack",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:subServices/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2052,6 +1807,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:subServices/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2086,6 +1844,9 @@ export const schema: Schema = {
           },
           "description": "Give the condition to unpack service from pack",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:subServices/keepServiceTerms/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2120,6 +1881,9 @@ export const schema: Schema = {
           },
           "description": "Tasks scheduled for this pack",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2162,6 +1926,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2196,6 +1963,9 @@ export const schema: Schema = {
           },
           "description": "VOIP billing accounts",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:voipBillingAccount/services/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2222,6 +1992,9 @@ export const schema: Schema = {
           },
           "description": "VOIP ecofax service",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:voipEcofax/services/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2242,6 +2015,9 @@ export const schema: Schema = {
           },
           "description": "Activate a voicefax service",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:voipEcofax/services/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2268,6 +2044,9 @@ export const schema: Schema = {
           },
           "description": "Create a new shippingId to be used for voipLine service creation",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:voipLine/options/customShippingAddress/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2334,6 +2113,9 @@ export const schema: Schema = {
           },
           "description": "Get available hardwares",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:voipLine/options/hardwares/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2360,6 +2142,9 @@ export const schema: Schema = {
           },
           "description": "Get available shipping addresses",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:voipLine/options/shippingAddresses/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2386,6 +2171,9 @@ export const schema: Schema = {
           },
           "description": "VOIP line services",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:voipLine/services/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2406,6 +2194,9 @@ export const schema: Schema = {
           },
           "description": "Activate a voip line service",
           "httpMethod": "POST",
+          "iamActions": [
+            "packXdsl:apiovh:voipLine/services/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2456,6 +2247,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:voipLine/services/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2490,6 +2284,9 @@ export const schema: Schema = {
           },
           "description": "xDSL access services",
           "httpMethod": "GET",
+          "iamActions": [
+            "packXdsl:apiovh:xdslAccess/services/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2893,12 +2690,12 @@ export const schema: Schema = {
     },
     "order.CurrencyCodeEnum": {
       "enum": [
+        " INR",
         "AUD",
         "CAD",
         "CZK",
         "EUR",
         "GBP",
-        "INR",
         "LTL",
         "MAD",
         "N/A",
@@ -3096,20 +2893,6 @@ export const schema: Schema = {
         }
       }
     },
-    "pack.xdsl.ExchangeLiteService": {
-      "description": "Exchange account service",
-      "id": "ExchangeLiteService",
-      "namespace": "pack.xdsl",
-      "properties": {
-        "domain": {
-          "canBeNull": false,
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
     "pack.xdsl.HostedEmail.Account": {
       "description": "HostedEmail account",
       "id": "Account",
@@ -3277,52 +3060,6 @@ export const schema: Schema = {
       "properties": {
         "domain": {
           "canBeNull": false,
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "pack.xdsl.Hubic": {
-      "description": "Hubic service",
-      "id": "Hubic",
-      "namespace": "pack.xdsl",
-      "properties": {
-        "bytes": {
-          "canBeNull": false,
-          "description": "Size of the hubic account in bytes",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "domain": {
-          "canBeNull": false,
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "isUsed": {
-          "canBeNull": false,
-          "description": "Indicate if the voucher is used or not",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "size": {
-          "canBeNull": false,
-          "description": "Human readable size of the hubic account",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "voucher": {
-          "canBeNull": true,
-          "description": "Voucher to enter on HubiC website to activate the account",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -3648,7 +3385,6 @@ export const schema: Schema = {
         "emailPro",
         "exchangeAccount",
         "exchangeIndividual",
-        "exchangeLite",
         "exchangeOrganization",
         "grt10ho",
         "grt20m10ho",
@@ -3662,7 +3398,6 @@ export const schema: Schema = {
         "grtKosc",
         "grtOvh",
         "hostedEmail",
-        "hubic",
         "modem",
         "overTheBoxHardware",
         "overTheBoxService",
@@ -4403,7 +4138,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "price": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Price of for this modem",
           "readOnly": false,
           "required": false,
@@ -4923,20 +4658,6 @@ export const schema: Schema = {
         "uiCode": {
           "canBeNull": false,
           "description": "An opaque string that represents an intervention unit",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "xdsl.hubic.HubicDetailsResponse": {
-      "description": "Details that the user used for his voucher",
-      "id": "HubicDetailsResponse",
-      "namespace": "xdsl.hubic",
-      "properties": {
-        "email": {
-          "canBeNull": false,
-          "description": "Mail used for the voucher",
           "readOnly": false,
           "required": false,
           "type": "string"

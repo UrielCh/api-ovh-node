@@ -78,7 +78,7 @@ export namespace order {
     /**
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = " INR" | "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * An order
      * interface fullName: order.Order.Order
@@ -338,7 +338,7 @@ export namespace xdsl {
      * Status of the access
      * type fullname: xdsl.AccessStatusEnum
      */
-    export type AccessStatusEnum = "active" | "cancelled" | "close" | "deleting" | "doing" | "migration" | "slamming" | "upgradeOffer"
+    export type AccessStatusEnum = "active" | "cancelled" | "close" | "deleting" | "doing" | "migration" | "slamming" | "terminated" | "upgradeOffer"
     /**
      * All components of an address
      * interface fullName: xdsl.AddressDetail.AddressDetail
@@ -375,15 +375,6 @@ export namespace xdsl {
     export interface AsyncTask<T> {
         error?: string;
         result?: T;
-        status: xdsl.AsyncTaskStatusEnum;
-    }
-    /**
-     * Async task array
-     * interface fullName: xdsl.AsyncTaskArray.AsyncTaskArray
-     */
-    export interface AsyncTaskArray<T> {
-        error?: string;
-        result?: T[];
         status: xdsl.AsyncTaskStatusEnum;
     }
     /**
@@ -502,10 +493,32 @@ export namespace xdsl {
      */
     export type FaultRepairTimeEnum = "10HO" | "4HNO" | "4HO" | "DPLUS1" | "NORMAL"
     /**
-     * Gtr of the line.
+     * Fiber eligibility
+     * interface fullName: xdsl.FiberEligibility.FiberEligibility
+     */
+    export interface FiberEligibility {
+        availabilityDate?: string;
+        buildingName?: string;
+        buildingReference?: string;
+        buildingSeqId?: number;
+        firstEligibleDate?: string;
+        grts?: xdsl.GtrEnum[];
+        id: number;
+        lastUpdate: string;
+        offer?: xdsl.Offer;
+        provider?: xdsl.Provider;
+        status: xdsl.FiberEligibilityStatusEnum;
+    }
+    /**
+     * Status of the fiber eligibility
+     * type fullname: xdsl.FiberEligibilityStatusEnum
+     */
+    export type FiberEligibilityStatusEnum = "eligible" | "no_building" | "not_eligible" | "not_yet_eligible"
+    /**
+     * GRT option for an access.
      * type fullname: xdsl.GtrEnum
      */
-    export type GtrEnum = "10ho" | "4hno" | "4ho" | "dplus1" | "none"
+    export type GtrEnum = "10ho" | "20m_10ho" | "20m_4ho" | "4hno" | "4ho" | "5m_10ho" | "5m_4ho" | "dplus1" | "none"
     /**
      * Informations about an IP address
      * interface fullName: xdsl.IP.IP
@@ -679,6 +692,14 @@ export namespace xdsl {
         type: xdsl.monitoringNotifications.TypeEnum;
     }
     /**
+     * Details of a provider
+     * interface fullName: xdsl.Offer.Offer
+     */
+    export interface Offer {
+        code: string;
+        name: string;
+    }
+    /**
      * Operators
      * type fullname: xdsl.OperatorTypeEnum
      */
@@ -707,6 +728,14 @@ export namespace xdsl {
         name: string;
         protocol: xdsl.xdslModemConfig.ProtocolTypeEnum;
         taskId?: number;
+    }
+    /**
+     * Details of a provider
+     * interface fullName: xdsl.Provider.Provider
+     */
+    export interface Provider {
+        code: string;
+        name: string;
     }
     /**
      * Log entry of an auth attempt to the radius server
@@ -889,210 +918,6 @@ export namespace xdsl {
         ipAddress: string;
         leaseTimeRemaining: number;
         macAddress: string;
-    }
-    export namespace eligibility {
-        /**
-         * Represents an address
-         * interface fullName: xdsl.eligibility.Address.Address
-         */
-        export interface Address {
-            building?: string;
-            city: xdsl.eligibility.City;
-            door?: string;
-            floor?: string;
-            logo?: string;
-            owner?: string;
-            residence?: string;
-            stair?: string;
-            street?: xdsl.eligibility.Street;
-            streetNumber?: string;
-        }
-        /**
-         * Details of a Building
-         * interface fullName: xdsl.eligibility.Building.Building
-         */
-        export interface Building {
-            name: string;
-            nro: string;
-            reference: string;
-            type: xdsl.eligibility.BuildingTypeEnum;
-        }
-        /**
-         * Type of building
-         * type fullname: xdsl.eligibility.BuildingTypeEnum
-         */
-        export type BuildingTypeEnum = "BUILDING" | "HOUSE"
-        /**
-         * Represent a city
-         * interface fullName: xdsl.eligibility.City.City
-         */
-        export interface City {
-            inseeCode: string;
-            locality?: string;
-            name: string;
-            zipCode: string;
-        }
-        /**
-         * A message and its code
-         * interface fullName: xdsl.eligibility.CodeAndMessage.CodeAndMessage
-         */
-        export interface CodeAndMessage {
-            code: string;
-            message: string;
-        }
-        /**
-         * Eligibility result
-         * interface fullName: xdsl.eligibility.Eligibility.Eligibility
-         */
-        export interface Eligibility {
-            address?: xdsl.eligibility.Address;
-            characteristics: xdsl.eligibility.LineCharacteristics;
-            endpoint: xdsl.eligibility.LineEndpointEnum;
-            id: string;
-            infos: xdsl.eligibility.LineInfos;
-            offers: xdsl.eligibility.Offer[];
-            portability: xdsl.eligibility.Portability;
-        }
-        /**
-         * Fiber Eligibility result
-         * interface fullName: xdsl.eligibility.FiberEligibility.FiberEligibility
-         */
-        export interface FiberEligibility {
-            id: string;
-            offers: xdsl.eligibility.FiberOffer[];
-        }
-        /**
-         * A fiber offer
-         * interface fullName: xdsl.eligibility.FiberOffer.FiberOffer
-         */
-        export interface FiberOffer {
-            availibilityDate?: string;
-            downloadRate?: number;
-            eligible: boolean;
-            gtr: xdsl.GtrEnum[];
-            guaranteed: boolean;
-            label: string;
-            reason?: string;
-            type: xdsl.DslTypeEnum;
-            uploadRate?: number;
-        }
-        /**
-         * Details of a FiberStreet
-         * interface fullName: xdsl.eligibility.FiberStreet.FiberStreet
-         */
-        export interface FiberStreet {
-            streetCode: string;
-            streetName: string;
-        }
-        /**
-         * Status of a landline
-         * type fullname: xdsl.eligibility.LandlineStatusEnum
-         */
-        export type LandlineStatusEnum = "active" | "inactive"
-        /**
-         * a line
-         * interface fullName: xdsl.eligibility.Line.Line
-         */
-        export interface Line {
-            address: xdsl.eligibility.Address;
-            contactName: string;
-            lineNumber: string;
-            lineStatus: xdsl.eligibility.LandlineStatusEnum;
-        }
-        /**
-         * The characteristics of a line
-         * interface fullName: xdsl.eligibility.LineCharacteristics.LineCharacteristics
-         */
-        export interface LineCharacteristics {
-            calibration: xdsl.eligibility.LineSectionCalibration[];
-            desaturationFreePairs: number;
-            distance: number;
-            freePairs: number;
-            mitigation: number;
-            mitigationSdsl: number;
-            nra: string;
-        }
-        /**
-         * Type of the endpoint for the eligibility
-         * type fullname: xdsl.eligibility.LineEndpointEnum
-         */
-        export type LineEndpointEnum = "address" | "line"
-        /**
-         * The line infos
-         * interface fullName: xdsl.eligibility.LineInfos.LineInfos
-         */
-        export interface LineInfos {
-            createNeighbour: boolean;
-            lineNumber?: string;
-            lineStatus?: xdsl.eligibility.LandlineStatusEnum;
-            unlistedNumber: boolean;
-        }
-        /**
-         * A line section calibration detail
-         * interface fullName: xdsl.eligibility.LineSectionCalibration.LineSectionCalibration
-         */
-        export interface LineSectionCalibration {
-            diameter: number;
-            length: number;
-        }
-        /**
-         * Represents a time slot for a meeting
-         * interface fullName: xdsl.eligibility.MeetingSlot.MeetingSlot
-         */
-        export interface MeetingSlot {
-            endDate: string;
-            slotId?: string;
-            startDate: string;
-            uiCode: string;
-        }
-        /**
-         * List of available meeting time slots
-         * interface fullName: xdsl.eligibility.MeetingSlots.MeetingSlots
-         */
-        export interface MeetingSlots {
-            canBookFakeMeeting: boolean;
-            meetingSlots: xdsl.eligibility.MeetingSlot[];
-        }
-        /**
-         * An offer
-         * interface fullName: xdsl.eligibility.Offer.Offer
-         */
-        export interface Offer {
-            desaturation?: boolean;
-            downloadRate?: number;
-            gtr: xdsl.GtrEnum[];
-            guaranteed: boolean;
-            label: string;
-            pairs?: number;
-            provider?: xdsl.eligibility.ProviderEnum;
-            rate?: number;
-            type: xdsl.DslTypeEnum;
-            unbundling?: xdsl.DeconsolidationEnum[];
-            uploadRate?: number;
-        }
-        /**
-         * Eligibility of the portability of the line number
-         * interface fullName: xdsl.eligibility.Portability.Portability
-         */
-        export interface Portability {
-            comments: xdsl.eligibility.CodeAndMessage[];
-            eligible: boolean;
-            underCondition: boolean;
-            warnings: xdsl.eligibility.CodeAndMessage[];
-        }
-        /**
-         * The providers
-         * type fullname: xdsl.eligibility.ProviderEnum
-         */
-        export type ProviderEnum = "axione" | "ft" | "kosc" | "ovh" | "sfr"
-        /**
-         * Represent a street
-         * interface fullName: xdsl.eligibility.Street.Street
-         */
-        export interface Street {
-            name: string;
-            rivoliCode: string;
-        }
     }
     export namespace email {
         export namespace pro {
@@ -1424,7 +1249,7 @@ export namespace xdsl {
          * Type of WLAN security protection
          * type fullname: xdsl.templateModem.SecurityTypeEnum
          */
-        export type SecurityTypeEnum = "None" | "WPA" | "WPA2" | "WPAandWPA2"
+        export type SecurityTypeEnum = "None" | "WPA" | "WPA2" | "WPA2andWPA3" | "WPA3" | "WPAandWPA2"
         /**
          * WLAN Configuration for Modem Template
          * interface fullName: xdsl.templateModem.WLAN.WLAN
@@ -1469,7 +1294,7 @@ export namespace xdsl {
          * ACS backend used by the modem
          * type fullname: xdsl.xdslModemConfig.ACSBackendEnum
          */
-        export type ACSBackendEnum = "beta" | "dev" | "legacy" | "stable"
+        export type ACSBackendEnum = "beta" | "dev" | "stable"
         /**
          * How the modem gets its LAN IP Address
          * type fullname: xdsl.xdslModemConfig.AddressingTypeEnum
@@ -1509,7 +1334,7 @@ export namespace xdsl {
          * Type of WLAN security protection
          * type fullname: xdsl.xdslModemConfig.SecurityTypeEnum
          */
-        export type SecurityTypeEnum = "None" | "WEP" | "WPA" | "WPA2" | "WPAandWPA2"
+        export type SecurityTypeEnum = "None" | "WEP" | "WPA" | "WPA2" | "WPA2andWPA3" | "WPA3" | "WPAandWPA2"
     }
 }
 
@@ -1533,121 +1358,6 @@ export interface Xdsl {
      * Controle cache
      */
     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-    eligibility: {
-        cities: {
-            /**
-             * Get the cities from a zipCode
-             * GET /xdsl/eligibility/cities
-             */
-            $get(params: { zipCode: string }): Promise<xdsl.eligibility.City[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-        }
-        lines: {
-            active: {
-                /**
-                 * Get the active lines at given address
-                 * POST /xdsl/eligibility/lines/active
-                 */
-                $post(params: { city: xdsl.eligibility.City, contactName: string, street: xdsl.eligibility.Street, streetNumber?: string }): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
-            }
-            inactive: {
-                /**
-                 * Get the inactive lines at given address
-                 * POST /xdsl/eligibility/lines/inactive
-                 */
-                $post(params: { city: xdsl.eligibility.City, contactName?: string, street: xdsl.eligibility.Street, streetNumber?: string }): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
-            }
-        }
-        meetings: {
-            /**
-             * Search for meeting time slot
-             * GET /xdsl/eligibility/meetings
-             */
-            $get(params: { eligibilityId: string, offerLabel: string }): Promise<xdsl.AsyncTask<xdsl.eligibility.MeetingSlots>>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-        }
-        search: {
-            buildings: {
-                /**
-                 * Get all buildings for a specific address
-                 * POST /xdsl/eligibility/search/buildings
-                 */
-                $post(params: { streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Building>>;
-            }
-            cities: {
-                /**
-                 * Get all localities linked to a zip code
-                 * POST /xdsl/eligibility/search/cities
-                 */
-                $post(params: { zipCode: string }): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.City>>;
-            }
-            fiberStreets: {
-                /**
-                 * Get all street linked to a locality
-                 * POST /xdsl/eligibility/search/fiberStreets
-                 */
-                $post(params: { inseeCode: string }): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.FiberStreet>>;
-            }
-            streetNumbers: {
-                /**
-                 * Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)
-                 * POST /xdsl/eligibility/search/streetNumbers
-                 */
-                $post(params: { streetCode: string }): Promise<xdsl.AsyncTaskArray<string>>;
-            }
-        }
-        streets: {
-            /**
-             * Get the streets from a city inseeCode and partial street name
-             * GET /xdsl/eligibility/streets
-             */
-            $get(params: { inseeCode: string, partialName: string }): Promise<xdsl.eligibility.Street[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-        }
-        test: {
-            /**
-             * Get an eligibility by its id
-             * GET /xdsl/eligibility/test
-             */
-            $get(params: { id: string }): Promise<xdsl.eligibility.Eligibility>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            address: {
-                /**
-                 * Do an eligibility for an address, if no line exist
-                 * POST /xdsl/eligibility/test/address
-                 */
-                $post(params: { address: xdsl.eligibility.Address }): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
-            }
-            fiber: {
-                building: {
-                    /**
-                     * Perform a fiber eligibility for a building
-                     * POST /xdsl/eligibility/test/fiber/building
-                     */
-                    $post(params: { building: string }): Promise<xdsl.AsyncTask<xdsl.eligibility.FiberEligibility>>;
-                }
-            }
-            line: {
-                /**
-                 * Do an eligibility for a line
-                 * POST /xdsl/eligibility/test/line
-                 */
-                $post(params: { lineNumber: string, lineStatus: xdsl.eligibility.LandlineStatusEnum }): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
-            }
-        }
-    }
     email: {
         pro: {
             /**
@@ -1943,6 +1653,28 @@ export interface Xdsl {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
+        fiberEligibilities: {
+            /**
+             * List fiber eligibilities for this access
+             * GET /xdsl/{serviceName}/fiberEligibilities
+             */
+            $get(params?: { status?: xdsl.FiberEligibilityStatusEnum }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(id: number): {
+                /**
+                 * Get this object properties
+                 * GET /xdsl/{serviceName}/fiberEligibilities/{id}
+                 */
+                $get(): Promise<xdsl.FiberEligibility>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
         incident: {
             /**
              * Get this object properties
@@ -2211,13 +1943,6 @@ export interface Xdsl {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            duplicatePortMappingConfig: {
-                /**
-                 * Remove all the current port mapping rules and set the same config as the access given in parameters
-                 * POST /xdsl/{serviceName}/modem/duplicatePortMappingConfig
-                 */
-                $post(params: { accessName: string }): Promise<void>;
             }
             firmware: {
                 /**

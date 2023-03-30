@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseWindows:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseWindows:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "licenseWindows:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "licenseWindows:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -143,6 +155,9 @@ export const schema: Schema = {
           },
           "description": "options attached to this license",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseWindows:apiovh:option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -169,6 +184,9 @@ export const schema: Schema = {
           },
           "description": "release this Option",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "licenseWindows:apiovh:option/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -197,6 +215,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseWindows:apiovh:option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -231,6 +252,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseWindows:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -251,6 +275,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "licenseWindows:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -284,6 +311,9 @@ export const schema: Schema = {
           },
           "description": "Link your own sql server license to this Windows license",
           "httpMethod": "POST",
+          "iamActions": [
+            "licenseWindows:apiovh:sqlServer/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -326,6 +356,9 @@ export const schema: Schema = {
           },
           "description": "tasks linked to this license",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseWindows:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -368,6 +401,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseWindows:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -402,6 +438,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "licenseWindows:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -428,6 +467,9 @@ export const schema: Schema = {
           },
           "description": "Get the orderable Windows versions",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:licenseWindows/orderableVersions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

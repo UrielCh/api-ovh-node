@@ -416,6 +416,35 @@ export namespace billing {
      */
     export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "DOMESTIC_CARD" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "RUPAY" | "SEPA_DIRECT_DEBIT" | "bankAccount" | "creditCard" | "deferredPaymentAccount" | "fidelityAccount" | "ovhAccount" | "paypal"
     /**
+     * Information about withdrawal entry
+     * interface fullName: billing.ReversableBillDetail.ReversableBillDetail
+     */
+    export interface ReversableBillDetail {
+        description: string;
+        domain: string;
+        quantity: string;
+        reference: string;
+        reverseBillDetailId: string;
+        reverseBillId: string;
+        totalPrice: orderPrice;
+        unitPrice: orderPrice;
+    }
+    /**
+     * Details about a bill from customer
+     * interface fullName: billing.ReverseBill.ReverseBill
+     */
+    export interface ReverseBill {
+        date: string;
+        orderId: number;
+        password: string;
+        pdfUrl: string;
+        priceWithTax: orderPrice;
+        priceWithoutTax: orderPrice;
+        reverseBillId: string;
+        tax: orderPrice;
+        url: string;
+    }
+    /**
      * SLA properties
      * interface fullName: billing.SlaOperation.SlaOperation
      */
@@ -695,7 +724,7 @@ export namespace billing {
              * Type of objects an order can be linked to
              * type fullname: billing.order.associatedObject.TypeEnum
              */
-            export type TypeEnum = "Bill" | "Deposit" | "Refund" | "Withdrawal"
+            export type TypeEnum = "Bill" | "Deposit" | "Refund" | "ReverseBill" | "Withdrawal"
         }
         export namespace followUp {
             /**
@@ -927,11 +956,6 @@ export namespace debt {
 }
 export namespace dedicated {
     /**
-     * Filesystems available
-     * type fullname: dedicated.TemplateOsFileSystemEnum
-     */
-    export type TemplateOsFileSystemEnum = "btrfs" | "ext3" | "ext4" | "fat16" | "ntfs" | "reiserfs" | "swap" | "ufs" | "vmfs5" | "vmfs6" | "vmfsl" | "xfs" | "zfs"
-    /**
      * Hardware RAID enum
      * type fullname: dedicated.TemplateOsHardwareRaidEnum
      */
@@ -976,6 +1000,23 @@ export namespace dedicated {
         version?: string;
     }
     /**
+     * A structure describing input questions for the specific OS template
+     * interface fullName: dedicated.TemplateOsInput.TemplateOsInput
+     */
+    export interface TemplateOsInput {
+        default?: string;
+        description?: string;
+        enum: string[];
+        mandatory: boolean;
+        name: string;
+        type: dedicated.TemplateOsInputTypeEnum;
+    }
+    /**
+     * Template OS Input type enum
+     * type fullname: dedicated.TemplateOsInputTypeEnum
+     */
+    export type TemplateOsInputTypeEnum = "boolean" | "date" | "email" | "enum" | "hexstring" | "ip" | "keyValue" | "number" | "string" | "text" | "time" | "url" | "uuid"
+    /**
      * all language available
      * type fullname: dedicated.TemplateOsLanguageEnum
      */
@@ -995,12 +1036,12 @@ export namespace dedicated {
      * Os subfamily definition
      * type fullname: dedicated.TemplateOsSubfamilyEnum
      */
-    export type TemplateOsSubfamilyEnum = "alma" | "aos" | "arch" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "rocky" | "slackware" | "sles-sap" | "smartos" | "solusvm" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
+    export type TemplateOsSubfamilyEnum = "alma" | "aos" | "arch" | "byoi" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "rocky" | "slackware" | "sles-sap" | "smartos" | "solusvm" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
     /**
      * Os type
      * type fullname: dedicated.TemplateOsTypeEnum
      */
-    export type TemplateOsTypeEnum = "bsd" | "ibm" | "linux" | "solaris" | "unix" | "windows"
+    export type TemplateOsTypeEnum = "bsd" | "custom" | "ibm" | "linux" | "solaris" | "unix" | "windows"
     /**
      * Os usage definition
      * type fullname: dedicated.TemplateOsUsageEnum
@@ -1026,8 +1067,9 @@ export namespace dedicated {
             distribution: string;
             endOfInstall: string;
             family: dedicated.TemplateOsTypeEnum;
-            filesystems: dedicated.TemplateOsFileSystemEnum[];
+            filesystems: dedicated.server.FileSystemEnum[];
             hardRaidConfiguration?: boolean;
+            inputs?: dedicated.TemplateOsInput[];
             license?: dedicated.TemplateOsInfoLicense;
             lvmReady?: boolean;
             noPartitioning: boolean;
@@ -1038,7 +1080,6 @@ export namespace dedicated {
             supportsGptLabel?: boolean;
             supportsRTM: boolean;
             supportsSqlServer?: boolean;
-            supportsUEFI?: dedicated.server.SupportsUEFIEnum;
             templateName: string;
         }
         /**
@@ -1064,7 +1105,7 @@ export namespace dedicated {
          * interface fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
          */
         export interface templatePartitions {
-            filesystem: dedicated.TemplateOsFileSystemEnum;
+            filesystem: dedicated.server.FileSystemEnum;
             mountpoint: string;
             order: number;
             raid?: dedicated.server.PartitionRaidEnum;
@@ -1080,15 +1121,15 @@ export namespace dedicated {
          */
         export type BitFormatEnum = 32 | 64
         /**
+         * FileSystems
+         * type fullname: dedicated.server.FileSystemEnum
+         */
+        export type FileSystemEnum = "btrfs" | "ext3" | "ext4" | "fat16" | "none" | "ntfs" | "reiserfs" | "swap" | "ufs" | "vmfs5" | "vmfs6" | "vmfsl" | "xfs" | "zfs"
+        /**
          * partition raid type
          * type fullname: dedicated.server.PartitionRaidEnum
          */
         export type PartitionRaidEnum = "0" | "1" | "10" | "5" | "6" | "7"
-        /**
-         * supports UEFI setup
-         * type fullname: dedicated.server.SupportsUEFIEnum
-         */
-        export type SupportsUEFIEnum = "no" | "only" | "yes"
     }
 }
 export namespace http {
@@ -1871,7 +1912,7 @@ export namespace nichandle {
      * Permission given on the account
      * type fullname: nichandle.RoleEnum
      */
-    export type RoleEnum = "REGULAR" | "ADMIN" | "UNPRIVILEGED"
+    export type RoleEnum = "REGULAR" | "ADMIN" | "UNPRIVILEGED" | "NONE"
     /**
      * States a nichandle can be in
      * type fullname: nichandle.StateEnum
@@ -2178,7 +2219,7 @@ export namespace order {
      * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * An order
      * interface fullName: order.Order.Order
@@ -2237,7 +2278,9 @@ export namespace order {
      */
     export interface Reduction {
         context: order.ReductionContextEnum;
+        description: string;
         price: orderPrice;
+        reductionDescription: string;
         type: order.ReductionTypeEnum;
         value: orderPrice;
     }
@@ -2294,7 +2337,7 @@ export namespace order {
          * Type of a product
          * type fullname: order.cart.GenericProductTypeEnum
          */
-        export type GenericProductTypeEnum = "cloud_service" | "delivery" | "deposit" | "domain" | "saas_license" | "shipping" | "storage"
+        export type GenericProductTypeEnum = "cloud_service" | "delivery" | "deposit" | "domain" | "implementation_services" | "saas_license" | "shipping" | "storage"
     }
 }
 export namespace payment {
@@ -3765,7 +3808,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/installationTemplate/{templateName}
              */
-            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, endOfInstall?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, softRaidOnlyMirroring?: boolean, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
+            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, endOfInstall?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.server.FileSystemEnum[], hardRaidConfiguration?: boolean, inputs?: dedicated.TemplateOsInput[], license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, softRaidOnlyMirroring?: boolean, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, templateName?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -3859,7 +3902,7 @@ export interface Me {
                          * Add a partition in this partitioning scheme
                          * POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
                          */
-                        $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: dedicated.server.PartitionRaidEnum, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
+                        $post(params: { filesystem: dedicated.server.FileSystemEnum, mountpoint: string, raid?: dedicated.server.PartitionRaidEnum, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
                         /**
                          * Controle cache
                          */
@@ -3879,7 +3922,7 @@ export interface Me {
                              * Alter this object properties
                              * PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
                              */
-                            $put(params?: { filesystem?: dedicated.TemplateOsFileSystemEnum, mountpoint?: string, order?: number, raid?: dedicated.server.PartitionRaidEnum, size?: complexType.UnitAndValue<number>, type?: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
+                            $put(params?: { filesystem?: dedicated.server.FileSystemEnum, mountpoint?: string, order?: number, raid?: dedicated.server.PartitionRaidEnum, size?: complexType.UnitAndValue<number>, type?: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -4256,6 +4299,13 @@ export interface Me {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            waiveRetraction: {
+                /**
+                 * Waive retraction period of order
+                 * POST /me/order/{orderId}/waiveRetraction
+                 */
+                $post(): Promise<void>;
             }
         };
     }
@@ -4671,6 +4721,61 @@ export interface Me {
                 /**
                  * Get this object properties
                  * GET /me/refund/{refundId}/payment
+                 */
+                $get(): Promise<billing.Payment>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+        };
+    }
+    reverseBill: {
+        /**
+         * List all the bills sent by the current account
+         * GET /me/reverseBill
+         */
+        $get(params?: { 'date.from'?: string, 'date.to'?: string, orderId?: number }): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $(reverseBillId: string): {
+            /**
+             * Get this object properties
+             * GET /me/reverseBill/{reverseBillId}
+             */
+            $get(): Promise<billing.ReverseBill>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            details: {
+                /**
+                 * Give access to all entries of this withdrawal
+                 * GET /me/reverseBill/{reverseBillId}/details
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(reverseBillDetailId: string): {
+                    /**
+                     * Get this object properties
+                     * GET /me/reverseBill/{reverseBillId}/details/{reverseBillDetailId}
+                     */
+                    $get(): Promise<billing.ReversableBillDetail>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
+            payment: {
+                /**
+                 * Get this object properties
+                 * GET /me/reverseBill/{reverseBillId}/payment
                  */
                 $get(): Promise<billing.Payment>;
                 /**

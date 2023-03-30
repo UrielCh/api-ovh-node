@@ -15,8 +15,19 @@ export const schema: Schema = {
           },
           "description": "Your OVH IPs",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Filter the value of campus property (ilike) (alpha)",
+              "fullType": "string",
+              "name": "campus",
+              "paramType": "query",
+              "required": false
+            },
             {
               "dataType": "string",
               "description": "Filter the value of description property (like)",
@@ -48,6 +59,14 @@ export const schema: Schema = {
               "name": "type",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "ip.IpVersionEnum",
+              "description": "Filter the value of version property (=) (alpha)",
+              "fullType": "ip.IpVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "ipBlock[]"
@@ -65,6 +84,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +107,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ip:apiovh:edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -118,6 +143,9 @@ export const schema: Schema = {
           },
           "description": "Anti-Hack blocked IP",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:antihack/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -152,6 +180,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:antihack/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -186,6 +217,9 @@ export const schema: Schema = {
           },
           "description": "Unblock this IP",
           "httpMethod": "POST",
+          "iamActions": [
+            "ip:apiovh:antihack/unblock"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -220,6 +254,9 @@ export const schema: Schema = {
           },
           "description": "ARP blocked IP",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:arp/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -254,6 +291,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:arp/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -288,6 +328,9 @@ export const schema: Schema = {
           },
           "description": "Unblock this IP",
           "httpMethod": "POST",
+          "iamActions": [
+            "ip:apiovh:arp/unblock"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -322,6 +365,9 @@ export const schema: Schema = {
           },
           "description": "Change organisation of this IP",
           "httpMethod": "POST",
+          "iamActions": [
+            "ip:apiovh:changeOrg/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -356,6 +402,9 @@ export const schema: Schema = {
           },
           "description": "Ip under game anti-ddos",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:game/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -382,6 +431,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:game/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -410,6 +462,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ip:apiovh:game/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -451,6 +506,9 @@ export const schema: Schema = {
           },
           "description": "IDs of rules configured for this IP",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:game/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -479,6 +537,9 @@ export const schema: Schema = {
           },
           "description": "Add new rule on your IP",
           "httpMethod": "POST",
+          "iamActions": [
+            "ip:apiovh:game/rule/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -529,6 +590,9 @@ export const schema: Schema = {
           },
           "description": "Delete rule",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ip:apiovh:game/rule/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -565,6 +629,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:game/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -607,6 +674,9 @@ export const schema: Schema = {
           },
           "description": "Cloud Linux licenses associated to this IP",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:license/cloudLinux/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -641,6 +711,9 @@ export const schema: Schema = {
           },
           "description": "Cpanel licenses associated to this IP",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:license/cpanel/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -675,6 +748,9 @@ export const schema: Schema = {
           },
           "description": "DirectAdmin licenses associated to this IP",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:license/directadmin/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -709,6 +785,9 @@ export const schema: Schema = {
           },
           "description": "Plesk licenses associated to this IP",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:license/plesk/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -743,6 +822,9 @@ export const schema: Schema = {
           },
           "description": "SQL Server licenses associated to this IP",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:license/sqlserver/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -777,6 +859,9 @@ export const schema: Schema = {
           },
           "description": "Virtuozzo licenses associated to this IP",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:license/virtuozzo/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -811,6 +896,9 @@ export const schema: Schema = {
           },
           "description": "Windows licenses associated to this IP",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:license/windows/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -845,6 +933,9 @@ export const schema: Schema = {
           },
           "description": "WorkLight licenses associated to this IP",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:license/worklight/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -879,6 +970,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:migrationToken/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -899,6 +993,9 @@ export const schema: Schema = {
           },
           "description": "Generate a migration token",
           "httpMethod": "POST",
+          "iamActions": [
+            "ip:apiovh:migrationToken/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -933,6 +1030,9 @@ export const schema: Schema = {
           },
           "description": "List services available as a destination",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:move/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -953,6 +1053,9 @@ export const schema: Schema = {
           },
           "description": "Move this IP to another service",
           "httpMethod": "POST",
+          "iamActions": [
+            "ip:apiovh:move/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -995,6 +1098,9 @@ export const schema: Schema = {
           },
           "description": "Park this IP",
           "httpMethod": "POST",
+          "iamActions": [
+            "ip:apiovh:park/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1021,6 +1127,9 @@ export const schema: Schema = {
           },
           "description": "Ip under anti-phishing",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:phishing/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1063,6 +1172,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:phishing/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1097,6 +1209,9 @@ export const schema: Schema = {
           },
           "description": "Reverse on your ip",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:reverse/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1117,6 +1232,9 @@ export const schema: Schema = {
           },
           "description": "Add reverse on an ip",
           "httpMethod": "POST",
+          "iamActions": [
+            "ip:apiovh:reverse/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1159,6 +1277,9 @@ export const schema: Schema = {
           },
           "description": "Delete a reverse on one IP",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ip:apiovh:reverse/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1187,6 +1308,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:reverse/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1221,6 +1345,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:ripe/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1241,6 +1368,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ip:apiovh:ripe/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1274,6 +1404,9 @@ export const schema: Schema = {
           },
           "description": "Ip spamming",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:spam/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1308,6 +1441,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:spam/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1342,6 +1478,9 @@ export const schema: Schema = {
           },
           "description": "Get statistics about the email traffic",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:spam/stats/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1392,6 +1531,9 @@ export const schema: Schema = {
           },
           "description": "Release the ip from anti-spam system",
           "httpMethod": "POST",
+          "iamActions": [
+            "ip:apiovh:spam/unblock"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1426,6 +1568,9 @@ export const schema: Schema = {
           },
           "description": "IP tasks",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1468,6 +1613,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1505,6 +1653,9 @@ export const schema: Schema = {
           },
           "description": "Delete a failover IP",
           "httpMethod": "POST",
+          "iamActions": [
+            "ip:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1531,6 +1682,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:service/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -1548,6 +1702,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:service/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1568,6 +1725,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ip:apiovh:service/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1601,6 +1761,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "ip:apiovh:service/confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1650,7 +1813,7 @@ export const schema: Schema = {
       "path": "/ip/service/{serviceName}/confirmTermination"
     },
     {
-      "description": "Details about a non-expiring Service",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
@@ -1659,6 +1822,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ip:apiovh:service/serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1670,7 +1836,37 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "services.NonExpiringService"
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "iamActions": [
+            "ip:apiovh:service/serviceInfos/edit"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP services",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
         }
       ],
       "path": "/ip/service/{serviceName}/serviceInfos"
@@ -1685,6 +1881,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "ip:apiovh:service/terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2406,6 +2605,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "rir": {
+          "canBeNull": true,
+          "description": "Regional Internet Registry of the IP (alpha)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "routedTo": {
           "canBeNull": true,
           "description": "Routage information",
@@ -2420,6 +2627,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "ip.IpTypeEnum"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version of the IP (alpha)",
+          "fullType": "ip.IpVersionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ip.IpVersionEnum"
         }
       }
     },
@@ -2539,6 +2754,16 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "IpTypeEnum",
+      "namespace": "ip"
+    },
+    "ip.IpVersionEnum": {
+      "description": "Possible values for IP version",
+      "enum": [
+        "4",
+        "6"
+      ],
+      "enumType": "long",
+      "id": "IpVersionEnum",
       "namespace": "ip"
     },
     "ip.MitigationAttack": {
@@ -2898,6 +3123,63 @@ export const schema: Schema = {
       "id": "TaskStatusEnum",
       "namespace": "ip"
     },
+    "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
+      "id": "RenewType",
+      "namespace": "service",
+      "properties": {
+        "automatic": {
+          "canBeNull": false,
+          "description": "The service is automatically renewed",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "deleteAtExpiration": {
+          "canBeNull": false,
+          "description": "The service will be deleted at expiration",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "forced": {
+          "canBeNull": false,
+          "description": "The service forced to be renewed",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "manualPayment": {
+          "canBeNull": true,
+          "description": "The service needs to be manually renewed and paid",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "period": {
+          "canBeNull": true,
+          "description": "period of renew in month",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "service.RenewalTypeEnum": {
+      "description": "Detailed renewal type of a service",
+      "enum": [
+        "automaticForcedProduct",
+        "automaticV2012",
+        "automaticV2014",
+        "automaticV2016",
+        "manual",
+        "oneShot",
+        "option"
+      ],
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
+    },
     "service.StateEnum": {
       "enum": [
         "expired",
@@ -2945,11 +3227,19 @@ export const schema: Schema = {
       "id": "TerminationReasonEnum",
       "namespace": "service"
     },
-    "services.NonExpiringService": {
-      "description": "Details about a non-expiring Service",
-      "id": "NonExpiringService",
+    "services.Service": {
+      "description": "Details about a Service",
+      "id": "Service",
       "namespace": "services",
       "properties": {
+        "canDeleteAtExpiration": {
+          "canBeNull": false,
+          "description": "Indicates that the service can be set up to be deleted at expiration",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
@@ -2984,6 +3274,43 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "engagedUpTo": {
+          "canBeNull": true,
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "expiration": {
+          "canBeNull": false,
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "possibleRenewPeriod": {
+          "canBeNull": true,
+          "description": "All the possible renew period of your service in month",
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
+        },
+        "renew": {
+          "canBeNull": true,
+          "description": "Way of handling the renew",
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
+        },
+        "renewalType": {
+          "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,

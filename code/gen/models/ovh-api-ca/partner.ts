@@ -20,6 +20,9 @@ export const schema: Schema = {
             "Server::InternalServerError::PartnerError"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:partner/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "partner2.Partner"
@@ -31,6 +34,9 @@ export const schema: Schema = {
           },
           "description": "Register as a partner",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:partner/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -398,6 +404,7 @@ export const schema: Schema = {
         "DomainName",
         "EmailMsSolution",
         "HPC",
+        "Nutanix",
         "Orchestration",
         "PC",
         "PCIDSS",

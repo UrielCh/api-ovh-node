@@ -187,6 +187,17 @@ export interface Nutanix {
      * Controle cache
      */
     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    availabilities: {
+        /**
+         * Fetch the availabilities for a given cluster configuration
+         * GET /nutanix/availabilities
+         */
+        $get(params: { erasureCoding?: boolean, memory?: string, planCode?: string, quantity: number, rackAwareness?: boolean, redundancyFactor?: nutanix.RedundancyFactorEnum, server?: string, storage?: string, systemStorage?: string }): Promise<nutanix.availability[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    }
     availableVersions: {
         /**
          * Fetch the available Nutanix versions to install

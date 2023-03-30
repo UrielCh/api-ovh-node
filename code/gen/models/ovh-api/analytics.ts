@@ -36,6 +36,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "analytics:apiovh:platforms/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "uuid[]"
@@ -55,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Get details about a service",
           "httpMethod": "GET",
+          "iamActions": [
+            "analytics:apiovh:platforms/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -83,6 +89,9 @@ export const schema: Schema = {
           },
           "description": "Get activity logs",
           "httpMethod": "GET",
+          "iamActions": [
+            "analytics:apiovh:platforms/activity/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -109,6 +118,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "analytics:apiovh:platforms/changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -159,6 +171,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "analytics:apiovh:platforms/confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -219,6 +234,9 @@ export const schema: Schema = {
           },
           "description": "Deploy an Analytics Data Platform",
           "httpMethod": "POST",
+          "iamActions": [
+            "analytics:apiovh:platforms/deploy"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -254,6 +272,9 @@ export const schema: Schema = {
           },
           "description": "Destroy an Analytics Data Platform",
           "httpMethod": "POST",
+          "iamActions": [
+            "analytics:apiovh:platforms/destroy"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -289,6 +310,9 @@ export const schema: Schema = {
           },
           "description": "List available nodes",
           "httpMethod": "GET",
+          "iamActions": [
+            "analytics:apiovh:platforms/nodes/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -317,6 +341,9 @@ export const schema: Schema = {
           },
           "description": "Get details about nodes",
           "httpMethod": "GET",
+          "iamActions": [
+            "analytics:apiovh:platforms/nodes/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -351,6 +378,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "analytics:apiovh:platforms/serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -371,6 +401,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "analytics:apiovh:platforms/serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -406,6 +439,9 @@ export const schema: Schema = {
           },
           "description": "Get cluster deployment status",
           "httpMethod": "GET",
+          "iamActions": [
+            "analytics:apiovh:platforms/status/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -432,6 +468,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "analytics:apiovh:platforms/terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

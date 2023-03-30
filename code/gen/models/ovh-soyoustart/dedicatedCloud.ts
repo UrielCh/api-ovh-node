@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -55,6 +61,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "pccVmware:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -88,6 +97,9 @@ export const schema: Schema = {
           },
           "description": "Networks allowed to access to this Dedicated Cloud management interface",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:allowedNetwork/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -108,6 +120,9 @@ export const schema: Schema = {
           },
           "description": "Create a new Allowed network for your dedicatedCloud",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:allowedNetwork/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -150,6 +165,9 @@ export const schema: Schema = {
           },
           "description": "Remove this network from your Dedicated Cloud",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "pccVmware:apiovh:allowedNetwork/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -178,6 +196,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:allowedNetwork/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -206,6 +227,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "pccVmware:apiovh:allowedNetwork/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -247,6 +271,9 @@ export const schema: Schema = {
           },
           "description": "Tasks associated with this allowed network",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:allowedNetwork/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -297,6 +324,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:allowedNetwork/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -339,6 +369,9 @@ export const schema: Schema = {
           },
           "description": "Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:allowedNetwork/task/changeMaintenanceExecutionDate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -389,6 +422,9 @@ export const schema: Schema = {
           },
           "description": "Restart task in error.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:allowedNetwork/task/resetTaskState"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -439,6 +475,9 @@ export const schema: Schema = {
           },
           "description": "Backup repositories associated with this Pcc",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:backupRepository/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -465,6 +504,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:backupRepository/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -499,6 +541,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:capabilities/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -525,6 +570,9 @@ export const schema: Schema = {
           },
           "description": "Update this Dedicated Cloud properties.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:changeProperties"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -599,6 +647,9 @@ export const schema: Schema = {
           },
           "description": "Get the name of the commercial ranges compliant with your Dedicated Cloud",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:commercialRange/compliance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -625,6 +676,9 @@ export const schema: Schema = {
           },
           "description": "Get the name of the commercial ranges orderable for your Dedicated Cloud",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:commercialRange/orderable/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -651,6 +705,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -709,6 +766,9 @@ export const schema: Schema = {
           },
           "description": "Datacenters associated with this Dedicated Cloud",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -729,6 +789,9 @@ export const schema: Schema = {
           },
           "description": "Add a new Datacenter in your Dedicated Cloud",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -771,6 +834,9 @@ export const schema: Schema = {
           },
           "description": "Remove this Datacenter from your Dedicated Cloud. (It has to be empty in order to be removable)",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -799,6 +865,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -827,6 +896,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -868,6 +940,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -902,6 +977,9 @@ export const schema: Schema = {
           },
           "description": "Restores the last restore points for each backup located in the given backup repository to the given Datacenter",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/backup/batchRestore"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -952,6 +1030,9 @@ export const schema: Schema = {
           },
           "description": "Generates recommendation for Backup Proxies optimization",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/backup/canOptimizeProxies/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -986,6 +1067,9 @@ export const schema: Schema = {
           },
           "description": "Edit the backup on a Dedicated Cloud",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/backup/changeProperties"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1084,6 +1168,9 @@ export const schema: Schema = {
           },
           "description": "Disable backup solution on a Dedicated Cloud",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/backup/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1121,6 +1208,9 @@ export const schema: Schema = {
           },
           "description": "Enable backup solution on a Dedicated Cloud",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/backup/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1163,6 +1253,9 @@ export const schema: Schema = {
           },
           "description": "Generates an email report with all the backups, their last restore point, their size and their location",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/backup/generateReport"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1197,6 +1290,9 @@ export const schema: Schema = {
           },
           "description": "List backup offer capabilities",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/backup/offerCapabilities/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1231,6 +1327,9 @@ export const schema: Schema = {
           },
           "description": "Optimizes number of Backup Proxies required for given Datacenter",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/backup/optimizeProxies"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1268,6 +1367,9 @@ export const schema: Schema = {
           },
           "description": "Backup repositories associated with this Datacenter",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/backupRepository/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1305,6 +1407,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/backupRepository/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1347,6 +1452,9 @@ export const schema: Schema = {
           },
           "description": "Check whether your backup jobs are correctly set in your current datacenter, use this when your virtual machines have been migrated through another datacenter",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/checkBackupJobs"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1381,6 +1489,9 @@ export const schema: Schema = {
           },
           "description": "Clusters associated with this Datacenter",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/cluster/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1415,21 +1526,24 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/cluster/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "",
+              "description": "Id of the cluster",
               "fullType": "long",
-              "name": "datacenterId",
+              "name": "clusterId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id of the cluster",
+              "description": "",
               "fullType": "long",
-              "name": "id",
+              "name": "datacenterId",
               "paramType": "path",
               "required": true
             },
@@ -1445,7 +1559,7 @@ export const schema: Schema = {
           "responseType": "dedicatedCloud.Cluster"
         }
       ],
-      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/cluster/{id}"
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/cluster/{clusterId}"
     },
     {
       "description": "disable operations",
@@ -1457,6 +1571,9 @@ export const schema: Schema = {
           },
           "description": "Disable Zerto",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/disasterRecovery/zerto/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1510,6 +1627,9 @@ export const schema: Schema = {
           },
           "description": "Enable Zerto replication between 2 OVH dedicated Clouds",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/disasterRecovery/zerto/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1576,6 +1696,9 @@ export const schema: Schema = {
           },
           "description": "Finish migrating Zerto option to this datacenter",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/disasterRecovery/zerto/endMigration"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1601,42 +1724,6 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/endMigration"
     },
     {
-      "description": "generateZsspPassword operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-03-31T00:00:00+01:00",
-            "deprecatedDate": "2020-02-10T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "description": "Generate a new password for Zerto Self Service Portal and receive it by email.",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "datacenterId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicatedCloud.Task"
-        }
-      ],
-      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/generateZsspPassword"
-    },
-    {
       "description": "startMigration operations",
       "operations": [
         {
@@ -1646,6 +1733,9 @@ export const schema: Schema = {
           },
           "description": "Start migrating Zerto option to this datacenter",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/disasterRecovery/zerto/startMigration"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1671,43 +1761,6 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/startMigration"
     },
     {
-      "description": "state operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-03-31T00:00:00+01:00",
-            "deprecatedDate": "2020-02-10T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/status",
-            "value": "DEPRECATED"
-          },
-          "description": "Get the current state of Zerto deployment on your dedicated Cloud.",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "datacenterId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicatedCloud.disasterRecovery.Profile"
-        }
-      ],
-      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/state"
-    },
-    {
       "description": "status operations",
       "operations": [
         {
@@ -1717,6 +1770,9 @@ export const schema: Schema = {
           },
           "description": "Get the current state of Zerto deployment on your dedicated Cloud.",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/disasterRecovery/zerto/status/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1751,6 +1807,9 @@ export const schema: Schema = {
           },
           "description": "Get the list of VMs protected by Zerto for a specific month on your dedicated Cloud.",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/disasterRecovery/zerto/usageReport/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1796,11 +1855,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Configure vpn between your OVH Dedicated Cloud and your onsite infrastructure",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/disasterRecovery/zertoSingle/configureVpn"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1875,6 +1937,9 @@ export const schema: Schema = {
           },
           "description": "Get the default localVraNetwork subnet suggested by OVH",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/disasterRecovery/zertoSingle/defaultLocalVraNetwork/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1904,11 +1969,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Disable Single site Zerto",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/disasterRecovery/zertoSingle/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1946,6 +2014,9 @@ export const schema: Schema = {
           },
           "description": "Enable Zerto replication between your OVH Dedicated Cloud and your onsite infrastructure",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/disasterRecovery/zertoSingle/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2004,6 +2075,9 @@ export const schema: Schema = {
           },
           "description": "Request a pairing token in order to link your OVHcloud Zerto Virtual Manager to your local one",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/disasterRecovery/zertoSingle/requestPairingToken"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2038,6 +2112,9 @@ export const schema: Schema = {
           },
           "description": "Filers associated with this Datacenter",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/filer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2072,6 +2149,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/filer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2114,6 +2194,9 @@ export const schema: Schema = {
           },
           "description": "Check if filer on your Dedicated Cloud is capable of converting to global",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/filer/checkGlobalCompatible/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2156,6 +2239,9 @@ export const schema: Schema = {
           },
           "description": "Change the filer type to global on your Dedicated Cloud.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/filer/convertToGlobal"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2201,6 +2287,9 @@ export const schema: Schema = {
           },
           "description": "Hourly consumption associated with this Filer",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/filer/hourlyConsumption/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2243,6 +2332,9 @@ export const schema: Schema = {
           },
           "description": "Location of the Filer",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/filer/location/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2293,6 +2385,9 @@ export const schema: Schema = {
           },
           "description": "Remove the filer from your Dedicated Cloud.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/filer/remove"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2335,6 +2430,9 @@ export const schema: Schema = {
           },
           "description": "Tasks associated with this Filer",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/filer/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2393,6 +2491,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/filer/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2443,6 +2544,9 @@ export const schema: Schema = {
           },
           "description": "Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/filer/task/changeMaintenanceExecutionDate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2501,6 +2605,9 @@ export const schema: Schema = {
           },
           "description": "Restart task in error.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/filer/task/resetTaskState"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2559,6 +2666,9 @@ export const schema: Schema = {
           },
           "description": "Hosts associated with this Datacenter",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/host/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2593,6 +2703,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/host/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2635,6 +2748,9 @@ export const schema: Schema = {
           },
           "description": "Add a spare host to your Dedicated Cloud.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/host/addHostSpare"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2688,6 +2804,9 @@ export const schema: Schema = {
           },
           "description": "Hourly consumption associated with this host.",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/host/hourlyConsumption/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2730,6 +2849,9 @@ export const schema: Schema = {
           },
           "description": "Location of the host",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/host/location/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2772,6 +2894,9 @@ export const schema: Schema = {
           },
           "description": "Remove the host from your Dedicated Cloud.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/host/remove"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2814,6 +2939,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/host/resilience/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2856,6 +2984,9 @@ export const schema: Schema = {
           },
           "description": "Check if resilience test can be performed",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/host/resilience/canBeEnabled/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2898,6 +3029,9 @@ export const schema: Schema = {
           },
           "description": "Disable resilience test (reconnect the network of your host)",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/host/resilience/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2940,6 +3074,9 @@ export const schema: Schema = {
           },
           "description": "Enable resilience test (disconnnect the network of your host)",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/host/resilience/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2990,6 +3127,9 @@ export const schema: Schema = {
           },
           "description": "Tasks associated with this Host",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/host/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3048,6 +3188,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/host/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3098,6 +3241,9 @@ export const schema: Schema = {
           },
           "description": "Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/host/task/changeMaintenanceExecutionDate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3156,6 +3302,9 @@ export const schema: Schema = {
           },
           "description": "Restart task in error.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/host/task/resetTaskState"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3214,6 +3363,9 @@ export const schema: Schema = {
           },
           "description": "List available filers in a given Dedicated Cloud Datacenter",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/orderableFilerProfiles/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3248,6 +3400,9 @@ export const schema: Schema = {
           },
           "description": "List available hosts in a given Dedicated Cloud Datacenter",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/orderableHostProfiles/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3282,6 +3437,9 @@ export const schema: Schema = {
           },
           "description": "Order a new hourly Filer in a given Datacenter",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/orderNewFilerHourly"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3324,6 +3482,9 @@ export const schema: Schema = {
           },
           "description": "Order a new hourly Host in a given Datacenter",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/orderNewHostHourly"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3374,6 +3535,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/privateGateway/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3408,6 +3572,9 @@ export const schema: Schema = {
           },
           "description": "Remove the private gateway in your Dedicated Cloud and open public access.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/privateGateway/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3442,6 +3609,9 @@ export const schema: Schema = {
           },
           "description": "Deploy a private gateway on your Dedicated Cloud to block all public access",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/privateGateway/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3500,6 +3670,9 @@ export const schema: Schema = {
           },
           "description": "Tasks associated with this Datacenter",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3550,6 +3723,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3592,6 +3768,9 @@ export const schema: Schema = {
           },
           "description": "Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/task/changeMaintenanceExecutionDate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3642,6 +3821,9 @@ export const schema: Schema = {
           },
           "description": "Restart task in error.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/task/resetTaskState"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3692,6 +3874,9 @@ export const schema: Schema = {
           },
           "description": "Virtual machiness associated with this Datacenter",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/vm/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3726,6 +3911,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/vm/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3771,6 +3959,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/vm/backupJob/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3810,6 +4001,9 @@ export const schema: Schema = {
           },
           "description": "Edit a backup job",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/vm/backupJob/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3863,6 +4057,9 @@ export const schema: Schema = {
           },
           "description": "Disable backup solution on this virtual Machine",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/vm/backupJob/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3908,6 +4105,9 @@ export const schema: Schema = {
           },
           "description": "Enable backup solution on this virtual Machine",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/vm/backupJob/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3961,6 +4161,9 @@ export const schema: Schema = {
           },
           "description": "Restore point associated to this Backup Job",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/vm/backupJob/restorePoints/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4006,6 +4209,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/vm/backupJob/restorePoints/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4059,6 +4265,9 @@ export const schema: Schema = {
           },
           "description": "Restore this restore point",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/vm/backupJob/restorePoints/restore"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4117,6 +4326,9 @@ export const schema: Schema = {
           },
           "description": "Disable backup on this virtual Machine",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/vm/disableBackup"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4150,6 +4362,59 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/disableBackup"
     },
     {
+      "description": "disableCarp operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Disable Carp on Virtual Machine",
+          "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/vm/disableCarp"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Mac address of the port to enable Carp",
+              "fullType": "string",
+              "name": "macAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the virtual machine.",
+              "fullType": "long",
+              "name": "vmId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/disableCarp"
+    },
+    {
       "description": "editBackup operations",
       "operations": [
         {
@@ -4159,6 +4424,9 @@ export const schema: Schema = {
           },
           "description": "Edit backup on this virtual Machine",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/vm/editBackup"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4209,6 +4477,9 @@ export const schema: Schema = {
           },
           "description": "Enable backup on this virtual Machine",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/vm/enableBackup"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4250,6 +4521,59 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup"
     },
     {
+      "description": "enableCarp operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Enable Carp on Virtual Machine",
+          "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/vm/enableCarp"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Mac address of the port to enable Carp",
+              "fullType": "string",
+              "name": "macAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the virtual machine.",
+              "fullType": "long",
+              "name": "vmId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableCarp"
+    },
+    {
       "description": "restoreBackup operations",
       "operations": [
         {
@@ -4259,6 +4583,9 @@ export const schema: Schema = {
           },
           "description": "Restore this restore point",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:datacenter/vm/restoreBackup"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4268,6 +4595,14 @@ export const schema: Schema = {
               "name": "filerId",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "dedicatedCloud.filer.FilerTypeEnum",
+              "description": "Type of filer where vm will be restored(Default value : nas)",
+              "fullType": "dedicatedCloud.filer.FilerTypeEnum",
+              "name": "filerType",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "long",
@@ -4317,6 +4652,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:federation/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4343,6 +4681,9 @@ export const schema: Schema = {
           },
           "description": "Active Directories linked to this Dedicated Cloud",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:federation/activeDirectory/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4363,6 +4704,9 @@ export const schema: Schema = {
           },
           "description": "Add a new option user access",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:federation/activeDirectory/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4485,6 +4829,9 @@ export const schema: Schema = {
           },
           "description": "Remove an option user access",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "pccVmware:apiovh:federation/activeDirectory/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4513,6 +4860,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:federation/activeDirectory/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4547,6 +4897,9 @@ export const schema: Schema = {
           },
           "description": "Change Active Directory properties",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:federation/activeDirectory/changeProperties"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4613,6 +4966,9 @@ export const schema: Schema = {
           },
           "description": "Grant Active Directory group",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:federation/activeDirectory/grantActiveDirectoryGroup"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4655,6 +5011,9 @@ export const schema: Schema = {
           },
           "description": "Grant Active Directory user",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:federation/activeDirectory/grantActiveDirectoryUser"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4697,6 +5056,9 @@ export const schema: Schema = {
           },
           "description": "Filers mounted on all Datacenters of your Dedicated Cloud Vsphere",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:filer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4723,6 +5085,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:filer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4757,6 +5122,9 @@ export const schema: Schema = {
           },
           "description": "Check if filer on your Dedicated Cloud is capable of converting to global",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:filer/checkGlobalCompatible/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4791,6 +5159,9 @@ export const schema: Schema = {
           },
           "description": "Change the filer type to global on your Dedicated Cloud.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:filer/convertToGlobal"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4828,6 +5199,9 @@ export const schema: Schema = {
           },
           "description": "Hourly consumption associated with this Filer",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:filer/hourlyConsumption/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4862,6 +5236,9 @@ export const schema: Schema = {
           },
           "description": "Location of the Filer",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:filer/location/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4904,6 +5281,9 @@ export const schema: Schema = {
           },
           "description": "Remove the filer from your Dedicated Cloud.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:filer/remove"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4938,6 +5318,9 @@ export const schema: Schema = {
           },
           "description": "Tasks associated with this Filer",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:filer/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4988,6 +5371,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:filer/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5030,6 +5416,9 @@ export const schema: Schema = {
           },
           "description": "Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:filer/task/changeMaintenanceExecutionDate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5080,6 +5469,9 @@ export const schema: Schema = {
           },
           "description": "Restart task in error.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:filer/task/resetTaskState"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5121,6 +5513,35 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/resetTaskState"
     },
     {
+      "description": "generateVxlanToVrackMapping operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Generates a Vxlan to Vrack mapping for NSX-V",
+          "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:generateVxlanToVrackMapping"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/generateVxlanToVrackMapping"
+    },
+    {
       "description": "globalTasks operations",
       "operations": [
         {
@@ -5130,6 +5551,9 @@ export const schema: Schema = {
           },
           "description": "Get filtered tasks associated with this Dedicated Cloud",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:globalTasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5284,6 +5708,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:hcx/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5313,6 +5740,9 @@ export const schema: Schema = {
           },
           "description": "Check if VMware Hybrid Cloud Extension option can be disabled",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:hcx/canBeDisabled/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5342,6 +5772,9 @@ export const schema: Schema = {
           },
           "description": "Check if VMware Hybrid Cloud Extension option can be enabled",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:hcx/canBeEnabled/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5368,6 +5801,9 @@ export const schema: Schema = {
           },
           "description": "Disable VMware Hybrid Cloud Extension option",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:hcx/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5397,6 +5833,9 @@ export const schema: Schema = {
           },
           "description": "Enable VMware Hybrid Cloud Extension option",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:hcx/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5423,6 +5862,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:hds/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5452,6 +5894,9 @@ export const schema: Schema = {
           },
           "description": "Check if Hds option can be disabled",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:hds/canBeDisabled/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5481,6 +5926,9 @@ export const schema: Schema = {
           },
           "description": "Check if Hds option can be enabled",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:hds/canBeEnabled/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5510,6 +5958,9 @@ export const schema: Schema = {
           },
           "description": "Disable Hds option",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:hds/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5539,6 +5990,9 @@ export const schema: Schema = {
           },
           "description": "Enable Hds option",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:hds/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5565,6 +6019,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:hipaa/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5594,6 +6051,9 @@ export const schema: Schema = {
           },
           "description": "Check if Hipaa option can be disabled",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:hipaa/canBeDisabled/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5623,6 +6083,9 @@ export const schema: Schema = {
           },
           "description": "Check if Hipaa option can be enabled",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:hipaa/canBeEnabled/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5652,6 +6115,9 @@ export const schema: Schema = {
           },
           "description": "Disable Hipaa option",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:hipaa/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5681,6 +6147,9 @@ export const schema: Schema = {
           },
           "description": "Enable Hipaa option",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:hipaa/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5707,6 +6176,9 @@ export const schema: Schema = {
           },
           "description": "Ip Blocks attached to this Dedicated Cloud",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:ip/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5733,6 +6205,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:ip/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5767,6 +6242,9 @@ export const schema: Schema = {
           },
           "description": "List details about this IP Block",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:ip/details/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5801,6 +6279,9 @@ export const schema: Schema = {
           },
           "description": "Tasks associated with this IP Block",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:ip/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5851,6 +6332,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:ip/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5893,6 +6377,9 @@ export const schema: Schema = {
           },
           "description": "Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:ip/task/changeMaintenanceExecutionDate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5943,6 +6430,9 @@ export const schema: Schema = {
           },
           "description": "Restart task in error.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:ip/task/resetTaskState"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5993,6 +6483,9 @@ export const schema: Schema = {
           },
           "description": "Get the new Prices for your Dedicated Cloud",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:newPrices/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6019,6 +6512,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:nsx/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6048,6 +6544,9 @@ export const schema: Schema = {
           },
           "description": "Check if Nsx option can be disabled",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:nsx/canBeDisabled/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6077,6 +6576,9 @@ export const schema: Schema = {
           },
           "description": "Check if Nsx option can be enabled",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:nsx/canBeEnabled/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6106,6 +6608,9 @@ export const schema: Schema = {
           },
           "description": "Disable Nsx option",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:nsx/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6135,6 +6640,9 @@ export const schema: Schema = {
           },
           "description": "Enable Nsx option",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:nsx/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6161,6 +6669,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:nsxt/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6187,6 +6698,9 @@ export const schema: Schema = {
           },
           "description": "Get the countries you can select in /order/dedicatedCloud/{serviceName}/ip",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:orderableIpCountries/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6213,6 +6727,9 @@ export const schema: Schema = {
           },
           "description": "Order a new hourly Filer mounted in every Datacenter of a given Dedicated Cloud",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:orderNewFilerHourly"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6247,6 +6764,9 @@ export const schema: Schema = {
           },
           "description": "Get the current password policy for your Dedicated Cloud",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:passwordPolicy/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6273,6 +6793,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:pcidss/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6302,6 +6825,9 @@ export const schema: Schema = {
           },
           "description": "Check if PCI-DSS option can be disabled",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:pcidss/canBeDisabled/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6331,6 +6857,9 @@ export const schema: Schema = {
           },
           "description": "Check if PCI-DSS option can be enabled",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:pcidss/canBeEnabled/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6360,6 +6889,9 @@ export const schema: Schema = {
           },
           "description": "Disable PCI-DSS option",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:pcidss/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6389,6 +6921,9 @@ export const schema: Schema = {
           },
           "description": "Enable PCI-DSS option",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:pcidss/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6415,6 +6950,9 @@ export const schema: Schema = {
           },
           "description": "Reset all triggered alarms on PCC",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:resetTriggeredAlarm"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6441,6 +6979,9 @@ export const schema: Schema = {
           },
           "description": "Robots that can run on this Dedicated Cloud",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:robot/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6467,6 +7008,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:robot/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6501,6 +7045,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:securityOptions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6527,6 +7074,9 @@ export const schema: Schema = {
           },
           "description": "Show compatibility matrix of security options with your Dedicated Cloud",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:securityOptions/compatibilityMatrix/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6569,6 +7119,9 @@ export const schema: Schema = {
           },
           "description": "Show the dependencies tree of a security option",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:securityOptions/dependenciesTree/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6603,6 +7156,9 @@ export const schema: Schema = {
           },
           "description": "List pending security options enabling on your Dedicated Cloud",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:securityOptions/pendingOptions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6629,6 +7185,9 @@ export const schema: Schema = {
           },
           "description": "Resume enabling of pending security options on your Dedicated Cloud",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:securityOptions/resumePendingEnabling"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6663,6 +7222,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6683,6 +7245,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "pccVmware:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6716,6 +7281,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve the service pack informations",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:servicePack/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6742,6 +7310,9 @@ export const schema: Schema = {
           },
           "description": "Service Pack compliant with the current Dedicated Cloud",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:servicePacks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6768,6 +7339,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:servicePacks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6802,6 +7376,9 @@ export const schema: Schema = {
           },
           "description": "Tasks associated with this Dedicated Cloud",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6844,6 +7421,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6878,6 +7458,9 @@ export const schema: Schema = {
           },
           "description": "Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:task/changeMaintenanceExecutionDate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6920,6 +7503,9 @@ export const schema: Schema = {
           },
           "description": "Restart task in error.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:task/resetTaskState"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6962,6 +7548,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6988,6 +7577,9 @@ export const schema: Schema = {
           },
           "description": "Ip allowed to bypass the two factor authentication on this Dedicated Cloud management interface",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:twoFAWhitelist/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7008,6 +7600,9 @@ export const schema: Schema = {
           },
           "description": "Add a whitelisted ip on the two factor authentication",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:twoFAWhitelist/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7050,6 +7645,9 @@ export const schema: Schema = {
           },
           "description": "Remove a whitelisted ip on the two factor authentication",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "pccVmware:apiovh:twoFAWhitelist/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7078,6 +7676,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:twoFAWhitelist/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7112,6 +7713,9 @@ export const schema: Schema = {
           },
           "description": "Change Dedicated Cloud Two factor authentication whitelist properties",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:twoFAWhitelist/changeProperties"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7157,6 +7761,9 @@ export const schema: Schema = {
           },
           "description": "Upgrade your hypervisor to the next released version",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:upgradeHypervisor"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7183,6 +7790,9 @@ export const schema: Schema = {
           },
           "description": "Upgrade your vCenter to the next released version",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:upgradeVcenter"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7217,6 +7827,9 @@ export const schema: Schema = {
           },
           "description": "Dedicated Cloud users",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7245,6 +7858,9 @@ export const schema: Schema = {
           },
           "description": "Create a new User in your Dedicated Cloud",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7399,6 +8015,9 @@ export const schema: Schema = {
           },
           "description": "Remove a given user from your Dedicated Cloud",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "pccVmware:apiovh:user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7427,6 +8046,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7461,6 +8083,9 @@ export const schema: Schema = {
           },
           "description": "Change Dedicated Cloud user password",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:user/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7503,6 +8128,9 @@ export const schema: Schema = {
           },
           "description": "Change Dedicated Cloud user properties",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:user/changeProperties"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7633,6 +8261,9 @@ export const schema: Schema = {
           },
           "description": "Confirm phone number for user",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:user/confirmPhoneNumber"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7675,6 +8306,9 @@ export const schema: Schema = {
           },
           "description": "Disable the given Dedicated Cloud user ",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:user/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7709,6 +8343,9 @@ export const schema: Schema = {
           },
           "description": "Enable the given Dedicated Cloud user ",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:user/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7743,6 +8380,9 @@ export const schema: Schema = {
           },
           "description": "Get Metrics Token to query vScope Graphs data ",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:user/metricsToken/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7777,6 +8417,9 @@ export const schema: Schema = {
           },
           "description": "User rights on an object",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:user/objectRight/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7805,6 +8448,9 @@ export const schema: Schema = {
           },
           "description": "Add a new object right to user in datacenter on Dedicated Cloud",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:user/objectRight/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7871,6 +8517,9 @@ export const schema: Schema = {
           },
           "description": "Remove an object right from user in datacenter on Dedicated Cloud",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "pccVmware:apiovh:user/objectRight/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7907,6 +8556,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:user/objectRight/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7949,6 +8601,9 @@ export const schema: Schema = {
           },
           "description": "User rights in a given Datacenters",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:user/right/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7983,6 +8638,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:user/right/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8019,6 +8677,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "pccVmware:apiovh:user/right/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8068,6 +8729,9 @@ export const schema: Schema = {
           },
           "description": "Tasks associated with this User",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:user/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8118,6 +8782,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:user/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8160,6 +8827,9 @@ export const schema: Schema = {
           },
           "description": "Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:user/task/changeMaintenanceExecutionDate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8210,6 +8880,9 @@ export const schema: Schema = {
           },
           "description": "Restart task in error.",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:user/task/resetTaskState"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8260,6 +8933,9 @@ export const schema: Schema = {
           },
           "description": "Get available upgrade for your vCenter",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:vcenterVersion/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8286,6 +8962,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:vendor/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8312,6 +8991,9 @@ export const schema: Schema = {
           },
           "description": "Get available object types",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:vendor/objectType/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8338,6 +9020,9 @@ export const schema: Schema = {
           },
           "description": "Get ovh id from object type",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:vendor/ovhId/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8380,6 +9065,9 @@ export const schema: Schema = {
           },
           "description": "Dedicated Cloud vlans",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:vlan/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8406,6 +9094,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:vlan/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8440,6 +9131,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:vmEncryption/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8466,6 +9160,9 @@ export const schema: Schema = {
           },
           "description": "VM Encryption KMS linked to this Dedicated Cloud",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:vmEncryption/kms/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8486,6 +9183,9 @@ export const schema: Schema = {
           },
           "description": "Add a new option user access",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:vmEncryption/kms/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8536,6 +9236,9 @@ export const schema: Schema = {
           },
           "description": "Remove an option user access",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "pccVmware:apiovh:vmEncryption/kms/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8564,6 +9267,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:vmEncryption/kms/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8598,6 +9304,9 @@ export const schema: Schema = {
           },
           "description": "Change option user access properties",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:vmEncryption/kms/changeProperties"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8648,6 +9357,9 @@ export const schema: Schema = {
           },
           "description": "This Dedicated Cloud vrack",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:vrack/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8674,6 +9386,9 @@ export const schema: Schema = {
           },
           "description": "remove this dedicatedCloud (VmNetwork) from this vrack",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "pccVmware:apiovh:vrack/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8702,6 +9417,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:vrack/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8736,6 +9454,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:vrops/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8762,6 +9483,9 @@ export const schema: Schema = {
           },
           "description": "Check if vRealize Operations option can be disabled",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:vrops/canBeDisabled/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8788,6 +9512,9 @@ export const schema: Schema = {
           },
           "description": "Check if vRealize Operations option can be enabled",
           "httpMethod": "GET",
+          "iamActions": [
+            "pccVmware:apiovh:vrops/canBeEnabled/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8817,6 +9544,9 @@ export const schema: Schema = {
           },
           "description": "Disable vRealize Operations option",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:vrops/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8846,6 +9576,9 @@ export const schema: Schema = {
           },
           "description": "Enable vRealize Operations option",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:vrops/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8872,6 +9605,9 @@ export const schema: Schema = {
           },
           "description": "Request vRealize Operations Manager upgrade",
           "httpMethod": "POST",
+          "iamActions": [
+            "pccVmware:apiovh:vrops/upgrade"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8949,6 +9685,9 @@ export const schema: Schema = {
           },
           "description": "List of locations available in a Dedicated Cloud",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:pccVmware/location/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -8966,6 +9705,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:pccVmware/location/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8992,6 +9734,9 @@ export const schema: Schema = {
           },
           "description": "Offered host profile",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:pccVmware/location/hostProfile/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9018,6 +9763,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:pccVmware/location/hostProfile/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9052,6 +9800,9 @@ export const schema: Schema = {
           },
           "description": "Offered hypervisor version",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:pccVmware/location/hypervisor/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9078,6 +9829,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:pccVmware/location/hypervisor/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9112,6 +9866,9 @@ export const schema: Schema = {
           },
           "description": "Available host stock",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:pccVmware/location/stock/host/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9146,6 +9903,9 @@ export const schema: Schema = {
           },
           "description": "Available PCC stock",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:pccVmware/location/stock/pcc/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9172,6 +9932,9 @@ export const schema: Schema = {
           },
           "description": "Available zpool stock",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:pccVmware/location/stock/zpool/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10041,6 +10804,14 @@ export const schema: Schema = {
           "required": false,
           "type": "dedicatedCloud.cluster.AutoScale"
         },
+        "clusterId": {
+          "canBeNull": false,
+          "description": "Id of the cluster",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "drsMode": {
           "canBeNull": false,
           "description": "Drs mode of the cluster",
@@ -10072,14 +10843,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "dedicatedCloud.cluster.ClusterConfigsStatusEnum"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Id of the cluster",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
         },
         "name": {
           "canBeNull": false,
@@ -10147,6 +10910,7 @@ export const schema: Schema = {
         "ESSENTIALS-PCIDSS",
         "ESSENTIALS-UNKNOWN",
         "ESSENTIALS-VROPS",
+        "NSX-T",
         "PREMIER",
         "PREMIER-HDS",
         "PREMIER-HIPAA",
@@ -10180,7 +10944,9 @@ export const schema: Schema = {
         "UNKNOWN-NSX-VROPS",
         "UNKNOWN-PCIDSS",
         "UNKNOWN-UNKNOWN",
-        "UNKNOWN-VROPS"
+        "UNKNOWN-VROPS",
+        "UNKNOWN-VSPHERE",
+        "VSPHERE"
       ],
       "enumType": "string",
       "id": "CommercialNameEnum",
@@ -10298,6 +11064,31 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "dedicatedCloud.DvsSecurityPolicy": {
+      "description": "A structure describing the vmware DVSSecurityPolicy data object",
+      "id": "DvsSecurityPolicy",
+      "namespace": "dedicatedCloud",
+      "properties": {
+        "allowPromiscuous": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "dedicatedCloud.vmwareBoolPolicy"
+        },
+        "forgedTransmits": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "dedicatedCloud.vmwareBoolPolicy"
+        },
+        "macChanges": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "dedicatedCloud.vmwareBoolPolicy"
         }
       }
     },
@@ -10957,6 +11748,29 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "HypervisorVersionEnum",
       "namespace": "dedicatedCloud"
+    },
+    "dedicatedCloud.Iam": {
+      "description": "The OVHcloud IAM option",
+      "id": "Iam",
+      "namespace": "dedicatedCloud",
+      "properties": {
+        "identityProviderId": {
+          "canBeNull": true,
+          "description": "Identity Provider ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "State of the option",
+          "fullType": "dedicatedCloud.option.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicatedCloud.option.StateEnum"
+        }
+      }
     },
     "dedicatedCloud.Ip": {
       "description": "IP Blocks associated with a Dedicated Cloud",
@@ -11808,7 +12622,7 @@ export const schema: Schema = {
         },
         "activeDirectoryId": {
           "canBeNull": true,
-          "description": "Linked Federation Active Directory (if any)",
+          "description": "Deprecated - Linked Federation Active Directory (if any)",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -11816,11 +12630,11 @@ export const schema: Schema = {
         },
         "activeDirectoryType": {
           "canBeNull": true,
-          "description": "Federation Active Directory user type (if any)",
-          "fullType": "string",
+          "description": "Deprecated - Federation Active Directory User type (if any)",
+          "fullType": "dedicatedCloud.user.TypeEnum",
           "readOnly": true,
           "required": false,
-          "type": "string"
+          "type": "dedicatedCloud.user.TypeEnum"
         },
         "canManageIpFailOvers": {
           "canBeNull": false,
@@ -11877,6 +12691,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
+        },
+        "identityProviderId": {
+          "canBeNull": true,
+          "description": "Linked Identity Provider (if any), can be Federation Active Directory or IAM",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "isEnableManageable": {
           "canBeNull": false,
@@ -11949,6 +12771,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "dedicatedCloud.user.StateEnum"
+        },
+        "type": {
+          "canBeNull": true,
+          "description": "User type (if any)",
+          "fullType": "dedicatedCloud.user.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicatedCloud.user.TypeEnum"
         },
         "userId": {
           "canBeNull": false,
@@ -12470,6 +13300,85 @@ export const schema: Schema = {
         }
       }
     },
+    "dedicatedCloud.VsanDatastore": {
+      "description": "Get VSAN Datastores",
+      "id": "VsanDatastore",
+      "namespace": "dedicatedCloud",
+      "properties": {
+        "clusterId": {
+          "canBeNull": false,
+          "description": "Id of Cluster.",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "connectionState": {
+          "canBeNull": true,
+          "description": "Datastore connection state.",
+          "fullType": "dedicatedCloud.filer.ConnexionStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicatedCloud.filer.ConnexionStateEnum"
+        },
+        "datacenterId": {
+          "canBeNull": false,
+          "description": "Id of the datacenter.",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "datastoreId": {
+          "canBeNull": false,
+          "description": "Id of the vsan datastore.",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "datastoreName": {
+          "canBeNull": false,
+          "description": "Name of the datastore.",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "spaceFree": {
+          "canBeNull": true,
+          "description": "Available space of this datastore, in GB",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "spaceProvisioned": {
+          "canBeNull": true,
+          "description": "Provisioned space of this datastore, in GB",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "spaceUsed": {
+          "canBeNull": true,
+          "description": "Used Space of this datastore, in GB",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "vmTotal": {
+          "canBeNull": true,
+          "description": "Number of virtual machine on the datastore",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "dedicatedCloud.ZpoolStockProfile": {
       "description": "Zpool and their availability",
       "id": "ZpoolStockProfile",
@@ -12973,6 +13882,18 @@ export const schema: Schema = {
       "id": "compliantRanges",
       "namespace": "dedicatedCloud",
       "properties": {
+        "addons": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "dedicatedCloud.requiredAddon[]"
+        },
+        "estimateRequired": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "name": {
           "canBeNull": false,
           "readOnly": false,
@@ -13443,6 +14364,48 @@ export const schema: Schema = {
         }
       }
     },
+    "dedicatedCloud.disasterRecovery.ZertoRemoteVra": {
+      "description": "Information on remote network allowed to access to your Zerto disaster recovery service",
+      "id": "ZertoRemoteVra",
+      "namespace": "dedicatedCloud.disasterRecovery",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the remote Vra Network",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "label": {
+          "canBeNull": false,
+          "description": "Name given to this network",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "remoteEndpointPublicIp": {
+          "canBeNull": false,
+          "description": "Your onsite endpoint public IP for the secured replication data tunnel",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
+        },
+        "remoteVraNetwork": {
+          "canBeNull": false,
+          "description": "Internal zerto subnet of your onsite infrastructure (ip/cidr)",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock"
+        },
+        "remoteZvmInternalIp": {
+          "canBeNull": false,
+          "description": "Internal ZVM ip on your onsite infrastructure local network",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
+        }
+      }
+    },
     "dedicatedCloud.filer.ConnexionStateEnum": {
       "description": "Connexion states for a Dedicated Cloud Filer.",
       "enum": [
@@ -13451,6 +14414,16 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "ConnexionStateEnum",
+      "namespace": "dedicatedCloud.filer"
+    },
+    "dedicatedCloud.filer.FilerTypeEnum": {
+      "description": "All types of filer that are available for restoring a VM",
+      "enum": [
+        "nas",
+        "vsan"
+      ],
+      "enumType": "string",
+      "id": "FilerTypeEnum",
       "namespace": "dedicatedCloud.filer"
     },
     "dedicatedCloud.filer.HourlyConsumption": {
@@ -13865,6 +14838,25 @@ export const schema: Schema = {
       "id": "releaseEnum",
       "namespace": "dedicatedCloud"
     },
+    "dedicatedCloud.requiredAddon": {
+      "description": "required addon information",
+      "id": "requiredAddon",
+      "namespace": "dedicatedCloud",
+      "properties": {
+        "planCode": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "dedicatedCloud.resourceNewPrices": {
       "description": "A structure describing the Resource's new price",
       "id": "resourceNewPrices",
@@ -14163,11 +15155,13 @@ export const schema: Schema = {
       "description": "List of possible service pack",
       "enum": [
         "default",
+        "default-nsxt",
         "hds",
         "hipaa",
         "legacy",
         "nsx",
         "nsx-and-vrops",
+        "nsxt",
         "pcidss",
         "vrops"
       ],
@@ -14279,6 +15273,16 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "StateEnum",
+      "namespace": "dedicatedCloud.user"
+    },
+    "dedicatedCloud.user.TypeEnum": {
+      "description": "The type of the user",
+      "enum": [
+        "group",
+        "user"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
       "namespace": "dedicatedCloud.user"
     },
     "dedicatedCloud.vcenter": {
@@ -14530,6 +15534,12 @@ export const schema: Schema = {
       "id": "vmNetworkBacking",
       "namespace": "dedicatedCloud",
       "properties": {
+        "carpState": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "deviceName": {
           "canBeNull": true,
           "readOnly": false,
@@ -14547,6 +15557,12 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "portKeySecurityPolicy": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "dedicatedCloud.DvsSecurityPolicy"
         },
         "switchUuid": {
           "canBeNull": true,
@@ -14583,6 +15599,25 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "vmNetworkBackingTypeEnum",
       "namespace": "dedicatedCloud"
+    },
+    "dedicatedCloud.vmwareBoolPolicy": {
+      "description": "A structure describing the vmware bool policy data object",
+      "id": "vmwareBoolPolicy",
+      "namespace": "dedicatedCloud",
+      "properties": {
+        "inherited": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
     },
     "nichandle.CountryEnum": {
       "description": "Countries a nichandle can choose",
@@ -14848,12 +15883,12 @@ export const schema: Schema = {
     },
     "order.CurrencyCodeEnum": {
       "enum": [
+        " INR",
         "AUD",
         "CAD",
         "CZK",
         "EUR",
         "GBP",
-        "INR",
         "LTL",
         "MAD",
         "N/A",

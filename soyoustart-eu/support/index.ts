@@ -27,6 +27,7 @@ export namespace support {
      * interface fullName: support.NewMessageInfo.NewMessageInfo
      */
     export interface NewMessageInfo {
+        additionalNotice?: string;
         messageId: number;
         ticketId: number;
         ticketNumber: number;
@@ -57,6 +58,11 @@ export namespace support {
      */
     export type TicketCategoryEnum = "assistance" | "billing" | "incident"
     /**
+     * Ticket level of impact or urgency (reserved for Business or Enterprise support level accounts)
+     * type fullname: support.TicketImpactUrgencyEnum
+     */
+    export type TicketImpactUrgencyEnum = "high" | "low" | "medium"
+    /**
      * Ticket product
      * type fullname: support.TicketProductEnum
      */
@@ -72,7 +78,7 @@ export namespace support {
      */
     export type TicketSubCategoryEnum = "alerts" | "autorenew" | "bill" | "down" | "inProgress" | "new" | "other" | "perfs" | "start" | "usage"
     /**
-     * Ticket type (criticalIntervention requires VIP support level)
+     * DEPRECATED - Ticket type (criticalIntervention requires VIP support level)
      * type fullname: support.TicketTypeEnum
      */
     export type TicketTypeEnum = "criticalIntervention" | "genericRequest"
@@ -104,7 +110,7 @@ export interface Support {
              * Create a new ticket
              * POST /support/tickets/create
              */
-            $post(params: { body: string, category?: support.TicketCategoryEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: support.TicketTypeEnum }): Promise<support.NewMessageInfo>;
+            $post(params: { body: string, category?: support.TicketCategoryEnum, impact?: support.TicketImpactUrgencyEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type?: support.TicketTypeEnum, urgency?: support.TicketImpactUrgencyEnum, watchers?: string[] }): Promise<support.NewMessageInfo>;
         }
         $(ticketId: number): {
             /**

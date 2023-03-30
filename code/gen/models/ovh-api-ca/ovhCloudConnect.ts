@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "uuid[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get service",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Modify service",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -135,6 +147,9 @@ export const schema: Schema = {
           },
           "description": "Get Pop Configuration linked to of a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:config/pop/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -155,6 +170,9 @@ export const schema: Schema = {
           },
           "description": "Create a Pop Configuration",
           "httpMethod": "POST",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:config/pop/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -188,6 +206,9 @@ export const schema: Schema = {
           },
           "description": "Delete a Pop Configuration",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:config/pop/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -216,6 +237,9 @@ export const schema: Schema = {
           },
           "description": "Get Pop Configuration of a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:config/pop/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -250,6 +274,9 @@ export const schema: Schema = {
           },
           "description": "Get Datacenter Configuration linked to of a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:config/pop/datacenter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -278,6 +305,9 @@ export const schema: Schema = {
           },
           "description": "Create a Datacenter Configuration",
           "httpMethod": "POST",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:config/pop/datacenter/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -319,6 +349,9 @@ export const schema: Schema = {
           },
           "description": "Delete a Datacenter Configuration",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:config/pop/datacenter/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -355,6 +388,9 @@ export const schema: Schema = {
           },
           "description": "Get Datacenter Configuration of a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:config/pop/datacenter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -397,6 +433,9 @@ export const schema: Schema = {
           },
           "description": "Get Datacenter Extra Configuration linked to of a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:config/pop/datacenter/extra/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -433,6 +472,9 @@ export const schema: Schema = {
           },
           "description": "Create a Datacenter Extra Configuration",
           "httpMethod": "POST",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:config/pop/datacenter/extra/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -482,6 +524,9 @@ export const schema: Schema = {
           },
           "description": "Delete a Datacenter Extra Configuration",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:config/pop/datacenter/extra/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -526,6 +571,9 @@ export const schema: Schema = {
           },
           "description": "Get Datacenter Extra Configuration of a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:config/pop/datacenter/extra/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -576,6 +624,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -634,6 +685,9 @@ export const schema: Schema = {
           },
           "description": "List available Datacenter",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:datacenter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -660,6 +714,9 @@ export const schema: Schema = {
           },
           "description": "Get Datacenter",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:datacenter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -692,8 +749,107 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get Diagnostics linked to a OVHcloud Connect Service",
+          "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:diagnostic/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a Diagnostic linked to a OVHcloud Connect Service",
+          "httpMethod": "POST",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:diagnostic/create"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ovhcloudconnect.DiagnosticConfiguration",
+              "description": "Request Body",
+              "fullType": "ovhcloudconnect.DiagnosticConfiguration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ovhcloudconnect.Diagnostic"
+        }
+      ],
+      "path": "/ovhCloudConnect/{serviceName}/diagnostic"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get Diagnostic linked to a OVHcloud Connect Service",
+          "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:diagnostic/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ovhcloudconnect.Diagnostic"
+        }
+      ],
+      "path": "/ovhCloudConnect/{serviceName}/diagnostic/{id}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "List interfaces linked to the Service",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:interface/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -720,6 +876,9 @@ export const schema: Schema = {
           },
           "description": "Get the Interface information",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:interface/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -754,6 +913,9 @@ export const schema: Schema = {
           },
           "description": "Lock the port",
           "httpMethod": "POST",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:interface/lock"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -788,6 +950,9 @@ export const schema: Schema = {
           },
           "description": "Statistics for an OCC interface for a given type",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:interface/statistics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -838,6 +1003,9 @@ export const schema: Schema = {
           },
           "description": "Unlock the port",
           "httpMethod": "POST",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:interface/unlock"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -872,6 +1040,9 @@ export const schema: Schema = {
           },
           "description": "Generate a loa for a service",
           "httpMethod": "POST",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:loa/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -898,6 +1069,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -918,6 +1092,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -951,6 +1128,9 @@ export const schema: Schema = {
           },
           "description": "Get Keys linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:serviceKey/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -977,6 +1157,9 @@ export const schema: Schema = {
           },
           "description": "Get Key linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:serviceKey/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1011,6 +1194,9 @@ export const schema: Schema = {
           },
           "description": "Regenerate Service Key linked to a OVHcloud Connect Service",
           "httpMethod": "POST",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:serviceKey/regenerate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1045,6 +1231,9 @@ export const schema: Schema = {
           },
           "description": "Send key value to customer",
           "httpMethod": "POST",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:serviceKey/send"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1086,6 +1275,9 @@ export const schema: Schema = {
           },
           "description": "Get Task linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1112,6 +1304,9 @@ export const schema: Schema = {
           },
           "description": "Get Tasks linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1146,6 +1341,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1306,6 +1504,171 @@ export const schema: Schema = {
         }
       }
     },
+    "ovhcloudconnect.Diagnostic": {
+      "description": "OVHcloud Connect Diagnostic",
+      "id": "Diagnostic",
+      "namespace": "ovhcloudconnect",
+      "properties": {
+        "function": {
+          "canBeNull": false,
+          "description": "Diagnostic function",
+          "fullType": "ovhcloudconnect.diagnostic.FunctionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.diagnostic.FunctionEnum"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Diagnostic id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "result": {
+          "canBeNull": true,
+          "description": "Diagnostic result",
+          "fullType": "ovhcloudconnect.DiagnosticResult[]",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.DiagnosticResult[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Diagnostic status",
+          "fullType": "ovhcloudconnect.task.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.task.StatusEnum"
+        }
+      }
+    },
+    "ovhcloudconnect.DiagnosticConfiguration": {
+      "description": "OVHcloud Connect Service Diagnostic Configuration",
+      "id": "DiagnosticConfiguration",
+      "namespace": "ovhcloudconnect",
+      "properties": {
+        "dcConfigId": {
+          "canBeNull": false,
+          "description": "ID of the Datacenter configuration",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "diagnosticName": {
+          "canBeNull": false,
+          "description": "Name of the diagnostic",
+          "fullType": "ovhcloudconnect.diagnostic.FunctionEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "ovhcloudconnect.diagnostic.FunctionEnum"
+        },
+        "diagnosticType": {
+          "canBeNull": false,
+          "description": "Type of the diagnostic",
+          "fullType": "ovhcloudconnect.diagnostic.TypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "ovhcloudconnect.diagnostic.TypeEnum"
+        },
+        "extraConfigId": {
+          "canBeNull": false,
+          "description": "ID of the extra configuration ",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "popConfigId": {
+          "canBeNull": false,
+          "description": "ID of the Pop Configuration",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        }
+      }
+    },
+    "ovhcloudconnect.DiagnosticResult": {
+      "description": "OVHcloud Connect Diagnostic Result",
+      "id": "DiagnosticResult",
+      "namespace": "ovhcloudconnect",
+      "properties": {
+        "aspath": {
+          "canBeNull": true,
+          "description": "As-path for routes",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "cmd": {
+          "canBeNull": true,
+          "description": "Command sent to equipment",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "localprefix": {
+          "canBeNull": true,
+          "description": "Local prefix used for routes",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "mac": {
+          "canBeNull": true,
+          "description": "Mac address",
+          "fullType": "macAddress",
+          "readOnly": true,
+          "required": false,
+          "type": "macAddress"
+        },
+        "med": {
+          "canBeNull": true,
+          "description": "BGP Med (Metric)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "output": {
+          "canBeNull": true,
+          "description": "Output of command sent to equipment",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "prefix": {
+          "canBeNull": true,
+          "description": "Prefix for routes",
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock"
+        },
+        "routermac": {
+          "canBeNull": true,
+          "description": "eVPN router mac",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "timestamp": {
+          "canBeNull": true,
+          "description": "Local date when route/mac was declared",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
     "ovhcloudconnect.Interface": {
       "description": "OVHcloud Connect Interface",
       "id": "Interface",
@@ -1358,6 +1721,22 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "interfaceStatus": {
+          "canBeNull": false,
+          "description": "Status of the interface",
+          "fullType": "ovhcloudconnect.interface.LightStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.interface.LightStatusEnum"
+        },
+        "interfaceStatusLastUpdate": {
+          "canBeNull": false,
+          "description": "Date of the last interface status change detected",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "interfaceTerminationType": {
           "canBeNull": true,
@@ -1727,6 +2106,29 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "TypeEnum",
       "namespace": "ovhcloudconnect.datacenterExtraConfig"
+    },
+    "ovhcloudconnect.diagnostic.FunctionEnum": {
+      "description": "Enum values for Diagnostic function",
+      "enum": [
+        "diagMacs",
+        "diagPeering",
+        "diagPeeringExtra",
+        "diagRoutes"
+      ],
+      "enumType": "string",
+      "id": "FunctionEnum",
+      "namespace": "ovhcloudconnect.diagnostic"
+    },
+    "ovhcloudconnect.diagnostic.TypeEnum": {
+      "description": "Enum values for Diagnostic type",
+      "enum": [
+        "advertised-routes",
+        "default",
+        "routes"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "ovhcloudconnect.diagnostic"
     },
     "ovhcloudconnect.interface.LightStatusEnum": {
       "description": "Enum values for the light status",

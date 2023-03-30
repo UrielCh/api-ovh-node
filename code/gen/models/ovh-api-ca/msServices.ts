@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "microsoftServices:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Accounts associated to this Active Directory service",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:account/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -135,6 +147,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:account/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -163,6 +178,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "microsoftServices:apiovh:account/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -204,6 +222,9 @@ export const schema: Schema = {
           },
           "description": "Change account password",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:account/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -246,6 +267,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:account/exchange/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -274,6 +298,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "microsoftServices:apiovh:account/exchange/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -315,6 +342,9 @@ export const schema: Schema = {
           },
           "description": "Configure mailbox to be operational",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:account/exchange/configure"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -349,6 +379,9 @@ export const schema: Schema = {
           },
           "description": "Delete Multi Factor Authentication feature for this account",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "microsoftServices:apiovh:account/mfa/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -377,6 +410,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:account/mfa/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -405,6 +441,9 @@ export const schema: Schema = {
           },
           "description": "Create Multi Factor Authentication for this account",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:account/mfa/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -439,6 +478,9 @@ export const schema: Schema = {
           },
           "description": "Disable Multi Factor Authentication for a period of time",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:account/mfa/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -481,6 +523,9 @@ export const schema: Schema = {
           },
           "description": "Enable Mfa (enabled by default when created)",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:account/mfa/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -515,6 +560,9 @@ export const schema: Schema = {
           },
           "description": "Reset Multi Factor Authentication status for this account",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:account/mfa/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -549,6 +597,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:account/sharepoint/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -577,6 +628,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "microsoftServices:apiovh:account/sharepoint/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -618,6 +672,9 @@ export const schema: Schema = {
           },
           "description": "On-demand MySite clearance",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:account/sharepoint/clearSpace"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -652,6 +709,9 @@ export const schema: Schema = {
           },
           "description": "Configure sharepoint account to be operational",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:account/sharepoint/configure"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -686,6 +746,9 @@ export const schema: Schema = {
           },
           "description": "Delete sync account",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "microsoftServices:apiovh:account/sync/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -714,6 +777,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:account/sync/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -742,6 +808,9 @@ export const schema: Schema = {
           },
           "description": "Create new sync account",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:account/sync/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -784,6 +853,9 @@ export const schema: Schema = {
           },
           "description": "Configure sync account to be operational",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:account/sync/configure"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -818,6 +890,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -868,6 +943,9 @@ export const schema: Schema = {
           },
           "description": "Create Mfa on all accounts.",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:createMfaOnAllUsers"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -894,6 +972,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:exchange/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -914,6 +995,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "microsoftServices:apiovh:exchange/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -947,6 +1031,9 @@ export const schema: Schema = {
           },
           "description": "Detects billing transition status for the service",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:exchange/billingMigrated/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -973,6 +1060,9 @@ export const schema: Schema = {
           },
           "description": "Pending actions",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:exchange/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -999,6 +1089,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:exchange/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1033,6 +1126,9 @@ export const schema: Schema = {
           },
           "description": "Remove Mfa on all accounts.",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:removeMfaOnAllUsers"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1059,6 +1155,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:sharepoint/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1079,6 +1178,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "microsoftServices:apiovh:sharepoint/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1112,6 +1214,9 @@ export const schema: Schema = {
           },
           "description": "Detects billing transition status for the service",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:sharepoint/billingMigrated/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1138,6 +1243,9 @@ export const schema: Schema = {
           },
           "description": "Get active licenses for specific period of time",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:sharepoint/license/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1180,6 +1288,9 @@ export const schema: Schema = {
           },
           "description": "Restore administrator rights",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:sharepoint/restoreAdminRights"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1206,6 +1317,9 @@ export const schema: Schema = {
           },
           "description": "Pending actions",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:sharepoint/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1248,6 +1362,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:sharepoint/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1282,6 +1399,9 @@ export const schema: Schema = {
           },
           "description": "Delete sync service",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "microsoftServices:apiovh:sync/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1302,6 +1422,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:sync/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1328,6 +1451,9 @@ export const schema: Schema = {
           },
           "description": "Change account password",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:sync/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1362,6 +1488,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:sync/clientSoftwareURL/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1382,6 +1511,9 @@ export const schema: Schema = {
           },
           "description": "Generate temporary link to ADSync software executable",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:sync/clientSoftwareURL/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1408,6 +1540,9 @@ export const schema: Schema = {
           },
           "description": "Get active licenses for specific period of time",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:sync/license/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1450,6 +1585,9 @@ export const schema: Schema = {
           },
           "description": "Pending actions",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1492,6 +1630,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1526,6 +1667,9 @@ export const schema: Schema = {
           },
           "description": "active directory UPN suffix",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:upnSuffix/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1546,6 +1690,9 @@ export const schema: Schema = {
           },
           "description": "Create new UPN suffix",
           "httpMethod": "POST",
+          "iamActions": [
+            "microsoftServices:apiovh:upnSuffix/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1580,6 +1727,9 @@ export const schema: Schema = {
           },
           "description": "Delete existing UPN suffix",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "microsoftServices:apiovh:upnSuffix/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1608,6 +1758,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:upnSuffix/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1642,6 +1795,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:sharepoint/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -1659,6 +1815,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:sharepoint/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1685,6 +1844,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "microsoftServices:apiovh:sharepoint/serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1705,6 +1867,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "microsoftServices:apiovh:sharepoint/serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

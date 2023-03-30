@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasRegistry:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Inspect service.",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasRegistry:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -58,6 +64,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "caasRegistry:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -108,6 +117,9 @@ export const schema: Schema = {
           },
           "description": "List namespace",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -128,6 +140,9 @@ export const schema: Schema = {
           },
           "description": "Create namespace",
           "httpMethod": "POST",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -161,6 +176,9 @@ export const schema: Schema = {
           },
           "description": "Delete namespace",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -189,6 +207,9 @@ export const schema: Schema = {
           },
           "description": "Inspect namespace",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -223,6 +244,9 @@ export const schema: Schema = {
           },
           "description": "List all images in namespace",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/images/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -257,6 +281,9 @@ export const schema: Schema = {
           },
           "description": "Delete image",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/images/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -293,6 +320,9 @@ export const schema: Schema = {
           },
           "description": "Inspect image",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/images/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -329,6 +359,9 @@ export const schema: Schema = {
           },
           "description": "Update image",
           "httpMethod": "PUT",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/images/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -378,6 +411,9 @@ export const schema: Schema = {
           },
           "description": "List image permissions",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/images/permissions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -414,6 +450,9 @@ export const schema: Schema = {
           },
           "description": "Create image permissions",
           "httpMethod": "POST",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/images/permissions/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -463,6 +502,9 @@ export const schema: Schema = {
           },
           "description": "Delete image permissions.",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/images/permissions/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -507,6 +549,9 @@ export const schema: Schema = {
           },
           "description": "Inspect image permissions",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/images/permissions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -557,6 +602,9 @@ export const schema: Schema = {
           },
           "description": "List image tags",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/images/tags/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -599,6 +647,9 @@ export const schema: Schema = {
           },
           "description": "Inspect image tag",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/images/tags/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -649,6 +700,9 @@ export const schema: Schema = {
           },
           "description": "List namespace permissions",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/permissions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -677,6 +731,9 @@ export const schema: Schema = {
           },
           "description": "Create namespace permissions",
           "httpMethod": "POST",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/permissions/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -718,6 +775,9 @@ export const schema: Schema = {
           },
           "description": "Delete namespace permissions",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/permissions/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -754,6 +814,9 @@ export const schema: Schema = {
           },
           "description": "Inspect permission",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasRegistry:apiovh:namespaces/permissions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -796,6 +859,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasRegistry:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -816,6 +882,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "caasRegistry:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -849,6 +918,9 @@ export const schema: Schema = {
           },
           "description": "List users",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasRegistry:apiovh:users/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -869,6 +941,9 @@ export const schema: Schema = {
           },
           "description": "Create user",
           "httpMethod": "POST",
+          "iamActions": [
+            "caasRegistry:apiovh:users/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -902,6 +977,9 @@ export const schema: Schema = {
           },
           "description": "Delete user",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "caasRegistry:apiovh:users/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -930,6 +1008,9 @@ export const schema: Schema = {
           },
           "description": "Inspect user",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasRegistry:apiovh:users/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -964,6 +1045,9 @@ export const schema: Schema = {
           },
           "description": "Update user password",
           "httpMethod": "POST",
+          "iamActions": [
+            "caasRegistry:apiovh:users/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

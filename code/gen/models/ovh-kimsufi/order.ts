@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:dedicated/server/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get allowed options",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:dedicated/server/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -125,6 +131,7 @@ export const schema: Schema = {
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",
@@ -392,6 +399,14 @@ export const schema: Schema = {
           "required": false,
           "type": "order.ReductionContextEnum"
         },
+        "description": {
+          "canBeNull": false,
+          "description": "Promotion description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "price": {
           "canBeNull": false,
           "description": "Reduction price applied with this promotion",
@@ -399,6 +414,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "order.Price"
+        },
+        "reductionDescription": {
+          "canBeNull": false,
+          "description": "Reduction description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "type": {
           "canBeNull": false,
@@ -614,6 +637,7 @@ export const schema: Schema = {
         "delivery",
         "deposit",
         "domain",
+        "implementation_services",
         "saas_license",
         "shipping",
         "storage"

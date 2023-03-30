@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedServer:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve secret to connect to the server / application",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:authenticationSecret/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -111,6 +123,9 @@ export const schema: Schema = {
           },
           "description": "Get details on offered backup cloud if available for the current server",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:backupCloudOfferDetails/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -137,6 +152,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:biosSettings/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -163,6 +181,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:biosSettings/sgx/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -189,6 +210,9 @@ export const schema: Schema = {
           },
           "description": "Enable or disable SGX and configure PRMRR size. This will cause your server to reboot one or several time(s).",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:biosSettings/sgx/configure"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -231,6 +255,9 @@ export const schema: Schema = {
           },
           "description": "Server compatibles netboots",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:boot/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -265,6 +292,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:boot/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -299,6 +329,9 @@ export const schema: Schema = {
           },
           "description": "Option used on this netboot",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:boot/option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -333,6 +366,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:boot/option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -375,6 +411,9 @@ export const schema: Schema = {
           },
           "description": "Delete your current image installation",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedServer:apiovh:bringYourOwnImage/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -395,6 +434,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:bringYourOwnImage/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -415,6 +457,9 @@ export const schema: Schema = {
           },
           "description": "Start an install with your own image",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:bringYourOwnImage/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -505,6 +550,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -563,6 +611,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your Backup FTP service, ALL DATA WILL BE PERMANENTLY DELETED",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/backupFTP/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -583,6 +634,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/backupFTP/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -603,6 +657,9 @@ export const schema: Schema = {
           },
           "description": "Create a new Backup FTP space",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/backupFTP/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -629,6 +686,9 @@ export const schema: Schema = {
           },
           "description": "List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/backupFTP/access/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -649,6 +709,9 @@ export const schema: Schema = {
           },
           "description": "Create a new Backup FTP ACL",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/backupFTP/access/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -707,6 +770,9 @@ export const schema: Schema = {
           },
           "description": "Revoke this ACL",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/backupFTP/access/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -735,6 +801,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/backupFTP/access/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -763,6 +832,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/backupFTP/access/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -804,6 +876,9 @@ export const schema: Schema = {
           },
           "description": "Get all IP blocks that can be used in the ACL",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/backupFTP/authorizableBlocks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -830,6 +905,9 @@ export const schema: Schema = {
           },
           "description": "Change your Backup FTP password",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/backupFTP/password/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -856,6 +934,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/firewall/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -876,6 +957,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/firewall/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -909,6 +993,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/ipmi/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -935,6 +1022,9 @@ export const schema: Schema = {
           },
           "description": "IPMI access method",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/ipmi/access/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -963,6 +1053,9 @@ export const schema: Schema = {
           },
           "description": "Request an acces on KVM IPMI interface",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/ipmi/access/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1021,6 +1114,9 @@ export const schema: Schema = {
           },
           "description": "Reset KVM IPMI interface",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/ipmi/resetInterface"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1047,6 +1143,9 @@ export const schema: Schema = {
           },
           "description": "Reset KVM IPMI sessions",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/ipmi/resetSessions"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1073,6 +1172,9 @@ export const schema: Schema = {
           },
           "description": "Result of http, ping and identification tests on IPMI interface",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/ipmi/test/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1101,6 +1203,9 @@ export const schema: Schema = {
           },
           "description": "Launch test on KVM IPMI interface",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/ipmi/test/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1143,6 +1248,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:features/kvm/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1169,6 +1277,9 @@ export const schema: Schema = {
           },
           "description": "Get name binary for asa",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:firewall/binary/compatible/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1195,6 +1306,9 @@ export const schema: Schema = {
           },
           "description": "Get url of binary to update firewall asa",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:firewall/binary/link/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1229,6 +1343,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve compatible  install template partitions scheme",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:install/compatibleTemplatePartitionSchemes/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1263,6 +1380,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve compatible  install templates names",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:install/compatibleTemplates/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1289,6 +1409,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve hardware RAID profile",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:install/hardwareRaidProfile/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1315,6 +1438,9 @@ export const schema: Schema = {
           },
           "description": "Get hardware RAID size for a given configuration",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:install/hardwareRaidSize/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1357,6 +1483,9 @@ export const schema: Schema = {
           },
           "description": "Start an install",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:install/start"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1415,6 +1544,9 @@ export const schema: Schema = {
           },
           "description": "Get installation status",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:install/status/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1441,6 +1573,9 @@ export const schema: Schema = {
           },
           "description": "Gives some capabilities regarding the template for the current dedicated server.",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:install/templateCapabilities/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1475,6 +1610,9 @@ export const schema: Schema = {
           },
           "description": "technical intervention history",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:intervention/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1501,6 +1639,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:intervention/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1535,6 +1676,9 @@ export const schema: Schema = {
           },
           "description": "Merge a splitted block and route it to the choosen server. You cannot undo this operation",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:ipBlockMerge"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1569,6 +1713,9 @@ export const schema: Schema = {
           },
           "description": "Check if given IP can be moved to this server",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:ipCanBeMovedTo/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1603,6 +1750,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve available country for IP order",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:ipCountryAvailable/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1629,6 +1779,9 @@ export const schema: Schema = {
           },
           "description": "Move an Ip failover to this server",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:ipMove"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1663,6 +1816,9 @@ export const schema: Schema = {
           },
           "description": "List all ip from server",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:ips/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1689,6 +1845,9 @@ export const schema: Schema = {
           },
           "description": "Get the windows license compliant with your server.",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:license/compliantWindows/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1715,6 +1874,9 @@ export const schema: Schema = {
           },
           "description": "Get the windows SQL server license compliant with your server.",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:license/compliantWindowsSqlServer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1741,6 +1903,9 @@ export const schema: Schema = {
           },
           "description": "Add your existing windows license serial to this dedicated server. Will be manageable in /license/windows.",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:license/windows/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1786,6 +1951,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve traffic graph values",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:mrtg/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1828,6 +1996,9 @@ export const schema: Schema = {
           },
           "description": "List server networkInterfaceController",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:networkInterfaceController/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1862,6 +2033,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:networkInterfaceController/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1896,6 +2070,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve traffic graph values",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:networkInterfaceController/mrtg/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1946,6 +2123,9 @@ export const schema: Schema = {
           },
           "description": "What is ongoing on this server",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:ongoing/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1972,6 +2152,9 @@ export const schema: Schema = {
           },
           "description": "List of dedicated server options",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1998,6 +2181,9 @@ export const schema: Schema = {
           },
           "description": "Release a given option",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedServer:apiovh:option/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2026,6 +2212,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2060,6 +2249,9 @@ export const schema: Schema = {
           },
           "description": "Get the backup storage orderable with your server.",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:orderable/backupStorage/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2086,6 +2278,9 @@ export const schema: Schema = {
           },
           "description": "Is this feature orderable with your server",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:orderable/feature/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2120,6 +2315,9 @@ export const schema: Schema = {
           },
           "description": "Get IP orderable with your server.",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:orderable/ip/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2146,6 +2344,9 @@ export const schema: Schema = {
           },
           "description": "Is a KVM express orderable with your server",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:orderable/kvmExpress/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2172,6 +2373,9 @@ export const schema: Schema = {
           },
           "description": "Get USB keys orderable with your server",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:orderable/usbKey/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2198,6 +2402,9 @@ export const schema: Schema = {
           },
           "description": "Planned interventions for the server",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:plannedIntervention/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2224,6 +2431,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:plannedIntervention/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2258,6 +2468,9 @@ export const schema: Schema = {
           },
           "description": "Hard reboot this server",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:reboot"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2284,6 +2497,9 @@ export const schema: Schema = {
           },
           "description": "List of secondary dns domain name",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:secondaryDnsDomains/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2304,6 +2520,9 @@ export const schema: Schema = {
           },
           "description": "add a domain on secondary dns",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:secondaryDnsDomains/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2346,6 +2565,9 @@ export const schema: Schema = {
           },
           "description": "remove this domain",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedServer:apiovh:secondaryDnsDomains/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2374,6 +2596,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:secondaryDnsDomains/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2402,6 +2627,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedServer:apiovh:secondaryDnsDomains/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2443,6 +2671,9 @@ export const schema: Schema = {
           },
           "description": "domain name server informations",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:secondaryDnsDomains/dnsServer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2477,6 +2708,9 @@ export const schema: Schema = {
           },
           "description": "DNS field to temporarily add to your zone so that we can verify you are the owner of this domain",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:secondaryDnsNameDomainToken/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2511,6 +2745,9 @@ export const schema: Schema = {
           },
           "description": "Secondary nameServer available for your Server",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:secondaryDnsNameServerAvailable/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2537,6 +2774,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2557,6 +2797,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2590,6 +2833,9 @@ export const schema: Schema = {
           },
           "description": "Service monitoring details",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceMonitoring/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2610,6 +2856,9 @@ export const schema: Schema = {
           },
           "description": "Add a new service monitoring",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceMonitoring/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2692,6 +2941,9 @@ export const schema: Schema = {
           },
           "description": "Remove this service monitoring",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceMonitoring/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2720,6 +2972,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceMonitoring/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2748,6 +3003,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceMonitoring/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2789,6 +3047,9 @@ export const schema: Schema = {
           },
           "description": "Service monitoring alert by email",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceMonitoring/alert/email/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2817,6 +3078,9 @@ export const schema: Schema = {
           },
           "description": "Add a new email alert",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceMonitoring/alert/email/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2867,6 +3131,9 @@ export const schema: Schema = {
           },
           "description": "Remove this Email alert monitoring",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceMonitoring/alert/email/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2903,6 +3170,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceMonitoring/alert/email/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2939,6 +3209,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceMonitoring/alert/email/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2988,6 +3261,9 @@ export const schema: Schema = {
           },
           "description": "Service monitoring alert by SMS",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceMonitoring/alert/sms/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3016,6 +3292,9 @@ export const schema: Schema = {
           },
           "description": "Create a SMS alert",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceMonitoring/alert/sms/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3090,6 +3369,9 @@ export const schema: Schema = {
           },
           "description": "Remove this SMS alert",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceMonitoring/alert/sms/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3126,6 +3408,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceMonitoring/alert/sms/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3162,6 +3447,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedServer:apiovh:serviceMonitoring/alert/sms/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3211,6 +3499,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve hardware informations about this dedicated server",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:specifications/hardware/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3237,6 +3528,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve IP capabilities about this dedicated server",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:specifications/ip/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3263,6 +3557,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve network informations about this dedicated server",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:specifications/network/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3289,6 +3586,9 @@ export const schema: Schema = {
           },
           "description": "Your own SPLA licenses attached to this dedicated server",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:spla/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3325,6 +3625,9 @@ export const schema: Schema = {
           },
           "description": "Add a new SPLA license",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:spla/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3367,6 +3670,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:spla/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3395,6 +3701,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedServer:apiovh:spla/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3436,6 +3745,9 @@ export const schema: Schema = {
           },
           "description": "Revoke an SPLA license",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:spla/revoke"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3470,6 +3782,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3496,6 +3811,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve RTM graph values",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/chart/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3538,6 +3856,9 @@ export const schema: Schema = {
           },
           "description": "Get server opened connections",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/connection/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3564,6 +3885,9 @@ export const schema: Schema = {
           },
           "description": "Get server cpu informations",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/cpu/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3590,6 +3914,9 @@ export const schema: Schema = {
           },
           "description": "Server disks",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/disk/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3616,6 +3943,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/disk/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3650,6 +3980,9 @@ export const schema: Schema = {
           },
           "description": "Get disk smart informations",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/disk/smart/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3684,6 +4017,9 @@ export const schema: Schema = {
           },
           "description": "Get server load",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/load/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3710,6 +4046,9 @@ export const schema: Schema = {
           },
           "description": "Get server memory informations",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/memory/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3736,6 +4075,9 @@ export const schema: Schema = {
           },
           "description": "Get server motherboard hardware informations",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/motherboard/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3762,6 +4104,9 @@ export const schema: Schema = {
           },
           "description": "Get server os informations",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/os/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3788,6 +4133,9 @@ export const schema: Schema = {
           },
           "description": "Server partitions",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/partition/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3814,6 +4162,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/partition/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3848,6 +4199,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve partition charts",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/partition/chart/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3890,6 +4244,9 @@ export const schema: Schema = {
           },
           "description": "Get server PCI devices informations",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/pci/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3916,6 +4273,9 @@ export const schema: Schema = {
           },
           "description": "Get server process",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/process/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3942,6 +4302,9 @@ export const schema: Schema = {
           },
           "description": "Server raid informations",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/raid/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3968,6 +4331,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/raid/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4002,6 +4368,9 @@ export const schema: Schema = {
           },
           "description": "Raid unit volumes",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/raid/volume/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4036,6 +4405,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/raid/volume/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4078,6 +4450,9 @@ export const schema: Schema = {
           },
           "description": "Raid unit volume ports",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/raid/volume/port/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4120,6 +4495,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:statistics/raid/volume/port/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4170,6 +4548,9 @@ export const schema: Schema = {
           },
           "description": "Ask for a cooling module replacement",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:support/replace/cooling/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4212,6 +4593,9 @@ export const schema: Schema = {
           },
           "description": "Ask for a broken HDD replacement",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:support/replace/hardDiskDrive/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4262,6 +4646,9 @@ export const schema: Schema = {
           },
           "description": "Ask for a faulty RAM module replacement",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:support/replace/memory/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4312,6 +4699,9 @@ export const schema: Schema = {
           },
           "description": "Dedicated server todos",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4354,6 +4744,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4388,6 +4781,9 @@ export const schema: Schema = {
           },
           "description": "List available time slots for intervention",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:task/availableTimeslots/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4438,6 +4834,9 @@ export const schema: Schema = {
           },
           "description": "this action stop the task progression if it's possible",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:task/cancel"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4472,6 +4871,9 @@ export const schema: Schema = {
           },
           "description": "Schedule intervention",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:task/schedule"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4522,6 +4924,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4548,6 +4953,9 @@ export const schema: Schema = {
           },
           "description": "Virtual MAC addresses of the server",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:virtualMac/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4568,6 +4976,9 @@ export const schema: Schema = {
           },
           "description": "Add a virtual mac to an IP address",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:virtualMac/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4618,6 +5029,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:virtualMac/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4652,6 +5066,9 @@ export const schema: Schema = {
           },
           "description": "List of IPs associated to this Virtual MAC",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:virtualMac/virtualAddress/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4680,6 +5097,9 @@ export const schema: Schema = {
           },
           "description": "Add an IP to this Virtual MAC",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:virtualMac/virtualAddress/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4730,6 +5150,9 @@ export const schema: Schema = {
           },
           "description": "Remove this ip from virtual mac , if you remove the last linked Ip, virtualmac will be deleted",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedServer:apiovh:virtualMac/virtualAddress/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4766,6 +5189,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:virtualMac/virtualAddress/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4808,6 +5234,9 @@ export const schema: Schema = {
           },
           "description": "List server VirtualNetworkInterfaces",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:virtualNetworkInterface/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4866,6 +5295,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:virtualNetworkInterface/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4897,6 +5329,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedServer:apiovh:virtualNetworkInterface/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4941,6 +5376,9 @@ export const schema: Schema = {
           },
           "description": "Disable this VirtualNetworkInterface",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:virtualNetworkInterface/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4978,6 +5416,9 @@ export const schema: Schema = {
           },
           "description": "Enable this VirtualNetworkInterface",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedServer:apiovh:virtualNetworkInterface/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5012,6 +5453,9 @@ export const schema: Schema = {
           },
           "description": "Get public logs for servers",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedServer:apiovh:log/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5735,6 +6179,7 @@ export const schema: Schema = {
         "migrateBackupFTP",
         "moveFloatingIp",
         "moveVirtualMac",
+        "reagregateBlock",
         "rebootPower8To",
         "reinstallServer",
         "releaseIp",
@@ -6481,6 +6926,7 @@ export const schema: Schema = {
         "internal",
         "ipxeCustomerScript",
         "network",
+        "power",
         "rescue"
       ],
       "enumType": "string",
@@ -6687,6 +7133,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "powerState": {
+          "canBeNull": false,
+          "description": "Power state of the server",
+          "fullType": "dedicated.server.PowerStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.server.PowerStateEnum"
         },
         "professionalUse": {
           "canBeNull": false,
@@ -7469,6 +7923,7 @@ export const schema: Schema = {
         "fi",
         "fr",
         "ie",
+        "in",
         "it",
         "lt",
         "nl",
@@ -8187,6 +8642,16 @@ export const schema: Schema = {
           "type": "datetime"
         }
       }
+    },
+    "dedicated.server.PowerStateEnum": {
+      "description": "Power states of a Dedicated",
+      "enum": [
+        "poweroff",
+        "poweron"
+      ],
+      "enumType": "string",
+      "id": "PowerStateEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.RoutingDetails": {
       "description": "A structure describing routing informations about this dedicated server",
@@ -10454,6 +10919,13 @@ export const schema: Schema = {
       "id": "NewMessageInfo",
       "namespace": "support",
       "properties": {
+        "additionalNotice": {
+          "canBeNull": true,
+          "description": "Notice or warning",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "messageId": {
           "canBeNull": false,
           "description": "Message identifier",

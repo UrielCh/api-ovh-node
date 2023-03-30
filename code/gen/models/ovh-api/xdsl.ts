@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "xdsl:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Informations about the extra IP range during address move",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:addressMove/extraIpRange/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -111,6 +123,9 @@ export const schema: Schema = {
           },
           "description": "Initiate the extra IP range migration",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:addressMove/extraIpRangeMove"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -137,6 +152,9 @@ export const schema: Schema = {
           },
           "description": "List antiSpams for this access",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:antiSpams/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -163,6 +181,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:antiSpams/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -197,6 +218,9 @@ export const schema: Schema = {
           },
           "description": "List of evidences stored on PCS for this ip",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:antiSpams/evidences/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -231,6 +255,9 @@ export const schema: Schema = {
           },
           "description": "Apply TemplateModem to existing Modem",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:applyTemplateToModem"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -265,6 +292,9 @@ export const schema: Schema = {
           },
           "description": "Get information about the ongoing resiliation",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:canCancelResiliation/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -291,6 +321,9 @@ export const schema: Schema = {
           },
           "description": "Cancel the ongoing resiliation",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:cancelResiliation"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -317,6 +350,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -367,6 +403,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:diagnostic/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -387,6 +426,9 @@ export const schema: Schema = {
           },
           "description": "Run diagnostic on the access",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:diagnostic/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -404,6 +446,80 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/diagnostic"
     },
     {
+      "description": "List the xdsl.FiberEligibility objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List fiber eligibilities for this access",
+          "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:fiberEligibilities/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your XDSL offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "xdsl.FiberEligibilityStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "xdsl.FiberEligibilityStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/xdsl/{serviceName}/fiberEligibilities"
+    },
+    {
+      "description": "Fiber eligibility",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:fiberEligibilities/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your XDSL offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.FiberEligibility"
+        }
+      ],
+      "path": "/xdsl/{serviceName}/fiberEligibilities/{id}"
+    },
+    {
       "description": "Detected incident",
       "operations": [
         {
@@ -413,6 +529,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:incident/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -439,6 +558,9 @@ export const schema: Schema = {
           },
           "description": "List of IPs addresses for this access",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:ips/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -459,6 +581,9 @@ export const schema: Schema = {
           },
           "description": "Order an extra /29 range of IPv4 addresses",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:ips/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -485,6 +610,9 @@ export const schema: Schema = {
           },
           "description": "Stop renewing this extra IPv4 option",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "xdsl:apiovh:ips/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -513,6 +641,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:ips/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -547,6 +678,9 @@ export const schema: Schema = {
           },
           "description": "Change the status of the IPv6 for this access",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:ipv6/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -581,6 +715,9 @@ export const schema: Schema = {
           },
           "description": "The lines of the access",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:lines/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -607,6 +744,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:lines/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -641,6 +781,9 @@ export const schema: Schema = {
           },
           "description": "Cancel line diagnostic if possible",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:lines/diagnostic/cancel"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -675,6 +818,9 @@ export const schema: Schema = {
           },
           "description": "Update and get advanced diagnostic of the line",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:lines/diagnostic/run"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -733,6 +879,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:lines/dslamPort/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -767,6 +916,9 @@ export const schema: Schema = {
           },
           "description": "List all availables profiles for this port",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:lines/dslamPort/availableProfiles/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -801,6 +953,9 @@ export const schema: Schema = {
           },
           "description": "Change the profile of the port",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:lines/dslamPort/changeProfile"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -843,6 +998,9 @@ export const schema: Schema = {
           },
           "description": "Get the logs emitted by the DSLAM for this port",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:lines/dslamPort/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -885,6 +1043,9 @@ export const schema: Schema = {
           },
           "description": "Reset the port on the DSLAM",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:lines/dslamPort/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -919,6 +1080,9 @@ export const schema: Schema = {
           },
           "description": "Get various statistics about the line",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:lines/statistics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -969,6 +1133,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -989,6 +1156,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "xdsl:apiovh:modem/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1022,6 +1192,9 @@ export const schema: Schema = {
           },
           "description": "List available ACS backend for this modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/availableACSBackend/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1048,6 +1221,9 @@ export const schema: Schema = {
           },
           "description": "List available WLAN channel for this modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/availableWLANChannel/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1082,6 +1258,9 @@ export const schema: Schema = {
           },
           "description": "Get the status of the Bloc IP on modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/blocIp/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1102,6 +1281,9 @@ export const schema: Schema = {
           },
           "description": "Change the status of the Bloc IP on modem",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/blocIp/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1136,6 +1318,9 @@ export const schema: Schema = {
           },
           "description": "Get the status of callWaiting on modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/callWaiting/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1156,6 +1341,9 @@ export const schema: Schema = {
           },
           "description": "Change the status of callWaiting on modem",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/callWaiting/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1190,6 +1378,9 @@ export const schema: Schema = {
           },
           "description": "Get info about access modem replacement by last model.",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/comfortExchange/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1210,6 +1401,9 @@ export const schema: Schema = {
           },
           "description": "Replace access modem by last model, fees will be applied.",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/comfortExchange/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1244,6 +1438,9 @@ export const schema: Schema = {
           },
           "description": "List of devices connected on this modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/connectedDevices/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1270,6 +1467,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/connectedDevices/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1304,6 +1504,9 @@ export const schema: Schema = {
           },
           "description": "Get the status of contentSharing on modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/contentSharing/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1324,6 +1527,9 @@ export const schema: Schema = {
           },
           "description": "Change the status of contentSharing on modem",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/contentSharing/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1349,43 +1555,6 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/contentSharing"
     },
     {
-      "description": "duplicatePortMappingConfig operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-01-01T00:00:00+01:00",
-            "deprecatedDate": "2018-07-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/xdsl/templateModem",
-            "value": "DEPRECATED"
-          },
-          "description": "Remove all the current port mapping rules and set the same config as the access given in parameters",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The access name with the config you want to duplicate",
-              "fullType": "string",
-              "name": "accessName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/xdsl/{serviceName}/modem/duplicatePortMappingConfig"
-    },
-    {
       "description": "firmware operations",
       "operations": [
         {
@@ -1395,6 +1564,9 @@ export const schema: Schema = {
           },
           "description": "Get the firmware version installed on modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/firmware/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1415,6 +1587,9 @@ export const schema: Schema = {
           },
           "description": "Launch a task to install target firmware on modem",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/firmware/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1457,6 +1632,9 @@ export const schema: Schema = {
           },
           "description": "List available firmware for this modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/firmwareAvailable/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1483,6 +1661,9 @@ export const schema: Schema = {
           },
           "description": "Get the status of ftp service on modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/ftp/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1503,6 +1684,9 @@ export const schema: Schema = {
           },
           "description": "Change the status of the ftp service on modem",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/ftp/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1537,6 +1721,9 @@ export const schema: Schema = {
           },
           "description": "Get the status of ipsec alg service on modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/ipsecAlg/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1557,6 +1744,9 @@ export const schema: Schema = {
           },
           "description": "Change the status of the ipsec alg service on modem",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/ipsecAlg/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1591,6 +1781,9 @@ export const schema: Schema = {
           },
           "description": "List of LANs on this modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/lan/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1617,6 +1810,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/lan/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1645,6 +1841,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "xdsl:apiovh:modem/lan/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1686,6 +1885,9 @@ export const schema: Schema = {
           },
           "description": "List of DHCP on this modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/lan/dhcp/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1720,6 +1922,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/lan/dhcp/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1756,6 +1961,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "xdsl:apiovh:modem/lan/dhcp/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1805,6 +2013,9 @@ export const schema: Schema = {
           },
           "description": "List of DHCP Static Address of this modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/lan/dhcp/DHCPStaticAddresses/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1841,6 +2052,9 @@ export const schema: Schema = {
           },
           "description": "Add a DHCP static lease",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/lan/dhcp/DHCPStaticAddresses/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1907,6 +2121,9 @@ export const schema: Schema = {
           },
           "description": "Delete this port mapping",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "xdsl:apiovh:modem/lan/dhcp/DHCPStaticAddresses/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1951,6 +2168,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/lan/dhcp/DHCPStaticAddresses/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1995,6 +2215,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "xdsl:apiovh:modem/lan/dhcp/DHCPStaticAddresses/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2052,6 +2275,9 @@ export const schema: Schema = {
           },
           "description": "List of PortMappings on this modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/portMappings/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2072,6 +2298,9 @@ export const schema: Schema = {
           },
           "description": "Add a port mapping",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/portMappings/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2170,6 +2399,9 @@ export const schema: Schema = {
           },
           "description": "Delete this port mapping",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "xdsl:apiovh:modem/portMappings/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2198,6 +2430,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/portMappings/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2226,6 +2461,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "xdsl:apiovh:modem/portMappings/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2267,6 +2505,9 @@ export const schema: Schema = {
           },
           "description": "Reboot the modem",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/reboot"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2301,6 +2542,9 @@ export const schema: Schema = {
           },
           "description": "Reconfigure voip line on modem",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/reconfigureVoip"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2327,6 +2571,9 @@ export const schema: Schema = {
           },
           "description": "Refresh the list of connected devices on the modem",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/refreshConnectedDevices"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2353,6 +2600,9 @@ export const schema: Schema = {
           },
           "description": "Reset the modem to its default configuration",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2387,6 +2637,9 @@ export const schema: Schema = {
           },
           "description": "Remove all the current port mapping rules",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/resetPortMappingConfig"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2413,6 +2666,9 @@ export const schema: Schema = {
           },
           "description": "get general Modem information",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/retrieveInfo"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2439,6 +2695,9 @@ export const schema: Schema = {
           },
           "description": "Get the status of sip alg service on modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/sipAlg/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2459,6 +2718,9 @@ export const schema: Schema = {
           },
           "description": "Change the status of the sip alg service on modem",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/sipAlg/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2493,6 +2755,9 @@ export const schema: Schema = {
           },
           "description": "Get the status of the Upnp on modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/upnp/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2513,6 +2778,9 @@ export const schema: Schema = {
           },
           "description": "Change the status of the Upnp on modem",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:modem/upnp/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2547,6 +2815,9 @@ export const schema: Schema = {
           },
           "description": "List of WLANs on this modem",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/wifi/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2573,6 +2844,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:modem/wifi/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2601,6 +2875,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "xdsl:apiovh:modem/wifi/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2642,6 +2919,9 @@ export const schema: Schema = {
           },
           "description": "List the notifications for this access",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:monitoringNotifications/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2662,6 +2942,9 @@ export const schema: Schema = {
           },
           "description": "Add a notification",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:monitoringNotifications/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2744,6 +3027,9 @@ export const schema: Schema = {
           },
           "description": "Delete this notification",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "xdsl:apiovh:monitoringNotifications/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2772,6 +3058,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:monitoringNotifications/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2800,6 +3089,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "xdsl:apiovh:monitoringNotifications/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2841,6 +3133,9 @@ export const schema: Schema = {
           },
           "description": "Get the status of the order",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:orderFollowup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2867,6 +3162,9 @@ export const schema: Schema = {
           },
           "description": "Book a meeting and relaunch order",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:orderMeeting/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2917,6 +3215,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:pendingAction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2943,6 +3244,9 @@ export const schema: Schema = {
           },
           "description": "List the radius connection logs",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:radiusConnectionLogs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2969,6 +3273,9 @@ export const schema: Schema = {
           },
           "description": "Renew PPP password and send the PPP login informations to the e-mail of the nicAdmin",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:requestPPPLoginMail"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2995,6 +3302,9 @@ export const schema: Schema = {
           },
           "description": "Switch this access to total deconsolidation",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:requestTotalDeconsolidation"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3037,6 +3347,9 @@ export const schema: Schema = {
           },
           "description": "Resiliate the access",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:resiliate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3079,6 +3392,9 @@ export const schema: Schema = {
           },
           "description": "Get information about the ongoing resiliation",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:resiliationFollowup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3105,6 +3421,9 @@ export const schema: Schema = {
           },
           "description": "Get resiliation terms",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:resiliationTerms/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3139,6 +3458,9 @@ export const schema: Schema = {
           },
           "description": "Return Merchandise Authorisation associated",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:rma/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3165,6 +3487,9 @@ export const schema: Schema = {
           },
           "description": "Cancel the rma",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "xdsl:apiovh:rma/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3193,6 +3518,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:rma/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3221,6 +3549,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "xdsl:apiovh:rma/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3262,6 +3593,9 @@ export const schema: Schema = {
           },
           "description": "Change RMA type",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:rma/changeType"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3304,6 +3638,9 @@ export const schema: Schema = {
           },
           "description": "Search for available line creation meeting time slots, for order only",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:searchOrderMeetings"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3330,6 +3667,9 @@ export const schema: Schema = {
           },
           "description": "Unlock order in \"waitingCustomer\" status. It only concerns orders whose modem is sent before anything have been forwarded to our provider",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:sendOrderToProvider"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3356,6 +3696,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3376,6 +3719,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "xdsl:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3409,6 +3755,9 @@ export const schema: Schema = {
           },
           "description": "Get various statistics about this access",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:statistics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3451,6 +3800,9 @@ export const schema: Schema = {
           },
           "description": "Tasks scheduled for this access",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3493,6 +3845,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3527,6 +3882,9 @@ export const schema: Schema = {
           },
           "description": "Delete the task in problem from the results",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:tasks/archive"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3561,6 +3919,9 @@ export const schema: Schema = {
           },
           "description": "Give the price to requestTotalDeconsolidation on the access",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdsl:apiovh:totalDeconsolidationTerms/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3587,6 +3948,9 @@ export const schema: Schema = {
           },
           "description": "Update RIO, or disable portability, for order in error because of missing or invalid RIO",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdsl:apiovh:updateInvalidOrMissingRio"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3620,463 +3984,6 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/updateInvalidOrMissingRio"
     },
     {
-      "description": "Get the cities from a zipCode",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-01-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/cities",
-            "value": "DEPRECATED"
-          },
-          "description": "Get the cities from a zipCode",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The zipCode of the city",
-              "fullType": "string",
-              "name": "zipCode",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.eligibility.City[]"
-        }
-      ],
-      "path": "/xdsl/eligibility/cities"
-    },
-    {
-      "description": "Get the active lines at given address",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/lines",
-            "value": "DEPRECATED"
-          },
-          "description": "Get the active lines at given address",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "xdsl.eligibility.City",
-              "description": "The information about the city",
-              "fullType": "xdsl.eligibility.City",
-              "name": "city",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The contact name first three letters",
-              "fullType": "string",
-              "name": "contactName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "xdsl.eligibility.Street",
-              "description": "The information about the street",
-              "fullType": "xdsl.eligibility.Street",
-              "name": "street",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The number in the street",
-              "fullType": "string",
-              "name": "streetNumber",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Line>"
-        }
-      ],
-      "path": "/xdsl/eligibility/lines/active"
-    },
-    {
-      "description": "Get the inactive lines at given address",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/lines",
-            "value": "DEPRECATED"
-          },
-          "description": "Get the inactive lines at given address",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "xdsl.eligibility.City",
-              "description": "The information about the city",
-              "fullType": "xdsl.eligibility.City",
-              "name": "city",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The contact name first three letters",
-              "fullType": "string",
-              "name": "contactName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "xdsl.eligibility.Street",
-              "description": "The information about the street",
-              "fullType": "xdsl.eligibility.Street",
-              "name": "street",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The number in the street",
-              "fullType": "string",
-              "name": "streetNumber",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Line>"
-        }
-      ],
-      "path": "/xdsl/eligibility/lines/inactive"
-    },
-    {
-      "description": "Search for meeting time slot",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/meetings",
-            "value": "DEPRECATED"
-          },
-          "description": "Search for meeting time slot",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The eligibility test id",
-              "fullType": "string",
-              "name": "eligibilityId",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The choosen offer label",
-              "fullType": "string",
-              "name": "offerLabel",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTask<xdsl.eligibility.MeetingSlots>"
-        }
-      ],
-      "path": "/xdsl/eligibility/meetings"
-    },
-    {
-      "description": "Get all buildings for a specific address",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/buildings",
-            "value": "DEPRECATED"
-          },
-          "description": "Get all buildings for a specific address",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Unique identifier of the street (you can get it with POST /xdsl/eligibility/search/streets)",
-              "fullType": "string",
-              "name": "streetCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Street number",
-              "fullType": "string",
-              "name": "streetNumber",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Building>"
-        }
-      ],
-      "path": "/xdsl/eligibility/search/buildings"
-    },
-    {
-      "description": "Get all localities linked to a zip code",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/cities",
-            "value": "DEPRECATED"
-          },
-          "description": "Get all localities linked to a zip code",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Zip code",
-              "fullType": "string",
-              "name": "zipCode",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.City>"
-        }
-      ],
-      "path": "/xdsl/eligibility/search/cities"
-    },
-    {
-      "description": "Get all street linked to a locality",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/streets",
-            "value": "DEPRECATED"
-          },
-          "description": "Get all street linked to a locality",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "French INSEE identifier (you can get it with POST /xdsl/eligibility/search/cities)",
-              "fullType": "string",
-              "name": "inseeCode",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.FiberStreet>"
-        }
-      ],
-      "path": "/xdsl/eligibility/search/fiberStreets"
-    },
-    {
-      "description": "Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/streetNumbers",
-            "value": "DEPRECATED"
-          },
-          "description": "Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Street code",
-              "fullType": "string",
-              "name": "streetCode",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTaskArray<string>"
-        }
-      ],
-      "path": "/xdsl/eligibility/search/streetNumbers"
-    },
-    {
-      "description": "Get the streets from a city inseeCode and partial street name",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-01-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/streets",
-            "value": "DEPRECATED"
-          },
-          "description": "Get the streets from a city inseeCode and partial street name",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The inseeCode of the city",
-              "fullType": "string",
-              "name": "inseeCode",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The partial name to match against the name of the street",
-              "fullType": "string",
-              "name": "partialName",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.eligibility.Street[]"
-        }
-      ],
-      "path": "/xdsl/eligibility/streets"
-    },
-    {
-      "description": "Get an eligibility by its id",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/test",
-            "value": "DEPRECATED"
-          },
-          "description": "Get an eligibility by its id",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The eligibility id",
-              "fullType": "string",
-              "name": "id",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.eligibility.Eligibility"
-        }
-      ],
-      "path": "/xdsl/eligibility/test"
-    },
-    {
-      "description": "Do an eligibility for an address, if no line exist",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/test/address",
-            "value": "DEPRECATED"
-          },
-          "description": "Do an eligibility for an address, if no line exist",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "xdsl.eligibility.Address",
-              "description": "The address",
-              "fullType": "xdsl.eligibility.Address",
-              "name": "address",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTask<xdsl.eligibility.Eligibility>"
-        }
-      ],
-      "path": "/xdsl/eligibility/test/address"
-    },
-    {
-      "description": "Perform a fiber eligibility for a building",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/test/building",
-            "value": "DEPRECATED"
-          },
-          "description": "Perform a fiber eligibility for a building",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Unique identifier of the building (you can get it with POST /xdsl/eligibility/search/buildings)",
-              "fullType": "string",
-              "name": "building",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTask<xdsl.eligibility.FiberEligibility>"
-        }
-      ],
-      "path": "/xdsl/eligibility/test/fiber/building"
-    },
-    {
-      "description": "Do an eligibility for a line",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/test/line",
-            "value": "DEPRECATED"
-          },
-          "description": "Do an eligibility for a line",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The line number",
-              "fullType": "string",
-              "name": "lineNumber",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "xdsl.eligibility.LandlineStatusEnum",
-              "description": "The line status",
-              "fullType": "xdsl.eligibility.LandlineStatusEnum",
-              "name": "lineStatus",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTask<xdsl.eligibility.Eligibility>"
-        }
-      ],
-      "path": "/xdsl/eligibility/test/line"
-    },
-    {
       "description": "Operations about the XDSL service",
       "operations": [
         {
@@ -4086,6 +3993,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdslEmailPro:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -4103,6 +4013,9 @@ export const schema: Schema = {
           },
           "description": "Delete the email",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "xdslEmailPro:apiovh:delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4123,6 +4036,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdslEmailPro:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4143,6 +4059,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "xdslEmailPro:apiovh:edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4176,6 +4095,9 @@ export const schema: Schema = {
           },
           "description": "Change the email password",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdslEmailPro:apiovh:changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4270,6 +4192,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdslSpare:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -4287,6 +4212,9 @@ export const schema: Schema = {
           },
           "description": "Delete the spare as if it was not belonging to OVH anymore",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "xdslSpare:apiovh:delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4307,6 +4235,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdslSpare:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4333,6 +4264,9 @@ export const schema: Schema = {
           },
           "description": "Return the list of brand compatible to be replaced",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdslSpare:apiovh:compatibleReplacement/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4359,6 +4293,9 @@ export const schema: Schema = {
           },
           "description": "Replace the modem by its spare",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdslSpare:apiovh:replace"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4393,6 +4330,9 @@ export const schema: Schema = {
           },
           "description": "Return the broken equipment in instantRefund",
           "httpMethod": "POST",
+          "iamActions": [
+            "xdslSpare:apiovh:returnMerchandise"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4419,6 +4359,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "xdslSpare:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4439,6 +4382,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "xdslSpare:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4472,6 +4418,9 @@ export const schema: Schema = {
           },
           "description": "Get all available spare brands",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:xdslSpare/brands/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -4489,6 +4438,9 @@ export const schema: Schema = {
           },
           "description": "List of TemplateModem",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:xdslTemplateModem/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -4500,6 +4452,9 @@ export const schema: Schema = {
           },
           "description": "Create new Modem Template from existing modem",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:xdslTemplateModem/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4534,6 +4489,9 @@ export const schema: Schema = {
           },
           "description": "Delete this Modem Template",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "account:apiovh:xdslTemplateModem/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4554,6 +4512,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:xdslTemplateModem/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4574,6 +4535,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "account:apiovh:xdslTemplateModem/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5020,12 +4984,12 @@ export const schema: Schema = {
     },
     "order.CurrencyCodeEnum": {
       "enum": [
+        " INR",
         "AUD",
         "CAD",
         "CZK",
         "EUR",
         "GBP",
-        "INR",
         "LTL",
         "MAD",
         "N/A",
@@ -6011,6 +5975,7 @@ export const schema: Schema = {
         "doing",
         "migration",
         "slamming",
+        "terminated",
         "upgradeOffer"
       ],
       "enumType": "string",
@@ -6164,37 +6129,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "T"
-        },
-        "status": {
-          "canBeNull": false,
-          "description": "Status of the call",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.AsyncTaskStatusEnum"
-        }
-      }
-    },
-    "xdsl.AsyncTaskArray<T>": {
-      "description": "Async task array",
-      "generics": [
-        "T"
-      ],
-      "id": "AsyncTaskArray",
-      "namespace": "xdsl",
-      "properties": {
-        "error": {
-          "canBeNull": true,
-          "description": "Error",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "result": {
-          "canBeNull": true,
-          "description": "Result of the call",
-          "readOnly": false,
-          "required": false,
-          "type": "T[]"
         },
         "status": {
           "canBeNull": false,
@@ -6632,12 +6566,123 @@ export const schema: Schema = {
       "id": "FaultRepairTimeEnum",
       "namespace": "xdsl"
     },
+    "xdsl.FiberEligibility": {
+      "description": "Fiber eligibility",
+      "id": "FiberEligibility",
+      "namespace": "xdsl",
+      "properties": {
+        "availabilityDate": {
+          "canBeNull": true,
+          "description": "Availability date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "buildingName": {
+          "canBeNull": true,
+          "description": "Building name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "buildingReference": {
+          "canBeNull": true,
+          "description": "Building reference",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "buildingSeqId": {
+          "canBeNull": true,
+          "description": "Building sequence id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "firstEligibleDate": {
+          "canBeNull": true,
+          "description": "First eligible date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "grts": {
+          "canBeNull": true,
+          "description": "Available GRTs",
+          "fullType": "xdsl.GtrEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.GtrEnum[]"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "offer": {
+          "canBeNull": true,
+          "description": "Offer",
+          "fullType": "xdsl.Offer",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.Offer"
+        },
+        "provider": {
+          "canBeNull": true,
+          "description": "Provider",
+          "fullType": "xdsl.Provider",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.Provider"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status",
+          "fullType": "xdsl.FiberEligibilityStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.FiberEligibilityStatusEnum"
+        }
+      }
+    },
+    "xdsl.FiberEligibilityStatusEnum": {
+      "description": "Status of the fiber eligibility",
+      "enum": [
+        "eligible",
+        "no_building",
+        "not_eligible",
+        "not_yet_eligible"
+      ],
+      "enumType": "string",
+      "id": "FiberEligibilityStatusEnum",
+      "namespace": "xdsl"
+    },
     "xdsl.GtrEnum": {
-      "description": "Gtr of the line.",
+      "description": "GRT option for an access.",
       "enum": [
         "10ho",
+        "20m_10ho",
+        "20m_4ho",
         "4hno",
         "4ho",
+        "5m_10ho",
+        "5m_4ho",
         "dplus1",
         "none"
       ],
@@ -7389,6 +7434,27 @@ export const schema: Schema = {
         }
       }
     },
+    "xdsl.Offer": {
+      "description": "Details of a provider",
+      "id": "Offer",
+      "namespace": "xdsl",
+      "properties": {
+        "code": {
+          "canBeNull": false,
+          "description": "Offer code",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Offer name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "xdsl.OperatorTypeEnum": {
       "description": "Operators",
       "enum": [
@@ -7513,6 +7579,27 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        }
+      }
+    },
+    "xdsl.Provider": {
+      "description": "Details of a provider",
+      "id": "Provider",
+      "namespace": "xdsl",
+      "properties": {
+        "code": {
+          "canBeNull": false,
+          "description": "Provider code",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Provider name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -8030,7 +8117,7 @@ export const schema: Schema = {
         },
         "securityKey": {
           "canBeNull": false,
-          "description": "WPA or WEP key",
+          "description": "WiFi security key",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -8038,7 +8125,7 @@ export const schema: Schema = {
         },
         "securityType": {
           "canBeNull": false,
-          "description": "Security (None | WEP | WPA | WPA2 | WPAandWPA2)",
+          "description": "WiFi security mode",
           "fullType": "xdsl.xdslModemConfig.SecurityTypeEnum",
           "readOnly": false,
           "required": false,
@@ -8218,728 +8305,6 @@ export const schema: Schema = {
           "description": "MAC address of the device",
           "fullType": "string",
           "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "xdsl.eligibility.Address": {
-      "description": "Represents an address",
-      "id": "Address",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "building": {
-          "canBeNull": true,
-          "description": "Name of the building, if any",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "city": {
-          "canBeNull": false,
-          "description": "Informations about the city",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.City"
-        },
-        "door": {
-          "canBeNull": true,
-          "description": "Identifier of the door, if any",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "floor": {
-          "canBeNull": true,
-          "description": "Identifier of the floor, if any",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "logo": {
-          "canBeNull": true,
-          "description": "Identifier of the historical operator landmark, if any",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "owner": {
-          "canBeNull": true,
-          "description": "Owner of the line, this information can be restricted",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "residence": {
-          "canBeNull": true,
-          "description": "Name of the residence, if any",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "stair": {
-          "canBeNull": true,
-          "description": "Identifier of the stair, if any",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "street": {
-          "canBeNull": true,
-          "description": "Informations about the street",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.Street"
-        },
-        "streetNumber": {
-          "canBeNull": true,
-          "description": "Number on the street",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "xdsl.eligibility.Building": {
-      "description": "Details of a Building",
-      "id": "Building",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "name": {
-          "canBeNull": false,
-          "description": "Building name",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "nro": {
-          "canBeNull": false,
-          "description": "Building NRO (Optical main distribution frame)",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "reference": {
-          "canBeNull": false,
-          "description": "Identifier which refer to a building uniquely",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "type": {
-          "canBeNull": false,
-          "description": "Building type",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.BuildingTypeEnum"
-        }
-      }
-    },
-    "xdsl.eligibility.BuildingTypeEnum": {
-      "description": "Type of building",
-      "enum": [
-        "BUILDING",
-        "HOUSE"
-      ],
-      "enumType": "string",
-      "id": "BuildingTypeEnum",
-      "namespace": "xdsl.eligibility"
-    },
-    "xdsl.eligibility.City": {
-      "description": "Represent a city",
-      "id": "City",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "inseeCode": {
-          "canBeNull": false,
-          "description": "INSEE code of the city",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "locality": {
-          "canBeNull": true,
-          "description": "Locality (subset of a city)",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Name of the city",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "zipCode": {
-          "canBeNull": false,
-          "description": "Zip code of the city",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "xdsl.eligibility.CodeAndMessage": {
-      "description": "A message and its code",
-      "id": "CodeAndMessage",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "code": {
-          "canBeNull": false,
-          "description": "A code identifying the message",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "message": {
-          "canBeNull": false,
-          "description": "A message",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "xdsl.eligibility.Eligibility": {
-      "description": "Eligibility result",
-      "id": "Eligibility",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "address": {
-          "canBeNull": true,
-          "description": "The line address",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.Address"
-        },
-        "characteristics": {
-          "canBeNull": false,
-          "description": "The line characteristics",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.LineCharacteristics"
-        },
-        "endpoint": {
-          "canBeNull": false,
-          "description": "The eligibility endpoint type",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.LineEndpointEnum"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "The eligibility uuid",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "infos": {
-          "canBeNull": false,
-          "description": "The line infos",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.LineInfos"
-        },
-        "offers": {
-          "canBeNull": false,
-          "description": "The eligible offers list",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.Offer[]"
-        },
-        "portability": {
-          "canBeNull": false,
-          "description": "Portability capabilities",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.Portability"
-        }
-      }
-    },
-    "xdsl.eligibility.FiberEligibility": {
-      "description": "Fiber Eligibility result",
-      "id": "FiberEligibility",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "id": {
-          "canBeNull": false,
-          "description": "Eligibility UUID",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "offers": {
-          "canBeNull": false,
-          "description": "List of fiber offer",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.FiberOffer[]"
-        }
-      }
-    },
-    "xdsl.eligibility.FiberOffer": {
-      "description": "A fiber offer",
-      "id": "FiberOffer",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "availibilityDate": {
-          "canBeNull": true,
-          "description": "The availibility date if the fiber is planned but not available yet",
-          "readOnly": false,
-          "required": false,
-          "type": "date"
-        },
-        "downloadRate": {
-          "canBeNull": true,
-          "description": "Estimated or guaranteed download rate in Mbit/s, if applicable",
-          "readOnly": false,
-          "required": false,
-          "type": "double"
-        },
-        "eligible": {
-          "canBeNull": false,
-          "description": "Are you eligible to this offer ?",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "gtr": {
-          "canBeNull": false,
-          "description": "Allowed GTR",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.GtrEnum[]"
-        },
-        "guaranteed": {
-          "canBeNull": false,
-          "description": "Is the rate guaranteed ?",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "label": {
-          "canBeNull": false,
-          "description": "Offer label",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "reason": {
-          "canBeNull": true,
-          "description": "Reason of non eligibility, if applicable",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "type": {
-          "canBeNull": false,
-          "description": "Technology",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.DslTypeEnum"
-        },
-        "uploadRate": {
-          "canBeNull": true,
-          "description": "Estimated or guaranteed upload rate in Mbit/s, if applicable",
-          "readOnly": false,
-          "required": false,
-          "type": "double"
-        }
-      }
-    },
-    "xdsl.eligibility.FiberStreet": {
-      "description": "Details of a FiberStreet",
-      "id": "FiberStreet",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "streetCode": {
-          "canBeNull": false,
-          "description": "Identifier which refer to a street uniquely",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "streetName": {
-          "canBeNull": false,
-          "description": "Street name",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "xdsl.eligibility.LandlineStatusEnum": {
-      "description": "Status of a landline",
-      "enum": [
-        "active",
-        "inactive"
-      ],
-      "enumType": "string",
-      "id": "LandlineStatusEnum",
-      "namespace": "xdsl.eligibility"
-    },
-    "xdsl.eligibility.Line": {
-      "description": "a line",
-      "id": "Line",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "address": {
-          "canBeNull": false,
-          "description": "The line address",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.Address"
-        },
-        "contactName": {
-          "canBeNull": false,
-          "description": "The contact name",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "lineNumber": {
-          "canBeNull": false,
-          "description": "The line number",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "lineStatus": {
-          "canBeNull": false,
-          "description": "The line status",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.LandlineStatusEnum"
-        }
-      }
-    },
-    "xdsl.eligibility.LineCharacteristics": {
-      "description": "The characteristics of a line",
-      "id": "LineCharacteristics",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "calibration": {
-          "canBeNull": false,
-          "description": "Details of line calibration",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.LineSectionCalibration[]"
-        },
-        "desaturationFreePairs": {
-          "canBeNull": false,
-          "description": "Number of free pairs proposed ondesaturation of copper lines",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "distance": {
-          "canBeNull": false,
-          "description": "Distance to the NRA in meters",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "freePairs": {
-          "canBeNull": false,
-          "description": "Number of free pairs",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "mitigation": {
-          "canBeNull": false,
-          "description": "The estimated mitigation for ADSL and VDSL technologies",
-          "readOnly": false,
-          "required": false,
-          "type": "double"
-        },
-        "mitigationSdsl": {
-          "canBeNull": false,
-          "description": "The estimated mitigation for SDSL technology",
-          "readOnly": false,
-          "required": false,
-          "type": "double"
-        },
-        "nra": {
-          "canBeNull": false,
-          "description": "The NRA",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "xdsl.eligibility.LineEndpointEnum": {
-      "description": "Type of the endpoint for the eligibility",
-      "enum": [
-        "address",
-        "line"
-      ],
-      "enumType": "string",
-      "id": "LineEndpointEnum",
-      "namespace": "xdsl.eligibility"
-    },
-    "xdsl.eligibility.LineInfos": {
-      "description": "The line infos",
-      "id": "LineInfos",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "createNeighbour": {
-          "canBeNull": false,
-          "description": "Weither we are in create neighbor case or not",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "lineNumber": {
-          "canBeNull": true,
-          "description": "The line number, if endpoint is number",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "lineStatus": {
-          "canBeNull": true,
-          "description": "The line status, if endpoint is number",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.LandlineStatusEnum"
-        },
-        "unlistedNumber": {
-          "canBeNull": false,
-          "description": "Is the number unlisted ?",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        }
-      }
-    },
-    "xdsl.eligibility.LineSectionCalibration": {
-      "description": "A line section calibration detail",
-      "id": "LineSectionCalibration",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "diameter": {
-          "canBeNull": false,
-          "description": "The section diameter in millimeters",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "length": {
-          "canBeNull": false,
-          "description": "The section length in meters",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        }
-      }
-    },
-    "xdsl.eligibility.MeetingSlot": {
-      "description": "Represents a time slot for a meeting",
-      "id": "MeetingSlot",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "endDate": {
-          "canBeNull": false,
-          "description": "The end of the time slot",
-          "readOnly": false,
-          "required": false,
-          "type": "datetime"
-        },
-        "slotId": {
-          "canBeNull": true,
-          "description": "Represent a meeting id for a fiber collect operator",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "startDate": {
-          "canBeNull": false,
-          "description": "The beginning of the time slot",
-          "readOnly": false,
-          "required": false,
-          "type": "datetime"
-        },
-        "uiCode": {
-          "canBeNull": false,
-          "description": "An opaque string that represents an intervention unit",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "xdsl.eligibility.MeetingSlots": {
-      "description": "List of available meeting time slots",
-      "id": "MeetingSlots",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "canBookFakeMeeting": {
-          "canBeNull": false,
-          "description": "Whether or not it is possible to book a fake meeting",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "meetingSlots": {
-          "canBeNull": false,
-          "description": "A time slot",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.MeetingSlot[]"
-        }
-      }
-    },
-    "xdsl.eligibility.Offer": {
-      "description": "An offer",
-      "id": "Offer",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "desaturation": {
-          "canBeNull": true,
-          "description": "Is copper lines desaturation needed and available for this offer ?",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "downloadRate": {
-          "canBeNull": true,
-          "description": "Estimated or guaranteed download rate in Mbit/s, if applicable",
-          "readOnly": false,
-          "required": false,
-          "type": "double"
-        },
-        "gtr": {
-          "canBeNull": false,
-          "description": "Allowed GTR (none, 4ho : 4 work hours, 4hno : 4 unworked hours)",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.GtrEnum[]"
-        },
-        "guaranteed": {
-          "canBeNull": false,
-          "description": "Is the rate guaranteed ?",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "label": {
-          "canBeNull": false,
-          "description": "Offer label",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "pairs": {
-          "canBeNull": true,
-          "description": "Number of pairs to use",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "provider": {
-          "canBeNull": true,
-          "description": "Provider, if applicable",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.ProviderEnum"
-        },
-        "rate": {
-          "canBeNull": true,
-          "description": "DEPRECATED Please use downloadRate instead /DEPRECATED - Estimated or guaranteed rate in Mbit/s, if applicable",
-          "readOnly": false,
-          "required": false,
-          "type": "double"
-        },
-        "type": {
-          "canBeNull": false,
-          "description": "DSL technology",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.DslTypeEnum"
-        },
-        "unbundling": {
-          "canBeNull": true,
-          "description": "Allowed unbundling methods",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.DeconsolidationEnum[]"
-        },
-        "uploadRate": {
-          "canBeNull": true,
-          "description": "Estimated or guaranteed upload rate in Mbit/s, if applicable",
-          "readOnly": false,
-          "required": false,
-          "type": "double"
-        }
-      }
-    },
-    "xdsl.eligibility.Portability": {
-      "description": "Eligibility of the portability of the line number",
-      "id": "Portability",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "comments": {
-          "canBeNull": false,
-          "description": "The reason(s) of the negative portability eligibility",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.CodeAndMessage[]"
-        },
-        "eligible": {
-          "canBeNull": false,
-          "description": "Whether or not it is possible to port the line number. If false, commentList contains the reason(s)",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "underCondition": {
-          "canBeNull": false,
-          "description": "Whether or not the portability is possible under condition. If true, warningList contains the reason(s)",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "warnings": {
-          "canBeNull": false,
-          "description": "The special condition(s) of the portability",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.eligibility.CodeAndMessage[]"
-        }
-      }
-    },
-    "xdsl.eligibility.ProviderEnum": {
-      "description": "The providers",
-      "enum": [
-        "axione",
-        "ft",
-        "kosc",
-        "ovh",
-        "sfr"
-      ],
-      "enumType": "string",
-      "id": "ProviderEnum",
-      "namespace": "xdsl.eligibility"
-    },
-    "xdsl.eligibility.Street": {
-      "description": "Represent a street",
-      "id": "Street",
-      "namespace": "xdsl.eligibility",
-      "properties": {
-        "name": {
-          "canBeNull": false,
-          "description": "Name of the street",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "rivoliCode": {
-          "canBeNull": false,
-          "description": "RIVOLI identifier of the street",
-          "readOnly": false,
           "required": false,
           "type": "string"
         }
@@ -10231,6 +9596,8 @@ export const schema: Schema = {
         "None",
         "WPA",
         "WPA2",
+        "WPA2andWPA3",
+        "WPA3",
         "WPAandWPA2"
       ],
       "enumType": "string",
@@ -10307,7 +9674,7 @@ export const schema: Schema = {
         },
         "securityType": {
           "canBeNull": false,
-          "description": "Security (None | WPA | WPA2 | WPAandWPA2)",
+          "description": "WLAN security mode",
           "readOnly": false,
           "required": false,
           "type": "xdsl.templateModem.SecurityTypeEnum"
@@ -10453,7 +9820,6 @@ export const schema: Schema = {
       "enum": [
         "beta",
         "dev",
-        "legacy",
         "stable"
       ],
       "enumType": "string",
@@ -10540,6 +9906,8 @@ export const schema: Schema = {
         "WEP",
         "WPA",
         "WPA2",
+        "WPA2andWPA3",
+        "WPA3",
         "WPAandWPA2"
       ],
       "enumType": "string",

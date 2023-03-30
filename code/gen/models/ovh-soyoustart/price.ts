@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "Get the price of a Hadoop cluster consumptions",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:price/cluster/hadoop/cluster/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41,6 +44,9 @@ export const schema: Schema = {
           },
           "description": "Get the hourly price of the available node profiles",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:price/cluster/hadoop/node/hourly/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -67,6 +73,9 @@ export const schema: Schema = {
           },
           "description": "Get the monthly price of the available node profiles",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:price/cluster/hadoop/node/monthly/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -93,6 +102,9 @@ export const schema: Schema = {
           },
           "description": "Get price of anti-DDos Pro option",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:price/dedicated/server/antiDDoSPro/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -119,6 +131,9 @@ export const schema: Schema = {
           },
           "description": "Get price of backup storage offer",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:price/dedicated/server/backupStorage/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -145,6 +160,9 @@ export const schema: Schema = {
           },
           "description": "Get price of available firewall models",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:price/dedicated/server/firewall/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -171,6 +189,9 @@ export const schema: Schema = {
           },
           "description": "Get price of IPs",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:price/dedicated/server/ip/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -192,12 +213,12 @@ export const schema: Schema = {
   "models": {
     "order.CurrencyCodeEnum": {
       "enum": [
+        " INR",
         "AUD",
         "CAD",
         "CZK",
         "EUR",
         "GBP",
-        "INR",
         "LTL",
         "MAD",
         "N/A",

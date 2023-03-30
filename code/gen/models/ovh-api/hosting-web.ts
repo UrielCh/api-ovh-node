@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webHosting:apiovh:edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -88,6 +97,9 @@ export const schema: Schema = {
           },
           "description": "Activate an included private database on your hosting offer",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:activatePrivateDatabase"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -130,6 +142,9 @@ export const schema: Schema = {
           },
           "description": "Domains or subdomains attached to your hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:attachedDomain/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -166,6 +181,9 @@ export const schema: Schema = {
           },
           "description": "Link a domain to this hosting",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:attachedDomain/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -248,6 +266,9 @@ export const schema: Schema = {
           },
           "description": "Unlink domain from hosting",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webHosting:apiovh:attachedDomain/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -276,6 +297,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:attachedDomain/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -304,6 +328,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webHosting:apiovh:attachedDomain/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -345,6 +372,9 @@ export const schema: Schema = {
           },
           "description": "Purge cache for this attached domain",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:attachedDomain/purgeCache"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -379,6 +409,9 @@ export const schema: Schema = {
           },
           "description": "Restart the virtual host of the attached domain",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:attachedDomain/restart"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -413,6 +446,9 @@ export const schema: Schema = {
           },
           "description": "List configurations available for current hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:availableConfigurations/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -447,6 +483,9 @@ export const schema: Schema = {
           },
           "description": "History of your hosting boost",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:boostHistory/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -481,6 +520,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:boostHistory/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -515,6 +557,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:cdn/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -536,11 +581,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List available options for a Shared CDN service",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:cdn/availableOptions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -562,11 +610,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List all domains for a Shared CDN service",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:cdn/domain/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -588,11 +639,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details for a domain on a Shared CDN service",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:cdn/domain/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -622,11 +676,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Generate URL to logs archive",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:cdn/domain/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -664,11 +721,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List all options for a domain",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:cdn/domain/option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -692,11 +752,14 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Add an option on a domain",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:cdn/domain/option/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -733,11 +796,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Remove or Reset an option to his default value",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webHosting:apiovh:cdn/domain/option/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -769,11 +835,14 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details for an option on a domain",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:cdn/domain/option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -805,11 +874,14 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Update an option on a domain",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webHosting:apiovh:cdn/domain/option/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -854,11 +926,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Flush cache content on CDN for a domain",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:cdn/domain/purge"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -904,11 +979,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Trigger a refresh for a domain",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:cdn/domain/refresh"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -938,11 +1016,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get CDN statistics for a domain",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:cdn/domain/statistics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -980,11 +1061,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List all operations for a Shared CDN service",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:cdn/operation/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1006,11 +1090,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get details for a Shared CDN operation",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:cdn/operation/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1045,6 +1132,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:cdn/serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1071,6 +1161,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:cdn/serviceInfosUpdate/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1105,6 +1198,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your cdn sub service",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:cdn/terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1131,6 +1227,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1181,6 +1280,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:configuration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1201,6 +1303,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webHosting:apiovh:configuration/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1234,6 +1339,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1292,6 +1400,9 @@ export const schema: Schema = {
           },
           "description": "Crons on your webhosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:cron/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1344,6 +1455,9 @@ export const schema: Schema = {
           },
           "description": "Create new cron",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:cron/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1377,6 +1491,9 @@ export const schema: Schema = {
           },
           "description": "Delete cron",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webHosting:apiovh:cron/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1405,6 +1522,9 @@ export const schema: Schema = {
           },
           "description": "Get cron by id",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:cron/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1433,6 +1553,9 @@ export const schema: Schema = {
           },
           "description": "Update cron",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webHosting:apiovh:cron/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1474,6 +1597,9 @@ export const schema: Schema = {
           },
           "description": "Get the list of supported languages by web domain",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:cronAvailableLanguages/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1500,6 +1626,9 @@ export const schema: Schema = {
           },
           "description": "Databases linked to your hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:database/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1560,6 +1689,9 @@ export const schema: Schema = {
           },
           "description": "Install new database",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:database/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1634,6 +1766,9 @@ export const schema: Schema = {
           },
           "description": "Delete database",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webHosting:apiovh:database/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1662,6 +1797,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:database/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1696,6 +1834,9 @@ export const schema: Schema = {
           },
           "description": "Get available capabilities for this database",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:database/capabilities/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1730,6 +1871,9 @@ export const schema: Schema = {
           },
           "description": "Request a password change",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:database/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1772,6 +1916,9 @@ export const schema: Schema = {
           },
           "description": "Dump available for your databases",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:database/dump/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1792,17 +1939,33 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
-              "description": "Filter the value of creationDate property (like)",
+              "description": "Filter the value of creationDate property (>=)",
               "fullType": "datetime",
-              "name": "creationDate",
+              "name": "creationDate.from",
               "paramType": "query",
               "required": false
             },
             {
               "dataType": "datetime",
-              "description": "Filter the value of deletionDate property (like)",
+              "description": "Filter the value of creationDate property (<=)",
               "fullType": "datetime",
-              "name": "deletionDate",
+              "name": "creationDate.to",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of deletionDate property (>=)",
+              "fullType": "datetime",
+              "name": "deletionDate.from",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of deletionDate property (<=)",
+              "fullType": "datetime",
+              "name": "deletionDate.to",
               "paramType": "query",
               "required": false
             },
@@ -1824,6 +1987,9 @@ export const schema: Schema = {
           },
           "description": "Request the dump from your database",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:database/dump/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1874,6 +2040,9 @@ export const schema: Schema = {
           },
           "description": "Delete dump before expiration date",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webHosting:apiovh:database/dump/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1910,6 +2079,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:database/dump/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1952,6 +2124,9 @@ export const schema: Schema = {
           },
           "description": "Request the restore from this dump",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:database/dump/restore"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1994,6 +2169,9 @@ export const schema: Schema = {
           },
           "description": "Import a dump from an specific file uploaded with /me/documents",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:database/import"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2052,6 +2230,9 @@ export const schema: Schema = {
           },
           "description": "Request specific operation for your database",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:database/request/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2094,6 +2275,9 @@ export const schema: Schema = {
           },
           "description": "Request the restore from your database backup",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:database/restore"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2144,6 +2328,9 @@ export const schema: Schema = {
           },
           "description": "Get statistics about this database",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:database/statistics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2194,6 +2381,9 @@ export const schema: Schema = {
           },
           "description": "List available database type",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:databaseAvailableType/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2220,6 +2410,9 @@ export const schema: Schema = {
           },
           "description": "List available database version following a type",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:databaseAvailableVersion/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2254,6 +2447,9 @@ export const schema: Schema = {
           },
           "description": "List available database you can install",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:databaseCreationCapabilities/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2280,6 +2476,9 @@ export const schema: Schema = {
           },
           "description": "Dumps linked to your hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:dump/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2292,15 +2491,23 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
-              "description": "Filter the value of creationDate property (like)",
+              "description": "Filter the value of creationDate property (>=)",
               "fullType": "datetime",
-              "name": "creationDate",
+              "name": "creationDate.from",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDate property (<=)",
+              "fullType": "datetime",
+              "name": "creationDate.to",
               "paramType": "query",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Filter the value of databaseName property (like)",
+              "description": "Filter the value of databaseName property (=)",
               "fullType": "string",
               "name": "databaseName",
               "paramType": "query",
@@ -2308,15 +2515,23 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
-              "description": "Filter the value of deletionDate property (like)",
+              "description": "Filter the value of deletionDate property (>=)",
               "fullType": "datetime",
-              "name": "deletionDate",
+              "name": "deletionDate.from",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of deletionDate property (<=)",
+              "fullType": "datetime",
+              "name": "deletionDate.to",
               "paramType": "query",
               "required": false
             },
             {
               "dataType": "boolean",
-              "description": "Filter the value of orphan property (like)",
+              "description": "Filter the value of orphan property (=)",
               "fullType": "boolean",
               "name": "orphan",
               "paramType": "query",
@@ -2338,6 +2553,9 @@ export const schema: Schema = {
           },
           "description": "Delete dump before expiration date",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webHosting:apiovh:dump/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2366,6 +2584,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:dump/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2400,6 +2621,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:email/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2420,6 +2644,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webHosting:apiovh:email/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2453,6 +2680,9 @@ export const schema: Schema = {
           },
           "description": "Request the last bounces",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:email/bounces/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2487,6 +2717,9 @@ export const schema: Schema = {
           },
           "description": "Request specific operation for your email",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:email/request/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2521,6 +2754,9 @@ export const schema: Schema = {
           },
           "description": "Request the history volume of email sent",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:email/volumes/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2547,6 +2783,9 @@ export const schema: Schema = {
           },
           "description": "Mail service linked to webhosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:emailOption/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2573,6 +2812,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:emailOption/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2607,6 +2849,9 @@ export const schema: Schema = {
           },
           "description": "Get the service properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:emailOption/serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2641,6 +2886,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your email sub service",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:emailOption/terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2675,6 +2923,9 @@ export const schema: Schema = {
           },
           "description": "Environment variables set on your webhosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:envVar/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2703,6 +2954,9 @@ export const schema: Schema = {
           },
           "description": "Set a variable to this hosting",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:envVar/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2753,6 +3007,9 @@ export const schema: Schema = {
           },
           "description": "Remove variable from hosting",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webHosting:apiovh:envVar/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2781,6 +3038,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:envVar/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2809,6 +3069,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webHosting:apiovh:envVar/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2850,6 +3113,9 @@ export const schema: Schema = {
           },
           "description": "Sqlperso linked to your hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:extraSqlPerso/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2876,6 +3142,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:extraSqlPerso/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2910,6 +3179,9 @@ export const schema: Schema = {
           },
           "description": "Get databases linked with this option",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:extraSqlPerso/databases/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2944,6 +3216,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:extraSqlPerso/serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2978,6 +3253,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:extraSqlPerso/serviceInfosUpdate/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3020,6 +3298,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your extraSqlPerso sub service",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:extraSqlPerso/terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3054,6 +3335,9 @@ export const schema: Schema = {
           },
           "description": "Freedom linked to this hosting account",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:freedom/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3088,6 +3372,9 @@ export const schema: Schema = {
           },
           "description": "Delete the freedom",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webHosting:apiovh:freedom/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3116,6 +3403,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:freedom/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3150,6 +3440,9 @@ export const schema: Schema = {
           },
           "description": "User of multidomain independent allowed on your hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:indy/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3184,6 +3477,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:indy/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3218,6 +3514,9 @@ export const schema: Schema = {
           },
           "description": "Local SEO accounts associated to the hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:localSeo/account/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3252,6 +3551,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:localSeo/account/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3286,6 +3588,9 @@ export const schema: Schema = {
           },
           "description": "Login this location for SSO",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:localSeo/account/login"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3320,6 +3625,9 @@ export const schema: Schema = {
           },
           "description": "Check email availability for a local SEO order",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:localSeo/emailAvailability/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3354,6 +3662,9 @@ export const schema: Schema = {
           },
           "description": "Local SEO locations associated to the hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:localSeo/location/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3380,6 +3691,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:localSeo/location/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3414,6 +3728,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:localSeo/location/serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3448,6 +3765,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:localSeo/location/serviceInfosUpdate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3490,6 +3810,9 @@ export const schema: Schema = {
           },
           "description": "Terminate a local SEO sub service",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:localSeo/location/terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3524,6 +3847,9 @@ export const schema: Schema = {
           },
           "description": "Module installed on your hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:module/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3544,6 +3870,9 @@ export const schema: Schema = {
           },
           "description": "Install a new module",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:module/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3626,6 +3955,9 @@ export const schema: Schema = {
           },
           "description": "Delete a module installed",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webHosting:apiovh:module/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3662,6 +3994,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:module/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3696,6 +4031,9 @@ export const schema: Schema = {
           },
           "description": "Generate a new admin password for your module",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:module/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3730,6 +4068,9 @@ export const schema: Schema = {
           },
           "description": "Configuration used on your hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:ovhConfig/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3772,6 +4113,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:ovhConfig/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3806,6 +4150,9 @@ export const schema: Schema = {
           },
           "description": "Apply a new configuration on this path",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:ovhConfig/changeConfiguration"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3880,6 +4227,9 @@ export const schema: Schema = {
           },
           "description": "Rollback to an old configuration",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:ovhConfig/rollback"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3922,6 +4272,9 @@ export const schema: Schema = {
           },
           "description": "Get the list of versions and container image available on your hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:ovhConfigCapabilities/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3948,6 +4301,9 @@ export const schema: Schema = {
           },
           "description": "Get recommended values on ovhConfig file",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:ovhConfigRecommendedValues/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3974,6 +4330,9 @@ export const schema: Schema = {
           },
           "description": "Synchronize the configuration listing with content on your hosting",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:ovhConfig/refresh"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4000,6 +4359,9 @@ export const schema: Schema = {
           },
           "description": "Own Logs linked to your hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:ownLogs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4034,6 +4396,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:ownLogs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4068,6 +4433,9 @@ export const schema: Schema = {
           },
           "description": "User allowed to connect into your logs interface",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:ownLogs/userLogs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4104,6 +4472,9 @@ export const schema: Schema = {
           },
           "description": "Create new userLogs",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:ownLogs/userLogs/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4170,6 +4541,9 @@ export const schema: Schema = {
           },
           "description": "Delete the userLogs",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webHosting:apiovh:ownLogs/userLogs/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4206,6 +4580,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:ownLogs/userLogs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4242,6 +4619,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webHosting:apiovh:ownLogs/userLogs/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4291,6 +4671,9 @@ export const schema: Schema = {
           },
           "description": "Request a password change",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:ownLogs/userLogs/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4341,6 +4724,9 @@ export const schema: Schema = {
           },
           "description": "List available privateDatabase you can install",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:privateDatabaseCreationCapabilities/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4367,6 +4753,9 @@ export const schema: Schema = {
           },
           "description": "List linked privateDatabases",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:privateDatabases/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4393,6 +4782,9 @@ export const schema: Schema = {
           },
           "description": "Request specific operation for your hosting",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:request"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4427,6 +4819,9 @@ export const schema: Schema = {
           },
           "description": "Allows you to boost your offer.",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:requestBoost"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4461,6 +4856,9 @@ export const schema: Schema = {
           },
           "description": "Restore this snapshot ALL CURRENT DATA WILL BE REPLACED BY YOUR SNAPSHOT",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:restoreSnapshot"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4495,6 +4893,9 @@ export const schema: Schema = {
           },
           "description": "List of runtime configurations to your hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:runtime/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4531,6 +4932,9 @@ export const schema: Schema = {
           },
           "description": "Request the creation of a new runtime configuration",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:runtime/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4613,6 +5017,9 @@ export const schema: Schema = {
           },
           "description": "Delete a runtime configuration of an hosting",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webHosting:apiovh:runtime/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4641,6 +5048,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:runtime/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4669,6 +5079,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webHosting:apiovh:runtime/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4710,6 +5123,9 @@ export const schema: Schema = {
           },
           "description": "Get the attached domains linked to this runtime configuration",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:runtime/attachedDomains/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4744,6 +5160,9 @@ export const schema: Schema = {
           },
           "description": "List available runtime configurations available backend types",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:runtimeAvailableTypes/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4778,6 +5197,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4798,6 +5220,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webHosting:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4822,8 +5247,31 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/serviceInfos"
     },
     {
-      "description": "Hostedssl",
+      "description": "",
       "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get hosted SSL properties",
+          "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:ssl/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.web.SSL"
+        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -4831,26 +5279,9 @@ export const schema: Schema = {
           },
           "description": "Delete the HostedSsl on your hosting",
           "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
+          "iamActions": [
+            "webHosting:apiovh:ssl/delete"
           ],
-          "responseType": "hosting.web.ssl"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
@@ -4871,6 +5302,9 @@ export const schema: Schema = {
           },
           "description": "Create the free default HostedSsl OR import your proper SSL on your hosting",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:ssl/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4912,20 +5346,23 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/ssl"
     },
     {
-      "description": "domains operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get domains linked to this HostedSsl",
+          "description": "Get list of domains linked to the hosted SSL",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:ssl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4947,6 +5384,9 @@ export const schema: Schema = {
           },
           "description": "Request the regeneration of your HostedSsl",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:ssl/regenerate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4964,27 +5404,30 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/ssl/regenerate"
     },
     {
-      "description": "Hostedssl Report",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get hosted SSL report properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:ssl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.web.ssl.report"
+          "responseType": "hosting.web.ssl.Report"
         }
       ],
       "path": "/hosting/web/{serviceName}/ssl/report"
@@ -4999,6 +5442,9 @@ export const schema: Schema = {
           },
           "description": "Get statistics about this web hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:statistics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5041,6 +5487,9 @@ export const schema: Schema = {
           },
           "description": "Tasks attached to your hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5083,6 +5532,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5117,6 +5569,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5143,6 +5598,9 @@ export const schema: Schema = {
           },
           "description": "Use to link an external domain. ( This token has to be insert into a TXT field on your dns zone with ovhcontrol subdomain )",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:token/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5169,6 +5627,9 @@ export const schema: Schema = {
           },
           "description": "User allowed to connect into your hosting",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5205,6 +5666,9 @@ export const schema: Schema = {
           },
           "description": "Create new ftp/ssh user",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5263,6 +5727,9 @@ export const schema: Schema = {
           },
           "description": "Delete ftp/ssh user",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webHosting:apiovh:user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5291,6 +5758,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5319,6 +5789,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webHosting:apiovh:user/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5360,6 +5833,9 @@ export const schema: Schema = {
           },
           "description": "Request a password change",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:user/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5402,6 +5878,9 @@ export const schema: Schema = {
           },
           "description": "User allowed to connect into your logs interface",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:userLogs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5430,6 +5909,9 @@ export const schema: Schema = {
           },
           "description": "Create new userLogs",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:userLogs/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5488,6 +5970,9 @@ export const schema: Schema = {
           },
           "description": "Delete the userLogs",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webHosting:apiovh:userLogs/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5516,6 +6001,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:userLogs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5544,6 +6032,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webHosting:apiovh:userLogs/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5585,6 +6076,9 @@ export const schema: Schema = {
           },
           "description": "Request a password change",
           "httpMethod": "POST",
+          "iamActions": [
+            "webHosting:apiovh:userLogs/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5627,6 +6121,9 @@ export const schema: Schema = {
           },
           "description": "Get a temporary token to access the your web hosting logs interface",
           "httpMethod": "GET",
+          "iamActions": [
+            "webHosting:apiovh:userLogsToken/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5677,6 +6174,9 @@ export const schema: Schema = {
           },
           "description": "Find hosting service linked to a domain",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:webHosting/attachedDomain/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5703,6 +6203,9 @@ export const schema: Schema = {
           },
           "description": "Get available offer",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:webHosting/availableOffer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5729,6 +6232,9 @@ export const schema: Schema = {
           },
           "description": "Get current incident",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:webHosting/incident/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -6907,8 +7413,9 @@ export const schema: Schema = {
         "postgresql_10",
         "postgresql_11",
         "postgresql_12",
-        "redis_4.0",
-        "redis_6.0"
+        "postgresql_13",
+        "redis_6.0",
+        "redis_7.0"
       ],
       "enumType": "string",
       "id": "OrderableVersionEnum",
@@ -7350,9 +7857,9 @@ export const schema: Schema = {
         "php7.4",
         "php8.0",
         "php8.1",
+        "php8.2",
         "python2",
         "python3",
-        "ruby2.5",
         "ruby2.6"
       ],
       "enumType": "string",
@@ -7690,7 +8197,9 @@ export const schema: Schema = {
         "phpfpm-7.2",
         "phpfpm-7.3",
         "phpfpm-7.4",
-        "phpfpm-8.0"
+        "phpfpm-8.0",
+        "phpfpm-8.1",
+        "phpfpm-8.2"
       ],
       "enumType": "string",
       "id": "PhpVersionAvailableEnum",
@@ -7815,12 +8324,66 @@ export const schema: Schema = {
     "hosting.web.RubyVersionAvailableEnum": {
       "description": "Different Ruby versions available",
       "enum": [
-        "ruby-2.5",
         "ruby-2.6"
       ],
       "enumType": "string",
       "id": "RubyVersionAvailableEnum",
       "namespace": "hosting.web"
+    },
+    "hosting.web.SSL": {
+      "description": "Hosted SSL properties",
+      "id": "SSL",
+      "namespace": "hosting.web",
+      "properties": {
+        "isReportable": {
+          "canBeNull": false,
+          "description": "If the hostedssl is currently bound to a report",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "provider": {
+          "canBeNull": false,
+          "description": "Provider of the Hosted SSL",
+          "fullType": "hosting.web.hostedssl.ProviderEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.hostedssl.ProviderEnum"
+        },
+        "regenerable": {
+          "canBeNull": false,
+          "description": "Regenerable flag",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the Hosted SSL",
+          "fullType": "hosting.web.hostedssl.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.hostedssl.StatusEnum"
+        },
+        "taskId": {
+          "canBeNull": true,
+          "description": "The task ID working on this Hosted SSL",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of the Hosted SSL",
+          "fullType": "hosting.web.hostedssl.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.hostedssl.TypeEnum"
+        }
+      }
     },
     "hosting.web.Service": {
       "description": "Web Hosting",
@@ -8643,9 +9206,9 @@ export const schema: Schema = {
         "php7.4",
         "php8.0",
         "php8.1",
+        "php8.2",
         "python2",
         "python3",
-        "ruby2.5",
         "ruby2.6"
       ],
       "enumType": "string",
@@ -8680,6 +9243,14 @@ export const schema: Schema = {
       "id": "database",
       "namespace": "hosting.web",
       "properties": {
+        "databaseType": {
+          "canBeNull": true,
+          "description": "Database service type",
+          "fullType": "hosting.web.database.DatabaseServiceTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.database.DatabaseServiceTypeEnum"
+        },
         "dumps": {
           "canBeNull": false,
           "description": "The number of available dumps associated to this database",
@@ -8980,6 +9551,17 @@ export const schema: Schema = {
       "id": "DatabaseIsolationEnum",
       "namespace": "hosting.web.database"
     },
+    "hosting.web.database.DatabaseServiceTypeEnum": {
+      "description": "Database Service Type enum",
+      "enum": [
+        "extra",
+        "included",
+        "optional"
+      ],
+      "enumType": "string",
+      "id": "DatabaseServiceTypeEnum",
+      "namespace": "hosting.web.database"
+    },
     "hosting.web.database.DatabaseTypeEnum": {
       "description": "Database Type enum",
       "enum": [
@@ -9079,13 +9661,29 @@ export const schema: Schema = {
     "hosting.web.database.VersionEnum": {
       "description": "Database Version enum",
       "enum": [
+        "10",
+        "10.1",
+        "10.2",
+        "10.3",
+        "10.4",
+        "10.5",
+        "11",
+        "12",
+        "13",
+        "3.2",
         "3.4",
         "4.0",
         "5.1",
         "5.5",
         "5.6",
         "5.7",
-        "8.4"
+        "6.0",
+        "7.0",
+        "8.0",
+        "8.4",
+        "9.4",
+        "9.5",
+        "9.6"
       ],
       "enumType": "string",
       "id": "VersionEnum",
@@ -9501,6 +10099,31 @@ export const schema: Schema = {
       "id": "StatusEnum",
       "namespace": "hosting.web.freedom"
     },
+    "hosting.web.hostedssl.ProviderEnum": {
+      "description": "Hosted SSL Provider",
+      "enum": [
+        "COMODO",
+        "CUSTOM",
+        "LETSENCRYPT"
+      ],
+      "enumType": "string",
+      "id": "ProviderEnum",
+      "namespace": "hosting.web.hostedssl"
+    },
+    "hosting.web.hostedssl.ReportStatusEnum": {
+      "description": "Hosted SSL report status",
+      "enum": [
+        "completed",
+        "in-progress",
+        "non-completed",
+        "non-required",
+        "not-applicable",
+        "not-provided"
+      ],
+      "enumType": "string",
+      "id": "ReportStatusEnum",
+      "namespace": "hosting.web.hostedssl"
+    },
     "hosting.web.hostedssl.ReportValueEnum": {
       "description": "Hostedssl report value",
       "enum": [
@@ -9516,7 +10139,7 @@ export const schema: Schema = {
       "namespace": "hosting.web.hostedssl"
     },
     "hosting.web.hostedssl.StatusEnum": {
-      "description": "Hostedssl status",
+      "description": "Hosted SSL status",
       "enum": [
         "created",
         "creating",
@@ -9526,6 +10149,17 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "StatusEnum",
+      "namespace": "hosting.web.hostedssl"
+    },
+    "hosting.web.hostedssl.TypeEnum": {
+      "description": "Hosted SSL type",
+      "enum": [
+        "CUSTOM",
+        "DV",
+        "EV"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
       "namespace": "hosting.web.hostedssl"
     },
     "hosting.web.indy": {
@@ -10599,7 +11233,8 @@ export const schema: Schema = {
         "7.3",
         "7.4",
         "8.0",
-        "8.1"
+        "8.1",
+        "8.2"
       ],
       "enumType": "string",
       "id": "AvailableEngineVersionEnum",
@@ -10633,6 +11268,7 @@ export const schema: Schema = {
         "7.4",
         "8.0",
         "8.1",
+        "8.2",
         "AUTO"
       ],
       "enumType": "string",
@@ -10892,7 +11528,6 @@ export const schema: Schema = {
         "phpfpm-8.0",
         "python-2",
         "python-3",
-        "ruby-2.5",
         "ruby-2.6"
       ],
       "enumType": "string",
@@ -10951,6 +11586,69 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "hosting.web.ssl.Report": {
+      "description": "Hosted SSL report",
+      "id": "Report",
+      "namespace": "hosting.web.ssl",
+      "properties": {
+        "certificateSigningRequestStatus": {
+          "canBeNull": false,
+          "description": "\"Certificate signing request\" test status done by certification authority",
+          "fullType": "hosting.web.hostedssl.ReportStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.hostedssl.ReportStatusEnum"
+        },
+        "domainControlValidationStatus": {
+          "canBeNull": false,
+          "description": "\"Domain control validation\" test status done by certification authority",
+          "fullType": "hosting.web.hostedssl.ReportStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.hostedssl.ReportStatusEnum"
+        },
+        "organizationValidationStatus": {
+          "canBeNull": false,
+          "description": "Applicant's legal status obtained or verified directly with registration agency",
+          "fullType": "hosting.web.hostedssl.ReportStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.hostedssl.ReportStatusEnum"
+        },
+        "phoneCallApprovalStatus": {
+          "canBeNull": false,
+          "description": "Approval verified through a phone call to the contract signer",
+          "fullType": "hosting.web.hostedssl.ReportStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.hostedssl.ReportStatusEnum"
+        },
+        "providerOrderId": {
+          "canBeNull": false,
+          "description": "The order ID from given hostedssl provider",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "termsAndConditionsAcceptanceStatus": {
+          "canBeNull": false,
+          "description": "Terms and conditions agreements acceptance",
+          "fullType": "hosting.web.hostedssl.ReportStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.hostedssl.ReportStatusEnum"
+        },
+        "tradeNameVerificationStatus": {
+          "canBeNull": false,
+          "description": "Trade name verified directly with registration agency or through a verified third party",
+          "fullType": "hosting.web.hostedssl.ReportStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.hostedssl.ReportStatusEnum"
         }
       }
     },
@@ -11374,6 +12072,7 @@ export const schema: Schema = {
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",

@@ -8,7 +8,7 @@ export namespace order {
     /**
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = " INR" | "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * Price with it's currency and textual representation
      * interface fullName: order.Price.Price
@@ -163,6 +163,17 @@ export namespace overTheBox {
         host: string;
         readToken: string;
         readTokenID: string;
+    }
+    /**
+     * Hardware properties
+     * interface fullName: overTheBox.Hardware.Hardware
+     */
+    export interface Hardware {
+        canBeLinkedToService: boolean;
+        mac?: string;
+        model: string;
+        name: string;
+        serial: string;
     }
     /**
      * Status of a MPTCP Interface.
@@ -571,6 +582,39 @@ export interface OverTheBox {
          * POST /overTheBox/devices
          */
         $post(): Promise<overTheBox.DeviceForRegistration[]>;
+    }
+    hardware: {
+        /**
+         * List available services
+         * GET /overTheBox/hardware
+         */
+        $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        available: {
+            /**
+             * List hardware that can be linked to a service
+             * GET /overTheBox/hardware/available
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        $(hardwareName: string): {
+            /**
+             * Get this object properties
+             * GET /overTheBox/hardware/{hardwareName}
+             */
+            $get(): Promise<overTheBox.Hardware>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        };
     }
     $(serviceName: string): {
         /**
@@ -1001,6 +1045,13 @@ export interface OverTheBox {
              * POST /overTheBox/{serviceName}/linkDevice
              */
             $post(params: { deviceId: string }): Promise<void>;
+        }
+        linkHardware: {
+            /**
+             * Link an available hardware to this service
+             * POST /overTheBox/{serviceName}/linkHardware
+             */
+            $post(params: { hardwareName: string }): Promise<void>;
         }
         migration: {
             offers: {

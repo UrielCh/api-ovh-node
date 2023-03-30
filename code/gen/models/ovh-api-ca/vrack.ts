@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "vrack:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "List all services allowed in this vrack",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:allowedServices/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -119,6 +131,9 @@ export const schema: Schema = {
           },
           "description": "vrack for publicCloud project",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:cloudProject/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -139,6 +154,9 @@ export const schema: Schema = {
           },
           "description": "add a publicCloud project to this vrack",
           "httpMethod": "POST",
+          "iamActions": [
+            "vrack:apiovh:cloudProject/add"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -173,6 +191,9 @@ export const schema: Schema = {
           },
           "description": "remove this publicCloud project from this vrack",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "vrack:apiovh:cloudProject/remove"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -201,6 +222,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:cloudProject/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -235,6 +259,9 @@ export const schema: Schema = {
           },
           "description": "vrack dedicated cloud (VmNetwork)",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:dedicatedCloud/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -255,6 +282,9 @@ export const schema: Schema = {
           },
           "description": "add a dedicatedCloud (VmNetwork) to this vrack",
           "httpMethod": "POST",
+          "iamActions": [
+            "vrack:apiovh:dedicatedCloud/add"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -289,6 +319,9 @@ export const schema: Schema = {
           },
           "description": "remove this dedicatedCloud (VmNetwork) from this vrack",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "vrack:apiovh:dedicatedCloud/remove"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -317,6 +350,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:dedicatedCloud/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -351,6 +387,9 @@ export const schema: Schema = {
           },
           "description": "vrack dedicated cloud datacenter",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:dedicatedCloudDatacenter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -377,6 +416,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:dedicatedCloudDatacenter/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -411,6 +453,9 @@ export const schema: Schema = {
           },
           "description": "Vracks allowed for your dedicatedCloud datacenter",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:dedicatedCloudDatacenter/allowedVrack/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -445,6 +490,9 @@ export const schema: Schema = {
           },
           "description": "Move your dedicatedCloud datacenter from a Vrack to another",
           "httpMethod": "POST",
+          "iamActions": [
+            "vrack:apiovh:dedicatedCloudDatacenter/move"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -487,6 +535,9 @@ export const schema: Schema = {
           },
           "description": "vrack dedicated connect",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:dedicatedConnect/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -513,6 +564,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:dedicatedConnect/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -541,6 +595,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "vrack:apiovh:dedicatedConnect/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -582,6 +639,9 @@ export const schema: Schema = {
           },
           "description": "vrack for dedicated server",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:dedicatedServer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -602,6 +662,9 @@ export const schema: Schema = {
           },
           "description": "add a dedicated server to this vrack (LEGACY)",
           "httpMethod": "POST",
+          "iamActions": [
+            "vrack:apiovh:dedicatedServer/add"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -636,6 +699,9 @@ export const schema: Schema = {
           },
           "description": "remove this server from this vrack (LEGACY)",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "vrack:apiovh:dedicatedServer/remove"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -664,6 +730,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:dedicatedServer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -701,6 +770,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve vrack traffic graph values (LEGACY)",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:dedicatedServer/mrtg/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -751,6 +823,9 @@ export const schema: Schema = {
           },
           "description": "vrack for dedicated server interface",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:dedicatedServerInterface/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -771,6 +846,9 @@ export const schema: Schema = {
           },
           "description": "add a dedicated server interface to this vrack",
           "httpMethod": "POST",
+          "iamActions": [
+            "vrack:apiovh:dedicatedServerInterface/add"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -805,6 +883,9 @@ export const schema: Schema = {
           },
           "description": "remove this server interface from this vrack",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "vrack:apiovh:dedicatedServerInterface/remove"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -833,6 +914,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:dedicatedServerInterface/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -867,6 +951,9 @@ export const schema: Schema = {
           },
           "description": "Details for all dedicated server interfaces in this vrack",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:dedicatedServerInterfaceDetails/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -893,6 +980,9 @@ export const schema: Schema = {
           },
           "description": "List all eligible services for this vRack asynchronously",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:eligibleServices/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -919,6 +1009,9 @@ export const schema: Schema = {
           },
           "description": "vrack for IP blocks",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:ip/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -939,6 +1032,9 @@ export const schema: Schema = {
           },
           "description": "add an IP block to this vrack",
           "httpMethod": "POST",
+          "iamActions": [
+            "vrack:apiovh:ip/add"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -973,6 +1069,9 @@ export const schema: Schema = {
           },
           "description": "remove this IP block from this vrack",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "vrack:apiovh:ip/remove"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1001,6 +1100,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:ip/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1035,6 +1137,9 @@ export const schema: Schema = {
           },
           "description": "Announce IP to zone for vrack",
           "httpMethod": "POST",
+          "iamActions": [
+            "vrack:apiovh:ip/announceInZone"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1077,6 +1182,9 @@ export const schema: Schema = {
           },
           "description": "Zone available to announce your block",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:ip/availableZone/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1111,6 +1219,9 @@ export const schema: Schema = {
           },
           "description": "vrack for ipLoadbalancing",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:ipLoadbalancing/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1131,6 +1242,9 @@ export const schema: Schema = {
           },
           "description": "add an ipLoadbalancing to this vrack",
           "httpMethod": "POST",
+          "iamActions": [
+            "vrack:apiovh:ipLoadbalancing/add"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1165,6 +1279,9 @@ export const schema: Schema = {
           },
           "description": "remove this ipLoadbalancing from this vrack",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "vrack:apiovh:ipLoadbalancing/remove"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1193,6 +1310,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:ipLoadbalancing/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1227,6 +1347,9 @@ export const schema: Schema = {
           },
           "description": "vrack for legacy vrack",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:legacyVrack/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1247,6 +1370,9 @@ export const schema: Schema = {
           },
           "description": "add a legacy vrack (vrackXXXX) to this vrack (pn-XXXX)",
           "httpMethod": "POST",
+          "iamActions": [
+            "vrack:apiovh:legacyVrack/add"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1281,6 +1407,9 @@ export const schema: Schema = {
           },
           "description": "remove this legacy vrack (vrackXXXX) from this vrack (pn-XXXX)",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "vrack:apiovh:legacyVrack/remove"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1309,6 +1438,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:legacyVrack/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1343,6 +1475,9 @@ export const schema: Schema = {
           },
           "description": "vrack for ovhCloudConnect",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:ovhCloudConnect/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1363,6 +1498,9 @@ export const schema: Schema = {
           },
           "description": "Add an ovhCloudConnect to the vrack",
           "httpMethod": "POST",
+          "iamActions": [
+            "vrack:apiovh:ovhCloudConnect/add"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1397,6 +1535,9 @@ export const schema: Schema = {
           },
           "description": "Remove the ovhCloudConnect from the vrack",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "vrack:apiovh:ovhCloudConnect/remove"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1425,6 +1566,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:ovhCloudConnect/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1459,6 +1603,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1485,6 +1632,9 @@ export const schema: Schema = {
           },
           "description": "vrack tasks",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1511,6 +1661,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "vrack:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

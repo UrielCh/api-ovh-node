@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List support tickets identifiers for this service",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:support/tickets/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -121,6 +124,9 @@ export const schema: Schema = {
           },
           "description": "Get ticket",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:support/tickets/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -147,6 +153,9 @@ export const schema: Schema = {
           },
           "description": "Checks whether ticket can be scored",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:support/tickets/canBeScored/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -173,6 +182,9 @@ export const schema: Schema = {
           },
           "description": "Close ticket",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:support/tickets/close"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -199,6 +211,9 @@ export const schema: Schema = {
           },
           "description": "Get ticket messages",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:support/tickets/messages/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -225,6 +240,9 @@ export const schema: Schema = {
           },
           "description": "Reopen a ticket",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:support/tickets/reopen"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -259,6 +277,9 @@ export const schema: Schema = {
           },
           "description": "Reply to ticket",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:support/tickets/reply"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -293,6 +314,9 @@ export const schema: Schema = {
           },
           "description": "Set ticket score",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:support/tickets/score"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -335,6 +359,9 @@ export const schema: Schema = {
           },
           "description": "Create a new ticket",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:support/tickets/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -350,6 +377,14 @@ export const schema: Schema = {
               "description": "Ticket message category",
               "fullType": "support.TicketCategoryEnum",
               "name": "category",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "support.TicketImpactUrgencyEnum",
+              "description": "Ticket impact (reserved for Business or Enterprise support level accounts)",
+              "fullType": "support.TicketImpactUrgencyEnum",
+              "name": "impact",
               "paramType": "body",
               "required": false
             },
@@ -387,11 +422,27 @@ export const schema: Schema = {
             },
             {
               "dataType": "support.TicketTypeEnum",
-              "description": "Ticket type (criticalIntervention requires VIP support level)",
+              "description": "DEPRECATED - Ticket type (criticalIntervention requires VIP support level)",
               "fullType": "support.TicketTypeEnum",
               "name": "type",
               "paramType": "body",
-              "required": true
+              "required": false
+            },
+            {
+              "dataType": "support.TicketImpactUrgencyEnum",
+              "description": "Ticket urgency (reserved for Business or Enterprise support level accounts)",
+              "fullType": "support.TicketImpactUrgencyEnum",
+              "name": "urgency",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string[]",
+              "description": "List of e-mail addresses to notify on ticket updates (max. 10)",
+              "fullType": "string[]",
+              "name": "watchers",
+              "paramType": "body",
+              "required": false
             }
           ],
           "responseType": "support.NewMessageInfo"
@@ -466,6 +517,13 @@ export const schema: Schema = {
       "id": "NewMessageInfo",
       "namespace": "support",
       "properties": {
+        "additionalNotice": {
+          "canBeNull": true,
+          "description": "Notice or warning",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "messageId": {
           "canBeNull": false,
           "description": "Message identifier",
@@ -605,6 +663,17 @@ export const schema: Schema = {
       "id": "TicketCategoryEnum",
       "namespace": "support"
     },
+    "support.TicketImpactUrgencyEnum": {
+      "description": "Ticket level of impact or urgency (reserved for Business or Enterprise support level accounts)",
+      "enum": [
+        "high",
+        "low",
+        "medium"
+      ],
+      "enumType": "string",
+      "id": "TicketImpactUrgencyEnum",
+      "namespace": "support"
+    },
     "support.TicketProductEnum": {
       "description": "Ticket product",
       "enum": [
@@ -668,7 +737,7 @@ export const schema: Schema = {
       "namespace": "support"
     },
     "support.TicketTypeEnum": {
-      "description": "Ticket type (criticalIntervention requires VIP support level)",
+      "description": "DEPRECATED - Ticket type (criticalIntervention requires VIP support level)",
       "enum": [
         "criticalIntervention",
         "genericRequest"

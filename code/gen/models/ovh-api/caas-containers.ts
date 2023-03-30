@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasContainers:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Inspect the argument stack",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasContainers:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -58,6 +64,9 @@ export const schema: Schema = {
           },
           "description": "List all the installable Mesos frameworks",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasContainers:apiovh:availableFrameworks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -84,6 +93,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "caasContainers:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -134,6 +146,9 @@ export const schema: Schema = {
           },
           "description": "List the frameworks installed on the argument stack",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasContainers:apiovh:frameworks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -160,6 +175,9 @@ export const schema: Schema = {
           },
           "description": "Inspect the stack framework",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasContainers:apiovh:frameworks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -194,6 +212,9 @@ export const schema: Schema = {
           },
           "description": "List apps in the framework",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasContainers:apiovh:frameworks/apps/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -228,6 +249,9 @@ export const schema: Schema = {
           },
           "description": "Update the framework access password",
           "httpMethod": "PUT",
+          "iamActions": [
+            "caasContainers:apiovh:frameworks/password/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -269,6 +293,9 @@ export const schema: Schema = {
           },
           "description": "List the registry credentials associated to the stack.",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasContainers:apiovh:registry/credentials/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -289,6 +316,9 @@ export const schema: Schema = {
           },
           "description": "Associate the stack with some credentials to an authenticated registry.",
           "httpMethod": "POST",
+          "iamActions": [
+            "caasContainers:apiovh:registry/credentials/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -322,6 +352,9 @@ export const schema: Schema = {
           },
           "description": "Delete the registry credentials.",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "caasContainers:apiovh:registry/credentials/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -350,6 +383,9 @@ export const schema: Schema = {
           },
           "description": "Inspect the image registry credentials associated to the stack",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasContainers:apiovh:registry/credentials/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -378,6 +414,9 @@ export const schema: Schema = {
           },
           "description": "Update the registry credentials.",
           "httpMethod": "PUT",
+          "iamActions": [
+            "caasContainers:apiovh:registry/credentials/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -419,6 +458,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasContainers:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -439,6 +481,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "caasContainers:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -472,6 +517,9 @@ export const schema: Schema = {
           },
           "description": "List the id of the registered slave instances",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasContainers:apiovh:slaves/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -498,6 +546,9 @@ export const schema: Schema = {
           },
           "description": "Inspect the argument user slave instance",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasContainers:apiovh:slaves/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -532,6 +583,9 @@ export const schema: Schema = {
           },
           "description": "Delete the custom SSL certificate and private key associated to the stack",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "caasContainers:apiovh:ssl/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -552,6 +606,9 @@ export const schema: Schema = {
           },
           "description": "Inspect the custom SSL certificate and private",
           "httpMethod": "GET",
+          "iamActions": [
+            "caasContainers:apiovh:ssl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -572,6 +629,9 @@ export const schema: Schema = {
           },
           "description": "Update the custom SSL certificate and private",
           "httpMethod": "PUT",
+          "iamActions": [
+            "caasContainers:apiovh:ssl/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -605,6 +665,9 @@ export const schema: Schema = {
           },
           "description": "List the /cloud flavors available for the Docker PaaS slaves",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:caasContainers/slaves/flavors/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -622,6 +685,9 @@ export const schema: Schema = {
           },
           "description": "Inspect the argument slave flavor",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:caasContainers/slaves/flavors/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

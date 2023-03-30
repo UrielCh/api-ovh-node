@@ -239,7 +239,7 @@ export namespace dedicated {
      * different task operation
      * type fullname: dedicated.TaskFunctionEnum
      */
-    export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "INFRA_002_VirtualNetworkInterface_group" | "INFRA_002_VirtualNetworkInterface_ungroup" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_group" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "hardware_update" | "ipmi/configureSGX" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
+    export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "INFRA_002_VirtualNetworkInterface_group" | "INFRA_002_VirtualNetworkInterface_ungroup" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_group" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "hardware_update" | "ipmi/configureSGX" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "reagregateBlock" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
     /**
      * different task status
      * type fullname: dedicated.TaskStatusEnum
@@ -528,7 +528,7 @@ export namespace dedicated {
          *  Different netboot boot
          * type fullname: dedicated.server.BootTypeEnum
          */
-        export type BootTypeEnum = "harddisk" | "internal" | "ipxeCustomerScript" | "network" | "rescue"
+        export type BootTypeEnum = "harddisk" | "internal" | "ipxeCustomerScript" | "network" | "power" | "rescue"
         /**
          * Dedicated server bandwidth burst
          * type fullname: dedicated.server.BurstStatusEnum
@@ -585,6 +585,7 @@ export namespace dedicated {
             newUpgradeSystem: boolean;
             noIntervention: boolean;
             os: string;
+            powerState: dedicated.server.PowerStateEnum;
             professionalUse: boolean;
             rack: string;
             rescueMail?: string;
@@ -798,7 +799,7 @@ export namespace dedicated {
          * Available localization for this static IP
          * type fullname: dedicated.server.IpCountryEnum
          */
-        export type IpCountryEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
+        export type IpCountryEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "in" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
         /**
          * A structure describing informations about orderable IP address
          * interface fullName: dedicated.server.IpOrderable.IpOrderable
@@ -1023,6 +1024,11 @@ export namespace dedicated {
             type: dedicated.PlannedInterventionTypeEnum;
             wantedStartDate: string;
         }
+        /**
+         * Power states of a Dedicated
+         * type fullname: dedicated.server.PowerStateEnum
+         */
+        export type PowerStateEnum = "poweroff" | "poweron"
         /**
          * A structure describing routing informations about this dedicated server
          * interface fullName: dedicated.server.RoutingDetails.RoutingDetails
@@ -1654,6 +1660,7 @@ export namespace support {
      * interface fullName: support.NewMessageInfo.NewMessageInfo
      */
     export interface NewMessageInfo {
+        additionalNotice?: string;
         messageId: number;
         ticketId: number;
         ticketNumber: number;
@@ -1808,7 +1815,7 @@ export interface Dedicated {
              * Alter this object properties
              * PUT /dedicated/server/{serviceName}
              */
-            $put(params?: { bootId?: number, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, newUpgradeSystem?: boolean, noIntervention?: boolean, os?: string, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum }): Promise<void>;
+            $put(params?: { bootId?: number, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, newUpgradeSystem?: boolean, noIntervention?: boolean, os?: string, powerState?: dedicated.server.PowerStateEnum, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum }): Promise<void>;
             /**
              * Controle cache
              */

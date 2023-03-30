@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -58,6 +64,9 @@ export const schema: Schema = {
           },
           "description": "Get the current consumptions that you will billed for on the next bill",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:consumptions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -84,6 +93,9 @@ export const schema: Schema = {
           },
           "description": "Network ACL associated with this Hadoop Cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:networkAcl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -104,6 +116,9 @@ export const schema: Schema = {
           },
           "description": "Add an ACL to your cluster",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:networkAcl/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -146,6 +161,9 @@ export const schema: Schema = {
           },
           "description": "Remove this ACL",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "clusterHadoop:apiovh:networkAcl/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -174,6 +192,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:networkAcl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -202,6 +223,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "clusterHadoop:apiovh:networkAcl/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -243,6 +267,9 @@ export const schema: Schema = {
           },
           "description": "Nodes of the Cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -277,6 +304,9 @@ export const schema: Schema = {
           },
           "description": "Remove this Node from the Cluster",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "clusterHadoop:apiovh:node/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -305,6 +335,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -339,6 +372,9 @@ export const schema: Schema = {
           },
           "description": "Decommission the node and all the services on it",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:node/decommission"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -373,6 +409,9 @@ export const schema: Schema = {
           },
           "description": "Recommission the node and all the services on it",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:node/recommission"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -407,6 +446,9 @@ export const schema: Schema = {
           },
           "description": "Roles (ie set of Hadoop services) of the Node",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:node/role/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -435,6 +477,9 @@ export const schema: Schema = {
           },
           "description": "Add the Role to the Node",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:node/role/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -477,6 +522,9 @@ export const schema: Schema = {
           },
           "description": "Remove this Role from the Node",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "clusterHadoop:apiovh:node/role/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -513,6 +561,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:node/role/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -555,6 +606,9 @@ export const schema: Schema = {
           },
           "description": "Restart the role on the node (THIS ACTION WILL RESTART OTHER DEPENDANT ROLES)",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:node/role/restart"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -597,6 +651,9 @@ export const schema: Schema = {
           },
           "description": "Start the role on the node",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:node/role/start"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -639,6 +696,9 @@ export const schema: Schema = {
           },
           "description": "Stop the role on the node (THIS ACTION WILL STOP OTHER DEPENDANT ROLES)",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:node/role/stop"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -681,6 +741,9 @@ export const schema: Schema = {
           },
           "description": "Detailed description for each Node profile",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:nodeBillingProfiles/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -707,6 +770,9 @@ export const schema: Schema = {
           },
           "description": "Get the current node consumptions that you will billed for on the next bill",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:nodeConsumptions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -733,6 +799,9 @@ export const schema: Schema = {
           },
           "description": "List of orderable Node profiles",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:clusterHadoop/orderableNodeProfiles/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -759,6 +828,9 @@ export const schema: Schema = {
           },
           "description": "Order a new node in the cluster",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:orderNewNodeHourly"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -793,6 +865,9 @@ export const schema: Schema = {
           },
           "description": "Restart the Cloudera Manager Hadoop Cluster (THIS ACTION WILL RESTART EVERY SERVICE)",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:restart"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -819,6 +894,9 @@ export const schema: Schema = {
           },
           "description": "Restart a Cloudera Manager service (THIS ACTION WILL RESTART OTHER DEPENDANT SERVICES)",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:service/restart"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -853,6 +931,9 @@ export const schema: Schema = {
           },
           "description": "Start a Cloudera Manager service",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:service/start"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -887,6 +968,9 @@ export const schema: Schema = {
           },
           "description": "Stop a Cloudera Manager service (THIS ACTION WILL STOP OTHER DEPENDANT SERVICES)",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:service/stop"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -921,6 +1005,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -941,6 +1028,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "clusterHadoop:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -974,6 +1064,9 @@ export const schema: Schema = {
           },
           "description": "Start the Cloudera Manager Hadoop Cluster",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:start"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1000,6 +1093,9 @@ export const schema: Schema = {
           },
           "description": "Stop a Cloudera Manager Hadoop Cluster (THIS ACTION WILL STOP EVERY SERVICE)",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:stop"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1026,6 +1122,9 @@ export const schema: Schema = {
           },
           "description": "Tasks associated with this Hadoop Cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1060,6 +1159,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1094,6 +1196,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service. THE CLUSTER WILL BE DELETED. ALL YOUR DATA WILL BE LOST",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1120,6 +1225,9 @@ export const schema: Schema = {
           },
           "description": "Users associated with this Hadoop Cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1140,6 +1248,9 @@ export const schema: Schema = {
           },
           "description": "Add an User to your cluster",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1206,6 +1317,9 @@ export const schema: Schema = {
           },
           "description": "Remove this User",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "clusterHadoop:apiovh:user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1234,6 +1348,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "clusterHadoop:apiovh:user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1262,6 +1379,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "clusterHadoop:apiovh:user/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1303,6 +1423,9 @@ export const schema: Schema = {
           },
           "description": "Reset the password for a given Hadoop Cluster User",
           "httpMethod": "POST",
+          "iamActions": [
+            "clusterHadoop:apiovh:user/resetPassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1345,6 +1468,9 @@ export const schema: Schema = {
           },
           "description": "Get the orderable node profiles and their characteristics",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:clusterHadoop/orderableNodeProfiles/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "cluster.hadoop.NodeBillingProfile[]"
@@ -1362,6 +1488,9 @@ export const schema: Schema = {
           },
           "description": "Get informations about the order of one cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:clusterHadoop/orderInformations/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "cluster.hadoop.OrderInformations"

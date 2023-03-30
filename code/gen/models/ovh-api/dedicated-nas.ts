@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedNas:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedNas:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedNas:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Get partition list",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedNas:apiovh:partition/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -105,6 +117,9 @@ export const schema: Schema = {
           },
           "description": "Create a  new partition",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedNas:apiovh:partition/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -155,6 +170,9 @@ export const schema: Schema = {
           },
           "description": "Delete this partition",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedNas:apiovh:partition/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -183,6 +201,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedNas:apiovh:partition/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -211,6 +232,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedNas:apiovh:partition/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -252,6 +276,9 @@ export const schema: Schema = {
           },
           "description": "get ACL for this partition",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedNas:apiovh:partition/access/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -280,6 +307,9 @@ export const schema: Schema = {
           },
           "description": "Add an Acl to this  partition",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedNas:apiovh:partition/access/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -322,6 +352,9 @@ export const schema: Schema = {
           },
           "description": "Delete a given snapshot",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedNas:apiovh:partition/access/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -358,6 +391,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedNas:apiovh:partition/access/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -400,6 +436,9 @@ export const schema: Schema = {
           },
           "description": "Get all IPs that can be used in the ACL",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedNas:apiovh:partition/authorizableIps/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -434,6 +473,9 @@ export const schema: Schema = {
           },
           "description": "Get quota for this partition",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedNas:apiovh:partition/quota/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -462,6 +504,9 @@ export const schema: Schema = {
           },
           "description": "Set a new quota",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedNas:apiovh:partition/quota/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -512,6 +557,9 @@ export const schema: Schema = {
           },
           "description": "Delete a given quota",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedNas:apiovh:partition/quota/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -548,6 +596,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedNas:apiovh:partition/quota/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -590,6 +641,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedNas:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -610,6 +664,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedNas:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -643,6 +700,9 @@ export const schema: Schema = {
           },
           "description": "View task list",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedNas:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -685,6 +745,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedNas:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

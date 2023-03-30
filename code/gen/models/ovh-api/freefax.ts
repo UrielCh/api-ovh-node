@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "freefax:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "freefax:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "freefax:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Generates a new password for your fax account",
           "httpMethod": "POST",
+          "iamActions": [
+            "freefax:apiovh:changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -111,6 +123,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "freefax:apiovh:directory/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -131,6 +146,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "freefax:apiovh:directory/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -164,6 +182,9 @@ export const schema: Schema = {
           },
           "description": "Get company entreprise informations by providing entreprise number",
           "httpMethod": "POST",
+          "iamActions": [
+            "freefax:apiovh:directory/fetchEntrepriseInformations"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -198,6 +219,9 @@ export const schema: Schema = {
           },
           "description": "Get directory service code from an APE code ( principal activity of the firm code )",
           "httpMethod": "GET",
+          "iamActions": [
+            "freefax:apiovh:directory/getDirectoryServiceCode"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -232,6 +256,9 @@ export const schema: Schema = {
           },
           "description": "Get all the way types availables",
           "httpMethod": "GET",
+          "iamActions": [
+            "freefax:apiovh:directory/getWayTypes"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -258,6 +285,9 @@ export const schema: Schema = {
           },
           "description": "Main service attached to freefax",
           "httpMethod": "GET",
+          "iamActions": [
+            "freefax:apiovh:mainService/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -284,6 +314,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "freefax:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -304,6 +337,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "freefax:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -337,6 +373,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "freefax:apiovh:voicemail/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -357,6 +396,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "freefax:apiovh:voicemail/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -390,6 +432,9 @@ export const schema: Schema = {
           },
           "description": "Change the voicemail password. It must be 4 digit",
           "httpMethod": "POST",
+          "iamActions": [
+            "freefax:apiovh:voicemail/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -424,6 +469,9 @@ export const schema: Schema = {
           },
           "description": "Disable/Enable voicemail. Available only if the line has fax capabilities",
           "httpMethod": "POST",
+          "iamActions": [
+            "freefax:apiovh:voicemail/changeRouting"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -458,6 +506,9 @@ export const schema: Schema = {
           },
           "description": "Get the status of the voicemail. Available only if the line has fax capabilities",
           "httpMethod": "GET",
+          "iamActions": [
+            "freefax:apiovh:voicemail/routing/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -484,6 +535,9 @@ export const schema: Schema = {
           },
           "description": "Get number for internal and external voicemail",
           "httpMethod": "GET",
+          "iamActions": [
+            "freefax:apiovh:voicemail/voicemailNumbers/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -510,6 +564,9 @@ export const schema: Schema = {
           },
           "description": "Get the credit balance and the remaining pages available for all our freefax",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:freefax/credits/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "freefax.BalanceInformations"

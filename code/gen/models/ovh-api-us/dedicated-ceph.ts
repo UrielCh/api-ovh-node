@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedCeph:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get cluster details",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedCeph:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Update cluster details",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedCeph:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -94,6 +103,9 @@ export const schema: Schema = {
           },
           "description": "Get list of all IP ACLs in a cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedCeph:apiovh:acl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -114,6 +126,9 @@ export const schema: Schema = {
           },
           "description": "Create one or more new IP ACLs",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedCeph:apiovh:acl/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -148,6 +163,9 @@ export const schema: Schema = {
           },
           "description": "Delete single IP ACL",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedCeph:apiovh:acl/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -176,6 +194,9 @@ export const schema: Schema = {
           },
           "description": "Get details about IP ACL",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedCeph:apiovh:acl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -210,6 +231,9 @@ export const schema: Schema = {
           },
           "description": "List CephFS filestystems",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedCeph:apiovh:cephfs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -236,6 +260,9 @@ export const schema: Schema = {
           },
           "description": "Purge CephFS filesystem",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedCeph:apiovh:cephfs/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -264,6 +291,9 @@ export const schema: Schema = {
           },
           "description": "Get CephFS filestystem information",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedCeph:apiovh:cephfs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -298,6 +328,9 @@ export const schema: Schema = {
           },
           "description": "Disable CephFS filesystem",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedCeph:apiovh:cephfs/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -332,6 +365,9 @@ export const schema: Schema = {
           },
           "description": "Enable CephFS filesystem",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedCeph:apiovh:cephfs/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -366,6 +402,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedCeph:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -424,6 +463,9 @@ export const schema: Schema = {
           },
           "description": "Get cluster health",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedCeph:apiovh:health/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -450,6 +492,9 @@ export const schema: Schema = {
           },
           "description": "Get list of all pools in a cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedCeph:apiovh:pool/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -470,6 +515,9 @@ export const schema: Schema = {
           },
           "description": "Create a new ceph pool",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedCeph:apiovh:pool/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -504,6 +552,9 @@ export const schema: Schema = {
           },
           "description": "Delete a single ceph pool",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedCeph:apiovh:pool/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -532,6 +583,9 @@ export const schema: Schema = {
           },
           "description": "Get details about an existing ceph pool",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedCeph:apiovh:pool/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -566,6 +620,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedCeph:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -586,6 +643,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedCeph:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -619,6 +679,9 @@ export const schema: Schema = {
           },
           "description": "List tasks in progress",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedCeph:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -645,6 +708,9 @@ export const schema: Schema = {
           },
           "description": "Get task details",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedCeph:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -679,6 +745,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedCeph:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -705,6 +774,9 @@ export const schema: Schema = {
           },
           "description": "Get list of all users in a cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedCeph:apiovh:user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -725,6 +797,9 @@ export const schema: Schema = {
           },
           "description": "Create a new ceph user",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedCeph:apiovh:user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -759,6 +834,9 @@ export const schema: Schema = {
           },
           "description": "Delete an existing single ceph user",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedCeph:apiovh:user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -787,6 +865,9 @@ export const schema: Schema = {
           },
           "description": "Get details about a ceph user",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedCeph:apiovh:user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -821,6 +902,9 @@ export const schema: Schema = {
           },
           "description": "List user-pool permissions",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedCeph:apiovh:user/pool/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -849,6 +933,9 @@ export const schema: Schema = {
           },
           "description": "Create new user-pool permissions. All old permissions will be cleared",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedCeph:apiovh:user/pool/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -885,6 +972,9 @@ export const schema: Schema = {
           },
           "description": "Update user-pool permission for single pool",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedCeph:apiovh:user/pool/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -967,6 +1057,9 @@ export const schema: Schema = {
           },
           "description": "Clear user-pool permission for single pool",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dedicatedCeph:apiovh:user/pool/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

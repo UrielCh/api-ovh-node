@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List current customer contacts",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:store/contact/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "MarketPlace.Contact[]"
@@ -26,6 +29,9 @@ export const schema: Schema = {
           },
           "description": "Create a 'marketplace' contact for current nic",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:store/contact/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -124,6 +130,9 @@ export const schema: Schema = {
           },
           "description": "Remove an existing contact",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "account:apiovh:store/contact/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -144,6 +153,9 @@ export const schema: Schema = {
           },
           "description": "Get contact details",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:store/contact/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -164,6 +176,9 @@ export const schema: Schema = {
           },
           "description": "Edit contact information",
           "httpMethod": "PUT",
+          "iamActions": [
+            "account:apiovh:store/contact/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -270,6 +285,9 @@ export const schema: Schema = {
           },
           "description": "List document associated with contact",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:store/contact/document/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -290,6 +308,9 @@ export const schema: Schema = {
           },
           "description": "Add a document to a contact",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:store/contact/document/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -324,6 +345,9 @@ export const schema: Schema = {
           },
           "description": "Unlink a document from a contact",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "account:apiovh:store/contact/document/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -358,6 +382,9 @@ export const schema: Schema = {
           },
           "description": "List current customer documents",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:store/document/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "MarketPlace.Document[]"
@@ -369,6 +396,9 @@ export const schema: Schema = {
           },
           "description": "Create a document",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:store/document/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -403,6 +433,9 @@ export const schema: Schema = {
           },
           "description": "Delete document",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "account:apiovh:store/document/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -423,6 +456,9 @@ export const schema: Schema = {
           },
           "description": "Get document info",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:store/document/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -449,6 +485,9 @@ export const schema: Schema = {
           },
           "description": "Add CORS support on your container",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:store/document/cors/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -475,6 +514,9 @@ export const schema: Schema = {
           },
           "description": "List current customer partners",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:store/partner/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "MarketPlace.Partner[]"
@@ -486,6 +528,9 @@ export const schema: Schema = {
           },
           "description": "Create a 'marketplace' partner for current nic",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:store/partner/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -632,6 +677,9 @@ export const schema: Schema = {
           },
           "description": "Delete partner",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "account:apiovh:store/partner/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -652,6 +700,9 @@ export const schema: Schema = {
           },
           "description": "Get partner info",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:store/partner/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -672,6 +723,9 @@ export const schema: Schema = {
           },
           "description": "Edit partner info",
           "httpMethod": "PUT",
+          "iamActions": [
+            "account:apiovh:store/partner/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -826,6 +880,9 @@ export const schema: Schema = {
           },
           "description": "List document associated with partner",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:store/partner/document/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -846,6 +903,9 @@ export const schema: Schema = {
           },
           "description": "Add a document to a partner",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:store/partner/document/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -880,6 +940,9 @@ export const schema: Schema = {
           },
           "description": "Unlink a document from a partner",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "account:apiovh:store/partner/document/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -914,6 +977,9 @@ export const schema: Schema = {
           },
           "description": "List partner's products",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:store/partner/product/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -934,6 +1000,9 @@ export const schema: Schema = {
           },
           "description": "Create a new product for partner",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:store/partner/product/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -992,6 +1061,9 @@ export const schema: Schema = {
           },
           "description": "Delete product",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "account:apiovh:store/partner/product/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1020,6 +1092,9 @@ export const schema: Schema = {
           },
           "description": "Get partner info",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:store/partner/product/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1048,6 +1123,9 @@ export const schema: Schema = {
           },
           "description": "Edit product info",
           "httpMethod": "PUT",
+          "iamActions": [
+            "account:apiovh:store/partner/product/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1114,6 +1192,9 @@ export const schema: Schema = {
           },
           "description": "List document associated with product",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:store/partner/product/document/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1142,6 +1223,9 @@ export const schema: Schema = {
           },
           "description": "Add a document to a product",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:store/partner/product/document/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1184,6 +1268,9 @@ export const schema: Schema = {
           },
           "description": "Unlink a document from a product",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "account:apiovh:store/partner/product/document/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

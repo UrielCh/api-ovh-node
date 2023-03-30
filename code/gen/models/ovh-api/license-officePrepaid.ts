@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOfficePrepaid:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOfficePrepaid:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "licenseOfficePrepaid:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Change or reset  user's password",
           "httpMethod": "POST",
+          "iamActions": [
+            "licenseOfficePrepaid:apiovh:changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -135,6 +147,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "licenseOfficePrepaid:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -193,6 +208,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve the parent tenant of this office user",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOfficePrepaid:apiovh:parentTenant/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -213,6 +231,9 @@ export const schema: Schema = {
           },
           "description": "Modify the parent tenant of this office user",
           "httpMethod": "PUT",
+          "iamActions": [
+            "licenseOfficePrepaid:apiovh:parentTenant/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -247,6 +268,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOfficePrepaid:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -267,6 +291,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "licenseOfficePrepaid:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -300,6 +327,9 @@ export const schema: Schema = {
           },
           "description": "Tasks associated to this user's tenant",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOfficePrepaid:apiovh:tenantPendingTask/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -326,6 +356,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOfficePrepaid:apiovh:tenantPendingTask/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -360,6 +393,9 @@ export const schema: Schema = {
           },
           "description": "Shows the subscriptions' usage statistics for the given time period",
           "httpMethod": "GET",
+          "iamActions": [
+            "licenseOfficePrepaid:apiovh:tenantUsageStatistics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -402,6 +438,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "licenseOfficePrepaid:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -428,6 +467,9 @@ export const schema: Schema = {
           },
           "description": "Unconfigure the office user",
           "httpMethod": "POST",
+          "iamActions": [
+            "licenseOfficePrepaid:apiovh:unconfigure"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

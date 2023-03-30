@@ -4,20 +4,6 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /order Models
  * Source: https://eu.api.ovh.com/1.0/order.json
  */
-export namespace cdn {
-    export namespace webstorage {
-        /**
-         * Available storage order
-         * type fullname: cdn.webstorage.OrderStorageEnum
-         */
-        export type OrderStorageEnum = "100GB" | "10TB" | "1TB" | "500GB" | "50TB" | "5TB"
-        /**
-         * Available traffic order in TB
-         * type fullname: cdn.webstorage.OrderTrafficEnum
-         */
-        export type OrderTrafficEnum = 1 | 10 | 100 | 1000 | 10000
-    }
-}
 export namespace cdnanycast {
     /**
      * Available number for cacheRule upgrade
@@ -98,7 +84,7 @@ export namespace dedicated {
          * Available localization for this static IP
          * type fullname: dedicated.server.IpCountryEnum
          */
-        export type IpCountryEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
+        export type IpCountryEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "in" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
         /**
          * Available localization for this static IP
          * type fullname: dedicated.server.IpStaticCountryEnum
@@ -214,7 +200,7 @@ export namespace hosting {
          * Private database orderable versions
          * type fullname: hosting.PrivateDatabase.OrderableVersionEnum
          */
-        export type OrderableVersionEnum = "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mysql_5.7" | "mysql_8.0" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "redis_4.0" | "redis_6.0"
+        export type OrderableVersionEnum = "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mysql_5.7" | "mysql_8.0" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_13" | "redis_6.0" | "redis_7.0"
     }
     export namespace web {
         /**
@@ -306,7 +292,7 @@ export namespace hosting {
          * Different PHP versions available
          * type fullname: hosting.web.PhpVersionAvailableEnum
          */
-        export type PhpVersionAvailableEnum = "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4" | "phpfpm-8.0"
+        export type PhpVersionAvailableEnum = "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4" | "phpfpm-8.0" | "phpfpm-8.1" | "phpfpm-8.2"
         /**
          * Different Python versions available
          * type fullname: hosting.web.PythonVersionAvailableEnum
@@ -316,7 +302,7 @@ export namespace hosting {
          * Different Ruby versions available
          * type fullname: hosting.web.RubyVersionAvailableEnum
          */
-        export type RubyVersionAvailableEnum = "ruby-2.5" | "ruby-2.6"
+        export type RubyVersionAvailableEnum = "ruby-2.6"
         export namespace database {
             /**
              * Struct which describs quota and available for a specific type of database
@@ -479,7 +465,7 @@ export namespace order {
      * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * An order
      * interface fullName: order.Order.Order
@@ -538,7 +524,9 @@ export namespace order {
      */
     export interface Reduction {
         context: order.ReductionContextEnum;
+        description: string;
         price: order.Price;
+        reductionDescription: string;
         type: order.ReductionTypeEnum;
         value: order.Price;
     }
@@ -784,7 +772,7 @@ export namespace order {
          * Type of a product
          * type fullname: order.cart.GenericProductTypeEnum
          */
-        export type GenericProductTypeEnum = "cloud_service" | "delivery" | "deposit" | "domain" | "saas_license" | "shipping" | "storage"
+        export type GenericProductTypeEnum = "cloud_service" | "delivery" | "deposit" | "domain" | "implementation_services" | "saas_license" | "shipping" | "storage"
         /**
          * Representation of a cart item
          * interface fullName: order.cart.Item.Item
@@ -3262,22 +3250,6 @@ export interface Order {
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
-            }
-            hostingReseller: {
-                /**
-                 * Get informations about Hosting Reseller offers
-                 * GET /order/cart/{cartId}/hostingReseller
-                 */
-                $get(): Promise<order.cart.GenericProductDefinition[]>;
-                /**
-                 * Post a new Hosting Reseller item in your cart
-                 * POST /order/cart/{cartId}/hostingReseller
-                 */
-                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             ip: {
                 /**
@@ -5830,6 +5802,17 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            ipLoadbalancing: {
+                /**
+                 * Retrieve IP Load Balancing catalog
+                 * GET /order/catalog/public/ipLoadbalancing
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             licensecPanel: {
                 /**
                  * Retrieve License cPanel catalog
@@ -6136,71 +6119,6 @@ export interface Order {
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
-                }
-            };
-        }
-        webstorage: {
-            /**
-             * List available services
-             * GET /order/cdn/webstorage
-             */
-            $get(): Promise<string[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            $(serviceName: string): {
-                /**
-                 * Get allowed options
-                 * GET /order/cdn/webstorage/{serviceName}
-                 */
-                $get(): Promise<string[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                storage: {
-                    /**
-                     * Get allowed durations for 'storage' option
-                     * GET /order/cdn/webstorage/{serviceName}/storage
-                     */
-                    $get(params: { storage: cdn.webstorage.OrderStorageEnum }): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(duration: string): {
-                        /**
-                         * Get prices and contracts information
-                         * GET /order/cdn/webstorage/{serviceName}/storage/{duration}
-                         */
-                        $get(params: { storage: cdn.webstorage.OrderStorageEnum }): Promise<order.Order>;
-                        /**
-                         * Create order
-                         * POST /order/cdn/webstorage/{serviceName}/storage/{duration}
-                         */
-                        $post(params: { storage: cdn.webstorage.OrderStorageEnum }): Promise<order.Order>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-                traffic: {
-                    /**
-                     * Get prices and contracts information
-                     * GET /order/cdn/webstorage/{serviceName}/traffic
-                     */
-                    $get(params: { bandwidth: cdn.webstorage.OrderTrafficEnum }): Promise<order.Order>;
-                    /**
-                     * Create order
-                     * POST /order/cdn/webstorage/{serviceName}/traffic
-                     */
-                    $post(params: { bandwidth: cdn.webstorage.OrderTrafficEnum }): Promise<order.Order>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -8674,44 +8592,6 @@ export interface Order {
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/emailDomain/{serviceName}/{planCode}
-                     */
-                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                };
-            };
-        }
-        hostingReseller: {
-            /**
-             * List available services
-             * GET /order/upgrade/hostingReseller
-             */
-            $get(): Promise<string[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            $(serviceName: string): {
-                /**
-                 * Retrieve available offers to upgrade your service to
-                 * GET /order/upgrade/hostingReseller/{serviceName}
-                 */
-                $get(): Promise<order.cart.GenericProductDefinition[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                $(planCode: string): {
-                    /**
-                     * Get a provisional order for the selected upgrade of your service
-                     * GET /order/upgrade/hostingReseller/{serviceName}/{planCode}
-                     */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
-                    /**
-                     * Perform the requested upgrade of your service
-                     * POST /order/upgrade/hostingReseller/{serviceName}/{planCode}
                      */
                     $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     /**

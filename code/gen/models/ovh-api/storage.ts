@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "storageNetApp:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "storage.NetAppService[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get service details",
           "httpMethod": "GET",
+          "iamActions": [
+            "storageNetApp:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Update service",
           "httpMethod": "PUT",
+          "iamActions": [
+            "storageNetApp:apiovh:edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "storageNetApp:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -135,6 +147,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "storageNetApp:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -193,6 +208,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "storageNetApp:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -213,6 +231,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "storageNetApp:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -246,6 +267,9 @@ export const schema: Schema = {
           },
           "description": "List available shares",
           "httpMethod": "GET",
+          "iamActions": [
+            "storageNetApp:apiovh:share/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -274,6 +298,9 @@ export const schema: Schema = {
           },
           "description": "Create a share",
           "httpMethod": "POST",
+          "iamActions": [
+            "storageNetApp:apiovh:share/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -307,6 +334,9 @@ export const schema: Schema = {
           },
           "description": "Delete a share",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "storageNetApp:apiovh:share/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -335,6 +365,9 @@ export const schema: Schema = {
           },
           "description": "Get share details",
           "httpMethod": "GET",
+          "iamActions": [
+            "storageNetApp:apiovh:share/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -363,6 +396,9 @@ export const schema: Schema = {
           },
           "description": "Update a share",
           "httpMethod": "PUT",
+          "iamActions": [
+            "storageNetApp:apiovh:share/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -404,6 +440,9 @@ export const schema: Schema = {
           },
           "description": "List available access paths",
           "httpMethod": "GET",
+          "iamActions": [
+            "storageNetApp:apiovh:share/accessPath/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -438,6 +477,9 @@ export const schema: Schema = {
           },
           "description": "Get access path details",
           "httpMethod": "GET",
+          "iamActions": [
+            "storageNetApp:apiovh:share/accessPath/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -480,6 +522,9 @@ export const schema: Schema = {
           },
           "description": "List available ACLs",
           "httpMethod": "GET",
+          "iamActions": [
+            "storageNetApp:apiovh:share/acl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -508,6 +553,9 @@ export const schema: Schema = {
           },
           "description": "Create an ACL",
           "httpMethod": "POST",
+          "iamActions": [
+            "storageNetApp:apiovh:share/acl/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -549,6 +597,9 @@ export const schema: Schema = {
           },
           "description": "Delete an ACL",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "storageNetApp:apiovh:share/acl/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -585,6 +636,9 @@ export const schema: Schema = {
           },
           "description": "Get ACL details",
           "httpMethod": "GET",
+          "iamActions": [
+            "storageNetApp:apiovh:share/acl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -627,6 +681,9 @@ export const schema: Schema = {
           },
           "description": "Extend share size",
           "httpMethod": "POST",
+          "iamActions": [
+            "storageNetApp:apiovh:share/extend"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -668,6 +725,9 @@ export const schema: Schema = {
           },
           "description": "Shrink share size",
           "httpMethod": "POST",
+          "iamActions": [
+            "storageNetApp:apiovh:share/shrink"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -709,6 +769,9 @@ export const schema: Schema = {
           },
           "description": "List available snapshots",
           "httpMethod": "GET",
+          "iamActions": [
+            "storageNetApp:apiovh:share/snapshot/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -745,6 +808,9 @@ export const schema: Schema = {
           },
           "description": "Create a snapshot",
           "httpMethod": "POST",
+          "iamActions": [
+            "storageNetApp:apiovh:share/snapshot/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -786,6 +852,9 @@ export const schema: Schema = {
           },
           "description": "Delete a snapshot",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "storageNetApp:apiovh:share/snapshot/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -822,6 +891,9 @@ export const schema: Schema = {
           },
           "description": "Get snapshot details",
           "httpMethod": "GET",
+          "iamActions": [
+            "storageNetApp:apiovh:share/snapshot/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -858,6 +930,9 @@ export const schema: Schema = {
           },
           "description": "Update a snapshot",
           "httpMethod": "PUT",
+          "iamActions": [
+            "storageNetApp:apiovh:share/snapshot/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -907,6 +982,9 @@ export const schema: Schema = {
           },
           "description": "Hold an automatic share snapshot",
           "httpMethod": "POST",
+          "iamActions": [
+            "storageNetApp:apiovh:share/snapshot/hold"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -949,6 +1027,9 @@ export const schema: Schema = {
           },
           "description": "Get snapshot policy used by a share",
           "httpMethod": "GET",
+          "iamActions": [
+            "storageNetApp:apiovh:share/snapshotPolicy/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -977,6 +1058,9 @@ export const schema: Schema = {
           },
           "description": "Update snapshot policy used by a share",
           "httpMethod": "PUT",
+          "iamActions": [
+            "storageNetApp:apiovh:share/snapshotPolicy/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1018,6 +1102,9 @@ export const schema: Schema = {
           },
           "description": "Get snapshot reserve properties of a share",
           "httpMethod": "GET",
+          "iamActions": [
+            "storageNetApp:apiovh:share/snapshotReserve/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1046,6 +1133,9 @@ export const schema: Schema = {
           },
           "description": "Update snapshot reserve properties of a share",
           "httpMethod": "PUT",
+          "iamActions": [
+            "storageNetApp:apiovh:share/snapshotReserve/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1087,6 +1177,9 @@ export const schema: Schema = {
           },
           "description": "Get a list of snapshot policies",
           "httpMethod": "GET",
+          "iamActions": [
+            "storageNetApp:apiovh:snapshotPolicy/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1107,6 +1200,9 @@ export const schema: Schema = {
           },
           "description": "Create a snapshot policy",
           "httpMethod": "POST",
+          "iamActions": [
+            "storageNetApp:apiovh:snapshotPolicy/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1140,6 +1236,9 @@ export const schema: Schema = {
           },
           "description": "Delete a snapshot policy",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "storageNetApp:apiovh:snapshotPolicy/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1168,6 +1267,9 @@ export const schema: Schema = {
           },
           "description": "Get snapshot policy details",
           "httpMethod": "GET",
+          "iamActions": [
+            "storageNetApp:apiovh:snapshotPolicy/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1196,6 +1298,9 @@ export const schema: Schema = {
           },
           "description": "Update a snapshot policy",
           "httpMethod": "PUT",
+          "iamActions": [
+            "storageNetApp:apiovh:snapshotPolicy/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1237,6 +1342,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "storageNetApp:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

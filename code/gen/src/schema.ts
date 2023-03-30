@@ -30,6 +30,7 @@ export type IOvhScopes = `support/all` | `dedicated/${string}` | `account/${stri
 export interface Operation {
     apiStatus:         APIStatus;
     httpMethod:        "DELETE" | "GET" | "POST" | "PUT";
+    iamActions?:       string[];
     parameters:        Parameter[];
     resellerOnly?:     boolean;
     responseType:      string;

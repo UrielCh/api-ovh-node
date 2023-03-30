@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "sslGateway:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "sslGateway:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "sslGateway:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "sslGateway:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -135,6 +147,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "sslGateway:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -193,6 +208,9 @@ export const schema: Schema = {
           },
           "description": "Domains attached to your SSL Gateway",
           "httpMethod": "GET",
+          "iamActions": [
+            "sslGateway:apiovh:domain/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -213,6 +231,9 @@ export const schema: Schema = {
           },
           "description": "Attach a new domain to your SSL Gateway",
           "httpMethod": "POST",
+          "iamActions": [
+            "sslGateway:apiovh:domain/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -247,6 +268,9 @@ export const schema: Schema = {
           },
           "description": "Detach a domain from your SSL Gateway",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "sslGateway:apiovh:domain/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -275,6 +299,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "sslGateway:apiovh:domain/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -309,6 +336,9 @@ export const schema: Schema = {
           },
           "description": "Ip subnet used by OVH to nat requests to your SSL Gateway backends.",
           "httpMethod": "GET",
+          "iamActions": [
+            "sslGateway:apiovh:natIp/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -335,6 +365,9 @@ export const schema: Schema = {
           },
           "description": "Renew your SSL certificates",
           "httpMethod": "POST",
+          "iamActions": [
+            "sslGateway:apiovh:renewCertificate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -369,6 +402,9 @@ export const schema: Schema = {
           },
           "description": "Servers attached to your SSL Gateway",
           "httpMethod": "GET",
+          "iamActions": [
+            "sslGateway:apiovh:server/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -389,6 +425,9 @@ export const schema: Schema = {
           },
           "description": "Add a new server to your SSL Gateway",
           "httpMethod": "POST",
+          "iamActions": [
+            "sslGateway:apiovh:server/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -431,6 +470,9 @@ export const schema: Schema = {
           },
           "description": "Remove a server",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "sslGateway:apiovh:server/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -459,6 +501,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "sslGateway:apiovh:server/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -487,6 +532,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "sslGateway:apiovh:server/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -528,6 +576,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "sslGateway:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -548,6 +599,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "sslGateway:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -581,6 +635,9 @@ export const schema: Schema = {
           },
           "description": "Task for this SSL Gateway",
           "httpMethod": "GET",
+          "iamActions": [
+            "sslGateway:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -607,6 +664,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "sslGateway:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -641,6 +701,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "sslGateway:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

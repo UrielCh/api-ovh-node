@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Void",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -58,6 +64,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -116,6 +125,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -136,6 +148,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -169,6 +184,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "dedicatedAnthos:apiovh:tenants/terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "Get agreements related to a product",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:publicCloudProject/agreements/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -32,80 +35,6 @@ export const schema: Schema = {
       "path": "/cloud/agreements"
     },
     {
-      "description": "Start a new cloud project",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-03-01T10:00:00+01:00",
-            "deprecatedDate": "2020-02-10T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/cloud",
-            "value": "DEPRECATED"
-          },
-          "description": "Start a new cloud project",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Amount of cloud credit to purchase. Unit is base currency.",
-              "fullType": "long",
-              "name": "credit",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Project description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "password",
-              "description": "Voucher code",
-              "fullType": "password",
-              "name": "voucher",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "responseType": "cloud.project.NewProject"
-        }
-      ],
-      "path": "/cloud/createProject"
-    },
-    {
-      "description": "Get information about a cloud project creation",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-03-01T10:00:00+01:00",
-            "deprecatedDate": "2020-02-10T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/cloud",
-            "value": "DEPRECATED"
-          },
-          "description": "Get information about a cloud project creation",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "password",
-              "description": "Voucher code",
-              "fullType": "password",
-              "name": "voucher",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "cloud.project.NewProjectInfo"
-        }
-      ],
-      "path": "/cloud/createProjectInfo"
-    },
-    {
       "description": "Check your eligibility to create a Public Cloud order",
       "operations": [
         {
@@ -115,6 +44,9 @@ export const schema: Schema = {
           },
           "description": "Check your eligibility to create a Public Cloud order",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:publicCloudProject/eligibility/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -141,6 +73,9 @@ export const schema: Schema = {
           },
           "description": "Get all cloud pending orders",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:cloud/order/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -167,6 +102,9 @@ export const schema: Schema = {
           },
           "description": "Get product availability",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:cloud/order/rule/availability/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -209,6 +147,9 @@ export const schema: Schema = {
           },
           "description": "Get instance categories",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:cloud/order/rule/instanceCategory/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "cloud.order.rule.InstanceCategories"
@@ -229,6 +170,9 @@ export const schema: Schema = {
           },
           "description": "Get services prices",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:publicCloudProject/price/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -263,6 +207,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -280,6 +227,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -300,6 +250,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -333,6 +286,9 @@ export const schema: Schema = {
           },
           "description": "Get ACL on your cloud project",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:acl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -361,6 +317,9 @@ export const schema: Schema = {
           },
           "description": "Create new ACL",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:acl/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -403,6 +362,9 @@ export const schema: Schema = {
           },
           "description": "Delete ACL",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:acl/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -431,6 +393,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:acl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -465,6 +430,9 @@ export const schema: Schema = {
           },
           "description": "Activate monthly billing on multiple instances",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:activateMonthlyBilling"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -498,6 +466,9 @@ export const schema: Schema = {
           },
           "description": "List apps",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/app/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -507,6 +478,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter on app label (e.g. 'app_name=kind_of_magic')",
+              "fullType": "string",
+              "name": "labelSelector",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "cloud.project.ai.OrderEnum",
@@ -550,9 +529,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
-              "description": "Filter on updatedAt property (>=)",
+              "description": "Filter on updatedAt property (>)",
               "fullType": "datetime",
               "name": "updatedAfter",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter on updatedAt property (<)",
+              "fullType": "datetime",
+              "name": "updatedBefore",
               "paramType": "query",
               "required": false
             },
@@ -574,6 +561,9 @@ export const schema: Schema = {
           },
           "description": "Create a new app",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/app/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -607,6 +597,9 @@ export const schema: Schema = {
           },
           "description": "Delete an app",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/app/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -643,6 +636,9 @@ export const schema: Schema = {
           },
           "description": "Get app information",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/app/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -677,6 +673,9 @@ export const schema: Schema = {
           },
           "description": "Starts a manual data synchronization on an app",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/datasync/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -718,6 +717,9 @@ export const schema: Schema = {
           },
           "description": "Set the Docker image of an AI app",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/app/image/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -744,7 +746,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "cloud.project.ai.GenericResponse"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/app/{appId}/image"
@@ -759,6 +761,9 @@ export const schema: Schema = {
           },
           "description": "Update/add an AI Solutions app label",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/app/label/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -800,6 +805,9 @@ export const schema: Schema = {
           },
           "description": "Get the logs of an app",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/app/log/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -858,6 +866,9 @@ export const schema: Schema = {
           },
           "description": "Scale a App",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/app/scalingstrategy/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -899,6 +910,9 @@ export const schema: Schema = {
           },
           "description": "Start an existing AI Solutions app",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/app/start"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -933,6 +947,9 @@ export const schema: Schema = {
           },
           "description": "Stop an AI Solutions app",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/app/stop"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -967,6 +984,9 @@ export const schema: Schema = {
           },
           "description": "Generate an app spec corresponding CLI command",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/app/command/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1000,6 +1020,9 @@ export const schema: Schema = {
           },
           "description": "Get authorization status",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/authorization/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1020,6 +1043,9 @@ export const schema: Schema = {
           },
           "description": "Authorization of AI Solutions service by allowing access to your object storage containers",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/authorization/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1046,6 +1072,9 @@ export const schema: Schema = {
           },
           "description": "List AI Solutions available features",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/capabilities/feature/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1072,6 +1101,9 @@ export const schema: Schema = {
           },
           "description": "List AI Solutions available quotas",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/capabilities/quota/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1098,6 +1130,9 @@ export const schema: Schema = {
           },
           "description": "List Region",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/capabilities/region/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1124,6 +1159,9 @@ export const schema: Schema = {
           },
           "description": "Get Region Information",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/capabilities/region/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1158,6 +1196,9 @@ export const schema: Schema = {
           },
           "description": "Get Available data regions Information",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/capabilities/region/data/region/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1192,6 +1233,9 @@ export const schema: Schema = {
           },
           "description": "List Flavors",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/capabilities/region/flavor/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1226,6 +1270,9 @@ export const schema: Schema = {
           },
           "description": "Get Flavor Information",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/capabilities/region/flavor/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1268,6 +1315,9 @@ export const schema: Schema = {
           },
           "description": "List Presets",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/capabilities/region/preset/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1310,6 +1360,9 @@ export const schema: Schema = {
           },
           "description": "Get Preset Information",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/capabilities/region/preset/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1354,6 +1407,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - List Serving Engine available backends",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/capabilities/serving/backend/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1382,6 +1438,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - List Serving Engine Features",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/capabilities/serving/feature/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1410,6 +1469,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - List Serving Engine available flavor",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/capabilities/serving/flavor/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1438,6 +1500,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - List Serving Engine available frameworks",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/capabilities/serving/framework/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1466,6 +1531,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - List Serving Engine Preset Model Images",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/capabilities/serving/presetImage/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1494,6 +1562,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - List Serving Engine available regions",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/capabilities/serving/region/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1520,6 +1591,9 @@ export const schema: Schema = {
           },
           "description": "List jobs",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/job/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1529,6 +1603,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter on job label (e.g. 'job_name=potions_cooking')",
+              "fullType": "string",
+              "name": "labelSelector",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "cloud.project.ai.OrderEnum",
@@ -1572,9 +1654,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
-              "description": "Filter on updatedAt property (>=)",
+              "description": "Filter on updatedAt property (>)",
               "fullType": "datetime",
               "name": "updatedAfter",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter on updatedAt property (<)",
+              "fullType": "datetime",
+              "name": "updatedBefore",
               "paramType": "query",
               "required": false
             },
@@ -1596,6 +1686,9 @@ export const schema: Schema = {
           },
           "description": "Create a new job",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/job/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1629,6 +1722,9 @@ export const schema: Schema = {
           },
           "description": "Permanently delete a job",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/job/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1665,6 +1761,9 @@ export const schema: Schema = {
           },
           "description": "Get job information",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/job/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1699,6 +1798,9 @@ export const schema: Schema = {
           },
           "description": "Starts a manual data synchronization on an AI Solutions job",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/job/datasync/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1740,6 +1842,9 @@ export const schema: Schema = {
           },
           "description": "Kill a AI Solutions job",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/job/kill"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1774,6 +1879,9 @@ export const schema: Schema = {
           },
           "description": "Update/add an AI Solutions job label",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/job/label/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1815,6 +1923,9 @@ export const schema: Schema = {
           },
           "description": "Get the logs of a job",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/job/log/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1863,8 +1974,11 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List AI Solutions Preset Model Images",
+          "description": "List AI Solutions Preset Model Images (deprecated)",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/job/capabilities/presetImage/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1891,6 +2005,9 @@ export const schema: Schema = {
           },
           "description": "Generate a job spec corresponding CLI command",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/job/command/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1924,6 +2041,9 @@ export const schema: Schema = {
           },
           "description": "List notebooks",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1933,6 +2053,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter on notebook label (e.g. 'notebook_name=spell_book')",
+              "fullType": "string",
+              "name": "labelSelector",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "cloud.project.ai.OrderEnum",
@@ -1976,9 +2104,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
-              "description": "Filter on updatedAt property (>=)",
+              "description": "Filter on updatedAt property (>)",
               "fullType": "datetime",
               "name": "updatedAfter",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter on updatedAt property (<)",
+              "fullType": "datetime",
+              "name": "updatedBefore",
               "paramType": "query",
               "required": false
             },
@@ -2000,6 +2136,9 @@ export const schema: Schema = {
           },
           "description": "Create a new notebook",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2033,6 +2172,9 @@ export const schema: Schema = {
           },
           "description": "Delete a notebook",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2069,6 +2211,9 @@ export const schema: Schema = {
           },
           "description": "Get notebook information",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2097,6 +2242,9 @@ export const schema: Schema = {
           },
           "description": "Update an existing notebook. Only labels update can be done while notebook is running.",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2136,8 +2284,186 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List all backups of an AI Solutions notebook",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/backup/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Notebook ID",
+              "fullType": "string",
+              "name": "notebookId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "cloud.project.ai.OrderEnum",
+              "description": "Order the result set",
+              "fullType": "cloud.project.ai.OrderEnum",
+              "name": "order",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Page of the result set",
+              "fullType": "long",
+              "name": "page",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Size of the result set",
+              "fullType": "long",
+              "name": "size",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Sort the result with this field",
+              "fullType": "string",
+              "name": "sort",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter on updatedAt property (>)",
+              "fullType": "datetime",
+              "name": "updatedAfter",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter on updatedAt property (<)",
+              "fullType": "datetime",
+              "name": "updatedBefore",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cloud.project.ai.notebook.Backup[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/notebook/{notebookId}/backup"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get details for a single AI Solutions notebook backup",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/backup/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Backup ID",
+              "fullType": "string",
+              "name": "backupId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Notebook ID",
+              "fullType": "string",
+              "name": "notebookId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.notebook.Backup"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/notebook/{notebookId}/backup/{backupId}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Starts a new AI Solutions notebook from a backup",
+          "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/backup/fork"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Backup ID",
+              "fullType": "string",
+              "name": "backupId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Notebook ID",
+              "fullType": "string",
+              "name": "notebookId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.notebook.Notebook"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/notebook/{notebookId}/backup/{backupId}/fork"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "Starts a manual data synchronization on an AI Solutions notebook",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/datasync/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2179,6 +2505,9 @@ export const schema: Schema = {
           },
           "description": "Update/add an AI Solutions notebook label",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/label/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2220,6 +2549,9 @@ export const schema: Schema = {
           },
           "description": "Get the logs of a notebook",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/log/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2254,6 +2586,9 @@ export const schema: Schema = {
           },
           "description": "Start an AI Solutions notebook",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/start"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2288,6 +2623,9 @@ export const schema: Schema = {
           },
           "description": "Stop an AI Solutions notebook",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/stop"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2322,6 +2660,9 @@ export const schema: Schema = {
           },
           "description": "List AI Solutions Notebook available code editors",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/capabilities/editor/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2356,6 +2697,9 @@ export const schema: Schema = {
           },
           "description": "List AI Solutions Notebook available frameworks",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/capabilities/framework/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2390,6 +2734,9 @@ export const schema: Schema = {
           },
           "description": "Generate a notebook spec corresponding CLI command",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/notebook/command/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2421,8 +2768,11 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List registry",
+          "description": "List Docker registries",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/registry/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2441,8 +2791,11 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Create a new docker registry",
+          "description": "Create a Docker registry",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/registry/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2474,8 +2827,11 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Detach the current registry",
+          "description": "Delete a Docker registry",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/registry/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2502,8 +2858,11 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get registry information",
+          "description": "Get information about a Docker registry",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/registry/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2524,6 +2883,44 @@ export const schema: Schema = {
             }
           ],
           "responseType": "cloud.project.ai.registry.Registry"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update a Docker registry",
+          "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/registry/edit"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.ai.registry.RegistryUpdateInput",
+              "description": "Request Body",
+              "fullType": "cloud.project.ai.registry.RegistryUpdateInput",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Registry ID",
+              "fullType": "string",
+              "name": "registryId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/registry/{registryId}"
@@ -2540,6 +2937,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - List namespaces of the project",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2562,6 +2962,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - Create a new namespace",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2597,6 +3000,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - Delete a namespace",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2627,6 +3033,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - Get the namespace information",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2663,6 +3072,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - Get metrics token and urls compatible with this token",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/metrics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2699,6 +3111,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - List models",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/model/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2729,6 +3144,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - Create a new model",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/model/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2772,6 +3190,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - Delete a model",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/model/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2810,6 +3231,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - Get model information",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/model/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2848,6 +3272,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - Update a model",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/model/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2892,6 +3319,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - Detach the current registry",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/registry/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2922,6 +3352,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - Get registry information",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/registry/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2952,6 +3385,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - Attach a docker registry",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/registry/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2995,6 +3431,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - List tokens",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/token/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3025,6 +3464,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - Create a new token",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/token/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3068,6 +3510,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - Delete a token",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/token/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3106,6 +3551,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - Get token information",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/token/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3144,6 +3592,9 @@ export const schema: Schema = {
           },
           "description": "Deprecated - ML Serving is End Of Life - Renew a new token",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/serving/token/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3186,6 +3637,9 @@ export const schema: Schema = {
           },
           "description": "List application tokens",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/token/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3206,6 +3660,9 @@ export const schema: Schema = {
           },
           "description": "Create a new application token",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/token/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3239,6 +3696,9 @@ export const schema: Schema = {
           },
           "description": "Delete this application token",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/token/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3267,6 +3727,9 @@ export const schema: Schema = {
           },
           "description": "Get application token information",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/token/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3301,6 +3764,9 @@ export const schema: Schema = {
           },
           "description": "Renew an application token",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/token/renew"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3335,6 +3801,9 @@ export const schema: Schema = {
           },
           "description": "Manage alerts on your consumption",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:alerting/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3355,6 +3824,9 @@ export const schema: Schema = {
           },
           "description": "Add new alert",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:alerting/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3405,6 +3877,9 @@ export const schema: Schema = {
           },
           "description": "Delete alerting",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:alerting/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3433,6 +3908,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:alerting/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3461,6 +3939,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:alerting/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3502,6 +3983,9 @@ export const schema: Schema = {
           },
           "description": "See alerts",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:alerting/alert/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3536,6 +4020,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:alerting/alert/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3578,6 +4065,9 @@ export const schema: Schema = {
           },
           "description": "Get your project bills",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:bill/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3620,6 +4110,9 @@ export const schema: Schema = {
           },
           "description": "Cancel project creation",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:cancel"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3646,6 +4139,9 @@ export const schema: Schema = {
           },
           "description": "List container registry capabilities per region",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:capabilities/containerRegistry/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3670,8 +4166,40 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of admissionPlugins managed by MKS product that can be enabled or disabled.",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:capabilities/kube/admissionplugins/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.ProjectKubeCustomizationAPIServerAdmissionPluginsEnum[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/capabilities/kube/admissionplugins"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "List Kubernetes available flavors for a region",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:capabilities/kube/flavors/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3706,6 +4234,9 @@ export const schema: Schema = {
           },
           "description": "List Kubernetes available regions",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:capabilities/kube/regions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3732,6 +4263,9 @@ export const schema: Schema = {
           },
           "description": "List all available regions",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:capabilities/loadbalancer/region/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3758,6 +4292,9 @@ export const schema: Schema = {
           },
           "description": "Get specific information of a region",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:capabilities/loadbalancer/region/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3792,6 +4329,9 @@ export const schema: Schema = {
           },
           "description": "List product availability",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:capabilities/productAvailability/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3858,6 +4398,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3908,6 +4451,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3966,6 +4512,9 @@ export const schema: Schema = {
           },
           "description": "Get your project consumption",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:consumption/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4008,6 +4557,9 @@ export const schema: Schema = {
           },
           "description": "List registries of the project",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:containerRegistry/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4028,6 +4580,9 @@ export const schema: Schema = {
           },
           "description": "Create a new registry",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:containerRegistry/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4061,6 +4616,9 @@ export const schema: Schema = {
           },
           "description": "Delete a registry",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:containerRegistry/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4089,6 +4647,9 @@ export const schema: Schema = {
           },
           "description": "Get the registry information",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:containerRegistry/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4117,6 +4678,9 @@ export const schema: Schema = {
           },
           "description": "Update the registry",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:containerRegistry/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4158,6 +4722,9 @@ export const schema: Schema = {
           },
           "description": "Get available plans for the current registry.",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:containerRegistry/capabilities/plan/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4192,6 +4759,9 @@ export const schema: Schema = {
           },
           "description": "Show the actual plan of the registry.",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:containerRegistry/plan/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4220,6 +4790,9 @@ export const schema: Schema = {
           },
           "description": "Update the plan of a registry.",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:containerRegistry/plan/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4261,6 +4834,9 @@ export const schema: Schema = {
           },
           "description": "List registry user",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:containerRegistry/users/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4289,6 +4865,9 @@ export const schema: Schema = {
           },
           "description": "Create a new registry user",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:containerRegistry/users/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4330,6 +4909,9 @@ export const schema: Schema = {
           },
           "description": "Delete a registry user",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:containerRegistry/users/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4372,6 +4954,9 @@ export const schema: Schema = {
           },
           "description": "Get your credit",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:credit/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4392,6 +4977,9 @@ export const schema: Schema = {
           },
           "description": "Add credit to your project",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:credit/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4426,6 +5014,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:credit/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4500,6 +5091,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/availability/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4566,6 +5160,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/capabilities/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4632,6 +5229,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4692,6 +5292,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4765,6 +5368,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4833,6 +5439,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4901,6 +5510,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4982,6 +5594,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5050,6 +5665,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/advancedConfiguration/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5131,6 +5749,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5205,6 +5826,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5287,6 +5911,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/capabilities/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5361,6 +5988,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/capabilities/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5435,6 +6065,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/certificates/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5509,6 +6142,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5577,6 +6213,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/integration/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5658,6 +6297,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/integration/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5734,6 +6376,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5819,6 +6464,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5890,6 +6538,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/ipRestriction/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5974,6 +6625,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/ipRestriction/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6053,6 +6707,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6132,6 +6789,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/ipRestriction/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6221,6 +6881,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6295,6 +6958,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6369,6 +7035,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6451,6 +7120,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/maintenance/apply"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6533,6 +7205,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6615,6 +7290,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6705,6 +7383,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6779,6 +7460,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6861,6 +7545,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6929,6 +7616,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7010,6 +7700,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7086,6 +7779,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7168,6 +7864,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/cassandra/user/credentials/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7250,6 +7949,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7310,6 +8012,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7383,6 +8088,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7451,6 +8159,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7519,6 +8230,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7600,6 +8314,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7668,6 +8385,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/advancedConfiguration/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7749,6 +8469,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7823,6 +8546,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7905,6 +8631,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/capabilities/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7979,6 +8708,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/capabilities/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8053,6 +8785,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8121,6 +8856,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/integration/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8202,6 +8940,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/integration/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8278,6 +9019,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8363,6 +9107,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8434,6 +9181,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/ipRestriction/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8518,6 +9268,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/ipRestriction/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8597,6 +9350,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8676,6 +9432,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/ipRestriction/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8765,6 +9524,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8839,6 +9601,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8913,6 +9678,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8995,6 +9763,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/maintenance/apply"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9077,6 +9848,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9159,6 +9933,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9249,6 +10026,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9323,6 +10103,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9405,6 +10188,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9479,6 +10265,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9561,6 +10350,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/grafana/user/credentials/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9643,6 +10435,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9703,6 +10498,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9776,6 +10574,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9844,6 +10645,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9912,6 +10716,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9993,6 +10800,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/acl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10061,6 +10871,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/acl/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10142,6 +10955,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/acl/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10218,6 +11034,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/acl/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10300,6 +11119,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10368,6 +11190,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/advancedConfiguration/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10449,6 +11274,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/capabilities/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10523,6 +11351,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/capabilities/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10597,6 +11428,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/certificates/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10671,6 +11505,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10739,6 +11576,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/integration/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10820,6 +11660,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/integration/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10896,6 +11739,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10981,6 +11827,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11052,6 +11901,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/ipRestriction/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11136,6 +11988,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/ipRestriction/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11215,6 +12070,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11294,6 +12152,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/ipRestriction/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11383,6 +12244,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11457,6 +12321,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11531,6 +12398,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11613,6 +12483,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/maintenance/apply"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11695,6 +12568,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11777,6 +12653,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11867,6 +12746,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11941,6 +12823,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12023,6 +12908,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/permissions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12097,6 +12985,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/topic/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12165,6 +13056,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/topic/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12246,6 +13140,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/topic/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12322,6 +13219,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/topic/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12398,6 +13298,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/topic/update"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12487,6 +13390,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12555,6 +13461,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12636,6 +13545,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12712,6 +13624,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12794,6 +13709,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/user/access/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12876,6 +13794,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafka/user/credentials/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12958,6 +13879,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13018,6 +13942,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13091,6 +14018,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13159,6 +14089,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13227,6 +14160,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13308,6 +14244,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13376,6 +14315,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/advancedConfiguration/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13457,6 +14399,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/capabilities/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13531,6 +14476,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/capabilities/connector/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13605,6 +14553,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/capabilities/connector/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13687,6 +14638,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/capabilities/connector/configuration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13769,6 +14723,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/capabilities/connector/transforms/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13851,6 +14808,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/capabilities/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13925,6 +14885,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/connector/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13993,6 +14956,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/connector/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14074,6 +15040,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/connector/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14150,6 +15119,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/connector/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14226,6 +15198,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/connector/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14315,6 +15290,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/connector/pause"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14397,6 +15375,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/connector/restart"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14479,6 +15460,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/connector/resume"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14561,6 +15545,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/connector/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14643,6 +15630,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/connector/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14733,6 +15723,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/connector/task/restart"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14823,6 +15816,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14891,6 +15887,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/integration/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14972,6 +15971,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/integration/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15048,6 +16050,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15133,6 +16138,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15204,6 +16212,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/ipRestriction/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15288,6 +16299,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/ipRestriction/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15367,6 +16381,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15446,6 +16463,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/ipRestriction/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15535,6 +16555,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15609,6 +16632,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15683,6 +16709,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15765,6 +16794,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/maintenance/apply"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15847,6 +16879,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15929,6 +16964,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16019,6 +17057,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16093,6 +17134,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16175,6 +17219,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16243,6 +17290,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16324,6 +17374,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16400,6 +17453,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16482,6 +17538,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaConnect/user/credentials/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16564,6 +17623,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16624,6 +17686,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16697,6 +17762,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16765,6 +17833,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16833,6 +17904,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16914,6 +17988,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/capabilities/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16988,6 +18065,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -17056,6 +18136,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/integration/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -17137,6 +18220,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/integration/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -17213,6 +18299,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -17295,6 +18384,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -17369,6 +18461,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -17443,6 +18538,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -17525,6 +18623,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/maintenance/apply"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -17607,6 +18708,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -17689,6 +18793,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -17779,6 +18886,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -17853,6 +18963,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -17935,6 +19048,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/replication/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -18003,6 +19119,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/replication/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -18084,6 +19203,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/replication/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -18160,6 +19282,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/replication/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -18236,6 +19361,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/kafkaMirrorMaker/replication/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -18325,6 +19453,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -18385,6 +19516,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -18458,6 +19592,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -18526,6 +19663,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -18594,6 +19734,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -18675,6 +19818,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/capabilities/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -18749,6 +19895,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -18817,6 +19966,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/integration/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -18898,6 +20050,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/integration/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -18974,6 +20129,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -19056,6 +20214,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -19130,6 +20291,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -19204,6 +20368,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -19286,6 +20453,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/maintenance/apply"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -19368,6 +20538,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -19450,6 +20623,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -19540,6 +20716,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -19614,6 +20793,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3aggregator/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -19696,6 +20878,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -19756,6 +20941,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -19829,6 +21017,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -19897,6 +21088,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -19965,6 +21159,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -20046,6 +21243,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -20114,6 +21314,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/advancedConfiguration/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -20195,6 +21398,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -20269,6 +21475,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -20351,6 +21560,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/capabilities/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -20425,6 +21637,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/capabilities/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -20499,6 +21714,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -20567,6 +21785,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/integration/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -20648,6 +21869,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/integration/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -20724,6 +21948,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -20809,6 +22036,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -20880,6 +22110,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/ipRestriction/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -20964,6 +22197,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/ipRestriction/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -21043,6 +22279,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -21122,6 +22361,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/ipRestriction/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -21211,6 +22453,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -21285,6 +22530,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -21359,6 +22607,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -21441,6 +22692,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/maintenance/apply"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -21523,6 +22777,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -21605,6 +22862,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -21695,6 +22955,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/namespace/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -21763,6 +23026,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/namespace/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -21844,6 +23110,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/namespace/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -21920,6 +23189,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/namespace/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -21996,6 +23268,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/namespace/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -22085,6 +23360,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -22159,6 +23437,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -22241,6 +23522,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -22309,6 +23593,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -22390,6 +23677,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -22466,6 +23756,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -22542,6 +23835,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/user/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -22631,6 +23927,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/m3db/user/credentials/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -22713,6 +24012,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -22773,6 +24075,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -22846,6 +24151,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -22914,6 +24222,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -22982,6 +24293,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -23063,6 +24377,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -23137,6 +24454,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -23219,6 +24539,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/backup/restore"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -23304,6 +24627,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -23375,6 +24701,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/ipRestriction/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -23459,6 +24788,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/ipRestriction/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -23538,6 +24870,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -23617,6 +24952,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/ipRestriction/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -23706,6 +25044,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -23780,6 +25121,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -23854,6 +25198,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -23936,6 +25283,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/maintenance/apply"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -24018,6 +25368,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -24100,6 +25453,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -24190,6 +25546,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -24258,6 +25617,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/node/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -24339,6 +25701,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/node/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -24415,6 +25780,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -24491,6 +25859,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/node/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -24580,6 +25951,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/restore"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -24661,6 +26035,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/roles/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -24743,6 +26120,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -24811,6 +26191,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -24892,6 +26275,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -24968,6 +26354,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -25044,6 +26433,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/user/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -25133,6 +26525,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mongodb/user/credentials/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -25215,6 +26610,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -25275,6 +26673,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -25348,6 +26749,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -25416,6 +26820,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -25484,6 +26891,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -25565,6 +26975,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -25633,6 +27046,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/advancedConfiguration/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -25714,6 +27130,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -25788,6 +27207,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -25870,6 +27292,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/capabilities/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -25944,6 +27369,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/capabilities/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -26018,6 +27446,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/certificates/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -26092,6 +27523,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/currentQueries/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -26182,6 +27616,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/currentQueries/cancel"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -26262,6 +27699,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/database/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -26330,6 +27770,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/database/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -26411,6 +27854,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/database/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -26487,6 +27933,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/database/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -26569,6 +28018,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/enableWrites"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -26643,6 +28095,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -26711,6 +28166,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/integration/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -26792,6 +28250,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/integration/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -26868,6 +28329,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -26953,6 +28417,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -27024,6 +28491,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/ipRestriction/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -27108,6 +28578,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/ipRestriction/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -27187,6 +28660,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -27266,6 +28742,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/ipRestriction/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -27355,6 +28834,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -27429,6 +28911,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -27503,6 +28988,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -27585,6 +29073,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/maintenance/apply"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -27667,6 +29158,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -27749,6 +29243,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -27839,6 +29336,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -27913,6 +29413,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -27995,6 +29498,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/queryStatistics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -28085,6 +29591,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/queryStatistics/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -28159,6 +29668,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -28227,6 +29739,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -28308,6 +29823,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -28384,6 +29902,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -28466,6 +29987,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/mysql/user/credentials/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -28548,6 +30072,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -28608,6 +30135,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -28681,6 +30211,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -28749,6 +30282,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -28817,6 +30353,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -28898,6 +30437,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -28966,6 +30508,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/advancedConfiguration/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -29047,6 +30592,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -29121,6 +30669,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -29203,6 +30754,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/capabilities/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -29277,6 +30831,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/capabilities/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -29351,6 +30908,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/index/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -29425,6 +30985,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/index/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -29501,6 +31064,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/index/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -29583,6 +31149,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -29651,6 +31220,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/integration/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -29732,6 +31304,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/integration/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -29808,6 +31383,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -29893,6 +31471,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -29964,6 +31545,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/ipRestriction/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -30048,6 +31632,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/ipRestriction/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -30127,6 +31714,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -30206,6 +31796,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/ipRestriction/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -30295,6 +31888,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -30369,6 +31965,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -30443,6 +32042,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -30525,6 +32127,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/maintenance/apply"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -30607,6 +32212,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -30689,6 +32297,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -30779,6 +32390,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -30853,6 +32467,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -30935,6 +32552,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/pattern/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -31003,6 +32623,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/pattern/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -31084,6 +32707,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/pattern/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -31160,6 +32786,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/pattern/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -31242,6 +32871,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/permissions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -31316,6 +32948,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -31384,6 +33019,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -31465,6 +33103,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -31541,6 +33182,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -31617,6 +33261,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/user/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -31706,6 +33353,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/opensearch/user/credentials/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -31788,6 +33438,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -31848,6 +33501,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -31921,6 +33577,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -31989,6 +33648,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -32057,6 +33719,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -32138,6 +33803,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -32206,6 +33874,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/advancedConfiguration/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -32287,6 +33958,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -32361,6 +34035,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -32443,6 +34120,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/capabilities/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -32517,6 +34197,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/capabilities/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -32591,6 +34274,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/certificates/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -32664,6 +34350,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/connectionPool/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -32732,6 +34421,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/connectionPool/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -32813,6 +34505,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/connectionPool/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -32889,6 +34584,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/connectionPool/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -32965,6 +34663,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/connectionPool/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -33054,6 +34755,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/currentQueries/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -33144,6 +34848,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/currentQueries/cancel"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -33224,6 +34931,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/database/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -33292,6 +35002,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/database/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -33373,6 +35086,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/database/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -33449,6 +35165,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/database/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -33531,6 +35250,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/enableWrites"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -33605,6 +35327,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -33673,6 +35398,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/integration/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -33754,6 +35482,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/integration/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -33830,6 +35561,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -33915,6 +35649,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -33986,6 +35723,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/ipRestriction/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -34070,6 +35810,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/ipRestriction/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -34149,6 +35892,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -34228,6 +35974,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/ipRestriction/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -34317,6 +36066,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -34391,6 +36143,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -34465,6 +36220,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -34547,6 +36305,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/maintenance/apply"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -34629,6 +36390,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -34711,6 +36475,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -34801,6 +36568,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -34875,6 +36645,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -34957,6 +36730,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/queryStatistics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -35047,6 +36823,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/queryStatistics/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -35121,6 +36900,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/roles/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -35195,6 +36977,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -35263,6 +37048,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -35344,6 +37132,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -35420,6 +37211,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -35496,6 +37290,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/user/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -35585,6 +37382,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/postgresql/user/credentials/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -35667,6 +37467,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -35727,6 +37530,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -35800,6 +37606,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -35868,6 +37677,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -35936,6 +37748,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -36017,6 +37832,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -36085,6 +37903,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/advancedConfiguration/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -36166,6 +37987,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -36240,6 +38064,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -36322,6 +38149,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/capabilities/advancedConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -36396,6 +38226,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/capabilities/categories/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -36470,6 +38303,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/capabilities/commands/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -36544,6 +38380,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/capabilities/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -36618,6 +38457,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -36686,6 +38528,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/integration/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -36767,6 +38612,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/integration/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -36843,6 +38691,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/integration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -36928,6 +38779,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -36999,6 +38853,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/ipRestriction/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -37083,6 +38940,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/ipRestriction/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -37162,6 +39022,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/ipRestriction/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -37241,6 +39104,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/ipRestriction/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -37330,6 +39196,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -37404,6 +39273,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -37478,6 +39350,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/maintenance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -37560,6 +39435,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/maintenance/apply"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -37642,6 +39520,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -37724,6 +39605,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/metric/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -37814,6 +39698,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -37888,6 +39775,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -37970,6 +39860,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38038,6 +39931,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38119,6 +40015,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38195,6 +40094,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38271,6 +40173,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/user/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38360,6 +40265,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/redis/user/credentials/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38442,6 +40350,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/service/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38508,6 +40419,9 @@ export const schema: Schema = {
             "Client::Conflict::ServiceOnlyOneModification"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:database/service/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38542,6 +40456,9 @@ export const schema: Schema = {
           },
           "description": "Get authorization status",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/authorization/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38562,6 +40479,9 @@ export const schema: Schema = {
           },
           "description": "Authorization of Data Processing service by allowing access to your object storage containers",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/authorization/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38588,6 +40508,9 @@ export const schema: Schema = {
           },
           "description": "Data processing capabilities",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/capabilities/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38614,6 +40537,9 @@ export const schema: Schema = {
           },
           "description": "List all jobs",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/jobs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38634,6 +40560,9 @@ export const schema: Schema = {
           },
           "description": "Submit a job",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/jobs/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38667,6 +40596,9 @@ export const schema: Schema = {
           },
           "description": "Kill job with given id",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/jobs/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38695,6 +40627,9 @@ export const schema: Schema = {
           },
           "description": "Get jobs information",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/jobs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38729,6 +40664,9 @@ export const schema: Schema = {
           },
           "description": "Get the logs of a job",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/jobs/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38771,6 +40709,9 @@ export const schema: Schema = {
           },
           "description": "Get metrics token and urls compatible with this token",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/metrics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38788,6 +40729,236 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/dataProcessing/metrics"
     },
     {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List all notebooks",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/notebooks/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a notebook",
+          "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/notebooks/create"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.dataProcessing.notebook.NotebookSpec",
+              "description": "Request Body",
+              "fullType": "cloud.project.dataProcessing.notebook.NotebookSpec",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.dataProcessing.notebook.Notebook"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/dataProcessing/notebooks"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete notebook with given id",
+          "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/notebooks/delete"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Notebook ID",
+              "fullType": "uuid",
+              "name": "notebookId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get notebook information",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/notebooks/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Notebook ID",
+              "fullType": "uuid",
+              "name": "notebookId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.dataProcessing.notebook.Notebook"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/dataProcessing/notebooks/{notebookId}"
+    },
+    {
+      "description": "Start a Data Processing notebook",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Start a Data Processing notebook",
+          "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/notebooks/start"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Notebook ID",
+              "fullType": "uuid",
+              "name": "notebookId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/dataProcessing/notebooks/{notebookId}/start"
+    },
+    {
+      "description": "Stop a Data Processing notebook",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Stop a Data Processing notebook",
+          "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/notebooks/stop"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Notebook ID",
+              "fullType": "uuid",
+              "name": "notebookId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/dataProcessing/notebooks/{notebookId}/stop"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get notebooks capabilities",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:dataProcessing/notebooks/capabilities/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.dataProcessing.notebook.Capability[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/dataProcessing/notebooks/capabilities"
+    },
+    {
       "description": "Missing description",
       "operations": [
         {
@@ -38797,6 +40968,9 @@ export const schema: Schema = {
           },
           "description": "Get flavors",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:flavor/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38831,6 +41005,9 @@ export const schema: Schema = {
           },
           "description": "Get flavor",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:flavor/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38860,48 +41037,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-12-04T10:00:00+01:00",
-            "deprecatedDate": "2019-11-04T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/cloud/project/{serviceName}/usage/forecast",
-            "value": "DEPRECATED"
-          },
-          "description": "Get your consumption forecast",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "datetime",
-              "description": "Forecast until date",
-              "fullType": "datetime",
-              "name": "toDate",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "cloud.forecast.ProjectForecast"
-        }
-      ],
-      "path": "/cloud/project/{serviceName}/forecast"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
           "description": "Get images",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:image/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38952,6 +41095,9 @@ export const schema: Schema = {
           },
           "description": "Get image",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:image/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -38986,6 +41132,9 @@ export const schema: Schema = {
           },
           "description": "Get instance",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39014,6 +41163,9 @@ export const schema: Schema = {
           },
           "description": "Create a new instance",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39047,6 +41199,9 @@ export const schema: Schema = {
           },
           "description": "Delete an instance",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39075,6 +41230,9 @@ export const schema: Schema = {
           },
           "description": "Get instance",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39103,6 +41261,9 @@ export const schema: Schema = {
           },
           "description": "Alter an instance",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39144,6 +41305,9 @@ export const schema: Schema = {
           },
           "description": "Activate monthly billing on instance",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/activeMonthlyBilling"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39178,6 +41342,9 @@ export const schema: Schema = {
           },
           "description": "Return initial credentials of applications installed from public image",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/applicationAccess/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39212,6 +41379,9 @@ export const schema: Schema = {
           },
           "description": "Get interfaces",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/interface/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39240,6 +41410,9 @@ export const schema: Schema = {
           },
           "description": "Create interface on an instance and attached it to a network",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/interface/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39281,6 +41454,9 @@ export const schema: Schema = {
           },
           "description": "Delete an interface",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/interface/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39317,6 +41493,9 @@ export const schema: Schema = {
           },
           "description": "Get interface",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/interface/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39359,6 +41538,9 @@ export const schema: Schema = {
           },
           "description": "Return many statistics about the virtual machine for a given period",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/monitoring/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39409,6 +41591,9 @@ export const schema: Schema = {
           },
           "description": "Reboot an instance",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/reboot"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39450,6 +41635,9 @@ export const schema: Schema = {
           },
           "description": "Reinstall an instance",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/reinstall"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39491,6 +41679,9 @@ export const schema: Schema = {
           },
           "description": "Enable or disable rescue mode",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/rescueMode/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39532,6 +41723,9 @@ export const schema: Schema = {
           },
           "description": "Migrate your instance to another flavor",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/resize"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39573,6 +41767,9 @@ export const schema: Schema = {
           },
           "description": "Resume a suspended instance",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/resume"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39607,6 +41804,9 @@ export const schema: Schema = {
           },
           "description": "Shelve an instance. The resources dedicated to the Public Cloud instance are released. The data of the local storage will be stored, the duration of the operation depends on the size of the local disk. The instance can be unshelved at any time. Meanwhile hourly instances will not be billed. The Snapshot Storage used to store the instance's data will be billed.",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/shelve"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39641,6 +41841,9 @@ export const schema: Schema = {
           },
           "description": "Snapshot an instance",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/snapshot"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39682,6 +41885,9 @@ export const schema: Schema = {
           },
           "description": "Start an instance",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/start"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39716,6 +41922,9 @@ export const schema: Schema = {
           },
           "description": "Stop an instance. The resources dedicated to the Public Cloud instances are still reserved. The instance can be restarted at any time. Meanwhile, the same price is charged for the instance.",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/stop"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39750,6 +41959,9 @@ export const schema: Schema = {
           },
           "description": "Unshelve an instance. The resources dedicated to the Public Cloud instance are restored. The duration of the operation depends on the size of the local disk. Instance billing will get back to normal and the snapshot used to store the instance's data will be deleted.",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/unshelve"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39784,6 +41996,9 @@ export const schema: Schema = {
           },
           "description": "Get VNC access to your instance",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/vnc/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39818,6 +42033,9 @@ export const schema: Schema = {
           },
           "description": "Create multiple instances",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/bulk/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39851,6 +42069,9 @@ export const schema: Schema = {
           },
           "description": "Get the detail of a group",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/group/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39879,6 +42100,9 @@ export const schema: Schema = {
           },
           "description": "Create a group",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/group/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39912,6 +42136,9 @@ export const schema: Schema = {
           },
           "description": "Delete a group",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/group/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39940,6 +42167,9 @@ export const schema: Schema = {
           },
           "description": "Get all groups",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:instance/group/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -39985,6 +42215,9 @@ export const schema: Schema = {
           },
           "description": "List all available regions",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/capabilities/stream/region/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40014,6 +42247,9 @@ export const schema: Schema = {
           },
           "description": "Get connection information from a region",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/capabilities/stream/region/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40051,6 +42287,9 @@ export const schema: Schema = {
           },
           "description": "List all stream for a tenant",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40074,6 +42313,9 @@ export const schema: Schema = {
           },
           "description": "Create a stream",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40110,6 +42352,9 @@ export const schema: Schema = {
           },
           "description": "Delete a stream",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40141,6 +42386,9 @@ export const schema: Schema = {
           },
           "description": "Get a stream",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40172,6 +42420,9 @@ export const schema: Schema = {
           },
           "description": "Update a stream",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40216,6 +42467,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve statistics of the stream",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/stats/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40253,6 +42507,9 @@ export const schema: Schema = {
           },
           "description": "List all subscriptions for a stream",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/subscription/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40284,6 +42541,9 @@ export const schema: Schema = {
           },
           "description": "Create a new subscription",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/subscription/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40328,6 +42588,9 @@ export const schema: Schema = {
           },
           "description": "Delete a subscription",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/subscription/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40367,6 +42630,9 @@ export const schema: Schema = {
           },
           "description": "Get a subscription",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/subscription/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40412,6 +42678,9 @@ export const schema: Schema = {
           },
           "description": "Reset a cursor",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/subscription/resetCursor"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40457,6 +42726,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve statistics of the subscription",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/subscription/stats/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40502,6 +42774,9 @@ export const schema: Schema = {
           },
           "description": "List all tokens for a stream",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/token/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40533,6 +42808,9 @@ export const schema: Schema = {
           },
           "description": "Create a token",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/token/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40577,6 +42855,9 @@ export const schema: Schema = {
           },
           "description": "Delete a token",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/token/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40616,6 +42897,9 @@ export const schema: Schema = {
           },
           "description": "Get token",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:io/stream/token/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40658,6 +42942,9 @@ export const schema: Schema = {
           },
           "description": "Get ips",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ip/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40684,6 +42971,9 @@ export const schema: Schema = {
           },
           "description": "Get failover ips",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ip/failover/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40710,6 +43000,9 @@ export const schema: Schema = {
           },
           "description": "Get failover ip",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ip/failover/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40744,6 +43037,9 @@ export const schema: Schema = {
           },
           "description": "Attach failover ip to an instance",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ip/failover/attach"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40785,6 +43081,9 @@ export const schema: Schema = {
           },
           "description": "List your managed Kubernetes clusters",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40805,6 +43104,9 @@ export const schema: Schema = {
           },
           "description": "Create a new managed Kubernetes cluster",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40838,6 +43140,9 @@ export const schema: Schema = {
           },
           "description": "Delete your managed Kubernetes cluster",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40866,6 +43171,9 @@ export const schema: Schema = {
           },
           "description": "Get information about your managed Kubernetes cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40894,6 +43202,9 @@ export const schema: Schema = {
           },
           "description": "Update information about your managed Kubernetes cluster",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40935,6 +43246,9 @@ export const schema: Schema = {
           },
           "description": "Generate a temporary url to retrieve auditlogs",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/auditLogs/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40969,6 +43283,9 @@ export const schema: Schema = {
           },
           "description": "Get cluster customization",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/customization/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -40997,6 +43314,9 @@ export const schema: Schema = {
           },
           "description": "Update cluster customization",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/customization/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41038,6 +43358,9 @@ export const schema: Schema = {
           },
           "description": "List all flavors available",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/flavors/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41072,6 +43395,9 @@ export const schema: Schema = {
           },
           "description": "List your ip restrictions on your cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/ipRestrictions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41100,6 +43426,9 @@ export const schema: Schema = {
           },
           "description": "Append a list of ip restrictions on your cluster",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/ipRestrictions/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41135,6 +43464,9 @@ export const schema: Schema = {
           },
           "description": "Remove the current list and add a list of ip restrictions on your cluster",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/ipRestrictions/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41176,6 +43508,9 @@ export const schema: Schema = {
           },
           "description": "Delete an ip restriction from your cluster",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/ipRestrictions/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41218,6 +43553,9 @@ export const schema: Schema = {
           },
           "description": "Generate kubeconfig file",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/kubeconfig/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41252,6 +43590,9 @@ export const schema: Schema = {
           },
           "description": "Reset kubeconfig: Certificates will be regenerated, nodes will be reinstalled",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/kubeconfig/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41286,6 +43627,9 @@ export const schema: Schema = {
           },
           "description": "List available metrics for this cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/metrics/etcdUsage/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41320,6 +43664,9 @@ export const schema: Schema = {
           },
           "description": "List your nodes",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41351,6 +43698,9 @@ export const schema: Schema = {
           },
           "description": "Deploy a node for your cluster. This call is deprecated. In the meantime it will create a new node pool for each call. We encourage you to now either create a new nodepool or change the size on an existing one",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/node/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41392,6 +43742,9 @@ export const schema: Schema = {
           },
           "description": "Delete a specific node on your cluster. This will also decrease by one the desirednodes value of its nodepool",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/node/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41428,6 +43781,9 @@ export const schema: Schema = {
           },
           "description": "Get information on a specific node on your cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/node/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41470,6 +43826,9 @@ export const schema: Schema = {
           },
           "description": "List your nodepools",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/nodepool/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41498,6 +43857,9 @@ export const schema: Schema = {
           },
           "description": "Create a nodepool on your cluster",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/nodepool/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41539,6 +43901,9 @@ export const schema: Schema = {
           },
           "description": "Delete a nodepool from your cluster",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/nodepool/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41575,6 +43940,9 @@ export const schema: Schema = {
           },
           "description": "Get information on a specific nodepool on your cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/nodepool/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41611,6 +43979,9 @@ export const schema: Schema = {
           },
           "description": "Update your nodepool information",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/nodepool/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41660,6 +44031,9 @@ export const schema: Schema = {
           },
           "description": "List all nodes contained in a nodepool",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/nodepool/nodes/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41702,6 +44076,9 @@ export const schema: Schema = {
           },
           "description": "Remove OpenIdConnect integration from APIServer",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/openIdConnect/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41730,6 +44107,9 @@ export const schema: Schema = {
           },
           "description": "Get openIdConnect integration parameters",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/openIdConnect/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41758,6 +44138,9 @@ export const schema: Schema = {
           },
           "description": "Configure APIServer for OpenIdConnect",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/openIdConnect/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41793,6 +44176,9 @@ export const schema: Schema = {
           },
           "description": "Update parameters and reconfigure APIServer",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/openIdConnect/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41834,6 +44220,9 @@ export const schema: Schema = {
           },
           "description": "Get private network configuration",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/privateNetworkConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41862,6 +44251,9 @@ export const schema: Schema = {
           },
           "description": "Update private network configuration",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/privateNetworkConfiguration/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41903,6 +44295,9 @@ export const schema: Schema = {
           },
           "description": "Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41944,6 +44339,9 @@ export const schema: Schema = {
           },
           "description": "Restarting your control plane apiserver to invalidate cache without downtime (using force will create a slight downtime)",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/restart"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41985,6 +44383,9 @@ export const schema: Schema = {
           },
           "description": "Force cluster and node update to the latest patch within minor version or next minor version",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/update"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -42026,6 +44427,9 @@ export const schema: Schema = {
           },
           "description": "Change the update policy of your cluster",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/updatePolicy"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -42070,6 +44474,9 @@ export const schema: Schema = {
           },
           "description": "List Kubernetes available regions",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:kube/regions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -42096,6 +44503,9 @@ export const schema: Schema = {
           },
           "description": "List available public cloud labs",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:lab/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -42122,6 +44532,9 @@ export const schema: Schema = {
           },
           "description": "Get details of a public cloud lab",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:lab/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -42150,6 +44563,9 @@ export const schema: Schema = {
           },
           "description": "Activate a lab on your Cloud Project",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:lab/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -42184,6 +44600,9 @@ export const schema: Schema = {
           },
           "description": "List required agreements to active this lab",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:lab/agreement/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -42246,6 +44665,9 @@ export const schema: Schema = {
             "Server::InternalServerError::MissingParameterInRequestContext"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:loadbalancer/get"
+          ],
           "noAuthentication": false,
           "operationId": "listLoadBalancers",
           "parameters": [
@@ -42295,6 +44717,9 @@ export const schema: Schema = {
             "Server::InternalServerError::MissingParameterInRequestContext"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:loadbalancer/create"
+          ],
           "noAuthentication": false,
           "operationId": "createLoadBalancer",
           "parameters": [
@@ -42357,6 +44782,9 @@ export const schema: Schema = {
             "Server::InternalServerError::MissingParameterInRequestContext"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:loadbalancer/delete"
+          ],
           "noAuthentication": false,
           "operationId": "deleteLoadBalancer",
           "parameters": [
@@ -42414,6 +44842,9 @@ export const schema: Schema = {
             "Server::InternalServerError::MissingParameterInRequestContext"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:loadbalancer/get"
+          ],
           "noAuthentication": false,
           "operationId": "getLoadBalancer",
           "parameters": [
@@ -42471,6 +44902,9 @@ export const schema: Schema = {
             "Server::InternalServerError::MissingParameterInRequestContext"
           ],
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:loadbalancer/edit"
+          ],
           "noAuthentication": false,
           "operationId": "updateLoadBalancer",
           "parameters": [
@@ -42541,6 +44975,9 @@ export const schema: Schema = {
             "Server::InternalServerError::MissingParameterInRequestContext"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:loadbalancer/configuration/get"
+          ],
           "noAuthentication": false,
           "operationId": "listLoadBalancerConfigurations",
           "parameters": [
@@ -42598,6 +45035,9 @@ export const schema: Schema = {
             "Server::InternalServerError::MissingParameterInRequestContext"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:loadbalancer/configuration/create"
+          ],
           "noAuthentication": false,
           "operationId": "createLoadBalancerConfiguration",
           "parameters": [
@@ -42668,6 +45108,9 @@ export const schema: Schema = {
             "Server::InternalServerError::MissingParameterInRequestContext"
           ],
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:loadbalancer/configuration/delete"
+          ],
           "noAuthentication": false,
           "operationId": "deleteLoadBalancerConfiguration",
           "parameters": [
@@ -42733,6 +45176,9 @@ export const schema: Schema = {
             "Server::InternalServerError::MissingParameterInRequestContext"
           ],
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:loadbalancer/configuration/get"
+          ],
           "noAuthentication": false,
           "operationId": "getLoadBalancerConfiguration",
           "parameters": [
@@ -42804,6 +45250,9 @@ export const schema: Schema = {
             "Server::InternalServerError::MissingParameterInRequestContext"
           ],
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:loadbalancer/configuration/apply"
+          ],
           "noAuthentication": false,
           "operationId": "applyLoadBalancerConfiguration",
           "parameters": [
@@ -42847,6 +45296,9 @@ export const schema: Schema = {
           },
           "description": "Get planned migrations",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:migration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -42873,6 +45325,9 @@ export const schema: Schema = {
           },
           "description": "Get planned migration",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:migration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -42901,6 +45356,9 @@ export const schema: Schema = {
           },
           "description": "Update planned migration",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:migration/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -42942,6 +45400,9 @@ export const schema: Schema = {
           },
           "description": "Get private networks",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:network/private/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -42962,6 +45423,9 @@ export const schema: Schema = {
           },
           "description": "Create a new network",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:network/private/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -42995,6 +45459,9 @@ export const schema: Schema = {
           },
           "description": "Delete private network",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:network/private/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43023,6 +45490,9 @@ export const schema: Schema = {
           },
           "description": "Get private network",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:network/private/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43051,6 +45521,9 @@ export const schema: Schema = {
           },
           "description": "Rename private network",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:network/private/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43092,6 +45565,9 @@ export const schema: Schema = {
           },
           "description": "Activate private network in a new region",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:network/private/region/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43133,6 +45609,9 @@ export const schema: Schema = {
           },
           "description": "Get network subnets",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:network/private/subnet/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43161,6 +45640,9 @@ export const schema: Schema = {
           },
           "description": "Create a new network subnet",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:network/private/subnet/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43202,6 +45684,9 @@ export const schema: Schema = {
           },
           "description": "Delete a network subnet",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:network/private/subnet/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43244,6 +45729,9 @@ export const schema: Schema = {
           },
           "description": "Get public networks",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:network/public/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43270,6 +45758,9 @@ export const schema: Schema = {
           },
           "description": "List your operations",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:operation/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43296,6 +45787,9 @@ export const schema: Schema = {
           },
           "description": "Get information about one operation",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:operation/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43330,6 +45824,9 @@ export const schema: Schema = {
           },
           "description": "List quotas",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:quota/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43356,6 +45853,9 @@ export const schema: Schema = {
           },
           "description": "List your regions",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43376,6 +45876,9 @@ export const schema: Schema = {
           },
           "description": "Request access to a region",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43409,6 +45912,9 @@ export const schema: Schema = {
           },
           "description": "Get information about your region",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43434,6 +45940,481 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/region/{regionName}"
     },
     {
+      "description": "Manage your S3 cold archive containers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get cold archive containers",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/coldArchive/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.ColdArchiveContainer[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create S3 cold archive container",
+          "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/coldArchive/create"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.StorageContainerCreation",
+              "description": "Request Body",
+              "fullType": "cloud.StorageContainerCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.ColdArchiveContainer"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/coldArchive"
+    },
+    {
+      "description": "Manage your S3 cold archive containers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete S3 cold archive container",
+          "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/coldArchive/delete"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get S3 cold archive container",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/coldArchive/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Limits the number of objects in the result",
+              "fullType": "long",
+              "name": "limit",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Constrains the list to objects whose names are greater than the marker",
+              "fullType": "string",
+              "name": "marker",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cloud.ColdArchiveContainer"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}"
+    },
+    {
+      "description": "Manage lifecycle of cold archive container",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Start archiving of container",
+          "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/coldArchive/archive"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}/archive"
+    },
+    {
+      "description": "Manage lifecycle of cold archive container",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Start cleaning tape date of archived container",
+          "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/coldArchive/destroy"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}/destroy"
+    },
+    {
+      "description": "Manage S3 cold archive container objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete S3 cold archive container object",
+          "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/coldArchive/object/delete"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Object key",
+              "fullType": "string",
+              "name": "objectKey",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}/object/{objectKey}"
+    },
+    {
+      "description": "Manage S3 cold archive container policy",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Add S3 cold archive container policy",
+          "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/coldArchive/policy/create"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.storage.AddContainerPolicy",
+              "description": "Request Body",
+              "fullType": "cloud.storage.AddContainerPolicy",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User ID",
+              "fullType": "string",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}/policy/{userId}"
+    },
+    {
+      "description": "Generate presigned URLs to download or upload objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Generate presigned URLs to download or upload objects",
+          "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/coldArchive/presign"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.storage.PresignedURLInput",
+              "description": "Request Body",
+              "fullType": "cloud.storage.PresignedURLInput",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.storage.PresignedURL"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}/presign"
+    },
+    {
+      "description": "Manage lifecycle of cold archive container",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Start restoring of container",
+          "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/coldArchive/restore"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}/restore"
+    },
+    {
       "description": "Manage your floating ips",
       "operations": [
         {
@@ -43443,6 +46424,9 @@ export const schema: Schema = {
           },
           "description": "Get floating ips",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/floatingip/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43477,6 +46461,9 @@ export const schema: Schema = {
           },
           "description": "Delete a floating ip",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/floatingip/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43513,6 +46500,9 @@ export const schema: Schema = {
           },
           "description": "Get a floating ip",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/floatingip/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43546,6 +46536,51 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/region/{regionName}/floatingip/{floatingIpId}"
     },
     {
+      "description": "Detach your floating ip",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Detach your floating ip",
+          "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/floatingip/detach"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Floating ip ID",
+              "fullType": "uuid",
+              "name": "floatingIpId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/floatingip/{floatingIpId}/detach"
+    },
+    {
       "description": "Manage your gateways",
       "operations": [
         {
@@ -43555,6 +46590,9 @@ export const schema: Schema = {
           },
           "description": "List gateways",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/gateway/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43591,6 +46629,9 @@ export const schema: Schema = {
           },
           "description": "Create new Gateway and new Private Network with new Subnet",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/gateway/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43632,6 +46673,9 @@ export const schema: Schema = {
           },
           "description": "Delete gateway",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/gateway/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43668,6 +46712,9 @@ export const schema: Schema = {
           },
           "description": "Get gateway",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/gateway/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43704,6 +46751,9 @@ export const schema: Schema = {
           },
           "description": "Update a gateway",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/gateway/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43753,6 +46803,9 @@ export const schema: Schema = {
           },
           "description": "Expose gateway to public network by adding a public port on it.",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/gateway/expose"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43795,6 +46848,9 @@ export const schema: Schema = {
           },
           "description": "List interfaces",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/gateway/interface/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43831,6 +46887,9 @@ export const schema: Schema = {
           },
           "description": "Create gateway interface",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/gateway/interface/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43880,6 +46939,9 @@ export const schema: Schema = {
           },
           "description": "Delete gateway interface",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/gateway/interface/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43924,6 +46986,9 @@ export const schema: Schema = {
           },
           "description": "Get interface",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/gateway/interface/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -43974,6 +47039,9 @@ export const schema: Schema = {
           },
           "description": "Associate an existing floating IP to an instance",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/instance/associateFloatingIp"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44023,6 +47091,9 @@ export const schema: Schema = {
           },
           "description": "Create a floating IP and attach it to an instance",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/instance/floatingIp/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44072,6 +47143,9 @@ export const schema: Schema = {
           },
           "description": "List certificates",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/keymanager/certificate/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44100,6 +47174,9 @@ export const schema: Schema = {
           },
           "description": "Create a new certificate",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/keymanager/certificate/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44141,6 +47218,9 @@ export const schema: Schema = {
           },
           "description": "Delete a certificate",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/keymanager/certificate/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44177,6 +47257,9 @@ export const schema: Schema = {
           },
           "description": "Get details about a certificate",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/keymanager/certificate/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44219,6 +47302,9 @@ export const schema: Schema = {
           },
           "description": "List secrets",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/keymanager/secret/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44253,6 +47339,9 @@ export const schema: Schema = {
           },
           "description": "Delete a secret",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/keymanager/secret/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44289,6 +47378,9 @@ export const schema: Schema = {
           },
           "description": "Get details about a secret",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/keymanager/secret/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44331,6 +47423,9 @@ export const schema: Schema = {
           },
           "description": "List flavors",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/flavor/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44365,6 +47460,9 @@ export const schema: Schema = {
           },
           "description": "Get details about a load balancing flavor",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/flavor/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44407,6 +47505,9 @@ export const schema: Schema = {
           },
           "description": "List health monitors",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/healthMonitor/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44435,6 +47536,9 @@ export const schema: Schema = {
           },
           "description": "Create health monitor",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/healthMonitor/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44476,6 +47580,9 @@ export const schema: Schema = {
           },
           "description": "Delete health monitor",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/healthMonitor/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44512,6 +47619,9 @@ export const schema: Schema = {
           },
           "description": "Get details about a loadbalancer health monitor",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/healthMonitor/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44548,6 +47658,9 @@ export const schema: Schema = {
           },
           "description": "Update a health monitor",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/healthMonitor/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44596,6 +47709,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/l7Policy/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44623,6 +47739,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/l7Policy/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44663,6 +47782,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/l7Policy/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44698,6 +47820,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/l7Policy/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44733,6 +47858,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/l7Policy/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44781,6 +47909,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/l7Policy/l7Rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44816,6 +47947,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/l7Policy/l7Rule/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44864,6 +47998,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/l7Policy/l7Rule/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44907,6 +48044,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/l7Policy/l7Rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44950,6 +48090,9 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/l7Policy/l7Rule/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45007,6 +48150,9 @@ export const schema: Schema = {
           },
           "description": "List your loadbalancer listeners",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/listener/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45043,6 +48189,9 @@ export const schema: Schema = {
           },
           "description": "Create a loadbalancer listerner",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/listener/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45084,6 +48233,9 @@ export const schema: Schema = {
           },
           "description": "Delete loadbalancer listener",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/listener/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45120,6 +48272,9 @@ export const schema: Schema = {
           },
           "description": "Get details about a loadbalancer listener",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/listener/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45162,6 +48317,9 @@ export const schema: Schema = {
           },
           "description": "List your load balancers",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/loadbalancer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45190,6 +48348,9 @@ export const schema: Schema = {
           },
           "description": "Create a loadbalancer",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/loadbalancer/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45231,6 +48392,9 @@ export const schema: Schema = {
           },
           "description": "Delete loadbalancer",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/loadbalancer/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45267,6 +48431,9 @@ export const schema: Schema = {
           },
           "description": "Get details about a load balancer",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/loadbalancer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45309,6 +48476,9 @@ export const schema: Schema = {
           },
           "description": "Associate an existing floating IP to a loadbalancer",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/loadbalancer/associateFloatingIp"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45358,6 +48528,9 @@ export const schema: Schema = {
           },
           "description": "Create a floating IP and attach it to a loadbalancer",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/loadbalancer/floatingIp/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45407,6 +48580,9 @@ export const schema: Schema = {
           },
           "description": "List your loadbalancer pools",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/pool/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45443,6 +48619,9 @@ export const schema: Schema = {
           },
           "description": "Create a loadbalancer pool",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/pool/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45484,6 +48663,9 @@ export const schema: Schema = {
           },
           "description": "Delete a loadbalancer pool",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/pool/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45520,6 +48702,9 @@ export const schema: Schema = {
           },
           "description": "Get details about a loadbalancer pool",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/pool/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45556,6 +48741,9 @@ export const schema: Schema = {
           },
           "description": "Update a loadbalancer pool",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/pool/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45605,6 +48793,9 @@ export const schema: Schema = {
           },
           "description": "List your pool members",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/pool/member/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45641,6 +48832,9 @@ export const schema: Schema = {
           },
           "description": "Create a pool member",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/pool/member/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45690,6 +48884,9 @@ export const schema: Schema = {
           },
           "description": "Delete a pool member",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/pool/member/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45734,6 +48931,9 @@ export const schema: Schema = {
           },
           "description": "Get details about a pool member",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/pool/member/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45778,6 +48978,9 @@ export const schema: Schema = {
           },
           "description": "Update a pool member",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/loadbalancing/pool/member/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45835,6 +49038,9 @@ export const schema: Schema = {
           },
           "description": "List networks",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/network/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45863,6 +49069,9 @@ export const schema: Schema = {
           },
           "description": "Create a network with a gateway",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/network/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45904,6 +49113,9 @@ export const schema: Schema = {
           },
           "description": "Delete network",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/network/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45940,6 +49152,9 @@ export const schema: Schema = {
           },
           "description": "Get network",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/network/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -45982,6 +49197,9 @@ export const schema: Schema = {
           },
           "description": "List subnets",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/network/subnet/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46024,6 +49242,9 @@ export const schema: Schema = {
           },
           "description": "Delete subnet",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/network/subnet/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46068,6 +49289,9 @@ export const schema: Schema = {
           },
           "description": "Get subnet",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/network/subnet/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46118,6 +49342,9 @@ export const schema: Schema = {
           },
           "description": "Create Gateway for existing subnet",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/network/subnet/gateway/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46175,6 +49402,9 @@ export const schema: Schema = {
           },
           "description": "List quotas",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/quota/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46203,6 +49433,9 @@ export const schema: Schema = {
           },
           "description": "Change project quotas on region",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/quota/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46244,6 +49477,9 @@ export const schema: Schema = {
           },
           "description": "Get allowed quotas on region",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/quota/allowed/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46278,6 +49514,9 @@ export const schema: Schema = {
           },
           "description": "Delete storage quota on region",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/quota/storage/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46306,6 +49545,9 @@ export const schema: Schema = {
           },
           "description": "Get storage quotas on region",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/quota/storage/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46334,6 +49576,9 @@ export const schema: Schema = {
           },
           "description": "Update storage quota on region",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/quota/storage/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46375,6 +49620,9 @@ export const schema: Schema = {
           },
           "description": "Get S3 storage containers",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/storage/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46403,6 +49651,9 @@ export const schema: Schema = {
           },
           "description": "Create S3 storage container",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/storage/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46444,6 +49695,9 @@ export const schema: Schema = {
           },
           "description": "Delete S3 storage container",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/storage/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46480,6 +49734,9 @@ export const schema: Schema = {
           },
           "description": "Get S3 storage container",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/storage/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46538,6 +49795,9 @@ export const schema: Schema = {
           },
           "description": "Delete S3 storage container object",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/storage/object/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46588,6 +49848,9 @@ export const schema: Schema = {
           },
           "description": "Add S3 storage container policy",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/storage/policy/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46645,6 +49908,9 @@ export const schema: Schema = {
           },
           "description": "Generate S3 presigned URLs to download or upload objects",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/storage/presign"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46685,6 +49951,269 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/region/{regionName}/storage/{name}/presign"
     },
     {
+      "description": "Manage your volume backups",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List volume backups",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/volumeBackup/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.volumeBackup.VolumeBackup[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a volume backup",
+          "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/volumeBackup/create"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.volumeBackup.VolumeBackupCreation",
+              "description": "Request Body",
+              "fullType": "cloud.volumeBackup.VolumeBackupCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.volumeBackup.VolumeBackup"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/volumeBackup"
+    },
+    {
+      "description": "Manage your volume backups",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete volume backup",
+          "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/volumeBackup/delete"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Volume backup ID",
+              "fullType": "uuid",
+              "name": "volumeBackupId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get volume backup",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/volumeBackup/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Volume backup ID",
+              "fullType": "uuid",
+              "name": "volumeBackupId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.volumeBackup.VolumeBackup"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/volumeBackup/{volumeBackupId}"
+    },
+    {
+      "description": "Restore a volume backup on a volume",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Restore a volume backup on a volume",
+          "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/volumeBackup/restore"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.volumeBackup.VolumeBackupRestore",
+              "description": "Request Body",
+              "fullType": "cloud.volumeBackup.VolumeBackupRestore",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Volume backup ID",
+              "fullType": "uuid",
+              "name": "volumeBackupId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.volumeBackup.VolumeBackup"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/volumeBackup/{volumeBackupId}/restore"
+    },
+    {
+      "description": "Create a volume from a volume backup",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a volume from a volume backup",
+          "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/volumeBackup/volume/create"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.volumeBackup.VolumeCreationFromBackup",
+              "description": "Request Body",
+              "fullType": "cloud.volumeBackup.VolumeCreationFromBackup",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Volume backup ID",
+              "fullType": "uuid",
+              "name": "volumeBackupId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.volume.Volume"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/volumeBackup/{volumeBackupId}/volume"
+    },
+    {
       "description": "Manage your automated backups",
       "operations": [
         {
@@ -46694,6 +50223,9 @@ export const schema: Schema = {
           },
           "description": "List your automated backups",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/workflow/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46722,6 +50254,9 @@ export const schema: Schema = {
           },
           "description": "Create a new automated backup",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/workflow/backup/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46763,6 +50298,9 @@ export const schema: Schema = {
           },
           "description": "Delete a backup workflow process",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/workflow/backup/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46799,6 +50337,9 @@ export const schema: Schema = {
           },
           "description": "Get details about a backup workflow process",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:region/workflow/backup/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46841,6 +50382,9 @@ export const schema: Schema = {
           },
           "description": "List the regions on which you can ask an access to",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:regionAvailable/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46867,6 +50411,9 @@ export const schema: Schema = {
           },
           "description": "Do not expire the project, and retain it. You will have to pay for the resources you will use after using this call",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:retain/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46893,6 +50440,9 @@ export const schema: Schema = {
           },
           "description": "Get all Roles",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:role/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46919,6 +50469,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46939,6 +50492,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -46972,6 +50528,9 @@ export const schema: Schema = {
           },
           "description": "Get snapshots",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:snapshot/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47014,6 +50573,9 @@ export const schema: Schema = {
           },
           "description": "Delete a snapshot",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:snapshot/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47042,6 +50604,9 @@ export const schema: Schema = {
           },
           "description": "Get snapshot details",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:snapshot/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47076,6 +50641,9 @@ export const schema: Schema = {
           },
           "description": "Get SSH keys",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:sshkey/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47104,6 +50672,9 @@ export const schema: Schema = {
           },
           "description": "Create SSH key",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:sshkey/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47137,6 +50708,9 @@ export const schema: Schema = {
           },
           "description": "Delete SSH key",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:sshkey/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47165,6 +50739,9 @@ export const schema: Schema = {
           },
           "description": "Get SSH key",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:sshkey/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47199,6 +50776,9 @@ export const schema: Schema = {
           },
           "description": "Get stacks",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:stack/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47225,6 +50805,9 @@ export const schema: Schema = {
           },
           "description": "Get stack",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:stack/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47259,6 +50842,9 @@ export const schema: Schema = {
           },
           "description": "Get SWIFT storage containers",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:storage/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47279,6 +50865,9 @@ export const schema: Schema = {
           },
           "description": "Create SWIFT container",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:storage/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47312,6 +50901,9 @@ export const schema: Schema = {
           },
           "description": "Delete SWIFT container",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:storage/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47348,6 +50940,9 @@ export const schema: Schema = {
           },
           "description": "Get SWIFT storage container",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:storage/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47384,6 +50979,9 @@ export const schema: Schema = {
           },
           "description": "Update SWIFT storage container",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:storage/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47425,6 +51023,9 @@ export const schema: Schema = {
           },
           "description": "Delete CORS support on SWIFT container",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:storage/cors/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47461,6 +51062,9 @@ export const schema: Schema = {
           },
           "description": "Add CORS support on SWIFT container",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:storage/cors/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47502,6 +51106,9 @@ export const schema: Schema = {
           },
           "description": "Get a public temporary URL to access one of your SWIFT object",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:storage/publicUrl/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47543,6 +51150,9 @@ export const schema: Schema = {
           },
           "description": "Deploy your SWIFT container files as a static web site",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:storage/static/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47577,6 +51187,9 @@ export const schema: Schema = {
           },
           "description": "Create openstack user with only access to this SWIFT container",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:storage/user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47618,6 +51231,9 @@ export const schema: Schema = {
           },
           "description": "Access to SWIFT storage API",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:storage/access/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47638,6 +51254,9 @@ export const schema: Schema = {
           },
           "description": "Access to SWIFT storage API",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:storage/access/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47655,6 +51274,35 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/storage/access"
     },
     {
+      "description": "Get your storage quota",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List storage quotas",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:storage/quota/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.storage.Quota"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/storage/quota"
+    },
+    {
       "description": "Terminate your service",
       "operations": [
         {
@@ -47664,6 +51312,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47690,6 +51341,9 @@ export const schema: Schema = {
           },
           "description": "Request more quota on your /cloud project",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:unleash"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47716,6 +51370,9 @@ export const schema: Schema = {
           },
           "description": "Get current usage",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:usage/current/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47742,6 +51399,9 @@ export const schema: Schema = {
           },
           "description": "Get usage forecast",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:usage/forecast/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47768,6 +51428,9 @@ export const schema: Schema = {
           },
           "description": "Usage information details",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:usage/history/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47810,6 +51473,9 @@ export const schema: Schema = {
           },
           "description": "Usage information details",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:usage/history/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47844,6 +51510,9 @@ export const schema: Schema = {
           },
           "description": "Get all users",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47864,6 +51533,9 @@ export const schema: Schema = {
           },
           "description": "Create user",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47897,6 +51569,9 @@ export const schema: Schema = {
           },
           "description": "Delete user",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47925,6 +51600,9 @@ export const schema: Schema = {
           },
           "description": "Get user details",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -47950,6 +51628,51 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/user/{userId}"
     },
     {
+      "description": "Get your client configuration",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get your client configuration",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/configuration/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cloud.user.Configuration"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/user/{userId}/configuration"
+    },
+    {
       "description": "Missing description",
       "operations": [
         {
@@ -47959,6 +51682,9 @@ export const schema: Schema = {
           },
           "description": "Get RC file of OpenStack",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/openrc/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48009,6 +51735,9 @@ export const schema: Schema = {
           },
           "description": "Export user storage policy",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/policy/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48037,6 +51766,9 @@ export const schema: Schema = {
           },
           "description": "Import user storage policy",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/policy/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48078,6 +51810,9 @@ export const schema: Schema = {
           },
           "description": "Get rclone configuration file",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/rclone/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48128,6 +51863,9 @@ export const schema: Schema = {
           },
           "description": "Regenerate user password",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/regeneratePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48162,6 +51900,9 @@ export const schema: Schema = {
           },
           "description": "Get user roles",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/role/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48190,6 +51931,9 @@ export const schema: Schema = {
           },
           "description": "Add a role to a user",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/role/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48225,6 +51969,9 @@ export const schema: Schema = {
           },
           "description": "Update roles of a user",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/role/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48266,6 +52013,9 @@ export const schema: Schema = {
           },
           "description": "Remove role for a user",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/role/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48302,6 +52052,9 @@ export const schema: Schema = {
           },
           "description": "Get role detail",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/role/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48344,6 +52097,9 @@ export const schema: Schema = {
           },
           "description": "List your S3 credentials",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/s3Credentials/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48372,6 +52128,9 @@ export const schema: Schema = {
           },
           "description": "Create a new S3 credentials for an user",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/s3Credentials/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48406,6 +52165,9 @@ export const schema: Schema = {
           },
           "description": "Delete an S3 credential",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/s3Credentials/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48442,6 +52204,9 @@ export const schema: Schema = {
           },
           "description": "Get details about an S3 credential",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/s3Credentials/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48484,6 +52249,9 @@ export const schema: Schema = {
           },
           "description": "Get token for user",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:user/token/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48525,6 +52293,9 @@ export const schema: Schema = {
           },
           "description": "Get volumes",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:volume/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48553,6 +52324,9 @@ export const schema: Schema = {
           },
           "description": "Create a volume",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:volume/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48586,6 +52360,9 @@ export const schema: Schema = {
           },
           "description": "Delete a volume",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:volume/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48614,6 +52391,9 @@ export const schema: Schema = {
           },
           "description": "Get volume details",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:volume/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48642,6 +52422,9 @@ export const schema: Schema = {
           },
           "description": "Update a volume",
           "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:volume/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48683,6 +52466,9 @@ export const schema: Schema = {
           },
           "description": "Attach a volume on an instance",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:volume/attach"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48724,6 +52510,9 @@ export const schema: Schema = {
           },
           "description": "Detach a volume from an instance",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:volume/detach"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48765,6 +52554,9 @@ export const schema: Schema = {
           },
           "description": "Snapshot a volume",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:volume/snapshot/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48806,6 +52598,9 @@ export const schema: Schema = {
           },
           "description": "Extend a volume",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:volume/upsize"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48847,6 +52642,9 @@ export const schema: Schema = {
           },
           "description": "Get volume snapshots",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:volume/snapshot/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48881,6 +52679,9 @@ export const schema: Schema = {
           },
           "description": "Delete a volume snapshot",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:volume/snapshot/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48909,6 +52710,9 @@ export const schema: Schema = {
           },
           "description": "Get volume snapshot details",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:volume/snapshot/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48943,6 +52747,9 @@ export const schema: Schema = {
           },
           "description": "Get the linked vRack on your project",
           "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:vrack/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -48963,6 +52770,9 @@ export const schema: Schema = {
           },
           "description": "Order and attach a new vRack on your project",
           "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:vrack/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -49535,19 +53345,6 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.ExecutionState": {
-      "description": "Enum values for State",
-      "enum": [
-        "IDLE",
-        "RUNNING",
-        "SUCCESS",
-        "ERROR",
-        "PAUSED"
-      ],
-      "enumType": "string",
-      "id": "ExecutionState",
-      "namespace": "cloud"
-    },
     "cloud.ExecutionStateEnum": {
       "description": "Enum values for State",
       "enum": [
@@ -49683,18 +53480,6 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.LabStatus": {
-      "description": "Enum values for Status",
-      "enum": [
-        "open",
-        "activating",
-        "activated",
-        "closed"
-      ],
-      "enumType": "string",
-      "id": "LabStatus",
-      "namespace": "cloud"
-    },
     "cloud.LabStatusEnum": {
       "description": "Enum values for Status",
       "enum": [
@@ -49783,21 +53568,16 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "cloud.OperationStatusEnum"
+        },
+        "subOperations": {
+          "canBeNull": true,
+          "description": "Sub-operations of the operation",
+          "fullType": "cloud.SubOperation[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.SubOperation[]"
         }
       }
-    },
-    "cloud.OperationStatus": {
-      "description": "Enum values for Status",
-      "enum": [
-        "created",
-        "in-progress",
-        "completed",
-        "in-error",
-        "unknown"
-      ],
-      "enumType": "string",
-      "id": "OperationStatus",
-      "namespace": "cloud"
     },
     "cloud.OperationStatusEnum": {
       "description": "Enum values for Status",
@@ -50438,6 +54218,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.ProjectKubeCustomization"
         },
+        "kubeProxyMode": {
+          "canBeNull": false,
+          "description": "Selected mode for kube-proxy",
+          "fullType": "cloud.kube.KubeProxyModeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.KubeProxyModeEnum"
+        },
         "name": {
           "canBeNull": false,
           "description": "Kubernetes cluster name",
@@ -50587,6 +54375,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "cloud.ProjectKubeCustomizationAPIServer"
+        },
+        "kubeProxy": {
+          "canBeNull": true,
+          "description": "Kubernetes cluster kube-proxy customization",
+          "fullType": "cloud.ProjectKubeCustomizationKubeProxy",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.ProjectKubeCustomizationKubeProxy"
         }
       }
     },
@@ -50637,6 +54433,107 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ProjectKubeCustomizationAPIServerAdmissionPluginsEnum",
       "namespace": "cloud"
+    },
+    "cloud.ProjectKubeCustomizationKubeProxy": {
+      "description": "Cluster kube-proxy customization: iptables and ipvs configurations can both be set at the same time, kube-proxy will use the one according to the cluster's kubeProxyMode value",
+      "id": "ProjectKubeCustomizationKubeProxy",
+      "namespace": "cloud",
+      "properties": {
+        "iptables": {
+          "canBeNull": true,
+          "description": "Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. 'PT60S')",
+          "fullType": "cloud.ProjectKubeCustomizationKubeProxyIptables",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.ProjectKubeCustomizationKubeProxyIptables"
+        },
+        "ipvs": {
+          "canBeNull": true,
+          "description": "Kubernetes cluster kube-proxy customization of ipvs specific config (durations format is RFC3339 duration, e.g. 'PT60S')",
+          "fullType": "cloud.ProjectKubeCustomizationKubeProxyIpvs",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.ProjectKubeCustomizationKubeProxyIpvs"
+        }
+      }
+    },
+    "cloud.ProjectKubeCustomizationKubeProxyIptables": {
+      "description": "Configuration used when kube-proxy is configured with iptables mode (durations format is RFC3339 duration, e.g. 'PT60S')",
+      "id": "ProjectKubeCustomizationKubeProxyIptables",
+      "namespace": "cloud",
+      "properties": {
+        "minSyncPeriod": {
+          "canBeNull": true,
+          "description": "minSyncPeriod is the minimum period that iptables rules are refreshed, in RFC3339 duration format (e.g. 'PT60S')",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
+        },
+        "syncPeriod": {
+          "canBeNull": true,
+          "description": "syncPeriod is the period that iptables rules are refreshed, in RFC3339 duration format (e.g. 'PT60S'). Must be greater than 0",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
+        }
+      }
+    },
+    "cloud.ProjectKubeCustomizationKubeProxyIpvs": {
+      "description": "Configuration used when kube-proxy is configured with ipvs mode (durations format is RFC3339 duration, e.g. 'PT60S')",
+      "id": "ProjectKubeCustomizationKubeProxyIpvs",
+      "namespace": "cloud",
+      "properties": {
+        "minSyncPeriod": {
+          "canBeNull": true,
+          "description": "minSyncPeriod is the minimum period that ipvs rules are refreshed in RFC3339 duration format (e.g. 'PT60S')",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
+        },
+        "scheduler": {
+          "canBeNull": true,
+          "description": "ipvs scheduler",
+          "fullType": "cloud.kube.KubeProxyIpvsSchedulerEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.KubeProxyIpvsSchedulerEnum"
+        },
+        "syncPeriod": {
+          "canBeNull": true,
+          "description": "syncPeriod is the period that ipvs rules are refreshed in RFC3339 duration format (e.g. 'PT60S'). Must be greater than 0",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
+        },
+        "tcpFinTimeout": {
+          "canBeNull": true,
+          "description": "tcpFinTimeout is the timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration format (e.g. 'PT60S'). The default value is 'PT0S', which preserves the current timeout value on the system",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
+        },
+        "tcpTimeout": {
+          "canBeNull": true,
+          "description": "tcpTimeout is the timeout value used for idle IPVS TCP sessions in RFC3339 duration format (e.g. 'PT60S'). The default value is 'PT0S', which preserves the current timeout value on the system. Cannot be set between 'PT0S' and 'PT5S', in order to prevent in-cluster networking issues.",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
+        },
+        "udpTimeout": {
+          "canBeNull": true,
+          "description": "udpTimeout is the timeout value used for IPVS UDP packets in RFC3339 duration format (e.g. 'PT60S'). The default value is 'PT0S', which preserves the current timeout value on the system",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
+        }
+      }
     },
     "cloud.ProjectKubeIpRestrictionUpsert": {
       "description": "Missing description",
@@ -51027,6 +54924,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "cloud.ProjectKubeCustomization"
+        },
+        "kubeProxyMode": {
+          "canBeNull": false,
+          "description": "Selected mode for kube-proxy",
+          "fullType": "cloud.kube.KubeProxyModeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.KubeProxyModeEnum"
         },
         "name": {
           "canBeNull": false,
@@ -51816,18 +55721,6 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.RegionContinent": {
-      "description": "Enum values for ContinentCode",
-      "enum": [
-        "EU",
-        "NA",
-        "US",
-        "ASIA"
-      ],
-      "enumType": "string",
-      "id": "RegionContinent",
-      "namespace": "cloud"
-    },
     "cloud.RegionContinentEnum": {
       "description": "Enum values for ContinentCode",
       "enum": [
@@ -51840,17 +55733,6 @@ export const schema: Schema = {
       "id": "RegionContinentEnum",
       "namespace": "cloud"
     },
-    "cloud.RegionStatus": {
-      "description": "Enum values for Status",
-      "enum": [
-        "UP",
-        "DOWN",
-        "MAINTENANCE"
-      ],
-      "enumType": "string",
-      "id": "RegionStatus",
-      "namespace": "cloud"
-    },
     "cloud.RegionStatusEnum": {
       "description": "Enum values for Status",
       "enum": [
@@ -51860,16 +55742,6 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "RegionStatusEnum",
-      "namespace": "cloud"
-    },
-    "cloud.ServiceStatus": {
-      "description": "Enum values for Status",
-      "enum": [
-        "UP",
-        "DOWN"
-      ],
-      "enumType": "string",
-      "id": "ServiceStatus",
       "namespace": "cloud"
     },
     "cloud.ServiceStatusEnum": {
@@ -52068,6 +55940,77 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "cloud.SubOperation": {
+      "description": "A sub-operation is a child of an operation on your Project",
+      "id": "SubOperation",
+      "namespace": "cloud",
+      "properties": {
+        "action": {
+          "canBeNull": false,
+          "description": "The action of the sub-operation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "completedAt": {
+          "canBeNull": true,
+          "description": "The completed date of the sub-operation",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique ID to describe the sub-operation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "progress": {
+          "canBeNull": false,
+          "description": "The progression in percentage of the sub-operation",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "regions": {
+          "canBeNull": true,
+          "description": "Affected regions of the sub-operation",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "resourceId": {
+          "canBeNull": true,
+          "description": "Affected resource of the sub-operation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "startedAt": {
+          "canBeNull": true,
+          "description": "The started date of the sub-operation",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Sub-operation status",
+          "fullType": "cloud.OperationStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.OperationStatusEnum"
         }
       }
     },
@@ -53258,17 +57201,6 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.billingView.UnitQuantity": {
-      "description": "UnitQuantity",
-      "enum": [
-        "GiB",
-        "GiBh",
-        "Hour"
-      ],
-      "enumType": "string",
-      "id": "UnitQuantity",
-      "namespace": "cloud.billingView"
-    },
     "cloud.billingView.UnitQuantityEnum": {
       "description": "UnitQuantity",
       "enum": [
@@ -53461,29 +57393,6 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "Region name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "cloud.capabilities.Capability": {
-      "description": "Capability",
-      "id": "Capability",
-      "namespace": "cloud.capabilities",
-      "properties": {
-        "enabled": {
-          "canBeNull": false,
-          "description": "Capability status",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Capability name",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -54115,29 +58024,6 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.forecast.ProjectForecast": {
-      "description": "ProjectForecast",
-      "id": "ProjectForecast",
-      "namespace": "cloud.forecast",
-      "properties": {
-        "lastMetric": {
-          "canBeNull": false,
-          "description": "Time when we got last metric",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "projectForecast": {
-          "canBeNull": false,
-          "description": "Forecast for your whole project",
-          "fullType": "order.Price",
-          "readOnly": true,
-          "required": false,
-          "type": "order.Price"
-        }
-      }
-    },
     "cloud.image.Image": {
       "description": "Image",
       "id": "Image",
@@ -54415,6 +58301,474 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "ip"
+        }
+      }
+    },
+    "cloud.instance.CreateInput": {
+      "description": "Instance creation input",
+      "id": "CreateInput",
+      "namespace": "cloud.instance",
+      "properties": {
+        "autobackup": {
+          "canBeNull": false,
+          "description": "Create an autobackup workflow after instance start up",
+          "fullType": "cloud.instance.CreateInput.Autobackup",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.Autobackup"
+        },
+        "billingPeriod": {
+          "canBeNull": false,
+          "description": "Billing period",
+          "fullType": "cloud.instance.CreateInput.BillingPeriodEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.BillingPeriodEnum"
+        },
+        "bootFrom": {
+          "canBeNull": false,
+          "description": "Boot the instance from an image or a volume",
+          "fullType": "cloud.instance.CreateInput.BootFrom",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.BootFrom"
+        },
+        "bulk": {
+          "canBeNull": false,
+          "description": "Create multiple instances",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "flavor": {
+          "canBeNull": false,
+          "description": "Flavor information",
+          "fullType": "cloud.instance.CreateInput.Flavor",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.Flavor"
+        },
+        "group": {
+          "canBeNull": false,
+          "description": "Start instance in group",
+          "fullType": "cloud.instance.CreateInput.Group",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.Group"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Instance name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "network": {
+          "canBeNull": false,
+          "description": "Networks information",
+          "fullType": "cloud.instance.CreateInput.Network",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.Network"
+        },
+        "sshKey": {
+          "canBeNull": false,
+          "description": "Existing SSH Keypair",
+          "fullType": "cloud.instance.CreateInput.SshKey",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.SshKey"
+        },
+        "sshKeyCreate": {
+          "canBeNull": false,
+          "description": "Information to create a new SSH Keypair",
+          "fullType": "cloud.instance.CreateInput.SshKeyCreate",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.SshKeyCreate"
+        },
+        "userData": {
+          "canBeNull": false,
+          "description": "Configuration information or scripts to use upon launch",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.instance.CreateInput.Autobackup": {
+      "description": "Create an autobackup workflow after instance start up",
+      "id": "Autobackup",
+      "namespace": "cloud.instance.CreateInput",
+      "properties": {
+        "cron": {
+          "canBeNull": false,
+          "description": "Unix Cron pattern (eg: '0 0 * * *')",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "rotation": {
+          "canBeNull": false,
+          "description": "Number of backup to keep",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.instance.CreateInput.BillingPeriodEnum": {
+      "description": "Billing period",
+      "enum": [
+        "hourly",
+        "monthly"
+      ],
+      "enumType": "string",
+      "id": "BillingPeriodEnum",
+      "namespace": "cloud.instance.CreateInput"
+    },
+    "cloud.instance.CreateInput.BootFrom": {
+      "description": "Boot the instance from an image or a volume",
+      "id": "BootFrom",
+      "namespace": "cloud.instance.CreateInput",
+      "properties": {
+        "imageId": {
+          "canBeNull": false,
+          "description": "Instance image id",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "volumeId": {
+          "canBeNull": false,
+          "description": "Specify a volume id to boot from it",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.instance.CreateInput.Flavor": {
+      "description": "Flavor information",
+      "id": "Flavor",
+      "namespace": "cloud.instance.CreateInput",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Instance flavor id",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.instance.CreateInput.Group": {
+      "description": "Start instance in group",
+      "id": "Group",
+      "namespace": "cloud.instance.CreateInput",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Group id",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.instance.CreateInput.Network": {
+      "description": "Networks information",
+      "id": "Network",
+      "namespace": "cloud.instance.CreateInput",
+      "properties": {
+        "private": {
+          "canBeNull": false,
+          "description": "Private network information",
+          "fullType": "cloud.instance.CreateInput.Network.Private",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.Network.Private"
+        },
+        "public": {
+          "canBeNull": false,
+          "description": "Set the new instance as public",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cloud.instance.CreateInput.Network.Private": {
+      "description": "Private network information",
+      "id": "Private",
+      "namespace": "cloud.instance.CreateInput.Network",
+      "properties": {
+        "floatingIp": {
+          "canBeNull": false,
+          "description": "Existing floating IP",
+          "fullType": "cloud.instance.CreateInput.Network.Private.FloatingIp",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.Network.Private.FloatingIp"
+        },
+        "floatingIpCreate": {
+          "canBeNull": false,
+          "description": "Information to create a new floating IP",
+          "fullType": "cloud.instance.CreateInput.Network.Private.FloatingIpCreate",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.Network.Private.FloatingIpCreate"
+        },
+        "gateway": {
+          "canBeNull": false,
+          "description": "Existing gateway",
+          "fullType": "cloud.instance.CreateInput.Network.Private.Gateway",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.Network.Private.Gateway"
+        },
+        "gatewayCreate": {
+          "canBeNull": false,
+          "description": "Information to create a new gateway",
+          "fullType": "cloud.instance.CreateInput.Network.Private.GatewayCreate",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.Network.Private.GatewayCreate"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "Instance IP in the private network",
+          "fullType": "ipv4",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv4"
+        },
+        "network": {
+          "canBeNull": false,
+          "description": "Existing private network",
+          "fullType": "cloud.instance.CreateInput.Network.Private.Network",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.Network.Private.Network"
+        },
+        "networkCreate": {
+          "canBeNull": false,
+          "description": "Information to create a new private network",
+          "fullType": "cloud.instance.CreateInput.Network.Private.NetworkCreate",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.Network.Private.NetworkCreate"
+        }
+      }
+    },
+    "cloud.instance.CreateInput.Network.Private.FloatingIp": {
+      "description": "Existing floating IP",
+      "id": "FloatingIp",
+      "namespace": "cloud.instance.CreateInput.Network.Private",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Floating IP ID",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.instance.CreateInput.Network.Private.FloatingIpCreate": {
+      "description": "Information to create a new floating IP",
+      "id": "FloatingIpCreate",
+      "namespace": "cloud.instance.CreateInput.Network.Private",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Floating IP description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.instance.CreateInput.Network.Private.Gateway": {
+      "description": "Existing gateway",
+      "id": "Gateway",
+      "namespace": "cloud.instance.CreateInput.Network.Private",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Gateway ID",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.instance.CreateInput.Network.Private.GatewayCreate": {
+      "description": "Information to create a new gateway",
+      "id": "GatewayCreate",
+      "namespace": "cloud.instance.CreateInput.Network.Private",
+      "properties": {
+        "model": {
+          "canBeNull": false,
+          "description": "Gateway model",
+          "fullType": "cloud.instance.CreateInput.Network.Private.GatewayCreate.ModelEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.Network.Private.GatewayCreate.ModelEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Gateway name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.instance.CreateInput.Network.Private.GatewayCreate.ModelEnum": {
+      "description": "Gateway model",
+      "enum": [
+        "l",
+        "m",
+        "s"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "cloud.instance.CreateInput.Network.Private.GatewayCreate"
+    },
+    "cloud.instance.CreateInput.Network.Private.Network": {
+      "description": "Existing private network",
+      "id": "Network",
+      "namespace": "cloud.instance.CreateInput.Network.Private",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Network ID",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "subnetId": {
+          "canBeNull": false,
+          "description": "Existing Subnet ID",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.instance.CreateInput.Network.Private.NetworkCreate": {
+      "description": "Information to create a new private network",
+      "id": "NetworkCreate",
+      "namespace": "cloud.instance.CreateInput.Network.Private",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Network name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "subnet": {
+          "canBeNull": false,
+          "description": "New subnet information",
+          "fullType": "cloud.instance.CreateInput.Network.Private.NetworkCreate.Subnet",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.CreateInput.Network.Private.NetworkCreate.Subnet"
+        },
+        "vlanId": {
+          "canBeNull": false,
+          "description": "Network vlan ID",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.instance.CreateInput.Network.Private.NetworkCreate.Subnet": {
+      "description": "New subnet information",
+      "id": "Subnet",
+      "namespace": "cloud.instance.CreateInput.Network.Private.NetworkCreate",
+      "properties": {
+        "cidr": {
+          "canBeNull": false,
+          "description": "Subnet range in CIDR notation",
+          "fullType": "ipv4Block",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv4Block"
+        },
+        "enableDhcp": {
+          "canBeNull": false,
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "ipVersion": {
+          "canBeNull": false,
+          "description": "IP version",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.instance.CreateInput.SshKey": {
+      "description": "Existing SSH Keypair",
+      "id": "SshKey",
+      "namespace": "cloud.instance.CreateInput",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "SSH Keypair name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.instance.CreateInput.SshKeyCreate": {
+      "description": "Information to create a new SSH Keypair",
+      "id": "SshKeyCreate",
+      "namespace": "cloud.instance.CreateInput",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "SSH key name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "publicKey": {
+          "canBeNull": false,
+          "description": "SSH public key",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -54822,19 +59176,6 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.instance.MetricsPeriod": {
-      "description": "MetricsPeriod",
-      "enum": [
-        "lastday",
-        "lastmonth",
-        "lastweek",
-        "lastyear",
-        "today"
-      ],
-      "enumType": "string",
-      "id": "MetricsPeriod",
-      "namespace": "cloud.instance"
-    },
     "cloud.instance.MetricsPeriodEnum": {
       "description": "MetricsPeriod",
       "enum": [
@@ -54846,20 +59187,6 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "MetricsPeriodEnum",
-      "namespace": "cloud.instance"
-    },
-    "cloud.instance.MetricsType": {
-      "description": "MetricsType",
-      "enum": [
-        "mem:used",
-        "mem:max",
-        "cpu:used",
-        "cpu:max",
-        "net:tx",
-        "net:rx"
-      ],
-      "enumType": "string",
-      "id": "MetricsType",
       "namespace": "cloud.instance"
     },
     "cloud.instance.MetricsTypeEnum": {
@@ -55476,6 +59803,14 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
+        "kubeProxyMode": {
+          "canBeNull": false,
+          "description": "Selected mode for kube-proxy",
+          "fullType": "cloud.kube.KubeProxyModeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.kube.KubeProxyModeEnum"
+        },
         "name": {
           "canBeNull": false,
           "description": "Cluster name",
@@ -55590,7 +59925,6 @@ export const schema: Schema = {
       "enum": [
         "DELETED",
         "DELETING",
-        "DOWNSCALING",
         "ERROR",
         "INSTALLING",
         "MAINTENANCE",
@@ -55598,15 +59932,12 @@ export const schema: Schema = {
         "REDEPLOYING",
         "REOPENING",
         "RESETTING",
-        "RESIZING",
         "SUSPENDED",
         "SUSPENDING",
         "UPDATING",
-        "UPSCALING",
         "USER_ERROR",
-        "USER_NODE_NOT_FOUND_ERROR",
-        "USER_NODE_SUSPENDED_SERVICE",
-        "USER_QUOTA_ERROR"
+        "USER_QUOTA_ERROR",
+        "USER_WEBHOOK_PREVENTING_OPERATIONS_ERROR"
       ],
       "enumType": "string",
       "id": "ClusterStatusEnum",
@@ -55736,6 +60067,30 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "FlavorStateEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.KubeProxyIpvsSchedulerEnum": {
+      "description": "Enum values for scheduler parameter of cluster kubeProxy custom ipvs config",
+      "enum": [
+        "dh",
+        "lc",
+        "nq",
+        "rr",
+        "sed",
+        "sh"
+      ],
+      "enumType": "string",
+      "id": "KubeProxyIpvsSchedulerEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.KubeProxyModeEnum": {
+      "description": "Enum values for cluster kubeProxyMode",
+      "enum": [
+        "iptables",
+        "ipvs"
+      ],
+      "enumType": "string",
+      "id": "KubeProxyModeEnum",
       "namespace": "cloud.kube"
     },
     "cloud.kube.Kubeconfig": {
@@ -56070,7 +60425,6 @@ export const schema: Schema = {
         "REDEPLOYING",
         "REOPENING",
         "RESETTING",
-        "RESIZING",
         "SUSPENDED",
         "SUSPENDING",
         "UPDATING",
@@ -56078,7 +60432,8 @@ export const schema: Schema = {
         "USER_ERROR",
         "USER_NODE_NOT_FOUND_ERROR",
         "USER_NODE_SUSPENDED_SERVICE",
-        "USER_QUOTA_ERROR"
+        "USER_QUOTA_ERROR",
+        "USER_WEBHOOK_PREVENTING_OPERATIONS_ERROR"
       ],
       "enumType": "string",
       "id": "NodePoolStatusEnum",
@@ -56187,23 +60542,22 @@ export const schema: Schema = {
       "enum": [
         "DELETED",
         "DELETING",
-        "DOWNSCALING",
         "ERROR",
+        "FLAVOR_OUT_OF_STOCK_ERROR",
         "INSTALLING",
         "MAINTENANCE",
         "READY",
         "REDEPLOYING",
         "REOPENING",
         "RESETTING",
-        "RESIZING",
         "SUSPENDED",
         "SUSPENDING",
         "UPDATING",
-        "UPSCALING",
         "USER_ERROR",
         "USER_NODE_NOT_FOUND_ERROR",
         "USER_NODE_SUSPENDED_SERVICE",
-        "USER_QUOTA_ERROR"
+        "USER_QUOTA_ERROR",
+        "USER_WEBHOOK_PREVENTING_OPERATIONS_ERROR"
       ],
       "enumType": "string",
       "id": "NodeStatusEnum",
@@ -56505,8 +60859,6 @@ export const schema: Schema = {
     "cloud.kube.VersionEnum": {
       "description": "List of available versions for installation",
       "enum": [
-        "1.21",
-        "1.22",
         "1.23",
         "1.24",
         "1.25"
@@ -56710,11 +61062,11 @@ export const schema: Schema = {
         },
         "periodicity": {
           "canBeNull": false,
-          "description": "Time between sending probes to members, in seconds",
-          "fullType": "long",
+          "description": "Duration between sending probes to members, in format RFC3339",
+          "fullType": "duration",
           "readOnly": false,
           "required": true,
-          "type": "long"
+          "type": "duration"
         },
         "poolId": {
           "canBeNull": false,
@@ -56723,6 +61075,85 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "uuid"
+        },
+        "provisioningStatus": {
+          "canBeNull": false,
+          "description": "The provisioning status of the resource",
+          "fullType": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerProvisioningStatusEnum"
+        },
+        "timeout": {
+          "canBeNull": false,
+          "description": "Maximum time, in seconds, that a monitor waits to connect before it times out. This value must be less than the periodicity value",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.loadbalancing.HealthMonitorCreate": {
+      "description": "Create a health monitor on loadbalancer creation",
+      "id": "HealthMonitorCreate",
+      "namespace": "cloud.loadbalancing",
+      "properties": {
+        "httpConfiguration": {
+          "canBeNull": true,
+          "description": "Monitor HTTP configuration",
+          "fullType": "cloud.loadbalancing.HealthMonitorHTTPConfiguration",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.loadbalancing.HealthMonitorHTTPConfiguration"
+        },
+        "maxRetries": {
+          "canBeNull": false,
+          "description": "Number of successful checks before changing the operating status of the member to ONLINE",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "maxRetriesDown": {
+          "canBeNull": false,
+          "description": "Number of allowed check failures before changing the operating status of the member to ERROR",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "monitorType": {
+          "canBeNull": false,
+          "description": "Type of the monitor",
+          "fullType": "cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The name of the resource",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "operatingStatus": {
+          "canBeNull": false,
+          "description": "The operating status of the resource",
+          "fullType": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.loadbalancing.LoadBalancerOperatingStatusEnum"
+        },
+        "periodicity": {
+          "canBeNull": false,
+          "description": "Duration between sending probes to members, in format RFC3339",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": true,
+          "type": "duration"
         },
         "provisioningStatus": {
           "canBeNull": false,
@@ -57634,11 +62065,11 @@ export const schema: Schema = {
         },
         "periodicity": {
           "canBeNull": false,
-          "description": "Time between sending probes to members, in seconds",
-          "fullType": "long",
+          "description": "Duration between sending probes to members, in format RFC3339",
+          "fullType": "duration",
           "readOnly": false,
           "required": false,
-          "type": "long"
+          "type": "duration"
         },
         "timeout": {
           "canBeNull": false,
@@ -57787,6 +62218,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "boolean"
+        },
+        "healthMonitor": {
+          "canBeNull": true,
+          "description": "Pool health monitor",
+          "fullType": "cloud.loadbalancing.HealthMonitorCreate",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.loadbalancing.HealthMonitorCreate"
         },
         "members": {
           "canBeNull": false,
@@ -59776,167 +64215,6 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.project.NewProject": {
-      "description": "New cloud project",
-      "id": "NewProject",
-      "namespace": "cloud.project",
-      "properties": {
-        "agreements": {
-          "canBeNull": true,
-          "description": "Agreement to valid",
-          "readOnly": false,
-          "required": false,
-          "type": "long[]"
-        },
-        "credit": {
-          "canBeNull": true,
-          "description": "Cloud credit",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.project.NewProjectCredit"
-        },
-        "description": {
-          "canBeNull": true,
-          "description": "Cloud project description",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "orderId": {
-          "canBeNull": true,
-          "description": "Cloud project order id",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "project": {
-          "canBeNull": true,
-          "description": "Cloud project",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "status": {
-          "canBeNull": false,
-          "description": "Project creation status",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.project.NewProjectStatusEnum"
-        }
-      }
-    },
-    "cloud.project.NewProjectCredit": {
-      "description": "Credit details",
-      "id": "NewProjectCredit",
-      "namespace": "cloud.project",
-      "properties": {
-        "description": {
-          "canBeNull": true,
-          "description": "Credit description",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Credit id",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "products": {
-          "canBeNull": true,
-          "description": "Use credits on following products",
-          "readOnly": false,
-          "required": false,
-          "type": "string[]"
-        },
-        "total_credit": {
-          "canBeNull": false,
-          "description": "Total credit",
-          "readOnly": false,
-          "required": false,
-          "type": "order.Price"
-        },
-        "validity": {
-          "canBeNull": true,
-          "description": "Credit validity",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.common.VoucherValidity"
-        }
-      }
-    },
-    "cloud.project.NewProjectInfo": {
-      "description": "New cloud project informations",
-      "id": "NewProjectInfo",
-      "namespace": "cloud.project",
-      "properties": {
-        "agreements": {
-          "canBeNull": true,
-          "description": "Agreement to valid",
-          "readOnly": false,
-          "required": false,
-          "type": "long[]"
-        },
-        "error": {
-          "canBeNull": true,
-          "description": "Error to fix before trying to create a new Public Cloud project",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.project.NewProjectInfoError"
-        },
-        "order": {
-          "canBeNull": true,
-          "description": "Cloud project order",
-          "readOnly": false,
-          "required": false,
-          "type": "order.Price"
-        },
-        "voucher": {
-          "canBeNull": true,
-          "description": "Information about voucher code",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.project.NewProjectInfoVoucher"
-        }
-      }
-    },
-    "cloud.project.NewProjectInfoError": {
-      "description": "Error that can occur when creating a Public Cloud project",
-      "id": "NewProjectInfoError",
-      "namespace": "cloud.project",
-      "properties": {
-        "code": {
-          "canBeNull": false,
-          "description": "Error code",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.project.NewProjectInfoErrorCodeEnum"
-        },
-        "message": {
-          "canBeNull": false,
-          "description": "Error message",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "cloud.project.NewProjectInfoErrorCodeEnum": {
-      "description": "Possible values for error code on project creation",
-      "enum": [
-        "accountNotEligible",
-        "challengePaymentMethodRequested",
-        "invalidPaymentMean",
-        "maxProjectsLimitReached",
-        "paypalAccountNotVerified",
-        "unpaidDebts"
-      ],
-      "enumType": "string",
-      "id": "NewProjectInfoErrorCodeEnum",
-      "namespace": "cloud.project"
-    },
     "cloud.project.NewProjectInfoVoucher": {
       "description": "Information about voucher",
       "id": "NewProjectInfoVoucher",
@@ -59957,18 +64235,6 @@ export const schema: Schema = {
           "type": "boolean"
         }
       }
-    },
-    "cloud.project.NewProjectStatusEnum": {
-      "description": "Possible values for new project status",
-      "enum": [
-        "creating",
-        "ok",
-        "validationPending",
-        "waitingAgreementsValidation"
-      ],
-      "enumType": "string",
-      "id": "NewProjectStatusEnum",
-      "namespace": "cloud.project"
     },
     "cloud.project.PaymentMethodAuthorized": {
       "description": "List of accepted payment methods",
@@ -60310,6 +64576,20 @@ export const schema: Schema = {
         "command": {
           "canBeNull": false,
           "description": "AI Solutions CLI command",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.GenericResponse": {
+      "description": "Basic model with a single message field",
+      "id": "GenericResponse",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "message": {
+          "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -60777,6 +65057,14 @@ export const schema: Schema = {
         },
         "env": {
           "canBeNull": true,
+          "description": "List of environment variable to be set inside the app. Deprecated: use envVars instead",
+          "fullType": "cloud.project.ai.job.JobEnv[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.job.JobEnv[]"
+        },
+        "envVars": {
+          "canBeNull": true,
           "description": "List of environment variable to be set inside the app",
           "fullType": "cloud.project.ai.job.JobEnv[]",
           "readOnly": true,
@@ -60887,6 +65175,14 @@ export const schema: Schema = {
           "type": "long"
         },
         "env": {
+          "canBeNull": true,
+          "description": "List of environment variable to be set inside the app. Deprecated: use envVars instead",
+          "fullType": "cloud.project.ai.job.JobEnv[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.job.JobEnv[]"
+        },
+        "envVars": {
           "canBeNull": true,
           "description": "List of environment variable to be set inside the app",
           "fullType": "cloud.project.ai.job.JobEnv[]",
@@ -61093,6 +65389,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "volumes": {
+          "canBeNull": true,
+          "description": "App Data linked",
+          "fullType": "cloud.project.ai.volume.VolumeStatus[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.volume.VolumeStatus[]"
         }
       }
     },
@@ -61834,6 +66138,14 @@ export const schema: Schema = {
         },
         "env": {
           "canBeNull": true,
+          "description": "List of environment variable to be set inside job. Deprecated: Use envVars instead",
+          "fullType": "cloud.project.ai.job.JobEnv[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.job.JobEnv[]"
+        },
+        "envVars": {
+          "canBeNull": true,
           "description": "List of environment variable to be set inside job",
           "fullType": "cloud.project.ai.job.JobEnv[]",
           "readOnly": true,
@@ -61960,6 +66272,14 @@ export const schema: Schema = {
           "type": "long"
         },
         "env": {
+          "canBeNull": true,
+          "description": "List of environment variable to be set inside job. Deprecated: Use envVars instead",
+          "fullType": "cloud.project.ai.job.JobEnv[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.job.JobEnv[]"
+        },
+        "envVars": {
           "canBeNull": true,
           "description": "List of environment variable to be set inside job",
           "fullType": "cloud.project.ai.job.JobEnv[]",
@@ -62233,6 +66553,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "volumes": {
+          "canBeNull": true,
+          "description": "Job Data linked",
+          "fullType": "cloud.project.ai.volume.VolumeStatus[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.volume.VolumeStatus[]"
         }
       }
     },
@@ -62334,6 +66662,37 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.notebook.Backup": {
+      "description": "AI Solutions Platform Notebook Backup Object",
+      "id": "Backup",
+      "namespace": "cloud.project.ai.notebook",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Backup creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Backup Id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Backup last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
@@ -62823,6 +67182,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "volumes": {
+          "canBeNull": true,
+          "description": "Notebook Data linked",
+          "fullType": "cloud.project.ai.volume.VolumeStatus[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.volume.VolumeStatus[]"
+        },
         "workspace": {
           "canBeNull": true,
           "description": "State of the notebook workspace",
@@ -62970,6 +67337,37 @@ export const schema: Schema = {
           "fullType": "string",
           "readOnly": false,
           "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.registry.RegistryUpdateInput": {
+      "description": "Docker registry update object",
+      "id": "RegistryUpdateInput",
+      "namespace": "cloud.project.ai.registry",
+      "properties": {
+        "password": {
+          "canBeNull": true,
+          "description": "Docker registry password",
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Docker registry URL",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "username": {
+          "canBeNull": true,
+          "description": "Docker registry username",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -63894,7 +68292,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "True if data is stored on OVHcloud AI's internal storage",
           "fullType": "boolean",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "boolean"
         },
@@ -64080,7 +68478,7 @@ export const schema: Schema = {
       }
     },
     "cloud.project.ai.volume.PrivateSwift": {
-      "description": "AI Solutions private Swift container Volume Object",
+      "description": "AI Solutions private Swift container Volume Object. Deprecated: Use DataStore instead",
       "id": "PrivateSwift",
       "namespace": "cloud.project.ai.volume",
       "properties": {
@@ -64320,8 +68718,8 @@ export const schema: Schema = {
           "type": "cloud.project.ai.volume.DataStore"
         },
         "id": {
-          "canBeNull": false,
-          "description": "Volume Id",
+          "canBeNull": true,
+          "description": "Volume Id. Deprecated: moved to status.volumes[]",
           "fullType": "uuid",
           "readOnly": true,
           "required": false,
@@ -64353,7 +68751,7 @@ export const schema: Schema = {
         },
         "privateSwift": {
           "canBeNull": true,
-          "description": "Volume details for private swift containers",
+          "description": "Volume details for private swift containers. Deprecated: Use dataStore instead",
           "fullType": "cloud.project.ai.volume.PrivateSwift",
           "readOnly": false,
           "required": false,
@@ -64401,11 +68799,42 @@ export const schema: Schema = {
         },
         "targetPrivateSwift": {
           "canBeNull": true,
-          "description": "Target volume details for private swift containers",
+          "description": "Target volume details for private swift containers. Deprecated: Use targetDataStore instead",
           "fullType": "cloud.project.ai.volume.PrivateSwift",
           "readOnly": false,
           "required": false,
           "type": "cloud.project.ai.volume.PrivateSwift"
+        }
+      }
+    },
+    "cloud.project.ai.volume.VolumeStatus": {
+      "description": "AI Solutions Volume Object",
+      "id": "VolumeStatus",
+      "namespace": "cloud.project.ai.volume",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Volume Id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "mountPath": {
+          "canBeNull": false,
+          "description": "Path where the data is mounted inside the container",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "userVolumeId": {
+          "canBeNull": false,
+          "description": "User volume Id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
@@ -64474,6 +68903,555 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ServerAlternativeNameKindEnum",
       "namespace": "cloud.project.certificate"
+    },
+    "cloud.project.dataIntegration.CapabilitiesConnectorParameter": {
+      "description": "Connector parameters",
+      "id": "CapabilitiesConnectorParameter",
+      "namespace": "cloud.project.dataIntegration",
+      "properties": {
+        "default": {
+          "canBeNull": true,
+          "description": "Default value of parameter",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of parameter",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "mandatory": {
+          "canBeNull": false,
+          "description": "Parameter is mandatory or not",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of parameter",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of parameter",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "validator": {
+          "canBeNull": false,
+          "description": "Validator of parameter",
+          "fullType": "cloud.project.dataIntegration.ParameterValidator",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataIntegration.ParameterValidator"
+        }
+      }
+    },
+    "cloud.project.dataIntegration.Connection": {
+      "description": "Connection information",
+      "id": "Connection",
+      "namespace": "cloud.project.dataIntegration",
+      "properties": {
+        "date": {
+          "canBeNull": true,
+          "description": "Last date of the connection",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Connection status",
+          "fullType": "cloud.project.dataIntegration.ConnectionStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataIntegration.ConnectionStatusEnum"
+        }
+      }
+    },
+    "cloud.project.dataIntegration.ConnectionStatusEnum": {
+      "description": "Possible state of connection",
+      "enum": [
+        "CONNECTION_FAILED",
+        "CONNECTION_RUNNING",
+        "CONNECTION_SUCCEED"
+      ],
+      "enumType": "string",
+      "id": "ConnectionStatusEnum",
+      "namespace": "cloud.project.dataIntegration"
+    },
+    "cloud.project.dataIntegration.Connector": {
+      "description": "Connector information",
+      "id": "Connector",
+      "namespace": "cloud.project.dataIntegration",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the connector",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "documentationUrl": {
+          "canBeNull": true,
+          "description": "Uri of the documentation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Connector Id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Connector Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "parameters": {
+          "canBeNull": true,
+          "description": "List of needed parameters",
+          "fullType": "cloud.project.dataIntegration.CapabilitiesConnectorParameter[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataIntegration.CapabilitiesConnectorParameter[]"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version of the connector ",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.dataIntegration.Destination": {
+      "description": "Destination information",
+      "id": "Destination",
+      "namespace": "cloud.project.dataIntegration",
+      "properties": {
+        "connectorId": {
+          "canBeNull": false,
+          "description": "Uuid of the connector destination type",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "creationDate": {
+          "canBeNull": true,
+          "description": "Creation date of the destination",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Destination Id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "lastUpdateDate": {
+          "canBeNull": true,
+          "description": "Last update date of the destination",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the destination",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "parameters": {
+          "canBeNull": false,
+          "description": "List of parameter need for the connector",
+          "fullType": "cloud.project.dataIntegration.Parameter[]",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.dataIntegration.Parameter[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current state of the destination",
+          "fullType": "cloud.project.dataIntegration.ConnectionStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataIntegration.ConnectionStatusEnum"
+        }
+      }
+    },
+    "cloud.project.dataIntegration.Job": {
+      "description": "Job information",
+      "id": "Job",
+      "namespace": "cloud.project.dataIntegration",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation date of the job",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "endedAt": {
+          "canBeNull": true,
+          "description": "End date of the job",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Uuid of the job",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "startedAt": {
+          "canBeNull": true,
+          "description": "Start date of the job",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current state of the job",
+          "fullType": "cloud.project.dataIntegration.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataIntegration.StatusEnum"
+        }
+      }
+    },
+    "cloud.project.dataIntegration.Metadata": {
+      "description": "Metadata from source",
+      "id": "Metadata",
+      "namespace": "cloud.project.dataIntegration",
+      "properties": {
+        "endedAt": {
+          "canBeNull": true,
+          "description": "End date of the metadata extraction",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "metadata": {
+          "canBeNull": true,
+          "description": "All metadatas fields from the table",
+          "fullType": "cloud.project.dataIntegration.MetadataDescription[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataIntegration.MetadataDescription[]"
+        },
+        "startedAt": {
+          "canBeNull": false,
+          "description": "Start date of the metadata extraction",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Last status of the metadata extraction",
+          "fullType": "cloud.project.dataIntegration.MetadataStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataIntegration.MetadataStatusEnum"
+        },
+        "tableName": {
+          "canBeNull": false,
+          "description": "Table name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.dataIntegration.MetadataDescription": {
+      "description": "Metadata description",
+      "id": "MetadataDescription",
+      "namespace": "cloud.project.dataIntegration",
+      "properties": {
+        "cardinality": {
+          "canBeNull": false,
+          "description": "Cardinality of the field description",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "max": {
+          "canBeNull": false,
+          "description": "Maximum field value",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "min": {
+          "canBeNull": false,
+          "description": "Minimum field value",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Field name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Field type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.dataIntegration.MetadataStatusEnum": {
+      "description": "Possible state of the metadata extraction",
+      "enum": [
+        "FAILED",
+        "PROCESSING",
+        "STOP",
+        "SUCCESS",
+        "UNKNOWN"
+      ],
+      "enumType": "string",
+      "id": "MetadataStatusEnum",
+      "namespace": "cloud.project.dataIntegration"
+    },
+    "cloud.project.dataIntegration.Parameter": {
+      "description": "Parameters of the connector",
+      "id": "Parameter",
+      "namespace": "cloud.project.dataIntegration",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of parameter",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value of parameter",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.dataIntegration.ParameterValidator": {
+      "description": "Conditions to which the value of parameter must conform",
+      "id": "ParameterValidator",
+      "namespace": "cloud.project.dataIntegration",
+      "properties": {
+        "max": {
+          "canBeNull": true,
+          "description": "Maximal value of parameter",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "min": {
+          "canBeNull": true,
+          "description": "Minimal value of parameter",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "regex": {
+          "canBeNull": true,
+          "description": "Regex to match value of parameter",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.dataIntegration.Source": {
+      "description": "Source information",
+      "id": "Source",
+      "namespace": "cloud.project.dataIntegration",
+      "properties": {
+        "connectorId": {
+          "canBeNull": false,
+          "description": "Uuid of the connector source type",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "creationDate": {
+          "canBeNull": true,
+          "description": "Creation date of the source",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Uuid of the source",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "lastUpdateDate": {
+          "canBeNull": true,
+          "description": "Last update date of the source",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the source",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "parameters": {
+          "canBeNull": false,
+          "description": "List of parameter need for the connector",
+          "fullType": "cloud.project.dataIntegration.Parameter[]",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.dataIntegration.Parameter[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current state of the source",
+          "fullType": "cloud.project.dataIntegration.ConnectionStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataIntegration.ConnectionStatusEnum"
+        }
+      }
+    },
+    "cloud.project.dataIntegration.StatusEnum": {
+      "description": "Possible state of the connector",
+      "enum": [
+        "COMPLETED",
+        "DELETED",
+        "FAILED",
+        "PROVISIONING",
+        "RUNNING",
+        "SUBMITTED",
+        "TERMINATED",
+        "UNKNOWN"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloud.project.dataIntegration"
+    },
+    "cloud.project.dataIntegration.Workflow": {
+      "description": "Workflow information",
+      "id": "Workflow",
+      "namespace": "cloud.project.dataIntegration",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the workflow",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "destinationId": {
+          "canBeNull": false,
+          "description": "Uuid of the destination to use",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Uuid of the workflow",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the workflow",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "schedule": {
+          "canBeNull": false,
+          "description": "Schedule of the workflow in cron format",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "sourceId": {
+          "canBeNull": false,
+          "description": "Uuid of the source to use",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        }
+      }
     },
     "cloud.project.dataProcessing.AuthorizationStatus": {
       "description": "Authorization status",
@@ -64898,6 +69876,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "notebook": {
+          "canBeNull": true,
+          "description": "Notebook associated to the job",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "region": {
           "canBeNull": false,
           "description": "Openstack region of the job",
@@ -65222,7 +70208,7 @@ export const schema: Schema = {
     "cloud.project.dataProcessing.notebook.NotebookStateEnum": {
       "description": "State of the notebook",
       "enum": [
-        "DELETING",
+        "DELETED",
         "FAILED",
         "RUNNING",
         "STARTING",
@@ -65928,6 +70914,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string[]"
         },
+        "storage": {
+          "canBeNull": false,
+          "description": "Storage strategy of the engine",
+          "fullType": "cloud.project.database.capabilities.engine.storage.StrategyEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.capabilities.engine.storage.StrategyEnum"
+        },
         "versions": {
           "canBeNull": false,
           "description": "Versions available for this engine",
@@ -66137,6 +71131,17 @@ export const schema: Schema = {
       "id": "TypeEnum",
       "namespace": "cloud.project.database.capabilities.advancedConfiguration.property"
     },
+    "cloud.project.database.capabilities.engine.storage.StrategyEnum": {
+      "description": "Possible storage strategy for an engine",
+      "enum": [
+        "distributed",
+        "n/a",
+        "replicated"
+      ],
+      "enumType": "string",
+      "id": "StrategyEnum",
+      "namespace": "cloud.project.database.capabilities.engine.storage"
+    },
     "cloud.project.database.capabilities.integration.Parameter": {
       "description": "Integration capability parameter",
       "id": "Parameter",
@@ -66344,6 +71349,14 @@ export const schema: Schema = {
         "restApi": {
           "canBeNull": false,
           "description": "Defines whether the REST API is enabled on the cluster",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "schemaRegistry": {
+          "canBeNull": false,
+          "description": "Defines whether the schema registry is enabled on the cluster",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,
@@ -68563,11 +73576,19 @@ export const schema: Schema = {
         },
         "region": {
           "canBeNull": false,
-          "description": "Region where the backup is stored",
+          "description": "Region where the backup is stored. DEPRECATED: use regions",
           "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "regions": {
+          "canBeNull": false,
+          "description": "Regions where the backup are stored",
+          "fullType": "cloud.project.database.service.backup.Region[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.service.backup.Region[]"
         },
         "size": {
           "canBeNull": false,
@@ -69604,6 +74625,21 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.database.service.backup.Region": {
+      "description": "Cloud database backup region definition",
+      "id": "Region",
+      "namespace": "cloud.project.database.service.backup",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the region where the backup is stored",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "cloud.project.database.service.creation.BackupFork": {
       "description": "Defines the variable to fork a cluster from a backup",
       "id": "BackupFork",
@@ -69898,6 +74934,7 @@ export const schema: Schema = {
         "kafkaConnect",
         "kafkaRestApi",
         "kafkaSASL",
+        "kafkaSchemaRegistry",
         "kibana",
         "m3coordinator",
         "mongodb",
@@ -72201,6 +77238,29 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.quota.KeymanagerQuotas": {
+      "description": "Quotas on keymanager",
+      "id": "KeymanagerQuotas",
+      "namespace": "cloud.quota",
+      "properties": {
+        "maxSecrets": {
+          "canBeNull": false,
+          "description": "Maximum number of secrets allowed in your project",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "usedSecrets": {
+          "canBeNull": false,
+          "description": "Current number of used secrets",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "cloud.quota.KeypairQuotas": {
       "description": "Quotas on keypairs",
       "id": "KeypairQuotas",
@@ -72209,6 +77269,29 @@ export const schema: Schema = {
         "maxCount": {
           "canBeNull": false,
           "description": "Maximum keypairs count allowed in your project",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.quota.LoadbalancerQuotas": {
+      "description": "Quotas on loadbalancer",
+      "id": "LoadbalancerQuotas",
+      "namespace": "cloud.quota",
+      "properties": {
+        "maxLoadbalancers": {
+          "canBeNull": false,
+          "description": "Maximum number of loadbalancers allowed in your project",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "usedLoadbalancers": {
+          "canBeNull": false,
+          "description": "Current number of used loadbalancers",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -72247,6 +77330,45 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.quota.NetworkQuotas": {
+      "description": "Quotas on network",
+      "id": "NetworkQuotas",
+      "namespace": "cloud.quota",
+      "properties": {
+        "maxFloatingIPs": {
+          "canBeNull": false,
+          "description": "Maximum number of floating ips allowed in your project",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxGateways": {
+          "canBeNull": false,
+          "description": "Maximum number of gateways allowed in your project",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "usedFloatingIPs": {
+          "canBeNull": false,
+          "description": "Current number of used floating ips",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "usedGateways": {
+          "canBeNull": false,
+          "description": "Current number of used gateways",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "cloud.quota.Quotas": {
       "description": "Quotas",
       "id": "Quotas",
@@ -72260,6 +77382,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.quota.InstanceUsageQuotas"
         },
+        "keymanager": {
+          "canBeNull": true,
+          "description": "Quotas on keymanager",
+          "fullType": "cloud.quota.KeymanagerQuotas",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.quota.KeymanagerQuotas"
+        },
         "keypair": {
           "canBeNull": true,
           "description": "Quotas on keypairs",
@@ -72267,6 +77397,22 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "cloud.quota.KeypairQuotas"
+        },
+        "loadbalancer": {
+          "canBeNull": true,
+          "description": "Quotas on loadbalancer",
+          "fullType": "cloud.quota.LoadbalancerQuotas",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.quota.LoadbalancerQuotas"
+        },
+        "network": {
+          "canBeNull": true,
+          "description": "Quotas on network",
+          "fullType": "cloud.quota.NetworkQuotas",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.quota.NetworkQuotas"
         },
         "region": {
           "canBeNull": false,
@@ -73146,6 +78292,29 @@ export const schema: Schema = {
       "id": "PresignedURLMethodEnum",
       "namespace": "cloud.storage"
     },
+    "cloud.storage.Quota": {
+      "description": "Cloud Storage Quota",
+      "id": "Quota",
+      "namespace": "cloud.storage",
+      "properties": {
+        "buckets": {
+          "canBeNull": false,
+          "description": "Current number of buckets",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxBuckets": {
+          "canBeNull": false,
+          "description": "Maximum number of buckets",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "cloud.storage.RetrievalStateEnum": {
       "description": "RetrievalStateEnum",
       "enum": [
@@ -73474,6 +78643,21 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "cloud.usage.UsageBill[]"
+        }
+      }
+    },
+    "cloud.user.Configuration": {
+      "description": "Client Cloud Configuration",
+      "id": "Configuration",
+      "namespace": "cloud.user",
+      "properties": {
+        "content": {
+          "canBeNull": false,
+          "description": "Client configuration",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -73960,6 +79144,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "region": {
+          "canBeNull": false,
+          "description": "Volume backup region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "size": {
           "canBeNull": false,
           "description": "Size of the backup in GiB",
@@ -74104,12 +79296,12 @@ export const schema: Schema = {
     },
     "order.CurrencyCodeEnum": {
       "enum": [
+        " INR",
         "AUD",
         "CAD",
         "CZK",
         "EUR",
         "GBP",
-        "INR",
         "LTL",
         "MAD",
         "N/A",

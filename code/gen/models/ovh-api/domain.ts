@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -41,6 +44,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -61,6 +67,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "domain:apiovh:edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -94,6 +103,9 @@ export const schema: Schema = {
           },
           "description": "Return authInfo code if the domain is unlocked",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:authInfo/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -120,6 +132,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "domain:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -170,6 +185,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve obfuscated emails configuration",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:configuration/obfuscatedEmail/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -190,6 +208,9 @@ export const schema: Schema = {
           },
           "description": "Save a new obfuscated emails configuration",
           "httpMethod": "PUT",
+          "iamActions": [
+            "domain:apiovh:configuration/obfuscatedEmail/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -221,8 +242,11 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Refresh an obfuscated emails configuration",
+          "description": "Refresh an obfuscated emails configuration with new values",
           "httpMethod": "POST",
+          "iamActions": [
+            "domain:apiovh:configuration/obfuscatedEmail/refresh"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -256,6 +280,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve optin configuration",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:configuration/optin/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -276,6 +303,9 @@ export const schema: Schema = {
           },
           "description": "Save a new optin configuration",
           "httpMethod": "PUT",
+          "iamActions": [
+            "domain:apiovh:configuration/optin/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -309,6 +339,9 @@ export const schema: Schema = {
           },
           "description": "List of domain's DS Records",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:dsRecord/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -345,6 +378,9 @@ export const schema: Schema = {
           },
           "description": "Update DS records",
           "httpMethod": "POST",
+          "iamActions": [
+            "domain:apiovh:dsRecord/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -379,6 +415,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:dsRecord/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -413,6 +452,9 @@ export const schema: Schema = {
           },
           "description": "List of glue records",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:glueRecord/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -441,6 +483,9 @@ export const schema: Schema = {
           },
           "description": "Create a glue record",
           "httpMethod": "POST",
+          "iamActions": [
+            "domain:apiovh:glueRecord/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -474,6 +519,9 @@ export const schema: Schema = {
           },
           "description": "Delete the glue record",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "domain:apiovh:glueRecord/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -502,6 +550,9 @@ export const schema: Schema = {
           },
           "description": "Get this glue record",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:glueRecord/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -536,6 +587,9 @@ export const schema: Schema = {
           },
           "description": "Update the glue record",
           "httpMethod": "POST",
+          "iamActions": [
+            "domain:apiovh:glueRecord/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -577,6 +631,9 @@ export const schema: Schema = {
           },
           "description": "List of current name servers",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:nameServer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -597,6 +654,9 @@ export const schema: Schema = {
           },
           "description": "Add new name server",
           "httpMethod": "POST",
+          "iamActions": [
+            "domain:apiovh:nameServer/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -630,6 +690,9 @@ export const schema: Schema = {
           },
           "description": "Delete a name server",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "domain:apiovh:nameServer/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -658,6 +721,9 @@ export const schema: Schema = {
           },
           "description": "Get this name server configuration",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:nameServer/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -692,37 +758,9 @@ export const schema: Schema = {
           },
           "description": "Get name server status",
           "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your domain",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
+          "iamActions": [
+            "domain:apiovh:nameServer/status/get"
           ],
-          "responseType": "domain.nameServer.NameServerStatus"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-03-31T00:00:00+01:00",
-            "deprecatedDate": "2022-01-26T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "GET /domain/{serviceName}/nameServer/{id}/status",
-            "value": "DEPRECATED"
-          },
-          "description": "Get name server status",
-          "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
@@ -757,6 +795,9 @@ export const schema: Schema = {
           },
           "description": "Update DNS servers",
           "httpMethod": "POST",
+          "iamActions": [
+            "domain:apiovh:nameServer/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -790,6 +831,9 @@ export const schema: Schema = {
           },
           "description": "List domain options",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -816,6 +860,9 @@ export const schema: Schema = {
           },
           "description": "Remove a given option",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "domain:apiovh:option/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -844,6 +891,9 @@ export const schema: Schema = {
           },
           "description": "Get details on this domain option",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -878,6 +928,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve data about the options associated to a domain",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:options/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -904,6 +957,9 @@ export const schema: Schema = {
           },
           "description": "Approve Outgoing Transfer for a domain",
           "httpMethod": "POST",
+          "iamActions": [
+            "domain:apiovh:outgoingTransfer/approve"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -940,6 +996,9 @@ export const schema: Schema = {
           },
           "description": "List of whois obfuscators",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:owo/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -970,6 +1029,9 @@ export const schema: Schema = {
           },
           "description": "Add whois obfuscators",
           "httpMethod": "POST",
+          "iamActions": [
+            "domain:apiovh:owo/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1006,6 +1068,9 @@ export const schema: Schema = {
           },
           "description": "Delete a whois obfuscator",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "domain:apiovh:owo/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1036,6 +1101,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:owo/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1070,6 +1138,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve emails obfuscation rule",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:rule/emailsObfuscation/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1096,6 +1167,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve optin rule",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:rule/optin/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1122,6 +1196,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1142,6 +1219,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "domain:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1175,6 +1255,9 @@ export const schema: Schema = {
           },
           "description": "List all domain tasks",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1217,6 +1300,9 @@ export const schema: Schema = {
           },
           "description": "Get details about a domain task",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1251,6 +1337,9 @@ export const schema: Schema = {
           },
           "description": "Accelerate the task",
           "httpMethod": "POST",
+          "iamActions": [
+            "domain:apiovh:task/accelerate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1285,6 +1374,9 @@ export const schema: Schema = {
           },
           "description": "Cancel the task",
           "httpMethod": "POST",
+          "iamActions": [
+            "domain:apiovh:task/cancel"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1319,6 +1411,9 @@ export const schema: Schema = {
           },
           "description": "Relaunch the task",
           "httpMethod": "POST",
+          "iamActions": [
+            "domain:apiovh:task/relaunch"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1353,6 +1448,9 @@ export const schema: Schema = {
           },
           "description": "Schedule an outgoing transfer task for this domain (.uk only)",
           "httpMethod": "POST",
+          "iamActions": [
+            "domain:apiovh:outgoingTransfer/uk/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1386,6 +1484,9 @@ export const schema: Schema = {
           },
           "description": "Return the list of all .uk registrars",
           "httpMethod": "GET",
+          "iamActions": [
+            "domain:apiovh:ukRegistrar/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1446,6 +1547,9 @@ export const schema: Schema = {
           },
           "description": "Validate a rule data for a specified domain",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:domain/configurationRule/check"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1487,6 +1591,9 @@ export const schema: Schema = {
           },
           "description": "List all contacts",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:domain/contact/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "domain.Contact[]"
@@ -1498,6 +1605,9 @@ export const schema: Schema = {
           },
           "description": "Create a contact",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:domain/contact/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1523,6 +1633,9 @@ export const schema: Schema = {
           },
           "description": "Get details about a contact",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:domain/contact/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1543,6 +1656,9 @@ export const schema: Schema = {
           },
           "description": "Update a contact",
           "httpMethod": "PUT",
+          "iamActions": [
+            "account:apiovh:domain/contact/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1631,6 +1747,9 @@ export const schema: Schema = {
           },
           "description": "List all SMD files",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:domain/data/smd/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "domain.data.smd.Smd[]"
@@ -1640,8 +1759,11 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Create a SMD files",
+          "description": "Create a SMD file",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:domain/data/smd/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1667,6 +1789,9 @@ export const schema: Schema = {
           },
           "description": "Delete a SMD file",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "account:apiovh:domain/data/smd/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1687,6 +1812,9 @@ export const schema: Schema = {
           },
           "description": "Get details about a SMD file",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:domain/data/smd/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1707,6 +1835,9 @@ export const schema: Schema = {
           },
           "description": "Update a SMD file",
           "httpMethod": "PUT",
+          "iamActions": [
+            "account:apiovh:domain/data/smd/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1740,6 +1871,9 @@ export const schema: Schema = {
           },
           "description": "List all extensions",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:domain/extension/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1790,6 +1924,9 @@ export const schema: Schema = {
           },
           "description": "Get an extension",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:domain/extension/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1814,8 +1951,11 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Retrieve registry configurations for an extension",
+          "description": "Retrieve registry configuration for an extension",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:domain/extension/registryConfiguration/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1842,6 +1982,9 @@ export const schema: Schema = {
           },
           "description": "List extensions, grouped by category types (like 'thematic', 'geolocalization') and category names (like 'europe')",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:domain/extension/byCategory/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1866,8 +2009,11 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Lists highlighted extensions, ordered by decreased importance",
+          "description": "List highlighted extensions, ordered by decreased importance",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:domain/extension/highlighted/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1894,6 +2040,9 @@ export const schema: Schema = {
           },
           "description": "List extensions with their pricing attributes. It especially documents whether an extension has been implemented recently or whether the price has dropped",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:domain/extension/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1920,6 +2069,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -1937,6 +2089,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1963,6 +2118,9 @@ export const schema: Schema = {
           },
           "description": "Zone capabilities",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:capabilities/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1989,6 +2147,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2039,6 +2200,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2097,6 +2261,9 @@ export const schema: Schema = {
           },
           "description": "Disable Dnssec",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dnsZone:apiovh:dnssec/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2117,6 +2284,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:dnssec/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2137,6 +2307,9 @@ export const schema: Schema = {
           },
           "description": "Enable Dnssec",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:dnssec/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2163,6 +2336,9 @@ export const schema: Schema = {
           },
           "description": "DynHost' logins",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:dynHost/login/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2199,6 +2375,9 @@ export const schema: Schema = {
           },
           "description": "Create a new DynHost login",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:dynHost/login/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2249,6 +2428,9 @@ export const schema: Schema = {
           },
           "description": "Delete a DynHost login",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dnsZone:apiovh:dynHost/login/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2277,6 +2459,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:dynHost/login/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2305,6 +2490,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dnsZone:apiovh:dynHost/login/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2346,6 +2534,9 @@ export const schema: Schema = {
           },
           "description": "Change password of the DynHost login",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:dynHost/login/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2388,6 +2579,9 @@ export const schema: Schema = {
           },
           "description": "DynHost' records",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:dynHost/record/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2416,6 +2610,9 @@ export const schema: Schema = {
           },
           "description": "Create a new DynHost record (Don't forget to refresh the zone)",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:dynHost/record/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2458,6 +2655,9 @@ export const schema: Schema = {
           },
           "description": "Delete a DynHost record (Don't forget to refresh the zone)",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dnsZone:apiovh:dynHost/record/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2486,6 +2686,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:dynHost/record/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2514,6 +2717,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dnsZone:apiovh:dynHost/record/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2555,6 +2761,9 @@ export const schema: Schema = {
           },
           "description": "Export zone",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:export/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2581,6 +2790,9 @@ export const schema: Schema = {
           },
           "description": "Zone restore points",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:history/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2623,6 +2835,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:history/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2657,6 +2872,9 @@ export const schema: Schema = {
           },
           "description": "Restore the DNS zone",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:history/restore"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2691,6 +2909,9 @@ export const schema: Schema = {
           },
           "description": "Import zone",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:import"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2725,6 +2946,9 @@ export const schema: Schema = {
           },
           "description": "List zone options",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2751,6 +2975,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:option/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2785,6 +3012,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:option/serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2813,6 +3043,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dnsZone:apiovh:option/serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2855,6 +3088,9 @@ export const schema: Schema = {
           },
           "description": "Records of the zone",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:record/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2891,6 +3127,9 @@ export const schema: Schema = {
           },
           "description": "Create a new DNS record (Don't forget to refresh the zone)",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:record/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2949,6 +3188,9 @@ export const schema: Schema = {
           },
           "description": "Delete a DNS record (Don't forget to refresh the zone)",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dnsZone:apiovh:record/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2977,6 +3219,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:record/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3005,6 +3250,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dnsZone:apiovh:record/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3046,6 +3294,9 @@ export const schema: Schema = {
           },
           "description": "Redirections",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:redirection/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3074,6 +3325,9 @@ export const schema: Schema = {
           },
           "description": "Create a new redirection (Don't forget to refresh the zone)",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:redirection/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3148,6 +3402,9 @@ export const schema: Schema = {
           },
           "description": "Delete a redirection (Don't forget to refresh the zone)",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "dnsZone:apiovh:redirection/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3176,6 +3433,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:redirection/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3204,6 +3464,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dnsZone:apiovh:redirection/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3245,6 +3508,9 @@ export const schema: Schema = {
           },
           "description": "Apply zone modification on DNS servers",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:refresh"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3271,6 +3537,9 @@ export const schema: Schema = {
           },
           "description": "Reset the DNS zone",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:reset"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3313,6 +3582,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3333,6 +3605,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dnsZone:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3366,6 +3641,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:soa/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3386,6 +3664,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "dnsZone:apiovh:soa/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3419,6 +3700,9 @@ export const schema: Schema = {
           },
           "description": "Zone status",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:status/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3445,6 +3729,9 @@ export const schema: Schema = {
           },
           "description": "Domain pending tasks",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3487,6 +3774,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "dnsZone:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3521,6 +3811,9 @@ export const schema: Schema = {
           },
           "description": "Accelerate the task",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:task/accelerate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3555,6 +3848,9 @@ export const schema: Schema = {
           },
           "description": "Cancel the task",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:task/cancel"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3589,6 +3885,9 @@ export const schema: Schema = {
           },
           "description": "Relaunch the task",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:task/relaunch"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3623,6 +3922,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "dnsZone:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7202,6 +7504,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "kycValidated": {
+          "canBeNull": true,
+          "description": "KYC validation state",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "language": {
           "canBeNull": true,

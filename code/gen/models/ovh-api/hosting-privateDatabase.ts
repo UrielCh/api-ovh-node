@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webCloudDatabases:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Get the availables versions for this private database",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:availableVersions/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -111,6 +123,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -161,6 +176,9 @@ export const schema: Schema = {
           },
           "description": "Change your ftp admin password",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:changeFtpPassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -195,6 +213,9 @@ export const schema: Schema = {
           },
           "description": "Change the private database engine version",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:changeVersion"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -229,6 +250,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:config/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -255,6 +279,9 @@ export const schema: Schema = {
           },
           "description": "Update the configuration",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:config/update"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -289,6 +316,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -347,6 +377,9 @@ export const schema: Schema = {
           },
           "description": "List of privatesql CPU throttle",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:cpuThrottle/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -373,6 +406,9 @@ export const schema: Schema = {
           },
           "description": "Databases linked to your private database service",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:database/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -393,6 +429,9 @@ export const schema: Schema = {
           },
           "description": "Create a new database on your private database service",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:database/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -427,6 +466,9 @@ export const schema: Schema = {
           },
           "description": "Delete the database",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webCloudDatabases:apiovh:database/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -455,6 +497,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:database/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -489,6 +534,9 @@ export const schema: Schema = {
           },
           "description": "Dump available for your databases",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:database/dump/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -533,6 +581,9 @@ export const schema: Schema = {
           },
           "description": "Request the dump of this database ( an email will be send with a link available 30 days )",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:database/dump/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -575,6 +626,9 @@ export const schema: Schema = {
           },
           "description": "Delete dump before expiration date",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webCloudDatabases:apiovh:database/dump/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -611,6 +665,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:database/dump/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -653,6 +710,9 @@ export const schema: Schema = {
           },
           "description": "Request the restore from this dump",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:database/dump/restore"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -695,6 +755,9 @@ export const schema: Schema = {
           },
           "description": "Extensions linked to your database",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:database/extension/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -745,6 +808,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:database/extension/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -787,6 +853,9 @@ export const schema: Schema = {
           },
           "description": "Disable an extension from a database",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:database/extension/disable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -829,6 +898,9 @@ export const schema: Schema = {
           },
           "description": "Enable an extension on a database",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:database/extension/enable"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -871,6 +943,9 @@ export const schema: Schema = {
           },
           "description": "Request the import in this database",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:database/import"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -929,6 +1004,9 @@ export const schema: Schema = {
           },
           "description": "Create a new database/user and grant it",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:databaseWizard/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -987,6 +1065,9 @@ export const schema: Schema = {
           },
           "description": "Dumps available for your private database service",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:dump/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1029,6 +1110,9 @@ export const schema: Schema = {
           },
           "description": "Delete dump before expiration date",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webCloudDatabases:apiovh:dump/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1057,6 +1141,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:dump/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1091,6 +1178,9 @@ export const schema: Schema = {
           },
           "description": "Request the restore from this dump",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:dump/restore"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1133,6 +1223,9 @@ export const schema: Schema = {
           },
           "description": "Generate a temporary url to retrieve instance logs",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:generateTemporaryLogsLink"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1159,6 +1252,9 @@ export const schema: Schema = {
           },
           "description": "List of privatesql OOM kill",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:oom/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1185,6 +1281,9 @@ export const schema: Schema = {
           },
           "description": "Refresh the quota of your private database",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:quotaRefresh"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1211,6 +1310,9 @@ export const schema: Schema = {
           },
           "description": "Restart the private database",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:restart"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1237,6 +1339,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1257,6 +1362,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webCloudDatabases:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1290,6 +1398,9 @@ export const schema: Schema = {
           },
           "description": "Start the private database",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:start"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1316,6 +1427,9 @@ export const schema: Schema = {
           },
           "description": "Stop the private database",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:stop"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1342,6 +1456,9 @@ export const schema: Schema = {
           },
           "description": "Tasks attached to your private database service",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1384,6 +1501,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:tasks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1418,6 +1538,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1444,6 +1567,9 @@ export const schema: Schema = {
           },
           "description": "User allowed to connect on your databases",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1464,6 +1590,9 @@ export const schema: Schema = {
           },
           "description": "Create a new user on your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:user/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1506,6 +1635,9 @@ export const schema: Schema = {
           },
           "description": "Delete a user",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webCloudDatabases:apiovh:user/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1534,6 +1666,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1568,6 +1703,9 @@ export const schema: Schema = {
           },
           "description": "Request a change password for a user",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:user/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1610,6 +1748,9 @@ export const schema: Schema = {
           },
           "description": "User grant's on your databases",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:user/grant/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1638,6 +1779,9 @@ export const schema: Schema = {
           },
           "description": "Add grant on a database",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:user/grant/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1688,6 +1832,9 @@ export const schema: Schema = {
           },
           "description": "Delete a grant on a database",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webCloudDatabases:apiovh:user/grant/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1724,6 +1871,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:user/grant/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1766,6 +1916,9 @@ export const schema: Schema = {
           },
           "description": "Update user grant",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:user/grant/update"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1816,6 +1969,9 @@ export const schema: Schema = {
           },
           "description": "Disable Webhosting network",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webCloudDatabases:apiovh:webhostingNetwork/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1836,6 +1992,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:webhostingNetwork/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1856,6 +2015,9 @@ export const schema: Schema = {
           },
           "description": "Enable Webhosting network",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:webhostingNetwork/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1882,6 +2044,9 @@ export const schema: Schema = {
           },
           "description": "List linked webs",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:webs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1908,6 +2073,9 @@ export const schema: Schema = {
           },
           "description": "Whitelist allowed on your privatesql",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:whitelist/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1952,6 +2120,9 @@ export const schema: Schema = {
           },
           "description": "Create a new IP whitelist",
           "httpMethod": "POST",
+          "iamActions": [
+            "webCloudDatabases:apiovh:whitelist/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2010,6 +2181,9 @@ export const schema: Schema = {
           },
           "description": "Delete ain IP whitelist",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "webCloudDatabases:apiovh:whitelist/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2038,6 +2212,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "webCloudDatabases:apiovh:whitelist/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2066,6 +2243,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "webCloudDatabases:apiovh:whitelist/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2107,6 +2287,9 @@ export const schema: Schema = {
           },
           "description": "Get available order capacitie",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:webCloudDatabases/availableOrderCapacities/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2224,16 +2407,16 @@ export const schema: Schema = {
         "mariadb_10.3",
         "mariadb_10.4",
         "mariadb_10.5",
-        "mongodb_3.4",
         "mongodb_4.0",
         "mysql_5.7",
         "mysql_8.0",
         "postgresql_10",
         "postgresql_11",
         "postgresql_12",
+        "postgresql_13",
         "postgresql_9.6",
-        "redis_4.0",
-        "redis_6.0"
+        "redis_6.0",
+        "redis_7.0"
       ],
       "enumType": "string",
       "id": "AvailableVersionEnum",

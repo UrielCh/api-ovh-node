@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "Get list of owned Nutanix Clusters",
           "httpMethod": "GET",
+          "iamActions": [
+            "nutanix:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get nutanix cluster info",
           "httpMethod": "GET",
+          "iamActions": [
+            "nutanix:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Update nutanix cluster info",
           "httpMethod": "PUT",
+          "iamActions": [
+            "nutanix:apiovh:edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -93,6 +102,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "nutanix:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -151,6 +163,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "nutanix:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -171,6 +186,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "nutanix:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -204,6 +222,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "nutanix:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -219,6 +240,96 @@ export const schema: Schema = {
         }
       ],
       "path": "/nutanix/{serviceName}/terminate"
+    },
+    {
+      "description": "Fetch the availabilities for a given cluster configuration",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Fetch the availabilities for a given cluster configuration",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "",
+              "fullType": "boolean",
+              "name": "erasureCoding",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of the memory hardware part",
+              "fullType": "string",
+              "name": "memory",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The plan code in which the hardware is involved",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Node quantity",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "",
+              "fullType": "boolean",
+              "name": "rackAwareness",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "nutanix.RedundancyFactorEnum",
+              "description": "",
+              "fullType": "nutanix.RedundancyFactorEnum",
+              "name": "redundancyFactor",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of the base hardware",
+              "fullType": "string",
+              "name": "server",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of the storage hardware part",
+              "fullType": "string",
+              "name": "storage",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of the system storage hardware part",
+              "fullType": "string",
+              "name": "systemStorage",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "nutanix.availability[]"
+        }
+      ],
+      "path": "/nutanix/availabilities"
     },
     {
       "description": "Fetch the available Nutanix versions to install",

@@ -114,6 +114,9 @@ export namespace email {
             cnameToCheck?: string;
             domainAliases: string[];
             domainValidated: boolean;
+            expectedAutodiscoverSRV: string;
+            expectedMX: string[];
+            expectedSPF: string;
             isAliasDomain: boolean;
             main?: boolean;
             mxIsValid: boolean;
@@ -123,6 +126,8 @@ export namespace email {
             organization2010?: string;
             sbrDefault?: string;
             sendConnectorIdDefault?: number;
+            spfIsValid: boolean;
+            spfRecord?: string[];
             srvIsValid: boolean;
             srvRecord?: string[];
             state: email.exchange.ObjectStateEnum;
@@ -1336,7 +1341,7 @@ export interface Email {
                          * Create new domain in exchange services
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/domain
                          */
-                        $post(params: { configureAutodiscover?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, sbrDefault?: string, sendConnectorIdDefault?: number, type: email.exchange.DomainTypeEnum }): Promise<email.exchange.Task>;
+                        $post(params: { autoEnableDKIM?: boolean, configureAutodiscover?: boolean, configureDKIM?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, sbrDefault?: string, sendConnectorIdDefault?: number, type: email.exchange.DomainTypeEnum }): Promise<email.exchange.Task>;
                         /**
                          * Controle cache
                          */
@@ -1356,7 +1361,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}
                              */
-                            $put(params?: { cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, sbrDefault?: string, sendConnectorIdDefault?: number, srvIsValid?: boolean, srvRecord?: string[], state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.DomainTypeEnum }): Promise<void>;
+                            $put(params?: { cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, expectedAutodiscoverSRV?: string, expectedMX?: string[], expectedSPF?: string, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, sbrDefault?: string, sendConnectorIdDefault?: number, spfIsValid?: boolean, spfRecord?: string[], srvIsValid?: boolean, srvRecord?: string[], state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.DomainTypeEnum }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -1415,7 +1420,7 @@ export interface Email {
                                  * Create DKIM selector on this domain
                                  * POST /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/dkim
                                  */
-                                $post(params: { configureDkim?: boolean, selectorName: string }): Promise<email.exchange.Task>;
+                                $post(params: { autoEnableDKIM?: boolean, configureDkim?: boolean, selectorName: string }): Promise<email.exchange.Task>;
                                 /**
                                  * Controle cache
                                  */

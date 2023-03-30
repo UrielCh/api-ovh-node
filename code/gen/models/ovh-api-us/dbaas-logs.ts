@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Returns the service object of connected identity.",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Update the service properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -135,6 +147,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of allowed cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:cluster/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -161,6 +176,9 @@ export const schema: Schema = {
           },
           "description": "Returns details of an allowed cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:cluster/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -189,6 +207,9 @@ export const schema: Schema = {
           },
           "description": "Update details of an allowed cluster",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:cluster/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -230,6 +251,9 @@ export const schema: Schema = {
           },
           "description": "List all the retention ID available for a given cluster",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:cluster/retention/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -264,6 +288,9 @@ export const schema: Schema = {
           },
           "description": "Returns details of a retention",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:cluster/retention/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -306,6 +333,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of registered input attached to the logged user",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -326,6 +356,9 @@ export const schema: Schema = {
           },
           "description": "Register a new input object",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:input/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -359,6 +392,9 @@ export const schema: Schema = {
           },
           "description": "Remove the specified input object",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:input/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -387,6 +423,9 @@ export const schema: Schema = {
           },
           "description": "Returns details of specified input",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -415,6 +454,9 @@ export const schema: Schema = {
           },
           "description": "Update information of specified input object",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:input/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -456,6 +498,9 @@ export const schema: Schema = {
           },
           "description": "Returns actions of specified input",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/action/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -490,6 +535,9 @@ export const schema: Schema = {
           },
           "description": "Validate configuration of specified input",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:input/configtest/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -524,6 +572,9 @@ export const schema: Schema = {
           },
           "description": "Returns the config test operation result",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/configtest/result/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -558,6 +609,9 @@ export const schema: Schema = {
           },
           "description": "Returns the flowgger configuration",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/configuration/flowgger/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -586,6 +640,9 @@ export const schema: Schema = {
           },
           "description": "Update the flowgger configuration",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:input/configuration/flowgger/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -627,6 +684,9 @@ export const schema: Schema = {
           },
           "description": "Returns the logstash configuration",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/configuration/logstash/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -655,6 +715,9 @@ export const schema: Schema = {
           },
           "description": "Update the logstash configuration",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:input/configuration/logstash/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -696,6 +759,9 @@ export const schema: Schema = {
           },
           "description": "Schedule the end of specified input",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:input/end"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -730,6 +796,9 @@ export const schema: Schema = {
           },
           "description": "Generate a temporary url to retrieve input logs",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:input/logs/url/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -764,6 +833,9 @@ export const schema: Schema = {
           },
           "description": "Schedule the restart of specified input",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:input/restart"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -798,6 +870,9 @@ export const schema: Schema = {
           },
           "description": "Schedule the start of specified input",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:input/start"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -832,6 +907,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of urls of specified input",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -866,6 +944,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of available input engines",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/engine/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -892,6 +973,9 @@ export const schema: Schema = {
           },
           "description": "Returns details of specified input engine",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/engine/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -926,6 +1010,9 @@ export const schema: Schema = {
           },
           "description": "Return the list of available helpers for the given input engine",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/engine/helper/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -960,6 +1047,9 @@ export const schema: Schema = {
           },
           "description": "Returns details of specified input engine helper",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:input/engine/helper/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1002,6 +1092,9 @@ export const schema: Schema = {
           },
           "description": "Returns Metrics credentials",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:metrics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1028,6 +1121,9 @@ export const schema: Schema = {
           },
           "description": "Latest operations",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:operation/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1054,6 +1150,9 @@ export const schema: Schema = {
           },
           "description": "Returns details of specified operation",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:operation/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1088,6 +1187,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of alias for connected user",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1108,6 +1210,9 @@ export const schema: Schema = {
           },
           "description": "Register a new elasticsearch alias",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1141,6 +1246,9 @@ export const schema: Schema = {
           },
           "description": "Remove specified elasticsearch alias",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1169,6 +1277,9 @@ export const schema: Schema = {
           },
           "description": "Returns specified elasticsearch alias",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1197,6 +1308,9 @@ export const schema: Schema = {
           },
           "description": "Update specified elasticsearch alias",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1238,6 +1352,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of Elasticsearch indexes attached to specified Elasticsearch alias",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/index/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1266,6 +1383,9 @@ export const schema: Schema = {
           },
           "description": "Attach a elasticsearch index to specified elasticsearch alias",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/index/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1307,6 +1427,9 @@ export const schema: Schema = {
           },
           "description": "Detach a elasticsearch index from specified elasticsearch alias",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/index/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1349,6 +1472,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of Graylog streams attached to specified Elasticsearch alias",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/stream/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1377,6 +1503,9 @@ export const schema: Schema = {
           },
           "description": "Attach a graylog stream to specified elasticsearch alias",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/stream/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1418,6 +1547,9 @@ export const schema: Schema = {
           },
           "description": "Detach a graylog stream from specified elasticsearch alias",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/stream/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1460,6 +1592,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of urls of specified alias",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/alias/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1494,6 +1629,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of elasticsearch indexes",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/index/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1514,6 +1652,9 @@ export const schema: Schema = {
           },
           "description": "Register a new elasticsearch index",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/index/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1547,6 +1688,9 @@ export const schema: Schema = {
           },
           "description": "Remove specified elasticsearch index",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/index/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1575,6 +1719,9 @@ export const schema: Schema = {
           },
           "description": "Returns specified elasticsearch index",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/index/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1603,6 +1750,9 @@ export const schema: Schema = {
           },
           "description": "Update specified elasticsearch index",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/index/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1644,6 +1794,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of urls of specified index",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/index/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1678,6 +1831,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of Kibana instances",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/kibana/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1698,6 +1854,9 @@ export const schema: Schema = {
           },
           "description": "Register a new Kibana instance",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/kibana/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1731,6 +1890,9 @@ export const schema: Schema = {
           },
           "description": "Remove specified Kibana instance",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/kibana/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1759,6 +1921,9 @@ export const schema: Schema = {
           },
           "description": "Returns specified Kibana instance",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/kibana/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1787,6 +1952,9 @@ export const schema: Schema = {
           },
           "description": "Update specified Kibana instance",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/kibana/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1828,6 +1996,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of urls of specified Kibana",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/elasticsearch/kibana/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1862,6 +2033,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of graylog dashboards",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/dashboard/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1882,6 +2056,9 @@ export const schema: Schema = {
           },
           "description": "Register a new graylog dashboard",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/dashboard/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1915,6 +2092,9 @@ export const schema: Schema = {
           },
           "description": "Remove specified graylog dashboard",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/dashboard/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1943,6 +2123,9 @@ export const schema: Schema = {
           },
           "description": "Returns details of specified graylog dashboard",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/dashboard/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1971,6 +2154,9 @@ export const schema: Schema = {
           },
           "description": "Update information of specified graylog dashboard",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/dashboard/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2012,6 +2198,9 @@ export const schema: Schema = {
           },
           "description": "Copy all widgets from specified dashboard to a new one",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/dashboard/duplicate/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2053,6 +2242,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of urls of specified graylog dashboard",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/dashboard/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2087,6 +2279,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of graylog streams",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2107,6 +2302,9 @@ export const schema: Schema = {
           },
           "description": "Register a new graylog stream",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2140,6 +2338,9 @@ export const schema: Schema = {
           },
           "description": "Remove specified graylog stream",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2168,6 +2369,9 @@ export const schema: Schema = {
           },
           "description": "Returns details of specified graylog stream",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2196,6 +2400,9 @@ export const schema: Schema = {
           },
           "description": "Update information of specified graylog stream",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2237,6 +2444,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of configured alerts of specified graylog stream",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/alert/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2265,6 +2475,9 @@ export const schema: Schema = {
           },
           "description": "Register a new alert on specified graylog stream",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/alert/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2306,6 +2519,9 @@ export const schema: Schema = {
           },
           "description": "Remove alert from specified graylog stream",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/alert/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2342,6 +2558,9 @@ export const schema: Schema = {
           },
           "description": "Returns details of specified graylog stream alert",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/alert/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2378,6 +2597,9 @@ export const schema: Schema = {
           },
           "description": "Update alert information of specified graylog stream",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/alert/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2427,6 +2649,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of archives",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/archive/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2461,6 +2686,9 @@ export const schema: Schema = {
           },
           "description": "Returns details of specified archive",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/archive/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2503,6 +2731,9 @@ export const schema: Schema = {
           },
           "description": "Get a public temporary URL to access the archive",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/archive/url/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2545,6 +2776,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of rules of specified graylog stream",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2573,6 +2807,9 @@ export const schema: Schema = {
           },
           "description": "Register a new rule on specified graylog stream",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/rule/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2614,6 +2851,9 @@ export const schema: Schema = {
           },
           "description": "Remove specified graylog stream rule",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/rule/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2650,6 +2890,9 @@ export const schema: Schema = {
           },
           "description": "Returns details of specified graylog stream rule",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/rule/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2692,6 +2935,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of urls of specified graylog stream",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/graylog/stream/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2726,6 +2972,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of alias for connected user",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2746,6 +2995,9 @@ export const schema: Schema = {
           },
           "description": "Register a new OpenSearch alias",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2779,6 +3031,9 @@ export const schema: Schema = {
           },
           "description": "Remove specified OpenSearch alias",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2807,6 +3062,9 @@ export const schema: Schema = {
           },
           "description": "Returns specified OpenSearch alias",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2835,6 +3093,9 @@ export const schema: Schema = {
           },
           "description": "Update specified OpenSearch alias",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2876,6 +3137,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of OpenSearch indexes attached to specified OpenSearch alias",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/index/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2904,6 +3168,9 @@ export const schema: Schema = {
           },
           "description": "Attach a OpenSearch index to specified OpenSearch alias",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/index/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2945,6 +3212,9 @@ export const schema: Schema = {
           },
           "description": "Detach a OpenSearch index from specified OpenSearch alias",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/index/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2987,6 +3257,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of Graylog streams attached to specified OpenSearch alias",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/stream/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3015,6 +3288,9 @@ export const schema: Schema = {
           },
           "description": "Attach a Graylog stream to specified OpenSearch alias",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/stream/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3056,6 +3332,9 @@ export const schema: Schema = {
           },
           "description": "Detach a Graylog stream from specified OpenSearch alias",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/stream/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3098,6 +3377,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of urls of specified alias",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/alias/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3132,6 +3414,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of OpenSearch indexes",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/index/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3152,6 +3437,9 @@ export const schema: Schema = {
           },
           "description": "Register a new OpenSearch index",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/index/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3185,6 +3473,9 @@ export const schema: Schema = {
           },
           "description": "Remove specified OpenSearch index",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/index/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3213,6 +3504,9 @@ export const schema: Schema = {
           },
           "description": "Returns specified OpenSearch index",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/index/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3241,6 +3535,9 @@ export const schema: Schema = {
           },
           "description": "Update specified OpenSearch index",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/index/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3282,6 +3579,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of urls of specified index",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/index/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3316,6 +3616,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of OpenSearch Dashboards instances",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/osd/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3336,6 +3639,9 @@ export const schema: Schema = {
           },
           "description": "Register a new OpenSearch Dashboards instance",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/osd/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3369,6 +3675,9 @@ export const schema: Schema = {
           },
           "description": "Remove specified OpenSearch Dashboards instance",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/osd/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3397,6 +3706,9 @@ export const schema: Schema = {
           },
           "description": "Returns specified OpenSearch Dashboards instance",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/osd/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3425,6 +3737,9 @@ export const schema: Schema = {
           },
           "description": "Update specified OpenSearch Dashboards instance",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/osd/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3466,6 +3781,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of urls of specified OpenSearch Dashboards",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:output/opensearch/osd/url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3500,6 +3818,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of roles",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:role/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3520,6 +3841,9 @@ export const schema: Schema = {
           },
           "description": "Register a new role",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3553,6 +3877,9 @@ export const schema: Schema = {
           },
           "description": "Remove specified role",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:role/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3581,6 +3908,9 @@ export const schema: Schema = {
           },
           "description": "Returns details of specified role",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:role/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3609,6 +3939,9 @@ export const schema: Schema = {
           },
           "description": "Update information of specified role",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:role/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3650,6 +3983,9 @@ export const schema: Schema = {
           },
           "description": "Returns the member list of specified role",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:role/member/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3678,6 +4014,9 @@ export const schema: Schema = {
           },
           "description": "Append user into the member list of specified role",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/member/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3719,6 +4058,9 @@ export const schema: Schema = {
           },
           "description": "Remove user from the member list of specified role",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:role/member/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3755,6 +4097,9 @@ export const schema: Schema = {
           },
           "description": "Returns the member metadata",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:role/member/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3791,6 +4136,9 @@ export const schema: Schema = {
           },
           "description": "Update the member metadata",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:role/member/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3840,6 +4188,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of permissions of specified role",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:role/permission/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3874,6 +4225,9 @@ export const schema: Schema = {
           },
           "description": "Remove specified permission",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:role/permission/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3910,6 +4264,9 @@ export const schema: Schema = {
           },
           "description": "Returns details of specified permission",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:role/permission/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3952,6 +4309,9 @@ export const schema: Schema = {
           },
           "description": "Append a elasticsearch alias permission to role",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/permission/alias/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3993,6 +4353,9 @@ export const schema: Schema = {
           },
           "description": "Append a graylog dashboard permission to role",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/permission/dashboard/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4034,6 +4397,9 @@ export const schema: Schema = {
           },
           "description": "Append a elasticsearch index permission to role",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/permission/index/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4075,6 +4441,9 @@ export const schema: Schema = {
           },
           "description": "Append a kibana permission to role",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/permission/kibana/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4116,6 +4485,9 @@ export const schema: Schema = {
           },
           "description": "Append a OpenSearch Dashboards permission to role",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/permission/osd/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4157,6 +4529,9 @@ export const schema: Schema = {
           },
           "description": "Append a graylog stream permission to role",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:role/permission/stream/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4198,6 +4573,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4218,6 +4596,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "ldp:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4251,6 +4632,9 @@ export const schema: Schema = {
           },
           "description": "Returns the list of service tokens",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:token/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4271,6 +4655,9 @@ export const schema: Schema = {
           },
           "description": "Add a new token",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:token/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4304,6 +4691,9 @@ export const schema: Schema = {
           },
           "description": "Delete the specified token",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "ldp:apiovh:token/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4332,6 +4722,9 @@ export const schema: Schema = {
           },
           "description": "Returns the specified token",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:token/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4366,6 +4759,9 @@ export const schema: Schema = {
           },
           "description": "Returns platform useful urls",
           "httpMethod": "GET",
+          "iamActions": [
+            "ldp:apiovh:url/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4392,6 +4788,9 @@ export const schema: Schema = {
           },
           "description": "Initiate a password change procedure.",
           "httpMethod": "POST",
+          "iamActions": [
+            "ldp:apiovh:user/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4414,109 +4813,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/dbaas/logs/{serviceName}/user/changePassword"
-    },
-    {
-      "description": "Engines",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns the list of available input engines",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "uuid[]"
-        }
-      ],
-      "path": "/dbaas/logs/input/engine"
-    },
-    {
-      "description": "Engines",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns details of specified input engine",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Engine ID",
-              "fullType": "uuid",
-              "name": "engineId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Engine"
-        }
-      ],
-      "path": "/dbaas/logs/input/engine/{engineId}"
-    },
-    {
-      "description": "Input engine helpers",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Return the list of available helpers for the given input engine",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Engine ID",
-              "fullType": "uuid",
-              "name": "engineId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        }
-      ],
-      "path": "/dbaas/logs/input/engine/{engineId}/helper"
-    },
-    {
-      "description": "Input engine helpers",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns details of specified input engine helper",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Engine ID",
-              "fullType": "uuid",
-              "name": "engineId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Helper ID",
-              "fullType": "uuid",
-              "name": "helperId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Helper"
-        }
-      ],
-      "path": "/dbaas/logs/input/engine/{engineId}/helper/{helperId}"
     }
   ],
   "basePath": "https://api.us.ovhcloud.com/1.0",

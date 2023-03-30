@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List of your OVH order carts",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:order/cart/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -77,6 +80,9 @@ export const schema: Schema = {
           },
           "description": "Delete a cart",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "account:apiovh:order/cart/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -159,6 +165,9 @@ export const schema: Schema = {
           },
           "description": "Assign a shopping cart to an loggedin client",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:order/cart/assign"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -513,6 +522,9 @@ export const schema: Schema = {
           },
           "description": "Get prices and contracts information for your cart",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:order/cart/checkout/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -533,6 +545,9 @@ export const schema: Schema = {
           },
           "description": "Validate your shopping and create order",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:order/cart/checkout/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2062,8 +2077,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get informations about CloudLinux licenses offers",
           "httpMethod": "GET",
@@ -2082,8 +2099,10 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Post a new CloudLinux license item in your cart",
           "httpMethod": "POST",
@@ -2218,8 +2237,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get informations about Directadmin licenses offers",
           "httpMethod": "GET",
@@ -2238,8 +2259,10 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Post a new Directadmin license item in your cart",
           "httpMethod": "POST",
@@ -2546,8 +2569,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get informations about Virtuozzo licenses offers",
           "httpMethod": "GET",
@@ -2566,8 +2591,10 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Post a new Virtuozzo license item in your cart",
           "httpMethod": "POST",
@@ -2624,8 +2651,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get informations about Virtuozzo license options",
           "httpMethod": "GET",
@@ -2652,8 +2681,10 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Post a new Virtuozzo license option in your cart",
           "httpMethod": "POST",
@@ -2796,8 +2827,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get informations about Worklight licenses offers",
           "httpMethod": "GET",
@@ -2816,8 +2849,10 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Post a new Worklight license item in your cart",
           "httpMethod": "POST",
@@ -3921,6 +3956,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/baremetalServers/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -3938,6 +3976,9 @@ export const schema: Schema = {
           },
           "description": "Get informations about additional baremetal servers offer for your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/baremetalServers/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3958,6 +3999,9 @@ export const schema: Schema = {
           },
           "description": "Post an additional baremetal servers option in your cart",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/baremetalServers/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4024,6 +4068,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/cloud/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -4041,6 +4088,9 @@ export const schema: Schema = {
           },
           "description": "Get informations about additional Cloud offer for your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/cloud/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4061,6 +4111,9 @@ export const schema: Schema = {
           },
           "description": "Post an additional Cloud option in your cart",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/cloud/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4127,6 +4180,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/dedicated/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -4144,6 +4200,9 @@ export const schema: Schema = {
           },
           "description": "Get informations about additional dedicated offer for your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/dedicated/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4164,6 +4223,9 @@ export const schema: Schema = {
           },
           "description": "Post an additional dedicated option in your cart",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/dedicated/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4230,6 +4292,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/ipLoadbalancing/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -4247,6 +4312,9 @@ export const schema: Schema = {
           },
           "description": "Get informations about additional IP Load-Balancing offer for your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/ipLoadbalancing/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4267,6 +4335,9 @@ export const schema: Schema = {
           },
           "description": "Post an additional IP Load-Balancing option in your cart",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/ipLoadbalancing/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4333,6 +4404,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -4350,6 +4424,9 @@ export const schema: Schema = {
           },
           "description": "Get informations about additional Logs offer for your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/logs/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4370,6 +4447,9 @@ export const schema: Schema = {
           },
           "description": "Post an additional Logs option in your cart",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/logs/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4436,6 +4516,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/privateCloud/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -4453,6 +4536,9 @@ export const schema: Schema = {
           },
           "description": "Get informations about additional Dedicated Cloud offer for your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/privateCloud/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4473,6 +4559,9 @@ export const schema: Schema = {
           },
           "description": "Post an additional Dedicated Cloud option in your cart",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/privateCloud/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4539,6 +4628,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/privateCloudEnterprise/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -4556,6 +4648,9 @@ export const schema: Schema = {
           },
           "description": "Get informations about additional Dedicated Cloud offer for your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/privateCloudEnterprise/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4576,6 +4671,9 @@ export const schema: Schema = {
           },
           "description": "Post an additional Dedicated Cloud option in your cart",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/privateCloudEnterprise/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4642,6 +4740,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/privateCloudReseller/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -4659,6 +4760,9 @@ export const schema: Schema = {
           },
           "description": "Get informations about additional Dedicated Cloud offer for your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/privateCloudReseller/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4679,6 +4783,9 @@ export const schema: Schema = {
           },
           "description": "Post an additional Dedicated Cloud option in your cart",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/privateCloudReseller/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4745,6 +4852,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/privateCloudResellerEnterprise/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -4762,6 +4872,9 @@ export const schema: Schema = {
           },
           "description": "Get informations about additional Dedicated Cloud Enterprise offer for your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/privateCloudResellerEnterprise/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4782,6 +4895,9 @@ export const schema: Schema = {
           },
           "description": "Post an additional Dedicated Cloud Enterprise option in your cart",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/privateCloudResellerEnterprise/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4848,6 +4964,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/vps/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -4865,6 +4984,9 @@ export const schema: Schema = {
           },
           "description": "Get informations about additional VPS offer for your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/vps/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4885,6 +5007,9 @@ export const schema: Schema = {
           },
           "description": "Post an additional VPS option in your cart",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/vps/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4951,6 +5076,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/webPaaS/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -4968,6 +5096,9 @@ export const schema: Schema = {
           },
           "description": "Get informations about additional Web PaaS offer for your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/webPaaS/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4988,6 +5119,9 @@ export const schema: Schema = {
           },
           "description": "Post an additional Web PaaS option in your cart",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:cartServiceOption/webPaaS/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5198,8 +5332,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Retrieve information of CloudLinux licenses catalog",
           "httpMethod": "GET",
@@ -5250,8 +5386,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Retrieve information of Directadmin licenses offers catalog",
           "httpMethod": "GET",
@@ -5328,8 +5466,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Retrieve information of Virtuozzo licenses catalog",
           "httpMethod": "GET",
@@ -5380,8 +5520,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Retrieve information of Worklight licenses catalog",
           "httpMethod": "GET",
@@ -5463,6 +5605,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve information of catalog",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:order/catalog/private/privateCloud/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6017,6 +6162,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/baremetalPrivateBandwidth/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -6034,6 +6182,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/baremetalPrivateBandwidth/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6060,6 +6211,9 @@ export const schema: Schema = {
           },
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/baremetalPrivateBandwidth/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6096,6 +6250,9 @@ export const schema: Schema = {
           },
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:upgrade/baremetalPrivateBandwidth/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6146,6 +6303,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/baremetalPublicBandwidth/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -6163,6 +6323,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/baremetalPublicBandwidth/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6189,6 +6352,9 @@ export const schema: Schema = {
           },
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/baremetalPublicBandwidth/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6225,6 +6391,9 @@ export const schema: Schema = {
           },
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:upgrade/baremetalPublicBandwidth/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6275,6 +6444,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/cephaas/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -6292,6 +6464,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/cephaas/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6318,6 +6493,9 @@ export const schema: Schema = {
           },
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/cephaas/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6354,6 +6532,9 @@ export const schema: Schema = {
           },
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:upgrade/cephaas/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6404,6 +6585,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/licensecPanel/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -6421,6 +6605,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/licensecPanel/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6447,6 +6634,9 @@ export const schema: Schema = {
           },
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/licensecPanel/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6483,6 +6673,9 @@ export const schema: Schema = {
           },
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:upgrade/licensecPanel/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6533,6 +6726,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/licensePlesk/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -6550,6 +6746,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/licensePlesk/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6576,6 +6775,9 @@ export const schema: Schema = {
           },
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/licensePlesk/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6612,6 +6814,9 @@ export const schema: Schema = {
           },
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:upgrade/licensePlesk/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6662,6 +6867,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/privateCloud/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -6679,6 +6887,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/privateCloud/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6705,6 +6916,9 @@ export const schema: Schema = {
           },
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/privateCloud/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6741,6 +6955,9 @@ export const schema: Schema = {
           },
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:upgrade/privateCloud/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6791,6 +7008,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/privateCloudManagementFee/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -6808,6 +7028,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/privateCloudManagementFee/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6834,6 +7057,9 @@ export const schema: Schema = {
           },
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/privateCloudManagementFee/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6870,6 +7096,9 @@ export const schema: Schema = {
           },
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:upgrade/privateCloudManagementFee/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6920,6 +7149,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/vps/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -6937,6 +7169,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/vps/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6963,6 +7198,9 @@ export const schema: Schema = {
           },
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/vps/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6999,6 +7237,9 @@ export const schema: Schema = {
           },
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:upgrade/vps/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7049,6 +7290,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/vpsAdditionalDisk/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -7066,6 +7310,9 @@ export const schema: Schema = {
           },
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/vpsAdditionalDisk/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7092,6 +7339,9 @@ export const schema: Schema = {
           },
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "order:apiovh:upgrade/vpsAdditionalDisk/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7128,6 +7378,9 @@ export const schema: Schema = {
           },
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "order:apiovh:upgrade/vpsAdditionalDisk/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7550,6 +7803,7 @@ export const schema: Schema = {
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",
@@ -7817,6 +8071,14 @@ export const schema: Schema = {
           "required": false,
           "type": "order.ReductionContextEnum"
         },
+        "description": {
+          "canBeNull": false,
+          "description": "Promotion description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "price": {
           "canBeNull": false,
           "description": "Reduction price applied with this promotion",
@@ -7824,6 +8086,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "order.Price"
+        },
+        "reductionDescription": {
+          "canBeNull": false,
+          "description": "Reduction description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "type": {
           "canBeNull": false,
@@ -8256,6 +8526,7 @@ export const schema: Schema = {
         "delivery",
         "deposit",
         "domain",
+        "implementation_services",
         "saas_license",
         "shipping",
         "storage"

@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "cspReseller:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "cspReseller:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "cspReseller:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Get the current billing period's usage peak for each subscription",
           "httpMethod": "GET",
+          "iamActions": [
+            "cspReseller:apiovh:billingPeriodPeaks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -102,72 +114,6 @@ export const schema: Schema = {
       "path": "/saas/csp2/{serviceName}/billingPeriodPeaks"
     },
     {
-      "description": "changeAdministratorPassword operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
-          },
-          "description": "Changes the tenant administrator's password",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "saas.csp2.ChangeAdministratorPasswordCreation",
-              "description": "Request Body",
-              "fullType": "saas.csp2.ChangeAdministratorPasswordCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "saas.csp2.OfficeTask"
-        }
-      ],
-      "path": "/saas/csp2/{serviceName}/changeAdministratorPassword"
-    },
-    {
-      "description": "configureDomain operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
-          },
-          "description": "Automatically sets up an OVH-hosted domain of yours for your office365 services. Note, this requires the domain to not have any interfering MX/SRV/TXT records",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "saas.csp2.ConfigureDomainCreation",
-              "description": "Request Body",
-              "fullType": "saas.csp2.ConfigureDomainCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "saas.csp2.OfficeTask"
-        }
-      ],
-      "path": "/saas/csp2/{serviceName}/configureDomain"
-    },
-    {
       "description": "List the saas.csp2.OfficeLicence objects",
       "operations": [
         {
@@ -177,6 +123,9 @@ export const schema: Schema = {
           },
           "description": "Licenses available for order",
           "httpMethod": "GET",
+          "iamActions": [
+            "cspReseller:apiovh:orderableLicenses/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -203,6 +152,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "cspReseller:apiovh:orderableLicenses/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -237,6 +189,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "cspReseller:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -257,6 +212,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "cspReseller:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -290,6 +248,9 @@ export const schema: Schema = {
           },
           "description": "Subscriptions associated to this office tenant",
           "httpMethod": "GET",
+          "iamActions": [
+            "cspReseller:apiovh:subscription/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -310,6 +271,9 @@ export const schema: Schema = {
           },
           "description": "Add a subscription to this tenant",
           "httpMethod": "POST",
+          "iamActions": [
+            "cspReseller:apiovh:subscription/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -343,6 +307,9 @@ export const schema: Schema = {
           },
           "description": "Delete a subscription from this tenant",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "cspReseller:apiovh:subscription/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -371,6 +338,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "cspReseller:apiovh:subscription/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -405,6 +375,9 @@ export const schema: Schema = {
           },
           "description": "Addon subscriptions associated to this office subscription",
           "httpMethod": "GET",
+          "iamActions": [
+            "cspReseller:apiovh:subscription/addonsSubscriptionIds/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -439,6 +412,9 @@ export const schema: Schema = {
           },
           "description": "Gives a list of licenses ids that can be ordered as an addon for this subscription",
           "httpMethod": "GET",
+          "iamActions": [
+            "cspReseller:apiovh:subscription/availableAddonLicenses/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -473,6 +449,9 @@ export const schema: Schema = {
           },
           "description": "Change the quantity of seats in the subscription",
           "httpMethod": "POST",
+          "iamActions": [
+            "cspReseller:apiovh:subscription/changeQuantity"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -514,6 +493,9 @@ export const schema: Schema = {
           },
           "description": "Creates a new subscription as an addon for this subscription",
           "httpMethod": "POST",
+          "iamActions": [
+            "cspReseller:apiovh:subscription/orderAddon"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -555,6 +537,9 @@ export const schema: Schema = {
           },
           "description": "Pending tasks of this tenant",
           "httpMethod": "GET",
+          "iamActions": [
+            "cspReseller:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -581,6 +566,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "cspReseller:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -615,6 +603,9 @@ export const schema: Schema = {
           },
           "description": "Get the usage statistics over the chosen period",
           "httpMethod": "GET",
+          "iamActions": [
+            "cspReseller:apiovh:usageStatistics/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -713,44 +704,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
-        }
-      }
-    },
-    "saas.csp2.ChangeAdministratorPasswordCreation": {
-      "description": "Change administrator password",
-      "id": "ChangeAdministratorPasswordCreation",
-      "namespace": "saas.csp2",
-      "properties": {
-        "newPassword": {
-          "canBeNull": false,
-          "description": "New password for the tenant administrator",
-          "fullType": "password",
-          "readOnly": false,
-          "required": true,
-          "type": "password"
-        }
-      }
-    },
-    "saas.csp2.ConfigureDomainCreation": {
-      "description": "Configure domain",
-      "id": "ConfigureDomainCreation",
-      "namespace": "saas.csp2",
-      "properties": {
-        "domain": {
-          "canBeNull": false,
-          "description": "Your OVH-hosted domain to configure",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "supportedServices": {
-          "canBeNull": false,
-          "description": "Services that your domain needs to be configured with",
-          "fullType": "saas.csp2.SupportedServiceEnum[]",
-          "readOnly": false,
-          "required": true,
-          "type": "saas.csp2.SupportedServiceEnum[]"
         }
       }
     },
@@ -1176,17 +1129,6 @@ export const schema: Schema = {
           "type": "long"
         }
       }
-    },
-    "saas.csp2.SupportedServiceEnum": {
-      "description": "Supported services of Office365",
-      "enum": [
-        "Email",
-        "Intune",
-        "OfficeCommunicationsOnline"
-      ],
-      "enumType": "string",
-      "id": "SupportedServiceEnum",
-      "namespace": "saas.csp2"
     },
     "saas.csp2.TaskStatusEnum": {
       "description": "Office CSP2 task status",

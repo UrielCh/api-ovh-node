@@ -1,20 +1,6 @@
 import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
- * START API /order Models
- * Source: https://eu.api.soyoustart.com/1.0/order.json
- */
-export namespace complexType {
-    /**
-     * Key and value, with proper key strings
-     * interface fullName: complexType.SafeKeyValue.SafeKeyValue
-     */
-    export interface SafeKeyValue<T> {
-        key: string;
-        value: T;
-    }
-}
-/**
  * START API /me Models
  * Source: https://api.us.ovhcloud.com/1.0/me.json
  */
@@ -694,7 +680,7 @@ export namespace billing {
              * Type of objects an order can be linked to
              * type fullname: billing.order.associatedObject.TypeEnum
              */
-            export type TypeEnum = "Bill" | "Deposit" | "Refund" | "Withdrawal"
+            export type TypeEnum = "Bill" | "Deposit" | "Refund" | "ReverseBill" | "Withdrawal"
         }
         export namespace credit {
             /**
@@ -877,11 +863,6 @@ export namespace debt {
 }
 export namespace dedicated {
     /**
-     * Filesystems available
-     * type fullname: dedicated.TemplateOsFileSystemEnum
-     */
-    export type TemplateOsFileSystemEnum = "btrfs" | "ext3" | "ext4" | "fat16" | "ntfs" | "reiserfs" | "swap" | "ufs" | "vmfs5" | "vmfs6" | "vmfsl" | "xfs" | "zfs"
-    /**
      * Hardware RAID enum
      * type fullname: dedicated.TemplateOsHardwareRaidEnum
      */
@@ -926,6 +907,23 @@ export namespace dedicated {
         version?: string;
     }
     /**
+     * A structure describing input questions for the specific OS template
+     * interface fullName: dedicated.TemplateOsInput.TemplateOsInput
+     */
+    export interface TemplateOsInput {
+        default?: string;
+        description?: string;
+        enum: string[];
+        mandatory: boolean;
+        name: string;
+        type: dedicated.TemplateOsInputTypeEnum;
+    }
+    /**
+     * Template OS Input type enum
+     * type fullname: dedicated.TemplateOsInputTypeEnum
+     */
+    export type TemplateOsInputTypeEnum = "boolean" | "date" | "email" | "enum" | "hexstring" | "ip" | "keyValue" | "number" | "string" | "text" | "time" | "url" | "uuid"
+    /**
      * all language available
      * type fullname: dedicated.TemplateOsLanguageEnum
      */
@@ -945,12 +943,12 @@ export namespace dedicated {
      * Os subfamily definition
      * type fullname: dedicated.TemplateOsSubfamilyEnum
      */
-    export type TemplateOsSubfamilyEnum = "alma" | "aos" | "arch" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "rocky" | "slackware" | "sles-sap" | "smartos" | "solusvm" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
+    export type TemplateOsSubfamilyEnum = "alma" | "aos" | "arch" | "byoi" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "rocky" | "slackware" | "sles-sap" | "smartos" | "solusvm" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
     /**
      * Os type
      * type fullname: dedicated.TemplateOsTypeEnum
      */
-    export type TemplateOsTypeEnum = "bsd" | "ibm" | "linux" | "solaris" | "unix" | "windows"
+    export type TemplateOsTypeEnum = "bsd" | "custom" | "ibm" | "linux" | "solaris" | "unix" | "windows"
     /**
      * Os usage definition
      * type fullname: dedicated.TemplateOsUsageEnum
@@ -976,8 +974,9 @@ export namespace dedicated {
             distribution: string;
             endOfInstall: string;
             family: dedicated.TemplateOsTypeEnum;
-            filesystems: dedicated.TemplateOsFileSystemEnum[];
+            filesystems: dedicated.server.FileSystemEnum[];
             hardRaidConfiguration?: boolean;
+            inputs?: dedicated.TemplateOsInput[];
             license?: dedicated.TemplateOsInfoLicense;
             lvmReady?: boolean;
             noPartitioning: boolean;
@@ -988,7 +987,6 @@ export namespace dedicated {
             supportsGptLabel?: boolean;
             supportsRTM: boolean;
             supportsSqlServer?: boolean;
-            supportsUEFI?: dedicated.server.SupportsUEFIEnum;
             templateName: string;
         }
         /**
@@ -1014,7 +1012,7 @@ export namespace dedicated {
          * interface fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
          */
         export interface templatePartitions {
-            filesystem: dedicated.TemplateOsFileSystemEnum;
+            filesystem: dedicated.server.FileSystemEnum;
             mountpoint: string;
             order: number;
             raid?: dedicated.server.PartitionRaidEnum;
@@ -1030,15 +1028,15 @@ export namespace dedicated {
          */
         export type BitFormatEnum = 32 | 64
         /**
+         * FileSystems
+         * type fullname: dedicated.server.FileSystemEnum
+         */
+        export type FileSystemEnum = "btrfs" | "ext3" | "ext4" | "fat16" | "none" | "ntfs" | "reiserfs" | "swap" | "ufs" | "vmfs5" | "vmfs6" | "vmfsl" | "xfs" | "zfs"
+        /**
          * partition raid type
          * type fullname: dedicated.server.PartitionRaidEnum
          */
         export type PartitionRaidEnum = "0" | "1" | "10" | "5" | "6" | "7"
-        /**
-         * supports UEFI setup
-         * type fullname: dedicated.server.SupportsUEFIEnum
-         */
-        export type SupportsUEFIEnum = "no" | "only" | "yes"
     }
 }
 export namespace http {
@@ -1880,6 +1878,7 @@ export namespace nichandle {
         fax?: string;
         firstname?: string;
         italianSDI?: string;
+        kycValidated?: boolean;
         language?: nichandle.LanguageEnum;
         legalform: nichandle.LegalFormEnum;
         name?: string;
@@ -1931,7 +1930,7 @@ export namespace nichandle {
      * Permission given on the account
      * type fullname: nichandle.RoleEnum
      */
-    export type RoleEnum = "REGULAR" | "ADMIN" | "UNPRIVILEGED"
+    export type RoleEnum = "REGULAR" | "ADMIN" | "UNPRIVILEGED" | "NONE"
     /**
      * States a nichandle can be in
      * type fullname: nichandle.StateEnum
@@ -2205,7 +2204,7 @@ export namespace order {
      * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * Product type of item in order
      * type fullname: order.OrderDetailTypeEnum
@@ -2359,7 +2358,7 @@ export interface Me {
      * Update details of your nichandle
      * PUT /me
      */
-    $put(params?: { address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, currency?: nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state?: nichandle.StateEnum, vat?: string, zip?: string }): Promise<void>;
+    $put(params?: { address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, currency?: nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, kycValidated?: boolean, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state?: nichandle.StateEnum, vat?: string, zip?: string }): Promise<void>;
     /**
      * Controle cache
      */
@@ -3651,7 +3650,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/installationTemplate/{templateName}
              */
-            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, endOfInstall?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, softRaidOnlyMirroring?: boolean, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
+            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, endOfInstall?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.server.FileSystemEnum[], hardRaidConfiguration?: boolean, inputs?: dedicated.TemplateOsInput[], license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, softRaidOnlyMirroring?: boolean, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, templateName?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -3745,7 +3744,7 @@ export interface Me {
                          * Add a partition in this partitioning scheme
                          * POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
                          */
-                        $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: dedicated.server.PartitionRaidEnum, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
+                        $post(params: { filesystem: dedicated.server.FileSystemEnum, mountpoint: string, raid?: dedicated.server.PartitionRaidEnum, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
                         /**
                          * Controle cache
                          */
@@ -3765,7 +3764,7 @@ export interface Me {
                              * Alter this object properties
                              * PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
                              */
-                            $put(params?: { filesystem?: dedicated.TemplateOsFileSystemEnum, mountpoint?: string, order?: number, raid?: dedicated.server.PartitionRaidEnum, size?: complexType.UnitAndValue<number>, type?: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
+                            $put(params?: { filesystem?: dedicated.server.FileSystemEnum, mountpoint?: string, order?: number, raid?: dedicated.server.PartitionRaidEnum, size?: complexType.UnitAndValue<number>, type?: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
                             /**
                              * Controle cache
                              */

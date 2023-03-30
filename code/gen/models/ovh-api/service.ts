@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:service/get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "long[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:service/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "account:apiovh:service/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "List possible renews for this service",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:service/renew/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -113,6 +125,9 @@ export const schema: Schema = {
           },
           "description": "Create a renew order",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:service/renew/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -163,6 +178,9 @@ export const schema: Schema = {
           },
           "description": "Reopen a suspended service",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:service/reopen"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -189,6 +207,9 @@ export const schema: Schema = {
           },
           "description": "Suspend the service. The service won't be accessible, but you will still be charged for it",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:service/suspend"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -215,6 +236,9 @@ export const schema: Schema = {
           },
           "description": "Terminates a suspended service",
           "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:service/terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -258,12 +282,12 @@ export const schema: Schema = {
     },
     "order.CurrencyCodeEnum": {
       "enum": [
+        " INR",
         "AUD",
         "CAD",
         "CZK",
         "EUR",
         "GBP",
-        "INR",
         "LTL",
         "MAD",
         "N/A",

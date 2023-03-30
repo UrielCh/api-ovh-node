@@ -147,11 +147,11 @@ export namespace dedicatedCloud {
      */
     export interface Cluster {
         autoscale?: dedicatedCloudclusterAutoScale;
+        clusterId: number;
         drsMode: dedicatedCloudclusterClusterDrsModeEnum;
         drsStatus: dedicatedCloudclusterClusterConfigsStatusEnum;
         evcMode: string;
         haStatus: dedicatedCloudclusterClusterConfigsStatusEnum;
-        id: number;
         name: string;
         vmwareClusterId: string;
     }
@@ -159,7 +159,7 @@ export namespace dedicatedCloud {
      * The commercial name component
      * type fullname: dedicatedCloud.CommercialNameEnum
      */
-    export type CommercialNameEnum = "CDI" | "CDI-HDS" | "CDI-HIPAA" | "CDI-NSX" | "CDI-NSX-T" | "CDI-NSX-VROPS" | "CDI-PCIDSS" | "CDI-UNKNOWN" | "CDI-VROPS" | "DC" | "DC-ANCIENT" | "DC-ANCIENT-HDS" | "DC-ANCIENT-HIPAA" | "DC-ANCIENT-NSX" | "DC-ANCIENT-NSX-T" | "DC-ANCIENT-NSX-VROPS" | "DC-ANCIENT-PCIDSS" | "DC-ANCIENT-UNKNOWN" | "DC-ANCIENT-VROPS" | "DC-HDS" | "DC-HIPAA" | "DC-LEGACY" | "DC-LEGACY-HDS" | "DC-LEGACY-HIPAA" | "DC-LEGACY-NSX" | "DC-LEGACY-NSX-T" | "DC-LEGACY-NSX-VROPS" | "DC-LEGACY-PCIDSS" | "DC-LEGACY-UNKNOWN" | "DC-LEGACY-VROPS" | "DC-NSX" | "DC-NSX-T" | "DC-NSX-VROPS" | "DC-PCIDSS" | "DC-UNKNOWN" | "DC-VROPS" | "ESSENTIALS" | "ESSENTIALS-HDS" | "ESSENTIALS-HIPAA" | "ESSENTIALS-NSX" | "ESSENTIALS-NSX-T" | "ESSENTIALS-NSX-VROPS" | "ESSENTIALS-PCIDSS" | "ESSENTIALS-UNKNOWN" | "ESSENTIALS-VROPS" | "PREMIER" | "PREMIER-HDS" | "PREMIER-HIPAA" | "PREMIER-NSX" | "PREMIER-NSX-T" | "PREMIER-NSX-VROPS" | "PREMIER-PCIDSS" | "PREMIER-UNKNOWN" | "PREMIER-VROPS" | "SDDC" | "SDDC-HDS" | "SDDC-HIPAA" | "SDDC-LEGACY" | "SDDC-LEGACY-HDS" | "SDDC-LEGACY-HIPAA" | "SDDC-LEGACY-PCIDSS" | "SDDC-LEGACY-UNKNOWN" | "SDDC-LEGACY-VROPS" | "SDDC-LEGACY-VROPS-WITHOUT-NSX" | "SDDC-LEGACY-WITHOUT-NSX" | "SDDC-PCIDSS" | "SDDC-UNKNOWN" | "SDDC-VROPS" | "SDDC-VROPS-WITHOUT-NSX" | "SDDC-WITHOUT-NSX" | "UNKNOWN" | "UNKNOWN-HDS" | "UNKNOWN-HIPAA" | "UNKNOWN-NSX" | "UNKNOWN-NSX-T" | "UNKNOWN-NSX-VROPS" | "UNKNOWN-PCIDSS" | "UNKNOWN-UNKNOWN" | "UNKNOWN-VROPS"
+    export type CommercialNameEnum = "CDI" | "CDI-HDS" | "CDI-HIPAA" | "CDI-NSX" | "CDI-NSX-T" | "CDI-NSX-VROPS" | "CDI-PCIDSS" | "CDI-UNKNOWN" | "CDI-VROPS" | "DC" | "DC-ANCIENT" | "DC-ANCIENT-HDS" | "DC-ANCIENT-HIPAA" | "DC-ANCIENT-NSX" | "DC-ANCIENT-NSX-T" | "DC-ANCIENT-NSX-VROPS" | "DC-ANCIENT-PCIDSS" | "DC-ANCIENT-UNKNOWN" | "DC-ANCIENT-VROPS" | "DC-HDS" | "DC-HIPAA" | "DC-LEGACY" | "DC-LEGACY-HDS" | "DC-LEGACY-HIPAA" | "DC-LEGACY-NSX" | "DC-LEGACY-NSX-T" | "DC-LEGACY-NSX-VROPS" | "DC-LEGACY-PCIDSS" | "DC-LEGACY-UNKNOWN" | "DC-LEGACY-VROPS" | "DC-NSX" | "DC-NSX-T" | "DC-NSX-VROPS" | "DC-PCIDSS" | "DC-UNKNOWN" | "DC-VROPS" | "ESSENTIALS" | "ESSENTIALS-HDS" | "ESSENTIALS-HIPAA" | "ESSENTIALS-NSX" | "ESSENTIALS-NSX-T" | "ESSENTIALS-NSX-VROPS" | "ESSENTIALS-PCIDSS" | "ESSENTIALS-UNKNOWN" | "ESSENTIALS-VROPS" | "NSX-T" | "PREMIER" | "PREMIER-HDS" | "PREMIER-HIPAA" | "PREMIER-NSX" | "PREMIER-NSX-T" | "PREMIER-NSX-VROPS" | "PREMIER-PCIDSS" | "PREMIER-UNKNOWN" | "PREMIER-VROPS" | "SDDC" | "SDDC-HDS" | "SDDC-HIPAA" | "SDDC-LEGACY" | "SDDC-LEGACY-HDS" | "SDDC-LEGACY-HIPAA" | "SDDC-LEGACY-PCIDSS" | "SDDC-LEGACY-UNKNOWN" | "SDDC-LEGACY-VROPS" | "SDDC-LEGACY-VROPS-WITHOUT-NSX" | "SDDC-LEGACY-WITHOUT-NSX" | "SDDC-PCIDSS" | "SDDC-UNKNOWN" | "SDDC-VROPS" | "SDDC-VROPS-WITHOUT-NSX" | "SDDC-WITHOUT-NSX" | "UNKNOWN" | "UNKNOWN-HDS" | "UNKNOWN-HIPAA" | "UNKNOWN-NSX" | "UNKNOWN-NSX-T" | "UNKNOWN-NSX-VROPS" | "UNKNOWN-PCIDSS" | "UNKNOWN-UNKNOWN" | "UNKNOWN-VROPS" | "UNKNOWN-VSPHERE" | "VSPHERE"
     /**
      * The commercial ranges actually available for your Dedicated Cloud
      * interface fullName: dedicatedCloud.CommercialRange.CommercialRange
@@ -184,6 +184,15 @@ export namespace dedicatedCloud {
         isRemovable: boolean;
         name: string;
         version: string;
+    }
+    /**
+     * A structure describing the vmware DVSSecurityPolicy data object
+     * interface fullName: dedicatedCloud.DvsSecurityPolicy.DvsSecurityPolicy
+     */
+    export interface DvsSecurityPolicy {
+        allowPromiscuous: dedicatedCloudvmwareBoolPolicy;
+        forgedTransmits: dedicatedCloudvmwareBoolPolicy;
+        macChanges: dedicatedCloudvmwareBoolPolicy;
     }
     /**
      * Dedicated Cloud Active Directory Federation option
@@ -336,6 +345,14 @@ export namespace dedicatedCloud {
      * type fullname: dedicatedCloud.HypervisorVersionEnum
      */
     export type HypervisorVersionEnum = "4.1" | "5.0" | "5.1" | "5.5" | "6.0" | "6.5" | "6.7" | "7.0" | "hv3.1" | "hvdc3.1" | "nc1.0"
+    /**
+     * The OVHcloud IAM option
+     * interface fullName: dedicatedCloud.Iam.Iam
+     */
+    export interface Iam {
+        identityProviderId?: number;
+        state: dedicatedCloudoptionStateEnum;
+    }
     /**
      * IP Blocks associated with a Dedicated Cloud
      * interface fullName: dedicatedCloud.Ip.Ip
@@ -544,7 +561,7 @@ export namespace dedicatedCloud {
     export interface User {
         activationState?: dedicatedClouduserActivationStateEnum;
         activeDirectoryId?: number;
-        activeDirectoryType?: string;
+        activeDirectoryType?: dedicatedClouduserTypeEnum;
         canManageIpFailOvers: boolean;
         canManageNetwork: boolean;
         canManageRights: boolean;
@@ -552,6 +569,7 @@ export namespace dedicatedCloud {
         encryptionRight: boolean;
         firstName?: string;
         fullAdminRo: boolean;
+        identityProviderId?: number;
         isEnableManageable: boolean;
         isTokenValidator: boolean;
         lastName?: string;
@@ -561,6 +579,7 @@ export namespace dedicatedCloud {
         phoneNumber?: string;
         receiveAlerts: boolean;
         state: dedicatedClouduserStateEnum;
+        type?: dedicatedClouduserTypeEnum;
         userId: number;
     }
     /**
@@ -674,6 +693,21 @@ export namespace dedicatedCloud {
         upgrades?: string[];
         url?: string;
         version?: string;
+    }
+    /**
+     * Get VSAN Datastores
+     * interface fullName: dedicatedCloud.VsanDatastore.VsanDatastore
+     */
+    export interface VsanDatastore {
+        clusterId: number;
+        connectionState?: dedicatedCloudfilerConnexionStateEnum;
+        datacenterId: number;
+        datastoreId: number;
+        datastoreName: string;
+        spaceFree?: number;
+        spaceProvisioned?: number;
+        spaceUsed?: number;
+        vmTotal?: number;
     }
     /**
      * Zpool and their availability
@@ -825,6 +859,8 @@ export namespace dedicatedCloud {
      * interface fullName: dedicatedCloud.compliantRanges.compliantRanges
      */
     export interface compliantRanges {
+        addons?: dedicatedCloudrequiredAddon[];
+        estimateRequired: boolean;
         name: string;
         upgradeCode?: string;
         upgradeRequired: boolean;
@@ -930,6 +966,17 @@ export namespace dedicatedCloud {
             vmName: string;
             vpgName: string;
         }
+        /**
+         * Information on remote network allowed to access to your Zerto disaster recovery service
+         * interface fullName: dedicatedCloud.disasterRecovery.ZertoRemoteVra.ZertoRemoteVra
+         */
+        export interface ZertoRemoteVra {
+            id: number;
+            label: string;
+            remoteEndpointPublicIp: string;
+            remoteVraNetwork: string;
+            remoteZvmInternalIp: string;
+        }
     }
     export namespace filer {
         /**
@@ -937,6 +984,11 @@ export namespace dedicatedCloud {
          * type fullname: dedicatedCloud.filer.ConnexionStateEnum
          */
         export type ConnexionStateEnum = "offline" | "online"
+        /**
+         * All types of filer that are available for restoring a VM
+         * type fullname: dedicatedCloud.filer.FilerTypeEnum
+         */
+        export type FilerTypeEnum = "nas" | "vsan"
         /**
          * Hourly consumption of a filer
          * interface fullName: dedicatedCloud.filer.HourlyConsumption.HourlyConsumption
@@ -1084,6 +1136,14 @@ export namespace dedicatedCloud {
      */
     export type releaseEnum = "major" | "minor"
     /**
+     * required addon information
+     * interface fullName: dedicatedCloud.requiredAddon.requiredAddon
+     */
+    export interface requiredAddon {
+        planCode: string;
+        quantity: number;
+    }
+    /**
      * A structure describing the Resource's new price
      * interface fullName: dedicatedCloud.resourceNewPrices.resourceNewPrices
      */
@@ -1186,7 +1246,7 @@ export namespace dedicatedCloud {
      * List of possible service pack
      * type fullname: dedicatedCloud.servicePackEnum
      */
-    export type servicePackEnum = "default" | "hds" | "hipaa" | "legacy" | "nsx" | "nsx-and-vrops" | "pcidss" | "vrops"
+    export type servicePackEnum = "default" | "default-nsxt" | "hds" | "hipaa" | "legacy" | "nsx" | "nsx-and-vrops" | "nsxt" | "pcidss" | "vrops"
     /**
      * List of possible state of the service pack
      * type fullname: dedicatedCloud.servicePackStateEnum
@@ -1222,6 +1282,11 @@ export namespace dedicatedCloud {
          * type fullname: dedicatedCloud.user.StateEnum
          */
         export type StateEnum = "creating" | "deleting" | "delivered" | "error"
+        /**
+         * The type of the user
+         * type fullname: dedicatedCloud.user.TypeEnum
+         */
+        export type TypeEnum = "group" | "user"
     }
     /**
      * A structure describing the vCenter available upgrade for your Dedicated Cloud
@@ -1315,9 +1380,11 @@ export namespace dedicatedCloud {
      * interface fullName: dedicatedCloud.vmNetworkBacking.vmNetworkBacking
      */
     export interface vmNetworkBacking {
+        carpState?: string;
         deviceName?: string;
         portGroupKey?: string;
         portKey?: string;
+        portKeySecurityPolicy?: dedicatedCloudDvsSecurityPolicy;
         switchUuid?: string;
         type: dedicatedCloudvmNetworkBackingTypeEnum;
         useAutoDetect?: boolean;
@@ -1328,6 +1395,14 @@ export namespace dedicatedCloud {
      * type fullname: dedicatedCloud.vmNetworkBackingTypeEnum
      */
     export type vmNetworkBackingTypeEnum = "DVS" | "VSS"
+    /**
+     * A structure describing the vmware bool policy data object
+     * interface fullName: dedicatedCloud.vmwareBoolPolicy.vmwareBoolPolicy
+     */
+    export interface vmwareBoolPolicy {
+        inherited: boolean;
+        value: boolean;
+    }
 }
 export namespace nichandle {
     /**
@@ -1340,7 +1415,7 @@ export namespace order {
     /**
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = " INR" | "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * Price with it's currency and textual representation
      * interface fullName: order.Price.Price
@@ -1886,10 +1961,10 @@ export interface DedicatedCloud {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(id: number): {
+                    $(clusterId: number): {
                         /**
                          * Get this object properties
-                         * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/cluster/{id}
+                         * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/cluster/{clusterId}
                          */
                         $get(): Promise<dedicatedCloud.Cluster>;
                         /**
@@ -1921,26 +1996,12 @@ export interface DedicatedCloud {
                              */
                             $post(): Promise<dedicatedCloud.Task>;
                         }
-                        generateZsspPassword: {
-                            /**
-                             * Generate a new password for Zerto Self Service Portal and receive it by email.
-                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/generateZsspPassword
-                             */
-                            $post(): Promise<dedicatedCloud.Task>;
-                        }
                         startMigration: {
                             /**
                              * Start migrating Zerto option to this datacenter
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/startMigration
                              */
                             $post(): Promise<dedicatedCloud.Task>;
-                        }
-                        state: {
-                            /**
-                             * Get the current state of Zerto deployment on your dedicated Cloud.
-                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/state
-                             */
-                            $post(): Promise<dedicatedCloud.disasterRecovery.Profile>;
                         }
                         status: {
                             /**
@@ -2425,6 +2486,13 @@ export interface DedicatedCloud {
                              */
                             $post(): Promise<dedicatedCloud.Task>;
                         }
+                        disableCarp: {
+                            /**
+                             * Disable Carp on Virtual Machine
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/disableCarp
+                             */
+                            $post(params: { macAddress: string }): Promise<dedicatedCloud.Task>;
+                        }
                         editBackup: {
                             /**
                              * Edit backup on this virtual Machine
@@ -2439,12 +2507,19 @@ export interface DedicatedCloud {
                              */
                             $post(params: { backupDays: dedicatedCloudbackupBackupDaysEnum[] }): Promise<dedicatedCloud.Task>;
                         }
+                        enableCarp: {
+                            /**
+                             * Enable Carp on Virtual Machine
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableCarp
+                             */
+                            $post(params: { macAddress: string }): Promise<dedicatedCloud.Task>;
+                        }
                         restoreBackup: {
                             /**
                              * Restore this restore point
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup
                              */
-                            $post(params: { filerId: number, restorePointId: number }): Promise<dedicatedCloud.Task>;
+                            $post(params: { filerId: number, filerType?: dedicatedCloud.filer.FilerTypeEnum, restorePointId: number }): Promise<dedicatedCloud.Task>;
                         }
                     };
                 }
@@ -2618,6 +2693,13 @@ export interface DedicatedCloud {
                     };
                 }
             };
+        }
+        generateVxlanToVrackMapping: {
+            /**
+             * Generates a Vxlan to Vrack mapping for NSX-V
+             * POST /dedicatedCloud/{serviceName}/generateVxlanToVrackMapping
+             */
+            $post(): Promise<dedicatedCloud.Task>;
         }
         globalTasks: {
             /**
@@ -3587,6 +3669,7 @@ type dedicatedCloudclusterClusterConfigsStatusEnum = dedicatedCloud.cluster.Clus
 type dedicatedCloudHypervisorVersionEnum = dedicatedCloud.HypervisorVersionEnum;
 type dedicatedCloudrightNetworkRoleEnum = dedicatedCloud.right.NetworkRoleEnum;
 type dedicatedCloudCommercialNameEnum = dedicatedCloud.CommercialNameEnum;
+type dedicatedCloudvmwareBoolPolicy = dedicatedCloud.vmwareBoolPolicy;
 type dedicatedCloudoptionAccessNetworkStateEnum = dedicatedCloud.optionAccessNetwork.StateEnum;
 type dedicatedCloudfilerNodeTypeEnum = dedicatedCloud.filer.NodeTypeEnum;
 type dedicatedCloudressourcesBillingTypeEnum = dedicatedCloud.ressources.BillingTypeEnum;
@@ -3606,6 +3689,7 @@ type dedicatedCloudrightVmNetworkRoleEnum = dedicatedCloud.right.VmNetworkRoleEn
 type dedicatedCloudsecurityOptionStateEnum = dedicatedCloud.securityOption.StateEnum;
 type dedicatedCloudTaskStateEnum = dedicatedCloud.TaskStateEnum;
 type dedicatedClouduserActivationStateEnum = dedicatedCloud.user.ActivationStateEnum;
+type dedicatedClouduserTypeEnum = dedicatedCloud.user.TypeEnum;
 type dedicatedClouduserStateEnum = dedicatedCloud.user.StateEnum;
 type dedicatedCloudvlanStateEnum = dedicatedCloud.vlan.StateEnum;
 type dedicatedCloudvlanTypeEnum = dedicatedCloud.vlan.TypeEnum;
@@ -3620,6 +3704,7 @@ type dedicatedCloudbackupRestorePoint = dedicatedCloud.backup.RestorePoint;
 type dedicatedCloudbackupOptimizeMessageEnum = dedicatedCloud.backup.OptimizeMessageEnum;
 type dedicatedCloudbackupOptimizeRecommendationEnum = dedicatedCloud.backup.OptimizeRecommendationEnum;
 type dedicatedCloudclusterAutoScaleModeEnum = dedicatedCloud.cluster.AutoScaleModeEnum;
+type dedicatedCloudrequiredAddon = dedicatedCloud.requiredAddon;
 type dedicatedCloudBillingTypeEnum = dedicatedCloud.BillingTypeEnum;
 type dedicatedCloudGenerationEnum = dedicatedCloud.GenerationEnum;
 type dedicatedCloudManagementInterfaceEnum = dedicatedCloud.ManagementInterfaceEnum;
@@ -3645,4 +3730,5 @@ type dedicatedCloudTwoFAWhitelistStateEnum = dedicatedCloud.TwoFAWhitelistStateE
 type dedicatedCloudvmFilerDisk = dedicatedCloud.vmFilerDisk;
 type dedicatedCloudvmNetworkBacking = dedicatedCloud.vmNetworkBacking;
 type dedicatedCloudvirtualDeviceConnectInfoStatus = dedicatedCloud.virtualDeviceConnectInfoStatus;
+type dedicatedCloudDvsSecurityPolicy = dedicatedCloud.DvsSecurityPolicy;
 type dedicatedCloudvmNetworkBackingTypeEnum = dedicatedCloud.vmNetworkBackingTypeEnum;

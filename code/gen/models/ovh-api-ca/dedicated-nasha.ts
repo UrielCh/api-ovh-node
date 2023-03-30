@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "nasHA:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -85,6 +94,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "nasHA:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -135,6 +147,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "nasHA:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -193,6 +208,9 @@ export const schema: Schema = {
           },
           "description": "Get partition list",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:partition/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -213,6 +231,9 @@ export const schema: Schema = {
           },
           "description": "Create a new partition",
           "httpMethod": "POST",
+          "iamActions": [
+            "nasHA:apiovh:partition/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -271,6 +292,9 @@ export const schema: Schema = {
           },
           "description": "Delete this partition",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "nasHA:apiovh:partition/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -299,6 +323,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:partition/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -327,6 +354,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "nasHA:apiovh:partition/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -368,6 +398,9 @@ export const schema: Schema = {
           },
           "description": "get ACL for this partition",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:partition/access/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -396,6 +429,9 @@ export const schema: Schema = {
           },
           "description": "Add a new ACL entry",
           "httpMethod": "POST",
+          "iamActions": [
+            "nasHA:apiovh:partition/access/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -446,6 +482,9 @@ export const schema: Schema = {
           },
           "description": "Delete an ACL entry",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "nasHA:apiovh:partition/access/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -482,6 +521,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:partition/access/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -524,6 +566,9 @@ export const schema: Schema = {
           },
           "description": "Get all RIPE/ARIN blocks that can be used in the ACL",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:partition/authorizableBlocks/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -558,6 +603,9 @@ export const schema: Schema = {
           },
           "description": "Get all IPs that can be used in the ACL",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:partition/authorizableIps/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -592,6 +640,9 @@ export const schema: Schema = {
           },
           "description": "Get custom snapshots for this partition",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:partition/customSnapshot/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -620,6 +671,9 @@ export const schema: Schema = {
           },
           "description": "Create a new snapshot",
           "httpMethod": "POST",
+          "iamActions": [
+            "nasHA:apiovh:partition/customSnapshot/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -670,6 +724,9 @@ export const schema: Schema = {
           },
           "description": "Delete a given snapshot",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "nasHA:apiovh:partition/customSnapshot/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -706,6 +763,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:partition/customSnapshot/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -748,6 +808,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:partition/options/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -776,6 +839,9 @@ export const schema: Schema = {
           },
           "description": "Setup options",
           "httpMethod": "POST",
+          "iamActions": [
+            "nasHA:apiovh:partition/options/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -834,6 +900,9 @@ export const schema: Schema = {
           },
           "description": "Get quota for this partition",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:partition/quota/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -862,6 +931,9 @@ export const schema: Schema = {
           },
           "description": "Set a new quota",
           "httpMethod": "POST",
+          "iamActions": [
+            "nasHA:apiovh:partition/quota/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -912,6 +984,9 @@ export const schema: Schema = {
           },
           "description": "Delete a given quota",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "nasHA:apiovh:partition/quota/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -948,6 +1023,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:partition/quota/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -990,6 +1068,9 @@ export const schema: Schema = {
           },
           "description": "Get scheduled snapshot types for this partition",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:partition/snapshot/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1018,6 +1099,9 @@ export const schema: Schema = {
           },
           "description": "Schedule a new snapshot type",
           "httpMethod": "POST",
+          "iamActions": [
+            "nasHA:apiovh:partition/snapshot/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1060,6 +1144,9 @@ export const schema: Schema = {
           },
           "description": "Delete a given snapshot",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "nasHA:apiovh:partition/snapshot/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1096,6 +1183,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:partition/snapshot/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1138,6 +1228,9 @@ export const schema: Schema = {
           },
           "description": "Return statistics about the partition",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:partition/use/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1180,6 +1273,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1200,6 +1296,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "nasHA:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1233,6 +1332,9 @@ export const schema: Schema = {
           },
           "description": "View task list",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1275,6 +1377,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1309,6 +1414,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "nasHA:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1335,6 +1443,9 @@ export const schema: Schema = {
           },
           "description": "Return statistics about the nas",
           "httpMethod": "GET",
+          "iamActions": [
+            "nasHA:apiovh:use/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1369,6 +1480,9 @@ export const schema: Schema = {
           },
           "description": "Delete the vrack container",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "nasHA:apiovh:vrack/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

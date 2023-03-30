@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "deskaas:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "deskaas:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -58,6 +64,9 @@ export const schema: Schema = {
           },
           "description": "Change the Virtual Desktop alias",
           "httpMethod": "POST",
+          "iamActions": [
+            "deskaas:apiovh:changeAlias"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -92,6 +101,9 @@ export const schema: Schema = {
           },
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "iamActions": [
+            "deskaas:apiovh:changeContact"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -142,6 +154,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "deskaas:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -200,6 +215,9 @@ export const schema: Schema = {
           },
           "description": "New console access",
           "httpMethod": "POST",
+          "iamActions": [
+            "deskaas:apiovh:console/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -226,6 +244,9 @@ export const schema: Schema = {
           },
           "description": "Get the current password policy for your Desktop As A Service",
           "httpMethod": "GET",
+          "iamActions": [
+            "deskaas:apiovh:passwordPolicy/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -252,6 +273,9 @@ export const schema: Schema = {
           },
           "description": "Reboot the Operating system of the Cloud Desktop.",
           "httpMethod": "POST",
+          "iamActions": [
+            "deskaas:apiovh:reboot"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -278,6 +302,9 @@ export const schema: Schema = {
           },
           "description": "Refresh the Operating system of the Desktop As A Service. All your personnal data are kept.",
           "httpMethod": "POST",
+          "iamActions": [
+            "deskaas:apiovh:refresh"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -304,6 +331,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "deskaas:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -324,6 +354,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "deskaas:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -357,6 +390,9 @@ export const schema: Schema = {
           },
           "description": "Tasks associated with this Desktop As A Service",
           "httpMethod": "GET",
+          "iamActions": [
+            "deskaas:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -391,6 +427,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "deskaas:apiovh:task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -425,6 +464,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "deskaas:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -451,6 +493,9 @@ export const schema: Schema = {
           },
           "description": "Upgrading the Desktop As A Service to another profile. The Virtual Desktop will not be available during upgrade and has to be restarted. You cannot downgrade a Virtual Desktop",
           "httpMethod": "POST",
+          "iamActions": [
+            "deskaas:apiovh:upgrade"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -493,6 +538,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "deskaas:apiovh:user/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -519,6 +567,9 @@ export const schema: Schema = {
           },
           "description": "Change Desktop As A Service user password",
           "httpMethod": "POST",
+          "iamActions": [
+            "deskaas:apiovh:user/changePassword"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -553,6 +604,9 @@ export const schema: Schema = {
           },
           "description": "Change Desktop As A Service user properties",
           "httpMethod": "POST",
+          "iamActions": [
+            "deskaas:apiovh:user/changeProperties"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -587,6 +641,9 @@ export const schema: Schema = {
           },
           "description": "Tasks associated with this User",
           "httpMethod": "GET",
+          "iamActions": [
+            "deskaas:apiovh:user/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -621,6 +678,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "deskaas:apiovh:user/task/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

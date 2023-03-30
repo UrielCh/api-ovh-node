@@ -15,6 +15,9 @@ export const schema: Schema = {
           },
           "description": "List available services",
           "httpMethod": "GET",
+          "iamActions": [
+            "metrics:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -32,6 +35,9 @@ export const schema: Schema = {
           },
           "description": "Get service",
           "httpMethod": "GET",
+          "iamActions": [
+            "metrics:apiovh:get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -52,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Modify service",
           "httpMethod": "PUT",
+          "iamActions": [
+            "metrics:apiovh:put"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -86,6 +95,9 @@ export const schema: Schema = {
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "metrics:apiovh:confirmTermination"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -144,6 +156,9 @@ export const schema: Schema = {
           },
           "description": "Get consumption for your service",
           "httpMethod": "GET",
+          "iamActions": [
+            "metrics:apiovh:consumption/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -178,6 +193,9 @@ export const schema: Schema = {
           },
           "description": "Find TokenID for a specific token",
           "httpMethod": "POST",
+          "iamActions": [
+            "metrics:apiovh:lookup/token/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -212,6 +230,9 @@ export const schema: Schema = {
           },
           "description": "Set overquota",
           "httpMethod": "PUT",
+          "iamActions": [
+            "metrics:apiovh:quota/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -246,6 +267,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "metrics:apiovh:serviceInfos/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -266,6 +290,9 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "iamActions": [
+            "metrics:apiovh:serviceInfos/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -299,6 +326,9 @@ export const schema: Schema = {
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
+          "iamActions": [
+            "metrics:apiovh:terminate"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -325,6 +355,9 @@ export const schema: Schema = {
           },
           "description": "Get list of tokens",
           "httpMethod": "GET",
+          "iamActions": [
+            "metrics:apiovh:token/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -345,6 +378,9 @@ export const schema: Schema = {
           },
           "description": "Create a token",
           "httpMethod": "POST",
+          "iamActions": [
+            "metrics:apiovh:token/create"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -395,6 +431,9 @@ export const schema: Schema = {
           },
           "description": "Revoke a token",
           "httpMethod": "DELETE",
+          "iamActions": [
+            "metrics:apiovh:token/delete"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -423,6 +462,9 @@ export const schema: Schema = {
           },
           "description": "Get a specific token",
           "httpMethod": "GET",
+          "iamActions": [
+            "metrics:apiovh:token/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -451,6 +493,9 @@ export const schema: Schema = {
           },
           "description": "Modify a token",
           "httpMethod": "PUT",
+          "iamActions": [
+            "metrics:apiovh:token/edit"
+          ],
           "noAuthentication": false,
           "parameters": [
             {

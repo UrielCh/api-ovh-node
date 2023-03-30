@@ -131,6 +131,30 @@ export namespace email {
          */
         export type DisclaimerAttributeEnum = "City" | "Company" | "Country" | "Department" | "DisplayName" | "Email" | "FaxNumber" | "FirstName" | "HomePhoneNumber" | "Initials" | "LastName" | "Manager" | "MobileNumber" | "Notes" | "Office" | "OtherFaxNumber" | "OtherHomePhoneNumber" | "OtherPhoneNumber" | "PagerNumber" | "PhoneNumber" | "State" | "Street" | "Title" | "UserLogonName" | "ZipCode"
         /**
+         * DKIM for a domain
+         * interface fullName: email.pro.Dkim.Dkim
+         */
+        export interface Dkim {
+            customerRecord: string;
+            header: string;
+            lastUpdate?: string;
+            recordType: email.pro.DkimRecordTypeEnum;
+            selectorName: string;
+            status: email.pro.DkimStatusEnum;
+            targetRecord?: string;
+            taskPendingId?: number;
+        }
+        /**
+         * Record type of the customer record
+         * type fullname: email.pro.DkimRecordTypeEnum
+         */
+        export type DkimRecordTypeEnum = "CNAME"
+        /**
+         * DKIM status
+         * type fullname: email.pro.DkimStatusEnum
+         */
+        export type DkimStatusEnum = "deleting" | "disabling" | "enabling" | "inProduction" | "ready" | "todo" | "waitingRecord"
+        /**
          * Domain
          * interface fullName: email.pro.Domain.Domain
          */
@@ -310,7 +334,7 @@ export namespace email {
          * function enumeration for task
          * type fullname: email.pro.TaskFunctionEnum
          */
-        export type TaskFunctionEnum = "addAccount" | "addAlias" | "addDomain" | "addDomainDisclaimer" | "addExternalContact" | "addFullAccess" | "addSendAs" | "addSendOnBehalfTo" | "addServiceAuthorizedIp" | "changeHostname" | "changePassword" | "configureCustomer" | "deleteAccount" | "deleteAlias" | "deleteDomain" | "deleteDomainDisclaimer" | "deleteExternalContact" | "deleteFullAccess" | "deleteSendAs" | "deleteSendOnBehalfTo" | "deleteService" | "deleteServiceAuthorizedIp" | "diagnoseAccount" | "expandDrive" | "installServer" | "maintenance" | "migrateAccountViaOMM" | "migrationAccount" | "migrationDisclaimer" | "migrationExternalContact" | "migrationHistory" | "migrationService" | "reOpenAccount" | "setAccount" | "setAlias" | "setDns" | "setDomain" | "setDomainDisclaimer" | "setExternalContact" | "setService" | "suspendAccount" | "suspendService" | "unknown" | "unsuspendAccount" | "unsuspendService"
+        export type TaskFunctionEnum = "addAccount" | "addAlias" | "addDomain" | "addDomainDKIM" | "addDomainDisclaimer" | "addExternalContact" | "addFullAccess" | "addSendAs" | "addSendOnBehalfTo" | "addServiceAuthorizedIp" | "changeHostname" | "changePassword" | "configureCustomer" | "deleteAccount" | "deleteAlias" | "deleteDomain" | "deleteDomainDKIM" | "deleteDomainDisclaimer" | "deleteExternalContact" | "deleteFullAccess" | "deleteSendAs" | "deleteSendOnBehalfTo" | "deleteService" | "deleteServiceAuthorizedIp" | "diagnoseAccount" | "disableDKIM" | "enableDKIM" | "expandDrive" | "installServer" | "maintenance" | "migrateAccountViaOMM" | "migrationAccount" | "migrationDisclaimer" | "migrationExternalContact" | "migrationHistory" | "migrationService" | "reOpenAccount" | "setAccount" | "setAlias" | "setDns" | "setDomain" | "setDomainDisclaimer" | "setExternalContact" | "setService" | "suspendAccount" | "suspendService" | "unknown" | "unsuspendAccount" | "unsuspendService"
         /**
          * Task status
          * type fullname: email.pro.TaskStatusEnum
@@ -338,6 +362,30 @@ export namespace email {
             outsideOnly: boolean;
             taskPendingId: number;
         }
+        /**
+         * DKIM for a domain
+         * interface fullName: email.pro.dkim.dkim
+         */
+        export interface dkim {
+            customerRecord: string;
+            header: string;
+            lastUpdate?: string;
+            recordType: email.pro.dkimRecordTypeEnum;
+            selectorName: string;
+            status: email.pro.dkimStatusEnum;
+            targetRecord?: string;
+            taskPendingId?: number;
+        }
+        /**
+         * Record type of the customer record
+         * type fullname: email.pro.dkimRecordTypeEnum
+         */
+        export type dkimRecordTypeEnum = "CNAME"
+        /**
+         * dkim status
+         * type fullname: email.pro.dkimStatusEnum
+         */
+        export type dkimStatusEnum = "deleting" | "disabling" | "enabling" | "inProduction" | "ready" | "todo" | "waitingRecord"
         /**
          * Renew period
          * type fullname: email.pro.renewPeriodEnum
@@ -689,7 +737,7 @@ export interface Email {
                  * Create new domain in pro services
                  * POST /email/pro/{service}/domain
                  */
-                $post(params: { configureAutodiscover?: boolean, configureMx?: boolean, mxRelay?: string, name: string, type: email.pro.DomainTypeEnum }): Promise<email.pro.Task>;
+                $post(params: { autoEnableDKIM?: boolean, configureAutodiscover?: boolean, configureDKIM?: boolean, configureMx?: boolean, mxRelay?: string, name: string, type: email.pro.DomainTypeEnum }): Promise<email.pro.Task>;
                 /**
                  * Controle cache
                  */
@@ -746,6 +794,63 @@ export interface Email {
                          * GET /email/pro/{service}/domain/{domainName}/disclaimerAttribute
                          */
                         $get(): Promise<email.pro.DisclaimerAttributeEnum[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    dkim: {
+                        /**
+                         * DKIM associated to this domain
+                         * GET /email/pro/{service}/domain/{domainName}/dkim
+                         */
+                        $get(): Promise<string[]>;
+                        /**
+                         * Create DKIM selector on this domain
+                         * POST /email/pro/{service}/domain/{domainName}/dkim
+                         */
+                        $post(params: { autoEnableDKIM?: boolean, configureDkim?: boolean, selectorName: string }): Promise<email.pro.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(selectorName: string): {
+                            /**
+                             * Delete DKIM selector on this domain
+                             * DELETE /email/pro/{service}/domain/{domainName}/dkim/{selectorName}
+                             */
+                            $delete(): Promise<email.pro.Task>;
+                            /**
+                             * Get this object properties
+                             * GET /email/pro/{service}/domain/{domainName}/dkim/{selectorName}
+                             */
+                            $get(): Promise<email.pro.Dkim>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            disable: {
+                                /**
+                                 * disable dkim signing
+                                 * POST /email/pro/{service}/domain/{domainName}/dkim/{selectorName}/disable
+                                 */
+                                $post(): Promise<email.pro.Task>;
+                            }
+                            enable: {
+                                /**
+                                 * enable dkim signing or switch selector used
+                                 * POST /email/pro/{service}/domain/{domainName}/dkim/{selectorName}/enable
+                                 */
+                                $post(): Promise<email.pro.Task>;
+                            }
+                        };
+                    }
+                    dkimSelector: {
+                        /**
+                         * Get dkim selector list
+                         * GET /email/pro/{service}/domain/{domainName}/dkimSelector
+                         */
+                        $get(): Promise<string[]>;
                         /**
                          * Controle cache
                          */

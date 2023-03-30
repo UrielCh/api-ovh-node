@@ -8,7 +8,7 @@ export namespace order {
     /**
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = " INR" | "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * Price with it's currency and textual representation
      * interface fullName: order.Price.Price
@@ -583,7 +583,7 @@ export namespace sms {
      * Smpp Settings Statuses
      * type fullname: sms.SettingsStatusEnum
      */
-    export type SettingsStatusEnum = "ERROR" | "INSTALLING" | "OK" | "UPDATING_IPS"
+    export type SettingsStatusEnum = "DELETED" | "ERROR" | "SUCCESS" | "UNKNOWN" | "UPDATING_IP" | "WAITING_IP"
     /**
      * A structure describing all information about quota informations
      * interface fullName: sms.SmsSendingReport.SmsSendingReport

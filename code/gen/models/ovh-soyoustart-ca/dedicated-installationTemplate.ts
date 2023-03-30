@@ -58,6 +58,9 @@ export const schema: Schema = {
           },
           "description": "Partitioning schemes available on this template",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:dedicatedInstallationTemplate/partitionScheme/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -84,6 +87,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:dedicatedInstallationTemplate/partitionScheme/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -118,6 +124,9 @@ export const schema: Schema = {
           },
           "description": "Hardware RAIDs defined in this partitioning scheme",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:dedicatedInstallationTemplate/partitionScheme/hardwareRaid/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -152,6 +161,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:dedicatedInstallationTemplate/partitionScheme/hardwareRaid/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -194,6 +206,9 @@ export const schema: Schema = {
           },
           "description": "Partitions defined in this partitioning scheme",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:dedicatedInstallationTemplate/partitionScheme/partition/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -228,6 +243,9 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
+          "iamActions": [
+            "account:apiovh:dedicatedInstallationTemplate/partitionScheme/partition/get"
+          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -301,27 +319,6 @@ export const schema: Schema = {
           "type": "T"
         }
       }
-    },
-    "dedicated.TemplateOsFileSystemEnum": {
-      "description": "Filesystems available",
-      "enum": [
-        "btrfs",
-        "ext3",
-        "ext4",
-        "fat16",
-        "ntfs",
-        "reiserfs",
-        "swap",
-        "ufs",
-        "vmfs5",
-        "vmfs6",
-        "vmfsl",
-        "xfs",
-        "zfs"
-      ],
-      "enumType": "string",
-      "id": "TemplateOsFileSystemEnum",
-      "namespace": "dedicated"
     },
     "dedicated.TemplateOsHardwareRaidEnum": {
       "description": "Hardware RAID enum",
@@ -931,6 +928,76 @@ export const schema: Schema = {
         }
       }
     },
+    "dedicated.TemplateOsInput": {
+      "description": "A structure describing input questions for the specific OS template",
+      "id": "TemplateOsInput",
+      "namespace": "dedicated",
+      "properties": {
+        "default": {
+          "canBeNull": true,
+          "description": "Default value",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Input question description",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "enum": {
+          "canBeNull": false,
+          "description": "When type is enum: name of the possible enum values",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "mandatory": {
+          "canBeNull": false,
+          "description": "Whether answering to that question is mandatory in order to trigger an install with that specific OS or not",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Input question name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Input type",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.TemplateOsInputTypeEnum"
+        }
+      }
+    },
+    "dedicated.TemplateOsInputTypeEnum": {
+      "description": "Template OS Input type enum",
+      "enum": [
+        "boolean",
+        "date",
+        "email",
+        "enum",
+        "hexstring",
+        "ip",
+        "keyValue",
+        "number",
+        "string",
+        "text",
+        "time",
+        "url",
+        "uuid"
+      ],
+      "enumType": "string",
+      "id": "TemplateOsInputTypeEnum",
+      "namespace": "dedicated"
+    },
     "dedicated.TemplateOsLanguageEnum": {
       "description": "all language available",
       "enum": [
@@ -1023,6 +1090,7 @@ export const schema: Schema = {
         "alma",
         "aos",
         "arch",
+        "byoi",
         "centos",
         "cloudlinux",
         "coreos",
@@ -1061,6 +1129,7 @@ export const schema: Schema = {
       "description": "Os type",
       "enum": [
         "bsd",
+        "custom",
         "ibm",
         "linux",
         "solaris",
@@ -1180,10 +1249,10 @@ export const schema: Schema = {
         "filesystems": {
           "canBeNull": false,
           "description": "list of all filesystems available for this template",
-          "fullType": "dedicated.TemplateOsFileSystemEnum[]",
+          "fullType": "dedicated.server.FileSystemEnum[]",
           "readOnly": true,
           "required": false,
-          "type": "dedicated.TemplateOsFileSystemEnum[]"
+          "type": "dedicated.server.FileSystemEnum[]"
         },
         "hardRaidConfiguration": {
           "canBeNull": true,
@@ -1192,6 +1261,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
+        },
+        "inputs": {
+          "canBeNull": true,
+          "description": "Inputs",
+          "fullType": "dedicated.TemplateOsInput[]",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.TemplateOsInput[]"
         },
         "license": {
           "canBeNull": true,
@@ -1273,14 +1350,6 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
-        "supportsUEFI": {
-          "canBeNull": true,
-          "description": "This distribution supports UEFI setup",
-          "fullType": "dedicated.server.SupportsUEFIEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "dedicated.server.SupportsUEFIEnum"
-        },
         "templateName": {
           "canBeNull": false,
           "description": "This template name",
@@ -1361,10 +1430,10 @@ export const schema: Schema = {
         "filesystem": {
           "canBeNull": false,
           "description": "Partition filesytem",
-          "fullType": "dedicated.TemplateOsFileSystemEnum",
+          "fullType": "dedicated.server.FileSystemEnum",
           "readOnly": false,
           "required": false,
-          "type": "dedicated.TemplateOsFileSystemEnum"
+          "type": "dedicated.server.FileSystemEnum"
         },
         "mountpoint": {
           "canBeNull": false,
@@ -1408,7 +1477,7 @@ export const schema: Schema = {
         },
         "volumeName": {
           "canBeNull": true,
-          "description": "Logical volume name (required if type is lv)",
+          "description": "Logical volume name (required if type is lv) or optional zpool name if filesystem is ZFS",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -1426,6 +1495,28 @@ export const schema: Schema = {
       "id": "BitFormatEnum",
       "namespace": "dedicated.server"
     },
+    "dedicated.server.FileSystemEnum": {
+      "description": "FileSystems",
+      "enum": [
+        "btrfs",
+        "ext3",
+        "ext4",
+        "fat16",
+        "none",
+        "ntfs",
+        "reiserfs",
+        "swap",
+        "ufs",
+        "vmfs5",
+        "vmfs6",
+        "vmfsl",
+        "xfs",
+        "zfs"
+      ],
+      "enumType": "string",
+      "id": "FileSystemEnum",
+      "namespace": "dedicated.server"
+    },
     "dedicated.server.PartitionRaidEnum": {
       "description": "partition raid type",
       "enum": [
@@ -1438,17 +1529,6 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "PartitionRaidEnum",
-      "namespace": "dedicated.server"
-    },
-    "dedicated.server.SupportsUEFIEnum": {
-      "description": "supports UEFI setup",
-      "enum": [
-        "no",
-        "only",
-        "yes"
-      ],
-      "enumType": "string",
-      "id": "SupportsUEFIEnum",
       "namespace": "dedicated.server"
     }
   },
