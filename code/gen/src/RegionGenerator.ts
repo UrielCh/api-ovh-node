@@ -207,7 +207,6 @@ export class RegionGenerator {
                 name: `@${namespace}/${flat}`,
                 description: `Add typing to to ovh api ${flat}`,
                 version: "4.0.0",
-                type: "module",
                 keywords: [
                     "ovh",
                     "ovhCloud",
