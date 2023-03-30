@@ -29,6 +29,6 @@
   },
   "files": ["lib", "src"],
   "devDependencies": {
-    "typescript": "^4.9.3"
+    "typescript": "^5.0.2"
   }
 }
