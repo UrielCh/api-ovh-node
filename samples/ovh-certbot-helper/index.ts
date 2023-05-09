@@ -4,6 +4,7 @@ import inquirer from 'inquirer';
 import fs from 'fs';
 import path from 'path';
 import os from 'os';
+import pc from 'picocolors';
 
 const accessRules = `GET /domain/zone/*, PUT /domain/zone/*, POST /domain/zone/*, DELETE /domain/zone/*`;
 
@@ -31,16 +32,16 @@ async function displayGui() {
     console.log('sudo certbot certonly --dns-ovh --dns-ovh-credentials ~/.secrets/certbot/ovh.ini --dns-ovh-propagation-seconds 60 -d "*.example.com"')
   } else if (resp.distro === 'docker') {
     console.log('');
-    console.log('# add this alias in your .profile and activate it');
-    console.log('alias certbot="docker run -it --rm -v /etc/letsencrypt:/etc/letsencrypt -v ${HOME}/.secrets/certbot/ovh.ini:/ovh.ini certbot/dns-ovh;')
+    console.log(pc.gray('# add this alias in your .profile and activate it'));
+    console.log(pc.white('alias certbot="docker run -it --rm -v /etc/letsencrypt:/etc/letsencrypt -v ${HOME}/.secrets/certbot/ovh.ini:/ovh.ini certbot/dns-ovh";'))
     console.log('');
-    console.log('sudo mkdir /etc/letsencrypt; sudo chown ${USER}: /etc/letsencrypt;');
-    console.log('certbot certonly --dns-ovh --dns-ovh-credentials /ovh.ini --dns-ovh-propagation-seconds 60 -d "*.example.com"');
+    console.log(pc.white('sudo mkdir /etc/letsencrypt; sudo chown ${USER}: /etc/letsencrypt;'));
+    console.log(pc.white('certbot certonly --dns-ovh --dns-ovh-credentials /ovh.ini --dns-ovh-propagation-seconds 60 -d "*.example.com"'));
     console.log('');
-    console.log('# renew cert within crontab: (by default expand_aliases if disabled in non insteractive bash)');
-    console.log('0 11 * * * bash -c "shopt -s expand_aliases; . .profile && certbot renew"');
+    console.log(pc.gray('# renew cert within crontab: (by default expand_aliases if disabled in non insteractive bash)'));
+    console.log(pc.white('0 11 * * * bash -c "shopt -s expand_aliases; . .profile && certbot renew"'));
     console.log('');
-    console.log('# You may add an other crontab entry to reload your nginx/apache config to reload your certificate');
+    console.log(pc.gray('# You may add an other crontab entry to reload your nginx/apache config to reload your certificate'));
   }
 }
 
@@ -103,6 +104,7 @@ async function createovhIni(dest: string) {
 
 async function main() {
   const directory = path.resolve(os.homedir(), '.secrets', 'certbot');
+  fs.mkdirSync(directory, {recursive: true});
   const dest = path.resolve(directory, 'ovh.ini');
   try {
     await fs.promises.stat(dest)
