@@ -70676,11 +70676,19 @@ export const schema: Schema = {
       "properties": {
         "backupTime": {
           "canBeNull": false,
-          "description": "Time on which backups start every day",
+          "description": "Time on which backups start every day. DEPRECATED: use backups.time",
           "fullType": "time",
           "readOnly": false,
           "required": false,
           "type": "time"
+        },
+        "backups": {
+          "canBeNull": true,
+          "description": "Information related to the backups, null if the engine does not support backups",
+          "fullType": "cloud.project.database.service.Backup",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.Backup"
         },
         "createdAt": {
           "canBeNull": false,
@@ -70819,7 +70827,7 @@ export const schema: Schema = {
       "properties": {
         "backup": {
           "canBeNull": true,
-          "description": "Backup from which the new service is created",
+          "description": "Backup from which the new service is created. DEPRECATED: use forkFrom",
           "fullType": "cloud.project.database.service.creation.BackupFork",
           "readOnly": false,
           "required": false,
@@ -70827,11 +70835,19 @@ export const schema: Schema = {
         },
         "backupTime": {
           "canBeNull": true,
-          "description": "Time on which backups start every day",
+          "description": "Time on which backups start every day. DEPRECATED: use backups.time",
           "fullType": "time",
           "readOnly": false,
           "required": false,
           "type": "time"
+        },
+        "backups": {
+          "canBeNull": true,
+          "description": "Information related to the backups, null if the engine does not support backups",
+          "fullType": "cloud.project.database.service.Backup",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.Backup"
         },
         "description": {
           "canBeNull": false,
@@ -70848,6 +70864,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "cloud.project.database.service.Disk"
+        },
+        "forkFrom": {
+          "canBeNull": true,
+          "description": "Backup from which the new service is created",
+          "fullType": "cloud.project.database.service.creation.ForkFrom",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.creation.ForkFrom"
         },
         "ipRestrictions": {
           "canBeNull": false,
@@ -72766,11 +72790,19 @@ export const schema: Schema = {
         },
         "backupTime": {
           "canBeNull": false,
-          "description": "Time on which backups start every day",
+          "description": "Time on which backups start every day. DEPRECATED: use backups.time",
           "fullType": "time",
           "readOnly": false,
           "required": false,
           "type": "time"
+        },
+        "backups": {
+          "canBeNull": true,
+          "description": "Information related to the backups, null if the engine does not support backups",
+          "fullType": "cloud.project.database.service.Backup",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.database.service.Backup"
         },
         "createdAt": {
           "canBeNull": false,
@@ -73652,6 +73684,29 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "cloud.project.database.service.Backup": {
+      "description": "Cloud database service backups definition",
+      "id": "Backup",
+      "namespace": "cloud.project.database.service",
+      "properties": {
+        "regions": {
+          "canBeNull": false,
+          "description": "Regions on which the backups are stored",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "time": {
+          "canBeNull": false,
+          "description": "Time on which backups start every day",
+          "fullType": "time",
+          "readOnly": false,
+          "required": false,
+          "type": "time"
         }
       }
     },
@@ -74665,11 +74720,42 @@ export const schema: Schema = {
       }
     },
     "cloud.project.database.service.creation.BackupFork": {
-      "description": "Defines the variable to fork a cluster from a backup",
+      "description": "Defines the source to fork a cluster from a backup. DEPRECATED: use forkFrom",
       "id": "BackupFork",
       "namespace": "cloud.project.database.service.creation",
       "properties": {
         "id": {
+          "canBeNull": false,
+          "description": "Backup ID (not compatible with pointInTime)",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "pointInTime": {
+          "canBeNull": false,
+          "description": "Point in time to restore from (not compatible with id)",
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": "Service ID to which the backups belong to",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloud.project.database.service.creation.ForkFrom": {
+      "description": "Defines the source to fork a cluster from a backup",
+      "id": "ForkFrom",
+      "namespace": "cloud.project.database.service.creation",
+      "properties": {
+        "backupId": {
           "canBeNull": false,
           "description": "Backup ID (not compatible with pointInTime)",
           "fullType": "uuid",

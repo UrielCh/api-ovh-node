@@ -2524,6 +2524,7 @@ export namespace cloud {
              */
             export interface Service {
                 backupTime: string;
+                backups?: cloud.project.database.service.Backup;
                 createdAt: string;
                 description: string;
                 disk: cloud.project.database.service.Disk;
@@ -2548,8 +2549,10 @@ export namespace cloud {
             export interface ServiceCreation {
                 backup?: cloud.project.database.service.creation.BackupFork;
                 backupTime?: string;
+                backups?: cloud.project.database.service.Backup;
                 description: string;
                 disk: cloud.project.database.service.Disk;
+                forkFrom?: cloud.project.database.service.creation.ForkFrom;
                 ipRestrictions: cloud.project.database.service.IpRestriction[];
                 maintenanceTime?: string;
                 networkId?: string;
@@ -3048,6 +3051,7 @@ export namespace cloud {
                 export interface Service {
                     aclsEnabled: boolean;
                     backupTime: string;
+                    backups?: cloud.project.database.service.Backup;
                     createdAt: string;
                     description: string;
                     disk: cloud.project.database.service.Disk;
@@ -3233,6 +3237,14 @@ export namespace cloud {
                 }
             }
             export namespace service {
+                /**
+                 * Cloud database service backups definition
+                 * interface fullName: cloud.project.database.service.Backup.Backup
+                 */
+                export interface Backup {
+                    regions: string[];
+                    time: string;
+                }
                 /**
                  * Certificates definition for cloud project databases
                  * interface fullName: cloud.project.database.service.Certificates.Certificates
@@ -3483,11 +3495,20 @@ export namespace cloud {
                 }
                 export namespace creation {
                     /**
-                     * Defines the variable to fork a cluster from a backup
+                     * Defines the source to fork a cluster from a backup. DEPRECATED: use forkFrom
                      * interface fullName: cloud.project.database.service.creation.BackupFork.BackupFork
                      */
                     export interface BackupFork {
                         id: string;
+                        pointInTime: string;
+                        serviceId: string;
+                    }
+                    /**
+                     * Defines the source to fork a cluster from a backup
+                     * interface fullName: cloud.project.database.service.creation.ForkFrom.ForkFrom
+                     */
+                    export interface ForkFrom {
+                        backupId: string;
                         pointInTime: string;
                         serviceId: string;
                     }
