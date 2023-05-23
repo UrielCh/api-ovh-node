@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/hosting-private-database",
     "description": "Add typing to to ovh api hosting-private-database",
-    "version": "4.0.1",
+    "version": "4.0.2",
     "keywords": [
         "ovh",
         "ovhCloud",
