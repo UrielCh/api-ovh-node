@@ -43,3 +43,4 @@ code/gen/models/**/*.d.ts
 code/test/dist/
 code/common/lib/
 code/test-cert.json
+code/gen/package-lock.json
