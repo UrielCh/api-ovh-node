@@ -153,3 +153,19 @@ export async function writeIfDiff(fn: string, expected: string): Promise<number>
     return 0;
 }
 
+export function writeIfDiffSync(fn: string, expected: string): number {
+    let oldEsm = '';
+    try {
+        oldEsm = fs.readFileSync(fn, { encoding: 'utf-8' });
+    } catch (e) {
+    }
+    if (oldEsm.replaceAll(/[\r\n]+/g, '\n') != expected.replaceAll(/[\r\n]+/g, '\n')) {
+        if (!oldEsm)
+            console.log(`Creating ${fn}`);
+        else
+            console.log(`Overwriting ${fn}`);
+        fs.writeFileSync(fn, expected, { encoding: 'utf-8' });
+        return 1;
+    }
+    return 0;
+}

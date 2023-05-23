@@ -198,7 +198,6 @@ export default class GenApiTypes {
             if (doWrite) {
                 const code = `${importHeader}${commentHeader}${exportHeader}${json}`;
                 await writeIfDiff(destination, code)
-                // await fse.writeFile(destination, `${importHeader}${commentHeader}${exportHeader}${json}`, { encoding: 'UTF8' });
             }
             // Entry Points
             if (schema.apis)

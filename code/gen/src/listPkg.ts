@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { EOL } from 'os';
+import { writeIfDiffSync } from './utils';
 
 const root = path.join(__dirname, '..', '..', '..');
 
@@ -29,10 +30,12 @@ for (const { dir, name: nsName, country } of subs) {
                 data.files = ["index.js", "index.d.ts"]; // , "index.ts" 
                 data.scripts.prepare = "npm run build";
                 data.funding = "https://github.com/sponsors/urielch";
-                data.dependencies["@ovh-api/common"] = "^3.1.2";
+                data.dependencies["@ovh-api/common"] = "^4.0.2";
                 data.keywords = ["ovh", "ovhCloud", "api", "typing", "typescript"];
                 content = JSON.stringify(data, undefined, 4) + EOL;
-                fs.writeFileSync(jsonFile, content, { encoding: 'utf8' });
+                // fs.writeFileSync(jsonFile, content, { encoding: 'utf8' });
+                writeIfDiffSync(jsonFile, content);
+
             }
         } catch (e) {
         }

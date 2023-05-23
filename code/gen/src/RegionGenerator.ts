@@ -117,7 +117,6 @@ export class RegionGenerator {
             let fn = path.join(dir, 'index.ts');
             let code = await cg.generate({ dest: fn });
             await writeIfDiff(fn, code);
-            // await fs.promises.writeFile(fn, code);
             await this.genPackageReadme(dir, cg);
             await this.genPackageJson(dir, flat);
             await this.genTsConfig(dir);
@@ -189,7 +188,6 @@ export class RegionGenerator {
         content.push('');
 
         await writeIfDiff(fn, content.join(EOL));
-        // await fs.promises.writeFile(fn, content.join(EOL));
     }
 
 
@@ -227,7 +225,7 @@ export class RegionGenerator {
                 funding: "https://github.com/sponsors/urielch",
                 author: "Uriel Chemouni <uchemouni@gmail.com>",
                 dependencies: {
-                    "@ovh-api/common": "4.0.0",
+                    "@ovh-api/common": "^4.0.2",
                 },
                 publishConfig: {
                     access: "public"
