@@ -2,6 +2,7 @@
   "name": "@ovh-api/common",
   "description": "common class used to enable Ovh Api new calls Syntax",
   "version": "4.0.1",
+  "funding": "https://github.com/sponsors/urielch",
   "main": "./lib/cjs/index.js",
   "typings": "./lib/esm/index.d.ts",
   "exports": {

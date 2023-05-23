@@ -2,6 +2,7 @@
     "author": "Uriel Chemouni <uchemouni@gmail.com> (https://uriel.deno.dev/)",
     "description": "Api Ovh helper",
     "version": "1.2.0",
+    "funding": "https://github.com/sponsors/urielch",
     "private": true,
     "workspaces": [
         "packages-*/*",
