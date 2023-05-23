@@ -44,3 +44,5 @@ code/test/dist/
 code/common/lib/
 code/test-cert.json
 code/gen/package-lock.json
+code/common/package-lock.json
+code/api/package-lock.json

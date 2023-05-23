@@ -1,8 +1,7 @@
 {
   "name": "@ovh-api/common",
   "description": "common class used to enable Ovh Api new calls Syntax",
-  "version": "4.0.1",
-  "funding": "https://github.com/sponsors/urielch",
+  "version": "4.0.2",
   "main": "./lib/cjs/index.js",
   "typings": "./lib/esm/index.d.ts",
   "exports": {
@@ -12,6 +11,7 @@
       "types": "./lib/esm/index.d.ts"
     }
   },
+  "funding": "https://github.com/sponsors/urielch",
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com> (https://uriel.deno.dev/)",
   "gitHead": "9054d4e68cd0b25c73f4d6d47a17e6b174a281db",
@@ -30,6 +30,6 @@
   },
   "files": ["lib", "src"],
   "devDependencies": {
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.4"
   }
 }
