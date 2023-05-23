@@ -224,6 +224,7 @@ export class RegionGenerator {
                 typings: "index.d.ts",
                 main: "./cjs/index.js",
                 license: "MIT",
+                funding: "https://github.com/sponsors/urielch",
                 author: "Uriel Chemouni <uchemouni@gmail.com>",
                 dependencies: {
                     "@ovh-api/common": "4.0.0",

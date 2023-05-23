@@ -10,6 +10,7 @@
         "dynhost"
     ],
     "license": "MIT",
+    "funding": "https://github.com/sponsors/urielch",
     "author": "Uriel Chemouni <uchemouni@gmail.com> (https://uriel.deno.dev/)",
     "bin": {
         "ovh-dynhost2": "./bin/ovh-dynhost2"

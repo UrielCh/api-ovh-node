@@ -9,6 +9,7 @@
   ],
   "typings": "index.d.ts",
   "license": "MIT",
+  "funding": "https://github.com/sponsors/urielch",
   "author": "Uriel Chemouni <uchemouni@gmail.com> (https://uriel.deno.dev/)",
   "bin": {
     "ovh-bill-importer": "./bin/ovh-delete-service"

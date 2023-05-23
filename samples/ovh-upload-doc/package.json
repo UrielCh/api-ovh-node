@@ -10,6 +10,7 @@
   ],
   "typings": "index.d.ts",
   "license": "MIT",
+  "funding": "https://github.com/sponsors/urielch",
   "author": "Uriel Chemouni <uchemouni@gmail.com> (https://uriel.deno.dev/)",
   "bin": {
     "ovh-upload-doc": "./bin/ovh-upload-doc"

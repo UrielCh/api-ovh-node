@@ -1,4 +1,4 @@
-import ApiTel, { telephony } from '@ovh-api/telephony'
+import ApiTel from '@ovh-api/telephony'
 import Ovh, { OvhParams } from '@ovh-api/api'
 import program from 'commander'
 import Bluebird from 'bluebird';
