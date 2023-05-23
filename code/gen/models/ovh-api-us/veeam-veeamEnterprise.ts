@@ -16,7 +16,7 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "privateCloudVeeamEnterprise:apiovh:get"
+            "veeamEnterprise:apiovh:get"
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "privateCloudVeeamEnterprise:apiovh:get"
+            "veeamEnterprise:apiovh:get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -65,7 +65,7 @@ export const schema: Schema = {
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "privateCloudVeeamEnterprise:apiovh:confirmTermination"
+            "veeamEnterprise:apiovh:confirmTermination"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -126,7 +126,7 @@ export const schema: Schema = {
           "description": "Register Veeam Backup Server to Veeam Enterprise",
           "httpMethod": "POST",
           "iamActions": [
-            "privateCloudVeeamEnterprise:apiovh:register"
+            "veeamEnterprise:apiovh:register"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -187,7 +187,7 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "privateCloudVeeamEnterprise:apiovh:serviceInfos/get"
+            "veeamEnterprise:apiovh:serviceInfos/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -210,7 +210,7 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "privateCloudVeeamEnterprise:apiovh:serviceInfos/edit"
+            "veeamEnterprise:apiovh:serviceInfos/edit"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -246,7 +246,7 @@ export const schema: Schema = {
           "description": "Tasks associated with Veeam Enterprise",
           "httpMethod": "GET",
           "iamActions": [
-            "privateCloudVeeamEnterprise:apiovh:task/get"
+            "veeamEnterprise:apiovh:task/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -291,7 +291,7 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "privateCloudVeeamEnterprise:apiovh:task/get"
+            "veeamEnterprise:apiovh:task/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -328,7 +328,7 @@ export const schema: Schema = {
           "description": "Terminate your service",
           "httpMethod": "POST",
           "iamActions": [
-            "privateCloudVeeamEnterprise:apiovh:terminate"
+            "veeamEnterprise:apiovh:terminate"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -357,7 +357,7 @@ export const schema: Schema = {
           "description": "Update Veeam enterprise configuration",
           "httpMethod": "POST",
           "iamActions": [
-            "privateCloudVeeamEnterprise:apiovh:update"
+            "veeamEnterprise:apiovh:update"
           ],
           "noAuthentication": false,
           "parameters": [

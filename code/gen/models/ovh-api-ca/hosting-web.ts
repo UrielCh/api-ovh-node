@@ -89,8 +89,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-12-15T00:00:00+01:00",
-            "deprecatedDate": "2019-12-01T00:00:00+01:00",
+            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cartServiceOption/webHosting/{serviceName}",
             "value": "DEPRECATED"
@@ -5254,10 +5254,10 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get hosted SSL properties",
-          "httpMethod": "GET",
+          "description": "Delete a hosted SSL",
+          "httpMethod": "DELETE",
           "iamActions": [
-            "webHosting:apiovh:ssl/get"
+            "webHosting:apiovh:ssl/delete"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5277,23 +5277,23 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Delete the HostedSsl on your hosting",
-          "httpMethod": "DELETE",
+          "description": "Get hosted SSL properties",
+          "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:ssl/delete"
+            "webHosting:apiovh:ssl/get"
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.web.ssl"
+          "responseType": "hosting.web.SSL"
         },
         {
           "apiStatus": {
@@ -7405,15 +7405,18 @@ export const schema: Schema = {
     "hosting.PrivateDatabase.OrderableVersionEnum": {
       "description": "Private database orderable versions",
       "enum": [
+        "mariadb_10.11",
         "mariadb_10.3",
         "mariadb_10.4",
         "mariadb_10.5",
+        "mariadb_10.6",
         "mysql_5.7",
         "mysql_8.0",
-        "postgresql_10",
         "postgresql_11",
         "postgresql_12",
         "postgresql_13",
+        "postgresql_14",
+        "postgresql_15",
         "redis_6.0",
         "redis_7.0"
       ],
@@ -7776,7 +7779,9 @@ export const schema: Schema = {
     "hosting.web.DatacenterEnum": {
       "description": "Available datacenters",
       "enum": [
+        "bhs",
         "bhs1",
+        "gra",
         "gra1",
         "gra2",
         "gra3",
@@ -8441,10 +8446,10 @@ export const schema: Schema = {
         "datacenter": {
           "canBeNull": false,
           "description": "Datacenter where this account is located",
-          "fullType": "hosting.web.DatacenterEnum",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
-          "type": "hosting.web.DatacenterEnum"
+          "type": "string"
         },
         "displayName": {
           "canBeNull": true,
@@ -9663,13 +9668,16 @@ export const schema: Schema = {
       "enum": [
         "10",
         "10.1",
+        "10.11",
         "10.2",
         "10.3",
         "10.4",
         "10.5",
+        "10.6",
         "11",
         "12",
         "13",
+        "15",
         "3.2",
         "3.4",
         "4.0",

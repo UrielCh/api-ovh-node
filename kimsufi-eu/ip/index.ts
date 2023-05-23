@@ -115,6 +115,7 @@ export namespace ip {
         country?: coreTypes.CountryEnum;
         description?: string;
         ip: string;
+        isAdditionalIp: boolean;
         organisationId?: string;
         rir?: string;
         routedTo?: ip.RoutedTo;
@@ -324,7 +325,7 @@ export interface Ip {
      * Your OVH IPs
      * GET /ip
      */
-    $get(params?: { campus?: string, description?: string, ip?: string, 'routedTo.serviceName'?: string, type?: ip.IpTypeEnum, version?: ip.IpVersionEnum }): Promise<string[]>;
+    $get(params?: { campus?: string, description?: string, ip?: string, isAdditionalIp?: boolean, 'routedTo.serviceName'?: string, type?: ip.IpTypeEnum, version?: ip.IpVersionEnum }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -396,7 +397,7 @@ export interface Ip {
          * Alter this object properties
          * PUT /ip/{ip}
          */
-        $put(params?: { bringYourOwnIp?: boolean, campus?: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, rir?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum, version?: ip.IpVersionEnum }): Promise<void>;
+        $put(params?: { bringYourOwnIp?: boolean, campus?: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, isAdditionalIp?: boolean, organisationId?: string, rir?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum, version?: ip.IpVersionEnum }): Promise<void>;
         /**
          * Controle cache
          */

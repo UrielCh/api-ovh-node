@@ -1218,6 +1218,20 @@ export interface Services {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
+        terminate: {
+            /**
+             * Request service termination
+             * POST /services/{serviceId}/terminate
+             */
+            $post(): Promise<services.terminate.TerminationAnswer>;
+            confirm: {
+                /**
+                 * Confirm service termination
+                 * POST /services/{serviceId}/terminate/confirm
+                 */
+                $post(params: { token: string }): Promise<services.terminate.TerminationAnswer>;
+            }
+        }
         upgrade: {
             /**
              * List offers this option can be converted to

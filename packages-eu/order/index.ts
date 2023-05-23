@@ -200,7 +200,7 @@ export namespace hosting {
          * Private database orderable versions
          * type fullname: hosting.PrivateDatabase.OrderableVersionEnum
          */
-        export type OrderableVersionEnum = "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mysql_5.7" | "mysql_8.0" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_13" | "redis_6.0" | "redis_7.0"
+        export type OrderableVersionEnum = "mariadb_10.11" | "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mariadb_10.6" | "mysql_5.7" | "mysql_8.0" | "postgresql_11" | "postgresql_12" | "postgresql_13" | "postgresql_14" | "postgresql_15" | "redis_6.0" | "redis_7.0"
     }
     export namespace web {
         /**
@@ -5806,6 +5806,17 @@ export interface Order {
                 /**
                  * Retrieve IP Load Balancing catalog
                  * GET /order/catalog/public/ipLoadbalancing
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            kms: {
+                /**
+                 * Retrieve KMS catalog
+                 * GET /order/catalog/public/kms
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**

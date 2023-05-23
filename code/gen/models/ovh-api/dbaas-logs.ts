@@ -573,6 +573,7 @@ export const schema: Schema = {
             "Client::ValidationError::MissingInputAutoscalingParameter",
             "Client::ValidationError::NotStreamOwner",
             "Client::ValidationError::RequiredField",
+            "Client::ValidationError::RestrictedPort",
             "Client::ValidationError::ValueNotInRange",
             "Client::Forbidden::Busy",
             "Client::Forbidden::NotOnSameCluster",
@@ -710,6 +711,7 @@ export const schema: Schema = {
             "Client::ValidationError::MissingInputAutoscalingParameter",
             "Client::ValidationError::NotStreamOwner",
             "Client::ValidationError::RequiredField",
+            "Client::ValidationError::RestrictedPort",
             "Client::ValidationError::ValueNotInRange",
             "Client::Forbidden::Busy",
             "Client::Forbidden::NotOnSameCluster",
@@ -1563,8 +1565,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias",
             "value": "DEPRECATED"
@@ -1592,8 +1594,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias",
             "value": "DEPRECATED"
@@ -1645,8 +1647,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias",
             "value": "DEPRECATED"
@@ -1686,8 +1688,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias",
             "value": "DEPRECATED"
@@ -1725,8 +1727,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias",
             "value": "DEPRECATED"
@@ -1781,8 +1783,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/index",
             "value": "DEPRECATED"
@@ -1820,8 +1822,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/index",
             "value": "DEPRECATED"
@@ -1878,8 +1880,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/index",
             "value": "DEPRECATED"
@@ -1935,8 +1937,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/stream",
             "value": "DEPRECATED"
@@ -1974,8 +1976,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/stream",
             "value": "DEPRECATED"
@@ -2033,8 +2035,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/stream",
             "value": "DEPRECATED"
@@ -2090,8 +2092,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/url",
             "value": "DEPRECATED"
@@ -2135,8 +2137,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index",
             "value": "DEPRECATED"
@@ -2164,8 +2166,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index",
             "value": "DEPRECATED"
@@ -2218,8 +2220,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index",
             "value": "DEPRECATED"
@@ -2260,8 +2262,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index",
             "value": "DEPRECATED"
@@ -2299,8 +2301,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index",
             "value": "DEPRECATED"
@@ -2355,8 +2357,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index/{indexId}/url",
             "value": "DEPRECATED"
@@ -2401,8 +2403,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd",
             "value": "DEPRECATED"
@@ -2430,8 +2432,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd",
             "value": "DEPRECATED"
@@ -2478,8 +2480,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd",
             "value": "DEPRECATED"
@@ -2520,8 +2522,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd",
             "value": "DEPRECATED"
@@ -2560,8 +2562,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd",
             "value": "DEPRECATED"
@@ -2615,8 +2617,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd/{osdId}/url",
             "value": "DEPRECATED"
@@ -3052,7 +3054,6 @@ export const schema: Schema = {
           "errors": [
             "Client::ValidationError::InvalidUUID",
             "Client::ValidationError::StreamLinked",
-            "Client::ValidationError::StreamLinkedToAliases",
             "Client::Forbidden::Busy",
             "Client::Forbidden::OnlyOwnerCanPerformAction",
             "Client::Forbidden::ServiceUnavailable",
@@ -5646,8 +5647,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-09-30T00:00:00+00:00",
-            "deprecatedDate": "2022-04-21T00:00:00+00:00",
+            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/dbaas/logs/{serviceName}/role/{roleId}/permission/osd",
             "value": "DEPRECATED"

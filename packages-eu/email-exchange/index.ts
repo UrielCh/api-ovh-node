@@ -362,6 +362,7 @@ export namespace email {
          * interface fullName: email.exchange.dkim.dkim
          */
         export interface dkim {
+            cnameIsValid: boolean;
             customerRecord: string;
             header: string;
             lastUpdate?: string;

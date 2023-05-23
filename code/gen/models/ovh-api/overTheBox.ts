@@ -2388,12 +2388,12 @@ export const schema: Schema = {
   "models": {
     "order.CurrencyCodeEnum": {
       "enum": [
-        " INR",
         "AUD",
         "CAD",
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",

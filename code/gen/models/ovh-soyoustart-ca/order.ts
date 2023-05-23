@@ -1220,8 +1220,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -1259,8 +1259,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -1300,8 +1300,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -1662,8 +1662,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -1709,8 +1709,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -1758,8 +1758,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2779,8 +2779,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2801,8 +2801,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2832,8 +2832,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2871,8 +2871,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2912,8 +2912,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2959,8 +2959,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3014,8 +3014,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3071,8 +3071,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },

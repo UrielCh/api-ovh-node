@@ -968,8 +968,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2018-04-23T00:00:00+01:00",
-            "deprecatedDate": "2017-10-23T00:00:00+01:00",
+            "deletionDate": "2018-04-23 00:00:00 +0100 +0100",
+            "deprecatedDate": "2017-10-23 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/dedicated/server/{serviceName}/networkInterfaceController",
             "value": "DEPRECATED"
@@ -3050,8 +3050,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2021-04-08T00:00:00+01:00",
-            "deprecatedDate": "2021-01-08T00:00:00+01:00",
+            "deletionDate": "2021-04-08 00:00:00 +0100 +0100",
+            "deprecatedDate": "2021-01-08 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/dedicated/server/{serviceName}/ola/aggregation",
             "value": "DEPRECATED"
@@ -3097,8 +3097,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2021-04-08T00:00:00+01:00",
-            "deprecatedDate": "2021-01-08T00:00:00+01:00",
+            "deletionDate": "2021-04-08 00:00:00 +0100 +0100",
+            "deprecatedDate": "2021-01-08 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/dedicated/server/{serviceName}/ola/aggregation",
             "value": "DEPRECATED"
@@ -3137,8 +3137,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2021-04-08T00:00:00+01:00",
-            "deprecatedDate": "2021-01-08T00:00:00+01:00",
+            "deletionDate": "2021-04-08 00:00:00 +0100 +0100",
+            "deprecatedDate": "2021-01-08 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/dedicated/server/{serviceName}/ola/aggregation",
             "value": "DEPRECATED"
@@ -3177,6 +3177,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
+            "deletionDate": "0001-01-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "0001-01-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },

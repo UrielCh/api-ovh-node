@@ -762,8 +762,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2018-04-23T00:00:00+01:00",
-            "deprecatedDate": "2017-10-23T00:00:00+01:00",
+            "deletionDate": "2018-04-23 00:00:00 +0100 +0100",
+            "deprecatedDate": "2017-10-23 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/dedicated/server/{serviceName}/networkInterfaceController",
             "value": "DEPRECATED"

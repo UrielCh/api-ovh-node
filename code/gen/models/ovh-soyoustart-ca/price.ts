@@ -15,9 +15,6 @@ export const schema: Schema = {
           },
           "description": "Get price of anti-DDos Pro option",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/dedicated/server/antiDDoSPro/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44,9 +41,6 @@ export const schema: Schema = {
           },
           "description": "Get price of backup storage offer",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/dedicated/server/backupStorage/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -73,9 +67,6 @@ export const schema: Schema = {
           },
           "description": "Get price of available firewall models",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/dedicated/server/firewall/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -102,9 +93,6 @@ export const schema: Schema = {
           },
           "description": "Get price of IPs",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/dedicated/server/ip/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -126,12 +114,12 @@ export const schema: Schema = {
   "models": {
     "order.CurrencyCodeEnum": {
       "enum": [
-        " INR",
         "AUD",
         "CAD",
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",

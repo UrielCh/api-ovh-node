@@ -988,8 +988,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-03-31T00:00:00+01:00",
-            "deprecatedDate": "2022-01-24T00:00:00+01:00",
+            "deletionDate": "2022-03-31 00:00:00 +0100 +0100",
+            "deprecatedDate": "2022-01-24 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "replacement": "/domain/{serviceName}/configurations/optin",
             "value": "DEPRECATED"
@@ -1022,8 +1022,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2022-03-31T00:00:00+01:00",
-            "deprecatedDate": "2022-01-24T00:00:00+01:00",
+            "deletionDate": "2022-03-31 00:00:00 +0100 +0100",
+            "deprecatedDate": "2022-01-24 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -1061,8 +1061,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-03-31T00:00:00+01:00",
-            "deprecatedDate": "2022-01-24T00:00:00+01:00",
+            "deletionDate": "2022-03-31 00:00:00 +0100 +0100",
+            "deprecatedDate": "2022-01-24 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -1094,8 +1094,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2022-03-31T00:00:00+01:00",
-            "deprecatedDate": "2022-01-24T00:00:00+01:00",
+            "deletionDate": "2022-03-31 00:00:00 +0100 +0100",
+            "deprecatedDate": "2022-01-24 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -1713,8 +1713,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2021-08-31T00:00:00+00:00",
-            "deprecatedDate": "2021-02-01T00:00:00+00:00",
+            "deletionDate": "2021-08-31 00:00:00 +0000 UTC",
+            "deprecatedDate": "2021-02-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/domain/extensions",
             "value": "DEPRECATED"

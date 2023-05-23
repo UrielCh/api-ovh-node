@@ -75,6 +75,16 @@ export namespace ovhcloudconnect {
         timestamp?: string;
     }
     /**
+     * OVHcloud Connect Incident
+     * interface fullName: ovhcloudconnect.Incident.Incident
+     */
+    export interface Incident {
+        endDate?: string;
+        id: number;
+        startDate: string;
+        type: ovhcloudconnect.incident.TypeEnum;
+    }
+    /**
      * OVHcloud Connect Interface
      * interface fullName: ovhcloudconnect.Interface.Interface
      */
@@ -198,6 +208,13 @@ export namespace ovhcloudconnect {
          */
         export type TypeEnum = "advertised-routes" | "default" | "routes"
     }
+    export namespace incident {
+        /**
+         * Enum values for incident type status
+         * type fullname: ovhcloudconnect.incident.TypeEnum
+         */
+        export type TypeEnum = "incident" | "maintenance"
+    }
     export namespace interf {
         /**
          * Enum values for the light status
@@ -271,7 +288,7 @@ export namespace ovhcloudconnect {
          * Enum values for service provider
          * type fullname: ovhcloudconnect.service.ProviderEnum
          */
-        export type ProviderEnum = "OVHcloud" | "RISQ" | "equinix" | "fibrenoire" | "intercloud" | "internal" | "interxion" | "megaport" | "orange"
+        export type ProviderEnum = "OVHcloud" | "RISQ" | "equinix" | "fibrenoire" | "intercloud" | "internal" | "interxion" | "megaport" | "orange" | "pccw"
         /**
          * Enum values for the Service
          * type fullname: ovhcloudconnect.service.StatusEnum
@@ -528,6 +545,28 @@ export interface OvhCloudConnect {
                  * GET /ovhCloudConnect/{serviceName}/diagnostic/{id}
                  */
                 $get(): Promise<ovhcloudconnect.Diagnostic>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
+        incident: {
+            /**
+             * List incidents linked to the Service
+             * GET /ovhCloudConnect/{serviceName}/incident
+             */
+            $get(): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(id: number): {
+                /**
+                 * Get the incident information
+                 * GET /ovhCloudConnect/{serviceName}/incident/{id}
+                 */
+                $get(): Promise<ovhcloudconnect.Incident>;
                 /**
                  * Controle cache
                  */

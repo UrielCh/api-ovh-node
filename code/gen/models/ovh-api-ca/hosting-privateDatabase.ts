@@ -2403,18 +2403,20 @@ export const schema: Schema = {
     "hosting.PrivateDatabase.AvailableVersionEnum": {
       "description": "Private database available versions",
       "enum": [
+        "mariadb_10.11",
         "mariadb_10.2",
         "mariadb_10.3",
         "mariadb_10.4",
         "mariadb_10.5",
-        "mongodb_4.0",
+        "mariadb_10.6",
         "mysql_5.7",
         "mysql_8.0",
         "postgresql_10",
         "postgresql_11",
         "postgresql_12",
         "postgresql_13",
-        "postgresql_9.6",
+        "postgresql_14",
+        "postgresql_15",
         "redis_6.0",
         "redis_7.0"
       ],
@@ -2713,7 +2715,6 @@ export const schema: Schema = {
       "description": "Private database type",
       "enum": [
         "mariadb",
-        "mongodb",
         "mysql",
         "postgresql",
         "redis"

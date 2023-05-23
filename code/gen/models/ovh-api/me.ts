@@ -7957,8 +7957,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -7983,8 +7983,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8014,8 +8014,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8040,8 +8040,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8066,8 +8066,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8105,8 +8105,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8144,8 +8144,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8176,8 +8176,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8193,8 +8193,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8224,8 +8224,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8250,8 +8250,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8276,8 +8276,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8315,8 +8315,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8354,8 +8354,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8494,8 +8494,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8511,8 +8511,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8542,8 +8542,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8568,8 +8568,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8594,8 +8594,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8633,8 +8633,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8672,8 +8672,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07T00:00:00+00:00",
-            "deprecatedDate": "2023-03-07T00:00:00+00:00",
+            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -14409,6 +14409,7 @@ export const schema: Schema = {
     "debt.entry.OperationEnum": {
       "description": "All operations a debt entry can represent",
       "enum": [
+        "BANK_TRANSFER_MANUAL",
         "CANCEL",
         "CASH_MANUAL",
         "CHECK_MANUAL",
@@ -14427,8 +14428,6 @@ export const schema: Schema = {
         "ENTERPRISE_MANUAL",
         "IDEAL_AUTOMATIC",
         "IDEAL_MANUAL",
-        "INCOMING_AUTOMATIC",
-        "INCOMING_MANUAL",
         "INTERNAL_TRUSTED_ACCOUNT_AUTOMATIC",
         "INTERNAL_TRUSTED_ACCOUNT_MANUAL",
         "MULTIBANCO_AUTOMATIC",
@@ -14448,7 +14447,6 @@ export const schema: Schema = {
         "REFUND_DOMESTIC_CARD",
         "REFUND_ENTERPRISE",
         "REFUND_IDEAL",
-        "REFUND_INCOMING",
         "REFUND_INTERNAL_TRUSTED_ACCOUNT",
         "REFUND_LOSS",
         "REFUND_MULTIBANCO",
@@ -14473,7 +14471,6 @@ export const schema: Schema = {
         "UNPAID_DOMESTIC_CARD",
         "UNPAID_ENTERPRISE",
         "UNPAID_IDEAL",
-        "UNPAID_INCOMING",
         "UNPAID_INTERNAL_TRUSTED_ACCOUNT",
         "UNPAID_MULTIBANCO",
         "UNPAID_PAYPAL",
@@ -14483,7 +14480,6 @@ export const schema: Schema = {
         "UNPAID_SEPA_DIRECT_DEBIT",
         "UNPAID_WITHDRAW",
         "WARRANT_MANUAL",
-        "WIRE_TRANSFER_MANUAL",
         "WITHDRAW_AUTOMATIC"
       ],
       "enumType": "string",
@@ -15935,7 +15931,8 @@ export const schema: Schema = {
         "SY2",
         "SYD",
         "VIN",
-        "WAW"
+        "WAW",
+        "YNM"
       ],
       "enumType": "string",
       "id": "CampusEnum",

@@ -89,8 +89,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2013-11-23T10:00:00+01:00",
-            "deprecatedDate": "2013-10-23T10:00:00+01:00",
+            "deletionDate": "2013-11-23 10:00:00 +0100 +0100",
+            "deprecatedDate": "2013-10-23 10:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/vps/{serviceName}/option",
             "value": "DEPRECATED"

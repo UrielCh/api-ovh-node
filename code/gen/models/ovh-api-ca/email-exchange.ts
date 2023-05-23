@@ -2267,8 +2267,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-04-02T00:00:00+01:00",
-            "deprecatedDate": "2023-03-02T00:00:00+01:00",
+            "deletionDate": "2023-04-02 00:00:00 +0100 +0100",
+            "deprecatedDate": "2023-03-02 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -11171,6 +11171,14 @@ export const schema: Schema = {
       "id": "dkim",
       "namespace": "email.exchange",
       "properties": {
+        "cnameIsValid": {
+          "canBeNull": false,
+          "description": "If true your dns cname configuration is valid",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "customerRecord": {
           "canBeNull": false,
           "description": "customer dns record",

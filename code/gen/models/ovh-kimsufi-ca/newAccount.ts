@@ -1204,7 +1204,7 @@ export const schema: Schema = {
       }
     },
     "nichandle.OvhCompanyEnum": {
-      "description": "OVH subsidiaries",
+      "description": "OVH companies",
       "enum": [
         "kimsufi",
         "ovh",

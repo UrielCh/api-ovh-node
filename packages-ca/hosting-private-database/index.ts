@@ -43,7 +43,7 @@ export namespace hosting {
          * Private database available versions
          * type fullname: hosting.PrivateDatabase.AvailableVersionEnum
          */
-        export type AvailableVersionEnum = "mariadb_10.2" | "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mongodb_4.0" | "mysql_5.7" | "mysql_8.0" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_13" | "postgresql_9.6" | "redis_6.0" | "redis_7.0"
+        export type AvailableVersionEnum = "mariadb_10.11" | "mariadb_10.2" | "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mariadb_10.6" | "mysql_5.7" | "mysql_8.0" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_13" | "postgresql_14" | "postgresql_15" | "redis_6.0" | "redis_7.0"
         /**
          * Private database capability
          * interface fullName: hosting.PrivateDatabase.Capability.Capability
@@ -150,7 +150,7 @@ export namespace hosting {
          * Private database type
          * type fullname: hosting.PrivateDatabase.TypeEnum
          */
-        export type TypeEnum = "mariadb" | "mongodb" | "mysql" | "postgresql" | "redis"
+        export type TypeEnum = "mariadb" | "mysql" | "postgresql" | "redis"
         export namespace User {
             /**
              * Databases linked to an user

@@ -3994,7 +3994,7 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "xdslEmailPro:apiovh:get"
+            "xdslEmail:apiovh:get"
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -4014,7 +4014,7 @@ export const schema: Schema = {
           "description": "Delete the email",
           "httpMethod": "DELETE",
           "iamActions": [
-            "xdslEmailPro:apiovh:delete"
+            "xdslEmail:apiovh:delete"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4037,7 +4037,7 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdslEmailPro:apiovh:get"
+            "xdslEmail:apiovh:get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4060,7 +4060,7 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "xdslEmailPro:apiovh:edit"
+            "xdslEmail:apiovh:edit"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4096,7 +4096,7 @@ export const schema: Schema = {
           "description": "Change the email password",
           "httpMethod": "POST",
           "iamActions": [
-            "xdslEmailPro:apiovh:changePassword"
+            "xdslEmail:apiovh:changePassword"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4418,9 +4418,6 @@ export const schema: Schema = {
           },
           "description": "Get all available spare brands",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:xdslSpare/brands/get"
-          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "string[]"
@@ -4984,12 +4981,12 @@ export const schema: Schema = {
     },
     "order.CurrencyCodeEnum": {
       "enum": [
-        " INR",
         "AUD",
         "CAD",
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",

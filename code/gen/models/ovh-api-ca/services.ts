@@ -993,6 +993,71 @@ export const schema: Schema = {
       "path": "/services/{serviceId}/technicalDetails"
     },
     {
+      "description": "Terminate your services",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Request service termination",
+          "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:services/terminate"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.terminate.TerminationAnswer"
+        }
+      ],
+      "path": "/services/{serviceId}/terminate"
+    },
+    {
+      "description": "Confirm the termination of your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Confirm service termination",
+          "httpMethod": "POST",
+          "iamActions": [
+            "account:apiovh:services/terminate/confirm"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.terminate.ConfirmServiceTerminationRequest",
+              "description": "Request Body",
+              "fullType": "services.terminate.ConfirmServiceTerminationRequest",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.terminate.TerminationAnswer"
+        }
+      ],
+      "path": "/services/{serviceId}/terminate/confirm"
+    },
+    {
       "description": "Upgrade your offer to another offer",
       "operations": [
         {

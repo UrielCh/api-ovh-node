@@ -2591,6 +2591,17 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            kms: {
+                /**
+                 * Retrieve KMS catalog
+                 * GET /order/catalog/public/kms
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             licensecPanel: {
                 /**
                  * Retrieve License cPanel catalog

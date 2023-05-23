@@ -50,14 +50,6 @@ export namespace cloud {
      */
     export type AlertingDelayEnum = 10800 | 172800 | 21600 | 259200 | 3600 | 43200 | 604800 | 86400
     /**
-     * Details about archive storage pricing
-     * interface fullName: cloud.ArchiveStoragePrice.ArchiveStoragePrice
-     */
-    export interface ArchiveStoragePrice {
-        monthlyPrice: orderPrice;
-        region: string;
-    }
-    /**
      * Details about an available region that can be activated on your project
      * interface fullName: cloud.AvailableRegion.AvailableRegion
      */
@@ -80,18 +72,11 @@ export namespace cloud {
         name: string;
     }
     /**
-     * Details about bandwidth storage pricing
-     * interface fullName: cloud.BandwidthStoragePrice.BandwidthStoragePrice
-     */
-    export interface BandwidthStoragePrice {
-        price: orderPrice;
-        region: string;
-    }
-    /**
      * Container
      * interface fullName: cloud.ColdArchiveContainer.ColdArchiveContainer
      */
     export interface ColdArchiveContainer {
+        automaticDeletionAt?: string;
         createdAt: string;
         name: string;
         objects: cloud.StorageObject[];
@@ -145,17 +130,6 @@ export namespace cloud {
      */
     export type ExecutionStateEnum = "CANCELED" | "ERROR" | "IDLE" | "PAUSED" | "RUNNING" | "SUCCESS"
     /**
-     * Details about flavor pricing
-     * interface fullName: cloud.FlavorPrice.FlavorPrice
-     */
-    export interface FlavorPrice {
-        flavorId: string;
-        flavorName: string;
-        monthlyPrice?: orderPrice;
-        price: orderPrice;
-        region: string;
-    }
-    /**
      * Enum values for IpCountry
      * type fullname: cloud.IpCountryEnum
      */
@@ -203,21 +177,6 @@ export namespace cloud {
      * type fullname: cloud.OperationStatusEnum
      */
     export type OperationStatusEnum = "completed" | "created" | "in-error" | "in-progress" | "unknown"
-    /**
-     * A structure defining prices for cloud services
-     * interface fullName: cloud.Price.Price
-     */
-    export interface Price {
-        archive: cloud.ArchiveStoragePrice[];
-        bandwidthArchiveIn: cloud.BandwidthStoragePrice[];
-        bandwidthArchiveOut: cloud.BandwidthStoragePrice[];
-        bandwidthStorage: cloud.BandwidthStoragePrice[];
-        instances: cloud.FlavorPrice[];
-        projectCreation: orderPrice;
-        snapshots: cloud.SnapshotPrice[];
-        storage: cloud.StoragePrice[];
-        volumes: cloud.VolumePrice[];
-    }
     /**
      * Project
      * interface fullName: cloud.Project.Project
@@ -460,14 +419,6 @@ export namespace cloud {
      */
     export interface ProjectKubeIpRestrictionUpsert {
         ips: string[];
-    }
-    /**
-     * Missing description
-     * interface fullName: cloud.ProjectKubeNodeCreation.ProjectKubeNodeCreation
-     */
-    export interface ProjectKubeNodeCreation {
-        flavorName: string;
-        name: string;
     }
     /**
      * Missing description
@@ -813,15 +764,6 @@ export namespace cloud {
      */
     export type ServiceStatusEnum = "DOWN" | "UP"
     /**
-     * Details about snapshot pricing
-     * interface fullName: cloud.SnapshotPrice.SnapshotPrice
-     */
-    export interface SnapshotPrice {
-        monthlyPrice: orderPrice;
-        price: orderPrice;
-        region: string;
-    }
-    /**
      * Container
      * interface fullName: cloud.StorageContainer.StorageContainer
      */
@@ -854,15 +796,6 @@ export namespace cloud {
         size: number;
     }
     /**
-     * Details about storage pricing
-     * interface fullName: cloud.StoragePrice.StoragePrice
-     */
-    export interface StoragePrice {
-        monthlyPrice: orderPrice;
-        price: orderPrice;
-        region: string;
-    }
-    /**
      * A sub-operation is a child of an operation on your Project
      * interface fullName: cloud.SubOperation.SubOperation
      */
@@ -875,16 +808,6 @@ export namespace cloud {
         resourceId?: string;
         startedAt?: string;
         status: cloud.OperationStatusEnum;
-    }
-    /**
-     * Details about volume pricing
-     * interface fullName: cloud.VolumePrice.VolumePrice
-     */
-    export interface VolumePrice {
-        monthlyPrice: orderPrice;
-        price: orderPrice;
-        region: string;
-        volumeName: string;
     }
     /**
      * A vRack allows to connect your OVH infrastructures accross products and datacenters
@@ -1530,17 +1453,17 @@ export namespace cloud {
          * interface fullName: cloud.instance.CreateInput.CreateInput
          */
         export interface CreateInput {
-            autobackup: cloud.instance.CreateInput.Autobackup;
+            autobackup?: cloud.instance.CreateInput.Autobackup;
             billingPeriod: cloud.instance.CreateInput.BillingPeriodEnum;
             bootFrom: cloud.instance.CreateInput.BootFrom;
             bulk: number;
             flavor: cloud.instance.CreateInput.Flavor;
-            group: cloud.instance.CreateInput.Group;
+            group?: cloud.instance.CreateInput.Group;
             name: string;
             network: cloud.instance.CreateInput.Network;
-            sshKey: cloud.instance.CreateInput.SshKey;
-            sshKeyCreate: cloud.instance.CreateInput.SshKeyCreate;
-            userData: string;
+            sshKey?: cloud.instance.CreateInput.SshKey;
+            sshKeyCreate?: cloud.instance.CreateInput.SshKeyCreate;
+            userData?: string;
         }
         export namespace CreateInput {
             /**
@@ -1561,8 +1484,8 @@ export namespace cloud {
              * interface fullName: cloud.instance.CreateInput.BootFrom.BootFrom
              */
             export interface BootFrom {
-                imageId: string;
-                volumeId: string;
+                imageId?: string;
+                volumeId?: string;
             }
             /**
              * Flavor information
@@ -1583,7 +1506,7 @@ export namespace cloud {
              * interface fullName: cloud.instance.CreateInput.Network.Network
              */
             export interface Network {
-                private: cloud.instance.CreateInput.Network.Private;
+                private?: cloud.instance.CreateInput.Network.Private;
                 public: boolean;
             }
             export namespace Network {
@@ -1592,13 +1515,13 @@ export namespace cloud {
                  * interface fullName: cloud.instance.CreateInput.Network.Private.Private
                  */
                 export interface Private {
-                    floatingIp: cloud.instance.CreateInput.Network.Private.FloatingIp;
-                    floatingIpCreate: cloud.instance.CreateInput.Network.Private.FloatingIpCreate;
-                    gateway: cloud.instance.CreateInput.Network.Private.Gateway;
-                    gatewayCreate: cloud.instance.CreateInput.Network.Private.GatewayCreate;
-                    ip: string;
-                    network: cloud.instance.CreateInput.Network.Private.Network;
-                    networkCreate: cloud.instance.CreateInput.Network.Private.NetworkCreate;
+                    floatingIp?: cloud.instance.CreateInput.Network.Private.FloatingIp;
+                    floatingIpCreate?: cloud.instance.CreateInput.Network.Private.FloatingIpCreate;
+                    gateway?: cloud.instance.CreateInput.Network.Private.Gateway;
+                    gatewayCreate?: cloud.instance.CreateInput.Network.Private.GatewayCreate;
+                    ip?: string;
+                    network?: cloud.instance.CreateInput.Network.Private.Network;
+                    networkCreate?: cloud.instance.CreateInput.Network.Private.NetworkCreate;
                 }
                 export namespace Private {
                     /**
@@ -1652,7 +1575,7 @@ export namespace cloud {
                     export interface NetworkCreate {
                         name: string;
                         subnet: cloud.instance.CreateInput.Network.Private.NetworkCreate.Subnet;
-                        vlanId: number;
+                        vlanId?: number;
                     }
                     export namespace NetworkCreate {
                         /**
@@ -2176,7 +2099,12 @@ export namespace cloud {
          */
         export type Region = "GRA5" | "GRA7" | "BHS5"
         /**
-         * Enum values for available regions
+         * Enum values for regions where cluster creation is possible, region where cluster are deployed is cloud.kube.RegionEnum
+         * type fullname: cloud.kube.RegionCapabilitiesEnum
+         */
+        export type RegionCapabilitiesEnum = "BHS5" | "DE1" | "GRA5" | "GRA7" | "GRA9" | "SBG5" | "SGP1" | "SYD1" | "UK1" | "US-EAST-VA-1" | "US-WEST-OR-1" | "WAW1"
+        /**
+         * Enum values for regions where cluster are deployed and flavor related location. Available region for cluster creation is cloud.kube.RegionCapabilitiesEnum
          * type fullname: cloud.kube.RegionEnum
          */
         export type RegionEnum = "BHS5" | "DE1" | "GRA5" | "GRA7" | "GRA9" | "SBG5" | "SGP1" | "SYD1" | "UK1" | "US-EAST-VA-1" | "US-WEST-OR-1" | "WAW1"
@@ -2245,7 +2173,7 @@ export namespace cloud {
          * List of available versions for installation
          * type fullname: cloud.kube.VersionEnum
          */
-        export type VersionEnum = "1.23" | "1.24" | "1.25"
+        export type VersionEnum = "1.24" | "1.25" | "1.26"
     }
     export namespace loadbalancing {
         /**
@@ -3229,6 +3157,14 @@ export namespace cloud {
                 authorized: boolean;
             }
             /**
+             * AI Solutions basic auth credentials input
+             * interface fullName: cloud.project.ai.BasicAuthCredentialsInput.BasicAuthCredentialsInput
+             */
+            export interface BasicAuthCredentialsInput {
+                password: string;
+                username: string;
+            }
+            /**
              * AI Solutions CLI command
              * interface fullName: cloud.project.ai.Command.Command
              */
@@ -3236,11 +3172,70 @@ export namespace cloud {
                 command: string;
             }
             /**
+             * AI Solutions data store container Volume Object
+             * interface fullName: cloud.project.ai.DataStore.DataStore
+             */
+            export interface DataStore {
+                alias: string;
+                owner: cloud.project.ai.DataStoreOwnerEnum;
+                type: cloud.project.ai.DataStoreTypeEnum;
+            }
+            /**
+             * AI Solutions data store auth
+             * interface fullName: cloud.project.ai.DataStoreAuth.DataStoreAuth
+             */
+            export interface DataStoreAuth {
+                accessKey?: string;
+                region?: string;
+                s3Url?: string;
+                secretKey?: string;
+                token?: string;
+                url?: string;
+            }
+            /**
+             * AI Solutions data store credentials Object
+             * interface fullName: cloud.project.ai.DataStoreCredentialsInput.DataStoreCredentialsInput
+             */
+            export interface DataStoreCredentialsInput {
+                git?: cloud.project.ai.GitCredentialsInput;
+                s3?: cloud.project.ai.S3CredentialsInput;
+            }
+            /**
+             * AI Solutions data store container Volume Object
+             * interface fullName: cloud.project.ai.DataStoreInput.DataStoreInput
+             */
+            export interface DataStoreInput {
+                alias: string;
+                credentials: cloud.project.ai.DataStoreCredentialsInput;
+                endpoint: string;
+                owner: cloud.project.ai.DataStoreOwnerEnum;
+                prefix?: string;
+                type: cloud.project.ai.DataStoreTypeEnum;
+            }
+            /**
+             * Data Store Owner
+             * type fullname: cloud.project.ai.DataStoreOwnerEnum
+             */
+            export type DataStoreOwnerEnum = "customer" | "ovhcloud"
+            /**
+             * Data Store Type
+             * type fullname: cloud.project.ai.DataStoreTypeEnum
+             */
+            export type DataStoreTypeEnum = "git" | "s3" | "swift"
+            /**
              * Basic model with a single message field
              * interface fullName: cloud.project.ai.GenericResponse.GenericResponse
              */
             export interface GenericResponse {
                 message: string;
+            }
+            /**
+             * AI Solutions data store git credentials input
+             * interface fullName: cloud.project.ai.GitCredentialsInput.GitCredentialsInput
+             */
+            export interface GitCredentialsInput {
+                basicAuth?: cloud.project.ai.BasicAuthCredentialsInput;
+                sshKeypair?: cloud.project.ai.SshCredentialsInput;
             }
             /**
              * Information about the state of this entity
@@ -3317,10 +3312,27 @@ export namespace cloud {
                 publicNetwork?: number;
             }
             /**
+             * AI Solutions S3 credentials
+             * interface fullName: cloud.project.ai.S3CredentialsInput.S3CredentialsInput
+             */
+            export interface S3CredentialsInput {
+                accessKey: string;
+                region: string;
+                secretKey: string;
+            }
+            /**
              * Shutdown strategy of an instance
              * type fullname: cloud.project.ai.ShutdownStrategyEnum
              */
             export type ShutdownStrategyEnum = "Stop"
+            /**
+             * AI Solutions SSH credentials input
+             * interface fullName: cloud.project.ai.SshCredentialsInput.SshCredentialsInput
+             */
+            export interface SshCredentialsInput {
+                privateKey: string;
+                publicKey: string;
+            }
             /**
              * Role granted with an application token
              * type fullname: cloud.project.ai.TokenRoleEnum
@@ -3520,6 +3532,11 @@ export namespace cloud {
                  */
                 export type FlavorTypeEnum = "cpu" | "gpu"
                 /**
+                 * Licensing Type
+                 * type fullname: cloud.project.ai.capabilities.LicensingTypeEnum
+                 */
+                export type LicensingTypeEnum = "per-app" | "per-replica" | "per-resource"
+                /**
                  * AI Solutions Preset image
                  * interface fullName: cloud.project.ai.capabilities.Preset.Preset
                  */
@@ -3585,6 +3602,23 @@ export namespace cloud {
                     registryUrl: string;
                     version: string;
                 }
+                export namespace app {
+                    /**
+                     * AI Solutions App image object
+                     * interface fullName: cloud.project.ai.capabilities.app.Image.Image
+                     */
+                    export interface Image {
+                        description: string;
+                        docUrl: string;
+                        id: string;
+                        licensing: cloud.project.ai.capabilities.LicensingTypeEnum;
+                        logoUrl: string;
+                        name: string;
+                        partnerId: string;
+                        partnerName: string;
+                        versions: string[];
+                    }
+                }
                 export namespace flavor {
                     /**
                      * AI Solutions Global GPU information
@@ -3605,6 +3639,46 @@ export namespace cloud {
                         memory: number;
                         privateNetwork: number;
                         publicNetwork: number;
+                    }
+                }
+                export namespace job {
+                    /**
+                     * AI Solutions Job image object
+                     * interface fullName: cloud.project.ai.capabilities.job.Image.Image
+                     */
+                    export interface Image {
+                        description: string;
+                        docUrl: string;
+                        id: string;
+                        logoUrl: string;
+                        name: string;
+                        versions: string[];
+                    }
+                }
+                export namespace notebook {
+                    /**
+                     * AI Solutions Notebook editor object
+                     * interface fullName: cloud.project.ai.capabilities.notebook.Editor.Editor
+                     */
+                    export interface Editor {
+                        description: string;
+                        docUrl: string;
+                        id: string;
+                        logoUrl: string;
+                        name: string;
+                        versions: string[];
+                    }
+                    /**
+                     * AI Solutions Notebook framework object
+                     * interface fullName: cloud.project.ai.capabilities.notebook.Framework.Framework
+                     */
+                    export interface Framework {
+                        description: string;
+                        docUrl: string;
+                        id: string;
+                        logoUrl: string;
+                        name: string;
+                        versions: string[];
                     }
                 }
             }
@@ -3862,6 +3936,34 @@ export namespace cloud {
                 export interface NotebookWorkspace {
                     storageFree: number;
                     storageUsed: number;
+                }
+            }
+            export namespace partner {
+                /**
+                 * Representation of a partner's contract with logged in user's tenant
+                 * interface fullName: cloud.project.ai.partner.Contract.Contract
+                 */
+                export interface Contract {
+                    signedAt?: string;
+                    termsOfService: { [key: string]: cloud.project.ai.partner.ContractTermsLocale };
+                }
+                /**
+                 * Representation of a partner's contract on a given language
+                 * interface fullName: cloud.project.ai.partner.ContractTermsLocale.ContractTermsLocale
+                 */
+                export interface ContractTermsLocale {
+                    url: string;
+                }
+                /**
+                 * Representation of a partner
+                 * interface fullName: cloud.project.ai.partner.Partner.Partner
+                 */
+                export interface Partner {
+                    contract?: cloud.project.ai.partner.Contract;
+                    createdAt: string;
+                    description: string;
+                    id: string;
+                    name: string;
                 }
             }
             export namespace registry {
@@ -4340,6 +4442,15 @@ export namespace cloud {
                 status: cloud.project.dataIntegration.ConnectionStatusEnum;
             }
             /**
+             * Editable destination properties
+             * interface fullName: cloud.project.dataIntegration.DestinationUpdate.DestinationUpdate
+             */
+            export interface DestinationUpdate {
+                id: string;
+                name?: string;
+                parameters?: cloud.project.dataIntegration.Parameter[];
+            }
+            /**
              * Job information
              * interface fullName: cloud.project.dataIntegration.Job.Job
              */
@@ -4408,6 +4519,15 @@ export namespace cloud {
                 status: cloud.project.dataIntegration.ConnectionStatusEnum;
             }
             /**
+             * Editable source properties
+             * interface fullName: cloud.project.dataIntegration.SourceUpdate.SourceUpdate
+             */
+            export interface SourceUpdate {
+                id: string;
+                name?: string;
+                parameters?: cloud.project.dataIntegration.Parameter[];
+            }
+            /**
              * Possible state of the connector
              * type fullname: cloud.project.dataIntegration.StatusEnum
              */
@@ -4417,12 +4537,34 @@ export namespace cloud {
              * interface fullName: cloud.project.dataIntegration.Workflow.Workflow
              */
             export interface Workflow {
-                description: string;
+                description?: string;
                 destinationId: string;
+                destinationName: string;
+                enabled: boolean;
                 id: string;
+                lastExecutionDate?: string;
                 name: string;
-                schedule: string;
+                region: string;
+                schedule?: string;
                 sourceId: string;
+                sourceName: string;
+                status: cloud.project.dataIntegration.WorkflowStatusEnum;
+            }
+            /**
+             * Possible state of the worfklow
+             * type fullname: cloud.project.dataIntegration.WorkflowStatusEnum
+             */
+            export type WorkflowStatusEnum = "CREATING" | "ERROR" | "READY"
+            /**
+             * Editable workflow properties
+             * interface fullName: cloud.project.dataIntegration.WorkflowUpdate.WorkflowUpdate
+             */
+            export interface WorkflowUpdate {
+                description?: string;
+                enabled?: boolean;
+                id: string;
+                name?: string;
+                schedule?: string;
             }
         }
         export namespace dataProcessing {
@@ -4659,6 +4801,20 @@ export namespace cloud {
                 version: string;
             }
             /**
+             * Cloud database backup definition
+             * interface fullName: cloud.project.database.Backup.Backup
+             */
+            export interface Backup {
+                createdAt: string;
+                description: string;
+                id: string;
+                region: string;
+                regions: cloud.project.database.backup.Region[];
+                size: complexType.UnitAndValue<number>;
+                status: cloud.project.database.StatusEnum;
+                type: cloud.project.database.BackupTypeEnum;
+            }
+            /**
              * Type of backup for the cluster
              * type fullname: cloud.project.database.BackupTypeEnum
              */
@@ -4766,6 +4922,15 @@ export namespace cloud {
                  * type fullname: cloud.project.database.availability.StatusEnum
                  */
                 export type StatusEnum = "BETA" | "DEPRECATED" | "STABLE"
+            }
+            export namespace backup {
+                /**
+                 * Cloud database backup region definition
+                 * interface fullName: cloud.project.database.backup.Region.Region
+                 */
+                export interface Region {
+                    name: string;
+                }
             }
             export namespace capabilities {
                 /**
@@ -5409,20 +5574,6 @@ export namespace cloud {
             }
             export namespace service {
                 /**
-                 * Cloud database backup definition
-                 * interface fullName: cloud.project.database.service.Backup.Backup
-                 */
-                export interface Backup {
-                    createdAt: string;
-                    description: string;
-                    id: string;
-                    region: string;
-                    regions: cloud.project.database.service.backup.Region[];
-                    size: complexType.UnitAndValue<number>;
-                    status: cloud.project.database.StatusEnum;
-                    type: cloud.project.database.BackupTypeEnum;
-                }
-                /**
                  * Certificates definition for cloud project databases
                  * interface fullName: cloud.project.database.service.Certificates.Certificates
                  */
@@ -5676,15 +5827,6 @@ export namespace cloud {
                 export interface UserWithRolesCreation {
                     name: string;
                     roles: string[];
-                }
-                export namespace backup {
-                    /**
-                     * Cloud database backup region definition
-                     * interface fullName: cloud.project.database.service.backup.Region.Region
-                     */
-                    export interface Region {
-                        name: string;
-                    }
                 }
                 export namespace creation {
                     /**
@@ -6535,8 +6677,12 @@ export namespace cloud {
         export interface NetworkQuotas {
             maxFloatingIPs: number;
             maxGateways: number;
+            maxNetworks: number;
+            maxSubnets: number;
             usedFloatingIPs: number;
             usedGateways: number;
+            usedNetworks: number;
+            usedSubnets: number;
         }
         /**
          * Quotas
@@ -6565,8 +6711,13 @@ export namespace cloud {
          * interface fullName: cloud.quota.VolumeUsageQuotas.VolumeUsageQuotas
          */
         export interface VolumeUsageQuotas {
+            maxBackupGigabytes: number;
             maxGigabytes: number;
+            maxVolumeBackupCount: number;
+            maxVolumeCount: number;
+            usedBackupGigabytes: number;
             usedGigabytes: number;
+            volumeBackupCount: number;
             volumeCount: number;
         }
         export namespace storage {
@@ -7027,9 +7178,14 @@ export namespace cloud {
             planCode?: string;
             region: string;
             size: number;
-            status: string;
+            status: cloud.volume.VolumeStatusEnum;
             type: cloud.volume.VolumeTypeEnum;
         }
+        /**
+         * VolumeStatusEnum
+         * type fullname: cloud.volume.VolumeStatusEnum
+         */
+        export type VolumeStatusEnum = "attaching" | "available" | "awaiting-transfer" | "backing-up" | "creating" | "deleting" | "detaching" | "downloading" | "error" | "error_backing-up" | "error_deleting" | "error_extending" | "error_restoring" | "extending" | "in-use" | "maintenance" | "reserved" | "restoring-backup" | "retyping" | "uploading"
         /**
          * VolumeTypeEnum
          * type fullname: cloud.volume.VolumeTypeEnum
@@ -7100,7 +7256,7 @@ export namespace order {
     /**
      * type fullname: order.CurrencyCodeEnum
      */
-    export type CurrencyCodeEnum = " INR" | "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
      * Price with it's currency and textual representation
      * interface fullName: order.Price.Price
@@ -7232,17 +7388,6 @@ export interface Cloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
-    }
-    price: {
-        /**
-         * Get services prices
-         * GET /cloud/price
-         */
-        $get(params?: { flavorId?: string, region?: string }): Promise<cloud.Price>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     project: {
         /**
@@ -7588,6 +7733,78 @@ export interface Cloud {
                         }
                     }
                 }
+                data: {
+                    region: {
+                        /**
+                         * List Region
+                         * GET /cloud/project/{serviceName}/ai/data/region
+                         */
+                        $get(): Promise<cloud.project.ai.capabilities.Region[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(region: string): {
+                            /**
+                             * Get Region Information
+                             * GET /cloud/project/{serviceName}/ai/data/region/{region}
+                             */
+                            $get(): Promise<cloud.project.ai.capabilities.Region>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            alias: {
+                                /**
+                                 * List datastores
+                                 * GET /cloud/project/{serviceName}/ai/data/region/{region}/alias
+                                 */
+                                $get(): Promise<cloud.project.ai.DataStore[]>;
+                                /**
+                                 * Create a new datastore
+                                 * POST /cloud/project/{serviceName}/ai/data/region/{region}/alias
+                                 */
+                                $post(params: { alias: string, credentials: cloud.project.ai.DataStoreCredentialsInput, endpoint: string, owner: cloud.project.ai.DataStoreOwnerEnum, prefix?: string, type: cloud.project.ai.DataStoreTypeEnum }): Promise<cloud.project.ai.DataStore>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(alias: string): {
+                                    /**
+                                     * Permanently delete a datastore
+                                     * DELETE /cloud/project/{serviceName}/ai/data/region/{region}/alias/{alias}
+                                     */
+                                    $delete(): Promise<void>;
+                                    /**
+                                     * Get Datastore Information
+                                     * GET /cloud/project/{serviceName}/ai/data/region/{region}/alias/{alias}
+                                     */
+                                    $get(): Promise<cloud.project.ai.DataStore>;
+                                    /**
+                                     * Update a datastore
+                                     * PUT /cloud/project/{serviceName}/ai/data/region/{region}/alias/{alias}
+                                     */
+                                    $put(params: { alias: string, credentials: cloud.project.ai.DataStoreCredentialsInput, endpoint: string, owner: cloud.project.ai.DataStoreOwnerEnum, prefix?: string, type: cloud.project.ai.DataStoreTypeEnum }): Promise<cloud.project.ai.DataStore>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    auth: {
+                                        /**
+                                         * Get an AI datastore auth in a given region by its alias
+                                         * GET /cloud/project/{serviceName}/ai/data/region/{region}/alias/{alias}/auth
+                                         */
+                                        $get(): Promise<cloud.project.ai.DataStoreAuth>;
+                                        /**
+                                         * Controle cache
+                                         */
+                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    }
+                                };
+                            }
+                        };
+                    }
+                }
                 job: {
                     /**
                      * List jobs
@@ -7677,7 +7894,7 @@ export interface Cloud {
                      * List notebooks
                      * GET /cloud/project/{serviceName}/ai/notebook
                      */
-                    $get(params?: { labelSelector?: string, order?: cloud.project.ai.OrderEnum, page?: number, size?: number, sort?: string, statusState?: cloud.project.ai.notebook.NotebookStateEnum[], updatedAfter?: string, updatedBefore?: string, userName?: string }): Promise<cloud.project.ai.notebook.Notebook[]>;
+                    $get(params?: { labelSelector?: string, order?: cloud.project.ai.OrderEnum, page?: number, size?: number, sort?: string, statusState?: cloud.project.ai.notebook.NotebookStateEnum[], updatedAfter?: string, updatedBefore?: string, userName?: string, withSpark?: boolean }): Promise<cloud.project.ai.notebook.Notebook[]>;
                     /**
                      * Create a new notebook
                      * POST /cloud/project/{serviceName}/ai/notebook
@@ -8137,10 +8354,10 @@ export interface Cloud {
                     }
                     regions: {
                         /**
-                         * List Kubernetes available regions
+                         * List Kubernetes regions where cluster creation is possible
                          * GET /cloud/project/{serviceName}/capabilities/kube/regions
                          */
-                        $get(): Promise<cloud.kube.RegionEnum[]>;
+                        $get(): Promise<cloud.kube.RegionCapabilitiesEnum[]>;
                         /**
                          * Controle cache
                          */
@@ -8553,7 +8770,7 @@ export interface Cloud {
                                  * Get cassandra backups
                                  * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/backup/{backupId}
                                  */
-                                $get(): Promise<cloud.project.database.service.Backup>;
+                                $get(): Promise<cloud.project.database.Backup>;
                                 /**
                                  * Controle cache
                                  */
@@ -8857,7 +9074,7 @@ export interface Cloud {
                                  * Get grafana backups
                                  * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/backup/{backupId}
                                  */
-                                $get(): Promise<cloud.project.database.service.Backup>;
+                                $get(): Promise<cloud.project.database.Backup>;
                                 /**
                                  * Controle cache
                                  */
@@ -10284,7 +10501,7 @@ export interface Cloud {
                                  * Get m3db backups
                                  * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/backup/{backupId}
                                  */
-                                $get(): Promise<cloud.project.database.service.Backup>;
+                                $get(): Promise<cloud.project.database.Backup>;
                                 /**
                                  * Controle cache
                                  */
@@ -10603,7 +10820,7 @@ export interface Cloud {
                                  * Get mongodb backups
                                  * GET /cloud/project/{serviceName}/database/mongodb/{clusterId}/backup/{backupId}
                                  */
-                                $get(): Promise<cloud.project.database.service.Backup>;
+                                $get(): Promise<cloud.project.database.Backup>;
                                 /**
                                  * Controle cache
                                  */
@@ -10613,7 +10830,7 @@ export interface Cloud {
                                      * Restore the backup
                                      * POST /cloud/project/{serviceName}/database/mongodb/{clusterId}/backup/{backupId}/restore
                                      */
-                                    $post(): Promise<cloud.project.database.service.Backup>;
+                                    $post(): Promise<cloud.project.database.Backup>;
                                 }
                             };
                         }
@@ -10885,7 +11102,7 @@ export interface Cloud {
                                  * Get mysql backups
                                  * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/backup/{backupId}
                                  */
-                                $get(): Promise<cloud.project.database.service.Backup>;
+                                $get(): Promise<cloud.project.database.Backup>;
                                 /**
                                  * Controle cache
                                  */
@@ -11263,7 +11480,7 @@ export interface Cloud {
                                  * Get opensearch backups
                                  * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/backup/{backupId}
                                  */
-                                $get(): Promise<cloud.project.database.service.Backup>;
+                                $get(): Promise<cloud.project.database.Backup>;
                                 /**
                                  * Controle cache
                                  */
@@ -11631,7 +11848,7 @@ export interface Cloud {
                                  * Get postgresql backups
                                  * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/backup/{backupId}
                                  */
-                                $get(): Promise<cloud.project.database.service.Backup>;
+                                $get(): Promise<cloud.project.database.Backup>;
                                 /**
                                  * Controle cache
                                  */
@@ -12061,7 +12278,7 @@ export interface Cloud {
                                  * Get redis backups
                                  * GET /cloud/project/{serviceName}/database/redis/{clusterId}/backup/{backupId}
                                  */
-                                $get(): Promise<cloud.project.database.service.Backup>;
+                                $get(): Promise<cloud.project.database.Backup>;
                                 /**
                                  * Controle cache
                                  */
@@ -12931,11 +13148,6 @@ export interface Cloud {
                          * GET /cloud/project/{serviceName}/kube/{kubeId}/node
                          */
                         $get(): Promise<cloud.kube.Node[]>;
-                        /**
-                         * Deploy a node for your cluster. This call is deprecated. In the meantime it will create a new node pool for each call. We encourage you to now either create a new nodepool or change the size on an existing one
-                         * POST /cloud/project/{serviceName}/kube/{kubeId}/node
-                         */
-                        $post(params: { flavorName: string, name?: string }): Promise<cloud.kube.Node>;
                         /**
                          * Controle cache
                          */
@@ -14709,17 +14921,6 @@ export interface Cloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
-    }
-    subsidiaryPrice: {
-        /**
-         * Get services prices for a subsidiary
-         * GET /cloud/subsidiaryPrice
-         */
-        $get(params: { flavorId?: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, region?: string }): Promise<cloud.Price>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
 }
 /**

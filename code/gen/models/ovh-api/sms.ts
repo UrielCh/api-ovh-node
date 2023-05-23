@@ -5109,9 +5109,6 @@ export const schema: Schema = {
           },
           "description": "Get informations about the given ptt code",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:sms/ptts/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5309,12 +5306,12 @@ export const schema: Schema = {
   "models": {
     "order.CurrencyCodeEnum": {
       "enum": [
-        " INR",
         "AUD",
         "CAD",
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",

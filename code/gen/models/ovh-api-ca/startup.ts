@@ -336,6 +336,7 @@ export const schema: Schema = {
       "description": "Where did you hear about OVHcloud",
       "enum": [
         "Email",
+        "EmpactVenture",
         "Event",
         "Facebook",
         "InternetSearch",

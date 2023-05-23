@@ -21,7 +21,7 @@ export namespace startup {
      * Where did you hear about OVHcloud
      * type fullname: startup.awarnessEnum
      */
-    export type awarnessEnum = "Email" | "Event" | "Facebook" | "InternetSearch" | "LinkedIn" | "OnlineAdvert" | "Partner" | "Twitter" | "Website" | "WordOfMouth"
+    export type awarnessEnum = "Email" | "EmpactVenture" | "Event" | "Facebook" | "InternetSearch" | "LinkedIn" | "OnlineAdvert" | "Partner" | "Twitter" | "Website" | "WordOfMouth"
     /**
      * employeesNumber
      * type fullname: startup.employeesNumberEnum

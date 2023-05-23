@@ -1742,8 +1742,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2018-10-17T00:00:00+01:00",
-            "deprecatedDate": "2018-09-17T00:00:00+01:00",
+            "deletionDate": "2018-10-17 00:00:00 +0100 +0100",
+            "deprecatedDate": "2018-09-17 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -4218,8 +4218,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2018-06-11T00:00:00+01:00",
-            "deprecatedDate": "2018-05-10T00:00:00+01:00",
+            "deletionDate": "2018-06-11 00:00:00 +0100 +0100",
+            "deprecatedDate": "2018-05-10 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },

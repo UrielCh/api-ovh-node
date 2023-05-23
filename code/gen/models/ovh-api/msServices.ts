@@ -1796,7 +1796,7 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "microsoftServices:apiovh:sharepoint/get"
+            "microsoftServices:apiovh:domain/sharepoint/get"
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -1816,7 +1816,7 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "microsoftServices:apiovh:sharepoint/get"
+            "microsoftServices:apiovh:domain/sharepoint/get"
           ],
           "noAuthentication": false,
           "parameters": [

@@ -91,7 +91,7 @@ export namespace ip {
      * Possible values for IP campuses' names
      * type fullname: ip.CampusEnum
      */
-    export type CampusEnum = "BHS" | "ERI" | "GRA" | "HIL" | "LIM" | "RBX" | "SBG" | "SGP" | "SY2" | "SYD" | "VIN" | "WAW"
+    export type CampusEnum = "BHS" | "ERI" | "GRA" | "HIL" | "LIM" | "RBX" | "SBG" | "SGP" | "SY2" | "SYD" | "VIN" | "WAW" | "YNM"
     /**
      * A structure given service and its nexthops as a destination for failover ips
      * interface fullName: ip.Destination.Destination
@@ -222,6 +222,7 @@ export namespace ip {
         country?: coreTypes.CountryEnum;
         description?: string;
         ip: string;
+        isAdditionalIp: boolean;
         organisationId?: string;
         rir?: string;
         routedTo?: ip.RoutedTo;
@@ -260,84 +261,6 @@ export namespace ip {
      * type fullname: ip.IpVersionEnum
      */
     export type IpVersionEnum = 4 | 6
-    /**
-     * Additional available ports for ip loadbalancing
-     * type fullname: ip.LoadBalancingAdditionalPortEnum
-     */
-    export type LoadBalancingAdditionalPortEnum = 3306 | 443 | 5432 | 80
-    /**
-     * Backends attached to your IP load balancing
-     * interface fullName: ip.LoadBalancingBackendIp.LoadBalancingBackendIp
-     */
-    export interface LoadBalancingBackendIp {
-        backend: string;
-        mainBackendIp?: string;
-        probe: ip.LoadBalancingBackendProbeEnum;
-        weight: number;
-        zone: ip.LoadBalancingZoneEnum;
-    }
-    /**
-     * Possible values for your IP load balancing backend probe
-     * type fullname: ip.LoadBalancingBackendProbeEnum
-     */
-    export type LoadBalancingBackendProbeEnum = "http" | "icmp" | "none" | "oco"
-    /**
-     * Your load balancing IP
-     * interface fullName: ip.LoadBalancingIp.LoadBalancingIp
-     */
-    export interface LoadBalancingIp {
-        ipLoadBalancing: string;
-        serviceName: string;
-        ssl: ip.LoadBalancingSslEnum;
-        state: ip.LoadBalancingStateEnum;
-        stickiness: ip.LoadBalancingStickinessEnum;
-        zone: ip.LoadBalancingZoneEnum[];
-    }
-    export namespace LoadBalancingIp {
-        /**
-         * LoadBalancingPort mapping
-         * interface fullName: ip.LoadBalancingIp.LoadBalancingPort.LoadBalancingPort
-         */
-        export interface LoadBalancingPort {
-            dstPort: number;
-            srcPort: ip.LoadBalancingAdditionalPortEnum;
-        }
-    }
-    /**
-     * Possible values for ssl state
-     * type fullname: ip.LoadBalancingSslEnum
-     */
-    export type LoadBalancingSslEnum = "customer" | "none" | "ovh"
-    /**
-     * Possible values for load balancing IP state
-     * type fullname: ip.LoadBalancingStateEnum
-     */
-    export type LoadBalancingStateEnum = "blacklisted" | "deleted" | "free" | "ok" | "quarantined" | "suspended"
-    /**
-     * Possible values for load balancing IP stickiness
-     * type fullname: ip.LoadBalancingStickinessEnum
-     */
-    export type LoadBalancingStickinessEnum = "cookie" | "none" | "sourceIp"
-    /**
-     * List of tasks associated with your IP load balancing
-     * interface fullName: ip.LoadBalancingTask.LoadBalancingTask
-     */
-    export interface LoadBalancingTask {
-        action: ip.LoadBalancingTaskActionEnum;
-        creationDate: string;
-        id: number;
-        status: string;
-    }
-    /**
-     * Possible values for load balancing task action
-     * type fullname: ip.LoadBalancingTaskActionEnum
-     */
-    export type LoadBalancingTaskActionEnum = "activateSsl" | "addBackend" | "addIpToBackend" | "announceIpLoadBalancing" | "backupStateSet" | "backupStateUnset" | "changeProbe" | "delBackend" | "desactivateSsl" | "removeIpFromBackend" | "setPortRedirection" | "setStickiness" | "setWeight" | "unannounceIpLoadBalancing" | "unsetPortRedirection"
-    /**
-     * Possible values for load balancing IP service location
-     * type fullname: ip.LoadBalancingZoneEnum
-     */
-    export type LoadBalancingZoneEnum = "bhs" | "gra" | "rbx" | "sbg"
     /**
      * Mitigation attack on your ip
      * interface fullName: ip.MitigationAttack.MitigationAttack
@@ -509,33 +432,6 @@ export namespace ip {
      */
     export type TaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
 }
-export namespace ipLoadbalancing {
-    export namespace Task {
-        /**
-         * IP Load Balancing Operations
-         * interface fullName: ipLoadbalancing.Task.Task.Task
-         */
-        export interface Task {
-            action: ipLoadbalancing.TaskActionEnum;
-            creationDate: string;
-            doneDate?: string;
-            id: number;
-            progress: number;
-            status: ipLoadbalancing.TaskStatusEnum;
-            zones: string[];
-        }
-    }
-    /**
-     * Possible task action
-     * type fullname: ipLoadbalancing.TaskActionEnum
-     */
-    export type TaskActionEnum = "deleteIplb" | "deployIplb" | "install" | "installIplb" | "installZone" | "orderFreeCertificate" | "orderPaidCertificate" | "orderSsl" | "refreshIplb" | "releaseIplb" | "releaseIplbZone" | "reopenIplb" | "suspendIplb" | "suspendZone" | "switchToIplbNextGenerationApi" | "vrackAttach" | "vrackDetach"
-    /**
-     * Possible task status
-     * type fullname: ipLoadbalancing.TaskStatusEnum
-     */
-    export type TaskStatusEnum = "blocked" | "cancelled" | "doing" | "done" | "error" | "todo"
-}
 export namespace service {
     /**
      * Map a possible renew for a specific service
@@ -605,7 +501,7 @@ export interface Ip {
      * Your OVH IPs
      * GET /ip
      */
-    $get(params?: { campus?: string, description?: string, ip?: string, 'routedTo.serviceName'?: string, type?: ip.IpTypeEnum, version?: ip.IpVersionEnum }): Promise<string[]>;
+    $get(params?: { campus?: string, description?: string, ip?: string, isAdditionalIp?: boolean, 'routedTo.serviceName'?: string, type?: ip.IpTypeEnum, version?: ip.IpVersionEnum }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -620,210 +516,6 @@ export interface Ip {
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-    }
-    loadBalancing: {
-        /**
-         * List available services
-         * GET /ip/loadBalancing
-         */
-        $get(): Promise<string[]>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-        $(serviceName: string): {
-            /**
-             * Get this object properties
-             * GET /ip/loadBalancing/{serviceName}
-             */
-            $get(): Promise<ip.LoadBalancingIp>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            allowedBackends: {
-                /**
-                 * List of backends you can attach to your IP
-                 * GET /ip/loadBalancing/{serviceName}/allowedBackends
-                 */
-                $get(): Promise<string[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            backend: {
-                /**
-                 * Backends for this IP load balancing
-                 * GET /ip/loadBalancing/{serviceName}/backend
-                 */
-                $get(): Promise<string[]>;
-                /**
-                 * Add a new backend on your IP load balancing
-                 * POST /ip/loadBalancing/{serviceName}/backend
-                 */
-                $post(params: { ipBackend: string, probe: ip.LoadBalancingBackendProbeEnum, weight?: number }): Promise<ip.LoadBalancingTask>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                $(backend: string): {
-                    /**
-                     * Remove a backend IP
-                     * DELETE /ip/loadBalancing/{serviceName}/backend/{backend}
-                     */
-                    $delete(): Promise<ip.LoadBalancingTask>;
-                    /**
-                     * Get this object properties
-                     * GET /ip/loadBalancing/{serviceName}/backend/{backend}
-                     */
-                    $get(): Promise<ip.LoadBalancingBackendIp>;
-                    /**
-                     * Alter this object properties
-                     * PUT /ip/loadBalancing/{serviceName}/backend/{backend}
-                     */
-                    $put(params?: { backend?: string, mainBackendIp?: string, probe?: ip.LoadBalancingBackendProbeEnum, weight?: number, zone?: ip.LoadBalancingZoneEnum }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    backupState: {
-                        /**
-                         * Set or unset the backend as a backup of another backend. Requests will be directed to the backup only if the main backend is in probe fail
-                         * POST /ip/loadBalancing/{serviceName}/backend/{backend}/backupState
-                         */
-                        $post(params: { backupStateSet: boolean, mainBackendIp?: string }): Promise<ip.LoadBalancingTask>;
-                    }
-                    setWeight: {
-                        /**
-                         * Set the weight of a backend. For instance, if backend A has a weight of 8 and backup B was a weight of 16, backend B will receive twice more connections as backend A. Backends must be on the same POP for the weight parameter to take effect between them.
-                         * POST /ip/loadBalancing/{serviceName}/backend/{backend}/setWeight
-                         */
-                        $post(params: { weight: number }): Promise<ip.LoadBalancingTask>;
-                    }
-                };
-            }
-            importCustomSsl: {
-                /**
-                 * Import your own ssl certificate on your IP load balancing. Ssl option is needed to use this url.
-                 * POST /ip/loadBalancing/{serviceName}/importCustomSsl
-                 */
-                $post(params: { certificate: string, chain?: string, key: string }): Promise<ip.LoadBalancingTask>;
-            }
-            internalNatIp: {
-                /**
-                 * Ip subnet used by OVH to nat requests on your ip lb to your backends. You must ensure that your backends are not part of a network that overlap with this one.
-                 * GET /ip/loadBalancing/{serviceName}/internalNatIp
-                 */
-                $get(params: { zone: ip.LoadBalancingZoneEnum }): Promise<string>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            portsRedirection: {
-                /**
-                 * Get all srcPort
-                 * GET /ip/loadBalancing/{serviceName}/portsRedirection
-                 */
-                $get(): Promise<ip.LoadBalancingAdditionalPortEnum[]>;
-                /**
-                 * Add a new port redirection
-                 * POST /ip/loadBalancing/{serviceName}/portsRedirection
-                 */
-                $post(params?: { dstPort?: number, srcPort?: ip.LoadBalancingAdditionalPortEnum }): Promise<ip.LoadBalancingTask>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                $(srcPort: ip.LoadBalancingAdditionalPortEnum): {
-                    /**
-                     * Delete a port redirection
-                     * DELETE /ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}
-                     */
-                    $delete(): Promise<ip.LoadBalancingTask>;
-                    /**
-                     * Get the value for the given srcPort
-                     * GET /ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}
-                     */
-                    $get(): Promise<ip.LoadBalancingIp.LoadBalancingPort>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                };
-            }
-            probeIp: {
-                /**
-                 * Ip subnet used to send probes to your backends
-                 * GET /ip/loadBalancing/{serviceName}/probeIp
-                 */
-                $get(params: { zone: ip.LoadBalancingZoneEnum }): Promise<string[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            restoreSsl: {
-                /**
-                 * Restore OVH' ssl certificate on your IP load balancing. Ssl option is needed to use this url. (A DCV mail will be sent to postmaster@your-domain.abc)
-                 * POST /ip/loadBalancing/{serviceName}/restoreSsl
-                 */
-                $post(): Promise<ip.LoadBalancingTask>;
-            }
-            serviceInfos: {
-                /**
-                 * Get this object properties
-                 * GET /ip/loadBalancing/{serviceName}/serviceInfos
-                 */
-                $get(): Promise<services.Service>;
-                /**
-                 * Alter this object properties
-                 * PUT /ip/loadBalancing/{serviceName}/serviceInfos
-                 */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            stickiness: {
-                /**
-                 * Set Stickiness type. 'ipSource' will stick clients to a backend by their source ip, 'cookie' will stick them by inserting a cookie, 'none' is to set no stickiness
-                 * POST /ip/loadBalancing/{serviceName}/stickiness
-                 */
-                $post(params: { stickiness: ip.LoadBalancingStickinessEnum }): Promise<ip.LoadBalancingTask>;
-            }
-            switchToIplbNextGenerationApi: {
-                /**
-                 * Switch to ipLoadbalancing next-gen API. Benefits : additionnals probes, DDOS protection.
-                 * POST /ip/loadBalancing/{serviceName}/switchToIplbNextGenerationApi
-                 */
-                $post(): Promise<ipLoadbalancing.Task.Task>;
-            }
-            task: {
-                /**
-                 * Task list associated with this IP
-                 * GET /ip/loadBalancing/{serviceName}/task
-                 */
-                $get(): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                $(taskId: number): {
-                    /**
-                     * Get this object properties
-                     * GET /ip/loadBalancing/{serviceName}/task/{taskId}
-                     */
-                    $get(): Promise<ip.LoadBalancingTask>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                };
-            }
-        };
     }
     service: {
         /**
@@ -899,7 +591,7 @@ export interface Ip {
          * Alter this object properties
          * PUT /ip/{ip}
          */
-        $put(params?: { bringYourOwnIp?: boolean, campus?: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, rir?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum, version?: ip.IpVersionEnum }): Promise<void>;
+        $put(params?: { bringYourOwnIp?: boolean, campus?: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, isAdditionalIp?: boolean, organisationId?: string, rir?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum, version?: ip.IpVersionEnum }): Promise<void>;
         /**
          * Controle cache
          */

@@ -15,9 +15,6 @@ export const schema: Schema = {
           },
           "description": "Get the price of Nas HA offers",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/dedicated/nasha/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -44,9 +41,6 @@ export const schema: Schema = {
           },
           "description": "Get price of anti-DDos Pro option",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/dedicated/server/antiDDoSPro/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -73,9 +67,6 @@ export const schema: Schema = {
           },
           "description": "Get price of backup storage offer",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/dedicated/server/backupStorage/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -102,9 +93,6 @@ export const schema: Schema = {
           },
           "description": "Get price of available firewall models",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/dedicated/server/firewall/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -131,9 +119,6 @@ export const schema: Schema = {
           },
           "description": "Get price of IPs",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/dedicated/server/ip/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -160,9 +145,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2013v1/bhs1a/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -189,9 +171,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2013v1/bhs1a/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -218,9 +197,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2013v1/bhs1a/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -247,9 +223,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2013v1/bhs1a/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -276,9 +249,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2013v1/rbx2a/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -305,9 +275,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2013v1/rbx2a/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -334,9 +301,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2013v1/rbx2a/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -363,9 +327,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2013v1/rbx2a/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -392,9 +353,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2013v1/sbg1a/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -421,9 +379,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2013v1/sbg1a/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -450,9 +405,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2013v1/sbg1a/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -479,9 +431,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2013v1/sbg1a/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -508,9 +457,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/bhs1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -537,9 +483,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/bhs1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -566,9 +509,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/bhs1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -595,9 +535,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/bhs1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -624,9 +561,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -653,9 +587,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -682,9 +613,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -711,9 +639,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -740,9 +665,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -769,9 +691,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -798,9 +717,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -827,9 +743,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -856,9 +769,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -885,9 +795,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -914,9 +821,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -943,9 +847,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -972,9 +873,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2b/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1001,9 +899,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2b/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1030,9 +925,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2b/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1059,9 +951,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2b/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1088,9 +977,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1117,9 +1003,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1146,9 +1029,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1175,9 +1055,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1204,9 +1081,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/sbg1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1233,9 +1107,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/sbg1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1262,9 +1133,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/sbg1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1291,9 +1159,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/sbg1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1320,9 +1185,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1349,9 +1211,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1378,9 +1237,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1407,9 +1263,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v1/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1436,9 +1289,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/bhs1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1465,9 +1315,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/bhs1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1494,9 +1341,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/bhs1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1523,9 +1367,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/bhs1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1552,9 +1393,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1581,9 +1419,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1610,9 +1445,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1639,9 +1471,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1668,9 +1497,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1697,9 +1523,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1726,9 +1549,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1755,9 +1575,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1784,9 +1601,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1813,9 +1627,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1842,9 +1653,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1871,9 +1679,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1900,9 +1705,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2b/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1929,9 +1731,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2b/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1958,9 +1757,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2b/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1987,9 +1783,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2b/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2016,9 +1809,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2045,9 +1835,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2074,9 +1861,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2103,9 +1887,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2132,9 +1913,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/sbg1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2161,9 +1939,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/sbg1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2190,9 +1965,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/sbg1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2219,9 +1991,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/sbg1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2248,9 +2017,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2277,9 +2043,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2306,9 +2069,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2335,9 +2095,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2014v2/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2364,9 +2121,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/bhs1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2393,9 +2147,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/bhs1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2422,9 +2173,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/bhs1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2451,9 +2199,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/bhs1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2480,9 +2225,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2509,9 +2251,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2538,9 +2277,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2567,9 +2303,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2596,9 +2329,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2625,9 +2355,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2654,9 +2381,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2683,9 +2407,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2712,9 +2433,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2741,9 +2459,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2770,9 +2485,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2799,9 +2511,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2828,9 +2537,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2b/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2857,9 +2563,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2b/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2886,9 +2589,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2b/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2915,9 +2615,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2b/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2944,9 +2641,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -2973,9 +2667,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3002,9 +2693,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3031,9 +2719,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3060,9 +2745,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/sbg1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3089,9 +2771,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/sbg1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3118,9 +2797,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/sbg1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3147,9 +2823,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/sbg1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3176,9 +2849,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3205,9 +2875,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3234,9 +2901,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3263,9 +2927,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v1/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3292,9 +2953,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/bhs1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3321,9 +2979,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/bhs1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3350,9 +3005,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/bhs1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3379,9 +3031,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/bhs1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3408,9 +3057,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3437,9 +3083,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3466,9 +3109,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3495,9 +3135,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3524,9 +3161,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3553,9 +3187,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3582,9 +3213,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3611,9 +3239,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3640,9 +3265,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3669,9 +3291,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3698,9 +3317,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3727,9 +3343,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3756,9 +3369,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2b/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3785,9 +3395,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2b/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3814,9 +3421,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2b/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3843,9 +3447,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2b/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3872,9 +3473,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3901,9 +3499,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3930,9 +3525,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3959,9 +3551,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -3988,9 +3577,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/sbg1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4017,9 +3603,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/sbg1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4046,9 +3629,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/sbg1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4075,9 +3655,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/sbg1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4104,9 +3681,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4133,9 +3707,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4162,9 +3733,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4191,9 +3759,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v2/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4220,9 +3785,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/bhs1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4249,9 +3811,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/bhs1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4278,9 +3837,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/bhs1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4307,9 +3863,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/bhs1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4336,9 +3889,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4365,9 +3915,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4394,9 +3941,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4423,9 +3967,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4452,9 +3993,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4481,9 +4019,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4510,9 +4045,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4539,9 +4071,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4568,9 +4097,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4597,9 +4123,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4626,9 +4149,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4655,9 +4175,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4684,9 +4201,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2b/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4713,9 +4227,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2b/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4742,9 +4253,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2b/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4771,9 +4279,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2b/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4800,9 +4305,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4829,9 +4331,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4858,9 +4357,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4887,9 +4383,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4916,9 +4409,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/sbg1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4945,9 +4435,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/sbg1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -4974,9 +4461,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/sbg1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5003,9 +4487,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/sbg1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5032,9 +4513,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5061,9 +4539,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5090,9 +4565,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5119,9 +4591,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v3/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5148,9 +4617,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/bhs1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5177,9 +4643,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/bhs1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5206,9 +4669,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/bhs1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5235,9 +4695,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/bhs1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5264,9 +4721,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5293,9 +4747,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5322,9 +4773,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5351,9 +4799,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5380,9 +4825,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5409,9 +4851,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5438,9 +4877,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5467,9 +4903,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5496,9 +4929,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5525,9 +4955,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5554,9 +4981,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5583,9 +5007,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5612,9 +5033,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2b/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5641,9 +5059,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2b/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5670,9 +5085,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2b/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5699,9 +5111,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2b/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5728,9 +5137,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5757,9 +5163,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5786,9 +5189,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5815,9 +5215,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5844,9 +5241,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/sbg1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5873,9 +5267,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/sbg1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5902,9 +5293,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/sbg1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5931,9 +5319,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/sbg1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5960,9 +5345,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -5989,9 +5371,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6018,9 +5397,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6047,9 +5423,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v4/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6076,9 +5449,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/bhs1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6105,9 +5475,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/bhs1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6134,9 +5501,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/bhs1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6163,9 +5527,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/bhs1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6192,9 +5553,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6221,9 +5579,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6250,9 +5605,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6279,9 +5631,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6308,9 +5657,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6337,9 +5683,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6366,9 +5709,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6395,9 +5735,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6424,9 +5761,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6453,9 +5787,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6482,9 +5813,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6511,9 +5839,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6540,9 +5865,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2b/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6569,9 +5891,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2b/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6598,9 +5917,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2b/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6627,9 +5943,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2b/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6656,9 +5969,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6685,9 +5995,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6714,9 +6021,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6743,9 +6047,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6772,9 +6073,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/sbg1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6801,9 +6099,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/sbg1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6830,9 +6125,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/sbg1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6859,9 +6151,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/sbg1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6888,9 +6177,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6917,9 +6203,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6946,9 +6229,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -6975,9 +6255,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v5/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7004,9 +6281,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/bhs1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7033,9 +6307,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/bhs1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7062,9 +6333,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/bhs1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7091,9 +6359,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/bhs1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7120,9 +6385,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7149,9 +6411,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7178,9 +6437,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7207,9 +6463,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7236,9 +6489,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7265,9 +6515,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7294,9 +6541,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7323,9 +6567,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7352,9 +6593,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7381,9 +6619,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7410,9 +6645,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7439,9 +6671,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7468,9 +6697,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2b/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7497,9 +6723,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2b/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7526,9 +6749,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2b/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7555,9 +6775,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2b/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7584,9 +6801,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7613,9 +6827,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7642,9 +6853,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7671,9 +6879,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7700,9 +6905,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/sbg1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7729,9 +6931,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/sbg1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7758,9 +6957,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/sbg1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7787,9 +6983,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/sbg1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7816,9 +7009,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7845,9 +7035,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7874,9 +7061,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7903,9 +7087,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v6/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7932,9 +7113,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/bhs1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7961,9 +7139,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/bhs1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -7990,9 +7165,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/bhs1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8019,9 +7191,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/bhs1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8048,9 +7217,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8077,9 +7243,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8106,9 +7269,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8135,9 +7295,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8164,9 +7321,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8193,9 +7347,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8222,9 +7373,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8251,9 +7399,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8280,9 +7425,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8309,9 +7451,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8338,9 +7477,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8367,9 +7503,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8396,9 +7529,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2b/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8425,9 +7555,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2b/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8454,9 +7581,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2b/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8483,9 +7607,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2b/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8512,9 +7633,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8541,9 +7659,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8570,9 +7685,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8599,9 +7711,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8628,9 +7737,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/sbg1a/enterprise/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8657,9 +7763,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/sbg1a/enterprise/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8686,9 +7789,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/sbg1a/enterprise/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8715,9 +7815,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/sbg1a/enterprise/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8744,9 +7841,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8773,9 +7867,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8802,9 +7893,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8831,9 +7919,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2016v7/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8860,9 +7945,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8889,9 +7971,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8918,9 +7997,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8947,9 +8023,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -8976,9 +8049,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/eri1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9005,9 +8075,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/eri1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9034,9 +8101,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/eri1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9063,9 +8127,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/eri1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9092,9 +8153,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/lim1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9121,9 +8179,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/lim1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9150,9 +8205,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/lim1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9179,9 +8231,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/lim1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9208,9 +8257,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9237,9 +8283,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9266,9 +8309,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9295,9 +8335,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9324,9 +8361,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9353,9 +8387,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9382,9 +8413,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9411,9 +8439,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9440,9 +8465,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/rbx2d/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9469,9 +8491,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/rbx2d/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9498,9 +8517,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/rbx2d/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9527,9 +8543,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/rbx2d/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9556,9 +8569,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9585,9 +8595,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9614,9 +8621,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9643,9 +8647,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9672,9 +8673,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/waw1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9701,9 +8699,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/waw1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9730,9 +8725,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/waw1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9759,9 +8751,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v1/waw1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9788,9 +8777,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9817,9 +8803,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9846,9 +8829,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9875,9 +8855,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9904,9 +8881,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/eri1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9933,9 +8907,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/eri1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9962,9 +8933,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/eri1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -9991,9 +8959,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/eri1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10020,9 +8985,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/lim1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10049,9 +9011,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/lim1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10078,9 +9037,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/lim1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10107,9 +9063,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/lim1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10136,9 +9089,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10165,9 +9115,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10194,9 +9141,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10223,9 +9167,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10252,9 +9193,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10281,9 +9219,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10310,9 +9245,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10339,9 +9271,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10368,9 +9297,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/rbx2d/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10397,9 +9323,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/rbx2d/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10426,9 +9349,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/rbx2d/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10455,9 +9375,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/rbx2d/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10484,9 +9401,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10513,9 +9427,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10542,9 +9453,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10571,9 +9479,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10600,9 +9505,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/waw1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10629,9 +9531,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/waw1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10658,9 +9557,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/waw1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10687,9 +9583,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v2/waw1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10716,9 +9609,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10745,9 +9635,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10774,9 +9661,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10803,9 +9687,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10832,9 +9713,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/eri1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10861,9 +9739,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/eri1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10890,9 +9765,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/eri1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10919,9 +9791,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/eri1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10948,9 +9817,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/lim1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -10977,9 +9843,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/lim1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11006,9 +9869,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/lim1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11035,9 +9895,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/lim1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11064,9 +9921,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11093,9 +9947,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11122,9 +9973,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11151,9 +9999,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11180,9 +10025,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11209,9 +10051,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11238,9 +10077,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11267,9 +10103,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11296,9 +10129,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/rbx2d/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11325,9 +10155,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/rbx2d/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11354,9 +10181,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/rbx2d/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11383,9 +10207,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/rbx2d/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11412,9 +10233,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11441,9 +10259,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11470,9 +10285,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11499,9 +10311,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11528,9 +10337,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/waw1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11557,9 +10363,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/waw1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11586,9 +10389,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/waw1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11615,9 +10415,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v3/waw1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11644,9 +10441,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11673,9 +10467,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11702,9 +10493,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11731,9 +10519,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11760,9 +10545,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/eri1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11789,9 +10571,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/eri1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11818,9 +10597,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/eri1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11847,9 +10623,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/eri1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11876,9 +10649,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/lim1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11905,9 +10675,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/lim1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11934,9 +10701,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/lim1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11963,9 +10727,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/lim1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -11992,9 +10753,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12021,9 +10779,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12050,9 +10805,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12079,9 +10831,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12108,9 +10857,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12137,9 +10883,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12166,9 +10909,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12195,9 +10935,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12224,9 +10961,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/rbx2d/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12253,9 +10987,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/rbx2d/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12282,9 +11013,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/rbx2d/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12311,9 +11039,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/rbx2d/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12340,9 +11065,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12369,9 +11091,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12398,9 +11117,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12427,9 +11143,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12456,9 +11169,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/waw1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12485,9 +11195,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/waw1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12514,9 +11221,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/waw1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12543,9 +11247,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v4/waw1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12572,9 +11273,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12601,9 +11299,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12630,9 +11325,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12659,9 +11351,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12688,9 +11377,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/eri1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12717,9 +11403,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/eri1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12746,9 +11429,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/eri1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12775,9 +11455,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/eri1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12804,9 +11481,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/lim1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12833,9 +11507,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/lim1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12862,9 +11533,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/lim1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12891,9 +11559,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/lim1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12920,9 +11585,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12949,9 +11611,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -12978,9 +11637,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13007,9 +11663,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13036,9 +11689,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13065,9 +11715,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13094,9 +11741,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13123,9 +11767,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13152,9 +11793,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/rbx2d/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13181,9 +11819,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/rbx2d/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13210,9 +11845,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/rbx2d/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13239,9 +11871,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/rbx2d/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13268,9 +11897,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13297,9 +11923,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13326,9 +11949,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13355,9 +11975,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13384,9 +12001,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/waw1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13413,9 +12027,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/waw1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13442,9 +12053,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/waw1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13471,9 +12079,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v5/waw1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13500,9 +12105,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13529,9 +12131,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13558,9 +12157,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13587,9 +12183,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13616,9 +12209,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/eri1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13645,9 +12235,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/eri1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13674,9 +12261,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/eri1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13703,9 +12287,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/eri1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13732,9 +12313,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/lim1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13761,9 +12339,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/lim1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13790,9 +12365,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/lim1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13819,9 +12391,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/lim1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13848,9 +12417,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13877,9 +12443,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13906,9 +12469,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13935,9 +12495,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13964,9 +12521,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -13993,9 +12547,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14022,9 +12573,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14051,9 +12599,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14080,9 +12625,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/rbx2d/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14109,9 +12651,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/rbx2d/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14138,9 +12677,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/rbx2d/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14167,9 +12703,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/rbx2d/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14196,9 +12729,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14225,9 +12755,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14254,9 +12781,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14283,9 +12807,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14312,9 +12833,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/waw1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14341,9 +12859,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/waw1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14370,9 +12885,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/waw1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14399,9 +12911,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v6/waw1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14428,9 +12937,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/bhs1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14457,9 +12963,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/bhs1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14486,9 +12989,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/bhs1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14515,9 +13015,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/bhs1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14544,9 +13041,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/eri1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14573,9 +13067,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/eri1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14602,9 +13093,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/eri1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14631,9 +13119,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/eri1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14660,9 +13145,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/lim1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14689,9 +13171,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/lim1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14718,9 +13197,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/lim1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14747,9 +13223,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/lim1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14776,9 +13249,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/rbx2a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14805,9 +13275,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/rbx2a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14834,9 +13301,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/rbx2a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14863,9 +13327,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/rbx2a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14892,9 +13353,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/rbx2b/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14921,9 +13379,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/rbx2b/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14950,9 +13405,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/rbx2b/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -14979,9 +13431,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/rbx2b/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15008,9 +13457,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/rbx2d/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15037,9 +13483,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/rbx2d/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15066,9 +13509,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/rbx2d/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15095,9 +13535,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/rbx2d/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15124,9 +13561,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/sbg1a/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15153,9 +13587,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/sbg1a/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15182,9 +13613,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/sbg1a/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15211,9 +13639,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/sbg1a/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15240,9 +13665,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/waw1c/infrastructure/filer/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15269,9 +13691,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly filer ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/waw1c/infrastructure/filer/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15298,9 +13717,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud hourly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/waw1c/infrastructure/host/hourly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15327,9 +13743,6 @@ export const schema: Schema = {
           },
           "description": "Get price of dedicated Cloud monthly host ressources",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/pccVmware/2018v7/waw1c/infrastructure/host/monthly/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15356,9 +13769,6 @@ export const schema: Schema = {
           },
           "description": "Get price of zone options",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/domain/zone/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15385,9 +13795,6 @@ export const schema: Schema = {
           },
           "description": "Get the price for a private database",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/hosting/privateDatabase/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15414,9 +13821,6 @@ export const schema: Schema = {
           },
           "description": "Get the price for cdn option",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/hosting/web/cdn/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15443,9 +13847,6 @@ export const schema: Schema = {
           },
           "description": "Get the price for extra sql perso option",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/hosting/web/extraSqlPerso/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15472,9 +13873,6 @@ export const schema: Schema = {
           },
           "description": "Get the price for hosted ssl option",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/hosting/web/ssl/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15501,9 +13899,6 @@ export const schema: Schema = {
           },
           "description": "Get the monthly price for an office license",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/license/office/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15530,9 +13925,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud 2013",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2013v1/classic/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15559,9 +13951,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Classic 2013",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2013v1/cloud/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15588,9 +13977,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud Options 2013",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2013v1/cloud/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15617,9 +14003,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Low Latency 2013",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2013v1/lowlat/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15646,9 +14029,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Classic 2014",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2014v1/classic/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15675,9 +14055,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud 2014",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2014v1/cloud/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15704,9 +14081,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud Options 2014",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2014v1/cloud/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15733,9 +14107,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud 2015",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2015v1/cloud/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15762,9 +14133,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud Options 2015/2016",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2015v1/cloud/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15791,9 +14159,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud RAM 2016",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2015v1/cloudram/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15820,9 +14185,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud RAM Options 2015/2016",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2015v1/cloudram/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15849,9 +14211,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS SSD 2015",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2015v1/ssd/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15878,9 +14237,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS SSD Options 2015/2016",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2015v1/ssd/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15907,9 +14263,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS SSD Discovery 2017",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2017v1/ssd/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15936,9 +14289,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS SSD Discovery Options 2017",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2017v1/ssd/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15965,9 +14315,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud 2017",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2017v2/cloud/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -15994,9 +14341,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud Options 2015/2016",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2017v2/cloud/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16023,9 +14367,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud RAM 2017",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2017v2/cloudram/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16052,9 +14393,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud RAM Options 2015/2016",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2017v2/cloudram/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16081,9 +14419,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS SSD 2017",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2017v2/ssd/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16110,9 +14445,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS SSD Options 2015/2016",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2017v2/ssd/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16139,9 +14471,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud 2017",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2017v3/cloud/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16168,9 +14497,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud Options 2015/2016",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2017v3/cloud/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16197,9 +14523,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud RAM 2017",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2017v3/cloudram/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16226,9 +14549,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud RAM Options 2015/2016",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2017v3/cloudram/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16255,9 +14575,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS SSD 2017",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2017v3/ssd/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16284,9 +14601,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS SSD Options 2015/2016",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2017v3/ssd/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16313,9 +14627,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud 2017",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2018v1/cloud/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16342,9 +14653,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud Options 2015/2016",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2018v1/cloud/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16371,9 +14679,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud RAM 2017",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2018v1/cloudram/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16400,9 +14705,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS Cloud RAM Options 2015/2016",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2018v1/cloudram/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16429,9 +14731,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS SSD 2018",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2018v1/ssd/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16458,9 +14757,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS SSD Options 2015/2016",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2018v1/ssd/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16487,9 +14783,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS SSD APAC",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2018v2/ssd/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16516,9 +14809,6 @@ export const schema: Schema = {
           },
           "description": "Get price of VPS SSD APAC Options",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/2018v2/ssd/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16540,17 +14830,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2014-04-18T10:00:00+01:00",
-            "deprecatedDate": "2014-03-18T10:00:00+01:00",
+            "deletionDate": "2014-04-18 10:00:00 +0100 +0100",
+            "deprecatedDate": "2014-03-18 10:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/price/vps/2013v1/classic/model/{modelName}",
             "value": "DEPRECATED"
           },
           "description": "Get price of VPS Classic",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/classic/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16572,17 +14859,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2014-04-18T10:00:00+01:00",
-            "deprecatedDate": "2014-03-18T10:00:00+01:00",
+            "deletionDate": "2014-04-18 10:00:00 +0100 +0100",
+            "deprecatedDate": "2014-03-18 10:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/price/vps/2013v1/cloud/model/{modelName}",
             "value": "DEPRECATED"
           },
           "description": "Get price of VPS Cloud",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/cloud/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16604,17 +14888,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2014-04-18T10:00:00+01:00",
-            "deprecatedDate": "2014-03-18T10:00:00+01:00",
+            "deletionDate": "2014-04-18 10:00:00 +0100 +0100",
+            "deprecatedDate": "2014-03-18 10:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/price/vps/2013v1/cloud/option/{optionName}",
             "value": "DEPRECATED"
           },
           "description": "Get price of VPS Cloud Options",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/cloud/option/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16636,17 +14917,14 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2014-04-18T10:00:00+01:00",
-            "deprecatedDate": "2014-03-18T10:00:00+01:00",
+            "deletionDate": "2014-04-18 10:00:00 +0100 +0100",
+            "deprecatedDate": "2014-03-18 10:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/price/vps/2013v1/lowlat/model/{modelName}",
             "value": "DEPRECATED"
           },
           "description": "Get price of VPS Low Latency",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:price/vps/lowlat/model/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -16668,12 +14946,12 @@ export const schema: Schema = {
   "models": {
     "order.CurrencyCodeEnum": {
       "enum": [
-        " INR",
         "AUD",
         "CAD",
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",

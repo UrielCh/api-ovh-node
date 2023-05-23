@@ -845,6 +845,72 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List incidents linked to the Service",
+          "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:incident/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/ovhCloudConnect/{serviceName}/incident"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the incident information",
+          "httpMethod": "GET",
+          "iamActions": [
+            "ovhCloudConnect:apiovh:incident/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ovhcloudconnect.Incident"
+        }
+      ],
+      "path": "/ovhCloudConnect/{serviceName}/incident/{id}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "List interfaces linked to the Service",
           "httpMethod": "GET",
           "iamActions": [
@@ -1669,6 +1735,45 @@ export const schema: Schema = {
         }
       }
     },
+    "ovhcloudconnect.Incident": {
+      "description": "OVHcloud Connect Incident",
+      "id": "Incident",
+      "namespace": "ovhcloudconnect",
+      "properties": {
+        "endDate": {
+          "canBeNull": true,
+          "description": "Ending date of the incident",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Incident reference",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Starting date of the incident",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of incident",
+          "fullType": "ovhcloudconnect.incident.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.incident.TypeEnum"
+        }
+      }
+    },
     "ovhcloudconnect.Interface": {
       "description": "OVHcloud Connect Interface",
       "id": "Interface",
@@ -2130,6 +2235,16 @@ export const schema: Schema = {
       "id": "TypeEnum",
       "namespace": "ovhcloudconnect.diagnostic"
     },
+    "ovhcloudconnect.incident.TypeEnum": {
+      "description": "Enum values for incident type status",
+      "enum": [
+        "incident",
+        "maintenance"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "ovhcloudconnect.incident"
+    },
     "ovhcloudconnect.interface.LightStatusEnum": {
       "description": "Enum values for the light status",
       "enum": [
@@ -2278,7 +2393,8 @@ export const schema: Schema = {
         "internal",
         "interxion",
         "megaport",
-        "orange"
+        "orange",
+        "pccw"
       ],
       "enumType": "string",
       "id": "ProviderEnum",

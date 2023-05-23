@@ -538,13 +538,6 @@ export interface Dedicated {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
-            vrack: {
-                /**
-                 * Delete the vrack container
-                 * DELETE /dedicated/nasha/{serviceName}/vrack
-                 */
-                $delete(): Promise<dedicated.nasTask.Task>;
-            }
         };
     }
 }

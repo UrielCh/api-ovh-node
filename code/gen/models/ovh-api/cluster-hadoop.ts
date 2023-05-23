@@ -800,7 +800,7 @@ export const schema: Schema = {
           "description": "List of orderable Node profiles",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:clusterHadoop/orderableNodeProfiles/get"
+            "clusterHadoop:apiovh:orderableNodeProfiles/get"
           ],
           "noAuthentication": false,
           "parameters": [

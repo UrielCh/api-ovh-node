@@ -9434,8 +9434,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23T10:00:00+01:00",
-            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
+            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -9473,8 +9473,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23T10:00:00+01:00",
-            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
+            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -9520,8 +9520,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23T10:00:00+01:00",
-            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
+            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -9575,8 +9575,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23T10:00:00+01:00",
-            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
+            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -9622,8 +9622,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23T10:00:00+01:00",
-            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
+            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -9669,8 +9669,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23T10:00:00+01:00",
-            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
+            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -9724,8 +9724,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23T10:00:00+01:00",
-            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
+            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -9779,8 +9779,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23T10:00:00+01:00",
-            "deprecatedDate": "2022-03-23T10:00:00+01:00",
+            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
+            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -9879,8 +9879,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2018-04-01T10:00:00+01:00",
-            "deprecatedDate": "2018-03-01T10:00:00+01:00",
+            "deletionDate": "2018-04-01 10:00:00 +0100 +0100",
+            "deprecatedDate": "2018-03-01 10:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "replacement": "/telephony/{billingAccount}/line/{serviceName}/",
             "value": "DEPRECATED"
@@ -12151,8 +12151,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2016-11-09T10:00:00+01:00",
-            "deprecatedDate": "2017-05-09T10:00:00+01:00",
+            "deletionDate": "2016-11-09 10:00:00 +0100 CET",
+            "deprecatedDate": "2017-05-09 10:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/telephony/{billingAccount}/line/{serviceName}/listAssociablePhones",
             "value": "DEPRECATED"
@@ -12394,8 +12394,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-17T10:00:00+01:00",
-            "deprecatedDate": "2022-03-17T10:00:00+01:00",
+            "deletionDate": "2022-06-17 10:00:00 +0100 +0100",
+            "deprecatedDate": "2022-03-17 10:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -24922,9 +24922,6 @@ export const schema: Schema = {
           },
           "description": "Get all available accessories",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:voip/accessories/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -25120,9 +25117,6 @@ export const schema: Schema = {
           },
           "description": "Get all available SIP domains by country",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:voip/availableDefaultSipDomains/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -27201,12 +27195,12 @@ export const schema: Schema = {
     },
     "order.CurrencyCodeEnum": {
       "enum": [
-        " INR",
         "AUD",
         "CAD",
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",

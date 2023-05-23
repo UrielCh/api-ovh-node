@@ -1469,35 +1469,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/use"
-    },
-    {
-      "description": "Partition Vrack",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete the vrack container",
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "nasHA:apiovh:vrack/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your storage",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.nasTask.Task"
-        }
-      ],
-      "path": "/dedicated/nasha/{serviceName}/vrack"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

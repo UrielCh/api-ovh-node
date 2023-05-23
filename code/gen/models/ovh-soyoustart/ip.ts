@@ -45,6 +45,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "Filter the value of isAdditionalIp property (=) (alpha)",
+              "fullType": "boolean",
+              "name": "isAdditionalIp",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "string",
               "description": "Filter the value of routedTo.serviceName property (like)",
               "fullType": "string",
@@ -1645,8 +1653,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2017-01-21T00:00:00+01:00",
-            "deprecatedDate": "2016-07-21T00:00:00+01:00",
+            "deletionDate": "2017-01-21 00:00:00 +0100 CET",
+            "deprecatedDate": "2016-07-21 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/ip/service/{serviceName}/terminate",
             "value": "DEPRECATED"
@@ -2596,6 +2604,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "ipBlock"
+        },
+        "isAdditionalIp": {
+          "canBeNull": false,
+          "description": "Is this IP an Additional IP (alpha)",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "organisationId": {
           "canBeNull": true,

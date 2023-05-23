@@ -158,46 +158,6 @@ export const schema: Schema = {
       "path": "/cloud/order/rule/instanceCategory"
     },
     {
-      "description": "Get services prices",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-03-01T00:00:00+01:00",
-            "deprecatedDate": "2017-12-25T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/catalog/formatted/cloud",
-            "value": "DEPRECATED"
-          },
-          "description": "Get services prices",
-          "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:publicCloudProject/price/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "OVH cloud flavor id",
-              "fullType": "string",
-              "name": "flavorId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Region",
-              "fullType": "string",
-              "name": "region",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "cloud.Price"
-        }
-      ],
-      "path": "/cloud/price"
-    },
-    {
       "description": "Operations about the PUBLICCLOUD service",
       "operations": [
         {
@@ -461,8 +421,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List apps",
           "httpMethod": "GET",
@@ -556,8 +516,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a new app",
           "httpMethod": "POST",
@@ -592,8 +552,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete an app",
           "httpMethod": "DELETE",
@@ -631,8 +591,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get app information",
           "httpMethod": "GET",
@@ -668,8 +628,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Starts a manual data synchronization on an app",
           "httpMethod": "POST",
@@ -712,8 +672,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Set the Docker image of an AI app",
           "httpMethod": "PUT",
@@ -756,8 +716,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Update/add an AI Solutions app label",
           "httpMethod": "PUT",
@@ -800,8 +760,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get the logs of an app",
           "httpMethod": "GET",
@@ -861,8 +821,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Scale a App",
           "httpMethod": "PUT",
@@ -905,8 +865,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Start an existing AI Solutions app",
           "httpMethod": "PUT",
@@ -942,8 +902,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Stop an AI Solutions app",
           "httpMethod": "PUT",
@@ -979,8 +939,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Generate an app spec corresponding CLI command",
           "httpMethod": "POST",
@@ -1400,8 +1360,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -1431,8 +1391,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -1462,8 +1422,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -1493,8 +1453,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -1524,8 +1484,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -1555,8 +1515,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -1580,6 +1540,322 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/region"
+    },
+    {
+      "description": "List AI Solutions available regions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List Region",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/data/region/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.capabilities.Region[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/data/region"
+    },
+    {
+      "description": "List AI Solutions available regions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get Region Information",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/data/region/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.capabilities.Region"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/data/region/{region}"
+    },
+    {
+      "description": "AI Datastore operations for a given region",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List datastores",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/data/region/alias/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.DataStore[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a new datastore",
+          "httpMethod": "POST",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/data/region/alias/create"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.ai.DataStoreInput",
+              "description": "Request Body",
+              "fullType": "cloud.project.ai.DataStoreInput",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.DataStore"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/data/region/{region}/alias"
+    },
+    {
+      "description": "AI Datastore operations for a given region",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Permanently delete a datastore",
+          "httpMethod": "DELETE",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/data/region/alias/delete"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
+              "name": "alias",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get Datastore Information",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/data/region/alias/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
+              "name": "alias",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.DataStore"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update a datastore",
+          "httpMethod": "PUT",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/data/region/alias/edit"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.ai.DataStoreInput",
+              "description": "Request Body",
+              "fullType": "cloud.project.ai.DataStoreInput",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
+              "name": "alias",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.DataStore"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/data/region/{region}/alias/{alias}"
+    },
+    {
+      "description": "Retrieve AI Datastore auth by alias",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get an AI datastore auth in a given region by its alias",
+          "httpMethod": "GET",
+          "iamActions": [
+            "publicCloudProject:apiovh:ai/data/region/alias/auth/get"
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
+              "name": "alias",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.DataStoreAuth"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/data/region/{region}/alias/{alias}/auth"
     },
     {
       "description": "Manage AI Solutions Jobs",
@@ -2123,6 +2399,14 @@ export const schema: Schema = {
               "description": "User that submit the job",
               "fullType": "string",
               "name": "userName",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Whether or not to include spark notebooks in search results",
+              "fullType": "boolean",
+              "name": "withSpark",
               "paramType": "query",
               "required": false
             }
@@ -2930,8 +3214,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2955,8 +3239,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2993,8 +3277,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3026,8 +3310,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3065,8 +3349,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3104,8 +3388,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3137,8 +3421,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3183,8 +3467,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3224,8 +3508,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3265,8 +3549,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3312,8 +3596,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3345,8 +3629,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3378,8 +3662,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3424,8 +3708,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3457,8 +3741,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3503,8 +3787,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3544,8 +3828,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3585,8 +3869,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+00:00",
-            "deprecatedDate": "2022-11-01T00:00:00+00:00",
+            "deletionDate": "2023-02-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-11-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -4232,7 +4516,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List Kubernetes available regions",
+          "description": "List Kubernetes regions where cluster creation is possible",
           "httpMethod": "GET",
           "iamActions": [
             "publicCloudProject:apiovh:capabilities/kube/regions/get"
@@ -4248,7 +4532,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.kube.RegionEnum[]"
+          "responseType": "cloud.kube.RegionCapabilitiesEnum[]"
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/kube/regions"
@@ -5856,7 +6140,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup"
+          "responseType": "cloud.project.database.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/cassandra/{clusterId}/backup/{backupId}"
@@ -6416,8 +6700,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/cassandra",
             "value": "DEPRECATED"
@@ -6490,8 +6774,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/cassandra",
             "value": "DEPRECATED"
@@ -6577,8 +6861,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/cassandra",
             "value": "DEPRECATED"
@@ -6659,8 +6943,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/cassandra",
             "value": "DEPRECATED"
@@ -6741,8 +7025,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/cassandra",
             "value": "DEPRECATED"
@@ -8576,7 +8860,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup"
+          "responseType": "cloud.project.database.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/grafana/{clusterId}/backup/{backupId}"
@@ -9059,8 +9343,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/grafana",
             "value": "DEPRECATED"
@@ -9133,8 +9417,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/grafana",
             "value": "DEPRECATED"
@@ -9220,8 +9504,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/grafana",
             "value": "DEPRECATED"
@@ -9302,8 +9586,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/grafana",
             "value": "DEPRECATED"
@@ -9384,8 +9668,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/grafana",
             "value": "DEPRECATED"
@@ -11779,8 +12063,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/kafka",
             "value": "DEPRECATED"
@@ -11853,8 +12137,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/kafka",
             "value": "DEPRECATED"
@@ -11940,8 +12224,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/kafka",
             "value": "DEPRECATED"
@@ -12022,8 +12306,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/kafka",
             "value": "DEPRECATED"
@@ -12104,8 +12388,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/kafka",
             "value": "DEPRECATED"
@@ -16090,8 +16374,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/kafkaConnect",
             "value": "DEPRECATED"
@@ -16164,8 +16448,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/kafkaConnect",
             "value": "DEPRECATED"
@@ -16251,8 +16535,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/kafkaConnect",
             "value": "DEPRECATED"
@@ -16333,8 +16617,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/kafkaConnect",
             "value": "DEPRECATED"
@@ -16415,8 +16699,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/kafkaConnect",
             "value": "DEPRECATED"
@@ -21505,7 +21789,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup"
+          "responseType": "cloud.project.database.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/m3db/{clusterId}/backup/{backupId}"
@@ -21988,8 +22272,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/m3db",
             "value": "DEPRECATED"
@@ -22062,8 +22346,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/m3db",
             "value": "DEPRECATED"
@@ -22149,8 +22433,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/m3db",
             "value": "DEPRECATED"
@@ -22231,8 +22515,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/m3db",
             "value": "DEPRECATED"
@@ -22313,8 +22597,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/m3db",
             "value": "DEPRECATED"
@@ -24484,7 +24768,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup"
+          "responseType": "cloud.project.database.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/backup/{backupId}"
@@ -24569,7 +24853,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup"
+          "responseType": "cloud.project.database.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mongodb/{clusterId}/backup/{backupId}/restore"
@@ -24579,8 +24863,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/mongodb",
             "value": "DEPRECATED"
@@ -24653,8 +24937,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/mongodb",
             "value": "DEPRECATED"
@@ -24740,8 +25024,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/mongodb",
             "value": "DEPRECATED"
@@ -24822,8 +25106,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/mongodb",
             "value": "DEPRECATED"
@@ -24904,8 +25188,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/mongodb",
             "value": "DEPRECATED"
@@ -27237,7 +27521,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup"
+          "responseType": "cloud.project.database.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/mysql/{clusterId}/backup/{backupId}"
@@ -28369,8 +28653,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/mysql",
             "value": "DEPRECATED"
@@ -28443,8 +28727,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/mysql",
             "value": "DEPRECATED"
@@ -28530,8 +28814,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/mysql",
             "value": "DEPRECATED"
@@ -28612,8 +28896,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/mysql",
             "value": "DEPRECATED"
@@ -28694,8 +28978,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/mysql",
             "value": "DEPRECATED"
@@ -30699,7 +30983,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup"
+          "responseType": "cloud.project.database.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/opensearch/{clusterId}/backup/{backupId}"
@@ -31423,8 +31707,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/opensearch",
             "value": "DEPRECATED"
@@ -31497,8 +31781,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/opensearch",
             "value": "DEPRECATED"
@@ -31584,8 +31868,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/opensearch",
             "value": "DEPRECATED"
@@ -31666,8 +31950,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/opensearch",
             "value": "DEPRECATED"
@@ -31748,8 +32032,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/opensearch",
             "value": "DEPRECATED"
@@ -34065,7 +34349,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup"
+          "responseType": "cloud.project.database.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/postgresql/{clusterId}/backup/{backupId}"
@@ -35601,8 +35885,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/postgresql",
             "value": "DEPRECATED"
@@ -35675,8 +35959,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/postgresql",
             "value": "DEPRECATED"
@@ -35762,8 +36046,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/postgresql",
             "value": "DEPRECATED"
@@ -35844,8 +36128,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/postgresql",
             "value": "DEPRECATED"
@@ -35926,8 +36210,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/postgresql",
             "value": "DEPRECATED"
@@ -38094,7 +38378,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.project.database.service.Backup"
+          "responseType": "cloud.project.database.Backup"
         }
       ],
       "path": "/cloud/project/{serviceName}/database/redis/{clusterId}/backup/{backupId}"
@@ -38731,8 +39015,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/redis",
             "value": "DEPRECATED"
@@ -38805,8 +39089,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/redis",
             "value": "DEPRECATED"
@@ -38892,8 +39176,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/redis",
             "value": "DEPRECATED"
@@ -38974,8 +39258,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/redis",
             "value": "DEPRECATED"
@@ -39056,8 +39340,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-03-15T00:00:00+00:00",
-            "deprecatedDate": "2022-12-15T00:00:00+00:00",
+            "deletionDate": "2023-03-15 00:00:00 +0000 UTC",
+            "deprecatedDate": "2022-12-15 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/1.0/cloud/project/{serviceName}/database/redis",
             "value": "DEPRECATED"
@@ -40704,8 +40988,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-06-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2023-04-20 00:00:00 +0000 UTC",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get metrics token and urls compatible with this token",
           "httpMethod": "GET",
@@ -42957,47 +43243,6 @@ export const schema: Schema = {
             }
           ],
           "responseType": "cloud.kube.Node[]"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2020-10-01T00:00:00+00:00",
-            "deprecatedDate": "2020-07-01T00:00:00+00:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}",
-            "value": "DEPRECATED"
-          },
-          "description": "Deploy a node for your cluster. This call is deprecated. In the meantime it will create a new node pool for each call. We encourage you to now either create a new nodepool or change the size on an existing one",
-          "httpMethod": "POST",
-          "iamActions": [
-            "publicCloudProject:apiovh:kube/node/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "cloud.ProjectKubeNodeCreation",
-              "description": "Request Body",
-              "fullType": "cloud.ProjectKubeNodeCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Kube ID",
-              "fullType": "string",
-              "name": "kubeId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "cloud.kube.Node"
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/node"
@@ -43736,8 +43981,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2020-10-01T00:00:00+00:00",
-            "deprecatedDate": "2020-06-10T00:00:00+00:00",
+            "deletionDate": "2020-10-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2020-06-10 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "replacement": "/cloud/project/{serviceName}/capabilities/kube/regions",
             "value": "DEPRECATED"
@@ -45214,8 +45459,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get cold archive containers",
           "httpMethod": "GET",
@@ -45245,8 +45490,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create S3 cold archive container",
           "httpMethod": "POST",
@@ -45289,8 +45534,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete S3 cold archive container",
           "httpMethod": "DELETE",
@@ -45328,8 +45573,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get S3 cold archive container",
           "httpMethod": "GET",
@@ -45389,8 +45634,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Start archiving of container",
           "httpMethod": "POST",
@@ -45434,8 +45679,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Start cleaning tape date of archived container",
           "httpMethod": "POST",
@@ -45479,8 +45724,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete S3 cold archive container object",
           "httpMethod": "DELETE",
@@ -45532,8 +45777,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Add S3 cold archive container policy",
           "httpMethod": "POST",
@@ -45592,8 +45837,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Generate presigned URLs to download or upload objects",
           "httpMethod": "POST",
@@ -45644,8 +45889,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Start restoring of container",
           "httpMethod": "POST",
@@ -48885,8 +49130,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get S3 storage containers",
           "httpMethod": "GET",
@@ -48916,8 +49161,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create S3 storage container",
           "httpMethod": "POST",
@@ -48960,8 +49205,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete S3 storage container",
           "httpMethod": "DELETE",
@@ -48999,8 +49244,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get S3 storage container",
           "httpMethod": "GET",
@@ -49060,8 +49305,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete S3 storage container object",
           "httpMethod": "DELETE",
@@ -49113,8 +49358,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Add S3 storage container policy",
           "httpMethod": "POST",
@@ -49173,8 +49418,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Generate S3 presigned URLs to download or upload objects",
           "httpMethod": "POST",
@@ -52058,51 +52303,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/vrack"
-    },
-    {
-      "description": "Get services prices for a subsidiary",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2023-02-01T00:00:00+01:00",
-            "deprecatedDate": "2018-02-07T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/catalog/formatted/cloud",
-            "value": "DEPRECATED"
-          },
-          "description": "Get services prices for a subsidiary",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "OVH cloud flavor id",
-              "fullType": "string",
-              "name": "flavorId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "OVH subsidiary",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Region",
-              "fullType": "string",
-              "name": "region",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "cloud.Price"
-        }
-      ],
-      "path": "/cloud/subsidiaryPrice"
     }
   ],
   "basePath": "https://ca.api.ovh.com/1.0",
@@ -52252,27 +52452,6 @@ export const schema: Schema = {
       "id": "AlertingDelayEnum",
       "namespace": "cloud"
     },
-    "cloud.ArchiveStoragePrice": {
-      "description": "Details about archive storage pricing",
-      "id": "ArchiveStoragePrice",
-      "namespace": "cloud",
-      "properties": {
-        "monthlyPrice": {
-          "canBeNull": false,
-          "description": "Monthly archive storage price (for 1GB stored per month)",
-          "readOnly": false,
-          "required": false,
-          "type": "order.Price"
-        },
-        "region": {
-          "canBeNull": false,
-          "description": "Archive region",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
     "cloud.AvailableRegion": {
       "description": "Details about an available region that can be activated on your project",
       "id": "AvailableRegion",
@@ -52367,35 +52546,22 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.BandwidthStoragePrice": {
-      "description": "Details about bandwidth storage pricing",
-      "id": "BandwidthStoragePrice",
-      "namespace": "cloud",
-      "properties": {
-        "price": {
-          "canBeNull": false,
-          "description": "Bandwidth storage price (for 1GB)",
-          "readOnly": false,
-          "required": false,
-          "type": "order.Price"
-        },
-        "region": {
-          "canBeNull": false,
-          "description": "Bandwidth storage region",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
     "cloud.ColdArchiveContainer": {
       "description": "Container",
       "id": "ColdArchiveContainer",
       "namespace": "cloud",
       "properties": {
+        "automaticDeletionAt": {
+          "canBeNull": true,
+          "description": "After restoring your archive, date when the restored files will be deleted",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
         "createdAt": {
           "canBeNull": false,
-          "description": "The date and timestamp when the resource was created",
+          "description": "The date when the resource was created",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
@@ -52629,48 +52795,6 @@ export const schema: Schema = {
       "id": "ExecutionStateEnum",
       "namespace": "cloud"
     },
-    "cloud.FlavorPrice": {
-      "description": "Details about flavor pricing",
-      "id": "FlavorPrice",
-      "namespace": "cloud",
-      "properties": {
-        "flavorId": {
-          "canBeNull": false,
-          "description": "Flavor id",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "flavorName": {
-          "canBeNull": false,
-          "description": "Flavor name",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "monthlyPrice": {
-          "canBeNull": true,
-          "description": "Monthly flavor price",
-          "readOnly": false,
-          "required": false,
-          "type": "order.Price"
-        },
-        "price": {
-          "canBeNull": false,
-          "description": "Hourly flavor price",
-          "readOnly": false,
-          "required": false,
-          "type": "order.Price"
-        },
-        "region": {
-          "canBeNull": false,
-          "description": "Flavor region",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
     "cloud.IpCountryEnum": {
       "description": "Enum values for IpCountry",
       "enum": [
@@ -52861,75 +52985,6 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "OperationStatusEnum",
       "namespace": "cloud"
-    },
-    "cloud.Price": {
-      "description": "A structure defining prices for cloud services",
-      "id": "Price",
-      "namespace": "cloud",
-      "properties": {
-        "archive": {
-          "canBeNull": false,
-          "description": "Price for archive storage",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.ArchiveStoragePrice[]"
-        },
-        "bandwidthArchiveIn": {
-          "canBeNull": false,
-          "description": "Price for incoming bandwidth on archive storage",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.BandwidthStoragePrice[]"
-        },
-        "bandwidthArchiveOut": {
-          "canBeNull": false,
-          "description": "Price for outgoing bandwidth on archive storage",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.BandwidthStoragePrice[]"
-        },
-        "bandwidthStorage": {
-          "canBeNull": false,
-          "description": "Price for bandwidth storage",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.BandwidthStoragePrice[]"
-        },
-        "instances": {
-          "canBeNull": false,
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.FlavorPrice[]"
-        },
-        "projectCreation": {
-          "canBeNull": false,
-          "description": "Price for project creation",
-          "readOnly": false,
-          "required": false,
-          "type": "order.Price"
-        },
-        "snapshots": {
-          "canBeNull": false,
-          "description": "Prices for snapshots",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.SnapshotPrice[]"
-        },
-        "storage": {
-          "canBeNull": false,
-          "description": "Price for storage",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.StoragePrice[]"
-        },
-        "volumes": {
-          "canBeNull": false,
-          "description": "Prices for volumes",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.VolumePrice[]"
-        }
-      }
     },
     "cloud.Project": {
       "description": "Project",
@@ -53817,29 +53872,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "ipBlock[]"
-        }
-      }
-    },
-    "cloud.ProjectKubeNodeCreation": {
-      "description": "Missing description",
-      "id": "ProjectKubeNodeCreation",
-      "namespace": "cloud",
-      "properties": {
-        "flavorName": {
-          "canBeNull": false,
-          "description": "Flavor name",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Node name",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
         }
       }
     },
@@ -55024,34 +55056,6 @@ export const schema: Schema = {
       "id": "ServiceStatusEnum",
       "namespace": "cloud"
     },
-    "cloud.SnapshotPrice": {
-      "description": "Details about snapshot pricing",
-      "id": "SnapshotPrice",
-      "namespace": "cloud",
-      "properties": {
-        "monthlyPrice": {
-          "canBeNull": false,
-          "description": "Monthly flavor price (for 1GB per month)",
-          "readOnly": false,
-          "required": false,
-          "type": "order.Price"
-        },
-        "price": {
-          "canBeNull": false,
-          "description": "Hourly snapshot price (for 1GB per hour)",
-          "readOnly": false,
-          "required": false,
-          "type": "order.Price"
-        },
-        "region": {
-          "canBeNull": false,
-          "description": "Snapshot region",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
     "cloud.StorageContainer": {
       "description": "Container",
       "id": "StorageContainer",
@@ -55185,34 +55189,6 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.StoragePrice": {
-      "description": "Details about storage pricing",
-      "id": "StoragePrice",
-      "namespace": "cloud",
-      "properties": {
-        "monthlyPrice": {
-          "canBeNull": false,
-          "description": "Monthly storage price (for 1GB stored per month)",
-          "readOnly": false,
-          "required": false,
-          "type": "order.Price"
-        },
-        "price": {
-          "canBeNull": false,
-          "description": "Hourly storage price (for 1GB stored per hour)",
-          "readOnly": false,
-          "required": false,
-          "type": "order.Price"
-        },
-        "region": {
-          "canBeNull": false,
-          "description": "Storage region",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
     "cloud.SubOperation": {
       "description": "A sub-operation is a child of an operation on your Project",
       "id": "SubOperation",
@@ -55281,41 +55257,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "cloud.OperationStatusEnum"
-        }
-      }
-    },
-    "cloud.VolumePrice": {
-      "description": "Details about volume pricing",
-      "id": "VolumePrice",
-      "namespace": "cloud",
-      "properties": {
-        "monthlyPrice": {
-          "canBeNull": false,
-          "description": "Monthly volume price (for 1GB per month)",
-          "readOnly": false,
-          "required": false,
-          "type": "order.Price"
-        },
-        "price": {
-          "canBeNull": false,
-          "description": "Hourly volume price (for 1GB per hour)",
-          "readOnly": false,
-          "required": false,
-          "type": "order.Price"
-        },
-        "region": {
-          "canBeNull": false,
-          "description": "Volume region",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "volumeName": {
-          "canBeNull": false,
-          "description": "Volume name",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
         }
       }
     },
@@ -57580,7 +57521,7 @@ export const schema: Schema = {
       "namespace": "cloud.instance",
       "properties": {
         "autobackup": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Create an autobackup workflow after instance start up",
           "fullType": "cloud.instance.CreateInput.Autobackup",
           "readOnly": false,
@@ -57620,7 +57561,7 @@ export const schema: Schema = {
           "type": "cloud.instance.CreateInput.Flavor"
         },
         "group": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Start instance in group",
           "fullType": "cloud.instance.CreateInput.Group",
           "readOnly": false,
@@ -57644,7 +57585,7 @@ export const schema: Schema = {
           "type": "cloud.instance.CreateInput.Network"
         },
         "sshKey": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Existing SSH Keypair",
           "fullType": "cloud.instance.CreateInput.SshKey",
           "readOnly": false,
@@ -57652,7 +57593,7 @@ export const schema: Schema = {
           "type": "cloud.instance.CreateInput.SshKey"
         },
         "sshKeyCreate": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Information to create a new SSH Keypair",
           "fullType": "cloud.instance.CreateInput.SshKeyCreate",
           "readOnly": false,
@@ -57660,7 +57601,7 @@ export const schema: Schema = {
           "type": "cloud.instance.CreateInput.SshKeyCreate"
         },
         "userData": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Configuration information or scripts to use upon launch",
           "fullType": "string",
           "readOnly": false,
@@ -57708,7 +57649,7 @@ export const schema: Schema = {
       "namespace": "cloud.instance.CreateInput",
       "properties": {
         "imageId": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Instance image id",
           "fullType": "uuid",
           "readOnly": false,
@@ -57716,7 +57657,7 @@ export const schema: Schema = {
           "type": "uuid"
         },
         "volumeId": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Specify a volume id to boot from it",
           "fullType": "uuid",
           "readOnly": false,
@@ -57761,7 +57702,7 @@ export const schema: Schema = {
       "namespace": "cloud.instance.CreateInput",
       "properties": {
         "private": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Private network information",
           "fullType": "cloud.instance.CreateInput.Network.Private",
           "readOnly": false,
@@ -57784,7 +57725,7 @@ export const schema: Schema = {
       "namespace": "cloud.instance.CreateInput.Network",
       "properties": {
         "floatingIp": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Existing floating IP",
           "fullType": "cloud.instance.CreateInput.Network.Private.FloatingIp",
           "readOnly": false,
@@ -57792,7 +57733,7 @@ export const schema: Schema = {
           "type": "cloud.instance.CreateInput.Network.Private.FloatingIp"
         },
         "floatingIpCreate": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Information to create a new floating IP",
           "fullType": "cloud.instance.CreateInput.Network.Private.FloatingIpCreate",
           "readOnly": false,
@@ -57800,7 +57741,7 @@ export const schema: Schema = {
           "type": "cloud.instance.CreateInput.Network.Private.FloatingIpCreate"
         },
         "gateway": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Existing gateway",
           "fullType": "cloud.instance.CreateInput.Network.Private.Gateway",
           "readOnly": false,
@@ -57808,7 +57749,7 @@ export const schema: Schema = {
           "type": "cloud.instance.CreateInput.Network.Private.Gateway"
         },
         "gatewayCreate": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Information to create a new gateway",
           "fullType": "cloud.instance.CreateInput.Network.Private.GatewayCreate",
           "readOnly": false,
@@ -57816,7 +57757,7 @@ export const schema: Schema = {
           "type": "cloud.instance.CreateInput.Network.Private.GatewayCreate"
         },
         "ip": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Instance IP in the private network",
           "fullType": "ipv4",
           "readOnly": false,
@@ -57824,7 +57765,7 @@ export const schema: Schema = {
           "type": "ipv4"
         },
         "network": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Existing private network",
           "fullType": "cloud.instance.CreateInput.Network.Private.Network",
           "readOnly": false,
@@ -57832,7 +57773,7 @@ export const schema: Schema = {
           "type": "cloud.instance.CreateInput.Network.Private.Network"
         },
         "networkCreate": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Information to create a new private network",
           "fullType": "cloud.instance.CreateInput.Network.Private.NetworkCreate",
           "readOnly": false,
@@ -57965,7 +57906,7 @@ export const schema: Schema = {
           "type": "cloud.instance.CreateInput.Network.Private.NetworkCreate.Subnet"
         },
         "vlanId": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Network vlan ID",
           "fullType": "long",
           "readOnly": false,
@@ -59963,8 +59904,28 @@ export const schema: Schema = {
       "id": "Region",
       "namespace": "cloud.kube"
     },
+    "cloud.kube.RegionCapabilitiesEnum": {
+      "description": "Enum values for regions where cluster creation is possible, region where cluster are deployed is cloud.kube.RegionEnum",
+      "enum": [
+        "BHS5",
+        "DE1",
+        "GRA5",
+        "GRA7",
+        "GRA9",
+        "SBG5",
+        "SGP1",
+        "SYD1",
+        "UK1",
+        "US-EAST-VA-1",
+        "US-WEST-OR-1",
+        "WAW1"
+      ],
+      "enumType": "string",
+      "id": "RegionCapabilitiesEnum",
+      "namespace": "cloud.kube"
+    },
     "cloud.kube.RegionEnum": {
-      "description": "Enum values for available regions",
+      "description": "Enum values for regions where cluster are deployed and flavor related location. Available region for cluster creation is cloud.kube.RegionCapabilitiesEnum",
       "enum": [
         "BHS5",
         "DE1",
@@ -60129,9 +60090,9 @@ export const schema: Schema = {
     "cloud.kube.VersionEnum": {
       "description": "List of available versions for installation",
       "enum": [
-        "1.23",
         "1.24",
-        "1.25"
+        "1.25",
+        "1.26"
       ],
       "enumType": "string",
       "id": "VersionEnum",
@@ -63838,6 +63799,29 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.ai.BasicAuthCredentialsInput": {
+      "description": "AI Solutions basic auth credentials input",
+      "id": "BasicAuthCredentialsInput",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "password": {
+          "canBeNull": false,
+          "description": "Basic Auth Password",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Basic Auth Username",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
     "cloud.project.ai.Command": {
       "description": "AI Solutions CLI command",
       "id": "Command",
@@ -63853,6 +63837,191 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.ai.DataStore": {
+      "description": "AI Solutions data store container Volume Object",
+      "id": "DataStore",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "alias": {
+          "canBeNull": false,
+          "description": "Data store alias",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "owner": {
+          "canBeNull": false,
+          "description": "Owner type of the datastore",
+          "fullType": "cloud.project.ai.DataStoreOwnerEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.DataStoreOwnerEnum"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of the datastore",
+          "fullType": "cloud.project.ai.DataStoreTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.DataStoreTypeEnum"
+        }
+      }
+    },
+    "cloud.project.ai.DataStoreAuth": {
+      "description": "AI Solutions data store auth",
+      "id": "DataStoreAuth",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "accessKey": {
+          "canBeNull": true,
+          "description": "Access key to the datastore",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": true,
+          "description": "Region of the datastore",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "s3Url": {
+          "canBeNull": true,
+          "description": "S3 Url of the datastore",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "secretKey": {
+          "canBeNull": true,
+          "description": "Secret key to the datastore",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "token": {
+          "canBeNull": true,
+          "description": "Swift (or S3) Auth token",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Swift storage URL",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.DataStoreCredentialsInput": {
+      "description": "AI Solutions data store credentials Object",
+      "id": "DataStoreCredentialsInput",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "git": {
+          "canBeNull": true,
+          "description": "Git data store credentials",
+          "fullType": "cloud.project.ai.GitCredentialsInput",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.GitCredentialsInput"
+        },
+        "s3": {
+          "canBeNull": true,
+          "description": "S3 data store credentials",
+          "fullType": "cloud.project.ai.S3CredentialsInput",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.S3CredentialsInput"
+        }
+      }
+    },
+    "cloud.project.ai.DataStoreInput": {
+      "description": "AI Solutions data store container Volume Object",
+      "id": "DataStoreInput",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "alias": {
+          "canBeNull": false,
+          "description": "Data store alias",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "credentials": {
+          "canBeNull": false,
+          "description": "Data store credentials",
+          "fullType": "cloud.project.ai.DataStoreCredentialsInput",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.ai.DataStoreCredentialsInput"
+        },
+        "endpoint": {
+          "canBeNull": false,
+          "description": "Datastore endpoint",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "owner": {
+          "canBeNull": false,
+          "description": "Data store owner",
+          "fullType": "cloud.project.ai.DataStoreOwnerEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.ai.DataStoreOwnerEnum"
+        },
+        "prefix": {
+          "canBeNull": true,
+          "description": "Data store prefix",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Data store type",
+          "fullType": "cloud.project.ai.DataStoreTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.ai.DataStoreTypeEnum"
+        }
+      }
+    },
+    "cloud.project.ai.DataStoreOwnerEnum": {
+      "description": "Data Store Owner",
+      "enum": [
+        "customer",
+        "ovhcloud"
+      ],
+      "enumType": "string",
+      "id": "DataStoreOwnerEnum",
+      "namespace": "cloud.project.ai"
+    },
+    "cloud.project.ai.DataStoreTypeEnum": {
+      "description": "Data Store Type",
+      "enum": [
+        "git",
+        "s3",
+        "swift"
+      ],
+      "enumType": "string",
+      "id": "DataStoreTypeEnum",
+      "namespace": "cloud.project.ai"
+    },
     "cloud.project.ai.GenericResponse": {
       "description": "Basic model with a single message field",
       "id": "GenericResponse",
@@ -63864,6 +64033,29 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.GitCredentialsInput": {
+      "description": "AI Solutions data store git credentials input",
+      "id": "GitCredentialsInput",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "basicAuth": {
+          "canBeNull": true,
+          "description": "Basic Auth data store credentials",
+          "fullType": "cloud.project.ai.BasicAuthCredentialsInput",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.BasicAuthCredentialsInput"
+        },
+        "sshKeypair": {
+          "canBeNull": true,
+          "description": "SSH data store credentials",
+          "fullType": "cloud.project.ai.SshCredentialsInput",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.SshCredentialsInput"
         }
       }
     },
@@ -64204,6 +64396,37 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.ai.S3CredentialsInput": {
+      "description": "AI Solutions S3 credentials",
+      "id": "S3CredentialsInput",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "accessKey": {
+          "canBeNull": false,
+          "description": "S3 Access Key",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "S3 Region",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "secretKey": {
+          "canBeNull": false,
+          "description": "S3 Private Key",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        }
+      }
+    },
     "cloud.project.ai.ShutdownStrategyEnum": {
       "description": "Shutdown strategy of an instance",
       "enum": [
@@ -64212,6 +64435,29 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ShutdownStrategyEnum",
       "namespace": "cloud.project.ai"
+    },
+    "cloud.project.ai.SshCredentialsInput": {
+      "description": "AI Solutions SSH credentials input",
+      "id": "SshCredentialsInput",
+      "namespace": "cloud.project.ai",
+      "properties": {
+        "privateKey": {
+          "canBeNull": false,
+          "description": "SSH private key",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        },
+        "publicKey": {
+          "canBeNull": false,
+          "description": "SSH public key",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "cloud.project.ai.TokenRoleEnum": {
       "description": "Role granted with an application token",
@@ -64462,7 +64708,7 @@ export const schema: Schema = {
         },
         "image": {
           "canBeNull": false,
-          "description": "App image",
+          "description": "Docker or capability image to use in the app. App capability images must comply with the pattern 'image-id:version'",
           "fullType": "string",
           "readOnly": false,
           "required": true,
@@ -64976,6 +65222,17 @@ export const schema: Schema = {
       "id": "FlavorTypeEnum",
       "namespace": "cloud.project.ai.capabilities"
     },
+    "cloud.project.ai.capabilities.LicensingTypeEnum": {
+      "description": "Licensing Type",
+      "enum": [
+        "per-app",
+        "per-replica",
+        "per-resource"
+      ],
+      "enumType": "string",
+      "id": "LicensingTypeEnum",
+      "namespace": "cloud.project.ai.capabilities"
+    },
     "cloud.project.ai.capabilities.Preset": {
       "description": "AI Solutions Preset image",
       "id": "Preset",
@@ -65229,6 +65486,85 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.ai.capabilities.app.Image": {
+      "description": "AI Solutions App image object",
+      "id": "Image",
+      "namespace": "cloud.project.ai.capabilities.app",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Short description of the image",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "docUrl": {
+          "canBeNull": false,
+          "description": "URL of the image documentation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the image",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "licensing": {
+          "canBeNull": false,
+          "description": "Type of licensing",
+          "fullType": "cloud.project.ai.capabilities.LicensingTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.capabilities.LicensingTypeEnum"
+        },
+        "logoUrl": {
+          "canBeNull": false,
+          "description": "URL of the logo of the image",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the image",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "partnerId": {
+          "canBeNull": false,
+          "description": "ID of the partner providing the image",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "partnerName": {
+          "canBeNull": false,
+          "description": "Name of the partner providing the image",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "versions": {
+          "canBeNull": false,
+          "description": "List of available versions of this image",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
     "cloud.project.ai.capabilities.flavor.GpuInformation": {
       "description": "AI Solutions Global GPU information",
       "id": "GpuInformation",
@@ -65304,6 +65640,171 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        }
+      }
+    },
+    "cloud.project.ai.capabilities.job.Image": {
+      "description": "AI Solutions Job image object",
+      "id": "Image",
+      "namespace": "cloud.project.ai.capabilities.job",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Short description of the image",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "docUrl": {
+          "canBeNull": false,
+          "description": "URL of the image documentation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the image",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "logoUrl": {
+          "canBeNull": false,
+          "description": "URL of the logo of the image",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the image",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "versions": {
+          "canBeNull": false,
+          "description": "List of available versions of this image",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.ai.capabilities.notebook.Editor": {
+      "description": "AI Solutions Notebook editor object",
+      "id": "Editor",
+      "namespace": "cloud.project.ai.capabilities.notebook",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Short description of the editor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "docUrl": {
+          "canBeNull": false,
+          "description": "URL of the editor documentation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the editor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "logoUrl": {
+          "canBeNull": false,
+          "description": "URL of the logo of the editor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the editor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "versions": {
+          "canBeNull": false,
+          "description": "List of available versions of this editor",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.ai.capabilities.notebook.Framework": {
+      "description": "AI Solutions Notebook framework object",
+      "id": "Framework",
+      "namespace": "cloud.project.ai.capabilities.notebook",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Short description of the framework",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "docUrl": {
+          "canBeNull": false,
+          "description": "URL of the framework documentation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the framework",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "logoUrl": {
+          "canBeNull": false,
+          "description": "URL of the logo of the framework",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the framework",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "versions": {
+          "canBeNull": false,
+          "description": "List of available versions of this framework",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
@@ -66537,6 +67038,91 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        }
+      }
+    },
+    "cloud.project.ai.partner.Contract": {
+      "description": "Representation of a partner's contract with logged in user's tenant",
+      "id": "Contract",
+      "namespace": "cloud.project.ai.partner",
+      "properties": {
+        "signedAt": {
+          "canBeNull": true,
+          "description": "Contract signature date for the logged in user's tenant",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "termsOfService": {
+          "canBeNull": false,
+          "description": "Map of terms of service details per locale",
+          "fullType": "map[string]cloud.project.ai.partner.ContractTermsLocale",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]cloud.project.ai.partner.ContractTermsLocale"
+        }
+      }
+    },
+    "cloud.project.ai.partner.ContractTermsLocale": {
+      "description": "Representation of a partner's contract on a given language",
+      "id": "ContractTermsLocale",
+      "namespace": "cloud.project.ai.partner",
+      "properties": {
+        "url": {
+          "canBeNull": false,
+          "description": "Contract file URL for a given language",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.partner.Partner": {
+      "description": "Representation of a partner",
+      "id": "Partner",
+      "namespace": "cloud.project.ai.partner",
+      "properties": {
+        "contract": {
+          "canBeNull": true,
+          "description": "Partner contract with logged in user's tenant",
+          "fullType": "cloud.project.ai.partner.Contract",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.partner.Contract"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Partner creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Partner Description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Partner Id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Partner Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -68381,6 +68967,37 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.dataIntegration.DestinationUpdate": {
+      "description": "Editable destination properties",
+      "id": "DestinationUpdate",
+      "namespace": "cloud.project.dataIntegration",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Destination Id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the destination",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "parameters": {
+          "canBeNull": true,
+          "description": "List of parameter need for the connector",
+          "fullType": "cloud.project.dataIntegration.Parameter[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.dataIntegration.Parameter[]"
+        }
+      }
+    },
     "cloud.project.dataIntegration.Job": {
       "description": "Job information",
       "id": "Job",
@@ -68652,6 +69269,37 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.dataIntegration.SourceUpdate": {
+      "description": "Editable source properties",
+      "id": "SourceUpdate",
+      "namespace": "cloud.project.dataIntegration",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Uuid of the source",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the source",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "parameters": {
+          "canBeNull": true,
+          "description": "List of parameter needed for the connector",
+          "fullType": "cloud.project.dataIntegration.Parameter[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.dataIntegration.Parameter[]"
+        }
+      }
+    },
     "cloud.project.dataIntegration.StatusEnum": {
       "description": "Possible state of the connector",
       "enum": [
@@ -68674,7 +69322,7 @@ export const schema: Schema = {
       "namespace": "cloud.project.dataIntegration",
       "properties": {
         "description": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Description of the workflow",
           "fullType": "string",
           "readOnly": false,
@@ -68689,6 +69337,22 @@ export const schema: Schema = {
           "required": true,
           "type": "uuid"
         },
+        "destinationName": {
+          "canBeNull": false,
+          "description": "Name of the destination to use",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "enabled": {
+          "canBeNull": false,
+          "description": "Whether workflow is enabled",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
         "id": {
           "canBeNull": false,
           "description": "Uuid of the workflow",
@@ -68696,6 +69360,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "uuid"
+        },
+        "lastExecutionDate": {
+          "canBeNull": true,
+          "description": "Last jobs execution date ",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "name": {
           "canBeNull": false,
@@ -68705,8 +69377,16 @@ export const schema: Schema = {
           "required": true,
           "type": "string"
         },
-        "schedule": {
+        "region": {
           "canBeNull": false,
+          "description": "Default region where jobs will run",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "schedule": {
+          "canBeNull": true,
           "description": "Schedule of the workflow in cron format",
           "fullType": "string",
           "readOnly": false,
@@ -68720,6 +69400,80 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "uuid"
+        },
+        "sourceName": {
+          "canBeNull": false,
+          "description": "Name of the source to use",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the workflow",
+          "fullType": "cloud.project.dataIntegration.WorkflowStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.dataIntegration.WorkflowStatusEnum"
+        }
+      }
+    },
+    "cloud.project.dataIntegration.WorkflowStatusEnum": {
+      "description": "Possible state of the worfklow",
+      "enum": [
+        "CREATING",
+        "ERROR",
+        "READY"
+      ],
+      "enumType": "string",
+      "id": "WorkflowStatusEnum",
+      "namespace": "cloud.project.dataIntegration"
+    },
+    "cloud.project.dataIntegration.WorkflowUpdate": {
+      "description": "Editable workflow properties",
+      "id": "WorkflowUpdate",
+      "namespace": "cloud.project.dataIntegration",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "Description of the workflow",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "enabled": {
+          "canBeNull": true,
+          "description": "Whether workflow is enabled",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Uuid of the workflow",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the workflow",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "schedule": {
+          "canBeNull": true,
+          "description": "Schedule of the workflow in cron format",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -69695,6 +70449,77 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.database.Backup": {
+      "description": "Cloud database backup definition",
+      "id": "Backup",
+      "namespace": "cloud.project.database",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Date of the creation of the backup",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the backup",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Backup ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region where the backup is stored. DEPRECATED: use regions",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "regions": {
+          "canBeNull": false,
+          "description": "Regions where the backup are stored",
+          "fullType": "cloud.project.database.backup.Region[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.backup.Region[]"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the backup",
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the backup",
+          "fullType": "cloud.project.database.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.StatusEnum"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of backup",
+          "fullType": "cloud.project.database.BackupTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.database.BackupTypeEnum"
+        }
+      }
+    },
     "cloud.project.database.BackupTypeEnum": {
       "description": "Type of backup for the cluster",
       "enum": [
@@ -70146,6 +70971,21 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "StatusEnum",
       "namespace": "cloud.project.database.availability"
+    },
+    "cloud.project.database.backup.Region": {
+      "description": "Cloud database backup region definition",
+      "id": "Region",
+      "namespace": "cloud.project.database.backup",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the region where the backup is stored",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "cloud.project.database.capabilities.Engine": {
       "description": "Specific database engine capability",
@@ -72815,77 +73655,6 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.project.database.service.Backup": {
-      "description": "Cloud database backup definition",
-      "id": "Backup",
-      "namespace": "cloud.project.database.service",
-      "properties": {
-        "createdAt": {
-          "canBeNull": false,
-          "description": "Date of the creation of the backup",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "description": {
-          "canBeNull": false,
-          "description": "Description of the backup",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Backup ID",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
-        "region": {
-          "canBeNull": false,
-          "description": "Region where the backup is stored. DEPRECATED: use regions",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "regions": {
-          "canBeNull": false,
-          "description": "Regions where the backup are stored",
-          "fullType": "cloud.project.database.service.backup.Region[]",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.database.service.backup.Region[]"
-        },
-        "size": {
-          "canBeNull": false,
-          "description": "Size of the backup",
-          "fullType": "complexType.UnitAndValue<long>",
-          "readOnly": true,
-          "required": false,
-          "type": "complexType.UnitAndValue<long>"
-        },
-        "status": {
-          "canBeNull": false,
-          "description": "Current status of the backup",
-          "fullType": "cloud.project.database.StatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.database.StatusEnum"
-        },
-        "type": {
-          "canBeNull": false,
-          "description": "Type of backup",
-          "fullType": "cloud.project.database.BackupTypeEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.database.BackupTypeEnum"
-        }
-      }
-    },
     "cloud.project.database.service.Certificates": {
       "description": "Certificates definition for cloud project databases",
       "id": "Certificates",
@@ -73892,21 +74661,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string[]"
-        }
-      }
-    },
-    "cloud.project.database.service.backup.Region": {
-      "description": "Cloud database backup region definition",
-      "id": "Region",
-      "namespace": "cloud.project.database.service.backup",
-      "properties": {
-        "name": {
-          "canBeNull": false,
-          "description": "Name of the region where the backup is stored",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
         }
       }
     },
@@ -76221,6 +76975,22 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "maxNetworks": {
+          "canBeNull": false,
+          "description": "Maximum networks allowed in your project",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxSubnets": {
+          "canBeNull": false,
+          "description": "Maximum subnets allowed in your project",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "usedFloatingIPs": {
           "canBeNull": false,
           "description": "Current number of used floating ips",
@@ -76232,6 +77002,22 @@ export const schema: Schema = {
         "usedGateways": {
           "canBeNull": false,
           "description": "Current number of used gateways",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "usedNetworks": {
+          "canBeNull": false,
+          "description": "Current used networks",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "usedSubnets": {
+          "canBeNull": false,
+          "description": "Current used subnets",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -76338,6 +77124,14 @@ export const schema: Schema = {
       "id": "VolumeUsageQuotas",
       "namespace": "cloud.quota",
       "properties": {
+        "maxBackupGigabytes": {
+          "canBeNull": false,
+          "description": "Maximum total volume backup capacity allowed in your project",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "maxGigabytes": {
           "canBeNull": false,
           "description": "Maximum total volume capacity allowed in your project",
@@ -76346,9 +77140,41 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "maxVolumeBackupCount": {
+          "canBeNull": false,
+          "description": "Maximum volumes backup count",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxVolumeCount": {
+          "canBeNull": false,
+          "description": "Maximum volumes count",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "usedBackupGigabytes": {
+          "canBeNull": false,
+          "description": "Current used volume backup gigabytes",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "usedGigabytes": {
           "canBeNull": false,
           "description": "Current used volume gigabytes",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "volumeBackupCount": {
+          "canBeNull": false,
+          "description": "Current volumes backup count",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -77959,10 +78785,10 @@ export const schema: Schema = {
         "status": {
           "canBeNull": false,
           "description": "Volume status",
-          "fullType": "string",
+          "fullType": "cloud.volume.VolumeStatusEnum",
           "readOnly": true,
           "required": false,
-          "type": "string"
+          "type": "cloud.volume.VolumeStatusEnum"
         },
         "type": {
           "canBeNull": false,
@@ -77973,6 +78799,34 @@ export const schema: Schema = {
           "type": "cloud.volume.VolumeTypeEnum"
         }
       }
+    },
+    "cloud.volume.VolumeStatusEnum": {
+      "description": "VolumeStatusEnum",
+      "enum": [
+        "attaching",
+        "available",
+        "awaiting-transfer",
+        "backing-up",
+        "creating",
+        "deleting",
+        "detaching",
+        "downloading",
+        "error",
+        "error_backing-up",
+        "error_deleting",
+        "error_extending",
+        "error_restoring",
+        "extending",
+        "in-use",
+        "maintenance",
+        "reserved",
+        "restoring-backup",
+        "retyping",
+        "uploading"
+      ],
+      "enumType": "string",
+      "id": "VolumeStatusEnum",
+      "namespace": "cloud.volume"
     },
     "cloud.volume.VolumeTypeEnum": {
       "description": "VolumeTypeEnum",
@@ -78158,12 +79012,12 @@ export const schema: Schema = {
     },
     "order.CurrencyCodeEnum": {
       "enum": [
-        " INR",
         "AUD",
         "CAD",
         "CZK",
         "EUR",
         "GBP",
+        "INR",
         "LTL",
         "MAD",
         "N/A",

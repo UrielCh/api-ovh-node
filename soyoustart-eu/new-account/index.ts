@@ -83,7 +83,7 @@ export namespace nichandle {
         ovhIdentifier: string;
     }
     /**
-     * OVH subsidiaries
+     * OVH companies
      * type fullname: nichandle.OvhCompanyEnum
      */
     export type OvhCompanyEnum = "kimsufi" | "ovh" | "soyoustart"

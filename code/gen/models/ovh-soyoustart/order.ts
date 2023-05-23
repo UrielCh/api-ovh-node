@@ -1341,8 +1341,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -1350,7 +1350,7 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVmware/get"
+            "order:apiovh:pccVMware/get"
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -1364,8 +1364,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -1373,7 +1373,7 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVmware/get"
+            "order:apiovh:pccVMware/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1396,8 +1396,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -1405,7 +1405,7 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'additionalBandwidth' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVmware/additionalBandwidth/get"
+            "order:apiovh:pccVMware/additionalBandwidth/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1436,8 +1436,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -1445,7 +1445,7 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVmware/additionalBandwidth/get"
+            "order:apiovh:pccVMware/additionalBandwidth/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1478,8 +1478,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -1487,7 +1487,7 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:pccVmware/additionalBandwidth/create"
+            "order:apiovh:pccVMware/additionalBandwidth/create"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1526,8 +1526,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -1535,7 +1535,7 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'filer' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVmware/filer/get"
+            "order:apiovh:pccVMware/filer/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1582,8 +1582,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -1591,7 +1591,7 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVmware/filer/get"
+            "order:apiovh:pccVMware/filer/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1640,8 +1640,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -1649,7 +1649,7 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:pccVmware/filer/create"
+            "order:apiovh:pccVMware/filer/create"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1704,8 +1704,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -1713,7 +1713,7 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'host' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVmware/host/get"
+            "order:apiovh:pccVMware/host/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1760,8 +1760,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -1769,7 +1769,7 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVmware/host/get"
+            "order:apiovh:pccVMware/host/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1818,8 +1818,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -1827,7 +1827,7 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:pccVmware/host/create"
+            "order:apiovh:pccVMware/host/create"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1882,8 +1882,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -1891,7 +1891,7 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'ip' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVmware/ip/get"
+            "order:apiovh:pccVMware/ip/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1962,8 +1962,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -1971,7 +1971,7 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVmware/ip/get"
+            "order:apiovh:pccVMware/ip/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2044,8 +2044,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -2053,7 +2053,7 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:pccVmware/ip/create"
+            "order:apiovh:pccVMware/ip/create"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2132,8 +2132,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -2141,7 +2141,7 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVmware/spla/get"
+            "order:apiovh:pccVMware/spla/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2158,8 +2158,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -2167,7 +2167,7 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:pccVmware/spla/create"
+            "order:apiovh:pccVMware/spla/create"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2190,8 +2190,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -2199,7 +2199,7 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'upgradeRessource' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVmware/upgradeRessource/get"
+            "order:apiovh:pccVMware/upgradeRessource/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2246,8 +2246,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -2255,7 +2255,7 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVmware/upgradeRessource/get"
+            "order:apiovh:pccVMware/upgradeRessource/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2304,8 +2304,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -2313,7 +2313,7 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:pccVmware/upgradeRessource/create"
+            "order:apiovh:pccVMware/upgradeRessource/create"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2368,8 +2368,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -2377,7 +2377,7 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVmware/vdi/get"
+            "order:apiovh:pccVMware/vdi/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2418,8 +2418,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
+            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -2427,7 +2427,7 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:pccVmware/vdi/create"
+            "order:apiovh:pccVMware/vdi/create"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2474,8 +2474,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 CET",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2513,8 +2513,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 CET",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2554,8 +2554,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 CET",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2916,8 +2916,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 CET",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2963,8 +2963,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 CET",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3012,8 +3012,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 CET",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -4033,8 +4033,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 CET",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -4055,8 +4055,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 CET",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -4086,8 +4086,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 CET",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -4125,8 +4125,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 CET",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -4166,8 +4166,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 CET",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -4213,8 +4213,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 CET",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -4268,8 +4268,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 CET",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -4325,8 +4325,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16T00:00:00+01:00",
-            "deprecatedDate": "2023-01-16T00:00:00+01:00",
+            "deletionDate": "2023-02-16 00:00:00 +0100 CET",
+            "deprecatedDate": "2023-01-16 00:00:00 +0100 CET",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },

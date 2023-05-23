@@ -324,14 +324,6 @@ export namespace cloud {
     }
     /**
      * Missing description
-     * interface fullName: cloud.ProjectKubeNodeCreation.ProjectKubeNodeCreation
-     */
-    export interface ProjectKubeNodeCreation {
-        flavorName: string;
-        name: string;
-    }
-    /**
-     * Missing description
      * interface fullName: cloud.ProjectKubeNodePoolAutoscalingParams.ProjectKubeNodePoolAutoscalingParams
      */
     export interface ProjectKubeNodePoolAutoscalingParams {
@@ -958,17 +950,17 @@ export namespace cloud {
          * interface fullName: cloud.instance.CreateInput.CreateInput
          */
         export interface CreateInput {
-            autobackup: cloud.instance.CreateInput.Autobackup;
+            autobackup?: cloud.instance.CreateInput.Autobackup;
             billingPeriod: cloud.instance.CreateInput.BillingPeriodEnum;
             bootFrom: cloud.instance.CreateInput.BootFrom;
             bulk: number;
             flavor: cloud.instance.CreateInput.Flavor;
-            group: cloud.instance.CreateInput.Group;
+            group?: cloud.instance.CreateInput.Group;
             name: string;
             network: cloud.instance.CreateInput.Network;
-            sshKey: cloud.instance.CreateInput.SshKey;
-            sshKeyCreate: cloud.instance.CreateInput.SshKeyCreate;
-            userData: string;
+            sshKey?: cloud.instance.CreateInput.SshKey;
+            sshKeyCreate?: cloud.instance.CreateInput.SshKeyCreate;
+            userData?: string;
         }
         export namespace CreateInput {
             /**
@@ -989,8 +981,8 @@ export namespace cloud {
              * interface fullName: cloud.instance.CreateInput.BootFrom.BootFrom
              */
             export interface BootFrom {
-                imageId: string;
-                volumeId: string;
+                imageId?: string;
+                volumeId?: string;
             }
             /**
              * Flavor information
@@ -1011,7 +1003,7 @@ export namespace cloud {
              * interface fullName: cloud.instance.CreateInput.Network.Network
              */
             export interface Network {
-                private: cloud.instance.CreateInput.Network.Private;
+                private?: cloud.instance.CreateInput.Network.Private;
                 public: boolean;
             }
             export namespace Network {
@@ -1020,13 +1012,13 @@ export namespace cloud {
                  * interface fullName: cloud.instance.CreateInput.Network.Private.Private
                  */
                 export interface Private {
-                    floatingIp: cloud.instance.CreateInput.Network.Private.FloatingIp;
-                    floatingIpCreate: cloud.instance.CreateInput.Network.Private.FloatingIpCreate;
-                    gateway: cloud.instance.CreateInput.Network.Private.Gateway;
-                    gatewayCreate: cloud.instance.CreateInput.Network.Private.GatewayCreate;
-                    ip: string;
-                    network: cloud.instance.CreateInput.Network.Private.Network;
-                    networkCreate: cloud.instance.CreateInput.Network.Private.NetworkCreate;
+                    floatingIp?: cloud.instance.CreateInput.Network.Private.FloatingIp;
+                    floatingIpCreate?: cloud.instance.CreateInput.Network.Private.FloatingIpCreate;
+                    gateway?: cloud.instance.CreateInput.Network.Private.Gateway;
+                    gatewayCreate?: cloud.instance.CreateInput.Network.Private.GatewayCreate;
+                    ip?: string;
+                    network?: cloud.instance.CreateInput.Network.Private.Network;
+                    networkCreate?: cloud.instance.CreateInput.Network.Private.NetworkCreate;
                 }
                 export namespace Private {
                     /**
@@ -1080,7 +1072,7 @@ export namespace cloud {
                     export interface NetworkCreate {
                         name: string;
                         subnet: cloud.instance.CreateInput.Network.Private.NetworkCreate.Subnet;
-                        vlanId: number;
+                        vlanId?: number;
                     }
                     export namespace NetworkCreate {
                         /**
@@ -1579,7 +1571,12 @@ export namespace cloud {
             privateNetworkRoutingAsDefault?: boolean;
         }
         /**
-         * Enum values for available regions
+         * Enum values for regions where cluster creation is possible, region where cluster are deployed is cloud.kube.RegionEnum
+         * type fullname: cloud.kube.RegionCapabilitiesEnum
+         */
+        export type RegionCapabilitiesEnum = "BHS5" | "DE1" | "GRA5" | "GRA7" | "GRA9" | "SBG5" | "SGP1" | "SYD1" | "UK1" | "US-EAST-VA-1" | "US-WEST-OR-1" | "WAW1"
+        /**
+         * Enum values for regions where cluster are deployed and flavor related location. Available region for cluster creation is cloud.kube.RegionCapabilitiesEnum
          * type fullname: cloud.kube.RegionEnum
          */
         export type RegionEnum = "BHS5" | "DE1" | "GRA5" | "GRA7" | "GRA9" | "SBG5" | "SGP1" | "SYD1" | "UK1" | "US-EAST-VA-1" | "US-WEST-OR-1" | "WAW1"
@@ -1623,7 +1620,7 @@ export namespace cloud {
          * List of available versions for installation
          * type fullname: cloud.kube.VersionEnum
          */
-        export type VersionEnum = "1.23" | "1.24" | "1.25"
+        export type VersionEnum = "1.24" | "1.25" | "1.26"
     }
     export namespace loadbalancing {
         /**
@@ -2464,6 +2461,20 @@ export namespace cloud {
                 version: string;
             }
             /**
+             * Cloud database backup definition
+             * interface fullName: cloud.project.database.Backup.Backup
+             */
+            export interface Backup {
+                createdAt: string;
+                description: string;
+                id: string;
+                region: string;
+                regions: cloud.project.database.backup.Region[];
+                size: complexType.UnitAndValue<number>;
+                status: cloud.project.database.StatusEnum;
+                type: cloud.project.database.BackupTypeEnum;
+            }
+            /**
              * Type of backup for the cluster
              * type fullname: cloud.project.database.BackupTypeEnum
              */
@@ -2571,6 +2582,15 @@ export namespace cloud {
                  * type fullname: cloud.project.database.availability.StatusEnum
                  */
                 export type StatusEnum = "BETA" | "DEPRECATED" | "STABLE"
+            }
+            export namespace backup {
+                /**
+                 * Cloud database backup region definition
+                 * interface fullName: cloud.project.database.backup.Region.Region
+                 */
+                export interface Region {
+                    name: string;
+                }
             }
             export namespace capabilities {
                 /**
@@ -3214,20 +3234,6 @@ export namespace cloud {
             }
             export namespace service {
                 /**
-                 * Cloud database backup definition
-                 * interface fullName: cloud.project.database.service.Backup.Backup
-                 */
-                export interface Backup {
-                    createdAt: string;
-                    description: string;
-                    id: string;
-                    region: string;
-                    regions: cloud.project.database.service.backup.Region[];
-                    size: complexType.UnitAndValue<number>;
-                    status: cloud.project.database.StatusEnum;
-                    type: cloud.project.database.BackupTypeEnum;
-                }
-                /**
                  * Certificates definition for cloud project databases
                  * interface fullName: cloud.project.database.service.Certificates.Certificates
                  */
@@ -3474,15 +3480,6 @@ export namespace cloud {
                 export interface UserWithRolesCreation {
                     name: string;
                     roles: string[];
-                }
-                export namespace backup {
-                    /**
-                     * Cloud database backup region definition
-                     * interface fullName: cloud.project.database.service.backup.Region.Region
-                     */
-                    export interface Region {
-                        name: string;
-                    }
                 }
                 export namespace creation {
                     /**
@@ -4203,8 +4200,12 @@ export namespace cloud {
         export interface NetworkQuotas {
             maxFloatingIPs: number;
             maxGateways: number;
+            maxNetworks: number;
+            maxSubnets: number;
             usedFloatingIPs: number;
             usedGateways: number;
+            usedNetworks: number;
+            usedSubnets: number;
         }
         /**
          * Quotas
@@ -4233,8 +4234,13 @@ export namespace cloud {
          * interface fullName: cloud.quota.VolumeUsageQuotas.VolumeUsageQuotas
          */
         export interface VolumeUsageQuotas {
+            maxBackupGigabytes: number;
             maxGigabytes: number;
+            maxVolumeBackupCount: number;
+            maxVolumeCount: number;
+            usedBackupGigabytes: number;
             usedGigabytes: number;
+            volumeBackupCount: number;
             volumeCount: number;
         }
         export namespace storage {
@@ -4611,9 +4617,14 @@ export namespace cloud {
             planCode?: string;
             region: string;
             size: number;
-            status: string;
+            status: cloud.volume.VolumeStatusEnum;
             type: cloud.volume.VolumeTypeEnum;
         }
+        /**
+         * VolumeStatusEnum
+         * type fullname: cloud.volume.VolumeStatusEnum
+         */
+        export type VolumeStatusEnum = "attaching" | "available" | "awaiting-transfer" | "backing-up" | "creating" | "deleting" | "detaching" | "downloading" | "error" | "error_backing-up" | "error_deleting" | "error_extending" | "error_restoring" | "extending" | "in-use" | "maintenance" | "reserved" | "restoring-backup" | "retyping" | "uploading"
         /**
          * VolumeTypeEnum
          * type fullname: cloud.volume.VolumeTypeEnum
@@ -4838,10 +4849,10 @@ export interface Cloud {
                     }
                     regions: {
                         /**
-                         * List Kubernetes available regions
+                         * List Kubernetes regions where cluster creation is possible
                          * GET /cloud/project/{serviceName}/capabilities/kube/regions
                          */
-                        $get(): Promise<cloud.kube.RegionEnum[]>;
+                        $get(): Promise<cloud.kube.RegionCapabilitiesEnum[]>;
                         /**
                          * Controle cache
                          */
@@ -6070,11 +6081,6 @@ export interface Cloud {
                          * GET /cloud/project/{serviceName}/kube/{kubeId}/node
                          */
                         $get(): Promise<cloud.kube.Node[]>;
-                        /**
-                         * Deploy a node for your cluster. This call is deprecated. In the meantime it will create a new node pool for each call. We encourage you to now either create a new nodepool or change the size on an existing one
-                         * POST /cloud/project/{serviceName}/kube/{kubeId}/node
-                         */
-                        $post(params: { flavorName: string, name?: string }): Promise<cloud.kube.Node>;
                         /**
                          * Controle cache
                          */

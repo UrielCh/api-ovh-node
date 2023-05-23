@@ -16,7 +16,7 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "privateCloudVeeamCloudConnect:apiovh:get"
+            "veeamCloudConnect:apiovh:get"
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "privateCloudVeeamCloudConnect:apiovh:get"
+            "veeamCloudConnect:apiovh:get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -65,7 +65,7 @@ export const schema: Schema = {
           "description": "Veeam Backup Repository linked to this Veeam Cloud Connect account",
           "httpMethod": "GET",
           "iamActions": [
-            "privateCloudVeeamCloudConnect:apiovh:backupRepository/get"
+            "veeamCloudConnect:apiovh:backupRepository/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -88,7 +88,7 @@ export const schema: Schema = {
           "description": "Add a new Backup Repository to your professional account",
           "httpMethod": "POST",
           "iamActions": [
-            "privateCloudVeeamCloudConnect:apiovh:backupRepository/create"
+            "veeamCloudConnect:apiovh:backupRepository/create"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -117,7 +117,7 @@ export const schema: Schema = {
           "description": "Delete this backup Repository. ",
           "httpMethod": "DELETE",
           "iamActions": [
-            "privateCloudVeeamCloudConnect:apiovh:backupRepository/delete"
+            "veeamCloudConnect:apiovh:backupRepository/delete"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -148,7 +148,7 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "privateCloudVeeamCloudConnect:apiovh:backupRepository/get"
+            "veeamCloudConnect:apiovh:backupRepository/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -185,7 +185,7 @@ export const schema: Schema = {
           "description": "Change your quota",
           "httpMethod": "POST",
           "iamActions": [
-            "privateCloudVeeamCloudConnect:apiovh:backupRepository/upgradeQuota"
+            "veeamCloudConnect:apiovh:backupRepository/upgradeQuota"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -230,7 +230,7 @@ export const schema: Schema = {
           "description": "Show capabilities of your current offer",
           "httpMethod": "GET",
           "iamActions": [
-            "privateCloudVeeamCloudConnect:apiovh:capabilities/get"
+            "veeamCloudConnect:apiovh:capabilities/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -259,7 +259,7 @@ export const schema: Schema = {
           "description": "List the possible upgrades on your Veeam Cloud Connect account",
           "httpMethod": "GET",
           "iamActions": [
-            "privateCloudVeeamCloudConnect:apiovh:orderableUpgrade/get"
+            "veeamCloudConnect:apiovh:orderableUpgrade/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -288,7 +288,7 @@ export const schema: Schema = {
           "description": "Reset your Cloud Tenant Password",
           "httpMethod": "POST",
           "iamActions": [
-            "privateCloudVeeamCloudConnect:apiovh:resetPassword"
+            "veeamCloudConnect:apiovh:resetPassword"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -317,7 +317,7 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "privateCloudVeeamCloudConnect:apiovh:serviceInfos/get"
+            "veeamCloudConnect:apiovh:serviceInfos/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -340,7 +340,7 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "privateCloudVeeamCloudConnect:apiovh:serviceInfos/edit"
+            "veeamCloudConnect:apiovh:serviceInfos/edit"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -376,7 +376,7 @@ export const schema: Schema = {
           "description": "Tasks associated with Cloud Tenant",
           "httpMethod": "GET",
           "iamActions": [
-            "privateCloudVeeamCloudConnect:apiovh:task/get"
+            "veeamCloudConnect:apiovh:task/get"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -421,7 +421,7 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "privateCloudVeeamCloudConnect:apiovh:task/get"
+            "veeamCloudConnect:apiovh:task/get"
           ],
           "noAuthentication": false,
           "parameters": [

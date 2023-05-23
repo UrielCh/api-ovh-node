@@ -276,7 +276,7 @@ export namespace hosting {
          * Private database orderable versions
          * type fullname: hosting.PrivateDatabase.OrderableVersionEnum
          */
-        export type OrderableVersionEnum = "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mysql_5.7" | "mysql_8.0" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_13" | "redis_6.0" | "redis_7.0"
+        export type OrderableVersionEnum = "mariadb_10.11" | "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mariadb_10.6" | "mysql_5.7" | "mysql_8.0" | "postgresql_11" | "postgresql_12" | "postgresql_13" | "postgresql_14" | "postgresql_15" | "redis_6.0" | "redis_7.0"
     }
     export namespace web {
         /**
@@ -368,7 +368,7 @@ export namespace hosting {
          * Available datacenters
          * type fullname: hosting.web.DatacenterEnum
          */
-        export type DatacenterEnum = "bhs1" | "gra1" | "gra2" | "gra3" | "p19"
+        export type DatacenterEnum = "bhs" | "bhs1" | "gra" | "gra1" | "gra2" | "gra3" | "p19"
         /**
          * Disk properties (size and type of disk)
          * interface fullName: hosting.web.DiskType.DiskType
@@ -526,7 +526,7 @@ export namespace hosting {
             clusterIp?: string;
             clusterIpv6?: string;
             countriesIp?: hosting.web.CountriesIp[];
-            datacenter: hosting.web.DatacenterEnum;
+            datacenter: string;
             displayName?: string;
             filer?: string;
             hasCdn?: boolean;
@@ -849,7 +849,7 @@ export namespace hosting {
              * Database Version enum
              * type fullname: hosting.web.database.VersionEnum
              */
-            export type VersionEnum = "10" | "10.1" | "10.2" | "10.3" | "10.4" | "10.5" | "11" | "12" | "13" | "3.2" | "3.4" | "4.0" | "5.1" | "5.5" | "5.6" | "5.7" | "6.0" | "7.0" | "8.0" | "8.4" | "9.4" | "9.5" | "9.6"
+            export type VersionEnum = "10" | "10.1" | "10.11" | "10.2" | "10.3" | "10.4" | "10.5" | "10.6" | "11" | "12" | "13" | "15" | "3.2" | "3.4" | "4.0" | "5.1" | "5.5" | "5.6" | "5.7" | "6.0" | "7.0" | "8.0" | "8.4" | "9.4" | "9.5" | "9.6"
             export namespace dump {
                 /**
                  * List of dump types
@@ -1704,7 +1704,7 @@ export interface Hosting {
              * Alter this object properties
              * PUT /hosting/web/{serviceName}
              */
-            $put(params?: { availableBoostOffer?: hosting.web.AvailableOfferStruct[], boostOffer?: hosting.web.OfferCapabilitiesEnum, cluster?: string, clusterIp?: string, clusterIpv6?: string, countriesIp?: hosting.web.CountriesIp[], datacenter?: hosting.web.DatacenterEnum, displayName?: string, filer?: string, hasCdn?: boolean, hasHostedSsl?: boolean, home?: string, hostingIp?: string, hostingIpv6?: string, lastOvhConfigScan?: string, offer?: hosting.web.OfferCapabilitiesEnum, operatingSystem?: hosting.web.OperatingSystemEnum, phpVersions?: hosting.web.PhpVersion[], primaryLogin?: string, quotaSize?: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, recommendedOffer?: hosting.web.OfferEnum, resourceType?: hosting.web.ResourceEnum, serviceManagementAccess?: hosting.web.ServiceAccess, serviceName?: string, state?: hosting.web.StateEnum, token?: string, trafficQuotaSize?: complexType.UnitAndValue<number>, trafficQuotaUsed?: complexType.UnitAndValue<number>, updates?: string[] }): Promise<void>;
+            $put(params?: { availableBoostOffer?: hosting.web.AvailableOfferStruct[], boostOffer?: hosting.web.OfferCapabilitiesEnum, cluster?: string, clusterIp?: string, clusterIpv6?: string, countriesIp?: hosting.web.CountriesIp[], datacenter?: string, displayName?: string, filer?: string, hasCdn?: boolean, hasHostedSsl?: boolean, home?: string, hostingIp?: string, hostingIpv6?: string, lastOvhConfigScan?: string, offer?: hosting.web.OfferCapabilitiesEnum, operatingSystem?: hosting.web.OperatingSystemEnum, phpVersions?: hosting.web.PhpVersion[], primaryLogin?: string, quotaSize?: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, recommendedOffer?: hosting.web.OfferEnum, resourceType?: hosting.web.ResourceEnum, serviceManagementAccess?: hosting.web.ServiceAccess, serviceName?: string, state?: hosting.web.StateEnum, token?: string, trafficQuotaSize?: complexType.UnitAndValue<number>, trafficQuotaUsed?: complexType.UnitAndValue<number>, updates?: string[] }): Promise<void>;
             /**
              * Controle cache
              */
@@ -2831,10 +2831,10 @@ export interface Hosting {
             }
             ssl: {
                 /**
-                 * Delete the HostedSsl on your hosting
+                 * Delete a hosted SSL
                  * DELETE /hosting/web/{serviceName}/ssl
                  */
-                $delete(): Promise<hosting.web.ssl>;
+                $delete(): Promise<hosting.web.SSL>;
                 /**
                  * Get hosted SSL properties
                  * GET /hosting/web/{serviceName}/ssl

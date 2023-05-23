@@ -10,8 +10,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-03-01T00:00:00+00:00",
-            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "deletionDate": "2022-03-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2021-12-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -29,8 +29,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-03-01T00:00:00+00:00",
-            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "deletionDate": "2022-03-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2021-12-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -51,8 +51,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-03-01T00:00:00+00:00",
-            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "deletionDate": "2022-03-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2021-12-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -82,8 +82,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-03-01T00:00:00+00:00",
-            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "deletionDate": "2022-03-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2021-12-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -227,8 +227,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-03-01T00:00:00+00:00",
-            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "deletionDate": "2022-03-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2021-12-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -265,8 +265,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-03-01T00:00:00+00:00",
-            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "deletionDate": "2022-03-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2021-12-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -303,8 +303,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-03-01T00:00:00+00:00",
-            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "deletionDate": "2022-03-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2021-12-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -334,8 +334,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-03-01T00:00:00+00:00",
-            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "deletionDate": "2022-03-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2021-12-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -432,8 +432,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-03-01T00:00:00+00:00",
-            "deprecatedDate": "2021-12-01T00:00:00+00:00",
+            "deletionDate": "2022-03-01 00:00:00 +0000 UTC",
+            "deprecatedDate": "2021-12-01 00:00:00 +0000 UTC",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
