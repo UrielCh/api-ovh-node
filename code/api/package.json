@@ -23,7 +23,7 @@
     }
   },
   "license": "MIT",
-  "author": "Uriel Chemouni <uchemouni@gmail.com> (https://uriel.deno.dev/)",
+  "author": "Uriel Chemouni <uchemouni@gmail.com> (https://uriel.ovh/)",
   "dependencies": {
     "@ovh-api/common": "^4.0.2",
     "open": "^8.4.0"
