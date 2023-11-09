@@ -131,11 +131,11 @@ async function main(root: string, type: 'pdf' | 'html') {
     }
   } catch (e) { console.error(e) }
 
-  if (options.a == 'us') {
+  if (options.api == 'us') {
     param.endpoint = 'ovh-us';
     // need param.appKey;
     // need param.appSecret;
-  } else if (options.a == 'ca') {
+  } else if (options.api == 'ca') {
     param.endpoint = 'ovh-ca';
     // need param.appKey;
     // need param.appSecret;
