@@ -8,7 +8,7 @@ import Ovh, { OvhParams } from '@ovh-api/api'
 import path from 'path'
 import fetch from 'node-fetch'
 import { Command } from 'commander'
-import Bluebird, { Promise } from 'bluebird'
+import Bird from 'nativebird';
 
 const { version } = require('./package.json');
 
@@ -272,7 +272,7 @@ async function main(root: string, type: 'pdf' | 'html') {
               const resp = await fetch(billData.pdfUrl)
               await new Promise((resove, reject) => resp.body.pipe(ws).on('finish', resove))
             } catch (e) {
-              await Bluebird.delay(1000);
+              await Bird.delay(1000);
               console.log(e);
               continue;
             }
@@ -282,7 +282,7 @@ async function main(root: string, type: 'pdf' | 'html') {
           if (stats.size === 46) {
             console.log('Too much requests. Please retry in 3 seconds.');
             await fse.remove(tmpFile)
-            await Bluebird.delay(3000);
+            await Bird.delay(3000);
           } else {
             await fse.rename(tmpFile, finalFile)
             break;
@@ -296,7 +296,7 @@ async function main(root: string, type: 'pdf' | 'html') {
   const concurrency = Number(options.concurrency) || 1
   if (concurrency >= 3)
     console.error('Warning a hi concurrency may triger OVH query rate limit')
-  await Promise.map(billIds, (item, index, length) => getInvoice(item), { concurrency })
+  await Bird.map(billIds, (item, index, length) => getInvoice(item), { concurrency })
 
   if (billIds.length) {
     const allInvoice = Object.values(invoiceTSV);

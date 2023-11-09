@@ -23,6 +23,7 @@ npx ovh-bill-importer --help
 
 ## ChangeLog
 
+- V 1.2.0 replace Bluebird by Nativebird, fix --api parameter
 - V 1.1.1 add --max-age <time-range> with time-range like 4m for 4 month, 1y for 1 year, 10d for 10 days.
 - V 1.1.0 add --api <type> with type in (eu, ca, us).
 - V 1.0.6 fix regression in incremental execution.
