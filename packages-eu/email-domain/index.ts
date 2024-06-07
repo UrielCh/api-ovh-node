@@ -104,6 +104,11 @@ export namespace domain {
             ttl?: number;
             zone: string;
         }
+        /**
+         * Resource record name
+         * type fullname: domain.zone.RecordTypeEnum
+         */
+        export type RecordTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "DNAME" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
     }
 }
 export namespace email {
@@ -160,6 +165,11 @@ export namespace email {
             trace?: email.domain.DomainDiagnoseTraceStruct<email.domain.DomainDiagnoseResultEnum>[];
         }
         /**
+         * Result value for diagnose
+         * type fullname: email.domain.DiagnoseEnum
+         */
+        export type DiagnoseEnum = "checkFail" | "invalid" | "none" | "unknown" | "valid"
+        /**
          * Function of diagnose
          * type fullname: email.domain.DomainDiagnoseFunctionEnum
          */
@@ -186,6 +196,25 @@ export namespace email {
             creationDate?: string;
             domain: string;
             filerz?: number;
+            isMXValid: email.domain.DiagnoseEnum;
+            isSPFValid: email.domain.DiagnoseEnum;
+            linkTo?: string;
+            migratedMXPlanServiceName?: string;
+            offer?: string;
+            status: domainDomainStatusEnum;
+        }
+        /**
+         * Domain service
+         * interface fullName: email.domain.DomainServiceWithIAM.DomainServiceWithIAM
+         */
+        export interface DomainServiceWithIAM {
+            allowedAccountSize?: number[];
+            creationDate?: string;
+            domain: string;
+            filerz?: number;
+            iam?: iam.ResourceMetadata;
+            isMXValid: email.domain.DiagnoseEnum;
+            isSPFValid: email.domain.DiagnoseEnum;
             linkTo?: string;
             migratedMXPlanServiceName?: string;
             offer?: string;
@@ -393,6 +422,35 @@ export namespace email {
         }
     }
 }
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace service {
     /**
      * Map a possible renew for a specific service
@@ -465,7 +523,7 @@ export interface Email {
          * List available services
          * GET /email/domain
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -1174,12 +1232,12 @@ export interface Email {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /email/domain/{domain}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /email/domain/{domain}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
