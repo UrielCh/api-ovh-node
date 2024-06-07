@@ -7,9 +7,9 @@
   "types": "./types/index.d.ts",
   "exports": {
     ".": {
+      "types": "./types/index.d.ts",
       "require": "./cjs/index.js",
-      "import": "./esm/index.js",
-      "types": "./types/index.d.ts"
+      "import": "./esm/index.js"
     }
   },
   "funding": "https://github.com/sponsors/urielch",
