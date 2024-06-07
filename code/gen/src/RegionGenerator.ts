@@ -55,7 +55,7 @@ export class RegionGenerator {
         this.deletedApi++;
     }
 
-    async genRegion() {
+    async genRegion(regexp?: RegExp) {
         const { host, port } = this.endpoint;
         let apis = await this.listApis();
         let allApi = apis.map(pathToApiName);
@@ -86,6 +86,11 @@ export class RegionGenerator {
         const concurrency = 1;
         console.log(`Found ${allApi.length} Api available on ${host}`);
         await Nativebird.map(apis, async apiPath => {
+            if (regexp) {
+               if (!regexp.test(apiPath))
+                    return;
+                console.log(`${regexp} Matching ${apiPath}, generating...`);
+            }
             let cg = new CodeGenerator(this.endpoint.namespace, { host, port }, apiPath);
             try {
                 await cg.loadSchema();

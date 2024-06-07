@@ -3,12 +3,13 @@ import { RegionGenerator } from './RegionGenerator';
 
 async function main() {
     let error = 0;
+    // iterate over all endpoints
     for (const endpoint of Object.values(endpoints)) {
         const regionGen = new RegionGenerator(endpoint);
-        //if (endpoint.directory != 'kimsufi-ca')
-        //    continue;
+        // if (endpoint.directory != 'kimsufi-ca')
+        //     continue;
         try {
-            await regionGen.genRegion();
+            await regionGen.genRegion(); // /ip/
             if (regionGen.deletedApi) {
                 console.log(`${regionGen.deletedApi} API deleted`);
             }

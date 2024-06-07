@@ -184,7 +184,13 @@ export class CodeGenerator {
         }
         {
             // drop _alias _model _name __propo__
-            const keys = Object.keys(cache).filter(k => !this.reservedField.has(k)).sort();
+            let keys = Object.keys(cache);
+            keys = keys.filter(k => !this.reservedField.has(k));
+            keys = keys.filter(k => !k.includes("<")); // drop generics
+            keys = keys.sort();
+            // if (cache._namespace === "complexType")
+            //     console.log("--------", keys, cache._alias, cache._parent?._name);
+
             if (!keys.length)
                 return code;
             if (cache._namespace) {
